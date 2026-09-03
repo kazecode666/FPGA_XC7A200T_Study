@@ -1,0 +1,386 @@
+## 一、原系统的信号分配
+
+原系统不是简单的“28335 GPIO直接接MBDL4”，而是：
+
+```text
+TMS320F28335
+   ↓ 3.3 V
+28335B PLUS上的74LVXC3245电平转换输出门控
+   ↓ 5 V
+MBDL4转接板
+   ↓
+MBDL4驱动板
+```
+
+### 1. PWM和总输出门控
+
+三相六路PWM对应关系为：
+
+ 28335信号  28335B PLUS输出  MBDL4信号 
+ -------  ------------  ------ 
+ ePWM1A           XPWM1     PWM1 
+ ePWM1B           XPWM2     PWM2 
+ ePWM2A           XPWM3     PWM3 
+ ePWM2B           XPWM4     PWM4 
+ ePWM3A           XPWM5     PWM5 
+ ePWM3B           XPWM6     PWM6 
+
+GPIO48复用为ECAP5，并连接到U19、U22两片74LVXC3245的低有效 `OE`：
+
+```text
+GPIO48 = 1：U19、U22输出高阻，PWM和XDO1～XDO4全部被关断
+GPIO48 = 0：U19、U22输出被放行
+```
+
+因此GPIO48不只是“PWM软件使能”，而是一个板级的总输出硬件门控。原理图还通过R57将ECAP5上拉，使控制器复位或未初始化时默认关闭输出，这是很重要的安全设计。
+
+### 2. 继电器、驱动使能和复位
+
+ 功能       28335引脚        28335B PLUS路径  转接板   MBDL4        
+ -------  -------------  -------------  ----  ------------ 
+ 总输出门控    GPIO48ECAP5   U19、U22的OE     —     同时切断PWM和控制输出 
+ 主继电器控制   GPIO60MCLKRB  U22 A1→B1      XDO3  RELCON       
+ 驱动PWM使能  GPIO61MFSRB   U22 A0→B0      XDO4  ENCON        
+ 驱动故障复位   GPIO58MCLKRA  U22 A3→B3      XDO1  F_Reset      
+ 过流故障     GPIOTZ2       U20 A3←B3      XTZ2  ERRI         
+ 过压故障     GPIOTZ1       U20 A4←B4      XTZ1  ERRU         
+
+你原来的分配判断是正确的：
+
+```text
+GPIO60 → XDO3 → RELCON
+GPIO61 → XDO4 → ENCON
+GPIO58 → XDO1 → F_Reset
+ERRI → XTZ2 → TZ2
+ERRU → XTZ1 → TZ1
+```
+
+MBDL4转接板将这些信号一一转接到驱动板接口；驱动板内部则使用RELCON控制继电器逻辑，ENCON参与功率驱动允许，ERRI和ERRU来自过流、过压保护逻辑。 
+
+还有一个关键点：U20的OE直接接地，所以ERRI、ERRU和QEP输入通道始终处于使能状态，不会因为GPIO48关断输出而看不到故障信号。
+
+---
+
+## 二、原系统正确的上电顺序
+
+建议把它做成状态机，而不是同时手动打开几个开关。
+
+### 安全初始状态
+
+控制器刚上电时应保持：
+
+```text
+GPIO48 = 1       总输出关闭
+RELCON = 0       继电器不吸合
+ENCON = 0        驱动PWM禁止
+F_Reset = 无效状态
+ePWM = Trip状态或安全电平
+iq_ref = 0
+```
+
+尤其不能在GPIO初始化之前就让GPIO48变为0。
+
+### 母线预充和运行使能
+
+推荐顺序：
+
+```text
+1. 28335控制器和MBDL4的24 V控制电上电
+2. GPIO48保持1，所有输出处于禁止状态
+3. 接通直流母线
+4. 母线电容通过预充路径充电
+5. 根据VDC反馈确认母线电压已稳定，不能只依赖固定延时
+6. 预先把RELCON、ENCON和PWM命令设置为安全值
+7. GPIO48置0，放行U19、U22输出
+8. 在PWM禁止状态下给F_Reset受控复位脉冲
+9. 检查ERRI、ERRU均处于正常状态
+10. RELCON置有效，主继电器吸合
+11. 等待继电器吸合及触点稳定
+12. ENCON置有效
+13. 电流采样偏置、位置角度等初始化完成
+14. 清除ePWM Trip，开始输出PWM
+```
+
+D26点亮只能说明继电器驱动命令已经产生，不能单独证明：
+
+ 母线预充完成；
+ 继电器触点确实接通；
+ 母线电压正常；
+ 驱动板没有故障。
+
+最好始终结合VDC采样和ERRIERRU判断。
+
+---
+
+## 三、正常停机和故障停机
+
+### 正常停机
+
+```text
+iq_ref、速度指令逐渐归零
+↓
+ePWM进入Trip，六路PWM关闭
+↓
+ENCON关闭
+↓
+确认电流已经衰减
+↓
+RELCON关闭，继电器断开
+↓
+GPIO48置1，总输出隔离
+↓
+最后断开直流母线和控制电
+```
+
+不要让继电器带较大电流直接分断。
+
+### 过流、过压或行程故障
+
+故障发生后的第一动作应该是：
+
+```text
+ERRIERRU或其他保护
+↓
+ePWM Trip Zone硬件立即关闭六路PWM
+↓
+软件锁存故障
+↓
+ENCON关闭
+↓
+等待电流衰减
+↓
+RELCON关闭
+↓
+GPIO48置1
+```
+
+不能仅依赖软件把 `iq_ref` 清零，也不能只依赖GPIO48。GPIO48属于第二层硬件隔离，真正快速的功率器件保护应由Trip Zone完成。
+
+故障复位时必须满足：
+
+```text
+PWM已关闭
+ENCON已关闭
+故障原因已经消除
+ERRIERRU恢复正常
+```
+
+然后再给F_Reset一个明确的复位脉冲。不要把F_Reset当作普通运行使能长期拉住，也不要出现“故障—自动复位—重新开PWM”的无限循环。
+
+---
+
+# 四、换成28388D时必须保留的功能
+
+迁移时不要照搬GPIO编号，而要保持下面这些功能资源：
+
+ 功能        28388D需要配置的资源                          默认安全状态 
+ --------  -------------------------------------  ------ 
+ 三相六路PWM   3组ePWM AB输出                           全部关闭   
+ 总输出门控     1路普通GPIO控制外部电平转换器OE                    禁止输出   
+ RELCON    1路GPIO输出                               无效     
+ ENCON     1路GPIO输出                               无效     
+ F_Reset   1路GPIO脉冲输出                             无效     
+ ERRI      GPIO→INPUT X-BARePWM X-BAR→Trip Zone  始终有效   
+ ERRU      GPIO→INPUT X-BARePWM X-BAR→Trip Zone  始终有效   
+ 编码器       eQEP ABI                             输入     
+ 电流、母线、温度  ADC输入                                  合法量程   
+
+F28388D具有多组ePWM、eQEP、ADC、INPUT X-BAR和ePWM X-BAR，硬件资源足够，但双CPU架构下要明确这些外设由CPU1还是CPU2控制。([Texas Instruments][1])
+
+---
+
+## 五、最重要的是3.3 V与5 V电平转换
+
+F28388D的数字IO电源是3.3 V，数字输入的推荐工作范围最高为 `VDDIO+0.3 V`，因此MBDL4侧的5 V信号不能直接接入28388D。([Texas Instruments][1])
+
+必须保留或重新设计：
+
+```text
+28388D → MBDL4：
+PWM1～PWM6、RELCON、ENCON、F_Reset
+3.3 V → 5 V电平转换
+
+MBDL4 → 28388D：
+ERRI、ERRU、QEPA、QEPB、QEPI
+5 V → 3.3 V电平转换
+```
+
+原28335B PLUS上的U19、U22、U20实际上同时承担了：
+
+ 3.3 V与5 V电平转换；
+ 输出缓冲；
+ 总输出OE门控；
+ 故障和编码器输入转换。
+
+因此换28388D时，不能因为28388D功能更强就把这些外围电路取消。
+
+建议新板仍设置一个独立信号，例如：
+
+```text
+GLOBAL_OUTPUT_DISABLE
+```
+
+并采用：
+
+```text
+高电平：关闭外部缓冲器
+低电平：放行输出
+外部电阻默认上拉
+```
+
+这样即使28388D处于复位、烧写、Boot ROM或程序跑飞状态，MBDL4也不会误输出PWM或误吸合继电器。
+
+---
+
+## 六、ERRI和ERRU必须接入硬件Trip Zone
+
+28388D上不要把ERRI、ERRU仅配置成普通GPIO中断。正确路径应为：
+
+```text
+ERRIERRU
+↓
+输入电平转换
+↓
+28388D GPIO
+↓
+INPUT X-BAR  ePWM X-BAR
+↓
+所有相关ePWM的Trip Zone
+↓
+六路PWM强制到安全状态
+```
+
+F28388D的ePWM具有硬件Trip Zone，外部故障可以异步作用于PWM，不需要等待CPU进入中断后再执行关断代码。([Texas Instruments][1])
+
+建议使用锁存型的一次性故障，即OST方式：
+
+```text
+故障出现后PWM保持关闭
+只有软件确认故障消失并执行明确复位后才重新允许PWM
+```
+
+还需要用示波器确认ERRI、ERRU的实际有效极性。不要仅根据名称假定它们是高有效还是低有效，然后据此配置TZ极性。
+
+---
+
+## 七、原来的“半拍延时”必须重新测量
+
+这一点对你现在的DPCCDPICC模型特别重要。
+
+换成28388D后，即使控制周期和PWM频率保持不变，下面这些时序都会发生变化：
+
+```text
+ePWM计数时钟
+ADC触发时刻
+ADC采样窗口
+ADC转换结束时刻
+ADC中断进入时间
+控制算法计算时间
+CMPACMPB影子寄存器写入时刻
+影子寄存器装载时刻
+PWM实际更新时刻
+```
+
+F2838x的ePWM同步结构与前代器件存在差异，迁移时相关配置需要重新设置，不能直接照搬原始寄存器值。([Texas Instruments][2])
+
+因此不能直接认为：
+
+```text
+28335上是半拍延时
+→
+28388D上也一定是半拍延时
+```
+
+应在28388D程序里使用一个调试GPIO：
+
+```text
+ADC中断入口：GPIO置1
+控制计算结束：GPIO置0
+```
+
+然后示波器同时观察：
+
+ ePWM波形；
+ ADC SOCA所在时刻；
+ 调试GPIO；
+ PWM占空比真正更新的位置。
+
+最终重新确定：
+
+```text
+采样 → 计算 → PWM生效
+```
+
+到底是接近零拍、半拍、一拍，还是带有额外计算延时。你的DPCCDPICC离散控制律应以28388D上的实测结果为准。
+
+---
+
+## 八、ADC通道也不能直接照搬
+
+F28388D ADC输入必须保持在合法的模拟输入范围内。TI明确要求ADC输入不要超过 `VDDA+0.3 V`，转换范围还取决于VREFHIVREFLO配置。([Texas Instruments][1])
+
+迁移时需要重新核对：
+
+ IA、IB、IC零电流偏置；
+ 每安培对应的ADC电压和计数；
+ VDC分压比例；
+ IDC和温度采样比例；
+ ADC参考电压；
+ 12位还是16位模式；
+ ADC采样保持时间；
+ 电流采样与PWM的同步位置；
+ ADC输入RC滤波和信号源阻抗。
+
+不能只把28335的ADC通道号换成28388D通道号，而保留原来的换算系数。
+
+---
+
+## 九、建议的28388D安全初始化原则
+
+28388D程序启动时建议严格按下面顺序初始化：
+
+```text
+1. 先配置所有使能GPIO的数据寄存器为安全电平
+2. 再配置GPIO方向
+3. 再配置GPIO复用
+4. 配置外部故障输入和Trip Zone
+5. 将所有ePWM保持在Trip状态
+6. 配置ADC、eQEP和控制中断
+7. 检查采样、角度、母线电压和故障状态
+8. 最后才允许进入预充和运行状态机
+```
+
+双CPU系统还需要明确：
+
+```text
+ePWM归CPU1还是CPU2
+ADC归CPU1还是CPU2
+使能GPIO归哪个CPU
+故障中断由哪个CPU处理
+```
+
+电机控制核心、PWM、ADC和安全使能最好集中由同一C28x CPU管理，避免正常关断还需要等待跨核IPC。
+
+---
+
+## 十、迁移时的核心结论
+
+原28335B PLUS方案中必须原样保留的安全思想是：
+
+ GPIO48ECAP5提供低有效的板级总输出门控；RELCON控制母线继电器，ENCON控制驱动PWM使能，F_Reset只用于受控故障复位；ERRI和ERRU通过Trip Zone直接硬件关断PWM。
+
+换成28388D以后，最需要注意的是：
+
+1. 重新选择GPIO和外设复用，不能照搬28335编号。
+2. 保留3.3 V5 V双向电平转换。
+3. 保留默认禁止的外部OE总门控。
+4. ERRI和ERRU必须接入ePWM硬件Trip Zone。
+5. 重新校准ADC通道和采样比例。
+6. 重新计算PWM、死区和ADC触发参数。
+7. 重新实测PWM更新延时，不能默认仍为半拍。
+8. 明确CPU1CPU2的外设所有权。
+9. 上电、预充、继电器、ENCON、PWM必须由状态机顺序控制。
+10. 在确定28388D实际控制板原理图之前，不能最终确定具体GPIO编号和连接器针脚。
+
+[1] httpswww.ti.comlitdssymlinktms320f28388d.pdf TMS320F2838x Real-Time Microcontrollers With Connectivity Manager  datasheet (Rev. E)
+[2] httpswww.ti.comlitpdfspracq1 Migration Between TMS320F2837x and TMS320F2838x

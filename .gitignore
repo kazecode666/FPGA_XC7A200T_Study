@@ -1,0 +1,15 @@
+# Vivado generated working directories
+.Xil/
+*.cache/
+*.runs/
+*.gen/
+*.hw/
+*.sim/
+*.ip_user_files/
+
+# Vivado journals, logs, and generated databases
+*.jou
+*.log
+*.str
+*.wdb
+*.pb
