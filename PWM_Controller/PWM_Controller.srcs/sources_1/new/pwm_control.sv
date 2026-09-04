@@ -2,7 +2,7 @@ module pwm_controller(
     input clk,  //时钟：50MHz
     input reset_n,  //复位信号，低电平有效
     input [31:0] period_set,    //32bit配置输入
-    input [31:0] pulse_width_set,   //32bit配置输入
+    input [31:0] compare_value_set, //32bit比较值配置输入
     input config_en,  //配置使能信号，高电平有效
     output pwm_out  //PWM输出
     );
@@ -10,7 +10,7 @@ module pwm_controller(
     //1.锁存配置参数
     //--------------------------------
     logic [31:0] period_set_reg;
-    logic [31:0] pulse_width_set_reg;
+    logic [31:0] compare_value_reg;
     
     /**
         @brief 利用使能信号锁存配置参数
@@ -19,17 +19,17 @@ module pwm_controller(
         if(!reset_n) 
             begin
                 period_set_reg <= 32'd0;
-                pulse_width_set_reg <= 32'd0;
+                compare_value_reg <= 32'd0;
             end
         else if(config_en)
             begin
                 period_set_reg <= period_set;
-                pulse_width_set_reg <= pulse_width_set;
+                compare_value_reg <= compare_value_set;
             end
         else
             begin
                 period_set_reg <= period_set_reg;
-                pulse_width_set_reg <= pulse_width_set_reg;
+                compare_value_reg <= compare_value_reg;
             end
     //--------------------------------
     //2.定时计数器自动计数
@@ -44,6 +44,8 @@ module pwm_controller(
             time_cnt <= 32'd0;
         else if(config_en)
             time_cnt <= 32'd0;
+        else if(period_set_reg == 32'd0)
+            time_cnt <= 32'd0;
         else if(time_cnt < (period_set_reg - 1'b1))
             time_cnt <= time_cnt + 1'b1;
         else
@@ -54,12 +56,14 @@ module pwm_controller(
     //--------------------------------
     logic pwm_out_reg;
     /**
-        @brief 当定时值大于设定比较值时，pwm_out输出1，否则输出0
+        @brief period非零且定时值大于等于比较值时，pwm_out输出1，否则输出0
     */
     always_ff @(posedge clk , negedge reset_n)
         if(!reset_n)
             pwm_out_reg <= 1'b0;
-        else if(time_cnt > (pulse_width_set_reg - 1'b1))
+        else if(period_set_reg == 32'd0)
+            pwm_out_reg <= 1'b0;
+        else if(time_cnt >= compare_value_reg)
             pwm_out_reg <= 1'b1;
         else
             pwm_out_reg <= 1'b0;
