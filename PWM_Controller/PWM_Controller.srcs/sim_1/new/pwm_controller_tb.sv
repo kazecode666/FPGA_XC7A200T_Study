@@ -2,11 +2,12 @@
 
 module pwm_controller_tb;
     localparam integer CLK_PERIOD_NS = 20;
+    localparam integer CONSTANT_CHECK_CLOCKS = 20;
 
     logic        clk;
     logic        reset_n;
     logic [31:0] period_set;
-    logic [31:0] pulse_width_set;
+    logic [31:0] compare_value_set;
     logic        config_en;
     wire         pwm_out;
 
@@ -16,7 +17,7 @@ module pwm_controller_tb;
         .clk             (clk),
         .reset_n         (reset_n),
         .period_set      (period_set),
-        .pulse_width_set (pulse_width_set),
+        .compare_value_set(compare_value_set),
         .config_en       (config_en),
         .pwm_out         (pwm_out)
     );
@@ -30,10 +31,10 @@ module pwm_controller_tb;
     // 异步拉低复位，并在时钟下降沿释放，避免与 DUT 的上升沿采样竞争。
     task automatic reset_dut;
         begin
-            reset_n         = 1'b0;
-            period_set      = 32'd0;
-            pulse_width_set = 32'd0;
-            config_en       = 1'b0;
+            reset_n          = 1'b0;
+            period_set       = 32'd0;
+            compare_value_set = 32'd0;
+            config_en        = 1'b0;
 
             repeat (3) @(negedge clk);
             reset_n = 1'b1;
@@ -44,13 +45,13 @@ module pwm_controller_tb;
     // 在下降沿设置配置，并保持 config_en 跨过一个上升沿。
     task automatic configure_pwm(
         input logic [31:0] new_period,
-        input logic [31:0] new_pulse_width
+        input logic [31:0] new_compare_value
     );
         begin
             @(negedge clk);
-            period_set      = new_period;
-            pulse_width_set = new_pulse_width;
-            config_en       = 1'b1;
+            period_set       = new_period;
+            compare_value_set = new_compare_value;
+            config_en        = 1'b1;
 
             @(posedge clk);
             @(negedge clk);
@@ -62,7 +63,7 @@ module pwm_controller_tb;
     task automatic check_pwm_case(
         input integer      case_number,
         input logic [31:0] test_period,
-        input logic [31:0] test_pulse_width
+        input logic [31:0] test_compare_value
     );
         integer expected_low;
         integer expected_high;
@@ -74,20 +75,20 @@ module pwm_controller_tb;
         integer max_wait;
         logic   sync_ok;
         begin
-            expected_low    = test_pulse_width;
-            expected_high   = test_period - test_pulse_width;
+            expected_low    = test_compare_value;
+            expected_high   = test_period - test_compare_value;
             expected_period = test_period;
             max_wait        = (test_period * 3) + 10;
 
             if ((test_period == 0) ||
-                (test_pulse_width == 0) ||
-                (test_pulse_width >= test_period)) begin
+                (test_compare_value == 0) ||
+                (test_compare_value >= test_period)) begin
                 $fatal(1,
-                    "Case %0d uses a configuration deferred to Step 2.",
+                    "Case %0d normal PWM check requires 0 < C < N.",
                     case_number);
             end
 
-            configure_pwm(test_period, test_pulse_width);
+            configure_pwm(test_period, test_compare_value);
 
             // 先观察到 HIGH，再等待下一次 LOW，排除配置过渡阶段。
             sync_ok    = 1'b1;
@@ -137,14 +138,14 @@ module pwm_controller_tb;
                 (measured_high == expected_high) &&
                 (measured_period == expected_period)) begin
                 $display(
-                    "[PASS] Case %0d period=%0d pulse=%0d : LOW=%0d HIGH=%0d TOTAL=%0d",
-                    case_number, test_period, test_pulse_width,
+                    "[PASS] Case %0d N=%0d C=%0d : LOW=%0d HIGH=%0d TOTAL=%0d",
+                    case_number, test_period, test_compare_value,
                     measured_low, measured_high, measured_period);
             end
             else begin
                 error_count = error_count + 1;
-                $display("[FAIL] Case %0d period=%0d pulse=%0d",
-                         case_number, test_period, test_pulse_width);
+                $display("[FAIL] Case %0d N=%0d C=%0d",
+                         case_number, test_period, test_compare_value);
                 $display("Expected: LOW=%0d HIGH=%0d TOTAL=%0d",
                          expected_low, expected_high, expected_period);
                 $display("Measured: LOW=%0d HIGH=%0d TOTAL=%0d",
@@ -153,12 +154,114 @@ module pwm_controller_tb;
         end
     endtask
 
+    // compare_value=0 时，非零周期内输出应持续为 HIGH。
+    task automatic check_constant_high(
+        input integer      case_number,
+        input logic [31:0] test_period,
+        input logic [31:0] test_compare_value
+    );
+        integer sample_count;
+        logic   case_passed;
+        begin
+            configure_pwm(test_period, test_compare_value);
+            @(negedge clk);
+
+            case_passed = 1'b1;
+            for (sample_count = 0;
+                 sample_count < CONSTANT_CHECK_CLOCKS;
+                 sample_count = sample_count + 1) begin
+                if (pwm_out !== 1'b1) begin
+                    case_passed = 1'b0;
+                end
+                @(negedge clk);
+            end
+
+            if (case_passed) begin
+                $display("[PASS] Case %0d N=%0d C=%0d : CONSTANT HIGH",
+                         case_number, test_period, test_compare_value);
+            end
+            else begin
+                error_count = error_count + 1;
+                $display("[FAIL] Case %0d N=%0d C=%0d : expected CONSTANT HIGH",
+                         case_number, test_period, test_compare_value);
+            end
+        end
+    endtask
+
+    // compare_value>=period 时，输出应持续为 LOW。
+    task automatic check_constant_low(
+        input integer      case_number,
+        input logic [31:0] test_period,
+        input logic [31:0] test_compare_value
+    );
+        integer sample_count;
+        logic   case_passed;
+        begin
+            configure_pwm(test_period, test_compare_value);
+            @(negedge clk);
+
+            case_passed = 1'b1;
+            for (sample_count = 0;
+                 sample_count < CONSTANT_CHECK_CLOCKS;
+                 sample_count = sample_count + 1) begin
+                if (pwm_out !== 1'b0) begin
+                    case_passed = 1'b0;
+                end
+                @(negedge clk);
+            end
+
+            if (case_passed) begin
+                $display("[PASS] Case %0d N=%0d C=%0d : CONSTANT LOW",
+                         case_number, test_period, test_compare_value);
+            end
+            else begin
+                error_count = error_count + 1;
+                $display("[FAIL] Case %0d N=%0d C=%0d : expected CONSTANT LOW",
+                         case_number, test_period, test_compare_value);
+            end
+        end
+    endtask
+
+    // period=0 时 PWM 禁用，输出和计数器都应保持为 0。
+    task automatic check_disabled(
+        input integer      case_number,
+        input logic [31:0] test_period,
+        input logic [31:0] test_compare_value
+    );
+        integer sample_count;
+        logic   case_passed;
+        begin
+            configure_pwm(test_period, test_compare_value);
+            @(negedge clk);
+
+            case_passed = 1'b1;
+            for (sample_count = 0;
+                 sample_count < CONSTANT_CHECK_CLOCKS;
+                 sample_count = sample_count + 1) begin
+                if ((pwm_out !== 1'b0) || (dut.time_cnt !== 32'd0)) begin
+                    case_passed = 1'b0;
+                end
+                @(negedge clk);
+            end
+
+            if (case_passed) begin
+                $display("[PASS] Case %0d N=%0d C=%0d : PWM DISABLED / LOW",
+                         case_number, test_period, test_compare_value);
+            end
+            else begin
+                error_count = error_count + 1;
+                $display("[FAIL] Case %0d N=%0d C=%0d : expected PWM DISABLED / LOW",
+                         case_number, test_period, test_compare_value);
+            end
+        end
+    endtask
+
     initial begin
-        reset_n         = 1'b0;
-        period_set      = 32'd0;
-        pulse_width_set = 32'd0;
-        config_en       = 1'b0;
-        error_count     = 0;
+        reset_n          = 1'b0;
+        period_set       = 32'd0;
+        compare_value_set = 32'd0;
+        config_en        = 1'b0;
+        error_count      = 0;
 
         reset_dut();
 
@@ -166,10 +269,14 @@ module pwm_controller_tb;
         check_pwm_case(2, 32'd15, 32'd10);
         check_pwm_case(3, 32'd8,  32'd1);
         check_pwm_case(4, 32'd8,  32'd7);
+        check_constant_high(5, 32'd10, 32'd0);
+        check_constant_low (6, 32'd10, 32'd10);
+        check_constant_low (7, 32'd10, 32'd15);
+        check_disabled     (8, 32'd0,  32'd0);
 
         if (error_count == 0) begin
             $display("================================");
-            $display("ALL PWM TESTS PASSED");
+            $display("ALL STEP 2 PWM TESTS PASSED");
             $display("================================");
             $finish;
         end
