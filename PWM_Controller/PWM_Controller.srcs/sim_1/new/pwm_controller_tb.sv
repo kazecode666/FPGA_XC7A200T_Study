@@ -256,6 +256,51 @@ module pwm_controller_tb;
         end
     endtask
 
+    // 在下降沿检查当前 counter 与寄存式 PWM 输出是否描述同一状态。
+    task automatic check_counter_pwm_alignment(
+        input logic [31:0] test_period,
+        input logic [31:0] test_compare_value
+    );
+        integer sample_count;
+        integer check_clocks;
+        logic   expected_pwm;
+        logic   case_passed;
+        begin
+            configure_pwm(test_period, test_compare_value);
+
+            if(test_period == 32'd0)
+                check_clocks = CONSTANT_CHECK_CLOCKS;
+            else
+                check_clocks = test_period * 2;
+
+            case_passed = 1'b1;
+            for (sample_count = 0;
+                 sample_count < check_clocks;
+                 sample_count = sample_count + 1) begin
+                if(dut.period_set_reg == 32'd0)
+                    expected_pwm = 1'b0;
+                else
+                    expected_pwm =
+                        (dut.time_cnt >= dut.compare_value_reg);
+
+                if(pwm_out !== expected_pwm)
+                    case_passed = 1'b0;
+
+                @(negedge clk);
+            end
+
+            if(case_passed) begin
+                $display("[PASS] PWM counter/output alignment N=%0d C=%0d",
+                         test_period, test_compare_value);
+            end
+            else begin
+                error_count = error_count + 1;
+                $display("[FAIL] PWM counter/output alignment N=%0d C=%0d",
+                         test_period, test_compare_value);
+            end
+        end
+    endtask
+
     initial begin
         reset_n          = 1'b0;
         period_set       = 32'd0;
@@ -274,9 +319,14 @@ module pwm_controller_tb;
         check_constant_low (7, 32'd10, 32'd15);
         check_disabled     (8, 32'd0,  32'd0);
 
+        check_counter_pwm_alignment(32'd10, 32'd4);
+        check_counter_pwm_alignment(32'd10, 32'd0);
+        check_counter_pwm_alignment(32'd10, 32'd10);
+        check_counter_pwm_alignment(32'd0,  32'd0);
+
         if (error_count == 0) begin
             $display("================================");
-            $display("ALL STEP 2 PWM TESTS PASSED");
+            $display("ALL STEP 2.5 PWM TESTS PASSED");
             $display("================================");
             $finish;
         end
