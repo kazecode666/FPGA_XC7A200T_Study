@@ -34,39 +34,58 @@ module pwm_controller(
     //--------------------------------
     //2.定时计数器自动计数
     //--------------------------------
-    logic [31:0] time_cnt;  //定时器
+    logic [31:0] time_cnt;       //当前计数状态
+    logic [31:0] next_time_cnt;  //下一计数状态
+    logic        pwm_out_reg;
+    logic        next_pwm_out;
+
     /**
-        @brief （1）定时自动递增计数，配置数据使能到来时计数器清零，消除脉冲的顿挫；
-               （2）计数器达到配置周期值时清零，重新计数；
+        @brief 组合计算下一计数状态和与其对应的下一PWM状态。
+               config_en有效时使用本次输入的新配置，并从计数状态0开始。
     */
-    always_ff @(posedge clk , negedge reset_n) 
-        if(!reset_n) 
-            time_cnt <= 32'd0;
-        else if(config_en)
-            time_cnt <= 32'd0;
-        else if(period_set_reg == 32'd0)
-            time_cnt <= 32'd0;
-        else if(time_cnt < (period_set_reg - 1'b1))
-            time_cnt <= time_cnt + 1'b1;
-        else
-            time_cnt <= 32'd0;
+    always_comb begin
+        next_time_cnt = time_cnt;
+        next_pwm_out  = pwm_out_reg;
+
+        if(config_en) begin
+            next_time_cnt = 32'd0;
+            if(period_set == 32'd0)
+                next_pwm_out = 1'b0;
+            else if(next_time_cnt >= compare_value_set)
+                next_pwm_out = 1'b1;
+            else
+                next_pwm_out = 1'b0;
+        end
+        else if(period_set_reg == 32'd0) begin
+            next_time_cnt = 32'd0;
+            next_pwm_out  = 1'b0;
+        end
+        else begin
+            if(time_cnt < (period_set_reg - 1'b1))
+                next_time_cnt = time_cnt + 1'b1;
+            else
+                next_time_cnt = 32'd0;
+
+            if(next_time_cnt >= compare_value_reg)
+                next_pwm_out = 1'b1;
+            else
+                next_pwm_out = 1'b0;
+        end
+    end
 
     //--------------------------------
-    //3.比较器
+    //3.寄存下一状态
     //--------------------------------
-    logic pwm_out_reg;
-    /**
-        @brief period非零且定时值大于等于比较值时，pwm_out输出1，否则输出0
-    */
     always_ff @(posedge clk , negedge reset_n)
-        if(!reset_n)
+        if(!reset_n) begin
+            time_cnt   <= 32'd0;
             pwm_out_reg <= 1'b0;
-        else if(period_set_reg == 32'd0)
-            pwm_out_reg <= 1'b0;
-        else if(time_cnt >= compare_value_reg)
-            pwm_out_reg <= 1'b1;
-        else
-            pwm_out_reg <= 1'b0;
-        assign pwm_out = pwm_out_reg;
+        end
+        else begin
+            time_cnt   <= next_time_cnt;
+            pwm_out_reg <= next_pwm_out;
+        end
+
+    assign pwm_out = pwm_out_reg;
 
 endmodule
