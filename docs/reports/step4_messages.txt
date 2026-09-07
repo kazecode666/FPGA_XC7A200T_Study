@@ -1,0 +1,37 @@
+Step 4 execution: PASS
+Vivado: 2026.1
+
+synth_1 status: synth_design Complete!
+synth_1 progress: 100%
+synth_1 strategy: Vivado Synthesis Defaults
+Counts: anchored severity lines in this run's runme.log (includes repeated occurrences)
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+impl_1 status: route_design Complete!
+impl_1 progress: 100%
+impl_1 strategy: Vivado Implementation Defaults
+Counts: anchored severity lines in this run's runme.log (includes repeated occurrences)
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+No bitstream or hardware programming requested. External I/O timing remains incomplete.
+
+Final execution audit (2026-09-07; separate scopes, do not sum as one warning count)
+Outer batch output: ERROR=0, CRITICAL WARNING=0, WARNING=2.
+WARNING: [Project 1-5713] Empty BoardPart not found; explicit FPGA part still used.
+WARNING: [Vivado 12-1017] Failed to delete one or more old synth_1 run files during reset.
+The old synthesized design was open in another Vivado GUI. New synthesis and routing
+both actually executed and completed; no manual bulk deletion was performed.
+Independent post-route methodology: ERROR=0, CRITICAL WARNING=0, WARNING=67, ADVISORY=0.
+TIMING-18: 66 inputs and 1 output missing external delay constraints.
+Independent post-route DRC: ERROR=0, CRITICAL WARNING=2, WARNING=1, ADVISORY=0.
+NSTD-1: all 68 ports use DEFAULT IOSTANDARD (Critical Warning).
+UCIO-1: all 68 ports lack user-assigned locations (Critical Warning).
+CFGBVS-1: configuration bank voltage properties missing (Warning).
+No DRC severity was changed. These board-level constraints remain future work.
+Route status: 276/276 routable nets fully routed; 0 nets with routing errors.
+Clock verified in synthesized and routed designs: sys_clk, PERIOD=20.000 ns.
+Default flow executed opt_design, place_design, phys_opt_design and route_design.
