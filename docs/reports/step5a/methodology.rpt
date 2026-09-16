@@ -1,0 +1,45 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Wed Sep 16 12:30:24 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file D:/Project/FPGA_XC7A200T/docs/reports/step5a/methodology.rpt
+| Design       : pwm_demo_top
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: step5a_impl
+      Design limits: <entire design considered>
+             Max checks: <unlimited>
+             Checks found: 2
++-----------+----------+---------------------------------------------+--------+
+| Rule      | Severity | Description                                 | Checks |
++-----------+----------+---------------------------------------------+--------+
+| TIMING-18 | Warning  | Missing input or output delay               | 1      |
+| XDCB-5    | Warning  | Runtime inefficient way to find pin objects | 1      |
++-----------+----------+---------------------------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-18#1 Warning
+Missing input or output delay
+An output delay is missing on led1 relative to the rising and/or falling clock edge(s) of sys_clk.
+Related violations: <none>
+
+XDCB-5#1 Warning
+Runtime inefficient way to find pin objects
+The option '-to : [get_pins -hier -filter {NAME =~ *reset_release_reg*/CLR}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '2' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: D:/Project/FPGA_XC7A200T/PWM_Controller/PWM_Controller.srcs/constrs_1/new/bx72_step5a.xdc (Line: 14)
+Related violations: <none>

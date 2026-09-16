@@ -1,0 +1,21 @@
+Step 5A final successful build message audit (2026-09-16).
+Counts are anchored severity lines, not report boilerplate.
+DRC/methodology results are separately recorded in drc.rpt and methodology.rpt.
+
+Outer batch: C:\Users\lww\AppData\Local\Temp\step5a_audit\build_final.log
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 1
+WARNING: [Project 1-5713] Board part '' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build
+
+Synthesis: PWM_Controller\PWM_Controller.runs\step5a_synth\runme.log
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+Implementation including bitgen: PWM_Controller\PWM_Controller.runs\step5a_impl\runme.log
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+Earlier setup attempts: one Vivado Project 1-202 XML write error before simulation (retry succeeded); one invalid implementation strategy name Default (corrected to Vivado Implementation Defaults). Neither attempt generated a bitstream. Final build exited 0.
