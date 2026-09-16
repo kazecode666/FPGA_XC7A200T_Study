@@ -1,0 +1,17 @@
+Time resolution is 1 ps
+[PASS] Case 1 N=10 C=4 : LOW=4 HIGH=6 TOTAL=10
+[PASS] Case 2 N=15 C=10 : LOW=10 HIGH=5 TOTAL=15
+[PASS] Case 3 N=8 C=1 : LOW=1 HIGH=7 TOTAL=8
+[PASS] Case 4 N=8 C=7 : LOW=7 HIGH=1 TOTAL=8
+[PASS] Case 5 N=10 C=0 : CONSTANT HIGH
+[PASS] Case 6 N=10 C=10 : CONSTANT LOW
+[PASS] Case 7 N=10 C=15 : CONSTANT LOW
+[PASS] Case 8 N=0 C=0 : PWM DISABLED / LOW
+[PASS] PWM counter/output alignment N=10 C=4
+[PASS] PWM counter/output alignment N=10 C=0
+[PASS] PWM counter/output alignment N=10 C=10
+[PASS] PWM counter/output alignment N=0 C=0
+================================
+ALL STEP 2.5 PWM TESTS PASSED
+================================
+$finish called at time : 5460 ns : File "D:/Project/FPGA_XC7A200T/PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_controller_tb.sv" Line 331

@@ -1,0 +1,5 @@
+Step 5A preservation checks PASS
+88 existing Step 5A synthesis/implementation files retain size and modification time.
+Original PWM_Controller.xpr and local pin-workbook edits match pre-task backups byte-for-byte (no hashes).
+Git diff confirms no changes to frozen core, Step 5A top, old TBs, Step 5A constraints/script/reports.
+Step 5B simulations/builds used only the independent PWM_Breathe project directories.

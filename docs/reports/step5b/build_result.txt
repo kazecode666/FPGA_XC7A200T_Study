@@ -1,0 +1,7 @@
+STEP5B_BUILD_PASS
+Vivado: 2026.1
+Part: xc7a200tfbg484-2
+Bitstream: D:/Project/FPGA_XC7A200T/PWM_Breathe/PWM_Breathe.runs/step5b_impl/pwm_breathe_top.bit
+Physical hardware: NOT TESTED
+step5b_synth: synth_design Complete!
+step5b_impl: write_bitstream Complete!
