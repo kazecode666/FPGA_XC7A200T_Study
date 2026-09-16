@@ -1,0 +1,20 @@
+Step 5B successful build message audit, 2026-09-16.
+Counts are anchored severity lines; methodology reports are separate.
+
+Outer batch: C:\Users\lww\AppData\Local\Temp\step5b_audit\build.log
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+Synthesis: PWM_Breathe\PWM_Breathe.runs\step5b_synth\runme.log
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+Implementation and bitgen: PWM_Breathe\PWM_Breathe.runs\step5b_impl\runme.log
+ERROR: 0
+CRITICAL WARNING: 0
+WARNING: 0
+
+Methodology: one TIMING-18 warning for LED1 missing output delay, documented in the Codex report.
+No build retries or blocking failures. Outer process exited 0.
