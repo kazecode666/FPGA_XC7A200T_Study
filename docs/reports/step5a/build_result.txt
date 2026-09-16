@@ -1,0 +1,7 @@
+STEP5A_BUILD_PASS
+Vivado: 2026.1
+Part: xc7a200tfbg484-2
+Bitstream: D:/Project/FPGA_XC7A200T/PWM_Controller/PWM_Controller.runs/step5a_impl/pwm_demo_top.bit
+Physical hardware: NOT TESTED
+step5a_synth: synth_design Complete!
+step5a_impl: write_bitstream Complete!
