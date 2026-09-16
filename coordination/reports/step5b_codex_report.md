@@ -148,6 +148,8 @@ After PR acceptance, the user should:
 
 Branch: `step5b-breathing-led`.
 
-Implementation commit and PR URL: recorded after publication.
+Implementation commit: `1dfd0df86202a57e845440ff1af44c121ca8bc2d` (`feat: add BX72 PWM breathing LED demo`). A documentation-only follow-up records these submission links; the PR head contains the latest report.
+
+PR URL: https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/7 (open, not merged).
 
 Stop at the open Step 5B PR for ChatGPT review. Do not enter Step 6.
