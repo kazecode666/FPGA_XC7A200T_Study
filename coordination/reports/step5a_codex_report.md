@@ -23,7 +23,7 @@ Audit result: PASS for the three Step 5A board connections. Original PDF pages 1
 
 ## Execution
 
-Branch: `step5a-bx72-led-blink`. Implementation commit and PR URL are recorded in the submission section below after publication. PR must remain open for ChatGPT review.
+Branch: `step5a-bx72-led-blink`. Implementation commit and PR URL are recorded in the submission section below. PR remains open for ChatGPT review.
 
 ### Files and architecture
 
@@ -57,6 +57,8 @@ The only false path is external asynchronous KEY2 to the two synchronizer CLR pi
 | Physical hardware | **NOT TESTED; physical PASS still awaits the user's observation** |
 
 The smaller resource count than Step 4 is expected: the board wrapper supplies fixed values so synthesis optimizes constant configuration logic. This is not a change in the frozen PWM core semantics.
+
+Committed tool-report text only has trailing whitespace/blank EOF lines normalized; numerical results and messages are unchanged. The mapped-properties evidence was also checked by reopening the routed run after bitstream generation; the build script includes the same property queries for reproduction.
 
 Exact local bitstream path:
 
@@ -97,8 +99,8 @@ The script selects each TB, requires its PASS marker, runs Step 5A synthesis and
 
 ## Submission
 
-Implementation commit: pending publication.
+Implementation commit: `6c894b08b11f6a5d94e2e0adc958a5fc78988601` (`feat: add BX72 PWM LED blink board bring-up`). This report-link follow-up is documentation only; use the PR head for the latest report.
 
-PR URL: pending publication.
+PR URL: https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/6 (open, not merged).
 
 Stop at the open Step 5A PR for review. **Step 5B has not been implemented or started.**
