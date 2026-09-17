@@ -1,0 +1,8 @@
+sources_1: motor_control_ip/pwm/rtl/motor_pwm_core.sv
+sim_1: motor_control_ip/pwm/tb/motor_pwm_core_tb.sv
+constrs_1: Motor_PWM/Motor_PWM.srcs/constrs_1/new/motor_pwm_clock.xdc
+PORTABILITY PASS: relocated XPR resolves all three files inside relocated tree.
+WARNING: [filemgmt 56-3] IPUserFilesDir: Could not find the directory 'D:/Project/FPGA_XC7A200T/.Xil/step6b_portable/Motor_PWM/Motor_PWM.ip_user_files'.
+WARNING: [Project 1-509] GeneratedRun file for 'step6b_synth_20260917_200908_9444' not found
+WARNING: [Project 1-509] GeneratedRun file for 'step6b_impl_20260917_200908_9444' not found
+WARNING: [Project 1-5713] Board part '' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build

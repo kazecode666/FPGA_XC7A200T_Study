@@ -1,0 +1,13 @@
+Step 6B execution: PASS
+Vivado: 2026.1
+WNS=13.442 TNS=0.000 WHS=0.134 THS=0.000
+
+step6b_synth_20260917_200908_9444: synth_design Complete! (100%)
+Counts include repeated anchored severity lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 0
+
+
+step6b_impl_20260917_200908_9444: route_design Complete! (100%)
+Counts include repeated anchored severity lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 0
+
+
+Clock-only internal timing; no board I/O timing sign-off, bitstream or hardware test.

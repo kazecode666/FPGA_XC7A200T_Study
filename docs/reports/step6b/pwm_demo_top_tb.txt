@@ -1,0 +1,7 @@
+Time resolution is 1 ps
+PASS: startup, two-edge release, one-shot config, four 50% periods
+PASS: asynchronous assertion, held reset, deterministic restart
+ALL STEP 5A BOARD TESTS PASSED
+$finish called at time : 1531 ns : File "D:/Project/FPGA_XC7A200T/PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_demo_top_tb.sv" Line 57
+
+Simulation Tcl status: 0

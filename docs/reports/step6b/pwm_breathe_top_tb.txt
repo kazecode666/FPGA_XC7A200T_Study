@@ -1,0 +1,34 @@
+Time resolution is 1 ps
+PASS: level=0 C=8 HIGH=0 LOW=8 periods=2 interval=16
+PASS: level=1 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=2 C=4 HIGH=4 LOW=4 periods=2 interval=16
+PASS: level=3 C=2 HIGH=6 LOW=2 periods=2 interval=16
+PASS: level=4 C=0 HIGH=8 LOW=0 periods=2 interval=16
+PASS: level=5 C=2 HIGH=6 LOW=2 periods=2 interval=16
+PASS: level=6 C=4 HIGH=4 LOW=4 periods=2 interval=16
+PASS: level=7 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=8 C=8 HIGH=0 LOW=8 periods=2 interval=16
+PASS: level=9 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=10 C=4 HIGH=4 LOW=4 periods=2 interval=16
+PASS: level=11 C=2 HIGH=6 LOW=2 periods=2 interval=16
+PASS: level=12 C=0 HIGH=8 LOW=0 periods=2 interval=16
+PASS: level=13 C=2 HIGH=6 LOW=2 periods=2 interval=16
+PASS: level=14 C=4 HIGH=4 LOW=4 periods=2 interval=16
+PASS: level=15 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=16 C=8 HIGH=0 LOW=8 periods=2 interval=16
+PASS: level=17 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=0 C=8 HIGH=0 LOW=8 periods=2 interval=16
+PASS: level=1 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=2 C=4 HIGH=4 LOW=4 periods=2 interval=16
+PASS: level=3 C=2 HIGH=6 LOW=2 periods=2 interval=16
+PASS: level=4 C=0 HIGH=8 LOW=0 periods=2 interval=16
+PASS: level=5 C=2 HIGH=6 LOW=2 periods=2 interval=16
+PASS: level=6 C=4 HIGH=4 LOW=4 periods=2 interval=16
+PASS: level=7 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: level=8 C=8 HIGH=0 LOW=8 periods=2 interval=16
+PASS: level=9 C=6 HIGH=2 LOW=6 periods=2 interval=16
+PASS: async reset during LED ON and deterministic OFF restart; 28 configuration events
+ALL STEP 5B BREATHING TESTS PASSED
+$finish called at time : 9091 ns : File "D:/Project/FPGA_XC7A200T/PWM_Breathe/tb/pwm_breathe_top_tb.sv" Line 116
+
+Simulation Tcl status: 0
