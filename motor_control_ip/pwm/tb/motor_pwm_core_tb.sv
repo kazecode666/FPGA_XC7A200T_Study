@@ -72,6 +72,12 @@ module motor_pwm_core_tb;
         tick();
         while (!carrier_zero) tick();
     endtask
+    task automatic expect_active(input int u, input int v, input int w);
+        check({cmp_u_active,cmp_v_active,cmp_w_active} === {CW'(u),CW'(v),CW'(w)},"atomic active tuple");
+    endtask
+    task automatic expect_shadow(input int u, input int v, input int w);
+        check({cmp_u_shadow,cmp_v_shadow,cmp_w_shadow} === {CW'(u),CW'(v),CW'(w)},"atomic shadow tuple");
+    endtask
     initial begin
         apply_reset();
         send_cmp_command(0,4,8);
@@ -82,8 +88,26 @@ module motor_pwm_core_tb;
         wait_for_zero();
         repeat (8) tick(); check(carrier_peak === 1'b1,"peak 8 clocks after ZERO");
         repeat (8) tick(); check(carrier_zero === 1'b1,"ZERO 16 clocks after ZERO");
+        send_cmp_command(2,4,6); wait_for_zero(); expect_active(2,4,6);
+        tick(); tick();
+        send_cmp_command(6,2,4);
+        expect_active(2,4,6); expect_shadow(6,2,4);
+        check(shadow_pending && !cmp_cmd_ready,"pending backpressure");
+        cmp_u_cmd=1; cmp_v_cmd=3; cmp_w_cmd=5; cmp_cmd_valid=1;
+        tick(); cmp_cmd_valid=0;
+        expect_shadow(6,2,4); expect_active(2,4,6);
+        wait_for_zero(); expect_active(6,2,4);
+        check(compare_load_event && !shadow_pending,"ZERO load event");
+        tick(); check(!compare_load_event,"load pulse clears");
+        while (!(tbctr == 1 && !count_up)) tick();
+        send_cmp_command(1,3,5); // This acceptance edge enters ZERO.
+        check(carrier_zero && shadow_pending && !compare_load_event,"ZERO collision deferred");
+        expect_active(6,2,4); expect_shadow(1,3,5);
+        repeat (15) begin tick(); expect_active(6,2,4); end
+        tick(); check(carrier_zero && compare_load_event,"collision loads at following ZERO");
+        expect_active(1,3,5);
         if (error_count) $fatal(1,"scaffold failed: %0d",error_count);
-        $display("STEP6B RESET/PRELOAD/CARRIER PASSED");
+        $display("STEP6B CARRIER/SHADOW/ATOMIC/ZERO-COLLISION PASSED");
         $finish;
     end
     initial begin

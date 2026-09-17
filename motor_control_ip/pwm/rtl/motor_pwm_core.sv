@@ -17,6 +17,10 @@ module motor_pwm_core #(
     localparam logic [COUNTER_WIDTH-1:0] PERIOD = COUNTER_WIDTH'(TBPRD);
     logic [COUNTER_WIDTH-1:0] next_ctr;
     logic next_up, enter_zero, enter_peak;
+    logic load_shadow;
+
+    // Eligibility uses OLD pending state: never bypass a just-accepted command.
+    assign load_shadow = pwm_enable && enter_zero && shadow_pending;
 
     assign cmp_cmd_ready = reset_n && (!pwm_enable || !shadow_pending);
 
@@ -57,6 +61,16 @@ module motor_pwm_core #(
                 if (cmp_cmd_valid && cmp_cmd_ready) begin
                     cmp_u_shadow <= cmp_u_cmd; cmp_v_shadow <= cmp_v_cmd; cmp_w_shadow <= cmp_w_cmd;
                     cmp_u_active <= cmp_u_cmd; cmp_v_active <= cmp_v_cmd; cmp_w_active <= cmp_w_cmd;
+                end
+            end else begin
+                if (load_shadow) begin
+                    cmp_u_active <= cmp_u_shadow; cmp_v_active <= cmp_v_shadow; cmp_w_active <= cmp_w_shadow;
+                    shadow_pending <= 1'b0;
+                    compare_load_event <= 1'b1;
+                end
+                if (cmp_cmd_valid && cmp_cmd_ready) begin
+                    cmp_u_shadow <= cmp_u_cmd; cmp_v_shadow <= cmp_v_cmd; cmp_w_shadow <= cmp_w_cmd;
+                    shadow_pending <= 1'b1;
                 end
             end
         end
