@@ -4,7 +4,7 @@ module motor_pwm_core_tb;
     localparam int unsigned CW = $clog2(TBPRD_TEST + 1);
     logic clk = 0;
     always #10 clk = ~clk;
-    logic reset_n = 1, pwm_enable = 0, cmp_cmd_valid = 0;
+    logic reset_n = 0, pwm_enable = 0, cmp_cmd_valid = 0;
     logic [CW-1:0] cmp_u_cmd = 0, cmp_v_cmd = 0, cmp_w_cmd = 0;
     wire cmp_cmd_ready, pwm_u, pwm_v, pwm_w, count_up;
     wire carrier_zero, carrier_peak, shadow_pending, compare_load_event;
@@ -16,14 +16,41 @@ module motor_pwm_core_tb;
     int phase = 0;
     int monitored_clocks = 0;
     bit previous_zero = 0, previous_peak = 0, previous_load = 0;
+    logic [3*CW-1:0] model_shadow = '0, model_active = '0;
+    bit model_pending = 0, model_load = 0, accepted;
     // A modulo time index is independent of the DUT's directional counter.
     always @(posedge clk or negedge reset_n) begin
+        accepted = reset_n && cmp_cmd_valid && (!pwm_enable || !model_pending);
         if (!reset_n) phase = 0;
         else if (!pwm_enable) phase = 0;
         else phase = (phase + 1) % (2*TBPRD_TEST);
+        model_load = 0;
+        if (!reset_n) begin
+            model_shadow = '0; model_active = '0; model_pending = 0;
+        end else if (!pwm_enable) begin
+            model_pending = 0;
+            if (accepted) begin
+                model_shadow = {cmp_u_cmd,cmp_v_cmd,cmp_w_cmd};
+                model_active = model_shadow;
+            end
+        end else begin
+            if (phase == 0 && model_pending) begin
+                model_active = model_shadow;
+                model_pending = 0; model_load = 1;
+            end
+            if (accepted) begin
+                model_shadow = {cmp_u_cmd,cmp_v_cmd,cmp_w_cmd};
+                model_pending = 1;
+            end
+        end
         #1;
         if (reset_n) begin
             monitored_clocks++;
+            check({cmp_u_shadow,cmp_v_shadow,cmp_w_shadow} === model_shadow,"shadow scoreboard");
+            check({cmp_u_active,cmp_v_active,cmp_w_active} === model_active,"active scoreboard");
+            check(shadow_pending === model_pending,"pending scoreboard");
+            check(compare_load_event === model_load,"load requires old pending and running ZERO");
+            check(cmp_cmd_ready === (!pwm_enable || !model_pending),"ready scoreboard");
             check(int'(tbctr) == ((phase <= TBPRD_TEST) ? phase : 2*TBPRD_TEST-phase),"carrier sequence");
             check(count_up === (phase < TBPRD_TEST),"carrier direction");
             check(carrier_zero === (pwm_enable && phase == 0),"ZERO event alignment");
@@ -131,8 +158,50 @@ module motor_pwm_core_tb;
         repeat (15) begin tick(); expect_active(6,2,4); end
         tick(); check(carrier_zero && compare_load_event,"collision loads at following ZERO");
         expect_active(1,3,5);
-        if (error_count) $fatal(1,"scaffold failed: %0d",error_count);
-        $display("STEP6B CARRIER/SHADOW/ATOMIC/ZERO-COLLISION PASSED");
+        $display("PASS: carrier continuity, atomic shadow load, backpressure, ZERO collision");
+
+        // Disable with a pending command: cancel it without silently activating it.
+        tick(); send_cmp_command(7,6,5);
+        check(shadow_pending,"pending exists before disable");
+        pwm_enable=0; tick();
+        expect_active(1,3,5); expect_shadow(7,6,5);
+        check(!shadow_pending && cmp_cmd_ready,"disable discards stale pending");
+        repeat (4) tick();
+        send_cmp_command(8,4,0); expect_active(8,4,0); expect_shadow(8,4,0);
+        pwm_enable=1; count_highs_one_cycle(16,8,0);
+        $display("PASS: disable cancellation, retained configuration and coherent re-enable");
+
+        // Reset between edges, with live PWM and a pending command.
+        tick(); send_cmp_command(6,2,4);
+        check(pwm_u && shadow_pending,"activity before async reset");
+        #3; reset_n=0; #2; safe_reset();
+        check(!cmp_cmd_ready,"ready LOW during reset");
+        pwm_enable=0; tick(); reset_n=1; tick(); safe_reset();
+        $display("PASS: asynchronous reset during activity clears pending and all state");
+
+        // Exhaust all representable compare values, including CMP > TBPRD.
+        for (int c=0;c<16;c++) begin
+            pwm_enable=0; tick(); send_cmp_command(c,15-c,c/2);
+            pwm_enable=1;
+            count_highs_one_cycle(2*((c<8)?c:8),2*(((15-c)<8)?(15-c):8),2*(c/2));
+        end
+        $display("PASS: all 4-bit compare values 0..15, boundaries and HIGH symmetry");
+        // Accept at every possible carrier phase; continue driving a second
+        // tuple while backpressured, including the eventual loading edge.
+        for (int offset=0;offset<16;offset++) begin
+            wait_for_zero();
+            repeat (offset) tick();
+            send_cmp_command(offset,15-offset,offset/2);
+            cmp_u_cmd=15; cmp_v_cmd=0; cmp_w_cmd=8;
+            cmp_cmd_valid=1;
+            while (shadow_pending) tick();
+            cmp_cmd_valid=0;
+            expect_active(offset,15-offset,offset/2);
+        end
+        $display("PASS: acceptance at every carrier phase and rejection through load edge");
+        if (error_count) $fatal(1,"STEP 6B MOTOR PWM TESTS FAILED: %0d errors",error_count);
+        $display("MONITORED CLOCKS: %0d",monitored_clocks);
+        $display("ALL STEP 6B MOTOR PWM TESTS PASSED");
         $finish;
     end
     initial begin
