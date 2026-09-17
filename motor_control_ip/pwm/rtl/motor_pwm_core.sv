@@ -22,6 +22,15 @@ module motor_pwm_core #(
     // Eligibility uses OLD pending state: never bypass a just-accepted command.
     assign load_shadow = pwm_enable && enter_zero && shadow_pending;
 
+    function automatic logic phase_level(
+        input logic [COUNTER_WIDTH-1:0] cmp, ctr, input logic up
+    );
+        if (cmp == '0) phase_level = 1'b0;
+        else if (cmp >= PERIOD) phase_level = 1'b1;
+        else if (up) phase_level = (ctr < cmp);
+        else phase_level = (ctr <= cmp);
+    endfunction
+
     assign cmp_cmd_ready = reset_n && (!pwm_enable || !shadow_pending);
 
     // Endpoint events describe the state entered on this edge, not the old state.
@@ -63,6 +72,11 @@ module motor_pwm_core #(
                     cmp_u_active <= cmp_u_cmd; cmp_v_active <= cmp_v_cmd; cmp_w_active <= cmp_w_cmd;
                 end
             end else begin
+                // New carrier and new active tuple describe the SAME edge.
+                // ZERO loads must not leave PWM one clock behind its debug ports.
+                pwm_u <= phase_level(load_shadow ? cmp_u_shadow : cmp_u_active, next_ctr, next_up);
+                pwm_v <= phase_level(load_shadow ? cmp_v_shadow : cmp_v_active, next_ctr, next_up);
+                pwm_w <= phase_level(load_shadow ? cmp_w_shadow : cmp_w_active, next_ctr, next_up);
                 if (load_shadow) begin
                     cmp_u_active <= cmp_u_shadow; cmp_v_active <= cmp_v_shadow; cmp_w_active <= cmp_w_shadow;
                     shadow_pending <= 1'b0;
