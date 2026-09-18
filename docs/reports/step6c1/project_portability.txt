@@ -1,0 +1,48 @@
+Step 6C1 Task 6 project portability evidence
+Date: 2026-09-18
+Vivado v2026.1, SW Build 6511674
+
+Created real standalone FOC_Transforms/FOC_Transforms.xpr using create_project,
+part xc7a200tfbg484-2, synthesis top mc_current_transform.
+Project creation preceded writing the single clock XDC; no create_project -force,
+source-tree replacement, filesystem deletion, synthesis or implementation used.
+Creation process exit code: 0. Marker: STEP6C1_PROJECT_CREATED.
+
+After close_project, serialized root Path changed to $PPRDIR/FOC_Transforms.xpr.
+Static checks PASS: no drive-absolute paths anywhere in XPR; XDC content exactly
+create_clock -name sys_clk -period 20.000 [get_ports clk]
+
+Copied ONLY six RTL, four TB, one ROM, XPR and XDC into a new ignored tree
+.Xil/step6c1_project/relocated/ preserving repository-relative structure.
+Vivado open_project -read_only then verified actual get_files -all paths exist
+and every normalized path lies within the relocated tree (no original fallback).
+Verified part and synthesis top by get_property. Verification exit code: 0.
+
+Actual verification output:
+RESOLVED motor_control_ip/foc/rtl/mc_fxp_pkg.sv
+RESOLVED motor_control_ip/foc/rtl/mc_clarke.sv
+RESOLVED motor_control_ip/foc/rtl/mc_park.sv
+RESOLVED motor_control_ip/foc/rtl/mc_sincos_lut.sv
+RESOLVED motor_control_ip/foc/rtl/mc_current_transform.sv
+RESOLVED motor_control_ip/foc/rtl/mc_inv_park.sv
+RESOLVED motor_control_ip/foc/rom/sin_qw_4096x18.mem
+RESOLVED FOC_Transforms/FOC_Transforms.srcs/constrs_1/new/foc_transforms_clock.xdc
+RESOLVED motor_control_ip/foc/tb/mc_current_transform_tb.sv
+RESOLVED motor_control_ip/foc/tb/mc_clarke_tb.sv
+RESOLVED motor_control_ip/foc/tb/mc_sincos_lut_tb.sv
+RESOLVED motor_control_ip/foc/tb/mc_park_tb.sv
+SYNTHESIS_COMPILE_FIRST mc_fxp_pkg.sv
+ROM_TYPE Memory Initialization Files SYNTHESIS=1 SIMULATION=1
+RELOCATION_PASS RTL=6 TB=4 ROM=1 XDC=1
+
+Observed relocation warnings (not suppressed):
+- filemgmt 56-3: generated FOC_Transforms.ip_user_files directory absent.
+- Project 1-5713: empty BoardPart not found; property unset by Vivado.
+The project deliberately selects a device, not a board. Generated IP output
+path absence was also informational. All required source files resolved.
+
+The original XPR was not resaved during relocation verification. Runtime logs
+and Tcl scripts are retained locally under .Xil/step6c1_project/ (ignored).
+No DSP/BRAM counts or timing results are claimed by this project-only check.
+The ROM FILE_TYPE/USED_IN checks establish file registration, not inferred
+memory contents or resource mapping; later RTL/build verification must check those.
