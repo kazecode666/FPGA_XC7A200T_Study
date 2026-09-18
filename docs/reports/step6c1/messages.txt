@@ -1,0 +1,14 @@
+Step 6C1 execution: PASS
+Vivado: 2026.1
+WNS=10.548 TNS=0.000 WHS=0.118 THS=0.000
+
+step6c1_synth_20260918_154058_6976: synth_design Complete! (100%)
+Counts include repeated anchored severity lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 4
+WARNING: [Synth 8-7129] Port theta_e[0] in module mc_sincos_lut is either unconnected or has no load
+WARNING: [Synth 8-7129] Port theta_e[1] in module mc_sincos_lut is either unconnected or has no load
+
+step6c1_impl_20260918_154058_6976: route_design Complete! (100%)
+Counts include repeated anchored severity lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 0
+
+
+Clock-only internal timing; no board I/O timing sign-off, bitstream or hardware test.

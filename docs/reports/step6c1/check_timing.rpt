@@ -1,0 +1,323 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Fri Sep 18 15:44:06 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : check_timing -verbose -file D:/Project/FPGA_XC7A200T/docs/reports/step6c1/check_timing.rpt
+| Design       : mc_current_transform
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (88)
+6. checking no_output_delay (137)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (88)
+-------------------------------
+ There are 88 input ports with no input delay specified. (HIGH)
+
+ia[0]
+ia[10]
+ia[11]
+ia[12]
+ia[13]
+ia[14]
+ia[15]
+ia[16]
+ia[17]
+ia[18]
+ia[19]
+ia[1]
+ia[20]
+ia[21]
+ia[22]
+ia[23]
+ia[2]
+ia[3]
+ia[4]
+ia[5]
+ia[6]
+ia[7]
+ia[8]
+ia[9]
+ib[0]
+ib[10]
+ib[11]
+ib[12]
+ib[13]
+ib[14]
+ib[15]
+ib[16]
+ib[17]
+ib[18]
+ib[19]
+ib[1]
+ib[20]
+ib[21]
+ib[22]
+ib[23]
+ib[2]
+ib[3]
+ib[4]
+ib[5]
+ib[6]
+ib[7]
+ib[8]
+ib[9]
+ic[0]
+ic[10]
+ic[11]
+ic[12]
+ic[13]
+ic[14]
+ic[15]
+ic[16]
+ic[17]
+ic[18]
+ic[19]
+ic[1]
+ic[20]
+ic[21]
+ic[22]
+ic[23]
+ic[2]
+ic[3]
+ic[4]
+ic[5]
+ic[6]
+ic[7]
+ic[8]
+ic[9]
+input_valid
+reset_n
+theta_e[10]
+theta_e[11]
+theta_e[12]
+theta_e[13]
+theta_e[14]
+theta_e[15]
+theta_e[2]
+theta_e[3]
+theta_e[4]
+theta_e[5]
+theta_e[6]
+theta_e[7]
+theta_e[8]
+theta_e[9]
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (137)
+---------------------------------
+ There are 137 ports with no output delay specified. (HIGH)
+
+cos_theta_dbg[0]
+cos_theta_dbg[10]
+cos_theta_dbg[11]
+cos_theta_dbg[12]
+cos_theta_dbg[13]
+cos_theta_dbg[14]
+cos_theta_dbg[15]
+cos_theta_dbg[16]
+cos_theta_dbg[17]
+cos_theta_dbg[1]
+cos_theta_dbg[2]
+cos_theta_dbg[3]
+cos_theta_dbg[4]
+cos_theta_dbg[5]
+cos_theta_dbg[6]
+cos_theta_dbg[7]
+cos_theta_dbg[8]
+cos_theta_dbg[9]
+i_alpha_dbg[0]
+i_alpha_dbg[10]
+i_alpha_dbg[11]
+i_alpha_dbg[12]
+i_alpha_dbg[13]
+i_alpha_dbg[14]
+i_alpha_dbg[15]
+i_alpha_dbg[16]
+i_alpha_dbg[17]
+i_alpha_dbg[18]
+i_alpha_dbg[19]
+i_alpha_dbg[1]
+i_alpha_dbg[20]
+i_alpha_dbg[21]
+i_alpha_dbg[22]
+i_alpha_dbg[23]
+i_alpha_dbg[24]
+i_alpha_dbg[2]
+i_alpha_dbg[3]
+i_alpha_dbg[4]
+i_alpha_dbg[5]
+i_alpha_dbg[6]
+i_alpha_dbg[7]
+i_alpha_dbg[8]
+i_alpha_dbg[9]
+i_beta_dbg[0]
+i_beta_dbg[10]
+i_beta_dbg[11]
+i_beta_dbg[12]
+i_beta_dbg[13]
+i_beta_dbg[14]
+i_beta_dbg[15]
+i_beta_dbg[16]
+i_beta_dbg[17]
+i_beta_dbg[18]
+i_beta_dbg[19]
+i_beta_dbg[1]
+i_beta_dbg[20]
+i_beta_dbg[21]
+i_beta_dbg[22]
+i_beta_dbg[23]
+i_beta_dbg[24]
+i_beta_dbg[2]
+i_beta_dbg[3]
+i_beta_dbg[4]
+i_beta_dbg[5]
+i_beta_dbg[6]
+i_beta_dbg[7]
+i_beta_dbg[8]
+i_beta_dbg[9]
+id[0]
+id[10]
+id[11]
+id[12]
+id[13]
+id[14]
+id[15]
+id[16]
+id[17]
+id[18]
+id[19]
+id[1]
+id[20]
+id[21]
+id[22]
+id[23]
+id[24]
+id[2]
+id[3]
+id[4]
+id[5]
+id[6]
+id[7]
+id[8]
+id[9]
+iq[0]
+iq[10]
+iq[11]
+iq[12]
+iq[13]
+iq[14]
+iq[15]
+iq[16]
+iq[17]
+iq[18]
+iq[19]
+iq[1]
+iq[20]
+iq[21]
+iq[22]
+iq[23]
+iq[24]
+iq[2]
+iq[3]
+iq[4]
+iq[5]
+iq[6]
+iq[7]
+iq[8]
+iq[9]
+output_valid
+sin_theta_dbg[0]
+sin_theta_dbg[10]
+sin_theta_dbg[11]
+sin_theta_dbg[12]
+sin_theta_dbg[13]
+sin_theta_dbg[14]
+sin_theta_dbg[15]
+sin_theta_dbg[16]
+sin_theta_dbg[17]
+sin_theta_dbg[1]
+sin_theta_dbg[2]
+sin_theta_dbg[3]
+sin_theta_dbg[4]
+sin_theta_dbg[5]
+sin_theta_dbg[6]
+sin_theta_dbg[7]
+sin_theta_dbg[8]
+sin_theta_dbg[9]
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input

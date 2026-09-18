@@ -1,0 +1,3 @@
+Unrounded routed path properties:
+max SLACK=10.548 STARTPOINT=clarke/beta_product0/CLK ENDPOINT=clarke/i_beta_reg[0]/D
+min SLACK=0.118 STARTPOINT=beta_delay_reg[0][13]/C ENDPOINT=beta_delay_reg[1][13]/D

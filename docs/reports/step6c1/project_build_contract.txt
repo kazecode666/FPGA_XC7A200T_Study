@@ -1,0 +1,5 @@
+sources_1: 7 exact external source paths verified
+sim_1: 4 exact external source paths verified
+constrs_1: 1 exact external source paths verified
+PASS: portable XPR part/top/inventory/ROM attributes; clock text checked by Tcl
+Exit status: 0

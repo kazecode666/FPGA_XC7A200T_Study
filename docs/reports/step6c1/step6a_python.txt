@@ -1,0 +1,2 @@
+PASS: 160 actual-source rows, 2926 checks, max absolute error 5.46e-12
+Exit status: 0

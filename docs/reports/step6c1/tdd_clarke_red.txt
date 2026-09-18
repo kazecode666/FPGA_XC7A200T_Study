@@ -1,0 +1,21 @@
+Step 6C1 Task 2 Clarke RED evidence
+Date: 2026-09-18
+
+The tracked testbench was compiled before mc_clarke.sv existed.  A temporary
+ignored package signature stub under .Xil/step6c1_clarke was used only so the
+testbench could reach elaboration and isolate the intended missing-DUT failure.
+
+Commands (from .Xil/step6c1_clarke):
+E:\AMDDesignTools\2026.1\Vivado\bin\xvlog.bat -sv red_stub_pkg.sv ..\..\motor_control_ip\foc\tb\mc_clarke_tb.sv
+E:\AMDDesignTools\2026.1\Vivado\bin\xelab.bat mc_clarke_tb -s mc_clarke_tb_sim
+
+Exact gate:
+RED_XVLOG_EXIT=0
+RED_XELAB_EXIT=1
+
+Elaboration error:
+ERROR: [VRFC 10-2063] Module <mc_clarke> not found while processing module instance <dut> [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_clarke_tb.sv:36]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+
+Result: EXPECTED RED PASS.  The required failure was specifically the missing
+mc_clarke module, and xelab returned nonzero.

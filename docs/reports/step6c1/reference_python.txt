@@ -1,0 +1,18 @@
+PASS: 4096 ROM entries; 65536 phases; 160 Step 6A rows
+max_abs_i_alpha_A_vs_step6a=1.2207031e-05
+max_abs_i_alpha_vs_ideal=1.01725261333e-05
+max_abs_i_beta_A_vs_step6a=1.359400385e-05
+max_abs_i_beta_vs_ideal=1.00701378221e-05
+max_abs_id_A_vs_step6a=1.359400385e-05
+max_abs_id_vs_ideal=1.01725261333e-05
+max_abs_iq_A_vs_step6a=2.17200290529e-05
+max_abs_iq_vs_ideal=2.56175066903e-05
+max_abs_v_alpha_V_vs_step6a=0.0018247646495
+max_abs_v_alpha_vs_ideal=0.00198968832234
+max_abs_v_beta_V_vs_step6a=0.00469674939613
+max_abs_v_beta_vs_ideal=0.00461102494122
+max_trig_ideal_error=0.000295057787973
+unsaturated_roundtrip_count=1000
+unsaturated_roundtrip_max_physical=0.000152587890625
+unsaturated_roundtrip_max_raw_lsb=5
+Exit status: 0
