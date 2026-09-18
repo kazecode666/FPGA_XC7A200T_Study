@@ -18,6 +18,7 @@ module motor_pwm_core #(
     logic [COUNTER_WIDTH-1:0] next_ctr;
     logic next_up, enter_zero, enter_peak;
     logic load_shadow;
+    logic running;
 
     // Eligibility uses OLD pending state: never bypass a just-accepted command.
     assign load_shadow = pwm_enable && enter_zero && shadow_pending;
@@ -39,7 +40,8 @@ module motor_pwm_core #(
         next_up = 1'b1;
         enter_zero = 1'b0;
         enter_peak = 1'b0;
-        if (pwm_enable) begin
+        // First enabled edge exposes a full ZERO interval, without a ZERO event.
+        if (pwm_enable && running) begin
             if (count_up) begin
                 next_ctr = tbctr + 1'b1;
                 enter_peak = (tbctr == PERIOD - 1'b1);
@@ -54,6 +56,7 @@ module motor_pwm_core #(
 
     always_ff @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
+            running <= 1'b0;
             tbctr <= '0; count_up <= 1'b1;
             carrier_zero <= 1'b0; carrier_peak <= 1'b0;
             cmp_u_shadow <= '0; cmp_v_shadow <= '0; cmp_w_shadow <= '0;
@@ -61,6 +64,7 @@ module motor_pwm_core #(
             shadow_pending <= 1'b0; compare_load_event <= 1'b0;
             pwm_u <= 1'b0; pwm_v <= 1'b0; pwm_w <= 1'b0;
         end else begin
+            running <= pwm_enable;
             tbctr <= next_ctr; count_up <= next_up;
             carrier_zero <= enter_zero; carrier_peak <= enter_peak;
             compare_load_event <= 1'b0;

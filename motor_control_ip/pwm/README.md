@@ -31,7 +31,12 @@ At PEAK, `count_up=0`; at ZERO, `count_up=1`. Carrier, direction, active
 compare and registered PWM outputs describe the same edge (no extra lag).
 `carrier_peak` pulses on entering TBPRD; `carrier_zero` pulses on returning
 from the down half to zero. Both are one clock wide. Enabling from stationary
-zero advances to count 1 on the first enabled edge, without a ZERO event.
+zero exposes a registered ZERO/UP state on the first enabled edge, with PWM
+computed from the preloaded active tuple and no ZERO/PEAK/load event. Counting
+starts on the following edge. PEAK occurs TBPRD clocks after that startup edge;
+the first returned ZERO occurs 2*TBPRD clocks after it. Thus the very first
+enabled cycle has the full period and duty, including CMP=1's opening HIGH
+interval. Reset and each sampled disable re-arm this startup behavior.
 
 ## Atomic command interface
 

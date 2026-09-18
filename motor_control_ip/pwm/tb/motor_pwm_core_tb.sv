@@ -18,12 +18,19 @@ module motor_pwm_core_tb;
     bit previous_zero = 0, previous_peak = 0, previous_load = 0;
     logic [3*CW-1:0] model_shadow = '0, model_active = '0;
     bit model_pending = 0, model_load = 0, accepted;
+    bit model_running = 0, model_zero = 0;
     // A modulo time index is independent of the DUT's directional counter.
     always @(posedge clk or negedge reset_n) begin
         accepted = reset_n && cmp_cmd_valid && (!pwm_enable || !model_pending);
-        if (!reset_n) phase = 0;
-        else if (!pwm_enable) phase = 0;
-        else phase = (phase + 1) % (2*TBPRD_TEST);
+        model_zero = 0;
+        if (!reset_n || !pwm_enable) begin
+            phase = 0; model_running = 0;
+        end else if (!model_running) begin
+            phase = 0; model_running = 1;
+        end else begin
+            phase = (phase + 1) % (2*TBPRD_TEST);
+            model_zero = (phase == 0);
+        end
         model_load = 0;
         if (!reset_n) begin
             model_shadow = '0; model_active = '0; model_pending = 0;
@@ -34,7 +41,7 @@ module motor_pwm_core_tb;
                 model_active = model_shadow;
             end
         end else begin
-            if (phase == 0 && model_pending) begin
+            if (model_zero && model_pending) begin
                 model_active = model_shadow;
                 model_pending = 0; model_load = 1;
             end
@@ -53,7 +60,7 @@ module motor_pwm_core_tb;
             check(cmp_cmd_ready === (!pwm_enable || !model_pending),"ready scoreboard");
             check(int'(tbctr) == ((phase <= TBPRD_TEST) ? phase : 2*TBPRD_TEST-phase),"carrier sequence");
             check(count_up === (phase < TBPRD_TEST),"carrier direction");
-            check(carrier_zero === (pwm_enable && phase == 0),"ZERO event alignment");
+            check(carrier_zero === model_zero,"ZERO event alignment");
             check(carrier_peak === (pwm_enable && phase == TBPRD_TEST),"PEAK event alignment");
             check(!(carrier_zero && previous_zero),"ZERO pulse width");
             check(!(carrier_peak && previous_peak),"PEAK pulse width");
@@ -128,14 +135,31 @@ module motor_pwm_core_tb;
         check(u_up == u_down && v_up == v_down && w_up == w_down,"symmetric ZERO-side halves");
         $display("DUTY COUNTS: U=%0d V=%0d W=%0d /16; symmetric halves",hu,hv,hw);
     endtask
+    // Inspect the opening cycle directly; never skip startup via wait_for_zero.
+    task automatic check_first_enable_cycle(input int u, input int v, input int w);
+        int hu, hv, hw;
+        hu=0; hv=0; hw=0;
+        pwm_enable=1; tick();
+        check(tbctr == 0 && count_up, "startup exposes registered ZERO/UP");
+        check(!carrier_zero && !carrier_peak && !compare_load_event,
+              "startup has no recurring ZERO/PEAK/load event");
+        for (int elapsed=0; elapsed<2*TBPRD_TEST; elapsed++) begin
+            check(!carrier_zero, "no returned ZERO before 16 startup intervals");
+            check(carrier_peak === (elapsed == TBPRD_TEST), "startup PEAK exactly after 8 intervals");
+            hu+=int'(pwm_u); hv+=int'(pwm_v); hw+=int'(pwm_w);
+            tick();
+        end
+        check(carrier_zero && tbctr == 0 && count_up, "first returned ZERO exactly after 16 intervals");
+        check(hu == u && hv == v && hw == w, "first-cycle HIGH counts include opening ZERO");
+        $display("STARTUP COUNTS: U=%0d V=%0d W=%0d /16",hu,hv,hw);
+    endtask
     initial begin
         apply_reset();
         send_cmp_command(0,4,8);
         check({cmp_u_active,cmp_v_active,cmp_w_active} === {4'd0,4'd4,4'd8},"disabled active preload");
         check({cmp_u_shadow,cmp_v_shadow,cmp_w_shadow} === {4'd0,4'd4,4'd8},"disabled shadow preload");
         check({shadow_pending,compare_load_event,pwm_u,pwm_v,pwm_w} === '0,"preload inhibited");
-        pwm_enable = 1;
-        wait_for_zero();
+        check_first_enable_cycle(0,8,16);
         repeat (8) tick(); check(carrier_peak === 1'b1,"peak 8 clocks after ZERO");
         repeat (8) tick(); check(carrier_zero === 1'b1,"ZERO 16 clocks after ZERO");
         count_highs_one_cycle(0,8,16);
@@ -168,7 +192,7 @@ module motor_pwm_core_tb;
         check(!shadow_pending && cmp_cmd_ready,"disable discards stale pending");
         repeat (4) tick();
         send_cmp_command(8,4,0); expect_active(8,4,0); expect_shadow(8,4,0);
-        pwm_enable=1; count_highs_one_cycle(16,8,0);
+        check_first_enable_cycle(16,8,0); count_highs_one_cycle(16,8,0);
         $display("PASS: disable cancellation, retained configuration and coherent re-enable");
 
         // Reset between edges, with live PWM and a pending command.
@@ -182,7 +206,7 @@ module motor_pwm_core_tb;
         // Exhaust all representable compare values, including CMP > TBPRD.
         for (int c=0;c<16;c++) begin
             pwm_enable=0; tick(); send_cmp_command(c,15-c,c/2);
-            pwm_enable=1;
+            check_first_enable_cycle(2*((c<8)?c:8),2*(((15-c)<8)?(15-c):8),2*(c/2));
             count_highs_one_cycle(2*((c<8)?c:8),2*(((15-c)<8)?(15-c):8),2*(c/2));
         end
         $display("PASS: all 4-bit compare values 0..15, boundaries and HIGH symmetry");

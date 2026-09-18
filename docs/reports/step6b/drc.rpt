@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Thu Sep 17 20:11:56 2026
+| Date         : Fri Sep 18 09:54:17 2026
 | Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
 | Command      : report_drc -file D:/Project/FPGA_XC7A200T/docs/reports/step6b/drc.rpt
 | Design       : motor_pwm_core
@@ -20,7 +20,7 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: step6b_impl_20260917_200908_9444
+          Floorplan: step6b_impl_20260918_094600_33076
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
