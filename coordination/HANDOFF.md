@@ -5,169 +5,193 @@ This file is the persistent coordination index for the FPGA learning / motor-con
 ## Working agreement
 
 - ChatGPT owns architecture, task definition, design decisions, acceptance criteria, and PR review.
-- Codex owns local repository inspection, RTL/testbench/Tcl/XDC edits when authorized, Vivado/MATLAB execution, reports, commits, pushes, and PR creation.
+- Codex owns local repository inspection, RTL/testbench/Tcl/XDC edits when authorized, Vivado/MATLAB/Python execution, reports, commits, pushes, and PR creation.
 - Read this file and the current task/spec from the repository instead of relying on copied chat text.
-- Do not use SHA-256/file-hash verification for this learning project. Use Git status/diff, simulation, synthesis, implementation, timing, DRC/report evidence, and physical behavior when a hardware step is authorized.
+- Do not use SHA-256/file-hash verification. Use Git status/diff, executable tests, synthesis/implementation/timing reports, waveforms, and later physical behavior.
 - Do not guess board pins, clocks, I/O standards, algorithm equations, PWM polarity/count semantics, numeric formats, or timing semantics.
-- Each implementation/audit task uses a feature branch and stops at an open PR for ChatGPT review unless explicitly instructed otherwise.
+- Each implementation task uses a feature branch and stops at an open PR for ChatGPT review unless explicitly instructed otherwise.
 
 ## Accepted baseline
 
 Completed and accepted:
 
 - Step 1: self-checking PWM testbench.
-- Step 2: compare-value semantics and boundaries.
+- Step 2: compare semantics and boundaries.
 - Step 2.5: registered PWM output/counter alignment.
 - Step 3: synthesis baseline.
-- Step 4: 50 MHz constraint, implementation and post-route timing.
-- Step 5A: BX72 LED blink board bring-up, physically verified.
+- Step 4: 50 MHz constraint, route and post-route timing.
+- Step 5A: BX72 LED blink bring-up, physically verified.
 - Step 5B: BX72 breathing LED demo, physically verified.
 - Step 6A: basic PI-FOC Simulink reference audit, PR #10 merged.
+- Step 6B: portable three-phase motor PWM core, PR #11 merged.
 
-Step 6A accepted reference artifacts on `main`:
+Accepted Step 6B motor PWM source:
+
+`motor_control_ip/pwm/rtl/motor_pwm_core.sv`
+
+Step 6A reference artifacts remain:
 
 - `coordination/reports/step6a_pi_foc_reference_audit.md`
 - `coordination/reports/step6a_pi_foc_golden_vectors.csv`
 - `scripts/reference_audit/step6a_pi_vectors.m`
 - `scripts/reference_audit/verify_step6a_vectors.py`
 
-The advanced DPCC/DPICC/PICDO branches are not part of the first FPGA current-loop baseline.
+## Protected/reference areas
 
-## Frozen BX72 hardware facts
+Do not modify unless a task explicitly authorizes it:
 
-- Target learning-board part: `xc7a200tfbg484-2`.
-- Physical JTAG detection: `xc7a200t`.
-- Board clock: 50 MHz.
-- `clk`: Y18, Bank 14, LVCMOS33.
-- `key2_n`: V17, Bank 14, LVCMOS33, active LOW.
-- `led1`: AA18, Bank 14, LVCMOS33, active HIGH.
-- `CFGBVS = VCCO`.
-- `CONFIG_VOLTAGE = 3.3`.
-
-Step 6B does not use physical pins except the logical 50 MHz clock constraint in its standalone project; no board pin mapping is authorized.
-
-## Protected legacy/reference areas
-
-- `PWM_Controller/` contains the Steps 1–5 learning PWM core/demos.
-- `PWM_Breathe/` contains the accepted breathing demo.
-- `simulink模型/` contains algorithm/reference assets.
-
-Do not mutate the legacy `pwm_controller` into the motor-control PWM engine. Its old `counter >= compare` / `config_en`-resets-counter semantics remain a historical learning baseline only.
+- `PWM_Controller/`
+- `PWM_Breathe/`
+- `simulink模型/`
+- accepted `motor_control_ip/pwm/` behavior
+- Step 6A golden/reference files
 
 ## Motor-control reference priority
 
 When references disagree:
 
-1. approved FPGA motor-control architecture contract;
-2. Step 6A PI-FOC audit/golden vectors for math;
-3. MIL/ControlCore Simulink for algorithm/closed-loop reference;
+1. approved FPGA motor-control architecture/spec;
+2. Step 6A audit/golden vectors for mathematical convention;
+3. MIL/ControlCore model as algorithm/closed-loop reference;
 4. proven F28335 physical experience;
 5. unverified F28388D code-generation integration as historical reference only.
 
-Do not inherit unresolved historical DSP/MIL raw PWM count or polarity conventions into the new FPGA motor PWM.
-
-## Approved Step 6 architecture
-
-The user explicitly approved:
-
-`coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`
-
-on 2026-09-17.
-
-Implementation decomposition:
+## Approved Step 6 decomposition
 
 ```text
-Step 6B   Motor PWM Core
-Step 6C1  Numeric format + Clarke/Park/sincos foundation
+Step 6B   Motor PWM Core                         [MERGED]
+Step 6C1  Numeric format + Clarke/Park/sincos   [CURRENT]
 Step 6C2  PI + dq limiter
 Step 6C3  Sector SVPWM -> normalized duty
 Step 6C4  Full PI-FOC transaction core
 Step 6D   PI-FOC -> PWM timing integration
 ```
 
-First FPGA PI-FOC inputs will come from testbench/golden vectors. ADC9238 and encoder interfaces are intentionally deferred until the math chain is verified.
+First FPGA current-loop inputs are still testbench/golden-vector driven. ADC9238 and encoder interfaces remain deferred until the math chain is verified.
 
 ## Current task
 
-**Step 6B — Motor PWM Core**
-
-Governing task specification:
-
-`coordination/tasks/step6b_motor_pwm_core.md`
-
-Implementation plan:
-
-`coordination/tasks/step6b_motor_pwm_core_plan.md`
+**Step 6C1 — Fixed-Point FOC Transform Foundation**
 
 Approved architecture:
 
 `coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`
 
-### Frozen Step 6B contract
+Authoritative Step 6C1 numeric/transform spec:
 
-- Vivado 2026.1.
-- Target part `xc7a200tfbg484-2`.
-- 50 MHz fabric clock / 20 ns.
-- 10 kHz center-aligned PWM.
-- Real default `TBPRD=2500`.
-- One shared U/V/W up/down carrier.
-- Integer compare semantics: `HIGH duty = CMP/TBPRD`.
-- `CMP=0` -> constant LOW.
-- `CMP>=TBPRD` -> constant HIGH.
-- Atomic three-phase shadow command.
-- Enabled shadow load: next ZERO only.
-- A command accepted on the same ZERO edge is deferred to the following ZERO.
-- Pending command cannot be overwritten.
-- Disable/reset force raw outputs LOW and hold carrier at ZERO/UP.
-- Disabled command may preload complete active+shadow U/V/W immediately.
-- No `duty_to_cmp`, FOC, SVPWM, dead time, complementary outputs, trip, ADC, encoder, AXI, physical pin mapping, bitstream or hardware programming in Step 6B.
+`coordination/specs/step6c1_fixed_point_transforms.md`
 
-### Required portable source layout
+Task:
+
+`coordination/tasks/step6c1_fixed_point_transforms.md`
+
+Implementation plan:
+
+`coordination/tasks/step6c1_fixed_point_transforms_plan.md`
+
+### Frozen Step 6C1 numeric contract
 
 ```text
-motor_control_ip/pwm/README.md
-motor_control_ip/pwm/rtl/motor_pwm_core.sv
-motor_control_ip/pwm/tb/motor_pwm_core_tb.sv
-Motor_PWM/Motor_PWM.xpr
-Motor_PWM/Motor_PWM.srcs/constrs_1/new/motor_pwm_clock.xdc
-scripts/step6b_motor_pwm_build.tcl
+ia/ib/ic            signed 24, F=15
+i_alpha/i_beta      signed 25, F=15
+id/iq               signed 25, F=15
+vd/vq, v_alpha/beta signed 25, F=15
+coefficients         signed 18, F=16
+sin/cos              signed 18, F=16
+theta_e              unsigned 16-bit binary angle
+
+C_TWO_THIRDS = 43691
+C_INV_SQRT3  = 37837
+SIN_COS_ONE  = 65536
 ```
 
-Primary verification marker:
+Implementation choice:
+
+- quarter-wave `4096 x 18` sine ROM;
+- 16-bit binary angle, LUT address from `theta_e[15:2]` with quadrant symmetry;
+- no CORDIC in Step 6C1;
+- no floating-point IP;
+- 25x18 signed multiplication inference targeting DSP48-class resources;
+- full-precision products/accumulators before round+saturate;
+- magnitude-based round-to-nearest, ties away from zero;
+- no silent wraparound;
+- fixed-point Python model is the bit-exact oracle;
+- Step 6A Simulink vectors are algorithm/reference comparisons, not bit-exact sine lookup targets.
+
+Expected `mc_current_transform` resource shape is approximately 6 DSP48E1 and 2 BRAM36, but portability is more important than forcing an exact primitive count.
+
+### Step 6C1 scope
+
+Implement:
+
+- `mc_fxp_pkg`
+- `mc_clarke`
+- `mc_sincos_lut`
+- `mc_park`
+- `mc_inv_park`
+- `mc_current_transform`
+- deterministic ROM/reference generator
+- self-checking TBs
+- standalone `FOC_Transforms` Vivado project
+- synthesis/route/timing/resource evidence
+
+Do not implement:
+
+- PI / feedforward / anti-windup
+- dq limiter
+- SVPWM
+- duty-to-CMP or PWM integration
+- ADC9238
+- encoder/QEP
+- dead time/trip
+- bitstream/hardware
+- Step 6C2
+
+Required integration marker:
 
 ```text
-ALL STEP 6B MOTOR PWM TESTS PASSED
+ALL STEP 6C1 TRANSFORM TESTS PASSED
 ```
-
-Required final report:
-
-`coordination/reports/step6b_codex_report.md`
-
-Required routed evidence directory:
-
-`docs/reports/step6b/`
 
 Branch:
 
-`step6b-motor-pwm-core`
+```text
+step6c1-fixed-point-transforms
+```
 
 PR title:
 
-`Step 6B: Add three-phase motor PWM core`
+```text
+Step 6C1: Add fixed-point FOC transform foundation
+```
 
-Codex must stop at the open PR and must not continue to Step 6C1.
+Codex stops at the open PR.
 
 ## Codex start command
 
 ```text
 Read coordination/HANDOFF.md first.
-Then read:
+
+Then read, in order:
   coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md
-  coordination/tasks/step6b_motor_pwm_core.md
-  coordination/tasks/step6b_motor_pwm_core_plan.md
+  coordination/specs/step6c1_fixed_point_transforms.md
+  coordination/tasks/step6c1_fixed_point_transforms.md
+  coordination/tasks/step6c1_fixed_point_transforms_plan.md
+  coordination/reports/step6a_pi_foc_reference_audit.md
 
-Execute Step 6B exactly as specified and plan-driven/TDD where practical.
-Start from latest main, create branch step6b-motor-pwm-core, keep legacy PWM/Simulink assets unchanged, implement the portable three-phase center-aligned shadow-compare motor PWM core, run the required self-checking and legacy regressions, run Vivado 2026.1 synthesis/route/timing, write the required reports, open PR "Step 6B: Add three-phase motor PWM core", and stop for ChatGPT review.
+Execute Step 6C1 exactly as specified and plan-driven/TDD.
 
-Do not merge automatically. Do not begin Step 6C1.
+Start from latest main and create branch step6c1-fixed-point-transforms.
+Build the deterministic fixed-point Python oracle and quarter-wave ROM first, then Clarke, sincos LUT, Park/inverse Park, and coherent mc_current_transform.
+Keep transaction valid/data aligned and prove back-to-back transaction identity.
+Use portable signed SystemVerilog inference; do not instantiate Artix-7 DSP/BRAM primitives.
+Run Step 6C1 unit/integration tests, Step 6A verifier and Step 6B PWM regression.
+Run Vivado 2026.1 synthesis/route/internal timing and audit DSP48/BRAM inference.
+Write coordination/reports/step6c1_codex_report.md and evidence under docs/reports/step6c1/.
+Open PR "Step 6C1: Add fixed-point FOC transform foundation" and stop for ChatGPT review.
+
+Do not merge automatically.
+Do not begin Step 6C2.
+Do not modify protected legacy/Simulink/PWM reference assets.
+Do not generate a bitstream or program hardware.
 ```
