@@ -2,7 +2,7 @@
 
 Date: 2026-09-17
 
-Status: **Design specification for review**. Do not implement until this spec is approved.
+Status: **Approved 2026-09-17.** Step 6B is merged; Step 6C1 implementation is authorized under its dedicated numeric/transform spec.
 
 ## 1. Purpose
 
@@ -471,7 +471,7 @@ Create a device-specific wrapper boundary:
 sincos_core(theta_valid, theta) -> sin, cos, result_valid
 ```
 
-The first hardware implementation may use AMD/Xilinx CORDIC configured for sine/cosine with deterministic latency.
+The wrapper backend is selected by the implementation step. Step 6C1 explicitly selects a quarter-wave BRAM LUT plus DSP-inferred transform multipliers; CORDIC remains a future interchangeable backend, not the first implementation.
 
 The rest of the FOC RTL must not depend on CORDIC-specific ports.
 
