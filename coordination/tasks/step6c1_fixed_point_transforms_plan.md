@@ -122,7 +122,7 @@ Implement Park/inverse Park using 43-bit-equivalent integer products, 44-bit-equ
 For `k=0..4095`:
 
 ```python
-raw = round(math.sin(k * (math.pi / 2) / 4096) * (1 << 16))
+raw = math.floor(math.sin(k * (math.pi / 2) / 4096) * (1 << 16) + 0.5)
 ```
 
 Write each signed 18-bit value as a fixed-width 5-hex-digit two's-complement word suitable for `$readmemh`.
@@ -447,7 +447,7 @@ Instantiate Clarke and sincos in parallel.
 
 If their latencies differ, delay the earlier branch with explicit data+valid registers until both refer to the same transaction.
 
-Then launch Park.
+Delay the earlier branch as needed, then launch Park. Delay `i_alpha_dbg/i_beta_dbg/sin_theta_dbg/cos_theta_dbg` through the Park latency so all debug fields are aligned with the same final `output_valid` and `id/iq`.
 
 - [ ] **Step 4: Measure and assert deterministic latency**
 
