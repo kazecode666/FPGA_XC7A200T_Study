@@ -326,6 +326,9 @@ def expected_files() -> tuple[dict[Path,str], dict[str,float]]:
 
 
 def main() -> int:
+    if sys.flags.optimize != 0:
+        print("ERROR: optimized Python disables acceptance assertions; run without -O/-OO.", file=sys.stderr)
+        return 2
     parser=argparse.ArgumentParser(); group=parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--generate",action="store_true"); group.add_argument("--check",action="store_true")
     args=parser.parse_args(); files,summary=expected_files()

@@ -1,0 +1,49 @@
+Time resolution is 1 ps
+STARTUP COUNTS: U=0 V=8 W=16 /16
+DUTY COUNTS: U=0 V=8 W=16 /16; symmetric halves
+DUTY COUNTS: U=4 V=8 W=12 /16; symmetric halves
+PASS: carrier continuity, atomic shadow load, backpressure, ZERO collision
+STARTUP COUNTS: U=16 V=8 W=0 /16
+DUTY COUNTS: U=16 V=8 W=0 /16; symmetric halves
+PASS: disable cancellation, retained configuration and coherent re-enable
+PASS: asynchronous reset during activity clears pending and all state
+STARTUP COUNTS: U=0 V=16 W=0 /16
+DUTY COUNTS: U=0 V=16 W=0 /16; symmetric halves
+STARTUP COUNTS: U=2 V=16 W=0 /16
+DUTY COUNTS: U=2 V=16 W=0 /16; symmetric halves
+STARTUP COUNTS: U=4 V=16 W=2 /16
+DUTY COUNTS: U=4 V=16 W=2 /16; symmetric halves
+STARTUP COUNTS: U=6 V=16 W=2 /16
+DUTY COUNTS: U=6 V=16 W=2 /16; symmetric halves
+STARTUP COUNTS: U=8 V=16 W=4 /16
+DUTY COUNTS: U=8 V=16 W=4 /16; symmetric halves
+STARTUP COUNTS: U=10 V=16 W=4 /16
+DUTY COUNTS: U=10 V=16 W=4 /16; symmetric halves
+STARTUP COUNTS: U=12 V=16 W=6 /16
+DUTY COUNTS: U=12 V=16 W=6 /16; symmetric halves
+STARTUP COUNTS: U=14 V=16 W=6 /16
+DUTY COUNTS: U=14 V=16 W=6 /16; symmetric halves
+STARTUP COUNTS: U=16 V=14 W=8 /16
+DUTY COUNTS: U=16 V=14 W=8 /16; symmetric halves
+STARTUP COUNTS: U=16 V=12 W=8 /16
+DUTY COUNTS: U=16 V=12 W=8 /16; symmetric halves
+STARTUP COUNTS: U=16 V=10 W=10 /16
+DUTY COUNTS: U=16 V=10 W=10 /16; symmetric halves
+STARTUP COUNTS: U=16 V=8 W=10 /16
+DUTY COUNTS: U=16 V=8 W=10 /16; symmetric halves
+STARTUP COUNTS: U=16 V=6 W=12 /16
+DUTY COUNTS: U=16 V=6 W=12 /16; symmetric halves
+STARTUP COUNTS: U=16 V=4 W=12 /16
+DUTY COUNTS: U=16 V=4 W=12 /16; symmetric halves
+STARTUP COUNTS: U=16 V=2 W=14 /16
+DUTY COUNTS: U=16 V=2 W=14 /16; symmetric halves
+STARTUP COUNTS: U=16 V=0 W=14 /16
+DUTY COUNTS: U=16 V=0 W=14 /16; symmetric halves
+PASS: all 4-bit compare values 0..15, boundaries and HIGH symmetry
+PASS: acceptance at every carrier phase and rejection through load edge
+MONITORED CLOCKS: 1567
+ALL STEP 6B MOTOR PWM TESTS PASSED
+$finish called at time : 31401 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/tb/motor_pwm_core_tb.sv" Line 229
+
+Simulation Tcl status: 0
+

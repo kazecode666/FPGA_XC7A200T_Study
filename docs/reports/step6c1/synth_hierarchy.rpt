@@ -1,0 +1,32 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Fri Sep 18 15:42:33 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file D:/Project/FPGA_XC7A200T/docs/reports/step6c1/synth_hierarchy.rpt
+| Design       : mc_current_transform
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++--------------------------+---------------+------------+------------+---------+------+-----+--------+--------+------------+
+|         Instance         |     Module    | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++--------------------------+---------------+------------+------------+---------+------+-----+--------+--------+------------+
+| mc_current_transform     |         (top) |        735 |        735 |       0 |    0 | 580 |      2 |      0 |          6 |
+|   (mc_current_transform) |         (top) |          0 |          0 |       0 |    0 | 298 |      0 |      0 |          0 |
+|   clarke                 |     mc_clarke |        329 |        329 |       0 |    0 | 100 |      0 |      0 |          2 |
+|   park                   |       mc_park |        319 |        319 |       0 |    0 | 141 |      0 |      0 |          4 |
+|   sincos                 | mc_sincos_lut |         87 |         87 |       0 |    0 |  41 |      2 |      0 |          0 |
++--------------------------+---------------+------------+------------+---------+------+-----+--------+--------+------------+
+
+

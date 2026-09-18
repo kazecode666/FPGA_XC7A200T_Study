@@ -117,8 +117,48 @@ unsaturated round-trip error bound.
 ## Build scope and evidence
 
 Project creation and read-only relocation checks are recorded in
-`../../docs/reports/step6c1/project_portability.txt`. DSP/BRAM mapping and
-resource counts remain pending an actual synthesis run. The attributes express
-inference intent, not measured implementation. This project-creation step did
-not run synthesis, implementation, timing sign-off, bitstream generation or
-hardware programming. PI, SVPWM, ADC and PWM integration are outside Step 6C1.
+`../../docs/reports/step6c1/project_portability.txt`. Reproduce the full automated
+regression and route build from the repository root:
+
+```powershell
+& E:/AMDDesignTools/2026.1/Vivado/bin/vivado.bat -mode batch -nojournal -log .Xil/step6c1_build.log -source scripts/step6c1_foc_transforms_build.tcl
+```
+
+The build audits the portable XPR XML and clock constraint, runs both Python
+checks, rejects optimized Python (which would disable acceptance assertions),
+runs all four FOC testbenches and the unchanged Step 6B PWM testbench, then
+synthesizes and routes `mc_current_transform`. Unique generated scratch projects
+and runs under `.Xil` preserve the tracked projects and prior run directories.
+`build_result.txt` starts IN_PROGRESS and only reports `STEP6C1_BUILD_PASS` after
+all gates pass; a Tcl failure writes FAILED. An externally killed or native-crash
+process can leave IN_PROGRESS, which is never a successful build.
+
+Measured Vivado 2026.1 results at 50 MHz:
+
+| Measure | Synthesis | Routed |
+|---|---:|---:|
+| Slice LUTs | 735 | 732 |
+| Flip-flops | 580 | 580 |
+| DSP48E1 | 6 | 6 |
+| RAMB36E1 / RAMB18E1 | 2 / 0 | 2 / 0 |
+| Latches | 0 | 0 |
+
+The two Clarke and four Park products account for all six DSPs. Two initialized
+RAMB36E1 primitives implement the quarter-wave ROM; no mapping deviation was
+observed. The synthesis audit also lists 888 logical LUT primitives, before
+packing into the Slice LUT totals above.
+
+Routed internal timing: WNS **10.548 ns**, TNS **0 ns**, WHS **0.118 ns**, THS
+**0 ns**. The raw worst-path properties and real endpoints are preserved in
+`worst_paths.txt`; there are no internal unconstrained endpoints, missing clocks,
+combinational loops or latch loops. All 1455 routable nets are fully routed.
+Resource hierarchy, initialized ROM properties, timing, DRC, methodology and
+warning reports are under `../../docs/reports/step6c1/`.
+
+The clock-only build intentionally retains 88 input ports and 137 output ports
+without I/O delays, UCIO-1/NSTD-1/CFGBVS-1 board-constraint findings, and DSP
+pipelining advisories (DPIP-1/DPOP-2). Synthesis warns that the two intentionally
+discarded angle LSBs have no load. These findings are recorded without suppressing
+or downgrading them. This is internal core timing evidence, not board timing
+sign-off. No bitstream or hardware test was performed. PI, SVPWM, ADC and PWM
+integration are outside Step 6C1.

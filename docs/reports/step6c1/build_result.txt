@@ -1,0 +1,17 @@
+STEP6C1_BUILD_PASS
+Vivado: 2026.1
+Part: xc7a200tfbg484-2
+Top: mc_current_transform; sys_clk=20.000 ns (50 MHz)
+Four FOC simulations, unchanged Step6B PWM simulation, Step6A Python and C1 Python --check: PASS
+Optimized Python acceptance bypass: rejected
+DSP48E1=6 RAMB36E1=2 latches=0; initialized ROM verified
+Synthesis: synth_design Complete!
+Implementation: route_design Complete!
+WNS=10.548 ns TNS=0.000 ns WHS=0.118 ns THS=0.000 ns
+Unrounded routed path properties:
+max SLACK=10.548 STARTPOINT=clarke/beta_product0/CLK ENDPOINT=clarke/i_beta_reg[0]/D
+min SLACK=0.118 STARTPOINT=beta_delay_reg[0][13]/C ENDPOINT=beta_delay_reg[1][13]/D
+
+Internal timing categories: no_clock=0 unconstrained_internal_endpoints=0 loops=0 latch_loops=0
+Board pins/IOSTANDARD/I/O delays absent; retained DRC warnings, no board timing sign-off
+No bitstream generated; no physical hardware test

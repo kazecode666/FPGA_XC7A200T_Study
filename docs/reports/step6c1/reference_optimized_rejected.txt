@@ -1,0 +1,4 @@
+ERROR: optimized Python disables acceptance assertions; run without -O/-OO.
+child process exited abnormally
+Tcl status: 1
+Error code: CHILDSTATUS 54696 2
