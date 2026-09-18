@@ -229,15 +229,15 @@ Convert F31 accumulator/product to F15 by shifting right 16 bits using:
 
 **round-to-nearest, ties away from zero**.
 
-Conceptually:
+Conceptually, perform the rounding on magnitude so exact negative multiples are not biased:
 
 ```text
-if x >= 0: adjusted = x + 2^15
-if x <  0: adjusted = x - 2^15
-rounded = adjusted >>> 16
+mag = abs(x)
+rounded_mag = (mag + 2^15) >> 16
+rounded = (x < 0) ? -rounded_mag : rounded_mag
 ```
 
-Then saturate to the destination signed width.
+This is round-to-nearest with exact half-way cases rounded away from zero. Then saturate to the destination signed width.
 
 No control quantity may silently wrap on overflow.
 
@@ -269,7 +269,15 @@ i_alpha = round+saturate(alpha_product -> signed 25 F15)
 i_beta  = round+saturate(beta_product  -> signed 25 F15)
 ```
 
-For the division by two in `half_bc`, freeze a symmetric signed rounding rule in the fixed-point software model and use exactly the same RTL rule. Do not rely on implementation-defined signed truncation.
+For `half_bc = sum_bc/2`, use the same round-to-nearest/ties-away-from-zero principle:
+
+```text
+mag = abs(sum_bc)
+half_mag = (mag + 1) >> 1
+half_bc = (sum_bc < 0) ? -half_mag : half_mag
+```
+
+This only changes odd raw integers; even values divide exactly. Do not rely on implementation-defined signed truncation.
 
 Target: two inferred DSP multipliers for the two coefficient products.
 
