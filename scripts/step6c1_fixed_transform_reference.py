@@ -199,6 +199,21 @@ def fixture_lines(step6a: list[dict[str, str]], rom: list[int]) -> dict[Path, st
         lines.append(f"{alpha} {beta} {theta} {sine} {cosine} {d_axis} {q_axis}")
         back_alpha, back_beta = inv_park_raw(d_axis, q_axis, sine, cosine)
         inv_lines.append(f"{d_axis} {q_axis} {theta} {sine} {cosine} {back_alpha} {back_beta}")
+    # Independent safe-range seed preserves the original full-width and integration streams.
+    safe_rng = random.Random(0xC1A0)
+    trip_lines = ["# alpha beta sine cosine d q back_alpha back_beta"]
+    for _ in range(1000):
+        alpha = safe_rng.randint(-8*F15, 8*F15)
+        beta = safe_rng.randint(-8*F15, 8*F15)
+        theta = safe_rng.randrange(65536)
+        sine, cosine = sincos_raw(theta, rom)
+        d_axis, q_axis = park_raw(alpha, beta, sine, cosine)
+        back_alpha, back_beta = inv_park_raw(d_axis, q_axis, sine, cosine)
+        assert max(abs(d_axis), abs(q_axis), abs(back_alpha), abs(back_beta)) < (1<<24)-1
+        lines.append(f"{alpha} {beta} {theta} {sine} {cosine} {d_axis} {q_axis}")
+        inv_lines.append(f"{d_axis} {q_axis} {theta} {sine} {cosine} {back_alpha} {back_beta}")
+        trip_lines.append(f"{alpha} {beta} {sine} {cosine} {d_axis} {q_axis} {back_alpha} {back_beta}")
+    outputs[VECTOR_DIR / "park_roundtrip_vectors.txt"] = "\n".join(trip_lines) + "\n"
     # Standalone arithmetic fixtures: theta is descriptive only; explicit coefficients drive the DUT.
     # These hit +/- half-LSB, one below/above the tie, and both 25-bit clipping rails.
     for alpha, beta, sine, cosine in [
@@ -209,6 +224,8 @@ def fixture_lines(step6a: list[dict[str, str]], rom: list[int]) -> dict[Path, st
     ]:
         d_axis, q_axis = park_raw(alpha, beta, sine, cosine)
         lines.append(f"{alpha} {beta} 0 {sine} {cosine} {d_axis} {q_axis}")
+        inv_alpha, inv_beta = inv_park_raw(alpha, beta, sine, cosine)
+        inv_lines.append(f"{alpha} {beta} 0 {sine} {cosine} {inv_alpha} {inv_beta}")
     # Independent inverse-Park saturation stimuli.
     for d_axis, q_axis, theta in [((1<<24)-1,(1<<24)-1,0x2000), (-(1<<24),-(1<<24),0x2000)]:
         sine, cosine = sincos_raw(theta, rom)
