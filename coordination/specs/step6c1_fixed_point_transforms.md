@@ -113,10 +113,17 @@ The internal FPGA electrical-angle interface is an unsigned 16-bit phase word:
 wrap   -> 2*pi == 0x0000
 ```
 
-Reference conversion from radians:
+Reference conversion from radians uses nearest rounding for the nonnegative wrapped phase:
 
 ```text
-theta_u16 = round(mod(theta_rad, 2*pi) * 65536 / (2*pi)) mod 65536
+scaled = mod(theta_rad, 2*pi) * 65536 / (2*pi)
+theta_u16 = floor(scaled + 0.5) mod 65536
+```
+
+Real-valued signed physical inputs are quantized with round-to-nearest/ties-away-from-zero before signed saturation:
+
+```text
+raw = sat_signed(sign(x) * floor(abs(x)*2^F + 0.5), width)
 ```
 
 This is an interface representation only; the physical meaning and positive direction remain exactly those established in Step 6A.
@@ -137,10 +144,10 @@ File:
 
 `motor_control_ip/foc/rom/sin_qw_4096x18.mem`
 
-Each entry `k=0..4095` is:
+Each entry `k=0..4095` is nonnegative and uses deterministic nearest rounding:
 
 ```text
-round( sin(k * (pi/2) / 4096) * 2^16 )
+floor( sin(k * (pi/2) / 4096) * 2^16 + 0.5 )
 ```
 
 stored as signed 18-bit two's-complement data.
@@ -238,6 +245,8 @@ rounded = (x < 0) ? -rounded_mag : rounded_mag
 ```
 
 This is round-to-nearest with exact half-way cases rounded away from zero. Then saturate to the destination signed width.
+
+When forming `abs(x)` in RTL, sign-extend by one bit first so the most-negative two's-complement value cannot overflow during magnitude conversion.
 
 No control quantity may silently wrap on overflow.
 
