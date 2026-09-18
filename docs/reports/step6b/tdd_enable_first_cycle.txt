@@ -1,0 +1,17 @@
+Enable-first-cycle TDD, 2026-09-18
+New startup TB against pre-fix RTL at 0cccb95: expected FAIL.
+xvlog/xelab succeeded. XSim process returned 0 despite $fatal; log gating is required.
+Selected diagnostic lines:
+Error: 101000 startup exposes registered ZERO/UP
+Error: 241000 startup PEAK exactly after 8 intervals
+Error: 261000 startup PEAK exactly after 8 intervals
+Error: 401000 no returned ZERO before 16 startup intervals
+Error: 421000 first returned ZERO exactly after 16 intervals
+Error: 3461000 startup exposes registered ZERO/UP
+Error: 3601000 startup PEAK exactly after 8 intervals
+Error: 3621000 startup PEAK exactly after 8 intervals
+Error: 3761000 no returned ZERO before 16 startup intervals
+Error: 3781000 first returned ZERO exactly after 16 intervals
+Error: 4541000 startup exposes registered ZERO/UP
+Error: 4681000 startup PEAK exactly after 8 intervals
+Fatal: STEP 6B MOTOR PWM TESTS FAILED: 2316 errors

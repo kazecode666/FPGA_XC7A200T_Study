@@ -1,0 +1,11 @@
+STEP6B_BUILD_PASS
+Vivado: 2026.1
+Part: xc7a200tfbg484-2
+Top: motor_pwm_core; TBPRD=2500; 50 MHz / 10 kHz
+Motor simulation and all three unchanged legacy regressions: PASS
+Synthesis: synth_design Complete!
+Implementation: route_design Complete!
+Routed internal WNS=12.514 ns TNS=0.000 ns WHS=0.153 ns THS=0.000 ns
+External I/O delays and pin assignments: intentionally absent; no board-level timing sign-off
+Bitstream: NOT GENERATED
+Physical hardware: NOT TESTED

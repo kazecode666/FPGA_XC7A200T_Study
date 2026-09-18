@@ -1,0 +1,230 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Fri Sep 18 09:54:15 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : check_timing -verbose -file D:/Project/FPGA_XC7A200T/docs/reports/step6b/check_timing.rpt
+| Design       : motor_pwm_core
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (39)
+6. checking no_output_delay (93)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (39)
+-------------------------------
+ There are 39 input ports with no input delay specified. (HIGH)
+
+cmp_cmd_valid
+cmp_u_cmd[0]
+cmp_u_cmd[10]
+cmp_u_cmd[11]
+cmp_u_cmd[1]
+cmp_u_cmd[2]
+cmp_u_cmd[3]
+cmp_u_cmd[4]
+cmp_u_cmd[5]
+cmp_u_cmd[6]
+cmp_u_cmd[7]
+cmp_u_cmd[8]
+cmp_u_cmd[9]
+cmp_v_cmd[0]
+cmp_v_cmd[10]
+cmp_v_cmd[11]
+cmp_v_cmd[1]
+cmp_v_cmd[2]
+cmp_v_cmd[3]
+cmp_v_cmd[4]
+cmp_v_cmd[5]
+cmp_v_cmd[6]
+cmp_v_cmd[7]
+cmp_v_cmd[8]
+cmp_v_cmd[9]
+cmp_w_cmd[0]
+cmp_w_cmd[10]
+cmp_w_cmd[11]
+cmp_w_cmd[1]
+cmp_w_cmd[2]
+cmp_w_cmd[3]
+cmp_w_cmd[4]
+cmp_w_cmd[5]
+cmp_w_cmd[6]
+cmp_w_cmd[7]
+cmp_w_cmd[8]
+cmp_w_cmd[9]
+pwm_enable
+reset_n
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (93)
+--------------------------------
+ There are 93 ports with no output delay specified. (HIGH)
+
+carrier_peak
+carrier_zero
+cmp_cmd_ready
+cmp_u_active[0]
+cmp_u_active[10]
+cmp_u_active[11]
+cmp_u_active[1]
+cmp_u_active[2]
+cmp_u_active[3]
+cmp_u_active[4]
+cmp_u_active[5]
+cmp_u_active[6]
+cmp_u_active[7]
+cmp_u_active[8]
+cmp_u_active[9]
+cmp_u_shadow[0]
+cmp_u_shadow[10]
+cmp_u_shadow[11]
+cmp_u_shadow[1]
+cmp_u_shadow[2]
+cmp_u_shadow[3]
+cmp_u_shadow[4]
+cmp_u_shadow[5]
+cmp_u_shadow[6]
+cmp_u_shadow[7]
+cmp_u_shadow[8]
+cmp_u_shadow[9]
+cmp_v_active[0]
+cmp_v_active[10]
+cmp_v_active[11]
+cmp_v_active[1]
+cmp_v_active[2]
+cmp_v_active[3]
+cmp_v_active[4]
+cmp_v_active[5]
+cmp_v_active[6]
+cmp_v_active[7]
+cmp_v_active[8]
+cmp_v_active[9]
+cmp_v_shadow[0]
+cmp_v_shadow[10]
+cmp_v_shadow[11]
+cmp_v_shadow[1]
+cmp_v_shadow[2]
+cmp_v_shadow[3]
+cmp_v_shadow[4]
+cmp_v_shadow[5]
+cmp_v_shadow[6]
+cmp_v_shadow[7]
+cmp_v_shadow[8]
+cmp_v_shadow[9]
+cmp_w_active[0]
+cmp_w_active[10]
+cmp_w_active[11]
+cmp_w_active[1]
+cmp_w_active[2]
+cmp_w_active[3]
+cmp_w_active[4]
+cmp_w_active[5]
+cmp_w_active[6]
+cmp_w_active[7]
+cmp_w_active[8]
+cmp_w_active[9]
+cmp_w_shadow[0]
+cmp_w_shadow[10]
+cmp_w_shadow[11]
+cmp_w_shadow[1]
+cmp_w_shadow[2]
+cmp_w_shadow[3]
+cmp_w_shadow[4]
+cmp_w_shadow[5]
+cmp_w_shadow[6]
+cmp_w_shadow[7]
+cmp_w_shadow[8]
+cmp_w_shadow[9]
+compare_load_event
+count_up
+pwm_u
+pwm_v
+pwm_w
+shadow_pending
+tbctr[0]
+tbctr[10]
+tbctr[11]
+tbctr[1]
+tbctr[2]
+tbctr[3]
+tbctr[4]
+tbctr[5]
+tbctr[6]
+tbctr[7]
+tbctr[8]
+tbctr[9]
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
