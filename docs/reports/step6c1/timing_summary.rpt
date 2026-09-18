@@ -29,11 +29,11 @@ Timing Summary Report
   Merge Timing Exceptions                    :  Yes
   Inter-SLR Compensation                     :  Conservative
 
-  Corner  Analyze    Analyze    
-  Name    Max Paths  Min Paths  
-  ------  ---------  ---------  
-  Slow    Yes        Yes        
-  Fast    Yes        Yes        
+  Corner  Analyze    Analyze
+  Name    Max Paths  Min Paths
+  ------  ---------  ---------
+  Slow    Yes        Yes
+  Fast    Yes        Yes
 
 
 ------------------------------------------------------------------------------------------------
@@ -41,11 +41,11 @@ Timing Summary Report
 | ------------------
 ------------------------------------------------------------------------------------------------
 
-Rule       Severity  Description                                 Violations  
----------  --------  ------------------------------------------  ----------  
-DPIR-1     Warning   Asynchronous driver check                   252         
-SYNTH-6    Warning   Timing of a RAM block might be sub-optimal  2           
-TIMING-18  Warning   Missing input or output delay               227         
+Rule       Severity  Description                                 Violations
+---------  --------  ------------------------------------------  ----------
+DPIR-1     Warning   Asynchronous driver check                   252
+SYNTH-6    Warning   Timing of a RAM block might be sub-optimal  2
+TIMING-18  Warning   Missing input or output delay               227
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -369,9 +369,9 @@ sin_theta_dbg[9]
 | ---------------------
 ------------------------------------------------------------------------------------------------
 
-    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
-    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     10.548        0.000                      0                 1302        0.118        0.000                      0                 1302        9.500        0.000                       0                   591  
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------
+     10.548        0.000                      0                 1302        0.118        0.000                      0                 1302        9.500        0.000                       0                   591
 
 
 All user specified timing constraints are met.
@@ -384,7 +384,7 @@ All user specified timing constraints are met.
 
 Clock    Waveform(ns)       Period(ns)      Frequency(MHz)
 -----    ------------       ----------      --------------
-sys_clk  {0.000 10.000}     20.000          50.000          
+sys_clk  {0.000 10.000}     20.000          50.000
 
 
 ------------------------------------------------------------------------------------------------
@@ -392,9 +392,9 @@ sys_clk  {0.000 10.000}     20.000          50.000
 | -----------------
 ------------------------------------------------------------------------------------------------
 
-Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
------             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk            10.548        0.000                      0                 1302        0.118        0.000                      0                 1302        9.500        0.000                       0                   591  
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------
+sys_clk            10.548        0.000                      0                 1302        0.118        0.000                      0                 1302        9.500        0.000                       0                   591
 
 
 ------------------------------------------------------------------------------------------------
@@ -402,8 +402,8 @@ sys_clk            10.548        0.000                      0                 13
 | -----------------
 ------------------------------------------------------------------------------------------------
 
-From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
-----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------
 
 
 ------------------------------------------------------------------------------------------------
@@ -411,8 +411,8 @@ From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS
 | -----------------------
 ------------------------------------------------------------------------------------------------
 
-Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
-----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------
 
 
 ------------------------------------------------------------------------------------------------
@@ -420,8 +420,8 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 | -----------------------
 ------------------------------------------------------------------------------------------------
 
-Path Group    From Clock    To Clock    
-----------    ----------    --------    
+Path Group    From Clock    To Clock
+----------    ----------    --------
 
 
 ------------------------------------------------------------------------------------------------
@@ -429,10 +429,10 @@ Path Group    From Clock    To Clock
 | ------------------------
 ------------------------------------------------------------------------------------------------
 
-Path Group    From Clock    To Clock    
-----------    ----------    --------    
-(none)        sys_clk                     
-(none)                      sys_clk       
+Path Group    From Clock    To Clock
+----------    ----------    --------
+(none)        sys_clk
+(none)                      sys_clk
 
 
 ------------------------------------------------------------------------------------------------
@@ -464,7 +464,7 @@ Slack (MET) :             10.548ns  (required time - arrival time)
   Data Path Delay:        9.318ns  (logic 3.859ns (41.413%)  route 5.459ns (58.587%))
   Logic Levels:           18  (CARRY4=14 LUT1=1 LUT3=2 LUT6=1)
   Clock Path Skew:        -0.129ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 ) 
+    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 )
     Source Clock Delay      (SCD):    4.848ns
     Clock Pessimism Removal (CPR):    0.314ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -572,7 +572,7 @@ Slack (MET) :             0.118ns  (arrival time - required time)
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
   Data Path Delay:        0.377ns  (logic 0.164ns (43.545%)  route 0.213ns (56.455%))
-  Logic Levels:           0  
+  Logic Levels:           0
   Clock Path Skew:        0.199ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.262ns
     Source Clock Delay      (SCD):    1.798ns
@@ -631,7 +631,7 @@ High Pulse Width  Slow    FDCE/C              n/a            0.500         10.00
 --------------------------------------------------------------------------------------
 Path Group:  (none)
 From Clock:  sys_clk
-  To Clock:  
+  To Clock:
 
 Max Delay           137 Endpoints
 Min Delay           137 Endpoints
@@ -718,7 +718,7 @@ Slack:                    inf
 
 --------------------------------------------------------------------------------------
 Path Group:  (none)
-From Clock:  
+From Clock:
   To Clock:  sys_clk
 
 Max Delay           739 Endpoints
@@ -847,8 +847,3 @@ Slack:                    inf
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.363 r  clk_IBUF_BUFG_inst/O
                          net (fo=590, routed)         0.999     2.362    clarke/clk_IBUF_BUFG
     SLICE_X4Y98          FDCE                                         r  clarke/alpha_pre_reg[11]/C
-
-
-
-
-

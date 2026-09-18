@@ -3,4 +3,3 @@ ALL STEP 6C1 SINCOS TESTS PASSED rows=65536 checked=65548 latency_edges=1 max_si
 $finish called at time : 1311360 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_sincos_lut_tb.sv" Line 216
 
 Simulation Tcl status: 0
-

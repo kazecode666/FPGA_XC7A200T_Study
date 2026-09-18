@@ -46,4 +46,3 @@ ALL STEP 6B MOTOR PWM TESTS PASSED
 $finish called at time : 31401 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/tb/motor_pwm_core_tb.sv" Line 229
 
 Simulation Tcl status: 0
-

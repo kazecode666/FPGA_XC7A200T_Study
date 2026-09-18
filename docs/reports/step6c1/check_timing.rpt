@@ -321,5 +321,3 @@ sin_theta_dbg[9]
 12. checking latch_loops (0)
 ----------------------------
  There are 0 combinational latch loops in the design through latch input
-
-

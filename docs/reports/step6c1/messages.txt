@@ -12,4 +12,3 @@ Counts include repeated anchored severity lines: ERROR 0 {CRITICAL WARNING} 0 WA
 
 
 Clock-only internal timing; no board I/O timing sign-off, bitstream or hardware test.
-

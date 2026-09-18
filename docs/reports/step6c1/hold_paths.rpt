@@ -21,7 +21,7 @@ Slack (MET) :             0.118ns  (arrival time - required time)
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
   Data Path Delay:        0.377ns  (logic 0.164ns (43.545%)  route 0.213ns (56.455%))
-  Logic Levels:           0  
+  Logic Levels:           0
   Clock Path Skew:        0.199ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.262ns
     Source Clock Delay      (SCD):    1.798ns
@@ -68,7 +68,7 @@ Slack (MET) :             0.121ns  (arrival time - required time)
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
   Data Path Delay:        0.390ns  (logic 0.141ns (36.133%)  route 0.249ns (63.867%))
-  Logic Levels:           0  
+  Logic Levels:           0
   Clock Path Skew:        0.199ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.262ns
     Source Clock Delay      (SCD):    1.798ns
@@ -115,7 +115,7 @@ Slack (MET) :             0.129ns  (arrival time - required time)
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
   Data Path Delay:        0.399ns  (logic 0.164ns (41.143%)  route 0.235ns (58.857%))
-  Logic Levels:           0  
+  Logic Levels:           0
   Clock Path Skew:        0.199ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.262ns
     Source Clock Delay      (SCD):    1.798ns
@@ -162,7 +162,7 @@ Slack (MET) :             0.129ns  (arrival time - required time)
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
   Data Path Delay:        0.227ns  (logic 0.141ns (61.993%)  route 0.086ns (38.007%))
-  Logic Levels:           0  
+  Logic Levels:           0
   Clock Path Skew:        0.013ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.331ns
     Source Clock Delay      (SCD):    1.795ns
@@ -209,7 +209,7 @@ Slack (MET) :             0.129ns  (arrival time - required time)
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
   Data Path Delay:        0.227ns  (logic 0.141ns (61.993%)  route 0.086ns (38.007%))
-  Logic Levels:           0  
+  Logic Levels:           0
   Clock Path Skew:        0.013ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    2.328ns
     Source Clock Delay      (SCD):    1.793ns
@@ -246,7 +246,3 @@ Slack (MET) :             0.129ns  (arrival time - required time)
                          arrival time                           2.020    <hidden>
   -------------------------------------------------------------------
                          slack                                  0.129    <hidden>
-
-
-
-

@@ -23,7 +23,7 @@ Slack (MET) :             10.548ns  (required time - arrival time)
   Data Path Delay:        9.318ns  (logic 3.859ns (41.413%)  route 5.459ns (58.587%))
   Logic Levels:           18  (CARRY4=14 LUT1=1 LUT3=2 LUT6=1)
   Clock Path Skew:        -0.129ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 ) 
+    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 )
     Source Clock Delay      (SCD):    4.848ns
     Clock Pessimism Removal (CPR):    0.314ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -127,7 +127,7 @@ Slack (MET) :             10.577ns  (required time - arrival time)
   Data Path Delay:        9.331ns  (logic 3.859ns (41.356%)  route 5.472ns (58.645%))
   Logic Levels:           18  (CARRY4=14 LUT1=1 LUT3=1 LUT6=2)
   Clock Path Skew:        -0.129ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 ) 
+    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 )
     Source Clock Delay      (SCD):    4.848ns
     Clock Pessimism Removal (CPR):    0.314ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -231,7 +231,7 @@ Slack (MET) :             10.590ns  (required time - arrival time)
   Data Path Delay:        9.322ns  (logic 3.859ns (41.395%)  route 5.463ns (58.605%))
   Logic Levels:           18  (CARRY4=14 LUT1=1 LUT3=1 LUT6=2)
   Clock Path Skew:        -0.129ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 ) 
+    Destination Clock Delay (DCD):    4.405ns = ( 24.405 - 20.000 )
     Source Clock Delay      (SCD):    4.848ns
     Clock Pessimism Removal (CPR):    0.314ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -335,7 +335,7 @@ Slack (MET) :             10.624ns  (required time - arrival time)
   Data Path Delay:        9.285ns  (logic 3.942ns (42.456%)  route 5.343ns (57.544%))
   Logic Levels:           19  (CARRY4=15 LUT1=1 LUT3=1 LUT4=1 LUT6=1)
   Clock Path Skew:        -0.128ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.406ns = ( 24.406 - 20.000 ) 
+    Destination Clock Delay (DCD):    4.406ns = ( 24.406 - 20.000 )
     Source Clock Delay      (SCD):    4.848ns
     Clock Pessimism Removal (CPR):    0.314ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -442,7 +442,7 @@ Slack (MET) :             10.659ns  (required time - arrival time)
   Data Path Delay:        9.210ns  (logic 4.044ns (43.907%)  route 5.166ns (56.093%))
   Logic Levels:           19  (CARRY4=15 LUT1=1 LUT3=1 LUT5=1 LUT6=1)
   Clock Path Skew:        -0.128ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.406ns = ( 24.406 - 20.000 ) 
+    Destination Clock Delay (DCD):    4.406ns = ( 24.406 - 20.000 )
     Source Clock Delay      (SCD):    4.848ns
     Clock Pessimism Removal (CPR):    0.314ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -537,7 +537,3 @@ Slack (MET) :             10.659ns  (required time - arrival time)
                          arrival time                         -14.058    <hidden>
   -------------------------------------------------------------------
                          slack                                 10.659    <hidden>
-
-
-
-
