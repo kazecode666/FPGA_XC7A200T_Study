@@ -159,7 +159,7 @@ set status [catch {
         require {[string first "ALL STEP 6C4 FOC CURRENT TESTS PASSED profile=$profile base=336 accepted=349 responses=347 aborted=2 latency=512 poisoned=175616" $output] >= 0} "Profile $profile missing exact success/counts"
         require {[string first "C4_BASE_PASS profile=$profile historical=80 seeded=256 rows=336 spacing=5000" $output] >= 0} {Base row count failed}
         require {![regexp -nocase {(^|\n)[ \t]*(fatal|error)(:|[ \t])|FATAL_ERROR|\$fatal|\$error} $output]} {Simulation reported failure}
-        save_wave_config [file join $root FOC_Current FOC_Current.sim step6c4.wcfg]
+        save_wave_config [file join $root FOC_Current FOC_Current.sim step6c4_profile${profile}.wcfg]
         close_sim
     }
     write_text [file join $reports regression_summary.txt] "PASS: six Python checks; C4 profiles 0/1 (672 base rows, 698 accepts, 694 responses, 4 reset aborts); Step 6B PWM."
