@@ -203,7 +203,11 @@ proc profile_build {p sources} {
         report_utilization -file [file join $out ${run}_utilization.rpt]
         report_utilization -hierarchical -file [file join $out ${run}_hierarchy.rpt]
         resources [file join $out ${run}_primitives.txt]
-        if {$run eq "synth_1"} {close_design}
+        if {$run eq "synth_1"} {
+            # Estimated synthesis timing is diagnostic; routed gates below remain authoritative.
+            report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -file [file join $out synth_timing_summary.rpt]
+            close_design
+        }
     }
     require {[llength [get_clocks]] == 1 && [get_property PERIOD [get_clocks sys_clk]] == 20.0} {Clock mismatch}
     report_clocks -file [file join $out clocks.rpt]
