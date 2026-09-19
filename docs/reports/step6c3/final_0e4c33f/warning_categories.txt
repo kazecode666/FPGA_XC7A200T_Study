@@ -1,0 +1,17 @@
+Anchored severity lines retained from actual run logs.
+
+synth_1 status=synth_design Complete! progress=100%
+Counts include repeated anchored lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 8
+WARNING: [Synth 8-3936] Found unconnected internal register 'next_rem_reg' and it is trimmed from '42' to '41' bits. [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:21]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:417]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:419]
+WARNING: [Synth 8-6014] Unused sequential element a_num_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:296]
+WARNING: [Synth 8-6014] Unused sequential element b_num_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:297]
+WARNING: [Synth 8-6014] Unused sequential element base_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:299]
+WARNING: [Synth 8-6014] Unused sequential element denominator_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:300]
+WARNING: [Synth 8-6014] Unused sequential element sum_num_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:298]
+
+impl_1 status=route_design Complete, Failed Timing! progress=100%
+Counts include repeated anchored lines: ERROR 0 {CRITICAL WARNING} 1 WARNING 1
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+WARNING: [Route 35-328] Router estimated timing not met.

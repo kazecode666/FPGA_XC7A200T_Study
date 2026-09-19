@@ -1,0 +1,21 @@
+Command: python scripts/step6c3_svpwm_reference_test.py
+test_cmp1_minus_zero_plus_one (__main__.Step6C3ReferenceTests.test_cmp1_minus_zero_plus_one) ... ok
+test_cmp2_minus_zero_plus_one (__main__.Step6C3ReferenceTests.test_cmp2_minus_zero_plus_one) ... ok
+test_duty_mapping_keeps_explicit_negative_value (__main__.Step6C3ReferenceTests.test_duty_mapping_keeps_explicit_negative_value) ... ok
+test_full_top_sum_base_minus_equal_plus_one (__main__.Step6C3ReferenceTests.test_full_top_sum_base_minus_equal_plus_one) ... ok
+test_invalid_vdc_has_fixed_zero_error_result (__main__.Step6C3ReferenceTests.test_invalid_vdc_has_fixed_zero_error_result) ... ok
+test_named_cmp1_plan_points_straddle_equality (__main__.Step6C3ReferenceTests.test_named_cmp1_plan_points_straddle_equality) ... ok
+test_negative_dwell_and_duty_are_not_clamped (__main__.Step6C3ReferenceTests.test_negative_dwell_and_duty_are_not_clamped) ... ok
+test_overmod_exact_boundary (__main__.Step6C3ReferenceTests.test_overmod_exact_boundary) ... ok
+test_round_div_nearest_ties_away_signed (__main__.Step6C3ReferenceTests.test_round_div_nearest_ties_away_signed) ... ok
+test_round_shift_nearest_ties_away_signed (__main__.Step6C3ReferenceTests.test_round_shift_nearest_ties_away_signed) ... ok
+test_sector_equality_boundary (__main__.Step6C3ReferenceTests.test_sector_equality_boundary) ... ok
+test_six_sector_interior_points (__main__.Step6C3ReferenceTests.test_six_sector_interior_points) ... ok
+test_sum_base_minus_equal_plus_one (__main__.Step6C3ReferenceTests.test_sum_base_minus_equal_plus_one) ... ok
+test_zero_vector (__main__.Step6C3ReferenceTests.test_zero_vector) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+Tcl status=0; process status=0

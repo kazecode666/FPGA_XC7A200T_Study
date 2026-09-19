@@ -1,0 +1,261 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Sep 19 21:56:37 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : check_timing -verbose -file C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/docs/reports/step6c3/final_c20fb05/check_timing.rpt
+| Design       : mc_sector_svpwm
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (77)
+6. checking no_output_delay (86)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (77)
+-------------------------------
+ There are 77 input ports with no input delay specified. (HIGH)
+
+input_valid
+reset_n
+v_alpha[0]
+v_alpha[10]
+v_alpha[11]
+v_alpha[12]
+v_alpha[13]
+v_alpha[14]
+v_alpha[15]
+v_alpha[16]
+v_alpha[17]
+v_alpha[18]
+v_alpha[19]
+v_alpha[1]
+v_alpha[20]
+v_alpha[21]
+v_alpha[22]
+v_alpha[23]
+v_alpha[24]
+v_alpha[2]
+v_alpha[3]
+v_alpha[4]
+v_alpha[5]
+v_alpha[6]
+v_alpha[7]
+v_alpha[8]
+v_alpha[9]
+v_beta[0]
+v_beta[10]
+v_beta[11]
+v_beta[12]
+v_beta[13]
+v_beta[14]
+v_beta[15]
+v_beta[16]
+v_beta[17]
+v_beta[18]
+v_beta[19]
+v_beta[1]
+v_beta[20]
+v_beta[21]
+v_beta[22]
+v_beta[23]
+v_beta[24]
+v_beta[2]
+v_beta[3]
+v_beta[4]
+v_beta[5]
+v_beta[6]
+v_beta[7]
+v_beta[8]
+v_beta[9]
+vdc[0]
+vdc[10]
+vdc[11]
+vdc[12]
+vdc[13]
+vdc[14]
+vdc[15]
+vdc[16]
+vdc[17]
+vdc[18]
+vdc[19]
+vdc[1]
+vdc[20]
+vdc[21]
+vdc[22]
+vdc[23]
+vdc[24]
+vdc[2]
+vdc[3]
+vdc[4]
+vdc[5]
+vdc[6]
+vdc[7]
+vdc[8]
+vdc[9]
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (86)
+--------------------------------
+ There are 86 ports with no output delay specified. (HIGH)
+
+duty_u[0]
+duty_u[10]
+duty_u[11]
+duty_u[12]
+duty_u[13]
+duty_u[14]
+duty_u[15]
+duty_u[16]
+duty_u[17]
+duty_u[18]
+duty_u[19]
+duty_u[1]
+duty_u[20]
+duty_u[21]
+duty_u[22]
+duty_u[23]
+duty_u[24]
+duty_u[25]
+duty_u[2]
+duty_u[3]
+duty_u[4]
+duty_u[5]
+duty_u[6]
+duty_u[7]
+duty_u[8]
+duty_u[9]
+duty_v[0]
+duty_v[10]
+duty_v[11]
+duty_v[12]
+duty_v[13]
+duty_v[14]
+duty_v[15]
+duty_v[16]
+duty_v[17]
+duty_v[18]
+duty_v[19]
+duty_v[1]
+duty_v[20]
+duty_v[21]
+duty_v[22]
+duty_v[23]
+duty_v[24]
+duty_v[25]
+duty_v[2]
+duty_v[3]
+duty_v[4]
+duty_v[5]
+duty_v[6]
+duty_v[7]
+duty_v[8]
+duty_v[9]
+duty_w[0]
+duty_w[10]
+duty_w[11]
+duty_w[12]
+duty_w[13]
+duty_w[14]
+duty_w[15]
+duty_w[16]
+duty_w[17]
+duty_w[18]
+duty_w[19]
+duty_w[1]
+duty_w[20]
+duty_w[21]
+duty_w[22]
+duty_w[23]
+duty_w[24]
+duty_w[25]
+duty_w[2]
+duty_w[3]
+duty_w[4]
+duty_w[5]
+duty_w[6]
+duty_w[7]
+duty_w[8]
+duty_w[9]
+error_code[0]
+error_code[1]
+input_ready
+output_valid
+overmodulated
+sector[0]
+sector[1]
+sector[2]
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input

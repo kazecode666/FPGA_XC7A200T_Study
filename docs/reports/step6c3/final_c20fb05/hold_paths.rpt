@@ -1,0 +1,258 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Sep 19 21:56:37 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type min -max_paths 5 -file C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/docs/reports/step6c3/final_c20fb05/hold_paths.rpt
+| Design       : mc_sector_svpwm
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.054ns  (arrival time - required time)
+  Source:                 divider_t2/work_result_reg[30]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            divider_t2/quotient_reg[31]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.435ns  (logic 0.226ns (51.911%)  route 0.209ns (48.089%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.274ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.086ns
+    Source Clock Delay      (SCD):    1.560ns
+    Clock Pessimism Removal (CPR):    0.252ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.221     0.221 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.690     0.912    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.938 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.623     1.560    divider_t2/clk_IBUF_BUFG
+    SLICE_X23Y150        FDCE                                         r  divider_t2/work_result_reg[30]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X23Y150        FDCE (Prop_fdce_C_Q)         0.128     1.688 r  divider_t2/work_result_reg[30]/Q
+                         net (fo=2, routed)           0.209     1.898    divider_t2/work_result[30]
+    SLICE_X23Y149        LUT2 (Prop_lut2_I0_O)        0.098     1.996 r  divider_t2/quotient[31]_i_1__0/O
+                         net (fo=1, routed)           0.000     1.996    divider_t2/quotient[31]_i_1__0_n_0
+    SLICE_X23Y149        FDCE                                         r  divider_t2/quotient_reg[31]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.411     0.411 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.750     1.160    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.189 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.897     2.086    divider_t2/clk_IBUF_BUFG
+    SLICE_X23Y149        FDCE                                         r  divider_t2/quotient_reg[31]/C
+                         clock pessimism             -0.252     1.834    <hidden>
+    SLICE_X23Y149        FDCE (Hold_fdce_C_D)         0.107     1.941    divider_t2/quotient_reg[31]
+  -------------------------------------------------------------------
+                         required time                         -1.941    <hidden>
+                         arrival time                           1.996    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.054    <hidden>
+
+Slack (MET) :             0.077ns  (arrival time - required time)
+  Source:                 divider_t2/quotient_reg[37]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            captured_quotient_b_reg[37]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.443ns  (logic 0.247ns (55.734%)  route 0.196ns (44.266%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.274ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.086ns
+    Source Clock Delay      (SCD):    1.560ns
+    Clock Pessimism Removal (CPR):    0.252ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.221     0.221 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.690     0.912    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.938 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.623     1.560    divider_t2/clk_IBUF_BUFG
+    SLICE_X22Y151        FDCE                                         r  divider_t2/quotient_reg[37]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X22Y151        FDCE (Prop_fdce_C_Q)         0.148     1.708 r  divider_t2/quotient_reg[37]/Q
+                         net (fo=1, routed)           0.196     1.904    divider_t2/divider_b_quotient[37]
+    SLICE_X23Y148        LUT2 (Prop_lut2_I1_O)        0.099     2.003 r  divider_t2/captured_quotient_b[37]_i_1/O
+                         net (fo=1, routed)           0.000     2.003    divider_t2_n_77
+    SLICE_X23Y148        FDCE                                         r  captured_quotient_b_reg[37]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.411     0.411 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.750     1.160    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.189 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.897     2.086    clk_IBUF_BUFG
+    SLICE_X23Y148        FDCE                                         r  captured_quotient_b_reg[37]/C
+                         clock pessimism             -0.252     1.834    <hidden>
+    SLICE_X23Y148        FDCE (Hold_fdce_C_D)         0.092     1.926    captured_quotient_b_reg[37]
+  -------------------------------------------------------------------
+                         required time                         -1.926    <hidden>
+                         arrival time                           2.003    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.077    <hidden>
+
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 divider_t1/work_result_reg[24]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            divider_t1/quotient_reg[25]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.482ns  (logic 0.245ns (50.823%)  route 0.237ns (49.177%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.272ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.116ns
+    Source Clock Delay      (SCD):    1.592ns
+    Clock Pessimism Removal (CPR):    0.252ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.221     0.221 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.690     0.912    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.938 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.655     1.592    divider_t1/clk_IBUF_BUFG
+    SLICE_X6Y149         FDCE                                         r  divider_t1/work_result_reg[24]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y149         FDCE (Prop_fdce_C_Q)         0.148     1.740 r  divider_t1/work_result_reg[24]/Q
+                         net (fo=2, routed)           0.237     1.977    divider_t1/work_result[24]
+    SLICE_X6Y150         LUT2 (Prop_lut2_I0_O)        0.097     2.074 r  divider_t1/quotient[25]_i_1/O
+                         net (fo=1, routed)           0.000     2.074    divider_t1/quotient[25]_i_1_n_0
+    SLICE_X6Y150         FDCE                                         r  divider_t1/quotient_reg[25]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.411     0.411 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.750     1.160    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.189 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.927     2.116    divider_t1/clk_IBUF_BUFG
+    SLICE_X6Y150         FDCE                                         r  divider_t1/quotient_reg[25]/C
+                         clock pessimism             -0.252     1.864    <hidden>
+    SLICE_X6Y150         FDCE (Hold_fdce_C_D)         0.131     1.995    divider_t1/quotient_reg[25]
+  -------------------------------------------------------------------
+                         required time                         -1.995    <hidden>
+                         arrival time                           2.074    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.079    <hidden>
+
+Slack (MET) :             0.080ns  (arrival time - required time)
+  Source:                 divider_t2/work_result_reg[27]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            divider_t2/quotient_reg[28]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.446ns  (logic 0.186ns (41.675%)  route 0.260ns (58.325%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.274ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.086ns
+    Source Clock Delay      (SCD):    1.560ns
+    Clock Pessimism Removal (CPR):    0.252ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.221     0.221 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.690     0.912    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.938 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.623     1.560    divider_t2/clk_IBUF_BUFG
+    SLICE_X23Y150        FDCE                                         r  divider_t2/work_result_reg[27]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X23Y150        FDCE (Prop_fdce_C_Q)         0.141     1.701 r  divider_t2/work_result_reg[27]/Q
+                         net (fo=2, routed)           0.260     1.962    divider_t2/work_result[27]
+    SLICE_X23Y149        LUT2 (Prop_lut2_I0_O)        0.045     2.007 r  divider_t2/quotient[28]_i_1__0/O
+                         net (fo=1, routed)           0.000     2.007    divider_t2/quotient[28]_i_1__0_n_0
+    SLICE_X23Y149        FDCE                                         r  divider_t2/quotient_reg[28]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.411     0.411 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.750     1.160    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.189 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.897     2.086    divider_t2/clk_IBUF_BUFG
+    SLICE_X23Y149        FDCE                                         r  divider_t2/quotient_reg[28]/C
+                         clock pessimism             -0.252     1.834    <hidden>
+    SLICE_X23Y149        FDCE (Hold_fdce_C_D)         0.092     1.926    divider_t2/quotient_reg[28]
+  -------------------------------------------------------------------
+                         required time                         -1.926    <hidden>
+                         arrival time                           2.007    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.080    <hidden>
+
+Slack (MET) :             0.083ns  (arrival time - required time)
+  Source:                 divider_t1/quotient_reg[19]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            captured_quotient_a_reg[19]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.474ns  (logic 0.246ns (51.907%)  route 0.228ns (48.093%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.270ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.084ns
+    Source Clock Delay      (SCD):    1.562ns
+    Clock Pessimism Removal (CPR):    0.252ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.221     0.221 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.690     0.912    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.938 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.625     1.562    divider_t1/clk_IBUF_BUFG
+    SLICE_X22Y149        FDCE                                         r  divider_t1/quotient_reg[19]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X22Y149        FDCE (Prop_fdce_C_Q)         0.148     1.710 r  divider_t1/quotient_reg[19]/Q
+                         net (fo=1, routed)           0.228     1.938    divider_t1/divider_a_quotient[19]
+    SLICE_X22Y150        LUT2 (Prop_lut2_I1_O)        0.098     2.036 r  divider_t1/captured_quotient_a[19]_i_1/O
+                         net (fo=1, routed)           0.000     2.036    divider_t1_n_682
+    SLICE_X22Y150        FDCE                                         r  captured_quotient_a_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    U20                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    U20                  IBUF (Prop_ibuf_I_O)         0.411     0.411 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.750     1.160    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.189 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1501, routed)        0.894     2.084    clk_IBUF_BUFG
+    SLICE_X22Y150        FDCE                                         r  captured_quotient_a_reg[19]/C
+                         clock pessimism             -0.252     1.832    <hidden>
+    SLICE_X22Y150        FDCE (Hold_fdce_C_D)         0.121     1.953    captured_quotient_a_reg[19]
+  -------------------------------------------------------------------
+                         required time                         -1.953    <hidden>
+                         arrival time                           2.036    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.083    <hidden>

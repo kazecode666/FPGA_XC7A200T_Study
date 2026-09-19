@@ -1,0 +1,457 @@
+
+*** Running vivado
+    with args -log mc_sector_svpwm.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mc_sector_svpwm.tcl
+
+
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 27-jul-2027.
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sat Sep 19 21:30:42 2026
+# Process ID         : 46728
+# Current directory  : C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/.Xil/step6c3_final_0e4c33f/project/step6c3_build.runs/synth_1
+# Command line       : vivado.exe -log mc_sector_svpwm.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mc_sector_svpwm.tcl
+# Log file           : C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/.Xil/step6c3_final_0e4c33f/project/step6c3_build.runs/synth_1/mc_sector_svpwm.vds
+# Journal file       : C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/.Xil/step6c3_final_0e4c33f/project/step6c3_build.runs/synth_1\vivado.jou
+# Running On         : DependOnOMEN16
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 16858 MB
+# Swap memory        : 18253 MB
+# Total Virtual      : 35112 MB
+# Available Virtual  : 8319 MB
+#-----------------------------------------------------------
+
+****** Vivado v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Sep 19 21:30:42 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source mc_sector_svpwm.tcl -notrace
+create_project: Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 591.176 ; gain = 262.949
+Command: synth_design -top mc_sector_svpwm -part xc7a200tfbg484-2
+Starting synth_design
+Attempting to get a license for feature 'Vivado_Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Vivado_Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg484-2
+INFO: [Designutils 20-5008] Incremental synthesis strategy default
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 43496
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:24 ; elapsed = 00:00:29 . Memory (MB): peak = 1402.570 ; gain = 577.746
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'mc_sector_svpwm' [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_svpwm_sector_xyz' [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'mc_svpwm_sector_xyz' (0#1) [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv:5]
+INFO: [Synth 8-6157] synthesizing module 'mc_udiv_u72_u41' [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_udiv_u72_u41' (0#1) [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:3]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:417]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:419]
+INFO: [Synth 8-6155] done synthesizing module 'mc_sector_svpwm' (0#1) [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:3]
+WARNING: [Synth 8-3936] Found unconnected internal register 'next_rem_reg' and it is trimmed from '42' to '41' bits. [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:21]
+WARNING: [Synth 8-6014] Unused sequential element a_num_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:296]
+WARNING: [Synth 8-6014] Unused sequential element b_num_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:297]
+WARNING: [Synth 8-6014] Unused sequential element sum_num_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:298]
+WARNING: [Synth 8-6014] Unused sequential element base_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:299]
+WARNING: [Synth 8-6014] Unused sequential element denominator_debug_reg was removed.  [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:300]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:33 ; elapsed = 00:00:39 . Memory (MB): peak = 1537.363 ; gain = 712.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:40 . Memory (MB): peak = 1537.363 ; gain = 712.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:33 ; elapsed = 00:00:40 . Memory (MB): peak = 1537.363 ; gain = 712.539
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.145 . Memory (MB): peak = 1537.363 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/FOC_SVPWM/FOC_SVPWM.srcs/constrs_1/new/foc_svpwm_clock.xdc]
+Finished Parsing XDC File [C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/FOC_SVPWM/FOC_SVPWM.srcs/constrs_1/new/foc_svpwm_clock.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1555.496 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.238 . Memory (MB): peak = 1559.949 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:01:11 ; elapsed = 00:01:27 . Memory (MB): peak = 1559.949 ; gain = 735.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:11 ; elapsed = 00:01:27 . Memory (MB): peak = 1559.949 ; gain = 735.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:11 ; elapsed = 00:01:27 . Memory (MB): peak = 1559.949 ; gain = 735.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:12 ; elapsed = 00:01:28 . Memory (MB): peak = 1559.949 ; gain = 735.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics
+---------------------------------------------------------------------------------
+Detailed RTL Component Info :
++---Adders :
+	   2 Input  113 Bit       Adders := 2
+	   3 Input   97 Bit       Adders := 6
+	   2 Input   96 Bit       Adders := 7
+	   3 Input   96 Bit       Adders := 3
+	   2 Input   74 Bit       Adders := 2
+	   2 Input   73 Bit       Adders := 2
+	   2 Input   41 Bit       Adders := 2
+	   2 Input    7 Bit       Adders := 3
++---Registers :
+	               72 Bit    Registers := 10
+	               41 Bit    Registers := 9
+	               34 Bit    Registers := 5
+	               26 Bit    Registers := 6
+	               25 Bit    Registers := 3
+	                7 Bit    Registers := 3
+	                3 Bit    Registers := 2
+	                2 Bit    Registers := 2
+	                1 Bit    Registers := 20
++---Multipliers :
+	              41x72  Multipliers := 2
+	              14x96  Multipliers := 1
+	              10x36  Multipliers := 1
++---Muxes :
+	   2 Input   97 Bit        Muxes := 6
+	   2 Input   96 Bit        Muxes := 7
+	   2 Input   74 Bit        Muxes := 2
+	   2 Input   72 Bit        Muxes := 8
+	   2 Input   41 Bit        Muxes := 6
+	   2 Input   40 Bit        Muxes := 5
+	   7 Input   35 Bit        Muxes := 3
+	   2 Input   34 Bit        Muxes := 15
+	   2 Input   26 Bit        Muxes := 6
+	   2 Input    7 Bit        Muxes := 3
+	   2 Input    3 Bit        Muxes := 13
+	   2 Input    2 Bit        Muxes := 18
+	   2 Input    1 Bit        Muxes := 78
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP cmp11, operation Mode is: A*(B:0x1b1).
+DSP Report: operator cmp11 is absorbed into DSP cmp11.
+DSP Report: Generating DSP cmp10, operation Mode is: PCIN-A*(B:0xfa).
+DSP Report: operator cmp10 is absorbed into DSP cmp10.
+DSP Report: operator cmp11 is absorbed into DSP cmp10.
+DSP Report: Generating DSP cmp20, operation Mode is: C-A*(B:0xfa).
+DSP Report: operator cmp20 is absorbed into DSP cmp20.
+DSP Report: operator cmp11 is absorbed into DSP cmp20.
+DSP Report: Generating DSP value1, operation Mode is: A*(B:0x21d4).
+DSP Report: operator value1 is absorbed into DSP value1.
+DSP Report: Generating DSP value0, operation Mode is: C+A*(B:0x3a98).
+DSP Report: operator value0 is absorbed into DSP value0.
+DSP Report: operator value1 is absorbed into DSP value0.
+DSP Report: Generating DSP value0, operation Mode is: A*(B:0x43a9).
+DSP Report: operator value0 is absorbed into DSP value0.
+DSP Report: Generating DSP value0, operation Mode is: PCIN-A*(B:0x3a98).
+DSP Report: operator value0 is absorbed into DSP value0.
+DSP Report: operator value1 is absorbed into DSP value0.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:46 ; elapsed = 00:03:12 . Memory (MB): peak = 1725.004 ; gain = 900.180
+---------------------------------------------------------------------------------
+ Sort Area is  t_stage_valid4_10 : 0 0 : 3566 10252 : Used 1 time 0
+ Sort Area is  t_stage_valid4_10 : 0 1 : 3101 10252 : Used 1 time 0
+ Sort Area is  t_stage_valid4_10 : 0 2 : 3585 10252 : Used 1 time 0
+ Sort Area is  t_stage_valid4_16 : 0 0 : 3566 10252 : Used 1 time 0
+ Sort Area is  t_stage_valid4_16 : 0 1 : 3101 10252 : Used 1 time 0
+ Sort Area is  t_stage_valid4_16 : 0 2 : 3585 10252 : Used 1 time 0
+ Sort Area is  t_stage_valid4_15 : 0 0 : 3101 9787 : Used 1 time 0
+ Sort Area is  t_stage_valid4_15 : 0 1 : 3585 9787 : Used 1 time 0
+ Sort Area is  t_stage_valid4_15 : 0 2 : 3101 9787 : Used 1 time 0
+ Sort Area is  t_stage_valid4_c : 0 0 : 3101 9787 : Used 1 time 0
+ Sort Area is  t_stage_valid4_c : 0 1 : 3585 9787 : Used 1 time 0
+ Sort Area is  t_stage_valid4_c : 0 2 : 3101 9787 : Used 1 time 0
+ Sort Area is  t_stage_valid4_12 : 0 0 : 3368 7975 : Used 1 time 0
+ Sort Area is  t_stage_valid4_12 : 0 1 : 3585 7975 : Used 1 time 0
+ Sort Area is  t_stage_valid4_12 : 0 2 : 1022 7975 : Used 1 time 0
+ Sort Area is  t_stage_valid4_17 : 0 0 : 3368 7975 : Used 1 time 0
+ Sort Area is  t_stage_valid4_17 : 0 1 : 3585 7975 : Used 1 time 0
+ Sort Area is  t_stage_valid4_17 : 0 2 : 1022 7975 : Used 1 time 0
+ Sort Area is  value1_5 : 0 0 : 1029 2534 : Used 1 time 0
+ Sort Area is  value1_5 : 0 1 : 1505 2534 : Used 1 time 0
+ Sort Area is  cmp11_0 : 0 0 : 746 1728 : Used 1 time 0
+ Sort Area is  cmp11_0 : 0 1 : 982 1728 : Used 1 time 0
+ Sort Area is  value0_a : 0 0 : 1443 1443 : Used 1 time 0
+ Sort Area is  value0_8 : 0 0 : 1342 1342 : Used 1 time 0
+ Sort Area is  cmp20_3 : 0 0 : 982 982 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++--------------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name         | DSP Mapping       | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG |
++--------------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|mc_svpwm_sector_xyz | A*(B:0x1b1)       | 25     | 10     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-A*(B:0xfa)   | 25     | 9      | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C-A*(B:0xfa)      | 25     | 9      | 36     | -      | 36     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*(B:0x21d4)      | 25     | 15     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C+A*(B:0x3a98)    | 25     | 15     | 41     | -      | 41     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*(B:0x43a9)      | 25     | 16     | -      | -      | 42     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-A*(B:0x3a98) | 25     | 15     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B               | 22     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 5      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B               | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B          | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B               | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B          | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B               | 22     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 5      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B               | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B          | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B               | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | (PCIN>>17)+A*B    | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B          | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
++--------------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:21 ; elapsed = 00:03:51 . Memory (MB): peak = 1816.848 ; gain = 992.023
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:03:51 ; elapsed = 00:04:24 . Memory (MB): peak = 1946.035 ; gain = 1121.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:04:01 ; elapsed = 00:04:34 . Memory (MB): peak = 1946.090 ; gain = 1121.266
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:04:17 ; elapsed = 00:04:52 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:17 ; elapsed = 00:04:52 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:22 ; elapsed = 00:04:58 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:22 ; elapsed = 00:04:58 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:22 ; elapsed = 00:04:58 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:22 ; elapsed = 00:04:58 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++--------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name         | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG |
++--------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|mc_sector_svpwm     | A*B          | 21     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 4      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B     | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B          | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B     | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B          | 21     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 4      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B     | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | A*B          | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN>>17+A*B | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_sector_svpwm     | PCIN+A*B     | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*B          | 30     | 9      | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-(A*B)   | 30     | 8      | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C-(A*B)      | 30     | 8      | 48     | -      | 36     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*B          | 30     | 14     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C+A*B        | 30     | 14     | 48     | -      | 41     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*B          | 30     | 15     | -      | -      | 42     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-(A*B)   | 30     | 14     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
++--------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes:
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage:
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   812|
+|3     |DSP48E1 |    25|
+|5     |LUT1    |   491|
+|6     |LUT2    |  2127|
+|7     |LUT3    |   466|
+|8     |LUT4    |  1100|
+|9     |LUT5    |   931|
+|10    |LUT6    |   217|
+|11    |MUXF7   |    80|
+|12    |FDCE    |  1418|
+|13    |IBUF    |    78|
+|14    |OBUF    |    86|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:22 ; elapsed = 00:04:59 . Memory (MB): peak = 2158.000 ; gain = 1333.176
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:36 ; elapsed = 00:04:43 . Memory (MB): peak = 2158.000 ; gain = 1310.590
+Synthesis Optimization Complete : Time (s): cpu = 00:04:23 ; elapsed = 00:04:59 . Memory (MB): peak = 2158.086 ; gain = 1333.176
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.190 . Memory (MB): peak = 2170.156 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 917 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2177.398 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 66b47b89
+INFO: [Common 17-83] Releasing license: Vivado_Synthesis
+21 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:04:50 ; elapsed = 00:05:42 . Memory (MB): peak = 2177.398 ; gain = 1586.223
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.103 . Memory (MB): peak = 2177.398 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/.Xil/step6c3_final_0e4c33f/project/step6c3_build.runs/synth_1/mc_sector_svpwm.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file mc_sector_svpwm_utilization_synth.rpt -pb mc_sector_svpwm_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Sep 19 21:37:20 2026...

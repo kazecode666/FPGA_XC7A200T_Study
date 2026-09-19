@@ -1,0 +1,13 @@
+PASS
+STEP6C3_BUILD_PASS
+Run=final_c20fb05
+Tested code commit=c20fb05a9805c13d484652720052cdd193070456
+Vivado=2026.1
+Part=xc7a200tfbg484-2 Top=mc_sector_svpwm sys_clk=20.000 ns
+5 Python checks and 7 compact simulations PASS
+Synthesis diagnostics and routed timing summaries retained
+WNS=1.935 ns TNS=0.000 ns WHS=0.054 ns THS=0.000 ns
+Routable=5700 fully_routed=5700 routing_errors=0
+Latches=0 blackboxes=0 loops=0 latch_loops=0
+Clock-only internal core timing; board I/O warnings retained
+No bitstream generated; no physical hardware, C4 or Step 6D work

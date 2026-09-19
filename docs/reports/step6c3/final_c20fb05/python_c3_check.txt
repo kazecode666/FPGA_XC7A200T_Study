@@ -1,0 +1,11 @@
+Command: python scripts/step6c3_svpwm_reference.py --check
+STEP6C3_REFERENCE_CHECK_PASS
+fixtures: 22 directed + 768 seeded = 790
+Step 6A: 160 rows, 80/profile, 4 allowed/observed sector exceptions
+Step 6A boundary sector mismatch: row=50 profile=real_commissioning case=edge_1_1.732 v_alpha_raw=71475 v_beta_raw=123795 source_sector=3 oracle_sector=1
+Step 6A boundary sector mismatch: row=62 profile=real_commissioning case=edge_1_-1.732 v_alpha_raw=71475 v_beta_raw=-123795 source_sector=2 oracle_sector=6
+Step 6A boundary sector mismatch: row=130 profile=MIL_PI_override case=edge_1_1.732 v_alpha_raw=142950 v_beta_raw=247590 source_sector=3 oracle_sector=1
+Step 6A boundary sector mismatch: row=142 profile=MIL_PI_override case=edge_1_-1.732 v_alpha_raw=142950 v_beta_raw=-247590 source_sector=2 oracle_sector=6
+Step 6A normalized maxima: t1=0.000015665495423478064619140625, t2=0.000008176039042934234619140625, duty_u=0.0000042531884765625, duty_v=0.000011942187652587890625, duty_w=0.000011942187652587890625
+Decimal maxima: t1=1.163756379763150214951610163E-10, t2=1.163803832810451960356081654E-10, duty_u=2.998324514952515700490021689E-8, duty_v=2.993006103390715006609344174E-8, duty_w=2.983541967130818058279771914E-8
+Tcl status=0; process status=0

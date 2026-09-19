@@ -1,0 +1,6 @@
+PASS
+Part=xc7a200tfbg484-2
+Top=mc_sector_svpwm
+Package-first synthesis order=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_pkg.sv C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv
+Simulation inventory=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_sector_svpwm_tb.sv C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_svpwm_pkg_tb.sv C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_svpwm_sector_xyz_tb.sv C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c3/manifest.json C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c3/sector_xyz_vectors.txt C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c3/svpwm_vectors.txt
+Constraint=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/FOC_SVPWM/FOC_SVPWM.srcs/constrs_1/new/foc_svpwm_clock.xdc
