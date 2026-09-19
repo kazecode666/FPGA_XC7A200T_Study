@@ -1,0 +1,5 @@
+Command: & 'E:/AMDDesignTools/2026.1/Vivado/bin/vivado.bat' -mode batch -nojournal -log .Xil/c2_final05.log -source scripts/step6c2_pi_build.tcl -tclargs final05
+Start=2026-09-19T17:25:56.9933177+08:00
+End=2026-09-19T17:43:00.3892693+08:00
+Vivado outer wrapper exit=0
+PowerShell wrapper exits with the same code=0

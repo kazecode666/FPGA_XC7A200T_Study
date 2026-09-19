@@ -1,0 +1,4 @@
+Command: {C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/Alternate Vivado Install/bin/xsim.bat} -version
+Vivado Simulator v2026.1
+Copyright 1986-2026 Xilinx, Inc. All Rights Reserved.
+Tcl status=0; process status=0

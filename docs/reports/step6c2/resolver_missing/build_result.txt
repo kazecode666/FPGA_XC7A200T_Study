@@ -1,0 +1,18 @@
+FAILED
+Run=resolver_missing
+Simulator tool missing: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/Absent Vivado Install/bin/xvlog.bat
+Simulator tool missing: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/Absent Vivado Install/bin/xvlog.bat
+    while executing
+"error $message"
+    invoked from within
+"if {![uplevel 1 [list expr $condition]]} {error $message}"
+    (procedure "require" line 1)
+    invoked from within
+"require {[file isfile [file join $resolved ${tool}.bat]]} "Simulator tool missing: [file join $resolved ${tool}.bat]""
+    ("foreach" body line 2)
+    invoked from within
+"foreach tool {xvlog xelab xsim} {
+        require {[file isfile [file join $resolved ${tool}.bat]]} "Simulator tool missing: [file join $resolved ${to..."
+    (procedure "resolve_simulator_bin" line 4)
+    invoked from within
+"resolve_simulator_bin $::env(XILINX_VIVADO)"

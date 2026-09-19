@@ -1,0 +1,6 @@
+C2 rejects optimized Python: run without -O/-OO
+child process exited abnormally
+Tcl status=1; options=-code 1 -level 0 -errorstack {INNER {invokeStk1 exec python -OO scripts/step6c2_pi_reference_test.py --check 2>@1}} -errorcode {CHILDSTATUS 39548 1} -errorinfo {C2 rejects optimized Python: run without -O/-OO
+child process exited abnormally
+    while executing
+"exec python $flag [file join scripts $script] --check 2>@1"} -errorline 1

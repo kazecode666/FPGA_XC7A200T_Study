@@ -1,0 +1,15 @@
+Alternate-path wrapper contents used for focused actual Tcl exec checks (not a copied Vivado install):
+.Xil\Alternate Vivado Install\bin\xelab.bat
+@echo off
+call "E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat" %*
+exit /b %errorlevel%
+
+.Xil\Alternate Vivado Install\bin\xsim.bat
+@echo off
+call "E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat" %*
+exit /b %errorlevel%
+
+.Xil\Alternate Vivado Install\bin\xvlog.bat
+@echo off
+call "E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat" %*
+exit /b %errorlevel%

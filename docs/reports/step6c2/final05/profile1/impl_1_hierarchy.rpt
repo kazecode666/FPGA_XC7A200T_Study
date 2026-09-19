@@ -1,0 +1,33 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Sep 19 17:42:53 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/docs/reports/step6c2/final05/profile1/impl_1_hierarchy.rpt
+| Design       : mc_pi_dq_core
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Routed
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------+-----------------+------------+------------+---------+------+------+--------+--------+------------+
+|       Instance       |      Module     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------------+-----------------+------------+------------+---------+------+------+--------+--------+------------+
+| mc_pi_dq_core        |           (top) |       5224 |       5224 |       0 |    0 | 5420 |      0 |      0 |         54 |
+|   (mc_pi_dq_core)    |           (top) |          9 |          9 |       0 |    0 |  727 |      0 |      0 |          0 |
+|   eval_engine        |   mc_pi_dq_eval |       2928 |       2928 |       0 |    0 | 3090 |      0 |      0 |         32 |
+|   limiter_engine     |   mc_dq_limiter |       2292 |       2292 |       0 |    0 | 1603 |      0 |      0 |         22 |
+|     (limiter_engine) |   mc_dq_limiter |       1813 |       1813 |       0 |    0 | 1031 |      0 |      0 |         22 |
+|     div_engine       | mc_udiv_u72_u41 |        294 |        294 |       0 |    0 |  321 |      0 |      0 |          0 |
+|     sqrt_engine      |    mc_isqrt_u80 |        190 |        190 |       0 |    0 |  251 |      0 |      0 |          0 |
++----------------------+-----------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining

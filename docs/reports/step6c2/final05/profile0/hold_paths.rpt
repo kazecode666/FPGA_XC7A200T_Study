@@ -1,0 +1,260 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Sep 19 17:39:02 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type min -max_paths 5 -file C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/docs/reports/step6c2/final05/profile0/hold_paths.rpt
+| Design       : mc_pi_dq_core
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.072ns  (arrival time - required time)
+  Source:                 eval_engine/ff_pair01_reg[1][46]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            eval_engine/product_ff_reg[1][46]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.330ns  (logic 0.141ns (42.772%)  route 0.189ns (57.228%))
+  Logic Levels:           0
+  Clock Path Skew:        0.194ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.151ns
+    Source Clock Delay      (SCD):    1.698ns
+    Clock Pessimism Removal (CPR):    0.258ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.230     0.230 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.676     0.906    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.932 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.767     1.698    eval_engine/clk_IBUF_BUFG
+    SLICE_X13Y47         FDRE                                         r  eval_engine/ff_pair01_reg[1][46]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y47         FDRE (Prop_fdre_C_Q)         0.141     1.839 r  eval_engine/ff_pair01_reg[1][46]/Q
+                         net (fo=1, routed)           0.189     2.028    eval_engine/ff_pair01_reg[1]_6[46]
+    SLICE_X16Y50         FDRE                                         r  eval_engine/product_ff_reg[1][46]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.419     0.419 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.734     1.152    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.181 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.970     2.151    eval_engine/clk_IBUF_BUFG
+    SLICE_X16Y50         FDRE                                         r  eval_engine/product_ff_reg[1][46]/C
+                         clock pessimism             -0.258     1.893    <hidden>
+    SLICE_X16Y50         FDRE (Hold_fdre_C_D)         0.063     1.956    eval_engine/product_ff_reg[1][46]
+  -------------------------------------------------------------------
+                         required time                         -1.956    <hidden>
+                         arrival time                           2.028    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.072    <hidden>
+
+Slack (MET) :             0.072ns  (arrival time - required time)
+  Source:                 eval_engine/ff_pair01_reg[1][47]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            eval_engine/product_ff_reg[1][47]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.330ns  (logic 0.141ns (42.772%)  route 0.189ns (57.228%))
+  Logic Levels:           0
+  Clock Path Skew:        0.194ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.151ns
+    Source Clock Delay      (SCD):    1.698ns
+    Clock Pessimism Removal (CPR):    0.258ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.230     0.230 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.676     0.906    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.932 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.767     1.698    eval_engine/clk_IBUF_BUFG
+    SLICE_X13Y47         FDRE                                         r  eval_engine/ff_pair01_reg[1][47]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y47         FDRE (Prop_fdre_C_Q)         0.141     1.839 r  eval_engine/ff_pair01_reg[1][47]/Q
+                         net (fo=1, routed)           0.189     2.028    eval_engine/ff_pair01_reg[1]_6[47]
+    SLICE_X16Y50         FDRE                                         r  eval_engine/product_ff_reg[1][47]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.419     0.419 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.734     1.152    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.181 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.970     2.151    eval_engine/clk_IBUF_BUFG
+    SLICE_X16Y50         FDRE                                         r  eval_engine/product_ff_reg[1][47]/C
+                         clock pessimism             -0.258     1.893    <hidden>
+    SLICE_X16Y50         FDRE (Hold_fdre_C_D)         0.063     1.956    eval_engine/product_ff_reg[1][47]
+  -------------------------------------------------------------------
+                         required time                         -1.956    <hidden>
+                         arrival time                           2.028    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.072    <hidden>
+
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 eval_engine/ff_pair01_reg[1][45]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            eval_engine/product_ff_reg[1][45]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.357ns  (logic 0.141ns (39.520%)  route 0.216ns (60.480%))
+  Logic Levels:           0
+  Clock Path Skew:        0.194ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.151ns
+    Source Clock Delay      (SCD):    1.698ns
+    Clock Pessimism Removal (CPR):    0.258ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.230     0.230 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.676     0.906    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.932 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.767     1.698    eval_engine/clk_IBUF_BUFG
+    SLICE_X13Y47         FDRE                                         r  eval_engine/ff_pair01_reg[1][45]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y47         FDRE (Prop_fdre_C_Q)         0.141     1.839 r  eval_engine/ff_pair01_reg[1][45]/Q
+                         net (fo=1, routed)           0.216     2.055    eval_engine/ff_pair01_reg[1]_6[45]
+    SLICE_X14Y52         FDRE                                         r  eval_engine/product_ff_reg[1][45]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.419     0.419 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.734     1.152    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.181 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.970     2.151    eval_engine/clk_IBUF_BUFG
+    SLICE_X14Y52         FDRE                                         r  eval_engine/product_ff_reg[1][45]/C
+                         clock pessimism             -0.258     1.893    <hidden>
+    SLICE_X14Y52         FDRE (Hold_fdre_C_D)         0.083     1.976    eval_engine/product_ff_reg[1][45]
+  -------------------------------------------------------------------
+                         required time                         -1.976    <hidden>
+                         arrival time                           2.055    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.079    <hidden>
+
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 eval_engine/ff_hm_reg[1]/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            eval_engine/ff_pair1_reg[1][50]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.494ns  (logic 0.235ns (47.603%)  route 0.259ns (52.397%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.261ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.227ns
+    Source Clock Delay      (SCD):    1.707ns
+    Clock Pessimism Removal (CPR):    0.258ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.230     0.230 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.676     0.906    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.932 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.776     1.707    eval_engine/clk_IBUF_BUFG
+    DSP48_X0Y20          DSP48E1                                      r  eval_engine/ff_hm_reg[1]/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y20          DSP48E1 (Prop_dsp48e1_CLK_P[10])
+                                                      0.126     1.833 r  eval_engine/ff_hm_reg[1]/P[10]
+                         net (fo=1, routed)           0.259     2.092    eval_engine/ff_hm_reg_n_95_[1]
+    SLICE_X12Y48         LUT2 (Prop_lut2_I1_O)        0.045     2.137 r  eval_engine/ff_pair1[1][50]_i_2/O
+                         net (fo=1, routed)           0.000     2.137    eval_engine/ff_pair1[1][50]_i_2_n_0
+    SLICE_X12Y48         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.064     2.201 r  eval_engine/ff_pair1_reg[1][50]_i_1/O[3]
+                         net (fo=1, routed)           0.000     2.201    eval_engine/ff_pair1_reg[1][50]_i_1_n_4
+    SLICE_X12Y48         FDRE                                         r  eval_engine/ff_pair1_reg[1][50]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.419     0.419 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.734     1.152    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.181 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        1.046     2.227    eval_engine/clk_IBUF_BUFG
+    SLICE_X12Y48         FDRE                                         r  eval_engine/ff_pair1_reg[1][50]/C
+                         clock pessimism             -0.258     1.969    <hidden>
+    SLICE_X12Y48         FDRE (Hold_fdre_C_D)         0.134     2.103    eval_engine/ff_pair1_reg[1][50]
+  -------------------------------------------------------------------
+                         required time                         -2.103    <hidden>
+                         arrival time                           2.201    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.098    <hidden>
+
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 eval_engine/ff_hm_reg[1]/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            eval_engine/ff_pair1_reg[1][54]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.494ns  (logic 0.235ns (47.603%)  route 0.259ns (52.397%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.261ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.227ns
+    Source Clock Delay      (SCD):    1.707ns
+    Clock Pessimism Removal (CPR):    0.258ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.230     0.230 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.676     0.906    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.932 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        0.776     1.707    eval_engine/clk_IBUF_BUFG
+    DSP48_X0Y20          DSP48E1                                      r  eval_engine/ff_hm_reg[1]/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y20          DSP48E1 (Prop_dsp48e1_CLK_P[14])
+                                                      0.126     1.833 r  eval_engine/ff_hm_reg[1]/P[14]
+                         net (fo=1, routed)           0.259     2.092    eval_engine/ff_hm_reg_n_91_[1]
+    SLICE_X12Y49         LUT2 (Prop_lut2_I1_O)        0.045     2.137 r  eval_engine/ff_pair1[1][54]_i_2/O
+                         net (fo=1, routed)           0.000     2.137    eval_engine/ff_pair1[1][54]_i_2_n_0
+    SLICE_X12Y49         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.064     2.201 r  eval_engine/ff_pair1_reg[1][54]_i_1/O[3]
+                         net (fo=1, routed)           0.000     2.201    eval_engine/ff_pair1_reg[1][54]_i_1_n_4
+    SLICE_X12Y49         FDRE                                         r  eval_engine/ff_pair1_reg[1][54]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y4                                                0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y4                   IBUF (Prop_ibuf_I_O)         0.419     0.419 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.734     1.152    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.181 r  clk_IBUF_BUFG_inst/O
+                         net (fo=5528, routed)        1.046     2.227    eval_engine/clk_IBUF_BUFG
+    SLICE_X12Y49         FDRE                                         r  eval_engine/ff_pair1_reg[1][54]/C
+                         clock pessimism             -0.258     1.969    <hidden>
+    SLICE_X12Y49         FDRE (Hold_fdre_C_D)         0.134     2.103    eval_engine/ff_pair1_reg[1][54]
+  -------------------------------------------------------------------
+                         required time                         -2.103    <hidden>
+                         arrival time                           2.201    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.098    <hidden>

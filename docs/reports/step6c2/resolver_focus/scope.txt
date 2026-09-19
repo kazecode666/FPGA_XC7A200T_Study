@@ -1,0 +1,1 @@
+Focused resolver only; not a full build. Original build_result IN_PROGRESS is retained; resolver_result PASS and outer exit0 establish only resolver checks.

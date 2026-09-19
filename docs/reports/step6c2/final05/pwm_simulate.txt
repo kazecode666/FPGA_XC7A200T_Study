@@ -1,0 +1,62 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat sim -runall
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Sep 19 17:28:19 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim/xsim_script.tcl
+# xsim {sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+STARTUP COUNTS: U=0 V=8 W=16 /16
+DUTY COUNTS: U=0 V=8 W=16 /16; symmetric halves
+DUTY COUNTS: U=4 V=8 W=12 /16; symmetric halves
+PASS: carrier continuity, atomic shadow load, backpressure, ZERO collision
+STARTUP COUNTS: U=16 V=8 W=0 /16
+DUTY COUNTS: U=16 V=8 W=0 /16; symmetric halves
+PASS: disable cancellation, retained configuration and coherent re-enable
+PASS: asynchronous reset during activity clears pending and all state
+STARTUP COUNTS: U=0 V=16 W=0 /16
+DUTY COUNTS: U=0 V=16 W=0 /16; symmetric halves
+STARTUP COUNTS: U=2 V=16 W=0 /16
+DUTY COUNTS: U=2 V=16 W=0 /16; symmetric halves
+STARTUP COUNTS: U=4 V=16 W=2 /16
+DUTY COUNTS: U=4 V=16 W=2 /16; symmetric halves
+STARTUP COUNTS: U=6 V=16 W=2 /16
+DUTY COUNTS: U=6 V=16 W=2 /16; symmetric halves
+STARTUP COUNTS: U=8 V=16 W=4 /16
+DUTY COUNTS: U=8 V=16 W=4 /16; symmetric halves
+STARTUP COUNTS: U=10 V=16 W=4 /16
+DUTY COUNTS: U=10 V=16 W=4 /16; symmetric halves
+STARTUP COUNTS: U=12 V=16 W=6 /16
+DUTY COUNTS: U=12 V=16 W=6 /16; symmetric halves
+STARTUP COUNTS: U=14 V=16 W=6 /16
+DUTY COUNTS: U=14 V=16 W=6 /16; symmetric halves
+STARTUP COUNTS: U=16 V=14 W=8 /16
+DUTY COUNTS: U=16 V=14 W=8 /16; symmetric halves
+STARTUP COUNTS: U=16 V=12 W=8 /16
+DUTY COUNTS: U=16 V=12 W=8 /16; symmetric halves
+STARTUP COUNTS: U=16 V=10 W=10 /16
+DUTY COUNTS: U=16 V=10 W=10 /16; symmetric halves
+STARTUP COUNTS: U=16 V=8 W=10 /16
+DUTY COUNTS: U=16 V=8 W=10 /16; symmetric halves
+STARTUP COUNTS: U=16 V=6 W=12 /16
+DUTY COUNTS: U=16 V=6 W=12 /16; symmetric halves
+STARTUP COUNTS: U=16 V=4 W=12 /16
+DUTY COUNTS: U=16 V=4 W=12 /16; symmetric halves
+STARTUP COUNTS: U=16 V=2 W=14 /16
+DUTY COUNTS: U=16 V=2 W=14 /16; symmetric halves
+STARTUP COUNTS: U=16 V=0 W=14 /16
+DUTY COUNTS: U=16 V=0 W=14 /16; symmetric halves
+PASS: all 4-bit compare values 0..15, boundaries and HIGH symmetry
+PASS: acceptance at every carrier phase and rejection through load edge
+MONITORED CLOCKS: 1567
+ALL STEP 6B MOTOR PWM TESTS PASSED
+$finish called at time : 31401 ns : File "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/pwm/tb/motor_pwm_core_tb.sv" Line 229
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Sep 19 17:28:21 2026...
+Tcl status=0; options=-code 0 -level 0
