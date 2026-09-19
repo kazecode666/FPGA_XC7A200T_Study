@@ -27,12 +27,13 @@ proc run_command {name command} {
     if {$status} {set exitcode [dict get $options -errorcode]}
     write_text [file join $reports ${name}.txt] "Command: $command\n$output\nTcl status=$status; process status=$exitcode"
     require {$status == 0} "$name failed; see ${name}.txt: $exitcode"
+    require {![regexp -nocase {(^|\n)[ \t]*(fatal|error)(:|[ \t])|FATAL_ERROR} $output]} "$name emitted fatal/error"
     return $output
 }
 proc check_sim {status output marker} {
     require {$status == 0} {Simulation process failed}
     require {[regexp -line -- "^${marker}( |$)" $output]} "Missing success marker: $marker"
-    require {![regexp -nocase {(^|\n)[ \t]*(fatal|error)(:|[ \t])|\$fatal|\$error} $output]} {Simulation fatal/error}
+    require {![regexp -nocase {(^|\n)[ \t]*(fatal|error)(:|[ \t])|FATAL_ERROR|\$fatal|\$error} $output]} {Simulation fatal/error}
 }
 proc stage_vectors {dir base c1} {
     global vectors
