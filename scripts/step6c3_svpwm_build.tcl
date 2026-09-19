@@ -58,7 +58,8 @@ proc simulate {name top sources marker fragments vector_dir} {
     run_command ${name}_compile [list [file join $bin xvlog.bat] -sv {*}$sources]
     run_command ${name}_elaborate [list [file join $bin xelab.bat] $top -s ${name}_snapshot]
     set command [list [file join $bin xsim.bat] ${name}_snapshot -runall]
-    if {$vector_dir ne ""} {lappend command -testplusarg "VECTOR_DIR=$vector_dir"}
+    # xsim.bat requires the plusarg value to retain literal quotes on Windows.
+    if {$vector_dir ne ""} {lappend command -testplusarg \"VECTOR_DIR=$vector_dir\"}
     set status [catch {exec {*}$command 2>@1} output options]
     set exitcode [process_exit $options]
     write_text [file join $reports ${name}_simulate.txt] "Command: $command\n$output\nTcl status=$status; process status=$exitcode"
