@@ -1,0 +1,315 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Sep 19 16:38:02 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : check_timing -verbose -file C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/docs/reports/step6c2/final03/profile1/check_timing.rpt
+| Design       : mc_pi_dq_core
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (161)
+6. checking no_output_delay (56)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (161)
+--------------------------------
+ There are 161 input ports with no input delay specified. (HIGH)
+
+id_meas[0]
+id_meas[10]
+id_meas[11]
+id_meas[12]
+id_meas[13]
+id_meas[14]
+id_meas[15]
+id_meas[16]
+id_meas[17]
+id_meas[18]
+id_meas[19]
+id_meas[1]
+id_meas[20]
+id_meas[21]
+id_meas[22]
+id_meas[23]
+id_meas[24]
+id_meas[2]
+id_meas[3]
+id_meas[4]
+id_meas[5]
+id_meas[6]
+id_meas[7]
+id_meas[8]
+id_meas[9]
+id_ref[0]
+id_ref[10]
+id_ref[11]
+id_ref[12]
+id_ref[13]
+id_ref[14]
+id_ref[15]
+id_ref[16]
+id_ref[17]
+id_ref[18]
+id_ref[19]
+id_ref[1]
+id_ref[20]
+id_ref[21]
+id_ref[22]
+id_ref[23]
+id_ref[24]
+id_ref[2]
+id_ref[3]
+id_ref[4]
+id_ref[5]
+id_ref[6]
+id_ref[7]
+id_ref[8]
+id_ref[9]
+input_valid
+iq_meas[0]
+iq_meas[10]
+iq_meas[11]
+iq_meas[12]
+iq_meas[13]
+iq_meas[14]
+iq_meas[15]
+iq_meas[16]
+iq_meas[17]
+iq_meas[18]
+iq_meas[19]
+iq_meas[1]
+iq_meas[20]
+iq_meas[21]
+iq_meas[22]
+iq_meas[23]
+iq_meas[24]
+iq_meas[2]
+iq_meas[3]
+iq_meas[4]
+iq_meas[5]
+iq_meas[6]
+iq_meas[7]
+iq_meas[8]
+iq_meas[9]
+iq_ref[0]
+iq_ref[10]
+iq_ref[11]
+iq_ref[12]
+iq_ref[13]
+iq_ref[14]
+iq_ref[15]
+iq_ref[16]
+iq_ref[17]
+iq_ref[18]
+iq_ref[19]
+iq_ref[1]
+iq_ref[20]
+iq_ref[21]
+iq_ref[22]
+iq_ref[23]
+iq_ref[24]
+iq_ref[2]
+iq_ref[3]
+iq_ref[4]
+iq_ref[5]
+iq_ref[6]
+iq_ref[7]
+iq_ref[8]
+iq_ref[9]
+pi_reset
+reset_n
+uq_zero_en
+vdc[0]
+vdc[10]
+vdc[11]
+vdc[12]
+vdc[13]
+vdc[14]
+vdc[15]
+vdc[16]
+vdc[17]
+vdc[18]
+vdc[19]
+vdc[1]
+vdc[20]
+vdc[21]
+vdc[22]
+vdc[23]
+vdc[24]
+vdc[2]
+vdc[3]
+vdc[4]
+vdc[5]
+vdc[6]
+vdc[7]
+vdc[8]
+vdc[9]
+we[0]
+we[10]
+we[11]
+we[12]
+we[13]
+we[14]
+we[15]
+we[16]
+we[17]
+we[18]
+we[19]
+we[1]
+we[20]
+we[21]
+we[22]
+we[23]
+we[24]
+we[25]
+we[26]
+we[27]
+we[28]
+we[29]
+we[2]
+we[30]
+we[31]
+we[3]
+we[4]
+we[5]
+we[6]
+we[7]
+we[8]
+we[9]
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (56)
+--------------------------------
+ There are 56 ports with no output delay specified. (HIGH)
+
+error_code[0]
+error_code[1]
+input_ready
+limited
+output_valid
+sat_flag
+ud_lim[0]
+ud_lim[10]
+ud_lim[11]
+ud_lim[12]
+ud_lim[13]
+ud_lim[14]
+ud_lim[15]
+ud_lim[16]
+ud_lim[17]
+ud_lim[18]
+ud_lim[19]
+ud_lim[1]
+ud_lim[20]
+ud_lim[21]
+ud_lim[22]
+ud_lim[23]
+ud_lim[24]
+ud_lim[2]
+ud_lim[3]
+ud_lim[4]
+ud_lim[5]
+ud_lim[6]
+ud_lim[7]
+ud_lim[8]
+ud_lim[9]
+uq_lim[0]
+uq_lim[10]
+uq_lim[11]
+uq_lim[12]
+uq_lim[13]
+uq_lim[14]
+uq_lim[15]
+uq_lim[16]
+uq_lim[17]
+uq_lim[18]
+uq_lim[19]
+uq_lim[1]
+uq_lim[20]
+uq_lim[21]
+uq_lim[22]
+uq_lim[23]
+uq_lim[24]
+uq_lim[2]
+uq_lim[3]
+uq_lim[4]
+uq_lim[5]
+uq_lim[6]
+uq_lim[7]
+uq_lim[8]
+uq_lim[9]
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input

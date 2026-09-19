@@ -1,0 +1,21 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat sim -runall
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Sep 19 16:30:03 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim/xsim_script.tcl
+# xsim {sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+CORE_ABORT_COVERAGE evaluator=16 sqrt=40 divider=72 completed-private-padding=75 phases=0..255 plus two simultaneous-edge resets
+CORE_COUNTS profile=1 accepted=2751 completed=2493 successful=2229 invalid_vdc=129 range=128 internal=7 aborted=258 latency=256 golden=80x2 seeded=1024x2 errors=128x2
+ALL STEP 6C2 PI DQ CORE TESTS PASSED
+$finish called at time : 15479400 ns : File "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv" Line 362
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Sep 19 16:30:07 2026...
+Tcl status=0; options=-code 0 -level 0

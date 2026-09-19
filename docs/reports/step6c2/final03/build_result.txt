@@ -1,0 +1,5 @@
+PASS
+STEP6C2_BUILD_PASS
+Run=final03
+13 simulations; Python checks; optimized rejection; portable execution; eleven failure probes; both profile routes PASS
+Clock-only internal timing; external I/O and board constraints absent. No board timing sign-off, bitstream or hardware test.

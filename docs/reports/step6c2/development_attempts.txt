@@ -1,0 +1,16 @@
+Task 7 development attempts (history, not final acceptance)
+Authoritative committed acceptance: final03, code e3c0f73, process exit0, 2026-09-19 16:28:55..16:38:06, STEP6C2_BUILD_PASS.
+Committed focused parser proof: parser_repair/ and parser_repair_sqrt/; FXP and sqrt short-row native-crash RED, normal and explicit-short-row-Fatal GREEN. Final03 covers all nine fixture-negative variants and two other failure gates.
+
+All original development-run directories and .Xil logs remain locally preserved; they are intentionally not duplicated in this commit:
+- dev01: FAILED; positional set_property interpreted '-testplusarg VECTOR_DIR=.' as an option. Fixed explicit -name/-value/-objects.
+- dev02: FAILED; read-only-open simulator property was lazily unset. Replaced inference from property visibility with actual exported command/staging/execution audit.
+- dev03: FAILED; launch_simulation -scripts_only could not export from read-only session. Actual relocated read-only source/type/order audit retained, followed by writable open of only disposable copy for export.
+- dev04: FAILED; Windows exported batch unquoted VECTOR_DIR=. led to 'Expected a switch but found .'. Fixed quoted value; subsequent actual exported simulation passed.
+- dev05: development PASS for then-current script, 13 simulations/Python/failure probes/both profile routes. Not final acceptance because script/test repairs followed.
+- final01: superseded; overall FAILED. Its short-column FXP negative probe triggered native FATAL_ERROR/exit0; build failed that probe closed, but native crash was not accepted as parser rejection. RED copied to parser_repair/fxp_short_old_simulate.txt. Profile1 implementation then failed at tool initialization with Common17-354 'Could not open C for writing' and Common17-39 tclapp::load_apps failure during create_project; this was before RTL implementation. Full child log remains local final01/profile1/impl_1_failed_runme.txt. No root cause is asserted; the final single run did not reproduce it.
+- final02: superseded after authorization to repair both known short-column parser paths. Its exact task-owned cmd.exe wrapper PID30044 and '-tclargs final02' command line were verified, then only that process tree was terminated (taskkill /PID30044 /T /F). No process-name-wide termination, no shared-service stop, no file deletion. Result remains IN_PROGRESS/nonPASS; no completed validation is claimed.
+
+The FXP round/range and sqrt five-string sscanf parsing was replaced with the already-proven indexed-byte tokenizer, preserving independent counts, lexical/range/ordering and arithmetic gates. This narrow change to two NEW C2 TBs was explicitly authorized after reproduced RED evidence. No RTL or frozen contract changed. Final03 began only after committing that complete code (e3c0f73); no later build/RTL/TB edits were made.
+
+Local history directories: docs/reports/step6c2/dev01, dev02, dev03, dev04, dev05, final01, final02. Exact original log roots: .Xil/c2_<label>.log and .Xil/c2_<label>/. They are locally excluded for status clarity; tracked .gitignore unchanged. Prior accepted reports untouched.

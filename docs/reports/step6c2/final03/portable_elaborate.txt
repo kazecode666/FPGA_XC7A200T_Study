@@ -1,0 +1,23 @@
+Command: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final03/rel/FOC_PI/FOC_PI.sim/sim_1/behav/xsim/elaborate.bat
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot mc_pi_dq_core_tb_behav xil_defaultlib.mc_pi_dq_core_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot mc_pi_dq_core_tb_behav xil_defaultlib.mc_pi_dq_core_tb xil_defaultlib.glbl -log elaborate.log
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.mc_pi_fxp_pkg
+Compiling module xil_defaultlib.mc_pi_dq_eval_default
+Compiling module xil_defaultlib.mc_isqrt_u80
+Compiling module xil_defaultlib.mc_udiv_u72_u41
+Compiling module xil_defaultlib.mc_dq_limiter
+Compiling module xil_defaultlib.mc_pi_dq_core_default
+Compiling module xil_defaultlib.mc_pi_dq_core_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot mc_pi_dq_core_tb_behav
+Tcl status=0; process status=0
