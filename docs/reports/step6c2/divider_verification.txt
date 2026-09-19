@@ -1,0 +1,45 @@
+Step 6C2 Task 3 divider verification (2026-09-19)
+Tool: Vivado Simulator 2026.1, direct behavioral flow.
+RED: TB existed before RTL. .Xil/mc_udiv_u72_u41_r1
+xvlog exit 0; xelab exit 1: VRFC 10-2063 Module <mc_udiv_u72_u41> not found.
+Final GREEN fresh directory: .Xil/mc_udiv_u72_u41_final
+Commands (absolute worktree paths supplied to sources):
+E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv motor_control_ip/foc/tb/mc_udiv_u72_u41_tb.sv
+E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat mc_udiv_u72_u41_tb -s green
+E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat green -runall
+All exit 0. No ERROR/Fatal/FATAL_ERROR in compile/elaborate/simulate output.
+ALL STEP 6C2 DIVIDER TESTS PASSED fixture_rows=2058 transactions=4125 aborts=72 idle_clocks=5000
+Fixture data-only copy staged beneath scratch relative fallback path.
+Strict parser validates sole first-line header, exact six columns, lowercase
+hex, exact widths, unused U41/U1 high padding, contiguous IDs and 2058 rows.
+2058 independent oracle cases include 2048 seeded full-width cases.
+Additional exhaustive numerator 0..63 x denominator 0..31 (2048 cases), 16
+fixture replays with varied idle gaps, 2 held-valid consecutive requests,
+and maximum U72 divided by one after reset recovery.
+Every transaction checks exact +72 response (including divide-by-zero), full
+U72 quotient/U41 remainder/error and 160-bit numerator=quotient*denominator
++remainder with remainder<denominator. Busy input changes/valid ignored;
+outputs stable until response, pulse clears, completion edge request excluded,
+next edge accepts held valid. 5000 idle clocks check functional and working
+register stability. Async reset at all 72 pending phases, including just before
+completion, clears outputs and gates ready; no stale response over 74 clocks.
+RTL uses one numerator bit per busy clock, 42-bit shifted remainder and full
+U72 quotient. Zero denominator only advances the fixed response counter;
+quotient/remainder return zero and div_by_zero returns one.
+No synthesis, implementation or hardware claim.
+
+Simulator issue isolated and resolved without weakening fixture checks:
+Earlier g1/g2 runs crashed at time zero in load_vectors (FATAL_ERROR; not PASS).
+Scratch .Xil/div_debug traced crash to $sscanf with seven string destinations.
+Replaced only token splitting by indexed-string-byte whitespace scanner;
+retained exact token count, full lexical/width/high-padding and ID/count gates.
+No string.getc, dynamic string array, or lossy packed token used.
+
+Negative parser controls (scratch fixture copies only, original files untouched):
+Both final sqrt and divider snapshots rejected all six mutations separately:
+high padding, nonhex digit, duplicate ID, missing last row, extra column,
+wrong token width. Each produced explicit TB Fatal/_FAIL with no PASS and no
+native FATAL_ERROR. xsim can return 0 on Fatal; exit code alone never accepted.
+Outputs retained at .Xil/<module>_final/negative_<case>.txt. Scratch fixture
+copies restored to original text after controls. GREEN output remains the
+prior unmodified-fixture compile/elaborate/simulate.txt from each final run.
