@@ -50,9 +50,16 @@ proc simulate {name top sources marker fragments {bad ""}} {
     stage_vectors [file join $dir motor_control_ip foc tb vectors] $root 1
     file copy [file join $root motor_control_ip foc rom sin_qw_4096x18.mem] $dir
     if {$bad ne ""} {
-        set file [file join $dir motor_control_ip foc tb vectors step6c2 round_vectors.txt]
+        set fixture round_vectors.txt
+        if {[string match sqrt_* $bad]} {set fixture sqrt_vectors.txt; set bad [string range $bad 5 end]}
+        if {[string match range_* $bad]} {set fixture range_vectors.txt; set bad [string range $bad 6 end]}
+        set file [file join $dir motor_control_ip foc tb vectors step6c2 $fixture]
         set lines [split [string trimright [read_text $file]] \n]
-        if {$bad eq "truncated"} {set lines [lrange $lines 0 end-1]} else {lset lines 1 "g[string range [lindex $lines 1] 1 end]"}
+        switch $bad {
+            truncated {set lines [lrange $lines 0 end-1]}
+            malformed {lset lines 1 "malformed token"}
+            nonhex {lset lines 1 "g[string range [lindex $lines 1] 1 end]"}
+        }
         write_text $file [join $lines \n]
     }
     cd $dir
@@ -283,21 +290,24 @@ set status [catch {
     } {simulate $tb $tb [concat $c1 [list [file join $root motor_control_ip foc tb $tb.sv]]] $marker {}}
     simulate pwm motor_pwm_core_tb [list [file join $root motor_control_ip pwm rtl motor_pwm_core.sv] [file join $root motor_control_ip pwm tb motor_pwm_core_tb.sv]] {ALL STEP 6B MOTOR PWM TESTS PASSED} {}
     puts C2_REGRESSION_13_PASS
-    foreach probe {malformed truncated missing_source failed_marker} {
+    foreach probe {malformed nonhex truncated range_malformed range_nonhex range_truncated sqrt_malformed sqrt_nonhex sqrt_truncated missing_source failed_marker} {
         set state [file join $reports probe_${probe}_result.txt]
         write_text $state IN_PROGRESS
         set code [catch {
             switch $probe {
-                malformed - truncated {simulate probe_$probe mc_pi_fxp_tb [concat $sources [list [file join $root motor_control_ip foc tb mc_pi_fxp_tb.sv]]] {ALL STEP 6C2 FXP TESTS PASSED} {} $probe}
+                malformed - nonhex - truncated - range_malformed - range_nonhex - range_truncated {simulate probe_$probe mc_pi_fxp_tb [concat $sources [list [file join $root motor_control_ip foc tb mc_pi_fxp_tb.sv]]] {ALL STEP 6C2 FXP TESTS PASSED} {} $probe}
+                sqrt_malformed - sqrt_nonhex - sqrt_truncated {simulate probe_$probe mc_isqrt_u80_tb [concat $sources [list [file join $root motor_control_ip foc tb mc_isqrt_u80_tb.sv]]] {ALL STEP 6C2 ISQRT TESTS PASSED} {} $probe}
                 missing_source {source_exists [file join $scratch nonexistent.sv]}
                 failed_marker {simulate probe_failed_marker mc_pi_fxp_tb [concat $sources [list [file join $root motor_control_ip foc tb mc_pi_fxp_tb.sv]]] {INTENTIONALLY ABSENT SUCCESS MARKER} {}}
             }
         } detail]
         if {$code} {write_text $state "FAILED\n$detail"}
         require {$code != 0 && [string match "FAILED*" [read_text $state]]} "Failure probe incorrectly passed $probe"
-        if {$probe in {malformed truncated}} {
+        if {$probe ni {missing_source failed_marker}} {
             set negative [read_text [file join $reports probe_${probe}_simulate.txt]]
-            require {[string first {Fatal: PI_FXP_TB_FAIL} $negative] >= 0 && [string first FATAL_ERROR $negative] < 0} "Fixture probe must reject explicitly without native crash: $probe"
+            set expected {Fatal: PI_FXP_TB_FAIL}
+            if {[string match sqrt_* $probe]} {set expected {Fatal: MC_ISQRT_U80_FAIL}}
+            require {[string first $expected $negative] >= 0 && [string first FATAL_ERROR $negative] < 0} "Fixture probe must reject explicitly without native crash: $probe"
         }
     }
     # Independent builds: retain the other profile's evidence even when one fails.
@@ -310,7 +320,7 @@ set status [catch {
         }
     }
     require {[llength $failed] == 0} "Failed profile(s): $failed"
-    write_text [file join $reports build_result.txt] "PASS\nSTEP6C2_BUILD_PASS\nRun=$token\n13 simulations; Python checks; optimized rejection; portable execution; four failure probes; both profile routes PASS\nClock-only internal timing; external I/O and board constraints absent. No board timing sign-off, bitstream or hardware test."
+    write_text [file join $reports build_result.txt] "PASS\nSTEP6C2_BUILD_PASS\nRun=$token\n13 simulations; Python checks; optimized rejection; portable execution; eleven failure probes; both profile routes PASS\nClock-only internal timing; external I/O and board constraints absent. No board timing sign-off, bitstream or hardware test."
     puts STEP6C2_BUILD_PASS
 } detail options]
 if {$status} {

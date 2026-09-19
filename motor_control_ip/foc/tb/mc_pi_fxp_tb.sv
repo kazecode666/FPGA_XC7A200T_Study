@@ -57,6 +57,7 @@ module mc_pi_fxp_tb;
     string shift_token;
     string expected_token;
     string extra_token;
+    string token;
     logic [31:0] parsed_id;
     logic [95:0] parsed_x;
     logic [7:0] parsed_shift;
@@ -64,6 +65,8 @@ module mc_pi_fxp_tb;
     int fd;
     int line_status;
     int fields;
+    int idx;
+    int ch;
     int rows;
     int line_number;
     int headers;
@@ -94,9 +97,26 @@ module mc_pi_fxp_tb;
             shift_token = "";
             expected_token = "";
             extra_token = "";
-            fields = $sscanf(line, "%s %s %s %s %s",
-                              id_token, x_token, shift_token,
-                              expected_token, extra_token);
+            // XSim 2026.1 can crash when sscanf has missing string fields.
+            // Indexed-byte tokenization preserves exact columns before hex casts.
+            fields = 0;
+            token = "";
+            for (idx = 0; idx <= line.len(); idx = idx + 1) begin
+              ch = (idx == line.len()) ? 32 : line[idx];
+              if (ch == 32 || ch == 9 || ch == 10 || ch == 13) begin
+                if (token.len() != 0) begin
+                  case (fields)
+                    0: id_token = token;
+                    1: x_token = token;
+                    2: shift_token = token;
+                    3: expected_token = token;
+                    default: extra_token = token;
+                  endcase
+                  fields = fields + 1;
+                  token = "";
+                end
+              end else token = {token, 8'(ch)};
+            end
             if (fields != 4)
               fail($sformatf("round fixture line %0d has %0d columns, expected 4",
                              line_number, fields));
@@ -142,6 +162,7 @@ module mc_pi_fxp_tb;
     string s25_token;
     string s40_token;
     string extra_token;
+    string token;
     logic [31:0] parsed_id;
     logic [95:0] parsed_x;
     logic parsed_s25;
@@ -149,6 +170,8 @@ module mc_pi_fxp_tb;
     int fd;
     int line_status;
     int fields;
+    int idx;
+    int ch;
     int rows;
     int line_number;
     int headers;
@@ -179,9 +202,26 @@ module mc_pi_fxp_tb;
             s25_token = "";
             s40_token = "";
             extra_token = "";
-            fields = $sscanf(line, "%s %s %s %s %s",
-                              id_token, x_token, s25_token, s40_token,
-                              extra_token);
+            // XSim 2026.1 can crash when sscanf has missing string fields.
+            // Indexed-byte tokenization preserves exact columns before hex casts.
+            fields = 0;
+            token = "";
+            for (idx = 0; idx <= line.len(); idx = idx + 1) begin
+              ch = (idx == line.len()) ? 32 : line[idx];
+              if (ch == 32 || ch == 9 || ch == 10 || ch == 13) begin
+                if (token.len() != 0) begin
+                  case (fields)
+                    0: id_token = token;
+                    1: x_token = token;
+                    2: s25_token = token;
+                    3: s40_token = token;
+                    default: extra_token = token;
+                  endcase
+                  fields = fields + 1;
+                  token = "";
+                end
+              end else token = {token, 8'(ch)};
+            end
             if (fields != 4)
               fail($sformatf("range fixture line %0d has %0d columns, expected 4",
                              line_number, fields));

@@ -43,12 +43,12 @@ module mc_isqrt_u80_tb;
   endfunction
 
   task automatic load_vectors;
-    string dir,line,extra;
+    string dir,line,extra,token;
     string t_id; logic [31:0] p_id;
     string t_radicand; logic [79:0] p_radicand;
     string t_root_floor; logic [39:0] p_root_floor;
     string t_remainder; logic [40:0] p_remainder;
-    int fd,rc,count,headers,lineno,cols;
+    int fd,rc,count,headers,lineno,cols,idx,ch;
     begin
       if (!$value$plusargs("VECTOR_DIR=%s",dir)) dir="motor_control_ip/foc/tb/vectors/step6c2";
       fd=$fopen({dir,"/sqrt_vectors.txt"},"r"); if(!fd) fail("fixture open");
@@ -61,7 +61,24 @@ module mc_isqrt_u80_tb;
             headers++; if(lineno!=1 || headers!=1) fail("header position/count");
           end else begin
             t_id=""; t_radicand=""; t_root_floor=""; t_remainder=""; extra="";
-            cols=$sscanf(line,"%s %s %s %s %s",t_id,t_radicand,t_root_floor,t_remainder,extra);
+            // Avoid XSim 2026.1 native crashes on missing string sscanf fields.
+            // Count every whitespace-delimited token before strict hex conversion.
+            cols=0; token="";
+            for(idx=0;idx<=line.len();idx++) begin
+              ch=(idx==line.len()) ? 32 : line[idx];
+              if(ch==32 || ch==9 || ch==10 || ch==13) begin
+                if(token.len()!=0) begin
+                  case(cols)
+                    0:t_id=token;
+                    1:t_radicand=token;
+                    2:t_root_floor=token;
+                    3:t_remainder=token;
+                    default:extra=token;
+                  endcase
+                  cols++; token="";
+                end
+              end else token={token,8'(ch)};
+            end
             if(cols!=4 || count>=ROWS) fail("column/extra row count");
             if(!valid_lower_hex(t_id,8,32) || !valid_lower_hex(t_radicand,20,80) || !valid_lower_hex(t_root_floor,10,40) || !valid_lower_hex(t_remainder,11,41)) fail("lexical/width/high-padding");
             if($sscanf(t_id,"%h",p_id)!=1 || $sscanf(t_radicand,"%h",p_radicand)!=1 || $sscanf(t_root_floor,"%h",p_root_floor)!=1 || $sscanf(t_remainder,"%h",p_remainder)!=1) fail("conversion");
