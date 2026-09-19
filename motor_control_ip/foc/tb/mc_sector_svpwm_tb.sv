@@ -65,6 +65,9 @@ module mc_sector_svpwm_tb;
   integer response_count;
   integer poisoned_cycles;
   integer abort_count;
+  integer last_response_edge;
+  integer completion_no_accept_count;
+  integer earliest_next_accept_count;
   bit seen_tag [0:22];
   logic accepted_now;
 
@@ -219,13 +222,29 @@ module mc_sector_svpwm_tb;
       #1;
       if (!reset_n) begin
         clear_queue();
+        last_response_edge = -1;
         if (output_valid !== 1'b0)
           fail("output_valid asserted during reset");
       end else begin
-        if (accepted_now)
+        if (accepted_now) begin
+          if (last_response_edge >= 0) begin
+            if (edge_number != last_response_edge + 1)
+              fail($sformatf("next acceptance edge=%0d expected=%0d",
+                             edge_number, last_response_edge + 1));
+            earliest_next_accept_count = earliest_next_accept_count + 1;
+            last_response_edge = -1;
+          end
           enqueue_expected();
-        if (output_valid)
+        end
+        if (output_valid) begin
+          if (accepted_now)
+            fail("accepted a new request on the completion edge");
+          if (input_ready !== 1'b1)
+            fail("input_ready did not reopen after the completion edge");
           check_response();
+          last_response_edge = edge_number;
+          completion_no_accept_count = completion_no_accept_count + 1;
+        end
       end
     end
   end
@@ -238,7 +257,8 @@ module mc_sector_svpwm_tb;
     integer target_response;
     integer timeout;
     begin
-      @(negedge clk);
+      if (clk !== 1'b0)
+        @(negedge clk);
       while (!input_ready)
         @(negedge clk);
       target_response = response_count + 1;
@@ -505,6 +525,9 @@ module mc_sector_svpwm_tb;
     response_count = 0;
     poisoned_cycles = 0;
     abort_count = 0;
+    last_response_edge = -1;
+    completion_no_accept_count = 0;
+    earliest_next_accept_count = 0;
     clear_queue();
     for (i = 0; i <= 22; i = i + 1)
       seen_tag[i] = 1'b0;
@@ -527,6 +550,20 @@ module mc_sector_svpwm_tb;
       fail("busy-time input poisoning did not cover every fixture transaction");
     if (abort_count != 1)
       fail("reset-abort probe count mismatch");
+    if (completion_no_accept_count != FIXTURE_ROWS)
+      fail($sformatf("completion-edge block count %0d expected %0d",
+                     completion_no_accept_count, FIXTURE_ROWS));
+    if (earliest_next_accept_count != FIXTURE_ROWS - 1)
+      fail($sformatf("earliest-next acceptance count %0d expected %0d",
+                     earliest_next_accept_count, FIXTURE_ROWS - 1));
+    $display("PROTOCOL_BUSY_INPUT_IMMUNITY_PASS rows=%0d poisoned_cycles=%0d",
+             FIXTURE_ROWS, poisoned_cycles);
+    $display("PROTOCOL_FIXED_LATENCY_PASS responses=%0d latency=128",
+             response_count);
+    $display("PROTOCOL_EARLIEST_NEXT_ACCEPT_PASS completion_edges_blocked=%0d following_edge_accepts=%0d",
+             completion_no_accept_count, earliest_next_accept_count);
+    $display("PROTOCOL_RESET_ABORT_PASS aborts=%0d stale_responses=0",
+             abort_count);
     $display("ALL STEP 6C3 SECTOR SVPWM TESTS PASSED rows=%0d accepted=%0d responses=%0d latency=128 aborts=%0d poisoned_cycles=%0d",
              FIXTURE_ROWS, accepted_count, response_count, abort_count,
              poisoned_cycles);

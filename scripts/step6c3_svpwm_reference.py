@@ -484,9 +484,27 @@ def check():
 def print_summary(action, manifest):
     replay = manifest["step6a_replay"]
     precision = manifest["decimal_check"]
+    comparison_rows = list(csv.DictReader(COMPARISON.open(encoding="utf-8")))
+    sector_exceptions = [row for row in comparison_rows if row["sector_match"] == "0"]
+    observed_exceptions = {
+        (row["parameter_profile"], row["case_id"])
+        for row in sector_exceptions
+    }
+    require(len(sector_exceptions) == len(ALLOWED_SECTOR_EXCEPTIONS),
+            f"expected four boundary sector rows, found {len(sector_exceptions)}")
+    require(observed_exceptions == ALLOWED_SECTOR_EXCEPTIONS,
+            "printed boundary sector rows differ from the allowed mismatch set")
     print(f"STEP6C3_REFERENCE_{action.upper()}_PASS")
     print(f"fixtures: {manifest['directed_full_top_cases']} directed + {manifest['seeded_full_top_cases']} seeded = {manifest['total_full_top_cases']}")
     print(f"Step 6A: {replay['rows']} rows, 80/profile, 4 allowed/observed sector exceptions")
+    for row in sector_exceptions:
+        print(
+            "Step 6A boundary sector mismatch: "
+            f"row={row['row_index']} profile={row['parameter_profile']} "
+            f"case={row['case_id']} v_alpha_raw={row['v_alpha_raw']} "
+            f"v_beta_raw={row['v_beta_raw']} source_sector={row['source_sector']} "
+            f"oracle_sector={row['oracle_sector']}"
+        )
     print("Step 6A normalized maxima: " + ", ".join(f"{key}={value}" for key, value in replay["maxima"].items()))
     print("Decimal maxima: " + ", ".join(f"{key}={value}" for key, value in precision["maxima"].items()))
 
