@@ -6,7 +6,11 @@ The standalone Step 6C3 build passed on Vivado 2026.1 for
 `xc7a200tfbg484-2`, top `mc_sector_svpwm`, with the exact 20.000 ns `sys_clk`
 constraint. The reproducible final run is `final_c20fb05`; it tested source
 commit `c20fb05a9805c13d484652720052cdd193070456` and ended with
-`STEP6C3_BUILD_PASS`. The tracked XPR uses external repository sources, orders
+`STEP6C3_BUILD_PASS`. The accepted base commit is
+`633ffa9b81b7499bdf29353325043c6a34ad267e`; the reviewed implementation and
+evidence head preceding this report-only correction is
+`47024438cba2e1e688ce81d0830c748236914c90`. The final provenance records
+Python `3.13.0` and XSim `2026.1`. The tracked XPR uses external repository sources, orders
 the package first, and contains the three C3 testbenches and their fixtures.
 
 The implementation captures signed S25/F15 `v_alpha`, `v_beta` and `vdc`,
