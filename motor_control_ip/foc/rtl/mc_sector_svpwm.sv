@@ -42,6 +42,8 @@ module mc_sector_svpwm (
   logic signed [39:0] xyz_a_num;
   logic signed [39:0] xyz_b_num;
   logic xyz_range_ok;
+  logic xyz_stage_valid;
+  logic xyz_range_ok_reg;
 
   // These named registers are intentional hierarchy-visible debug nodes.
   logic signed [39:0] a_num_debug;
@@ -168,14 +170,14 @@ module mc_sector_svpwm (
   );
 
   always_comb begin
-    sum_wide = {{56{xyz_a_num[39]}}, xyz_a_num} +
-               {{56{xyz_b_num[39]}}, xyz_b_num};
+    sum_wide = {{56{a_num_debug[39]}}, a_num_debug} +
+               {{56{b_num_debug[39]}}, b_num_debug};
     base_wide = {{71{captured_vdc[24]}}, captured_vdc} * 96'sd10000;
     selected_overmodulated = (sum_wide > base_wide);
     denominator_wide = selected_overmodulated ? sum_wide : base_wide;
 
-    a_extended = {xyz_a_num[39], xyz_a_num};
-    b_extended = {xyz_b_num[39], xyz_b_num};
+    a_extended = {a_num_debug[39], a_num_debug};
+    b_extended = {b_num_debug[39], b_num_debug};
     a_magnitude = a_extended[40] ? $unsigned(-a_extended)
                                          : $unsigned(a_extended);
     b_magnitude = b_extended[40] ? $unsigned(-b_extended)
@@ -272,6 +274,8 @@ module mc_sector_svpwm (
       captured_alpha <= '0;
       captured_beta <= '0;
       captured_vdc <= '0;
+      xyz_stage_valid <= 1'b0;
+      xyz_range_ok_reg <= 1'b0;
       divider_input_valid <= 1'b0;
       divider_a_numerator <= '0;
       divider_b_numerator <= '0;
@@ -312,6 +316,7 @@ module mc_sector_svpwm (
       error_code <= OK;
     end else begin
       output_valid <= 1'b0;
+      xyz_stage_valid <= 1'b0;
       divider_input_valid <= 1'b0;
       divider_result_valid <= 1'b0;
       t_stage_valid <= 1'b0;
@@ -336,6 +341,7 @@ module mc_sector_svpwm (
           captured_quotient_b <= '0;
           captured_remainder_a <= '0;
           captured_remainder_b <= '0;
+          xyz_range_ok_reg <= 1'b0;
           a_num_debug <= '0;
           b_num_debug <= '0;
           sum_num_debug <= '0;
@@ -351,33 +357,56 @@ module mc_sector_svpwm (
         age <= age + 7'd1;
 
         if (age == 7'd0) begin
+          // Register the combinational Sector/XYZ result before the wide
+          // SUM/BASE selection and divider launch. This uses one otherwise
+          // idle slot in the fixed N+128 response window.
+          pending_sector <= xyz_sector;
+          a_num_debug <= xyz_a_num;
+          b_num_debug <= xyz_b_num;
+          xyz_range_ok_reg <= xyz_range_ok;
+          xyz_stage_valid <= 1'b1;
+        end
+
+        if (xyz_stage_valid && (age == 7'd1)) begin
           if (captured_vdc <= 0) begin
             pending_error <= INVALID_VDC;
+            pending_sector <= '0;
+            a_num_debug <= '0;
+            b_num_debug <= '0;
             result_ready <= 1'b1;
-          end else if ((xyz_sector < 3'd1) || (xyz_sector > 3'd6)) begin
+          end else if ((pending_sector < 3'd1) || (pending_sector > 3'd6)) begin
             pending_error <= INTERNAL_ERROR;
+            pending_sector <= '0;
+            a_num_debug <= '0;
+            b_num_debug <= '0;
             result_ready <= 1'b1;
-          end else if (!xyz_range_ok) begin
+          end else if (!xyz_range_ok_reg) begin
             pending_error <= RANGE_ERROR;
+            pending_sector <= '0;
+            a_num_debug <= '0;
+            b_num_debug <= '0;
             result_ready <= 1'b1;
           end else if ((denominator_wide <= 0) ||
                        (denominator_wide > 96'sd1099511627775)) begin
             pending_error <= INTERNAL_ERROR;
+            pending_sector <= '0;
+            a_num_debug <= '0;
+            b_num_debug <= '0;
             result_ready <= 1'b1;
           end else if (!divider_a_ready || !divider_b_ready) begin
             pending_error <= INTERNAL_ERROR;
+            pending_sector <= '0;
+            a_num_debug <= '0;
+            b_num_debug <= '0;
             result_ready <= 1'b1;
           end else begin
-            pending_sector <= xyz_sector;
             pending_overmodulated <= selected_overmodulated;
             pending_error <= OK;
-            a_num_debug <= xyz_a_num;
-            b_num_debug <= xyz_b_num;
             sum_num_debug <= sum_wide[40:0];
             base_debug <= base_wide[38:0];
             denominator_debug <= denominator_wide[40:0];
-            a_negative <= xyz_a_num[39];
-            b_negative <= xyz_b_num[39];
+            a_negative <= a_num_debug[39];
+            b_negative <= b_num_debug[39];
             divider_a_numerator <= {31'd0, a_magnitude} << 32;
             divider_b_numerator <= {31'd0, b_magnitude} << 32;
             divider_denominator <= denominator_wide[40:0];
@@ -386,10 +415,10 @@ module mc_sector_svpwm (
           end
         end
 
-        // The accepted divider schedule is fixed: top accepts at N, both
-        // dividers accept at N+2, their NBA outputs appear at N+74, and the
-        // parent observes them here at N+75 while age is 74.
-        if (divider_expected && (age == 7'd74)) begin
+        // Top accepts at N, registers Sector/XYZ at N+1, and launches both
+        // dividers at N+2. They accept at N+3, update outputs at N+75, and
+        // the parent observes them at N+76 while age is 75.
+        if (divider_expected && (age == 7'd75)) begin
           if (!(divider_a_valid && divider_b_valid) ||
               divider_a_zero || divider_b_zero ||
               (divider_denominator == 0) ||
