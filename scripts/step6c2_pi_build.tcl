@@ -14,7 +14,15 @@ proc read_text {path} {set f [open $path r]; set t [read $f]; close $f; return $
 proc require {condition message} {if {![uplevel 1 [list expr $condition]]} {error $message}}
 write_text [file join $reports build_result.txt] "IN_PROGRESS\nRun=$token"
 set scratch [file join $root .Xil c2_$token]
-set bin E:/AMDDesignTools/2026.1/Vivado/bin
+# vivado.bat sets XILINX_VIVADO from its own installation directory.
+proc resolve_simulator_bin {installation} {
+    require {$installation ne ""} {Active Vivado installation is empty}
+    set resolved [file normalize [file join $installation bin]]
+    foreach tool {xvlog xelab xsim} {
+        require {[file isfile [file join $resolved ${tool}.bat]]} "Simulator tool missing: [file join $resolved ${tool}.bat]"
+    }
+    return $resolved
+}
 set rtl_names {mc_pi_fxp_pkg mc_isqrt_u80 mc_udiv_u72_u41 mc_pi_dq_eval mc_dq_limiter mc_pi_dq_core}
 set tb_names {mc_pi_fxp_tb mc_isqrt_u80_tb mc_udiv_u72_u41_tb mc_pi_dq_eval_tb mc_dq_limiter_tb mc_pi_dq_core_tb}
 set vectors {round_vectors.txt range_vectors.txt sqrt_vectors.txt divider_vectors.txt evaluator_vectors.txt limiter_vectors.txt golden_core_vectors.txt seeded_core_vectors.txt error_core_vectors.txt}
@@ -257,9 +265,17 @@ proc profile_build {p sources} {
 }
 set status [catch {
     require {[version -short] eq "2026.1"} {Expected Vivado 2026.1}
+    require {[info exists ::env(XILINX_VIVADO)]} {Active Vivado launcher did not set XILINX_VIVADO}
+    set bin [resolve_simulator_bin $::env(XILINX_VIVADO)]
+    set tool_provenance "Active executable=[info nameofexecutable]\nActive installation=$::env(XILINX_VIVADO)\nResolved simulator directory=$bin\n"
+    foreach tool {xvlog xelab xsim} {
+        set tool_version [run_command tool_${tool}_version [list [file join $bin ${tool}.bat] -version]]
+        require {[regexp -line {^Vivado Simulator v2026\.1\s*$} $tool_version]} "Unexpected simulator version: $tool"
+        append tool_provenance "$tool=$tool_version\n"
+    }
     require {![file exists $scratch]} {Scratch already exists}
     file mkdir $scratch
-    write_text [file join $reports provenance.txt] "Vivado=[version]\nPython=[exec python --version]\nTested code commit=[exec git rev-parse HEAD]\nBranch=[exec git branch --show-current]\nRun=$token\nScratch=$scratch\n"
+    write_text [file join $reports provenance.txt] "Vivado=[version]\n${tool_provenance}Python=[exec python --version]\nTested code commit=[exec git rev-parse HEAD]\nBranch=[exec git branch --show-current]\nRun=$token\nScratch=$scratch\n"
     set sources {}; foreach n $rtl_names {set f [file join $root motor_control_ip foc rtl $n.sv]; source_exists $f; lappend sources $f}
     create_portable
     audit_portable

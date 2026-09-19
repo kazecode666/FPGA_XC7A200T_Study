@@ -21,8 +21,10 @@ The sole constraint is `create_clock -name sys_clk -period 20.000 [get_ports clk
 From the repository root in PowerShell:
 
 ```powershell
-& 'E:/AMDDesignTools/2026.1/Vivado/bin/vivado.bat' -mode batch -nojournal -log .Xil/c2_accept.log -source scripts/step6c2_pi_build.tcl -tclargs accept_01
+vivado -mode batch -nojournal -log .Xil/c2_accept.log -source scripts/step6c2_pi_build.tcl -tclargs accept_01
 ```
+
+Use the `vivado.bat` from your selected Vivado 2026.1 installation, either on PATH as above or by its full quoted path. The measured machine uses `E:/AMDDesignTools/2026.1/Vivado/bin/vivado.bat`; that drive layout is not required. The launcher sets `XILINX_VIVADO` to its active installation, and the build resolves `xvlog.bat`, `xelab.bat` and `xsim.bat` from that installation's `bin` directory. All three must exist and report version 2026.1 before project or simulation work begins. The resolved installation, executable directory and actual simulator version outputs are retained in run provenance and `tool_*_version.txt`. Windows installation paths containing spaces are supported.
 
 Use a new label for every run. The script refuses existing report/scratch directories and retains all old evidence. It creates scratch work under `.Xil/c2_<label>` and evidence under `docs/reports/step6c2/<label>`. The tracked portable project is read-only to normal build invocations.
 
