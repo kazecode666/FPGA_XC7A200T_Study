@@ -3,7 +3,7 @@
 ## Scope and commit
 
 - Base commit: `633ffa9b81b7499bdf29353325043c6a34ad267e`
-- Oracle-stage implementation commit: `TO_BE_RECORDED_AFTER_COMMIT`
+- Oracle-stage implementation commit: `516d77b7a0b38a7e57fdd1ffe67bbc8898d60785`
 - Branch: `step6c3-sector-svpwm`
 - Tool: Python 3.14.6
 - Scope completed: Task 1 only; no RTL, Vivado, bitstream, hardware, C4 or 6D work.
