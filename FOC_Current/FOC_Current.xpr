@@ -219,6 +219,8 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c4/foc_vectors.txt"/>
+      <File Path="$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c4/manifest.json"/>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="mc_foc_current_core_tb"/>
@@ -243,6 +245,7 @@
         <Option Name="LogicalNoCTopLib" Val=""/>
         <Option Name="Dmv" Val=""/>
         <Option Name="xsim.simulate.runtime" Val="0ns"/>
+        <Option Name="xsim.simulate.xsim.more_options" Val="-testplusarg &quot;VECTOR_DIR=D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c4&quot;"/>
         <Generic Name="PI_PROFILE" Val="0"/>
       </Config>
     </FileSet>
