@@ -1,149 +1,88 @@
 # ChatGPT ↔ Codex Project Handoff
 
-GitHub is the persistent source of truth between ChatGPT (architecture/review) and Codex (implementation/verification).
+GitHub 保存 ChatGPT 设计/Review 与 Codex 本地实现之间的交接；用户主项目目录保存可直接使用的工程成果。
 
-## Working agreement
+## 当前用户要求：本地主目录实施，功能优先
 
-- ChatGPT owns architecture, task definition, design decisions, acceptance criteria and PR review.
-- Codex owns local inspection, authorized RTL/TB/Tcl/XDC edits, Vivado/Python execution, reports, commits, pushes and implementation PRs.
-- Read this file and the current stage spec/task/plan instead of relying on copied chat text.
-- Do not use SHA-256/file-hash verification. Use Git status/diff, executable tests, tool reports, waveforms and later physical behavior.
-- Do not guess pins, clocks, I/O standards, mathematical equations, numeric scaling, PWM polarity or state/timing semantics.
-- Preserve unrelated dirty local files. Work on a feature branch/worktree; do not destructively clean/reset them.
-- Stop at the implementation PR for ChatGPT review. No automatic merge or next-stage work.
+- 这是学习项目。先把框架与主功能跑通，再做必要的数值、协议和实现时序检查；不建设产品级测试平台。
+- **从 Step 6C4 起，实际整合必须在用户原本的本地项目目录进行，不再创建 linked worktree、额外 clone 或云端实施副本。** 这个明确要求覆盖旧任务/技能中的默认隔离建议。
+- 可以在同一个本地主目录建立功能分支。分支不等于另一个文件夹。结束时该目录仍保留 C4 文件和可用 Vivado 工程，不能只返回 worktree 路径。
+- ChatGPT 负责接口约定、任务交接、设计决定及 PR Review；Codex 负责本地主目录同步、授权 RTL/TB/Tcl/XDC 实现、Python/Vivado 运行、报告和实现 PR。
+- 保留用户未提交/未跟踪文件以及旧 worktree；不使用 reset --hard、clean -fd、强制切分支、自动 stash、整体目录覆盖或自动清理。
+- 不使用 SHA-256/文件哈希验收。使用 Git 状态/差异、真实源码路径、测试和工具报告。
+- 不猜引脚、时钟、数值尺度、极性、状态更新和事务时序。遇到阻塞同步的本地冲突，列出实际路径，不以删除用户内容解决。
+- 实现完成停在开放 PR；不自动合并、不自动开始下一阶段、不生成 bitstream 或操作硬件。
 
-## Accepted baseline
+## 已接受基线
 
-- Steps 1–4: PWM learning baseline, synthesis, 50 MHz route/timing.
-- Steps 5A/5B: BX72 LED blink/breathing demos, physically verified.
-- Step 6A: basic PI-FOC Simulink audit, PR #10 merged.
-- Step 6B: portable three-phase motor PWM, PR #11 merged.
-- Step 6C1: fixed-point transforms, PR #12 merged.
-- Step 6C2: fixed-point dq PI/feedforward/circular limiter, PR #14 merged at `da7151d773df10d7614bcc92ac453145ffda1463`.
-- Step 6C3 design: simplified learning-oriented Sector-SVPWM contract, PR #15 merged at `b0ce6935cf5c304184da3bf5a5fc30b6c5f2490a`.
+| 阶段 | 状态 |
+|---|---|
+| Steps 1–4 | PWM 学习、综合、50 MHz 路由/时序基线 |
+| Steps 5A/5B | LED blink/breathing，已做板级演示 |
+| Step 6A | Simulink PI-FOC 算法审计，PR #10 已合并 |
+| Step 6B | 三相 motor PWM，PR #11 已合并 |
+| Step 6C1 | 定点变换，PR #12 已合并 |
+| Step 6C2 | dq PI、前馈、圆形限幅，PR #14 已合并 |
+| Step 6C3 | Sector SVPWM，PR #17 已合并 |
+| Step 6C4 | 当前：本地主项目整合任务 |
+| Step 6D | 后续：duty_to_cmp / PWM 时间集成 |
 
-Accepted C2 divider `motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv` is a read-only dependency for C3.
+C3 接受提交：`4eb050bd62f6ac7c80ecf3f0a4a017d62f07d1ef`。C1/C2/C3 已合并，先从 Git 主线同步到本地主目录，不从各个旧 worktree 分别拼接代码。
 
-## Reference hierarchy and protected areas
+## 依据与保护范围
 
-Authority order:
+读取当前任务及 `coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`，再查看已验收的阶段规格和真实接口。数学参考来自 Step 6A audit/golden；历史 DSP/MIL 原始计数不能替代 FPGA 归一化 duty 契约。
 
-1. stage-specific accepted FPGA spec;
-2. Step 6 architecture;
-3. Step 6A audited/golden mathematical behavior;
-4. accepted C1/C2 interfaces;
-5. historical DSP/MIL behavior as background only.
+本轮 C1/C2/C3 已验收 RTL/TB/ROM/fixtures/projects/scripts/reports、PWM、Simulink、Step 6A source/golden/verifier 全部只读。同步已合并文件不授权改写其内容。旧非阻塞建议不混进本任务。
 
-Read-only unless the current task explicitly authorizes edits:
-
-- `PWM_Controller/`, `PWM_Breathe/`, `Motor_PWM/`;
-- accepted `motor_control_ip/pwm/`;
-- `simulink模型/`;
-- Step 6A reference/golden/verifier files;
-- accepted C1 RTL/TBs/ROM/fixtures/project/scripts/reports;
-- accepted C2 RTL/TBs/fixtures/project/scripts/reports.
-
-## Approved development sequence
+## 当前唯一 C4 任务书
 
 ```text
-Step 6B   Motor PWM                         [MERGED]
-Step 6C1  Numeric formats + transforms      [MERGED]
-Step 6C2  dq PI + feedforward + limiter     [MERGED]
-Step 6C3  Sector SVPWM -> normalized duty   [IMPLEMENTATION PLANNED]
-Step 6C4  Full PI-FOC transaction core
-Step 6D   PI-FOC -> PWM timing integration
+coordination/tasks/step6c4_foc_local_integration.md
 ```
 
-ADC9238, encoder, complementary gates, dead time, trip, commissioning and MPSoC interfaces remain deferred.
+此文件合并了接口契约、主目录操作规则、测试范围和实施计划，不再要求另一份重复的规划 PR。本文档变更不是 RTL 实现完成的声明。
 
-## Current task: Step 6C3 implementation
-
-Authoritative design:
+核心范围：
 
 ```text
-coordination/specs/step6c3_sector_svpwm.md
+mc_current_transform -> mc_pi_dq_core -> mc_inv_park -> mc_sector_svpwm
+                           |
+                    仅 C2 管理 PI 状态
+
+输入：完整三相电流/角度/速度/参考/母线/PI命令样本
+输出：S26/F24 duty + result_valid/error_code + command_valid
+顶层：mc_foc_current_core，PI_PROFILE=0/1，固定 N+512
+本地工程：FOC_Current/FOC_Current.xpr
 ```
 
-Codex task:
+保存同一笔 sin/cos 和 vdc；错误不作为有效 duty。enable 只控制接受，不是急停。C2 成功就更新状态，不假装可以在后级错误时自动回滚。内部时序故障报告后需硬件复位恢复。
+
+两套参数做整链仿真，默认 profile 0 做整核 50 MHz route；不把独立 C3 的浮点误差门槛/扇区例外外推为 C4 指标。整链 RTL 对组合整数参考逐位一致；原 Step 6A 浮点误差单独如实报告。
+
+## Codex 启动指令
+
+用户已要求推进 Step 6C4，并指定本地主项目实施。接受本交接 PR 后，在 Codex 的本地主项目会话中执行：
 
 ```text
-coordination/tasks/step6c3_sector_svpwm.md
+开始 Step 6C4，读取 coordination/HANDOFF.md 和
+coordination/tasks/step6c4_foc_local_integration.md。
+
+先检查当前目录、git rev-parse --show-toplevel、git worktree list --porcelain、
+远端与本地修改，确定用户原本的主项目绝对路径 MAIN。
+把已经合并的 C1/C2/C3 非破坏性地同步到 MAIN。
+所有新源码、FOC_Current 工程、仿真和综合都在 MAIN 进行。
+不要新建 worktree，不要复制整个旧 worktree，不删除用户原有文件。
+在 MAIN 内使用 step6c4-foc-current 分支。
+
+按任务书跑通四个模块的完整主链，完成 512 拍调度、两套参数整链仿真、
+实际 Step 6A 原始输入回放、默认参数的 Vivado 50 MHz 综合/路由。
+保留 FOC_Current.xpr 的本地实际运行结果，并实际启动该工程的默认仿真。
+按任务书生成简短报告与学习波形；不用额外搭建大型失败测试框架。
+
+最后提交实现 PR：Step 6C4: Integrate PI-FOC in the main local project。
+向用户返回 MAIN 和 FOC_Current.xpr 的真实绝对路径；不要只给 worktree 路径。
+停在开放 PR 等待 Review，不自动合并，不进入 Step 6D，不生成 bitstream。
 ```
 
-Implementation plan:
-
-```text
-coordination/tasks/step6c3_sector_svpwm_plan.md
-```
-
-The C3 implementation is deliberately learning-first. The goal is to visibly build and understand:
-
-```text
-v_alpha/v_beta/vdc
--> sector
--> X/Y/Z
--> T1/T2
--> L/M/H
--> normalized duty_u/v/w
-```
-
-Key frozen choices:
-
-- inputs S25/F15;
-- signed S26/F24 normalized duty outputs;
-- Step 6A Sector-SVPWM, not Min-Max;
-- exact integer-ratio treatment of the audited decimal constants;
-- two parallel instances of accepted C2 U72/U41 divider;
-- internal S34/F32 T1/T2;
-- nearest/ties-away rounding;
-- overmodulation only when `SUM > BASE`;
-- no duty clamp in C3;
-- one request in flight;
-- fixed response N+128 = 2.56 us at 50 MHz;
-- simple error handling and focused verification rather than product-scale hardening.
-
-## Codex start command
-
-After this implementation-plan documentation is accepted/merged and the user explicitly starts C3:
-
-```text
-Read coordination/HANDOFF.md first.
-
-Then read:
-  coordination/specs/step6c3_sector_svpwm.md
-  coordination/tasks/step6c3_sector_svpwm.md
-  coordination/tasks/step6c3_sector_svpwm_plan.md
-  coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md
-  coordination/reports/step6a_pi_foc_reference_audit.md
-
-Also inspect the actual Step 6A golden CSV and accepted C2 divider source/TB read-only.
-
-Start from latest accepted main and create branch:
-  step6c3-sector-svpwm
-
-Follow the learning-first five-stage plan:
-  1. Python integer oracle and compact fixtures.
-  2. Sector/XYZ RTL and six-sector/zero-vector bring-up.
-  3. Full N+128 SVPWM top using two accepted C2 dividers.
-  4. Actual Step 6A 160-row comparison plus focused boundary/reset/error tests.
-  5. Standalone 50 MHz Vivado synth/route plus compact regressions.
-
-Keep the implementation small and readable.
-Do not modify accepted C1/C2/PWM/Step6A sources.
-Do not add product-scale failure infrastructure unless a real discovered bug needs a targeted check.
-Do not clamp duty in C3.
-Do not replace the algorithm with Min-Max SVPWM.
-
-Write:
-  coordination/reports/step6c3_codex_report.md
-and fresh evidence under:
-  docs/reports/step6c3/
-
-Open PR:
-  Step 6C3: Add fixed-point sector SVPWM
-
-STOP for ChatGPT review.
-Do not merge automatically.
-Do not start C4 or 6D.
-Do not generate a bitstream or program hardware.
-```
+如果当前会话不能访问 MAIN，明确报告而不是换目录继续实施。ADC、编码器、PWM 连接、互补门极/死区/保护、MPSoC 均不在 C4 范围内。
