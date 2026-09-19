@@ -1,0 +1,88 @@
+Step 6C2 Task 5 standalone circular limiter verification (2026-09-19)
+Tool: Vivado Simulator 2026.1, direct behavioral flow.
+Base: ed60563; branch step6c2-pi-dq-limiter.
+
+RED evidence: .Xil/lim_red
+The complete fixture/protocol TB was written before mc_dq_limiter.sv existed.
+xvlog succeeded; xelab failed with VRFC 10-2063 Module <mc_dq_limiter> not found.
+Commands: xvlog.bat -sv <ROOT>/motor_control_ip/foc/tb/mc_dq_limiter_tb.sv
+          xelab.bat mc_dq_limiter_tb -s red
+
+Final GREEN evidence: .Xil/lim_final
+ROOT=C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T
+BIN=E:/AMDDesignTools/2026.1/Vivado/bin
+Executed from ROOT/.Xil/lim_final, expanding ROOT and BIN to absolute paths:
+BIN/xvlog.bat -sv ROOT/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv ROOT/motor_control_ip/foc/rtl/mc_isqrt_u80.sv ROOT/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv ROOT/motor_control_ip/foc/rtl/mc_dq_limiter.sv ROOT/motor_control_ip/foc/tb/mc_dq_limiter_tb.sv
+BIN/xelab.bat mc_dq_limiter_tb -s green
+BIN/xsim.bat green -runall
+Data-only fixture copy staged at scratch motor_control_ip/foc/tb/vectors/step6c2.
+Compile/elaborate/simulate passed; no WARNING/ERROR/Fatal/FATAL_ERROR.
+IDEAL maxima volts: d=0.000021481294 row=2067 q=0.000021707133 row=4080 norm_excess=0.000019523332 row=3657 checks=4231
+ALL STEP 6C2 LIMITER TESTS PASSED fixture_rows=4246 transactions=4287 errors=56 injected_errors=11 aborts=160 latency=160 idle_clocks=5000
+
+Fixture/protocol coverage:
+- Exactly 4246 independent Python integer fixtures; 4096 seeded full-width S40
+  voltage/positive S25 bus cases, 45 invalid buses, 20 limited && !sat_flag rows.
+- Exact all S40 high/correction values, S25 external values, U33 scale and flags.
+- Zero, axis, quadrants, equal components, S40 rails, threshold +/-LSB, epsilon,
+  bus raw 1/48 V/maximum/zero/negative and dynamic bus changes.
+- 16 replays with varied idle gaps, 2 continuously held-valid requests, one
+  post-abort recovery, 11 injected errors each followed by successful recovery.
+- Every response checks +160 rising-edge difference, pre-edge ready exclusion,
+  output hold until response, no unknown valid/data, busy bus poisoning, no
+  completion-edge acceptance; next rising edge can accept held valid.
+- 5000 idle clocks and output hold; all 160 pending phases asynchronously reset,
+  including final padding immediately before completion. All reset outputs zero,
+  ready low under reset; 162 idle clocks after each abort detect stale responses.
+- Eleven TB-only forces verify zeroed fixed-slot INTERNAL_ERROR for norm carry,
+  sqrt launch unavailable/missing response, zero denominator, divider launch
+  unavailable/divide-by-zero/oversize quotient, oversize scale and missing final
+  result; RANGE_ERROR for high F24 and external F15 overflow. Each is followed by
+  a new successful request to check poisoned intermediate values do not leak.
+- Ideal component/norm/sign/finite checks use original captured fixture inputs
+  and real 0.9*vdc/sqrt(3), hypot and additive 1e-6, never DUT root/scale. Limits
+  remain 2/32768 V per component and 1/32768 V norm excess; no tolerance changes.
+
+Strict fixture parsing:
+Manual indexed-string-byte whitespace tokenization, a single numeric sscanf per
+validated token; no getc or multiple string destinations. Enforces 14 columns,
+lowercase hex, exact token widths, unused high padding, contiguous unique IDs,
+sole first-line header and literal exact 4246 rows. Blank rows are not ignored.
+Eight negative data-only controls in .Xil/lim_parser: padding, nonhex, duplicate,
+missing, extra, width, blank, header. Each explicitly produced MC_DQ_LIMITER_FAIL
+Fatal with no PASS and no native FATAL_ERROR. Files <case>.txt retain evidence.
+Parser snapshot built using the same source command and xelab ... -s parser;
+each negative run executed xsim.bat parser -runall after staging its bad fixture
+at the scratch fallback location. An initial batch-shell VECTOR_DIR command
+failed in command parsing ("Expected a switch but found p"), not in simulation;
+it was not accepted as negative evidence. Preserved plusarg_command_error.txt.
+Fallback staging resolved this command issue without any RTL/TB/fixture edit.
+
+Required functional mutations (scratch RTL only; original fixtures untouched):
+1. .Xil/lim_mnorm: assign the square sum to signed S80, then sign extend it.
+   Explicit Fatal at case 9 (both most-negative S40 rails), oracle mismatch.
+2. .Xil/lim_meps: replace +PI_EPS_RAW with +41'd0.
+   Explicit Fatal at case 0 (zero vector creates illegal zero denominator),
+   oracle mismatch; frozen EPS remains 17 in committed RTL.
+3. .Xil/lim_mf15: calculate corrections using R(high,9)<<9 instead of high F24.
+   Explicit Fatal at case 1, oracle mismatch (low F24 bits lost).
+Each uses fresh short scratch directory with its own mutated limiter source:
+BIN/xvlog.bat -sv <same package/sqrt/divider> <scratch>/mc_dq_limiter.sv <same TB>
+BIN/xelab.bat mc_dq_limiter_tb -s mutant
+BIN/xsim.bat mutant -runall
+Every compile/elaboration exit 0; simulation generated explicit TB Fatal and no
+exact success marker/native crash. XSim returns exit 0 even on these Fatals,
+so matching the fatal/no-PASS contents was mandatory, not exit status alone.
+
+RTL schedule and scope:
+Acceptance N; full squares and U57 bus product +1; verified U81 norm/U40 Umax +2;
+sqrt accepts +4, completes +44, sampled +45 with extended root ceil plus 17;
+U72 numerator/U41 divider accepts +47, completes +119, sampled +120;
+S40 times nonnegative S34 scale -> full S74 products +121; R32 to F24 +122;
+F24 corrections and external-only R9 +123; range gate +124; response +160.
+Bypass/errors retain the same slot. Async control reset masks stale unreset
+arithmetic registers for DSP inference. Every product has a registered result
+before its consumer. No variable synthesizable division/sqrt, vendor IP,
+primitive, resource-count target, or persistent state.
+Only new limiter RTL, TB and this report are part of this task's commit.
+No protected sources/oracle/fixtures changed. No synthesis/route/hardware claim.

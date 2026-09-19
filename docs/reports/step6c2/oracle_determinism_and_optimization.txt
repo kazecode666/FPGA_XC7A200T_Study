@@ -1,0 +1,7 @@
+Generation 1: exit 0; 11 artifact texts captured
+Generation 2: exit 0; 11 artifact texts captured; identical to generation 1
+C2_ORACLE_DETERMINISM_PASS: two fresh generations and --check; no file hashes used
+step6c2_pi_reference.py -O: expected rejection exit 1: C2 rejects optimized Python: run without -O/-OO
+step6c2_pi_reference.py -OO: expected rejection exit 1: C2 rejects optimized Python: run without -O/-OO
+step6c2_pi_reference_test.py -O: expected rejection exit 1: C2 rejects optimized Python: run without -O/-OO
+step6c2_pi_reference_test.py -OO: expected rejection exit 1: C2 rejects optimized Python: run without -O/-OO

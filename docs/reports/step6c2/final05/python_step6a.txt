@@ -1,0 +1,3 @@
+Command: python scripts/reference_audit/verify_step6a_vectors.py
+PASS: 160 actual-source rows, 2926 checks, max absolute error 5.46e-12
+Tcl status=0; process status=0

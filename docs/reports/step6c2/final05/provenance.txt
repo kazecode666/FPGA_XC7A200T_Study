@@ -1,0 +1,20 @@
+Vivado=Vivado v2026.1 (64-bit)
+SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+Tool Version Limit: 2026.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+
+Active executable=E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/vivado.exe
+Active installation=E:/AMDDesignTools/2026.1/Vivado
+Resolved simulator directory=E:/AMDDesignTools/2026.1/Vivado/bin
+xvlog=Vivado Simulator v2026.1
+xelab=Vivado Simulator v2026.1
+xsim=Vivado Simulator v2026.1
+Copyright 1986-2026 Xilinx, Inc. All Rights Reserved.
+Python=Python 3.13.0
+Tested code commit=080e50e90afd5edbdb4cefd950a11b316ec6ddc2
+Branch=step6c2-pi-dq-limiter
+Run=final05
+Scratch=C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final05

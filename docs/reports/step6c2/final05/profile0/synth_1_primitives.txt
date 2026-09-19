@@ -1,0 +1,8 @@
+Actual primitive inventory; LUT counts logical primitives (packed utilization separately).
+DSP48E1=52
+RAMB36E1=0
+RAMB18E1=0
+LUT=6334
+FF=5476
+LATCH=0
+BLACKBOX=0

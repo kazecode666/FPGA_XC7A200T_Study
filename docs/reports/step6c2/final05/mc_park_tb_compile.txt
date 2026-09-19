@@ -1,0 +1,15 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_fxp_pkg.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_clarke.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sincos_lut.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_park.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_inv_park.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_current_transform.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_park_tb.sv
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_fxp_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_clarke.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_clarke
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sincos_lut.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_sincos_lut
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_park.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_park
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_inv_park.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_inv_park
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_current_transform.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_current_transform
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_park_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_park_tb
+Tcl status=0; process status=0

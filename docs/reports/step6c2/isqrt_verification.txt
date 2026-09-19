@@ -1,0 +1,26 @@
+Step 6C2 Task 3 isqrt verification (2026-09-19)
+Tool: Vivado Simulator 2026.1, direct behavioral flow.
+RED: TB existed before RTL. .Xil/mc_isqrt_u80_r1
+xvlog exit 0; xelab exit 1: VRFC 10-2063 Module <mc_isqrt_u80> not found.
+GREEN fresh directory: .Xil/mc_isqrt_u80_final
+Commands (absolute worktree paths supplied to sources):
+E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv motor_control_ip/foc/rtl/mc_isqrt_u80.sv motor_control_ip/foc/tb/mc_isqrt_u80_tb.sv
+E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat mc_isqrt_u80_tb -s green
+E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat green -runall
+All exit 0. No ERROR/Fatal/FATAL_ERROR in compile/elaborate/simulate output.
+ALL STEP 6C2 ISQRT TESTS PASSED fixture_rows=2078 transactions=6193 aborts=40 idle_clocks=5000
+Fixture data-only copy staged beneath scratch relative fallback path.
+Strict parser validates sole first-line header, exact four columns, lowercase
+hex, exact widths, unused U41 high padding, contiguous IDs and exactly 2078 rows.
+2078 independent oracle cases include 2048 seeded U80 cases. Additional tests:
+4096 exhaustive radicands 0..4095, 16 fixture replays with varied idle gaps,
+2 held-valid consecutive transactions, and maximum-U80 post-abort recovery.
+Every transaction checks exact +40 response, root/remainder and 160-bit
+root^2 <= n < (root+1)^2, n=root^2+remainder. Busy input changes/valid ignored;
+outputs stable until response, pulse clears, completion-edge request excluded,
+next edge accepts continuously held valid. 5000 idle clocks check functional
+and working-register stability. Async reset at all 40 pending phases, including
+just before completion, clears outputs and gates ready; no stale response over
+42 subsequent clocks. No synthesis, implementation or hardware claim.
+RTL consumes one digit pair per busy clock with 44-bit remainder/trial,
+41-bit temporary root growth, 40-bit root and U41 returned remainder.

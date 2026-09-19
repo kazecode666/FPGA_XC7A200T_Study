@@ -1,0 +1,104 @@
+Step 6C2 Task 4 stateless PI evaluator verification (2026-09-19)
+Tool: Vivado Simulator 2026.1, direct behavioral flow.
+RED: TB written before RTL, .Xil/eval_red. xvlog succeeded; xelab rejected
+missing module mc_pi_dq_eval (VRFC 10-2063). No placeholder RTL was accepted.
+
+Final GREEN independent elaborations:
+.Xil/eval_fix0 -> mc_pi_dq_eval_p0_tb
+.Xil/eval_fix1 -> mc_pi_dq_eval_p1_tb
+Commands from each fresh scratch directory (worktree-relative source paths):
+E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv ../../motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv ../../motor_control_ip/foc/rtl/mc_pi_dq_eval.sv ../../motor_control_ip/foc/tb/mc_pi_dq_eval_tb.sv
+E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat mc_pi_dq_eval_p<P>_tb -s result
+E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat result -runall
+For each profile, compile/elaborate/simulate exited 0; saved compile.txt,
+elaborate.txt,simulate.txt contain no ERROR:, Fatal: or FATAL_ERROR.
+Data-only fixture copied into scratch at its relative fallback location.
+PowerShell's native batch argument handling stripped '=' in initial generic
+and plusarg attempts; explicit profile tops/data-only fixture copy resolved
+that invocation problem. Those initial attempts are not counted as GREEN.
+
+ALL STEP 6C2 PI EVAL TESTS PASSED profile=0 fixture_rows=521 total_fixture_rows=1042 directed=16 transactions=556 aborts=18 idle_clocks=5000
+ALL STEP 6C2 PI EVAL TESTS PASSED profile=1 fixture_rows=521 total_fixture_rows=1042 directed=16 transactions=556 aborts=18 idle_clocks=5000
+
+Strict parser reads the complete 1042-row corpus on each run, with 521 rows
+per ordered profile. It checks one first-line header, exactly 20 columns,
+lowercase hexadecimal, exact digit width, unused high-padding bits, ordered
+unique (profile,id), and exact independent row counts before DUT activity.
+Manual indexed-byte whitespace tokenizer uses one token/sscanf conversion at
+a time; no string.getc or multi-string sscanf native-crash path.
+Six negative controls (padding, nonhex, duplicate ID, missing row, extra
+column, wrong width) all emitted explicit MC_PI_DQ_EVAL_FAIL Fatal with no
+PASS or native crash. .Xil/eval_final0/negative_*.txt retains their outputs;
+scratch data restored afterwards. Source fixtures were never changed.
+
+Per-profile transactions: 521 independent fixture rows + 16 additional
+literal directed rows + 16 repeated rows with varied gaps + 2 held-valid
+immediate-following requests + 1 reset-recovery request = 556. Every response
+checks the complete ud_raw/uq_raw/xd_next/xq_next/error_code tuple bit-exactly.
+Fixed +16 rising-edge difference checked for every success and error; no
+intermediate output changes. All inputs toggle while busy with valid held
+high, including through the completion edge. Earliest next-edge acceptance
+and one-clock response pulse checked. 5000 initial idle clocks and additional
+idle gaps preserve the visible output tuple. Async reset at all 16 pending
+phases plus assertion on the exact acceptance/completion edge clears visible
+outputs/valid and gates ready. Every reset followed by >16 clocks with no
+stale completion. Total 18 reset tests per elaborated profile.
+
+Additional literal cases per profile: first three one-amp OLD x updates;
+OLD du back-calculation (1000,2000,3000,-4000 -> next x 400,2800); positive and
+negative FF; FF exceeding S40 followed by valid positive/negative OLD-x
+cancellation; q-reset masking q overflow while retaining actual iq in d FF;
+q-reset preserving d overflow failure; pi-reset masking all selected range
+errors; invalid vdc taking priority over reset; next-integrator-only overflow;
+full S26 opposite-rail current differences; most-negative state/current/speed;
+negative exact-multiple AW. Literal expected values came from the independent
+Python oracle in scratch .Xil/create_eval_tb.py and are embedded in TB,
+without changing the generator, manifest, fixtures or frozen comparison CSV.
+Profile-0 first three raw d values: 36595302,41565552,46535802;
+OLD xd: 0,4970250,9940500; NEXT xd:4970250,9940500,14910750.
+
+Functional negative mutations, scratch copies of RTL only:
+1. .Xil/eval_mut_oldx replaces OLD x in raw voltage with candidate NEXT x.
+   Explicit Fatal at profile0 case1042 (first one-amp case): raw d 41565552
+   instead of 36595302. No PASS.
+2. .Xil/eval_mut_kawts incorrectly multiplies Kaw by Ts=1/10000 before use.
+   Explicit Fatal at profile0 case1045 (OLD-du directed case): next x 1000,
+   2000 instead of 400,2800. No PASS.
+Both mutation compiles/elaborations succeeded. XSim returned 0 even on these
+TB Fatal responses; failure was identified from explicit Fatal/no PASS.
+Illegal PI_PROFILE=2 in .Xil/eval_badprofile is rejected by parameter guard
+at time zero, before any transaction. No BAD_PROFILE_WAS_ACCEPTED marker.
+
+Arithmetic/API audit:
+S25 measurements/references/vdc, S32 speed, S40 OLD xd/xq/du inputs; S40 raw
+voltages and tentative next integrators; two-bit error. No persistent state.
+Public mc_pi_fxp_pkg constants and pi_round_shift_s96/pi_fits_s40 helpers.
+S26 errors, S58 gain products, S72 AW products, S57 L*current, S58 flux sum,
+S90 speed*flux, S96 rounded terms and final sums. Q flux widens PSI_F before
+shift/add; d product sign-extends before negation. No pre-final S40 clamp.
+32x58 FF multiplication uses six registered DSP-sized signed partial products
+and staged full-S90 reassembly; rounded terms and consumers separated by
+registers. Final candidates +9, reset selection +10, range/priority +11,
+visible publication +16. Internal arithmetic registers have no reset and are
+masked by asynchronously reset control; visible outputs reset immediately.
+Error responses zero raw voltage and return captured OLD x as tentative next
+x. All functional outputs hold between responses.
+
+Python regression (unchanged C2 oracle/fixture generation):
+python scripts/step6c2_pi_reference_test.py: 11 tests, OK, exit 0.
+python scripts/step6c2_pi_reference.py --check: C2_ORACLE_PASS checked 11
+artifacts, exit 0. Full output .Xil/evaluator_oracle_unittest.txt and
+.Xil/evaluator_oracle_check.txt.
+
+Behavioral functional/timing-slot verification only; 50 MHz routed timing,
+resource mapping, implementation and hardware operation are not claimed.
+
+Review fix round 1 (base 92a1773): exact frozen PASS marker corrected from
+"ALL STEP 6C2 EVALUATOR TESTS PASSED" to "ALL STEP 6C2 PI EVAL TESTS PASSED".
+RTL/arithmetic/fixtures unchanged. Both complete profile TBs rerun in fresh
+.Xil/eval_fix0 and .Xil/eval_fix1 with the commands above; each compile,
+elaboration and simulation exited 0, no ERROR/Fatal/native crash, and exact
+corrected markers are quoted above. Previous functional mutation/parser/
+Python results remain applicable; no unrelated suites were rerun for this
+string-only correction. Earlier eval_final* logs are historical outputs with
+the incorrect label and are superseded for the acceptance marker.

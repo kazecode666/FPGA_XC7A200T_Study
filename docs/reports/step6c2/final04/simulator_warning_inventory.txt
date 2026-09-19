@@ -1,0 +1,77 @@
+Warnings read from actual captured compiler/elaborator/simulator subprocess outputs:
+Wavedata 42-489 is a wave-window display-limit warning; it does not disable scoreboard calculations or assertions.
+core1_compile.txt: 0 warning lines
+core1_elaborate.txt: 0 warning lines
+core1_simulate.txt: 0 warning lines
+div_compile.txt: 0 warning lines
+div_elaborate.txt: 0 warning lines
+div_simulate.txt: 0 warning lines
+eval0_compile.txt: 0 warning lines
+eval0_elaborate.txt: 0 warning lines
+eval0_simulate.txt: 0 warning lines
+eval1_compile.txt: 0 warning lines
+eval1_elaborate.txt: 0 warning lines
+eval1_simulate.txt: 0 warning lines
+fxp_compile.txt: 0 warning lines
+fxp_elaborate.txt: 0 warning lines
+fxp_simulate.txt: 0 warning lines
+limiter_compile.txt: 0 warning lines
+limiter_elaborate.txt: 0 warning lines
+limiter_simulate.txt: 0 warning lines
+mc_clarke_tb_compile.txt: 0 warning lines
+mc_clarke_tb_elaborate.txt: 0 warning lines
+mc_clarke_tb_simulate.txt: 0 warning lines
+mc_current_transform_tb_compile.txt: 0 warning lines
+mc_current_transform_tb_elaborate.txt: 0 warning lines
+mc_current_transform_tb_simulate.txt: 0 warning lines
+mc_park_tb_compile.txt: 0 warning lines
+mc_park_tb_elaborate.txt: 0 warning lines
+mc_park_tb_simulate.txt: 0 warning lines
+mc_sincos_lut_tb_compile.txt: 0 warning lines
+mc_sincos_lut_tb_elaborate.txt: 0 warning lines
+mc_sincos_lut_tb_simulate.txt: 0 warning lines
+portable_compile.txt: 0 warning lines
+portable_elaborate.txt: 0 warning lines
+portable_simulate.txt: 5 warning lines
+  WARNING [Wavedata 42-489] count=5
+WARNING: [Wavedata 42-489] Can't add object "/mc_pi_dq_core_tb/vec" to the wave window because it has 3389120 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+WARNING: [Wavedata 42-489] Can't add object "/mc_pi_dq_core_tb/queue_row" to the wave window because it has 262144 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+WARNING: [Wavedata 42-489] Can't add object "/mc_pi_dq_core_tb/queue_edge" to the wave window because it has 262144 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+WARNING: [Wavedata 42-489] Can't add object "/mc_pi_dq_core_tb/queue_id" to the wave window because it has 262144 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+WARNING: [Wavedata 42-489] Can't add object "/mc_pi_dq_core_tb/queue_old" to the wave window because it has 1318912 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+probe_failed_marker_compile.txt: 0 warning lines
+probe_failed_marker_elaborate.txt: 0 warning lines
+probe_failed_marker_simulate.txt: 0 warning lines
+probe_malformed_compile.txt: 0 warning lines
+probe_malformed_elaborate.txt: 0 warning lines
+probe_malformed_simulate.txt: 0 warning lines
+probe_nonhex_compile.txt: 0 warning lines
+probe_nonhex_elaborate.txt: 0 warning lines
+probe_nonhex_simulate.txt: 0 warning lines
+probe_range_malformed_compile.txt: 0 warning lines
+probe_range_malformed_elaborate.txt: 0 warning lines
+probe_range_malformed_simulate.txt: 0 warning lines
+probe_range_nonhex_compile.txt: 0 warning lines
+probe_range_nonhex_elaborate.txt: 0 warning lines
+probe_range_nonhex_simulate.txt: 0 warning lines
+probe_range_truncated_compile.txt: 0 warning lines
+probe_range_truncated_elaborate.txt: 0 warning lines
+probe_range_truncated_simulate.txt: 0 warning lines
+probe_sqrt_malformed_compile.txt: 0 warning lines
+probe_sqrt_malformed_elaborate.txt: 0 warning lines
+probe_sqrt_malformed_simulate.txt: 0 warning lines
+probe_sqrt_nonhex_compile.txt: 0 warning lines
+probe_sqrt_nonhex_elaborate.txt: 0 warning lines
+probe_sqrt_nonhex_simulate.txt: 0 warning lines
+probe_sqrt_truncated_compile.txt: 0 warning lines
+probe_sqrt_truncated_elaborate.txt: 0 warning lines
+probe_sqrt_truncated_simulate.txt: 0 warning lines
+probe_truncated_compile.txt: 0 warning lines
+probe_truncated_elaborate.txt: 0 warning lines
+probe_truncated_simulate.txt: 0 warning lines
+pwm_compile.txt: 0 warning lines
+pwm_elaborate.txt: 0 warning lines
+pwm_simulate.txt: 0 warning lines
+sqrt_compile.txt: 0 warning lines
+sqrt_elaborate.txt: 0 warning lines
+sqrt_simulate.txt: 0 warning lines

@@ -1,0 +1,7 @@
+Profile=0 sys_clk=20.000
+WNS=7.450 TNS=0.000 setup_failing=0 setup_total=13581
+WHS=0.072 THS=0.000 hold_failing=0 hold_total=13581
+WPWS=9.500 TPWS=0.000 pulse_failing=0 pulse_total=5523
+Routable=11176 routed=11176 errors=0
+max raw_SLACK=7.450 STARTPOINT=eval_engine/product_ff_reg[0][5]/C ENDPOINT=eval_engine/term_ff_reg[0][94]/D
+min raw_SLACK=0.072 STARTPOINT=eval_engine/ff_pair01_reg[1][46]/C ENDPOINT=eval_engine/product_ff_reg[1][46]/D

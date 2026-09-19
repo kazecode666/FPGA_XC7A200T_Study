@@ -1,0 +1,45 @@
+Baseline 74f6128 versus tested code e3c0f73: only authorized new C2 paths.
+A	FOC_PI/FOC_PI.srcs/constrs_1/new/foc_pi_clock.xdc
+A	FOC_PI/FOC_PI.xpr
+A	coordination/reports/step6c2_pi_fixed_vectors.csv
+A	docs/reports/step6c2/core_verification.txt
+A	docs/reports/step6c2/divider_verification.txt
+A	docs/reports/step6c2/evaluator_verification.txt
+A	docs/reports/step6c2/fxp_helper_verification.txt
+A	docs/reports/step6c2/isqrt_verification.txt
+A	docs/reports/step6c2/limiter_verification.txt
+A	docs/reports/step6c2/oracle_check.txt
+A	docs/reports/step6c2/oracle_determinism_and_optimization.txt
+A	docs/reports/step6c2/oracle_generate.txt
+A	docs/reports/step6c2/oracle_green.txt
+A	docs/reports/step6c2/oracle_red.txt
+A	docs/reports/step6c2/oracle_schema_and_results.txt
+A	docs/reports/step6c2/step6a_oracle_regression.txt
+A	motor_control_ip/foc/README_step6c2.md
+A	motor_control_ip/foc/rtl/mc_dq_limiter.sv
+A	motor_control_ip/foc/rtl/mc_isqrt_u80.sv
+A	motor_control_ip/foc/rtl/mc_pi_dq_core.sv
+A	motor_control_ip/foc/rtl/mc_pi_dq_eval.sv
+A	motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv
+A	motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv
+A	motor_control_ip/foc/tb/mc_dq_limiter_tb.sv
+A	motor_control_ip/foc/tb/mc_isqrt_u80_tb.sv
+A	motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv
+A	motor_control_ip/foc/tb/mc_pi_dq_eval_tb.sv
+A	motor_control_ip/foc/tb/mc_pi_fxp_tb.sv
+A	motor_control_ip/foc/tb/mc_udiv_u72_u41_tb.sv
+A	motor_control_ip/foc/tb/vectors/step6c2/divider_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/error_core_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/evaluator_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/golden_core_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/limiter_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/manifest.json
+A	motor_control_ip/foc/tb/vectors/step6c2/range_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/round_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/seeded_core_vectors.txt
+A	motor_control_ip/foc/tb/vectors/step6c2/sqrt_vectors.txt
+A	scripts/step6c2_pi_build.tcl
+A	scripts/step6c2_pi_reference.py
+A	scripts/step6c2_pi_reference_test.py
+
+All protected existing paths unchanged. Report-only additions follow this tested-code revision.

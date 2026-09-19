@@ -1,0 +1,19 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat sim -runall
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Sep 19 16:53:52 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim/xsim_script.tcl
+# xsim {sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+ALL STEP 6C2 UDIV TESTS PASSED fixture_rows=2058 transactions=4125 aborts=72 idle_clocks=5000
+$finish called at time : 6451831 ns : File "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_udiv_u72_u41_tb.sv" Line 209
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Sep 19 16:53:54 2026...
+Tcl status=0; options=-code 0 -level 0

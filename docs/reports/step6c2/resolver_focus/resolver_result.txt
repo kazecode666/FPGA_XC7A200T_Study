@@ -1,0 +1,5 @@
+PASS
+DEFAULT=E:/AMDDesignTools/2026.1/Vivado/bin
+ALTERNATE=C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/Alternate Vivado Install/bin
+Alternate wrappers forward version probes only to the real selected installation; no install copied.
+MISSING status=1 message=Simulator tool missing: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_resolver_focus/Absent Install/bin/xvlog.bat
