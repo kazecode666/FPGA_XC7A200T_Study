@@ -1,197 +1,100 @@
 # ChatGPT ↔ Codex Project Handoff
 
-This file is the persistent coordination index for the FPGA learning / motor-control project. GitHub is the source of truth between ChatGPT (architecture/review) and Codex (execution).
+GitHub is the persistent source of truth between ChatGPT (architecture/review) and Codex (implementation/verification).
 
 ## Working agreement
 
-- ChatGPT owns architecture, task definition, design decisions, acceptance criteria, and PR review.
-- Codex owns local repository inspection, RTL/testbench/Tcl/XDC edits when authorized, Vivado/MATLAB/Python execution, reports, commits, pushes, and PR creation.
-- Read this file and the current task/spec from the repository instead of relying on copied chat text.
-- Do not use SHA-256/file-hash verification. Use Git status/diff, executable tests, synthesis/implementation/timing reports, waveforms, and later physical behavior.
-- Do not guess board pins, clocks, I/O standards, algorithm equations, PWM polarity/count semantics, numeric formats, or timing semantics.
-- Each implementation task uses a feature branch and stops at an open PR for ChatGPT review unless explicitly instructed otherwise.
+- ChatGPT owns architecture, task definition, design decisions, acceptance criteria and PR review.
+- Codex owns local inspection, authorized RTL/TB/Tcl/XDC edits, Vivado/MATLAB/Python execution, reports, commits, pushes and implementation PRs.
+- Read this index and the current repository spec/task instead of relying on copied chat text.
+- Do not use SHA-256/file-hash verification. Use Git status/diff, executable tests, tool reports, waveforms and later physical behavior.
+- Do not guess pins, clocks, I/O standards, mathematical equations, numeric scaling, PWM polarity or state/timing semantics.
+- Preserve unrelated dirty local files. Work on a feature branch/worktree; do not destructively clean/reset them.
+- Stop at the implementation PR for ChatGPT review. No automatic merge or next-stage work.
 
 ## Accepted baseline
 
-Completed and accepted:
+Steps 1–4: self-checking PWM, compare boundaries, registered output/counter alignment, synthesis, 50 MHz route and timing.
 
-- Step 1: self-checking PWM testbench.
-- Step 2: compare semantics and boundaries.
-- Step 2.5: registered PWM output/counter alignment.
-- Step 3: synthesis baseline.
-- Step 4: 50 MHz constraint, route and post-route timing.
-- Step 5A: BX72 LED blink bring-up, physically verified.
-- Step 5B: BX72 breathing LED demo, physically verified.
-- Step 6A: basic PI-FOC Simulink reference audit, PR #10 merged.
-- Step 6B: portable three-phase motor PWM core, PR #11 merged.
+Steps 5A/5B: BX72 LED blink and breathing demos, physically verified.
 
-Accepted Step 6B motor PWM source:
+- Step 6A: basic PI-FOC Simulink audit, PR #10 merged.
+- Step 6B: portable three-phase PWM, PR #11 merged.
+- Step 6C1: fixed-point Clarke/sincos/Park/inverse Park, PR #12 merged at `1207f3870ca7fd5497b2f7374bb7287654ed8c73` on 2026-09-18.
 
-`motor_control_ip/pwm/rtl/motor_pwm_core.sv`
+Accepted C1 source/evidence: `motor_control_ip/foc/rtl/mc_fxp_pkg.sv`, `mc_clarke.sv`, `mc_sincos_lut.sv`, `mc_park.sv`, `mc_inv_park.sv`, `mc_current_transform.sv`; existing ROM/TBs/fixtures; `FOC_Transforms/`; C1 scripts and reports. Its six-DSP result applies to the current-transform synthesis top, not a complete PI-FOC controller.
 
-Step 6A reference artifacts remain:
+The non-blocking PR #12 P3 standalone-test fixture-count suggestion remains follow-up; do not silently alter accepted C1 tests as part of C2.
 
-- `coordination/reports/step6a_pi_foc_reference_audit.md`
-- `coordination/reports/step6a_pi_foc_golden_vectors.csv`
-- `scripts/reference_audit/step6a_pi_vectors.m`
-- `scripts/reference_audit/verify_step6a_vectors.py`
+## Reference hierarchy and protected areas
 
-## Protected/reference areas
+Authority order: approved FPGA architecture and stage-specific numeric contract; Step 6A audit/golden mathematical behavior; MIL/ControlCore model; proven F28335 experience; unverified F28388D integration as historical reference.
 
-Do not modify unless a task explicitly authorizes it:
+Read-only unless a task explicitly says otherwise: `PWM_Controller/`, `PWM_Breathe/`, `Motor_PWM/`, accepted `motor_control_ip/pwm/`, `simulink模型/`, all Step 6A references/golden/verifier files, and accepted C1 sources/ROM/TBs/fixtures/project/scripts/reports.
 
-- `PWM_Controller/`
-- `PWM_Breathe/`
-- `simulink模型/`
-- accepted `motor_control_ip/pwm/` behavior
-- Step 6A golden/reference files
-
-## Motor-control reference priority
-
-When references disagree:
-
-1. approved FPGA motor-control architecture/spec;
-2. Step 6A audit/golden vectors for mathematical convention;
-3. MIL/ControlCore model as algorithm/closed-loop reference;
-4. proven F28335 physical experience;
-5. unverified F28388D code-generation integration as historical reference only.
-
-## Approved Step 6 decomposition
+Step 6A reference files:
 
 ```text
-Step 6B   Motor PWM Core                         [MERGED]
-Step 6C1  Numeric format + Clarke/Park/sincos   [CURRENT]
-Step 6C2  PI + dq limiter
+coordination/reports/step6a_pi_foc_reference_audit.md
+coordination/reports/step6a_pi_foc_golden_vectors.csv
+scripts/reference_audit/step6a_pi_vectors.m
+scripts/reference_audit/verify_step6a_vectors.py
+```
+
+## Approved development sequence
+
+```text
+Step 6B   Motor PWM                         [MERGED]
+Step 6C1  Numeric formats + transforms      [MERGED]
+Step 6C2  dq PI + feedforward + limiter     [DESIGN PREPARED]
 Step 6C3  Sector SVPWM -> normalized duty
 Step 6C4  Full PI-FOC transaction core
 Step 6D   PI-FOC -> PWM timing integration
 ```
 
-First FPGA current-loop inputs are still testbench/golden-vector driven. ADC9238 and encoder interfaces remain deferred until the math chain is verified.
+All C2 inputs remain testbench/golden driven. ADC9238, encoder, complementary gates, dead time, trip, commissioning and MPSoC interfaces remain deferred.
 
-## Current task
+## Current task: Step 6C2 design/implementation handoff
 
-**Step 6C1 — Fixed-Point FOC Transform Foundation**
+Architecture: `coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`.
 
-Approved architecture:
-
-`coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`
-
-Authoritative Step 6C1 numeric/transform spec:
-
-`coordination/specs/step6c1_fixed_point_transforms.md`
-
-Task:
-
-`coordination/tasks/step6c1_fixed_point_transforms.md`
-
-Implementation plan:
-
-`coordination/tasks/step6c1_fixed_point_transforms_plan.md`
-
-### Frozen Step 6C1 numeric contract
+C2 documents:
 
 ```text
-ia/ib/ic            signed 24, F=15
-i_alpha/i_beta      signed 25, F=15
-id/iq               signed 25, F=15
-vd/vq, v_alpha/beta signed 25, F=15
-coefficients         signed 18, F=16
-sin/cos              signed 18, F=16
-theta_e              unsigned 16-bit binary angle
-
-C_TWO_THIRDS = 43691
-C_INV_SQRT3  = 37837
-SIN_COS_ONE  = 65536
+coordination/specs/step6c2_pi_dq_limiter.md
+coordination/tasks/step6c2_pi_dq_limiter.md
+coordination/tasks/step6c2_pi_dq_limiter_plan.md
+coordination/reports/step6c2_design_rationale.md
 ```
 
-Implementation choice:
+**Gate:** merging the C2 documentation PR accepts the written design. It does not itself run implementation or certify tests. Codex begins only when the user starts the C2 implementation task from accepted main. The previous C1-only start command is superseded by this stage-specific gate.
 
-- quarter-wave `4096 x 18` sine ROM;
-- 16-bit binary angle, LUT address from `theta_e[15:2]` with quadrant symmetry;
-- no CORDIC in Step 6C1;
-- no floating-point IP;
-- 25x18 signed multiplication inference targeting DSP48-class resources;
-- full-precision products/accumulators before round+saturate;
-- magnitude-based round-to-nearest, ties away from zero;
-- no silent wraparound;
-- fixed-point Python model is the bit-exact oracle;
-- Step 6A Simulink vectors are algorithm/reference comparisons, not bit-exact sine lookup targets.
+Key C2 choices: separate S32/F24 PI gains and S32/F30 motor constants; S40/F24 voltage/integrator/correction state; C1-compatible S25/F15 external currents/voltages; S32/F16 electrical speed; exact iterative isqrt/division; one request in flight; core output at N+256; successful atomic state commit; explicit invalid-bus/overflow responses with state hold. Both gain profiles must be independently simulated and routed. No fixed DSP count is promised.
 
-Expected `mc_current_transform` resource shape is approximately 6 DSP48E1 and 2 BRAM36, but portability is more important than forcing an exact primitive count.
+The C1 format remains unchanged: phase currents S24/F15, transform values S25/F15, sin/cos S18/F16, 16-bit binary angle. Do not impose C1's sin/cos coefficient width on Kp or claim its throughput/latency for the recursive PI core.
 
-### Step 6C1 scope
-
-Implement:
-
-- `mc_fxp_pkg`
-- `mc_clarke`
-- `mc_sincos_lut`
-- `mc_park`
-- `mc_inv_park`
-- `mc_current_transform`
-- deterministic ROM/reference generator
-- self-checking TBs
-- standalone `FOC_Transforms` Vivado project
-- synthesis/route/timing/resource evidence
-
-Do not implement:
-
-- PI / feedforward / anti-windup
-- dq limiter
-- SVPWM
-- duty-to-CMP or PWM integration
-- ADC9238
-- encoder/QEP
-- dead time/trip
-- bitstream/hardware
-- Step 6C2
-
-Required integration marker:
-
-```text
-ALL STEP 6C1 TRANSFORM TESTS PASSED
-```
-
-Branch:
-
-```text
-step6c1-fixed-point-transforms
-```
-
-PR title:
-
-```text
-Step 6C1: Add fixed-point FOC transform foundation
-```
-
-Codex stops at the open PR.
-
-## Codex start command
+## Codex start command (after design acceptance and user instruction)
 
 ```text
 Read coordination/HANDOFF.md first.
+Read the Step 6 architecture, coordination/specs/step6c2_pi_dq_limiter.md,
+coordination/tasks/step6c2_pi_dq_limiter.md and its _plan.md companion.
+Then read the actual Step 6A audit/golden CSV/verifier, its stimulus-generation
+source read-only, accepted C1 interfaces, and C2 design rationale.
 
-Then read, in order:
-  coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md
-  coordination/specs/step6c1_fixed_point_transforms.md
-  coordination/tasks/step6c1_fixed_point_transforms.md
-  coordination/tasks/step6c1_fixed_point_transforms_plan.md
-  coordination/reports/step6a_pi_foc_reference_audit.md
+Start from latest accepted main and create branch step6c2-pi-dq-limiter.
+Execute only Step 6C2 using the frozen specification and test-first plan.
+Implement independent Python oracle first, then C2 fixed-point helpers,
+iterative isqrt/division, stateless PI evaluator, circular limiter and
+single-in-flight persistent-state core. Preserve OLD/NEXT state semantics,
+command reset behavior, fixed completion slots and atomic error-safe updates.
 
-Execute Step 6C1 exactly as specified and plan-driven/TDD.
-
-Start from latest main and create branch step6c1-fixed-point-transforms.
-Build the deterministic fixed-point Python oracle and quarter-wave ROM first, then Clarke, sincos LUT, Park/inverse Park, and coherent mc_current_transform.
-Keep transaction valid/data aligned and prove back-to-back transaction identity.
-Use portable signed SystemVerilog inference; do not instantiate Artix-7 DSP/BRAM primitives.
-Run Step 6C1 unit/integration tests, Step 6A verifier and Step 6B PWM regression.
-Run Vivado 2026.1 synthesis/route/internal timing and audit DSP48/BRAM inference.
-Write coordination/reports/step6c1_codex_report.md and evidence under docs/reports/step6c1/.
-Open PR "Step 6C1: Add fixed-point FOC transform foundation" and stop for ChatGPT review.
-
-Do not merge automatically.
-Do not begin Step 6C2.
-Do not modify protected legacy/Simulink/PWM reference assets.
-Do not generate a bitstream or program hardware.
+Run all C2 tests, the actual 160-row reference comparison, unchanged Step 6A/
+6B/C1 regressions, and Vivado 2026.1 synthesis/route for BOTH PI profiles.
+Use fresh scratch work and new C2 evidence; do not overwrite accepted reports.
+Write coordination/reports/step6c2_codex_report.md and evidence under
+ docs/reports/step6c2/.
+Open PR "Step 6C2: Add fixed-point dq PI and circular limiter" and STOP.
+Do not merge, start C3, edit protected references, generate a bitstream,
+or program hardware. Report any spec conflict instead of changing a gate.
 ```
