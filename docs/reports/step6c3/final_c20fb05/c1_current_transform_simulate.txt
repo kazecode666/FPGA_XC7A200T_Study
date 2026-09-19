@@ -1,0 +1,22 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat c1_current_transform_snapshot -runall -testplusarg {"VECTOR_DIR=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors"}
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Sep 19 21:45:23 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/c1_current_transform_snapshot/xsim_script.tcl
+# xsim {c1_current_transform_snapshot} -testplusarg "VECTOR_DIR=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors" -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Rows=256 (Step6A=160 unique=96), checked=256 reset-flushed=4 continuous=96
+Measured deterministic acceptance-edge to output-edge latency=5 clocks (<32)
+All six fields bit-exact; bubbles/reset recovery/extra/missing/reordering checked
+ALL STEP 6C1 TRANSFORM TESTS PASSED
+$finish called at time : 7600 ns : File "C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_current_transform_tb.sv" Line 108
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Sep 19 21:45:25 2026...
+Tcl status=0; process status=0

@@ -1,0 +1,276 @@
+{
+  "decimal_check": {
+    "duty_limit": "1.1920928955078125E-7",
+    "maxima": {
+      "duty_u": "2.998324514952515700490021689E-8",
+      "duty_v": "2.993006103390715006609344174E-8",
+      "duty_w": "2.983541967130818058279771914E-8",
+      "t1": "1.163756379763150214951610163E-10",
+      "t2": "1.163803832810451960356081654E-10"
+    },
+    "t1_t2_limit": "2.3283064365386962890625E-10"
+  },
+  "directed_full_top_cases": 22,
+  "duty_format": "duty_u/v/w signed S26/F24; unclamped",
+  "dwell_format": "t1/t2/L/M/H signed S34/F32",
+  "encoding": "fixed-width lowercase hexadecimal; exact-width two's complement for signed fields; whitespace-separated; one # header; no blank rows",
+  "fixtures": {
+    "sector_xyz_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "tag_id",
+          "signed": false,
+          "width": 16
+        },
+        {
+          "name": "v_alpha",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "v_beta",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "cmp0",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "cmp1",
+          "signed": true,
+          "width": 36
+        },
+        {
+          "name": "cmp2",
+          "signed": true,
+          "width": 36
+        },
+        {
+          "name": "b0",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "b1",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "b2",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sector",
+          "signed": false,
+          "width": 3
+        },
+        {
+          "name": "X",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "Y",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "Z",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "a_num",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "b_num",
+          "signed": true,
+          "width": 40
+        }
+      ],
+      "rows": 790
+    },
+    "svpwm_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "tag_id",
+          "signed": false,
+          "width": 16
+        },
+        {
+          "name": "v_alpha",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "v_beta",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "vdc",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "sector",
+          "signed": false,
+          "width": 3
+        },
+        {
+          "name": "overmodulated",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "error_code",
+          "signed": false,
+          "width": 2
+        },
+        {
+          "name": "a_num",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "b_num",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "sum_num",
+          "signed": true,
+          "width": 41
+        },
+        {
+          "name": "base",
+          "signed": true,
+          "width": 39
+        },
+        {
+          "name": "denominator",
+          "signed": true,
+          "width": 41
+        },
+        {
+          "name": "t1",
+          "signed": true,
+          "width": 34
+        },
+        {
+          "name": "t2",
+          "signed": true,
+          "width": 34
+        },
+        {
+          "name": "L",
+          "signed": true,
+          "width": 34
+        },
+        {
+          "name": "M",
+          "signed": true,
+          "width": 34
+        },
+        {
+          "name": "H",
+          "signed": true,
+          "width": 34
+        },
+        {
+          "name": "duty_u",
+          "signed": true,
+          "width": 26
+        },
+        {
+          "name": "duty_v",
+          "signed": true,
+          "width": 26
+        },
+        {
+          "name": "duty_w",
+          "signed": true,
+          "width": 26
+        }
+      ],
+      "rows": 790
+    }
+  },
+  "input_format": "v_alpha/v_beta/vdc signed S25/F15",
+  "master_seed": 113451046,
+  "master_seed_hex": "0x6c32026",
+  "seeded_full_top_cases": 768,
+  "step6a_replay": {
+    "allowed_and_observed_sector_exceptions": [
+      {
+        "case_id": "edge_1_-1.732",
+        "parameter_profile": "MIL_PI_override"
+      },
+      {
+        "case_id": "edge_1_1.732",
+        "parameter_profile": "MIL_PI_override"
+      },
+      {
+        "case_id": "edge_1_-1.732",
+        "parameter_profile": "real_commissioning"
+      },
+      {
+        "case_id": "edge_1_1.732",
+        "parameter_profile": "real_commissioning"
+      }
+    ],
+    "maxima": {
+      "duty_u": "0.0000042531884765625",
+      "duty_v": "0.000011942187652587890625",
+      "duty_w": "0.000011942187652587890625",
+      "t1": "0.000015665495423478064619140625",
+      "t2": "0.000008176039042934234619140625"
+    },
+    "normalized_error_limit": "0.00005",
+    "rows": 160,
+    "rows_per_parameter_profile": 80,
+    "source": "coordination/reports/step6a_pi_foc_golden_vectors.csv"
+  },
+  "tags": {
+    "0": "seeded",
+    "1": "zero",
+    "10": "cmp1_plus_1",
+    "11": "sum_base_minus_1",
+    "12": "sum_base_equal",
+    "13": "sum_base_plus_1",
+    "14": "clear_overmodulation",
+    "15": "negative_unclamped",
+    "16": "invalid_vdc_zero",
+    "17": "invalid_vdc_negative",
+    "18": "cmp1_plan_plus_250",
+    "19": "cmp1_plan_minus_250",
+    "2": "sector_1_interior",
+    "20": "cmp2_minus_1",
+    "21": "cmp2_equal_0",
+    "22": "cmp2_plus_1",
+    "3": "sector_2_interior",
+    "4": "sector_3_interior",
+    "5": "sector_4_interior",
+    "6": "sector_5_interior",
+    "7": "sector_6_interior",
+    "8": "cmp1_minus_1",
+    "9": "cmp1_equal_0"
+  },
+  "total_full_top_cases": 790,
+  "version": 1
+}

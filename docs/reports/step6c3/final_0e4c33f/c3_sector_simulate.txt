@@ -1,0 +1,19 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat c3_sector_snapshot -runall -testplusarg {"VECTOR_DIR=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c3"}
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Sep 19 21:29:11 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/c3_sector_snapshot/xsim_script.tcl
+# xsim {c3_sector_snapshot} -testplusarg "VECTOR_DIR=C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c3" -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+ALL STEP 6C3 SECTOR XYZ TESTS PASSED rows=790 fields=16 directed=22 seeded=768
+$finish called at time : 794 ns : File "C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_svpwm_sector_xyz_tb.sv" Line 279
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Sep 19 21:29:12 2026...
+Tcl status=0; process status=0

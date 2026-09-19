@@ -1,0 +1,30 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Sep 19 21:37:32 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T/docs/reports/step6c3/final_0e4c33f/synth_hierarchy.rpt
+| Design       : mc_sector_svpwm
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Synthesized
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------+---------------------+------------+------------+---------+------+------+--------+--------+------------+
+|       Instance      |        Module       | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++---------------------+---------------------+------------+------------+---------+------+------+--------+--------+------------+
+| mc_sector_svpwm     |               (top) |       3916 |       3916 |       0 |    0 | 1418 |      0 |      0 |         25 |
+|   (mc_sector_svpwm) |               (top) |        302 |        302 |       0 |    0 |  780 |      0 |      0 |         18 |
+|   divider_t1        |     mc_udiv_u72_u41 |        285 |        285 |       0 |    0 |  319 |      0 |      0 |          0 |
+|   divider_t2        |   mc_udiv_u72_u41_0 |       1828 |       1828 |       0 |    0 |  319 |      0 |      0 |          0 |
+|   sector_xyz        | mc_svpwm_sector_xyz |       1501 |       1501 |       0 |    0 |    0 |      0 |      0 |          7 |
++---------------------+---------------------+------------+------------+---------+------+------+--------+--------+------------+

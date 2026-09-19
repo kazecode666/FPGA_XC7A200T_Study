@@ -1,0 +1,10 @@
+PASS
+sys_clk=20.000 ns
+routable=5700 fully_routed=5700 routing_errors=0
+WNS=1.935 TNS=0.000 setup_failing=0 setup_total=2903
+WHS=0.054 THS=0.000 hold_failing=0 hold_total=2903
+max SLACK=1.935 STARTPOINT=divider_denominator_reg[2]/C ENDPOINT=t2_debug_reg[24]/CE
+min SLACK=0.054 STARTPOINT=divider_t2/work_result_reg[30]/C ENDPOINT=divider_t2/quotient_reg[31]/D
+
+no_clock=0 unconstrained_internal_endpoints=0 loops=0 latch_loops=0
+Clock-only internal core timing; board pins, IOSTANDARD and external I/O delays are absent.

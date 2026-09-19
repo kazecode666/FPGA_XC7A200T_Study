@@ -1,0 +1,4 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat -version
+Vivado Simulator v2026.1
+Copyright 1986-2026 Xilinx, Inc. All Rights Reserved.
+Tcl status=0; process status=0

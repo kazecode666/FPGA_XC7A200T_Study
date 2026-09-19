@@ -1,0 +1,14 @@
+FAILED
+Run=final_1fbffc3
+c3_sector simulation process failed: 1
+c3_sector simulation process failed: 1
+    while executing
+"error $message"
+    invoked from within
+"if {![uplevel 1 [list expr $condition]]} {error $message}"
+    (procedure "require" line 1)
+    invoked from within
+"require {$status == 0} "$name simulation process failed: $exitcode""
+    (procedure "simulate" line 18)
+    invoked from within
+"simulate c3_sector mc_svpwm_sector_xyz_tb [list $c3_pkg $c3_sector [file join $root motor_control_ip foc tb mc_svpwm_sector_xyz_tb.sv]] {ALL STEP 6C3 ..."
