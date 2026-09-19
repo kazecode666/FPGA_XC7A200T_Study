@@ -163,8 +163,13 @@ set status [catch {
         close_sim
     }
     write_text [file join $reports regression_summary.txt] "PASS: six Python checks; C4 profiles 0/1 (672 base rows, 698 accepts, 694 responses, 4 reset aborts); Step 6B PWM."
-    launch_runs synth_1 -jobs 4
-    wait_on_run synth_1
+    # Keep existing local results on a repeated acceptance run. A completed run
+    # is reusable only when Vivado confirms its design inputs are still current.
+    if {[get_property STATUS [get_runs synth_1]] ne {synth_design Complete!}} {
+        launch_runs synth_1 -jobs 4
+        wait_on_run synth_1
+    }
+    require {![get_property NEEDS_REFRESH [get_runs synth_1]]} {Synthesis is stale; preserve/archive local results before rebuilding}
     require_run synth_1 {synth_design Complete!}
     file copy [file join [get_property DIRECTORY [get_runs synth_1]] runme.log] [file join $reports synth_runme.txt]
     open_run synth_1
@@ -183,8 +188,11 @@ set status [catch {
     write_text [file join $reports synth_resources.txt] $primitive_text
     close_design
 
-    launch_runs impl_1 -to_step route_design -jobs 4
-    wait_on_run impl_1
+    if {[get_property STATUS [get_runs impl_1]] ne {route_design Complete!}} {
+        launch_runs impl_1 -to_step route_design -jobs 4
+        wait_on_run impl_1
+    }
+    require {![get_property NEEDS_REFRESH [get_runs impl_1]]} {Implementation is stale; preserve/archive local results before rebuilding}
     require_run impl_1 {route_design Complete!}
     file copy [file join [get_property DIRECTORY [get_runs impl_1]] runme.log] [file join $reports impl_runme.txt]
     open_run impl_1
