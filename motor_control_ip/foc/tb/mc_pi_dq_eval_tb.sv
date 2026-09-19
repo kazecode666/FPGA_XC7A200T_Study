@@ -882,7 +882,7 @@ module mc_pi_dq_eval_tb #(parameter int PI_PROFILE=0);
     for(i=0;i<LATENCY;i++) abort_at(i);
     reset_on_edge(0); reset_on_edge(1);
     transact(ROWS+PI_PROFILE*EXTRA);
-    $display("ALL STEP 6C2 EVALUATOR TESTS PASSED profile=%0d fixture_rows=%0d total_fixture_rows=%0d directed=%0d transactions=%0d aborts=%0d idle_clocks=5000",PI_PROFILE,PER_PROFILE,ROWS,EXTRA,transactions,aborts);
+    $display("ALL STEP 6C2 PI EVAL TESTS PASSED profile=%0d fixture_rows=%0d total_fixture_rows=%0d directed=%0d transactions=%0d aborts=%0d idle_clocks=5000",PI_PROFILE,PER_PROFILE,ROWS,EXTRA,transactions,aborts);
     $finish;
   end
   initial begin #2000000; fail("watchdog"); end

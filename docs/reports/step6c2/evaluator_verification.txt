@@ -4,8 +4,8 @@ RED: TB written before RTL, .Xil/eval_red. xvlog succeeded; xelab rejected
 missing module mc_pi_dq_eval (VRFC 10-2063). No placeholder RTL was accepted.
 
 Final GREEN independent elaborations:
-.Xil/eval_final0 -> mc_pi_dq_eval_p0_tb
-.Xil/eval_final1 -> mc_pi_dq_eval_p1_tb
+.Xil/eval_fix0 -> mc_pi_dq_eval_p0_tb
+.Xil/eval_fix1 -> mc_pi_dq_eval_p1_tb
 Commands from each fresh scratch directory (worktree-relative source paths):
 E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv ../../motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv ../../motor_control_ip/foc/rtl/mc_pi_dq_eval.sv ../../motor_control_ip/foc/tb/mc_pi_dq_eval_tb.sv
 E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat mc_pi_dq_eval_p<P>_tb -s result
@@ -17,8 +17,8 @@ PowerShell's native batch argument handling stripped '=' in initial generic
 and plusarg attempts; explicit profile tops/data-only fixture copy resolved
 that invocation problem. Those initial attempts are not counted as GREEN.
 
-ALL STEP 6C2 EVALUATOR TESTS PASSED profile=0 fixture_rows=521 total_fixture_rows=1042 directed=16 transactions=556 aborts=18 idle_clocks=5000
-ALL STEP 6C2 EVALUATOR TESTS PASSED profile=1 fixture_rows=521 total_fixture_rows=1042 directed=16 transactions=556 aborts=18 idle_clocks=5000
+ALL STEP 6C2 PI EVAL TESTS PASSED profile=0 fixture_rows=521 total_fixture_rows=1042 directed=16 transactions=556 aborts=18 idle_clocks=5000
+ALL STEP 6C2 PI EVAL TESTS PASSED profile=1 fixture_rows=521 total_fixture_rows=1042 directed=16 transactions=556 aborts=18 idle_clocks=5000
 
 Strict parser reads the complete 1042-row corpus on each run, with 521 rows
 per ordered profile. It checks one first-line header, exactly 20 columns,
@@ -92,3 +92,13 @@ artifacts, exit 0. Full output .Xil/evaluator_oracle_unittest.txt and
 
 Behavioral functional/timing-slot verification only; 50 MHz routed timing,
 resource mapping, implementation and hardware operation are not claimed.
+
+Review fix round 1 (base 92a1773): exact frozen PASS marker corrected from
+"ALL STEP 6C2 EVALUATOR TESTS PASSED" to "ALL STEP 6C2 PI EVAL TESTS PASSED".
+RTL/arithmetic/fixtures unchanged. Both complete profile TBs rerun in fresh
+.Xil/eval_fix0 and .Xil/eval_fix1 with the commands above; each compile,
+elaboration and simulation exited 0, no ERROR/Fatal/native crash, and exact
+corrected markers are quoted above. Previous functional mutation/parser/
+Python results remain applicable; no unrelated suites were rerun for this
+string-only correction. Earlier eval_final* logs are historical outputs with
+the incorrect label and are superseded for the acceptance marker.
