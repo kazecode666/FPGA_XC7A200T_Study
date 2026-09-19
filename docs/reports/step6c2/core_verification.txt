@@ -1,0 +1,204 @@
+Step 6C2 Task 6: persistent-state dq PI core verification
+Date: 2026-09-19, Vivado/XSim 2026.1 SW Build 6511674
+Branch: step6c2-pi-dq-limiter; implementation base: 057782f
+Workspace: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T
+Result: PASS for Task 6 core transaction/arithmetic/reset verification only.
+
+Scope and provenance
+Only new mc_pi_dq_core.sv, mc_pi_dq_core_tb.sv and this evidence are committed.
+The frozen C2 spec sections 6/7/9, taskbook, task-6-brief, constraints, interfaces,
+core-notes, task-1 report, independent Python pi_step and actual existing engine
+ports were read. No source fixtures, oracle, accepted evaluator/limiter/engines,
+C1/PWM/Step6A/Simulink, project, specification or taskbook changed.
+No synthesis, route, timing, bitstream, board, C3, push or PR in Task 6.
+
+Exact reproduced commands
+Define ROOT as the workspace above and BIN=E:/AMDDesignTools/2026.1/Vivado/bin.
+Each final profile used a fresh independent cwd, ROOT/.Xil/core_pass0 or core_pass1.
+Data-only copies of golden_core_vectors.txt, seeded_core_vectors.txt and
+error_core_vectors.txt were staged under each cwd's fallback relative directory:
+motor_control_ip/foc/tb/vectors/step6c2/. No fixtures were transformed.
+
+BIN/xvlog.bat -sv ROOT/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv
+  ROOT/motor_control_ip/foc/rtl/mc_isqrt_u80.sv
+  ROOT/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv
+  ROOT/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv
+  ROOT/motor_control_ip/foc/rtl/mc_dq_limiter.sv
+  ROOT/motor_control_ip/foc/rtl/mc_pi_dq_core.sv
+  ROOT/motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv
+BIN/xelab.bat mc_pi_dq_core_p0_tb -s core
+BIN/xsim.bat core -runall
+Repeat independently in core_pass1 with mc_pi_dq_core_p1_tb.
+Commands are single invocations; wrapped above for readability.
+Equivalent executed PowerShell helper: .Xil/core_red/run.ps1
+  -Scratch .Xil/core_pass0 -Top mc_pi_dq_core_p0_tb
+  -Scratch .Xil/core_pass1 -Top mc_pi_dq_core_p1_tb
+Compile/elaborate/simulation transcripts: each cwd's compile.txt, elaborate.txt,
+simulate.txt. Both compiles/elaborations exit 0; neither final transcript has
+WARNING, ERROR, Fatal or native FATAL_ERROR. Exact required marker exists once
+per profile. XSim exit status alone was not used as a test-pass criterion.
+
+TDD evidence
+The complete first TB, including fixture/error/OLD-NEXT/early-commit/reset/queue
+checks, was written before the DUT. In .Xil/core_red:
+BIN/xvlog.bat -sv ROOT/motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv
+BIN/xelab.bat mc_pi_dq_core_p0_tb -s red
+xvlog succeeded. xelab exit 1: VRFC 10-2063 Module <mc_pi_dq_core> not found;
+XSIM 43-3322 static elaboration failed. xelab.log retains the initial RED.
+After RTL implementation, both profile tops passed. Functional negative controls
+below prove arithmetic/state/parser checks, beyond missing-DUT scaffold RED.
+
+RTL ownership and schedule
+Core alone owns S40 xd_state, xq_state, du_d_state, du_q_state and sat_state.
+Inputs plus OLD five-tuple capture once at acceptance N. Stateless evaluator
+accepts N+1, emits N+17, core captures N+18. Limiter accepts N+20, emits N+180,
+core captures N+181; private result pads 75 further clocks. The response at
+N+256 commits all five values atomically on OK only. Each accepted transaction
+has one completion slot, including invalid bus, range, command-reset and faults.
+Pre-edge ready is low on completion; earliest next acceptance is N+257.
+Input ready is reset_n && !busy. Counter advances only while pending.
+Captured/candidate data have no asynchronous reset and are masked by resettable
+busy/result/error control; DSP-friendly child arithmetic remains unchanged.
+The sole normal persistent write site is inside successful +256 completion.
+All debug names/types are frozen response-aligned hierarchical registers; no
+extra top pins, KEEP/DONT_TOUCH, run-time gains or new arithmetic are introduced.
+
+Missing launches/responses, wrong-time engine pulses or missing private result
+produce INTERNAL_ERROR at the same +256 slot. A wrong-time pulse ON +256 is
+included in the current commit condition, rather than only a delayed error flag.
+Invalid bus is signed-checked at capture with priority over command reset.
+Every error zeros visible voltages/flags and raw/hi/scale debug, preserves the
+full persistent state, and exposes captured OLD values in OLD and NEXT debug.
+Hardware reset clears persistent state, visible/debug values and control
+asynchronously and aborts pending children. Functional/debug values otherwise
+hold between completed responses; only output_valid pulses.
+
+Independent numerical input/expected provenance
+Strict parser reads actual 34-column core files, using indexed string bytes and
+one numeric sscanf per validated token, not getc or many-string sscanf.
+Independent literal counts: golden160 = 80/profile; seeded2048 = 1024/profile;
+errors258 = one successful saturation preamble plus128 errors/profile.
+Literal per-file sequence IDs 0/1/2, profile order, transaction ID uniqueness and
+order, reset_before exactly at profile start, exact column count, lowercase hex,
+fixed digit widths, significant-bit padding and first/only header are checked.
+Blank/malformed non-comment rows cannot silently disappear. Missing or extra
+rows/columns fail. S25/S32/S40 values retain their widths before signed use.
+
+Both profiles run their complete source80/seeded1024/error129 sequences twice:
+first fixed gaps, then (i*7+3)%11 gaps and5000 idle clocks mid-sequence.
+Each reset_before performs actual hardware reset; expected OLD values are never
+injected into DUT states. All160 golden rows consume direct quantized Step6A
+id/iq/reference/we/vdc inputs in original order; no C1 transforms are replayed.
+Every row compares functional outputs, current flags, OLD correction/sat and
+NEXT five-state values exactly to the unchanged independent integer oracle.
+
+A further13 directed rows/profile are embedded as 34x40-bit packed literal rows,
+created with the unchanged Python pi_step API (scratch generator
+.Xil/core_red/make_directed.py). They represent10 consecutive stateful cases,
+two INTERNAL_ERROR expectations, and one saturation-from-zero preamble/abort
+case. Full samples use exact API keys id_meas,iq_meas,id_ref,iq_ref,we,vdc,
+pi_reset,uq_zero_en. Expected states are computed sequentially in Python.
+No synthesizable RTL expression is reused by the oracle.
+
+Directed cases: three successive one-amp accepted updates; d/q saturation;
+q-only reset with actual measured iq and nonzero d update; reverse saturation;
+invalid bus together with pi_reset (state hold); valid command reset with OLD
+saturation/corrections observable; tiny +/-one current-LSB integration; negative
+speed/reversed d reference. Q-only reset zeros q NEXT/correction without clearing
+d state. Valid command reset after saturation commits all five zero only at
+completion. Profile0 explicit one-amp identity from zero:
+                    txn0         txn1         txn2
+ud_raw F24          36595302     41565552     46535802
+xd_old F24          0            4970250      9940500
+xd_next F24         4970250      9940500      14910750
+ud_lim F15          71475        81183        90890
+uq and old/new du   all zero
+
+python scripts/step6c2_pi_reference.py --check: exit0, C2_ORACLE_PASS checked11
+artifacts, exact fixture counts unchanged, regenerated content/manifest match.
+The inherited actual-source comparison remains below0.002 V for all six fields:
+ud_raw8.589466647235255e-5; uq_raw1.1254509524147305e-4;
+ud_lim9.584864214984279e-5; uq_lim1.1904200152199063e-4;
+old_du_d2.275798979489707e-6; old_du_q1.4973311017740798e-6 V.
+No Step6A current/OLD sat mismatch. No tolerance or constant changed.
+
+Transaction, idle, reset and fault proof
+Scoreboard queues only actual pre-edge valid&&ready acceptances, recording
+monotonic transaction IDs, acceptance edges, row IDs and complete actual OLD
+state. Accepted, completed and reset-aborted counts are independent. Response
+is required exactly256 edges after its queue entry; missing/extra/duplicate/
+reordered/early/late responses, unknown handshake/state/debug/output, unexpected
+acceptance and ready/pending mismatches all fail. Every meaningful busy/idle
+edge compares the full persistent five-state tuple with the expected last
+committed state and all held response/debug values. There is no driver-count
+substitution for accepted-edge accounting.
+
+Every transact keeps valid asserted through busy and poisons all ignored input
+buses and both commands on every busy falling edge. A separate consecutive pair
+never lowers valid: second actual acceptance must occur at first N+257.
+5000 idle clocks follow nonzero directed state, and three further5000-clock gaps
+occur during each varied-gap profile replay. No state or held snapshot changes.
+
+256 pending phases0..255 are individually asynchronously aborted, including
+immediately before completion. The abort sample is saturated, forcing both
+sqrt and divider active. Measured active-at-abort counts are hard-gated:
+evaluator16, sqrt40, divider72, completed-private-result padding75.
+All pending phases, including remaining core/limiter calculation gaps, are
+covered. Each abort is followed by258 idle clocks to reject stale responses.
+Two further tests assert asynchronous reset in the NBA of the exact acceptance
+or completion edge; reset wins over scheduled state/visible/valid updates.
+The pre-reset acceptance edge is counted and classified aborted when reset
+wins in that edge's NBA. No successful response/state survives either case.
+
+Seven TB-only engine faults, each preceded by a successful saturation making
+ALL FIVE OLD values nonzero, verify fixed-slot zero-output error and OLD/NEXT
+state hold: missing evaluator response; missing limiter response; unavailable
+evaluator launch; unavailable limiter launch; missing private result at +256;
+unexpected evaluator pulse at +256; unexpected limiter pulse at +256.
+These are hierarchical forces in the TB, not production fault ports.
+After forces are released, reset/recovery prevents stale fault contamination;
+a final normal transaction succeeds.
+
+Final captured results, after the last RTL/TB edit:
+CORE_ABORT_COVERAGE evaluator=16 sqrt=40 divider=72 completed-private-padding=75 phases=0..255 plus two simultaneous-edge resets
+CORE_COUNTS profile=0 accepted=2751 completed=2493 successful=2229 invalid_vdc=129 range=128 internal=7 aborted=258 latency=256 golden=80x2 seeded=1024x2 errors=128x2
+ALL STEP 6C2 PI DQ CORE TESTS PASSED
+CORE_ABORT_COVERAGE evaluator=16 sqrt=40 divider=72 completed-private-padding=75 phases=0..255 plus two simultaneous-edge resets
+CORE_COUNTS profile=1 accepted=2751 completed=2493 successful=2229 invalid_vdc=129 range=128 internal=7 aborted=258 latency=256 golden=80x2 seeded=1024x2 errors=128x2
+ALL STEP 6C2 PI DQ CORE TESTS PASSED
+Each final independent run finished at15479400 ns; clock period20 ns.
+
+Required functional negative controls on final TB
+All four fresh .Xil/core_*_proof runs compile and elaborate successfully, then
+produce explicit MC_PI_DQ_CORE_FAIL Fatal with no success marker/native crash.
+Same command sequence as GREEN, substituting scratch mc_pi_dq_core.sv for DUT.
+.Xil/core_red/mutations_proof.py records exact source/data changes.
+1) core_mdu_proof: At current limiter capture replace delayed anti-windup in
+   candidate integrators by adding back R(OLDdu*Kaw,24) and subtracting
+   R(CURRENTdu*Kaw,24). This actually changes arithmetic in the SAME transaction,
+   not merely wiring a held prior limiter output. First saturated row2469 fails
+   at response edge1036, time20771 ns. Actual xd_next fff63ed48b versus oracle
+   001e838506; q also differs. Raw and correction outputs match, isolating AW
+   ordering as the failure. Three preceding one-amp updates pass.
+2) core_mint_proof: Re-add R(captured d error*KiTs,15) to private xd candidate
+   on every busy clock after evaluator capture. The first one-amp transaction
+   fails at response edge262, time5291 ns: actual xd_next004681eb4c versus
+   expected00004bd70a. Raw voltage remains correct; state update is repeated.
+3) core_mearly_proof: Commit evaluator x outputs to persistent state at N+18.
+   Every-edge persistent monitor fails at edge24/time531 ns, BEFORE response:
+   premature/repeated/non-atomic/error state commit.
+4) core_mtrunc_proof: Unmodified RTL plus scratch golden fixture with final row
+   removed. Parser fails at time0: independent exact fixture/header count.
+   No transaction is accepted and no core success marker is emitted.
+XSim exits0 even for these TB Fatals; explicit Fatal/no-PASS checks are essential.
+Original RTL, oracle and fixture text remain untouched by all negative controls.
+
+Review concerns and boundary
+No arithmetic/state/interface/latency contract deviation found. An initial
+abort sweep used an unsaturated input and could not cover active divider abort;
+self-review corrected it, added exact busy-coverage gates, and reran both final
+profiles. Internal-error tests were strengthened from zero OLD to saturated
+nonzero OLD; final results above include those changes. No tests remain failing.
+Task6 does not establish synthesis resource usage, routed timing or board
+behavior. Full end-to-end C2/C1/PWM regression, both-profile synthesis/route and
+portable project checks remain the later integration/build task.
