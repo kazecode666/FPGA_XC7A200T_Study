@@ -145,7 +145,9 @@ set status [catch {
     require {[llength $constraints] == 1} {Expected one XDC}
     require {[string trim [read_text [lindex $constraints 0]]] eq {create_clock -name sys_clk -period 20.000 [get_ports clk]}} {Clock constraint mismatch}
     write_text [file join $reports project_paths.txt] $inventory
-    set_property generic {PI_PROFILE=0} [get_filesets sources_1]
+    # Even writing the same synthesis generic marks completed Vivado runs stale.
+    # This project is delivered with profile 0; audit it without rewriting it.
+    require {[get_property generic [get_filesets sources_1]] eq {PI_PROFILE=0}} {Expected default synthesis PI_PROFILE=0}
     set_property -name xsim.simulate.xsim.more_options -value "-testplusarg \"VECTOR_DIR=$root/motor_control_ip/foc/tb/vectors/step6c4\"" -objects [get_filesets sim_1]
     # Profile 1 first; the retained default snapshot/WDB and project finish at 0.
     foreach profile {1 0} {
