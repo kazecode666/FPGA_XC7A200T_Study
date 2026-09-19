@@ -52,7 +52,7 @@ proc simulate {name top sources marker fragments {bad ""}} {
     if {$bad ne ""} {
         set file [file join $dir motor_control_ip foc tb vectors step6c2 round_vectors.txt]
         set lines [split [string trimright [read_text $file]] \n]
-        if {$bad eq "truncated"} {set lines [lrange $lines 0 end-1]} else {lset lines 1 "malformed token"}
+        if {$bad eq "truncated"} {set lines [lrange $lines 0 end-1]} else {lset lines 1 "g[string range [lindex $lines 1] 1 end]"}
         write_text $file [join $lines \n]
     }
     cd $dir
@@ -295,6 +295,10 @@ set status [catch {
         } detail]
         if {$code} {write_text $state "FAILED\n$detail"}
         require {$code != 0 && [string match "FAILED*" [read_text $state]]} "Failure probe incorrectly passed $probe"
+        if {$probe in {malformed truncated}} {
+            set negative [read_text [file join $reports probe_${probe}_simulate.txt]]
+            require {[string first {Fatal: PI_FXP_TB_FAIL} $negative] >= 0 && [string first FATAL_ERROR $negative] < 0} "Fixture probe must reject explicitly without native crash: $probe"
+        }
     }
     # Independent builds: retain the other profile's evidence even when one fails.
     set failed {}
