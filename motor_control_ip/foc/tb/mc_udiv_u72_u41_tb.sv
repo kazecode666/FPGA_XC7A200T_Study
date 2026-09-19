@@ -205,7 +205,7 @@ module mc_udiv_u72_u41_tb;
     held_valid_pair();
     for(i=0;i<LATENCY;i++) abort_at(i);
     transact(72'hffffffffffffffffff,41'd1,72'hffffffffffffffffff,0,0);
-    $display("ALL STEP 6C2 DIVIDER TESTS PASSED fixture_rows=%0d transactions=%0d aborts=%0d idle_clocks=5000",ROWS,transactions,aborts);
+    $display("ALL STEP 6C2 UDIV TESTS PASSED fixture_rows=%0d transactions=%0d aborts=%0d idle_clocks=5000",ROWS,transactions,aborts);
     $finish;
   end
   initial begin #20000000; fail("watchdog"); end
