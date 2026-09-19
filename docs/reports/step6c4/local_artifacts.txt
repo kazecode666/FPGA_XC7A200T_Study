@@ -1,0 +1,7 @@
+D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.sim/step6c4_profile0.wcfg: PASS; 81 wave objects; saved angle/bus and PI OLD/NEXT present
+D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.sim/step6c4_profile1.wcfg: PASS; 81 wave objects; saved angle/bus and PI OLD/NEXT present
+D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.sim/step6c4_gui.wcfg: PASS; 81 wave objects; saved angle/bus and PI OLD/NEXT present
+D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.runs/synth_1/mc_foc_current_core.dcp: 2481192 bytes
+D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.runs/impl_1/mc_foc_current_core_routed.dcp: 7591914 bytes
+D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.sim/sim_1/behav/xsim/mc_foc_current_core_tb_behav.wdb: 42690591 bytes
+No bitstream under FOC_Current
