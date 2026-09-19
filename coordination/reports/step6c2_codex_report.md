@@ -1,10 +1,10 @@
 # Step 6C2 execution report
 
-Status: PASS. The final full build completed at 2026-09-19 16:38:06 with process exit 0 and exact `STEP6C2_BUILD_PASS`. All evidence below is from the final code revision unless explicitly labeled development/RED evidence.
+Status: PASS. The final full build completed at 2026-09-19 17:05:08 with process exit 0 and exact `STEP6C2_BUILD_PASS`. All evidence below is from the final code revision unless explicitly labeled development/RED evidence.
 
 ## Scope and provenance
 
-Accepted documentation baseline: `74f6128` (C2 docs PR #13), including accepted C1 PR #12 merge `1207f38`. The isolated worktree branch is `step6c2-pi-dq-limiter`; reviewed RTL/TB handoff is `7bc81ce`. Final tested code candidate: `e3c0f73` (portable-project baseline `9724e77`, build hardening and narrow parser repair included). The tested code revision and final run are recorded below; a subsequent report-only commit is not represented as the revision executed by Vivado.
+Accepted documentation baseline: `74f6128` (C2 docs PR #13), including accepted C1 PR #12 merge `1207f38`. The isolated worktree branch is `step6c2-pi-dq-limiter`; reviewed RTL/TB handoff is `7bc81ce`. Final tested code revision: `8934278` (portable-project baseline `9724e77`, build hardening and narrow parser repair included). The tested code revision and final run are recorded below; a subsequent report-only commit is not represented as the revision executed by Vivado.
 
 All changes are C2 additions under the frozen task book. Accepted C1, Step6A, Step6B PWM, Simulink, spec/task/HANDOFF files and parent-checkout modifications remain untouched. No hashes, deletion/cleanup, computer use, bitstream, hardware access or C3 work were performed.
 
@@ -72,7 +72,7 @@ Previously reviewed functional negative controls are retained in the unit verifi
 
 ## Portable project and final tool evidence
 
-Final acceptance is recorded under `docs/reports/step6c2/final03/`; code commit `e3c0f73f2a5dcd1e781dbf83513c26cc0924e47d`, run started 2026-09-19 16:28:55. Vivado/XSim 2026.1 build 6511674 and the actual Vivado environment's CPython 3.13.0 were used. Earlier standalone oracle development used CPython 3.14.6; those versions are not conflated.
+Final acceptance is recorded under `docs/reports/step6c2/final04/`; code commit `8934278c834f115fc0e68b8dd196d69abb03419e`, run started 2026-09-19 16:53:08. Vivado/XSim 2026.1 build 6511674 and the actual Vivado environment's CPython 3.13.0 were used. Earlier standalone oracle development used CPython 3.14.6; those versions are not conflated.
 
 Reproduction from the repository root (choose a fresh report label):
 
@@ -86,7 +86,11 @@ The positive simulation inventory is exactly 13: the portable profile-0 core; FX
 
 Eleven negative-result files start IN_PROGRESS and finish FAILED as required. The nine fixture probes compile and elaborate successfully and explicitly reject two-column rows, nonhex four-column rows, or truncated counts in each round/range/sqrt fixture, without native FATAL_ERROR. The missing-source probe rejects an actually absent scratch path; the missing-marker probe runs a fresh valid FXP simulation but requires a deliberately absent marker, so exit 0 alone cannot pass it. The overall result becomes PASS only after every positive, negative, portability and two-profile route gate.
 
-Both profiles use independent fresh synthesis/implementation projects and complete route_design. Final measured resources (logical LUT primitive count is distinct from packed Slice LUT utilization):
+Both profiles use independent fresh synthesis/implementation projects and complete route_design. Each open synthesized design now produces its own `profileN/synth_timing_summary.rpt` before the build closes it; each report header explicitly identifies `Design State : Synthesized`. Both diagnostic summaries report estimated WNS 11.016 ns, WHS 0.122 ns and WPWS 9.500 ns, with zero negative totals/failing endpoints. These synthesis estimates are retained for diagnosis only: no new synthesis-slack acceptance gate was added, and the frozen routed gates continue to use the separate `profileN/timing_summary.rpt` identified as Routed.
+
+The outer PowerShell wrapper serialized the exact command, ISO start/end times and both Vivado/wrapper exit code 0 in `outer_wrapper_exit.txt`; its observed process exit was also 0. The candidate was committed before the complete final04 invocation, and no build/RTL/TB edit occurred during or after that invocation.
+
+Final measured resources (logical LUT primitive count is distinct from packed Slice LUT utilization):
 
 | Profile / stage | DSP48E1 | RAMB36 / RAMB18 | Logical LUTs | Slice LUTs | FFs | Latches / black boxes |
 |---|---:|---:|---:|---:|---:|---:|
@@ -104,7 +108,7 @@ Synthesis hierarchy attributes 30/32 DSPs to the profile-0/profile-1 evaluator a
 
 The raw `SLACK` properties were queried directly (no additional rounding) and independently gated: profile 0 max 7.450, min 0.072; profile 1 max 7.340, min 0.079 ns. Profile-0 worst setup starts at `eval_engine/product_ff_reg[0][5]/C` and ends at `eval_engine/term_ff_reg[0][94]/D`; profile-1 starts at bit 1 and ends at the same term endpoint. Worst hold is `eval_engine/ff_pair01_reg[1][46]/C` to `eval_engine/product_ff_reg[1][46]/D` for profile 0, and `limiter_engine/captured_d_reg[23]/C` to `limiter_engine/correction_d_reg[23]/D` for profile 1. Full setup/hold path reports are retained. Both designs have exactly one `sys_clk` at 20.000 ns; no_clock, unconstrained_internal_endpoints, loops and latch_loops are all zero. No multiple-driver or unresolved-module/non-board error/critical DRC blocker is present.
 
-Warnings are retained and enumerated in `warning_inventory.txt`, both raw run logs, DRC reports and methodology reports. Each synthesis emits 133 warning lines: 100 `Synth 8-3332` unused sequential-bit removals (the native repeat-message cap is retained), 14 `Synth 8-3936` unused internal-register bit trimming, and 19 `Synth 8-6014` unused sequential/debug-register removals. Neither implementation child log emits an anchored warning/error line; that does not mean the design is free of DRC/methodology findings:
+Warnings are retained and enumerated in `warning_inventory.txt`, `simulator_warning_inventory.txt`, both raw run logs, DRC reports and methodology reports. The inventory reads actual compiler, elaborator and simulator subprocess logs as well as the driver/implementation outputs. Each synthesis emits 133 warning lines: 100 `Synth 8-3332` unused sequential-bit removals (the native repeat-message cap is retained), 14 `Synth 8-3936` unused internal-register bit trimming, and 19 `Synth 8-6014` unused sequential/debug-register removals. Neither implementation child log emits an anchored warning/error line; that does not mean the design is free of DRC/methodology findings:
 
 | Finding | Profile 0 | Profile 1 | Meaning |
 |---|---:|---:|---|
@@ -115,8 +119,13 @@ Warnings are retained and enumerated in `warning_inventory.txt`, both raw run lo
 | SYNTH-10 | 26 warnings | 28 warnings | Multi-DSP wide multipliers |
 | TIMING-18 | 217 warnings | 217 warnings | 161 inputs and 56 outputs lack external delays |
 
+The actual exported portable simulation emits five `Wavedata 42-489` warnings: `vec` (3389120 bits), `queue_row`, `queue_edge` and `queue_id` (262144 bits each), and `queue_old` (1318912 bits) exceed the 65536-bit wave-window display limit. These warnings concern adding large testbench objects to the waveform window, not their numerical execution or scoreboard checks; the simulation still completes with exact counts and its success marker. All five raw WARNING lines and their actual per-file/category count are retained in both inventories. No severity suppression or display-limit expansion was made.
+
 The minimal relocated project also retains missing generated IP-directory and empty-board-part warnings; path-length advisory and generated-script/tool paths are preserved in `driver_transcript.txt`. None of these severities was suppressed or reassigned. Internal routed timing passes with these findings visible; external board timing remains unspecified.
 
-Committed `docs/reports/step6c2/development_attempts.txt` summarizes the development history; full final03 evidence and parser-repair RED/GREEN evidence are committed. Original dev01..dev05 and final01..final02 run directories remain preserved locally and are intentionally excluded from the commit; references to those older directories below describe local history, not GitHub artifacts. dev01/dev02/dev03/dev04 correctly failed on property syntax, lazy simulator properties/read-only export behavior, and Windows plusarg quoting, then those integration issues were corrected. Earlier short-row native-crash RED evidence is retained and the parser fix is covered in final03. Superseded final01 failed during profile-1 Vivado tool initialization (`Could not open 'C' for writing`, `tclapp::load_apps` during create_project); its full child error log is retained. No root cause is asserted for that tool startup failure. Superseded final02 was deliberately terminated only through its verified task-owned wrapper PID/child tree and remains IN_PROGRESS/nonPASS. Neither superseded run is substituted for final03.
+Committed `docs/reports/step6c2/development_attempts.txt` summarizes the development history; full final04 evidence and parser-repair RED/GREEN evidence are committed. Original dev01..dev05 and final01..final02 run directories remain preserved locally and are intentionally excluded from the commit; references to those older directories below describe local history, not GitHub artifacts. dev01/dev02/dev03/dev04 correctly failed on property syntax, lazy simulator properties/read-only export behavior, and Windows plusarg quoting, then those integration issues were corrected. Earlier short-row native-crash RED evidence is retained and the parser fix is covered in final04. Superseded final01 failed during profile-1 Vivado tool initialization (`Could not open 'C' for writing`, `tclapp::load_apps` during create_project); its full child error log is retained. No root cause is asserted for that tool startup failure. Superseded final02 was deliberately terminated only through its verified task-owned wrapper PID/child tree and remains IN_PROGRESS/nonPASS. Neither superseded run is substituted for final04.
 
 Scope audit uses Git diff against accepted main `74f6128`, direct source inventories and tool output, not hashes. All existing protected paths remain unchanged. Only authorized new C2 files are included; the additional FXP/sqrt parser fixes were explicitly authorized after the reproduced simulator failures. Report text may have trailing whitespace normalized for Git; source data and prior accepted reports remain unchanged. No board pins, I/O standards, external delays, exception waivers or message-severity changes were added. There is no bitstream or physical-board validation and no board timing sign-off. The implementation is prepared for the specified unmerged PR and ChatGPT review; merge and C3 are outside this completion boundary.
+
+
+Task 7 review fixes are limited to R1/R2: the build now retains diagnostic synthesis summaries for both profiles, and warning accounting includes the five real simulator waveform-display warnings. Prior `final03` evidence remains committed and unchanged as the earlier full functional/routed run; it is superseded as authoritative acceptance by `final04`, which reran every required check after the last script edit. No RTL, testbench, frozen constraint or protected source changed in this review-fix round.

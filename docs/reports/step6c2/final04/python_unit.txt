@@ -1,0 +1,18 @@
+Command: python scripts/step6c2_pi_reference_test.py
+test_actual_replay (__main__.ReferenceTests.test_actual_replay) ... ok
+test_check_rejects_tampering_and_inventory (__main__.ReferenceTests.test_check_rejects_tampering_and_inventory) ... ok
+test_constants_and_ranges (__main__.ReferenceTests.test_constants_and_ranges) ... ok
+test_feedforward_and_error_signs (__main__.ReferenceTests.test_feedforward_and_error_signs) ... ok
+test_fixture_regeneration_and_invariants (__main__.ReferenceTests.test_fixture_regeneration_and_invariants) ... ok
+test_limiter_directed (__main__.ReferenceTests.test_limiter_directed) ... ok
+test_optimized_rejected (__main__.ReferenceTests.test_optimized_rejected) ... ok
+test_order_resets_errors (__main__.ReferenceTests.test_order_resets_errors) ... ok
+test_reject_invalid_inputs (__main__.ReferenceTests.test_reject_invalid_inputs) ... ok
+test_round (__main__.ReferenceTests.test_round) ... ok
+test_three_one_amp (__main__.ReferenceTests.test_three_one_amp) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.711s
+
+OK
+Tcl status=0; process status=0

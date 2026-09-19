@@ -1,5 +1,5 @@
 Task 7 development attempts (history, not final acceptance)
-Authoritative committed acceptance: final03, code e3c0f73, process exit0, 2026-09-19 16:28:55..16:38:06, STEP6C2_BUILD_PASS.
+Authoritative committed acceptance: final04, code 8934278, process exit0, 2026-09-19 16:53:08..17:05:08, STEP6C2_BUILD_PASS. Outer wrapper exit0 recorded at17:05:09.
 Committed focused parser proof: parser_repair/ and parser_repair_sqrt/; FXP and sqrt short-row native-crash RED, normal and explicit-short-row-Fatal GREEN. Final03 covers all nine fixture-negative variants and two other failure gates.
 
 All original development-run directories and .Xil logs remain locally preserved; they are intentionally not duplicated in this commit:
@@ -14,3 +14,5 @@ All original development-run directories and .Xil logs remain locally preserved;
 The FXP round/range and sqrt five-string sscanf parsing was replaced with the already-proven indexed-byte tokenizer, preserving independent counts, lexical/range/ordering and arithmetic gates. This narrow change to two NEW C2 TBs was explicitly authorized after reproduced RED evidence. No RTL or frozen contract changed. Final03 began only after committing that complete code (e3c0f73); no later build/RTL/TB edits were made.
 
 Local history directories: docs/reports/step6c2/dev01, dev02, dev03, dev04, dev05, final01, final02. Exact original log roots: .Xil/c2_<label>.log and .Xil/c2_<label>/. They are locally excluded for status clarity; tracked .gitignore unchanged. Prior accepted reports untouched.
+
+Review-fix round1: final03 remains committed/unchanged as the earlier full functional/routed PASS. Review requested missing synthesized timing summaries and enumeration of five Wavedata42-489 warnings. Candidate8934278 adds only the diagnostic synthesis-report command before close_design; frozen routed gates/RTL/TB unchanged. After that last script edit, final04 freshly reran Python checks,13positive simulations,11negative probes,actual portable export/execution andboth profile synth+route. All passed. final04 contains both Synthesized summaries, actual subprocess warning inventory (five display-only wave warnings) andexplicit outer wrapper exit0. The prior final03 evidence is not substituted for this rerun.

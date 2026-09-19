@@ -1,0 +1,20 @@
+Command: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/FOC_PI/FOC_PI.sim/sim_1/behav/xsim/compile.bat
+"xvlog --incr --relax -L uvm -prj mc_pi_dq_core_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_dq_limiter.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mc_dq_limiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_isqrt_u80.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mc_isqrt_u80
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_core.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_eval
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mc_udiv_u72_u41
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_core_tb
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_core_p0_tb
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_core_p1_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/FOC_PI/FOC_PI.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+Tcl status=0; process status=0

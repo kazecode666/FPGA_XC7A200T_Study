@@ -1,0 +1,29 @@
+Actual relocated read-only open: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel
+sources_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv
+sources_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_dq_limiter.sv
+sources_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_isqrt_u80.sv
+sources_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv
+sources_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv
+sources_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_core.sv
+sim_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv
+sim_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_pi_fxp_tb.sv
+sim_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_isqrt_u80_tb.sv
+sim_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_udiv_u72_u41_tb.sv
+sim_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_pi_dq_eval_tb.sv
+sim_1 SystemVerilog C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_dq_limiter_tb.sv
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/round_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/range_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/sqrt_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/divider_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/evaluator_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/limiter_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/golden_core_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/seeded_core_vectors.txt
+sim_1 Memory Initialization Files C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/vectors/step6c2/error_core_vectors.txt
+constrs_1 XDC C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/FOC_PI/FOC_PI.srcs/constrs_1/new/foc_pi_clock.xdc
+Synthesis compile order: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_dq_limiter.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_isqrt_u80.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_core.sv
+Simulation compile order: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_dq_limiter.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_isqrt_u80.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_core.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv
+Pre-launch simulator property: <>
+Actual exported scripts: C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T/.Xil/c2_final04/rel/FOC_PI/FOC_PI.sim/sim_1/behav/xsim
+All 9 fixture bytes match staged external sources. Exported simulate.bat uses VECTOR_DIR=.
+PASS

@@ -1,0 +1,22 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat mc_pi_dq_core_p1_tb -s sim
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe mc_pi_dq_core_p1_tb -s sim
+Multi-threading is on. Using 30 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package work.mc_pi_fxp_pkg
+Compiling module work.mc_pi_dq_eval(PI_PROFILE=1)
+Compiling module work.mc_isqrt_u80
+Compiling module work.mc_udiv_u72_u41
+Compiling module work.mc_dq_limiter
+Compiling module work.mc_pi_dq_core(PI_PROFILE=1)
+Compiling module work.mc_pi_dq_core_tb(PI_PROFILE=1)
+Compiling module work.mc_pi_dq_core_p1_tb
+Built simulation snapshot sim
+Tcl status=0; process status=0
