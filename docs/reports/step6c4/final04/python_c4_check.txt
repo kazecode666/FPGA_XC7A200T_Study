@@ -1,0 +1,26 @@
+Command: python scripts/step6c4_foc_reference.py --check
+STEP6C4_REFERENCE_CHECK_PASS rows=672 profiles=2 historical=160 seeded=512
+FLOAT_MAX i_alpha {"profile": 0, "source_row": 15, "case_id": "angle_0.0000", "absolute_error": 1.2207031249988898e-05}
+FLOAT_MAX i_beta {"profile": 0, "source_row": 15, "case_id": "angle_0.0000", "absolute_error": 1.3594003974992663e-05}
+FLOAT_MAX id {"profile": 0, "source_row": 18, "case_id": "angle_1.5708", "absolute_error": 1.3594003974992663e-05}
+FLOAT_MAX iq {"profile": 0, "source_row": 66, "case_id": "feedforward", "absolute_error": 2.1720029052901824e-05}
+FLOAT_MAX ud_lim {"profile": 1, "source_row": 98, "case_id": "angle_1.5708", "absolute_error": 9.584864214984279e-05}
+FLOAT_MAX uq_lim {"profile": 1, "source_row": 146, "case_id": "feedforward", "absolute_error": 0.0001338324360489196}
+FLOAT_MAX v_alpha {"profile": 1, "source_row": 150, "case_id": "sat_hold_1", "absolute_error": 0.0018247646651232685}
+FLOAT_MAX v_beta {"profile": 0, "source_row": 69, "case_id": "sat_start", "absolute_error": 0.00469674940050524}
+FLOAT_MAX ud_raw {"profile": 1, "source_row": 98, "case_id": "angle_1.5708", "absolute_error": 8.589466647235255e-05}
+FLOAT_MAX uq_raw {"profile": 1, "source_row": 146, "case_id": "feedforward", "absolute_error": 0.00012065980955355826}
+FLOAT_MAX t1 {"profile": 1, "source_row": 150, "case_id": "sat_hold_1", "absolute_error": 0.000141759891589599}
+FLOAT_MAX t2 {"profile": 0, "source_row": 69, "case_id": "sat_start", "absolute_error": 0.00016948426452173537}
+FLOAT_MAX duty_u {"profile": 1, "source_row": 146, "case_id": "feedforward", "absolute_error": 4.887922935559175e-05}
+FLOAT_MAX duty_v {"profile": 0, "source_row": 69, "case_id": "sat_start", "absolute_error": 1.3889759624352571e-05}
+FLOAT_MAX duty_w {"profile": 1, "source_row": 150, "case_id": "sat_hold_1", "absolute_error": 0.00015563739717683323}
+FLOAT_MAX du_d_z {"profile": 1, "source_row": 156, "case_id": "recovery_3", "absolute_error": 2.275798979489707e-06}
+FLOAT_MAX du_q_z {"profile": 1, "source_row": 156, "case_id": "recovery_3", "absolute_error": 1.4973311017740798e-06}
+FLOAT_DIFFERENCES sector count=4
+{"profile": 0, "source_row": 51, "case_id": "edge_1_1.732", "sector_source": 3, "sector_fixed": 1}
+{"profile": 0, "source_row": 63, "case_id": "edge_1_-1.732", "sector_source": 2, "sector_fixed": 6}
+{"profile": 1, "source_row": 134, "case_id": "edge_-1_1.732", "sector_source": 1, "sector_fixed": 5}
+{"profile": 1, "source_row": 140, "case_id": "edge_-1_-1.732", "sector_source": 6, "sector_fixed": 4}
+FLOAT_DIFFERENCES sat_old count=0
+Tcl status=0; process status=0

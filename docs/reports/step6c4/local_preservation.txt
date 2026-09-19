@@ -1,0 +1,17 @@
+PASS: original user modifications preserved
+Tracked status/binary diff identical for 15 original paths
+12 original untracked hardware documents present at original names and sizes
+No reset, stash, clean, deletion, new worktree or clone
+MAIN=D:/Project/FPGA_XC7A200T
+Branch=step6c4-foc-current
+worktree D:/Project/FPGA_XC7A200T
+HEAD c535ec2ee3edb002076fd859f7e187015841ed67
+branch refs/heads/step6c4-foc-current
+
+worktree C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T
+HEAD 44d3e741fb9469e77d2e01834a400d983610b8c6
+branch refs/heads/step6c2-pi-dq-limiter
+
+worktree C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T
+HEAD c3910a0e444850b3498e9fabe238b8b9f2addeb4
+branch refs/heads/step6c3-sector-svpwm

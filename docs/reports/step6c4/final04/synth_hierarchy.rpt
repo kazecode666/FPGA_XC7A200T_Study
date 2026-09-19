@@ -1,0 +1,45 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Sep 20 00:28:08 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file D:/Project/FPGA_XC7A200T/docs/reports/step6c4/final04/synth_hierarchy.rpt
+| Design       : mc_foc_current_core
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------+----------------------+------------+------------+---------+------+------+--------+--------+------------+
+|         Instance        |        Module        | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++-------------------------+----------------------+------------+------------+---------+------+------+--------+--------+------------+
+| mc_foc_current_core     |                (top) |      10466 |      10466 |       0 |    0 | 8090 |      2 |      0 |         87 |
+|   (mc_foc_current_core) |                (top) |         12 |         12 |       0 |    0 |  567 |      0 |      0 |          0 |
+|   current_transform     | mc_current_transform |        744 |        744 |       0 |    0 |  427 |      2 |      0 |          6 |
+|     (current_transform) | mc_current_transform |          0 |          0 |       0 |    0 |  145 |      0 |      0 |          0 |
+|     clarke              |            mc_clarke |        330 |        330 |       0 |    0 |  100 |      0 |      0 |          2 |
+|     park                |              mc_park |        325 |        325 |       0 |    0 |  141 |      0 |      0 |          4 |
+|     sincos              |        mc_sincos_lut |         89 |         89 |       0 |    0 |   41 |      2 |      0 |          0 |
+|   inverse_park          |          mc_inv_park |        413 |        413 |       0 |    0 |  141 |      0 |      0 |          4 |
+|   pi_core               |        mc_pi_dq_core |       5336 |       5336 |       0 |    0 | 5459 |      0 |      0 |         52 |
+|     (pi_core)           |        mc_pi_dq_core |         48 |         48 |       0 |    0 |  723 |      0 |      0 |          0 |
+|     eval_engine         |        mc_pi_dq_eval |       3102 |       3102 |       0 |    0 | 3146 |      0 |      0 |         30 |
+|     limiter_engine      |        mc_dq_limiter |       2186 |       2186 |       0 |    0 | 1590 |      0 |      0 |         22 |
+|       (limiter_engine)  |        mc_dq_limiter |       1686 |       1686 |       0 |    0 | 1018 |      0 |      0 |         22 |
+|       div_engine        |    mc_udiv_u72_u41_1 |        310 |        310 |       0 |    0 |  321 |      0 |      0 |          0 |
+|       sqrt_engine       |         mc_isqrt_u80 |        190 |        190 |       0 |    0 |  251 |      0 |      0 |          0 |
+|   svpwm                 |      mc_sector_svpwm |       3961 |       3961 |       0 |    0 | 1496 |      0 |      0 |         25 |
+|     (svpwm)             |      mc_sector_svpwm |       2691 |       2691 |       0 |    0 |  856 |      0 |      0 |         18 |
+|     divider_t1          |      mc_udiv_u72_u41 |        309 |        309 |       0 |    0 |  320 |      0 |      0 |          0 |
+|     divider_t2          |    mc_udiv_u72_u41_0 |        295 |        295 |       0 |    0 |  320 |      0 |      0 |          0 |
+|     sector_xyz          |  mc_svpwm_sector_xyz |        666 |        666 |       0 |    0 |    0 |      0 |      0 |          7 |
++-------------------------+----------------------+------------+------------+---------+------+------+--------+--------+------------+
