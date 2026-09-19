@@ -1,0 +1,51 @@
+Step 6C2 Task 2 fixed-point helper verification
+Date: 2026-09-19
+Tool: Vivado Simulator 2026.1 direct xvlog/xelab/xsim behavioral flow
+
+RED (TB written before package)
+Run directory: .Xil/c2fxp_red_20260919_1
+Command:
+  E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv motor_control_ip/foc/tb/mc_pi_fxp_tb.sv
+Result: exit 1, expected missing implementation failure.
+Key output:
+  ERROR: [VRFC 10-2989] 'mc_pi_fxp_pkg' is not declared
+
+GREEN (accepted package and TB)
+Fresh run directory: .Xil/c2fxp_green_20260919_3
+Commands:
+  E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv motor_control_ip/foc/tb/mc_pi_fxp_tb.sv
+  E:/AMDDesignTools/2026.1/Vivado/bin/xelab.bat mc_pi_fxp_tb -s mc_pi_fxp_snap
+  E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat mc_pi_fxp_snap -runall
+Results:
+  xvlog exit 0
+  xelab exit 0; Built simulation snapshot mc_pi_fxp_snap
+  xsim exit 0; no Fatal/FATAL_ERROR/Error marker
+  ALL STEP 6C2 FXP TESTS PASSED round_rows=1101 range_rows=9
+
+The run used data-only copies of round_vectors.txt and range_vectors.txt in the
+fresh scratch run directory. The TB independently requires exactly 1101 and 9
+rows, respectively. It validates one first-line header, no blank/data comment
+rows, exactly four columns, fixed lowercase hexadecimal token widths, unused
+high-nibble bits, conversion success and contiguous zero-based IDs before using
+the values. It checks every fixture result, required shifts 0/9/15/24/32/37/95,
+S96 minimum, both profile constants, S25/S40 rails and +/-1 neighbors, and no
+unknown result for valid helper inputs.
+
+NEGATIVE CONTROL (scratch only, never staged)
+Scratch package: .Xil/c2fxp_mutation_20260919_2/mc_pi_fxp_pkg.sv
+Mutation: for negative values only, replace magnitude-based rounding with
+  pi_round_shift_s96 = value >>> shift;
+Commands used the same direct xvlog/xelab/xsim flow and the unchanged tracked TB.
+Compile/elaboration: exit 0.
+xsim process exit: 0, but the log contains Fatal and no PASS marker, so the run
+is correctly classified as failed:
+  Fatal: PI_FXP_TB_FAIL: round id 14 shift 9 got
+  ffffffffffffffffffffffff expected 000000000000000000000000
+
+Fixture id 14 is x=-255, shift=9, the negative neighbor immediately below the
+-256 tie. It must round to zero; arithmetic shift floors it to -1. The exact
+negative tie at id 15 and its neighbors are all present, showing why a signed
+arithmetic shift alone is not the specified nearest/ties-away operation.
+
+Verdict: PASS. The accepted result requires the exact PASS marker and absence
+of fatal/error markers; xsim exit code alone is not accepted as evidence.
