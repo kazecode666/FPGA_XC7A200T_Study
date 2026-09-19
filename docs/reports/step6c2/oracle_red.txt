@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\lww\.codex\worktrees\step6c2-pi-dq-limiter\FPGA_XC7A200T\scripts\step6c2_pi_reference_test.py", line 10, in <module>
+    import step6c2_pi_reference as ref
+ModuleNotFoundError: No module named 'step6c2_pi_reference'

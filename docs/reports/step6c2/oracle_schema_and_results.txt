@@ -1,0 +1,306 @@
+# Step 6C2 Task 1 independent oracle report
+
+Python: 3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]
+Base: 74f6128; branch: step6c2-pi-dq-limiter
+
+Only new C2 Python scripts, fixtures, comparison CSV and evidence are modified. Actual protected CSV, audit sections 5-6, verifier and MATLAB stimulus were read directly. No source CSV is reconstructed and no C1 transforms are replayed.
+
+Initial RED: oracle did not yet exist; ModuleNotFoundError, exit 1 (oracle_red.txt). GREEN: 11 explicit unittest tests pass. -O and -OO are rejected for both programs. All gates use explicit exceptions/unittest checks, not Python assert.
+
+Oracle uses Python unbounded integers, math.isqrt and //, independent of iterative RTL implementation. Constants regenerated at Decimal precision 90, ROUND_HALF_UP for ties-away and ROUND_FLOOR for C_UMAX. Wide terms are retained through cancellation; command reset precedes selected range checks, invalid vdc precedes reset. Core errors retain complete OLD/NEXT state, including correction snapshots; calculation snapshots zero. Physical out-of-format values raise ValueError rather than clip.
+
+Fixtures: all tokens lowercase fixed-width hex; width=ceil(bits/4); signed fields are exact-width two’s complement (high padding bits above width zero). No prefixes/sign characters. One # header, no blanks. TB parser must check exactly the schema column count, each token digit/width/high bits, unique IDs, exact independent count and EOF. %h alone does not enforce lexical range; parse/validate token text before casting. Wide fields must use packed vectors, never 32-bit SV integer scanf destinations.
+
+For profiles, 0=real_commissioning, 1=MIL_PI_override. Primitive and limiter id is global zero-based contiguous. Evaluator key=(profile,id). Core key=(profile,sequence_id,transaction_id), all zero-based. reset_before requests hardware reset immediately before that row; expected OLD comes from continuity, never reloaded by the TB. Sequence 0 has 80 actual rows/profile and reset only at start; sequence 1 has 1024 successful accepted transactions/profile with saturation/reversal/recovery and dynamic bus; sequence 2 has one successful saturation preamble then 128 errors/profile (64 INVALID_VDC, 64 RANGE_ERROR). No persistent state injection in core sequences.
+
+Core LIMIT_FIELDS du_d_next/du_q_next equal held old corrections on errors; standalone limiter error corrections are zero. Core next_sat is OLD on errors even though visible sat_flag=0. Evaluator file includes vdc input and priority check, and OLD sat column is present for uniform state schema although evaluator need not own saturation state.
+
+Exact fixture schemas and counts:
+
+round_vectors.txt: 1101 rows; 4 columns
+1:id:U32 2:x:S96 3:shift:U8 4:expected:S96
+
+range_vectors.txt: 9 rows; 4 columns
+1:id:U32 2:x:S96 3:s25:U1 4:s40:U1
+
+sqrt_vectors.txt: 2078 rows; 4 columns
+1:id:U32 2:radicand:U80 3:root:U40 4:remainder:U41
+
+divider_vectors.txt: 2058 rows; 6 columns
+1:id:U32 2:numerator:U72 3:denominator:U41 4:quotient:U72 5:remainder:U41 6:div_by_zero:U1
+
+limiter_vectors.txt: 4246 rows; 14 columns
+1:id:U32 2:ud_raw:S40 3:uq_raw:S40 4:vdc:S25 5:error_code:U2 6:ud_hi:S40 7:uq_hi:S40 8:du_d_next:S40 9:du_q_next:S40 10:ud_lim:S25 11:uq_lim:S25 12:scale:U33 13:limited:U1 14:sat_flag:U1
+
+golden_core_vectors.txt: 160 rows; 34 columns
+1:profile:U1 2:sequence_id:U16 3:transaction_id:U32 4:reset_before:U1 5:id_meas:S25 6:iq_meas:S25 7:id_ref:S25 8:iq_ref:S25 9:we:S32 10:vdc:S25 11:pi_reset:U1 12:uq_zero_en:U1 13:old_xd:S40 14:old_xq:S40 15:old_du_d:S40 16:old_du_q:S40 17:old_sat:U1 18:ud_raw:S40 19:uq_raw:S40 20:error_code:U2 21:ud_hi:S40 22:uq_hi:S40 23:du_d_next:S40 24:du_q_next:S40 25:ud_lim:S25 26:uq_lim:S25 27:scale:U33 28:limited:U1 29:sat_flag:U1 30:next_xd:S40 31:next_xq:S40 32:next_du_d:S40 33:next_du_q:S40 34:next_sat:U1
+
+seeded_core_vectors.txt: 2048 rows; 34 columns
+1:profile:U1 2:sequence_id:U16 3:transaction_id:U32 4:reset_before:U1 5:id_meas:S25 6:iq_meas:S25 7:id_ref:S25 8:iq_ref:S25 9:we:S32 10:vdc:S25 11:pi_reset:U1 12:uq_zero_en:U1 13:old_xd:S40 14:old_xq:S40 15:old_du_d:S40 16:old_du_q:S40 17:old_sat:U1 18:ud_raw:S40 19:uq_raw:S40 20:error_code:U2 21:ud_hi:S40 22:uq_hi:S40 23:du_d_next:S40 24:du_q_next:S40 25:ud_lim:S25 26:uq_lim:S25 27:scale:U33 28:limited:U1 29:sat_flag:U1 30:next_xd:S40 31:next_xq:S40 32:next_du_d:S40 33:next_du_q:S40 34:next_sat:U1
+
+error_core_vectors.txt: 258 rows; 34 columns
+1:profile:U1 2:sequence_id:U16 3:transaction_id:U32 4:reset_before:U1 5:id_meas:S25 6:iq_meas:S25 7:id_ref:S25 8:iq_ref:S25 9:we:S32 10:vdc:S25 11:pi_reset:U1 12:uq_zero_en:U1 13:old_xd:S40 14:old_xq:S40 15:old_du_d:S40 16:old_du_q:S40 17:old_sat:U1 18:ud_raw:S40 19:uq_raw:S40 20:error_code:U2 21:ud_hi:S40 22:uq_hi:S40 23:du_d_next:S40 24:du_q_next:S40 25:ud_lim:S25 26:uq_lim:S25 27:scale:U33 28:limited:U1 29:sat_flag:U1 30:next_xd:S40 31:next_xq:S40 32:next_du_d:S40 33:next_du_q:S40 34:next_sat:U1
+
+evaluator_vectors.txt: 1042 rows; 20 columns
+1:profile:U1 2:id:U32 3:id_meas:S25 4:iq_meas:S25 5:id_ref:S25 6:iq_ref:S25 7:we:S32 8:vdc:S25 9:pi_reset:U1 10:uq_zero_en:U1 11:old_xd:S40 12:old_xq:S40 13:old_du_d:S40 14:old_du_q:S40 15:old_sat:U1 16:error_code:U2 17:ud_raw:S40 18:uq_raw:S40 19:xd_next:S40 20:xq_next:S40
+
+Seed and stream offsets:
+{
+  "master": 113385510,
+  "offsets": {
+    "round": 4096,
+    "sqrt": 8192,
+    "divider": 12288,
+    "limiter": 16384,
+    "evaluator": 20480,
+    "core0": 24576,
+    "core1": 28672
+  },
+  "seeded_case_counts": {
+    "round_full_s96": 1024,
+    "sqrt_full_u80": 2048,
+    "divider_full_u72_u41": 2048,
+    "limiter_full_s40_positive_s25_bus": 4096,
+    "evaluator_per_profile": 512,
+    "core_success_per_profile": 1024
+  }
+}
+
+Actual source replay: columns are compared against OLD delayed correction/saturation. Each profile hardware-resets once then all 80 rows preserve successive state. Comparison CSV records source row/case/time, quantized inputs, OLD/NEXT full state, integer outputs, real/fixed values, six per-row errors and old/current real/fixed scales.
+{
+  "profile_counts": [
+    80,
+    80
+  ],
+  "maxima": {
+    "ud_raw": {
+      "error": 8.589466647235255e-05,
+      "profile": 1,
+      "row": 18,
+      "case_id": "angle_1.5708"
+    },
+    "uq_raw": {
+      "error": 0.00011254509524147305,
+      "profile": 1,
+      "row": 15,
+      "case_id": "angle_0.0000"
+    },
+    "ud_lim": {
+      "error": 9.584864214984279e-05,
+      "profile": 1,
+      "row": 18,
+      "case_id": "angle_1.5708"
+    },
+    "uq_lim": {
+      "error": 0.00011904200152199063,
+      "profile": 1,
+      "row": 15,
+      "case_id": "angle_0.0000"
+    },
+    "du_d_z": {
+      "error": 2.275798979489707e-06,
+      "profile": 1,
+      "row": 76,
+      "case_id": "recovery_3"
+    },
+    "du_q_z": {
+      "error": 1.4973311017740798e-06,
+      "profile": 1,
+      "row": 76,
+      "case_id": "recovery_3"
+    }
+  },
+  "sat_flag_mismatches": [],
+  "source_ranges": {
+    "id": {
+      "min": "-0.23094010767585",
+      "max": "1"
+    },
+    "iq": {
+      "min": "-0.23094010767585",
+      "max": "1"
+    },
+    "id_ref": {
+      "min": "-1",
+      "max": "30"
+    },
+    "iq_ref": {
+      "min": "-20",
+      "max": "20"
+    },
+    "we": {
+      "min": "0",
+      "max": "100"
+    },
+    "vdc": {
+      "min": "48",
+      "max": "48"
+    },
+    "pi_reset": {
+      "min": "0",
+      "max": "1"
+    },
+    "uq_zero_en": {
+      "min": "0",
+      "max": "1"
+    },
+    "ud_raw": {
+      "min": "-28.4049965895518",
+      "max": "148.65"
+    },
+    "uq_raw": {
+      "min": "-99.1",
+      "max": "18.9366643930345"
+    },
+    "ud_lim": {
+      "min": "-21.4177912038294",
+      "max": "20.7526086169791"
+    },
+    "uq_lim": {
+      "min": "-13.8350724113194",
+      "max": "16.1361811957173"
+    },
+    "du_d_z": {
+      "min": "-7.65238846430606",
+      "max": "127.897391383021"
+    },
+    "du_q_z": {
+      "min": "-85.2649275886806",
+      "max": "5.10159230953737"
+    },
+    "sat_flag_z": {
+      "min": "0",
+      "max": "1"
+    }
+  },
+  "reset_rows": {
+    "real_commissioning": [
+      1,
+      2,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11,
+      13,
+      14,
+      16,
+      17,
+      19,
+      20,
+      22,
+      23,
+      25,
+      26,
+      28,
+      29,
+      31,
+      32,
+      34,
+      35,
+      37,
+      38,
+      40,
+      41,
+      43,
+      44,
+      46,
+      47,
+      49,
+      50,
+      52,
+      53,
+      55,
+      56,
+      58,
+      59,
+      61,
+      62,
+      64,
+      65,
+      67,
+      68,
+      79
+    ],
+    "MIL_PI_override": [
+      1,
+      2,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11,
+      13,
+      14,
+      16,
+      17,
+      19,
+      20,
+      22,
+      23,
+      25,
+      26,
+      28,
+      29,
+      31,
+      32,
+      34,
+      35,
+      37,
+      38,
+      40,
+      41,
+      43,
+      44,
+      46,
+      47,
+      49,
+      50,
+      52,
+      53,
+      55,
+      56,
+      58,
+      59,
+      61,
+      62,
+      64,
+      65,
+      67,
+      68,
+      79
+    ]
+  },
+  "uq_zero_rows": {
+    "real_commissioning": [
+      78
+    ],
+    "MIL_PI_override": [
+      78
+    ]
+  }
+}
+
+Limiter ideal results:
+{
+  "max_component_error_v": 2.170713307236838e-05,
+  "max_norm_excess_v": 1.9523331644677455e-05,
+  "decimal_directed_cases": 105,
+  "double_note": "All raw physical magnitudes <=32768 V; double ulp < 1e-11 V, far below F15 bounds. Directed threshold/rail cases also checked with 90-digit Decimal."
+}
+
+Numerical gates: six Step6A max errors <=0.002 V; limiter each component <=2 F15 LSB; norm <=ideal Umax+1 F15 LSB. Zero current and old sat mismatches. No gate relaxed.
+
+Verification: --generate twice with all artifact text equal; --check regenerated manifest/content and exact inventory; unit tests reject missing/extra fixture inventory plus altered manifest/fixture/comparison text using mocked reads (no mutation/deletion of real files). Step6A unchanged verifier: PASS 160 rows, 2926 checks, maximum 5.46e-12.
+
+Boundary: no RTL simulation/latency, route, synthesis, board, reset timing or hardware claim in Task1. Later TBs must implement protocol timing and busy/idle/reset checks; fixtures carry transaction arithmetic only. No INTERNAL_ERROR injected from physically representable valid inputs because the mathematical invariants hold; later engine-fault TB is separate.
+
+Task1 authorized evidence: oracle_red.txt, oracle_green.txt, oracle_generate.txt, oracle_check.txt, oracle_determinism_and_optimization.txt, oracle_schema_and_results.txt, step6a_oracle_regression.txt. Raw .log stays ignored. Scratch task-1-report.md is never staged.
+
+Public oracle API for consumers:
+round_shift_away(x:int,shift:int)->int (unbounded arithmetic; negative shift rejected).
+limiter_raw(ud:int,uq:int,vdc:int)->dict: error_code,ud_hi,uq_hi,du_d_next,du_q_next,ud_lim,uq_lim,scale,limited,sat_flag; successful calls additionally norm_sq,root_floor,remainder,denom,umax.
+pi_eval(state:tuple[int,int,int,int,int],sample:dict,profile:int)->dict: error_code,ud_raw,uq_raw,xd_next,xq_next.
+pi_step(state:tuple[int,int,int,int,int],sample:dict,profile:int)->dict: old_state,next_state,ud_raw,uq_raw plus limiter fields. State order xd,xq,du_d,du_q,sat. On errors OLD/NEXT state and du_d_next/du_q_next hold; other calculation/output fields zero except error_code. Input dict exact keys id_meas,iq_meas,id_ref,iq_ref,we,vdc,pi_reset,uq_zero_en, no extras. sample(**kwargs) fills default all-zero sample with vdc=48<<15. Values must be Python int, not float.

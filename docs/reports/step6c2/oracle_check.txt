@@ -1,0 +1,235 @@
+C2_ORACLE_PASS: checked 11 artifacts
+{
+  "actual_replay": {
+    "maxima": {
+      "du_d_z": {
+        "case_id": "recovery_3",
+        "error": 2.275798979489707e-06,
+        "profile": 1,
+        "row": 76
+      },
+      "du_q_z": {
+        "case_id": "recovery_3",
+        "error": 1.4973311017740798e-06,
+        "profile": 1,
+        "row": 76
+      },
+      "ud_lim": {
+        "case_id": "angle_1.5708",
+        "error": 9.584864214984279e-05,
+        "profile": 1,
+        "row": 18
+      },
+      "ud_raw": {
+        "case_id": "angle_1.5708",
+        "error": 8.589466647235255e-05,
+        "profile": 1,
+        "row": 18
+      },
+      "uq_lim": {
+        "case_id": "angle_0.0000",
+        "error": 0.00011904200152199063,
+        "profile": 1,
+        "row": 15
+      },
+      "uq_raw": {
+        "case_id": "angle_0.0000",
+        "error": 0.00011254509524147305,
+        "profile": 1,
+        "row": 15
+      }
+    },
+    "profile_counts": [
+      80,
+      80
+    ],
+    "reset_rows": {
+      "MIL_PI_override": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        19,
+        20,
+        22,
+        23,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        34,
+        35,
+        37,
+        38,
+        40,
+        41,
+        43,
+        44,
+        46,
+        47,
+        49,
+        50,
+        52,
+        53,
+        55,
+        56,
+        58,
+        59,
+        61,
+        62,
+        64,
+        65,
+        67,
+        68,
+        79
+      ],
+      "real_commissioning": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        19,
+        20,
+        22,
+        23,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        34,
+        35,
+        37,
+        38,
+        40,
+        41,
+        43,
+        44,
+        46,
+        47,
+        49,
+        50,
+        52,
+        53,
+        55,
+        56,
+        58,
+        59,
+        61,
+        62,
+        64,
+        65,
+        67,
+        68,
+        79
+      ]
+    },
+    "sat_flag_mismatches": [],
+    "source_ranges": {
+      "du_d_z": {
+        "max": "127.897391383021",
+        "min": "-7.65238846430606"
+      },
+      "du_q_z": {
+        "max": "5.10159230953737",
+        "min": "-85.2649275886806"
+      },
+      "id": {
+        "max": "1",
+        "min": "-0.23094010767585"
+      },
+      "id_ref": {
+        "max": "30",
+        "min": "-1"
+      },
+      "iq": {
+        "max": "1",
+        "min": "-0.23094010767585"
+      },
+      "iq_ref": {
+        "max": "20",
+        "min": "-20"
+      },
+      "pi_reset": {
+        "max": "1",
+        "min": "0"
+      },
+      "sat_flag_z": {
+        "max": "1",
+        "min": "0"
+      },
+      "ud_lim": {
+        "max": "20.7526086169791",
+        "min": "-21.4177912038294"
+      },
+      "ud_raw": {
+        "max": "148.65",
+        "min": "-28.4049965895518"
+      },
+      "uq_lim": {
+        "max": "16.1361811957173",
+        "min": "-13.8350724113194"
+      },
+      "uq_raw": {
+        "max": "18.9366643930345",
+        "min": "-99.1"
+      },
+      "uq_zero_en": {
+        "max": "1",
+        "min": "0"
+      },
+      "vdc": {
+        "max": "48",
+        "min": "48"
+      },
+      "we": {
+        "max": "100",
+        "min": "0"
+      }
+    },
+    "uq_zero_rows": {
+      "MIL_PI_override": [
+        78
+      ],
+      "real_commissioning": [
+        78
+      ]
+    }
+  },
+  "counts": {
+    "divider_vectors.txt": 2058,
+    "error_core_vectors.txt": 258,
+    "evaluator_vectors.txt": 1042,
+    "golden_core_vectors.txt": 160,
+    "limiter_vectors.txt": 4246,
+    "range_vectors.txt": 9,
+    "round_vectors.txt": 1101,
+    "seeded_core_vectors.txt": 2048,
+    "sqrt_vectors.txt": 2078
+  },
+  "ideal_limiter": {
+    "decimal_directed_cases": 105,
+    "double_note": "All raw physical magnitudes <=32768 V; double ulp < 1e-11 V, far below F15 bounds. Directed threshold/rail cases also checked with 90-digit Decimal.",
+    "max_component_error_v": 2.170713307236838e-05,
+    "max_norm_excess_v": 1.9523331644677455e-05
+  }
+}

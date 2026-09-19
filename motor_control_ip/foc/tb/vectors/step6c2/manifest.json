@@ -1,0 +1,1089 @@
+{
+  "actual_replay": {
+    "maxima": {
+      "du_d_z": {
+        "case_id": "recovery_3",
+        "error": 2.275798979489707e-06,
+        "profile": 1,
+        "row": 76
+      },
+      "du_q_z": {
+        "case_id": "recovery_3",
+        "error": 1.4973311017740798e-06,
+        "profile": 1,
+        "row": 76
+      },
+      "ud_lim": {
+        "case_id": "angle_1.5708",
+        "error": 9.584864214984279e-05,
+        "profile": 1,
+        "row": 18
+      },
+      "ud_raw": {
+        "case_id": "angle_1.5708",
+        "error": 8.589466647235255e-05,
+        "profile": 1,
+        "row": 18
+      },
+      "uq_lim": {
+        "case_id": "angle_0.0000",
+        "error": 0.00011904200152199063,
+        "profile": 1,
+        "row": 15
+      },
+      "uq_raw": {
+        "case_id": "angle_0.0000",
+        "error": 0.00011254509524147305,
+        "profile": 1,
+        "row": 15
+      }
+    },
+    "profile_counts": [
+      80,
+      80
+    ],
+    "reset_rows": {
+      "MIL_PI_override": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        19,
+        20,
+        22,
+        23,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        34,
+        35,
+        37,
+        38,
+        40,
+        41,
+        43,
+        44,
+        46,
+        47,
+        49,
+        50,
+        52,
+        53,
+        55,
+        56,
+        58,
+        59,
+        61,
+        62,
+        64,
+        65,
+        67,
+        68,
+        79
+      ],
+      "real_commissioning": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        19,
+        20,
+        22,
+        23,
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        34,
+        35,
+        37,
+        38,
+        40,
+        41,
+        43,
+        44,
+        46,
+        47,
+        49,
+        50,
+        52,
+        53,
+        55,
+        56,
+        58,
+        59,
+        61,
+        62,
+        64,
+        65,
+        67,
+        68,
+        79
+      ]
+    },
+    "sat_flag_mismatches": [],
+    "source_ranges": {
+      "du_d_z": {
+        "max": "127.897391383021",
+        "min": "-7.65238846430606"
+      },
+      "du_q_z": {
+        "max": "5.10159230953737",
+        "min": "-85.2649275886806"
+      },
+      "id": {
+        "max": "1",
+        "min": "-0.23094010767585"
+      },
+      "id_ref": {
+        "max": "30",
+        "min": "-1"
+      },
+      "iq": {
+        "max": "1",
+        "min": "-0.23094010767585"
+      },
+      "iq_ref": {
+        "max": "20",
+        "min": "-20"
+      },
+      "pi_reset": {
+        "max": "1",
+        "min": "0"
+      },
+      "sat_flag_z": {
+        "max": "1",
+        "min": "0"
+      },
+      "ud_lim": {
+        "max": "20.7526086169791",
+        "min": "-21.4177912038294"
+      },
+      "ud_raw": {
+        "max": "148.65",
+        "min": "-28.4049965895518"
+      },
+      "uq_lim": {
+        "max": "16.1361811957173",
+        "min": "-13.8350724113194"
+      },
+      "uq_raw": {
+        "max": "18.9366643930345",
+        "min": "-99.1"
+      },
+      "uq_zero_en": {
+        "max": "1",
+        "min": "0"
+      },
+      "vdc": {
+        "max": "48",
+        "min": "48"
+      },
+      "we": {
+        "max": "100",
+        "min": "0"
+      }
+    },
+    "uq_zero_rows": {
+      "MIL_PI_override": [
+        78
+      ],
+      "real_commissioning": [
+        78
+      ]
+    }
+  },
+  "constants": {
+    "C_UMAX": 557932618,
+    "EPS_RAW": 17,
+    "KAW": 3355443,
+    "KI_TS": [
+      4970250,
+      9940500
+    ],
+    "KP": [
+      36595302,
+      73190605
+    ],
+    "LD": 1873679,
+    "LQ": 1873679,
+    "PSI_F": 151397597
+  },
+  "core_counts_per_profile": {
+    "accepted_errors": 128,
+    "error_sequence_success_preamble": 1,
+    "golden": 80,
+    "seeded_success": 1024
+  },
+  "core_sequences": {
+    "0": "actual golden, 80 contiguous rows/profile",
+    "1": "1024 successful seeded transactions/profile; reset only first row",
+    "2": "128 errors/profile following one successful state-establishing saturation transaction; hold old state on every error"
+  },
+  "encoding": "fixed-width lowercase hexadecimal; signed columns are exact-width two\u2019s complement; whitespace-separated; one # header; no blank rows",
+  "fixtures": {
+    "divider_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "numerator",
+          "signed": false,
+          "width": 72
+        },
+        {
+          "name": "denominator",
+          "signed": false,
+          "width": 41
+        },
+        {
+          "name": "quotient",
+          "signed": false,
+          "width": 72
+        },
+        {
+          "name": "remainder",
+          "signed": false,
+          "width": 41
+        },
+        {
+          "name": "div_by_zero",
+          "signed": false,
+          "width": 1
+        }
+      ],
+      "rows": 2058
+    },
+    "error_core_vectors.txt": {
+      "columns": [
+        {
+          "name": "profile",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sequence_id",
+          "signed": false,
+          "width": 16
+        },
+        {
+          "name": "transaction_id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "reset_before",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "id_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "id_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "we",
+          "signed": true,
+          "width": 32
+        },
+        {
+          "name": "vdc",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "pi_reset",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "uq_zero_en",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "old_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_sat",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "ud_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "error_code",
+          "signed": false,
+          "width": 2
+        },
+        {
+          "name": "ud_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_d_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_q_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "ud_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "uq_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "scale",
+          "signed": false,
+          "width": 33
+        },
+        {
+          "name": "limited",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sat_flag",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "next_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_sat",
+          "signed": false,
+          "width": 1
+        }
+      ],
+      "rows": 258
+    },
+    "evaluator_vectors.txt": {
+      "columns": [
+        {
+          "name": "profile",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "id_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "id_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "we",
+          "signed": true,
+          "width": 32
+        },
+        {
+          "name": "vdc",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "pi_reset",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "uq_zero_en",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "old_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_sat",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "error_code",
+          "signed": false,
+          "width": 2
+        },
+        {
+          "name": "ud_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "xd_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "xq_next",
+          "signed": true,
+          "width": 40
+        }
+      ],
+      "rows": 1042
+    },
+    "golden_core_vectors.txt": {
+      "columns": [
+        {
+          "name": "profile",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sequence_id",
+          "signed": false,
+          "width": 16
+        },
+        {
+          "name": "transaction_id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "reset_before",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "id_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "id_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "we",
+          "signed": true,
+          "width": 32
+        },
+        {
+          "name": "vdc",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "pi_reset",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "uq_zero_en",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "old_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_sat",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "ud_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "error_code",
+          "signed": false,
+          "width": 2
+        },
+        {
+          "name": "ud_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_d_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_q_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "ud_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "uq_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "scale",
+          "signed": false,
+          "width": 33
+        },
+        {
+          "name": "limited",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sat_flag",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "next_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_sat",
+          "signed": false,
+          "width": 1
+        }
+      ],
+      "rows": 160
+    },
+    "limiter_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "ud_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "vdc",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "error_code",
+          "signed": false,
+          "width": 2
+        },
+        {
+          "name": "ud_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_d_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_q_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "ud_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "uq_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "scale",
+          "signed": false,
+          "width": 33
+        },
+        {
+          "name": "limited",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sat_flag",
+          "signed": false,
+          "width": 1
+        }
+      ],
+      "rows": 4246
+    },
+    "range_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "x",
+          "signed": true,
+          "width": 96
+        },
+        {
+          "name": "s25",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "s40",
+          "signed": false,
+          "width": 1
+        }
+      ],
+      "rows": 9
+    },
+    "round_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "x",
+          "signed": true,
+          "width": 96
+        },
+        {
+          "name": "shift",
+          "signed": false,
+          "width": 8
+        },
+        {
+          "name": "expected",
+          "signed": true,
+          "width": 96
+        }
+      ],
+      "rows": 1101
+    },
+    "seeded_core_vectors.txt": {
+      "columns": [
+        {
+          "name": "profile",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sequence_id",
+          "signed": false,
+          "width": 16
+        },
+        {
+          "name": "transaction_id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "reset_before",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "id_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_meas",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "id_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "iq_ref",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "we",
+          "signed": true,
+          "width": 32
+        },
+        {
+          "name": "vdc",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "pi_reset",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "uq_zero_en",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "old_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "old_sat",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "ud_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_raw",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "error_code",
+          "signed": false,
+          "width": 2
+        },
+        {
+          "name": "ud_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "uq_hi",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_d_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "du_q_next",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "ud_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "uq_lim",
+          "signed": true,
+          "width": 25
+        },
+        {
+          "name": "scale",
+          "signed": false,
+          "width": 33
+        },
+        {
+          "name": "limited",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "sat_flag",
+          "signed": false,
+          "width": 1
+        },
+        {
+          "name": "next_xd",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_xq",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_du_d",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_du_q",
+          "signed": true,
+          "width": 40
+        },
+        {
+          "name": "next_sat",
+          "signed": false,
+          "width": 1
+        }
+      ],
+      "rows": 2048
+    },
+    "sqrt_vectors.txt": {
+      "columns": [
+        {
+          "name": "id",
+          "signed": false,
+          "width": 32
+        },
+        {
+          "name": "radicand",
+          "signed": false,
+          "width": 80
+        },
+        {
+          "name": "root",
+          "signed": false,
+          "width": 40
+        },
+        {
+          "name": "remainder",
+          "signed": false,
+          "width": 41
+        }
+      ],
+      "rows": 2078
+    }
+  },
+  "ideal_limiter": {
+    "decimal_directed_cases": 105,
+    "double_note": "All raw physical magnitudes <=32768 V; double ulp < 1e-11 V, far below F15 bounds. Directed threshold/rail cases also checked with 90-digit Decimal.",
+    "max_component_error_v": 2.170713307236838e-05,
+    "max_norm_excess_v": 1.9523331644677455e-05
+  },
+  "master_seed": 113385510,
+  "master_seed_hex": "0x6c22026",
+  "seeded_case_counts": {
+    "core_success_per_profile": 1024,
+    "divider_full_u72_u41": 2048,
+    "evaluator_per_profile": 512,
+    "limiter_full_s40_positive_s25_bus": 4096,
+    "round_full_s96": 1024,
+    "sqrt_full_u80": 2048
+  },
+  "source": "coordination/reports/step6a_pi_foc_golden_vectors.csv",
+  "stream_offsets": {
+    "core0": 24576,
+    "core1": 28672,
+    "divider": 12288,
+    "evaluator": 20480,
+    "limiter": 16384,
+    "round": 4096,
+    "sqrt": 8192
+  },
+  "version": 1
+}
