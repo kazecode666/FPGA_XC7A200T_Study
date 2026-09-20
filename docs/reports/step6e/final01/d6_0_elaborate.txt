@@ -1,0 +1,34 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe mc_foc_pwm_top_tb -s d6_0_snapshot -generic_top PI_PROFILE=0 -generic_top DEMO=0
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:\AMDDesignTools\2026.1\Vivado\bin\unwrapped\win64.o\xelab.exe mc_foc_pwm_top_tb -s d6_0_snapshot -generic_top PI_PROFILE=0 -generic_top DEMO=0
+Multi-threading is on. Using 30 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package work.mc_fxp_pkg
+Compiling package work.mc_pi_fxp_pkg
+Compiling package work.mc_svpwm_pkg
+Compiling module work.mc_clarke
+Compiling module work.mc_sincos_lut
+Compiling module work.mc_park
+Compiling module work.mc_current_transform
+Compiling module work.mc_pi_dq_eval_default
+Compiling module work.mc_isqrt_u80
+Compiling module work.mc_udiv_u72_u41
+Compiling module work.mc_dq_limiter
+Compiling module work.mc_pi_dq_core_default
+Compiling module work.mc_inv_park
+Compiling module work.mc_svpwm_sector_xyz
+Compiling module work.mc_sector_svpwm
+Compiling module work.mc_foc_current_core
+Compiling module work.mc_duty_to_cmp
+Compiling module work.motor_pwm_core_default
+Compiling module work.mc_foc_pwm_top
+Compiling module work.mc_foc_pwm_top_tb(DEMO=0)
+Built simulation snapshot d6_0_snapshot
+Tcl status=0; process status=0

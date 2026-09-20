@@ -1,0 +1,10 @@
+Fresh whole-branch read-only review: fcc33bb..701acd8.
+Reviewed new RTL/TBs, two authorized compatibility edits, build/XPR/wave/README/report and final01 evidence.
+No actionable Critical/Important/Minor findings; no fixes or deferred minors. Counts/timing match report; diff check passes.
+Scope rulings (all retain explicit task boundaries, no new implementation exceptions):
+1. External asynchronous trip/loss-of-clock/independent protection not judged: synchronous digital contract only; assuming coverage would leave unverified protection behavior.
+2. Driver polarity/device-safe deadtime/pins/power-stage not judged: no hardware authorization; treating this as hardware validation would be unsupported.
+3. Nondefault route not judged: only profile0 D25 route required/claimed; nondefault timing remains unverified.
+4. Frozen C1-C4 numerics and user historical edits not reaudited: minimal compatibility diff and required D6 regressions only; this does not recertify frozen numerical design.
+5. No independent visual GUI inspection: computer use prohibited; actual Vivado GUI run PASS and window title verified, visual readability not independently reviewed.
+Ready for an open implementation PR, not merge/hardware authorization.

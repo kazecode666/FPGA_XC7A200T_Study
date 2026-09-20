@@ -1,0 +1,9 @@
+PASS
+STEP6E_BUILD_PASS
+Run=final01
+Tested code commit=701acd8e54490018ec755c233ebfdcbf0d1d37b0
+Default PI_PROFILE=0 DEADTIME_CYCLES=25
+MAIN=D:/Project/FPGA_XC7A200T
+WNS=2.257 TNS=0.000 WHS=0.041 THS=0.000
+Routed=19989/19989 errors=0
+No bitstream or hardware; profile 1 simulation only

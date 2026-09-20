@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+E6_CHAIN_PASS profile=1 demo=0 base=80 tail=1 accepts=81 loads=81 full_cycles=80 foc_latency=512 cmp_latency=516 target_zero=2499
+E6_GATE_EDGES checked=405007 H=81,81,81 L=80,80,80 first_open=S+27 deadtime=25
+E6_SHUTDOWN_PASS trip_H_L_wait_terminal=4 stop=2 preload_trip=1 old_fault=1 fresh_reset=1 held_trip_reset=1 stop_trip_delay=0 control_fault_delay=1
+ALL STEP 6E FOC GATE TESTS PASSED profile=1 deadtime=25 base=80 tail=1 full_cycles=80 shutdown=10
+$finish called at time : 9993672 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_gate_top_tb.sv" Line 245

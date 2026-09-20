@@ -1,0 +1,263 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Sep 20 16:28:19 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type min -max_paths 5 -file D:/Project/FPGA_XC7A200T/docs/reports/step6e/final01/hold_paths.rpt
+| Design       : mc_foc_gate_top
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.041ns  (arrival time - required time)
+  Source:                 control/foc/pi_core/eval_engine/ff_pair1_reg[0][65]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            control/foc/pi_core/eval_engine/ff_pair01_reg[0][65]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.373ns  (logic 0.275ns (73.730%)  route 0.098ns (26.270%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.198ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.214ns
+    Source Clock Delay      (SCD):    1.751ns
+    Clock Pessimism Removal (CPR):    0.265ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.235     0.235 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.843     1.078    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.104 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.647     1.751    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X92Y99         FDRE                                         r  control/foc/pi_core/eval_engine/ff_pair1_reg[0][65]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X92Y99         FDRE (Prop_fdre_C_Q)         0.164     1.915 r  control/foc/pi_core/eval_engine/ff_pair1_reg[0][65]/Q
+                         net (fo=1, routed)           0.098     2.013    control/foc/pi_core/eval_engine/ff_pair1_reg[0]_18[65]
+    SLICE_X94Y100        LUT2 (Prop_lut2_I1_O)        0.045     2.058 r  control/foc/pi_core/eval_engine/ff_pair01[0][67]_i_4/O
+                         net (fo=1, routed)           0.000     2.058    control/foc/pi_core/eval_engine/ff_pair01[0][67]_i_4_n_0
+    SLICE_X94Y100        CARRY4 (Prop_carry4_S[1]_O[1])
+                                                      0.066     2.124 r  control/foc/pi_core/eval_engine/ff_pair01_reg[0][67]_i_1/O[1]
+                         net (fo=1, routed)           0.000     2.124    control/foc/pi_core/eval_engine/ff_pair01_reg[0][67]_i_1_n_6
+    SLICE_X94Y100        FDRE                                         r  control/foc/pi_core/eval_engine/ff_pair01_reg[0][65]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.424     0.424 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.910     1.334    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.363 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.851     2.214    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X94Y100        FDRE                                         r  control/foc/pi_core/eval_engine/ff_pair01_reg[0][65]/C
+                         clock pessimism             -0.265     1.949    <hidden>
+    SLICE_X94Y100        FDRE (Hold_fdre_C_D)         0.134     2.083    control/foc/pi_core/eval_engine/ff_pair01_reg[0][65]
+  -------------------------------------------------------------------
+                         required time                         -2.083    <hidden>
+                         arrival time                           2.124    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.041    <hidden>
+
+Slack (MET) :             0.050ns  (arrival time - required time)
+  Source:                 control/foc/pi_core/eval_engine/cap_iq_ref_reg[18]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            control/foc/pi_core/eval_engine/error_current_reg[1][-1111111110]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.416ns  (logic 0.252ns (60.567%)  route 0.164ns (39.433%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.269ns
+    Source Clock Delay      (SCD):    1.737ns
+    Clock Pessimism Removal (CPR):    0.268ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.235     0.235 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.843     1.078    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.104 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.633     1.737    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X85Y99         FDRE                                         r  control/foc/pi_core/eval_engine/cap_iq_ref_reg[18]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X85Y99         FDRE (Prop_fdre_C_Q)         0.141     1.878 r  control/foc/pi_core/eval_engine/cap_iq_ref_reg[18]/Q
+                         net (fo=2, routed)           0.164     2.042    control/foc/pi_core/eval_engine/cap_iq_ref[18]
+    SLICE_X82Y99         LUT2 (Prop_lut2_I0_O)        0.045     2.087 r  control/foc/pi_core/eval_engine/error_current[1][-1111111109]_i_4/O
+                         net (fo=1, routed)           0.000     2.087    control/foc/pi_core/eval_engine/error_current[1][-1111111109]_i_4_n_0
+    SLICE_X82Y99         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.066     2.153 r  control/foc/pi_core/eval_engine/error_current_reg[1][-1111111109]_i_1/O[2]
+                         net (fo=2, routed)           0.000     2.153    control/foc/pi_core/eval_engine/error_current_reg[1][-1111111109]_i_1_n_5
+    SLICE_X82Y99         FDRE                                         r  control/foc/pi_core/eval_engine/error_current_reg[1][-1111111110]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.424     0.424 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.910     1.334    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.363 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.906     2.269    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X82Y99         FDRE                                         r  control/foc/pi_core/eval_engine/error_current_reg[1][-1111111110]/C
+                         clock pessimism             -0.268     2.001    <hidden>
+    SLICE_X82Y99         FDRE (Hold_fdre_C_D)         0.102     2.103    control/foc/pi_core/eval_engine/error_current_reg[1][-1111111110]
+  -------------------------------------------------------------------
+                         required time                         -2.103    <hidden>
+                         arrival time                           2.153    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.050    <hidden>
+
+Slack (MET) :             0.055ns  (arrival time - required time)
+  Source:                 control/foc/pi_core/candidate_ud_reg[33]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            control/foc/pi_core/limiter_engine/captured_d_reg[33]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.319ns  (logic 0.141ns (44.151%)  route 0.178ns (55.848%))
+  Logic Levels:           0
+  Clock Path Skew:        0.198ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.220ns
+    Source Clock Delay      (SCD):    1.757ns
+    Clock Pessimism Removal (CPR):    0.265ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.235     0.235 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.843     1.078    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.104 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.653     1.757    control/foc/pi_core/clk_IBUF_BUFG
+    SLICE_X53Y99         FDRE                                         r  control/foc/pi_core/candidate_ud_reg[33]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y99         FDRE (Prop_fdre_C_Q)         0.141     1.898 r  control/foc/pi_core/candidate_ud_reg[33]/Q
+                         net (fo=1, routed)           0.178     2.076    control/foc/pi_core/limiter_engine/captured_d_reg[39]_0[33]
+    SLICE_X53Y100        FDRE                                         r  control/foc/pi_core/limiter_engine/captured_d_reg[33]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.424     0.424 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.910     1.334    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.363 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.857     2.220    control/foc/pi_core/limiter_engine/clk_IBUF_BUFG
+    SLICE_X53Y100        FDRE                                         r  control/foc/pi_core/limiter_engine/captured_d_reg[33]/C
+                         clock pessimism             -0.265     1.955    <hidden>
+    SLICE_X53Y100        FDRE (Hold_fdre_C_D)         0.066     2.021    control/foc/pi_core/limiter_engine/captured_d_reg[33]
+  -------------------------------------------------------------------
+                         required time                         -2.021    <hidden>
+                         arrival time                           2.076    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.055    <hidden>
+
+Slack (MET) :             0.057ns  (arrival time - required time)
+  Source:                 control/foc/pi_core/eval_engine/cap_iq_ref_reg[16]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            control/foc/pi_core/eval_engine/error_current_reg[1][-1111111111]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.423ns  (logic 0.292ns (68.979%)  route 0.131ns (31.021%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.269ns
+    Source Clock Delay      (SCD):    1.737ns
+    Clock Pessimism Removal (CPR):    0.268ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.235     0.235 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.843     1.078    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.104 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.633     1.737    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X85Y99         FDRE                                         r  control/foc/pi_core/eval_engine/cap_iq_ref_reg[16]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X85Y99         FDRE (Prop_fdre_C_Q)         0.141     1.878 r  control/foc/pi_core/eval_engine/cap_iq_ref_reg[16]/Q
+                         net (fo=2, routed)           0.131     2.009    control/foc/pi_core/eval_engine/cap_iq_ref[16]
+    SLICE_X82Y99         LUT2 (Prop_lut2_I0_O)        0.045     2.054 r  control/foc/pi_core/eval_engine/error_current[1][-1111111109]_i_6/O
+                         net (fo=1, routed)           0.000     2.054    control/foc/pi_core/eval_engine/error_current[1][-1111111109]_i_6_n_0
+    SLICE_X82Y99         CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.106     2.160 r  control/foc/pi_core/eval_engine/error_current_reg[1][-1111111109]_i_1/O[1]
+                         net (fo=2, routed)           0.000     2.160    control/foc/pi_core/eval_engine/error_current_reg[1][-1111111109]_i_1_n_6
+    SLICE_X82Y99         FDRE                                         r  control/foc/pi_core/eval_engine/error_current_reg[1][-1111111111]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.424     0.424 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.910     1.334    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.363 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.906     2.269    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X82Y99         FDRE                                         r  control/foc/pi_core/eval_engine/error_current_reg[1][-1111111111]/C
+                         clock pessimism             -0.268     2.001    <hidden>
+    SLICE_X82Y99         FDRE (Hold_fdre_C_D)         0.102     2.103    control/foc/pi_core/eval_engine/error_current_reg[1][-1111111111]
+  -------------------------------------------------------------------
+                         required time                         -2.103    <hidden>
+                         arrival time                           2.160    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.057    <hidden>
+
+Slack (MET) :             0.058ns  (arrival time - required time)
+  Source:                 control/foc/pi_core/eval_engine/voltage_candidate_reg[1][22]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            control/foc/pi_core/eval_engine/voltage_selected_reg[1][22]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.321ns  (logic 0.141ns (43.975%)  route 0.180ns (56.025%))
+  Logic Levels:           0
+  Clock Path Skew:        0.199ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.213ns
+    Source Clock Delay      (SCD):    1.749ns
+    Clock Pessimism Removal (CPR):    0.265ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.235     0.235 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.843     1.078    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     1.104 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.645     1.749    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X69Y99         FDRE                                         r  control/foc/pi_core/eval_engine/voltage_candidate_reg[1][22]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X69Y99         FDRE (Prop_fdre_C_Q)         0.141     1.890 r  control/foc/pi_core/eval_engine/voltage_candidate_reg[1][22]/Q
+                         net (fo=1, routed)           0.180     2.069    control/foc/pi_core/eval_engine/voltage_candidate_reg[1]_12[22]
+    SLICE_X68Y100        FDRE                                         r  control/foc/pi_core/eval_engine/voltage_selected_reg[1][22]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
+    Y11                                               0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+    Y11                  IBUF (Prop_ibuf_I_O)         0.424     0.424 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.910     1.334    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.363 r  clk_IBUF_BUFG_inst/O
+                         net (fo=8547, routed)        0.850     2.213    control/foc/pi_core/eval_engine/clk_IBUF_BUFG
+    SLICE_X68Y100        FDRE                                         r  control/foc/pi_core/eval_engine/voltage_selected_reg[1][22]/C
+                         clock pessimism             -0.265     1.948    <hidden>
+    SLICE_X68Y100        FDRE (Hold_fdre_C_D)         0.063     2.011    control/foc/pi_core/eval_engine/voltage_selected_reg[1][22]
+  -------------------------------------------------------------------
+                         required time                         -2.011    <hidden>
+                         arrival time                           2.069    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.058    <hidden>

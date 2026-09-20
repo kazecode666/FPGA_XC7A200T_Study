@@ -1,0 +1,51 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Sep 20 16:25:27 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file D:/Project/FPGA_XC7A200T/docs/reports/step6e/final01/synth_hierarchy.rpt
+| Design       : mc_foc_gate_top
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------+----------------------+------------+------------+---------+------+------+--------+--------+------------+
+|           Instance          |        Module        | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++-----------------------------+----------------------+------------+------------+---------+------+------+--------+--------+------------+
+| mc_foc_gate_top             |                (top) |      11029 |      11029 |       0 |    0 | 8478 |      2 |      0 |         87 |
+|   (mc_foc_gate_top)         |                (top) |         28 |         28 |       0 |    0 |    8 |      0 |      0 |          0 |
+|   control                   |       mc_foc_pwm_top |      10977 |      10977 |       0 |    0 | 8445 |      2 |      0 |         87 |
+|     (control)               |       mc_foc_pwm_top |          4 |          4 |       0 |    0 |  108 |      0 |      0 |          0 |
+|     adapter                 |       mc_duty_to_cmp |        308 |        308 |       0 |    0 |  161 |      0 |      0 |          0 |
+|     foc                     |  mc_foc_current_core |      10480 |      10480 |       0 |    0 | 8084 |      2 |      0 |         87 |
+|       (foc)                 |  mc_foc_current_core |         51 |         51 |       0 |    0 |  561 |      0 |      0 |          0 |
+|       current_transform     | mc_current_transform |        824 |        824 |       0 |    0 |  427 |      2 |      0 |          6 |
+|         (current_transform) | mc_current_transform |          0 |          0 |       0 |    0 |  145 |      0 |      0 |          0 |
+|         clarke              |            mc_clarke |        330 |        330 |       0 |    0 |  100 |      0 |      0 |          2 |
+|         park                |              mc_park |        406 |        406 |       0 |    0 |  141 |      0 |      0 |          4 |
+|         sincos              |        mc_sincos_lut |         88 |         88 |       0 |    0 |   41 |      2 |      0 |          0 |
+|       inverse_park          |          mc_inv_park |        323 |        323 |       0 |    0 |  141 |      0 |      0 |          4 |
+|       pi_core               |        mc_pi_dq_core |       5326 |       5326 |       0 |    0 | 5459 |      0 |      0 |         52 |
+|         (pi_core)           |        mc_pi_dq_core |         38 |         38 |       0 |    0 |  723 |      0 |      0 |          0 |
+|         eval_engine         |        mc_pi_dq_eval |       3102 |       3102 |       0 |    0 | 3146 |      0 |      0 |         30 |
+|         limiter_engine      |        mc_dq_limiter |       2186 |       2186 |       0 |    0 | 1590 |      0 |      0 |         22 |
+|           (limiter_engine)  |        mc_dq_limiter |       1686 |       1686 |       0 |    0 | 1018 |      0 |      0 |         22 |
+|           div_engine        |    mc_udiv_u72_u41_3 |        310 |        310 |       0 |    0 |  321 |      0 |      0 |          0 |
+|           sqrt_engine       |         mc_isqrt_u80 |        190 |        190 |       0 |    0 |  251 |      0 |      0 |          0 |
+|       svpwm                 |      mc_sector_svpwm |       3956 |       3956 |       0 |    0 | 1496 |      0 |      0 |         25 |
+|         (svpwm)             |      mc_sector_svpwm |       2686 |       2686 |       0 |    0 |  856 |      0 |      0 |         18 |
+|         divider_t1          |      mc_udiv_u72_u41 |        309 |        309 |       0 |    0 |  320 |      0 |      0 |          0 |
+|         divider_t2          |    mc_udiv_u72_u41_2 |        295 |        295 |       0 |    0 |  320 |      0 |      0 |          0 |
+|         sector_xyz          |  mc_svpwm_sector_xyz |        666 |        666 |       0 |    0 |    0 |      0 |      0 |          7 |
+|     pwm                     |       motor_pwm_core |        185 |        185 |       0 |    0 |   92 |      0 |      0 |          0 |
++-----------------------------+----------------------+------------+------------+---------+------+------+--------+--------+------------+

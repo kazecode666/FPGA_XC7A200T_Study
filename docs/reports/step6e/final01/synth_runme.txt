@@ -1,0 +1,1177 @@
+
+*** Running vivado
+    with args -log mc_foc_gate_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mc_foc_gate_top.tcl
+
+
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 27-jul-2027.
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Sep 20 16:23:35 2026
+# Process ID         : 8620
+# Current directory  : D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.runs/synth_1
+# Command line       : vivado.exe -log mc_foc_gate_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mc_foc_gate_top.tcl
+# Log file           : D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.runs/synth_1/mc_foc_gate_top.vds
+# Journal file       : D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.runs/synth_1\vivado.jou
+# Running On         : DependOnOMEN16
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 16858 MB
+# Swap memory        : 18253 MB
+# Total Virtual      : 35112 MB
+# Available Virtual  : 17070 MB
+#-----------------------------------------------------------
+
+****** Vivado v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Sep 20 16:23:35 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source mc_foc_gate_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 592.422 ; gain = 265.344
+Command: synth_design -top mc_foc_gate_top -part xc7a200tfbg484-2
+Starting synth_design
+Attempting to get a license for feature 'Vivado_Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Vivado_Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg484-2
+INFO: [Designutils 20-5008] Incremental synthesis strategy default
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 28316
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1404.152 ; gain = 579.617
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'mc_foc_gate_top' [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_gate_top.sv:2]
+	Parameter PI_PROFILE bound to: 32'sb00000000000000000000000000000000
+	Parameter DEADTIME_CYCLES bound to: 32'sb00000000000000000000000000011001
+INFO: [Synth 8-6157] synthesizing module 'mc_foc_pwm_top' [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv:3]
+	Parameter PI_PROFILE bound to: 32'sb00000000000000000000000000000000
+INFO: [Synth 8-6157] synthesizing module 'mc_foc_current_core' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:3]
+	Parameter PI_PROFILE bound to: 32'sb00000000000000000000000000000000
+INFO: [Synth 8-6157] synthesizing module 'mc_current_transform' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_current_transform.sv:2]
+INFO: [Synth 8-6157] synthesizing module 'mc_clarke' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_clarke.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'mc_clarke' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_clarke.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'mc_sincos_lut' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sincos_lut.sv:1]
+INFO: [Synth 8-3876] $readmem data file 'sin_qw_4096x18.mem' is read successfully [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sincos_lut.sv:29]
+INFO: [Synth 8-6155] done synthesizing module 'mc_sincos_lut' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sincos_lut.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'mc_park' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_park.sv:2]
+INFO: [Synth 8-6155] done synthesizing module 'mc_park' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_park.sv:2]
+INFO: [Synth 8-6155] done synthesizing module 'mc_current_transform' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_current_transform.sv:2]
+INFO: [Synth 8-6157] synthesizing module 'mc_pi_dq_core' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:3]
+	Parameter PI_PROFILE bound to: 32'sb00000000000000000000000000000000
+INFO: [Synth 8-6157] synthesizing module 'mc_pi_dq_eval' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:1]
+	Parameter PI_PROFILE bound to: 32'sb00000000000000000000000000000000
+INFO: [Synth 8-6155] done synthesizing module 'mc_pi_dq_eval' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'mc_dq_limiter' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_dq_limiter.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_isqrt_u80' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_isqrt_u80.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_isqrt_u80' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_isqrt_u80.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_udiv_u72_u41' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_udiv_u72_u41' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_dq_limiter' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_dq_limiter.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_pi_dq_core' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_inv_park' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_inv_park.sv:2]
+INFO: [Synth 8-6155] done synthesizing module 'mc_inv_park' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_inv_park.sv:2]
+INFO: [Synth 8-6157] synthesizing module 'mc_sector_svpwm' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_svpwm_sector_xyz' [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'mc_svpwm_sector_xyz' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv:5]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:446]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:448]
+INFO: [Synth 8-6155] done synthesizing module 'mc_sector_svpwm' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_foc_current_core' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_duty_to_cmp' [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_duty_to_cmp.sv:3]
+INFO: [Synth 8-226] default block is never used [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_duty_to_cmp.sv:35]
+INFO: [Synth 8-6155] done synthesizing module 'mc_duty_to_cmp' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_duty_to_cmp.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'motor_pwm_core' [D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/motor_pwm_core.sv:2]
+INFO: [Synth 8-6155] done synthesizing module 'motor_pwm_core' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/motor_pwm_core.sv:2]
+INFO: [Synth 8-6155] done synthesizing module 'mc_foc_pwm_top' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mc_pwm_deadtime_leg' [D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/mc_pwm_deadtime_leg.sv:3]
+	Parameter DEADTIME_CYCLES bound to: 32'sb00000000000000000000000000011001
+INFO: [Synth 8-6155] done synthesizing module 'mc_pwm_deadtime_leg' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/mc_pwm_deadtime_leg.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mc_foc_gate_top' (0#1) [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_gate_top.sv:2]
+WARNING: [Synth 8-3936] Found unconnected internal register 'grown_root_reg' and it is trimmed from '41' to '40' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_isqrt_u80.sv:22]
+WARNING: [Synth 8-3936] Found unconnected internal register 'next_rem_reg' and it is trimmed from '42' to '41' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:21]
+WARNING: [Synth 8-6014] Unused sequential element cap_sat_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:84]
+WARNING: [Synth 8-6014] Unused sequential element candidate_hd_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:91]
+WARNING: [Synth 8-6014] Unused sequential element candidate_hq_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:91]
+WARNING: [Synth 8-6014] Unused sequential element candidate_scale_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:94]
+WARNING: [Synth 8-6014] Unused sequential element sat_state_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:102]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xd_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xq_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_d_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_q_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_sat_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_ud_raw_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_uq_raw_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xd_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xq_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_ud_hi_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_uq_hi_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_d_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_q_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_scale_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element sum_num_debug_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:302]
+WARNING: [Synth 8-6014] Unused sequential element base_debug_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:303]
+WARNING: [Synth 8-6014] Unused sequential element denominator_debug_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:304]
+WARNING: [Synth 8-6014] Unused sequential element error_stage_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:78]
+WARNING: [Synth 8-6014] Unused sequential element saved_alpha_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:83]
+WARNING: [Synth 8-6014] Unused sequential element saved_beta_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:83]
+WARNING: [Synth 8-6014] Unused sequential element last_foc_error_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv:77]
+WARNING: [Synth 8-6014] Unused sequential element active_cycle_id_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv:80]
+WARNING: [Synth 8-7129] Port theta_e[1] in module mc_sincos_lut is either unconnected or has no load
+WARNING: [Synth 8-7129] Port theta_e[0] in module mc_sincos_lut is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1582.660 ; gain = 758.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1582.660 ; gain = 758.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1582.660 ; gain = 758.125
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.082 . Memory (MB): peak = 1582.660 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.srcs/constrs_1/new/foc_gates_clock.xdc]
+Finished Parsing XDC File [D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.srcs/constrs_1/new/foc_gates_clock.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1629.898 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.142 . Memory (MB): peak = 1633.320 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1633.320 ; gain = 808.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1633.320 ; gain = 808.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1633.320 ; gain = 808.785
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mc_duty_to_cmp'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding
+---------------------------------------------------------------------------------------------------
+                    IDLE |                             0001 |                               00
+                MULTIPLY |                             0010 |                               01
+                   ROUND |                             0100 |                               10
+                    HOLD |                             1000 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'mc_duty_to_cmp'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1633.320 ; gain = 808.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics
+---------------------------------------------------------------------------------
+Detailed RTL Component Info :
++---Adders :
+	   2 Input  113 Bit       Adders := 2
+	   3 Input   97 Bit       Adders := 18
+	   2 Input   96 Bit       Adders := 25
+	   3 Input   96 Bit       Adders := 7
+	   2 Input   90 Bit       Adders := 10
+	   2 Input   81 Bit       Adders := 1
+	   2 Input   74 Bit       Adders := 2
+	   2 Input   73 Bit       Adders := 2
+	   2 Input   58 Bit       Adders := 1
+	   2 Input   53 Bit       Adders := 2
+	   3 Input   45 Bit       Adders := 6
+	   3 Input   44 Bit       Adders := 3
+	   2 Input   44 Bit       Adders := 8
+	   3 Input   41 Bit       Adders := 1
+	   2 Input   41 Bit       Adders := 2
+	   2 Input   38 Bit       Adders := 3
+	   2 Input   32 Bit       Adders := 1
+	   2 Input   27 Bit       Adders := 3
+	   3 Input   26 Bit       Adders := 3
+	   2 Input   25 Bit       Adders := 1
+	   3 Input   25 Bit       Adders := 2
+	   2 Input   18 Bit       Adders := 2
+	   2 Input   12 Bit       Adders := 1
+	   2 Input    9 Bit       Adders := 1
+	   2 Input    8 Bit       Adders := 2
+	   2 Input    7 Bit       Adders := 4
+	   2 Input    6 Bit       Adders := 1
+	   2 Input    5 Bit       Adders := 3
+	   2 Input    4 Bit       Adders := 1
++---Registers :
+	               96 Bit    Registers := 26
+	               90 Bit    Registers := 10
+	               81 Bit    Registers := 1
+	               80 Bit    Registers := 3
+	               74 Bit    Registers := 2
+	               72 Bit    Registers := 13
+	               63 Bit    Registers := 2
+	               57 Bit    Registers := 1
+	               55 Bit    Registers := 1
+	               48 Bit    Registers := 6
+	               44 Bit    Registers := 5
+	               43 Bit    Registers := 11
+	               41 Bit    Registers := 14
+	               40 Bit    Registers := 37
+	               37 Bit    Registers := 3
+	               34 Bit    Registers := 5
+	               33 Bit    Registers := 2
+	               32 Bit    Registers := 3
+	               26 Bit    Registers := 12
+	               25 Bit    Registers := 49
+	               24 Bit    Registers := 3
+	               18 Bit    Registers := 20
+	               17 Bit    Registers := 4
+	               16 Bit    Registers := 5
+	               12 Bit    Registers := 13
+	               10 Bit    Registers := 4
+	                9 Bit    Registers := 5
+	                8 Bit    Registers := 2
+	                7 Bit    Registers := 4
+	                6 Bit    Registers := 1
+	                5 Bit    Registers := 3
+	                4 Bit    Registers := 1
+	                3 Bit    Registers := 4
+	                2 Bit    Registers := 11
+	                1 Bit    Registers := 104
++---Multipliers :
+	              41x72  Multipliers := 2
+	              14x96  Multipliers := 1
+	              40x40  Multipliers := 2
+	              34x40  Multipliers := 2
+	              23x40  Multipliers := 2
+	              25x30  Multipliers := 1
+	              10x33  Multipliers := 1
+	              12x25  Multipliers := 3
+	              10x36  Multipliers := 1
++---ROMs :
+	                    ROMs := 2
++---Muxes :
+	   2 Input   97 Bit        Muxes := 18
+	   2 Input   96 Bit        Muxes := 23
+	   2 Input   80 Bit        Muxes := 1
+	   2 Input   74 Bit        Muxes := 2
+	   2 Input   72 Bit        Muxes := 11
+	   2 Input   45 Bit        Muxes := 6
+	   2 Input   44 Bit        Muxes := 8
+	   2 Input   41 Bit        Muxes := 7
+	   2 Input   40 Bit        Muxes := 36
+	   7 Input   35 Bit        Muxes := 3
+	   2 Input   34 Bit        Muxes := 15
+	   2 Input   33 Bit        Muxes := 1
+	   2 Input   26 Bit        Muxes := 14
+	   2 Input   25 Bit        Muxes := 23
+	   2 Input   18 Bit        Muxes := 2
+	   4 Input   18 Bit        Muxes := 2
+	   2 Input   12 Bit        Muxes := 9
+	   2 Input    9 Bit        Muxes := 1
+	   2 Input    8 Bit        Muxes := 2
+	   2 Input    7 Bit        Muxes := 4
+	   2 Input    6 Bit        Muxes := 1
+	   2 Input    5 Bit        Muxes := 6
+	   2 Input    4 Bit        Muxes := 1
+	   5 Input    4 Bit        Muxes := 1
+	   2 Input    3 Bit        Muxes := 19
+	   3 Input    2 Bit        Muxes := 1
+	   2 Input    2 Bit        Muxes := 40
+	   2 Input    1 Bit        Muxes := 216
+	  12 Input    1 Bit        Muxes := 12
+	   3 Input    1 Bit        Muxes := 1
+	   4 Input    1 Bit        Muxes := 3
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '19' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[1]' and it is trimmed from '48' to '33' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[1]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '36' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+DSP Report: Generating DSP p_0_in, operation Mode is: A2*(B:0x970f).
+DSP Report: register cap_id_reg is absorbed into DSP p_0_in.
+DSP Report: operator p_0_in is absorbed into DSP p_0_in.
+DSP Report: operator p_0_in is absorbed into DSP p_0_in.
+DSP Report: Generating DSP ff_hh_reg[1], operation Mode is: (A2*B2)'.
+DSP Report: register ff_hh_reg[1] is absorbed into DSP ff_hh_reg[1].
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hh_reg[1].
+DSP Report: register ff_hh_reg[1] is absorbed into DSP ff_hh_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP ff_hh_reg[1].
+DSP Report: Generating DSP ff_lh_reg[1], operation Mode is: (A2*B2)'.
+DSP Report: register ff_hh_reg[1] is absorbed into DSP ff_lh_reg[1].
+DSP Report: register ff_lh_reg[1] is absorbed into DSP ff_lh_reg[1].
+DSP Report: register ff_lh_reg[1] is absorbed into DSP ff_lh_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP ff_lh_reg[1].
+DSP Report: Generating DSP ff_hm_reg[1], operation Mode is: (A2*B2)'.
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hm_reg[1].
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hm_reg[1].
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hm_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP ff_hm_reg[1].
+DSP Report: Generating DSP ff_lm_reg[1], operation Mode is: (A2*B2)'.
+DSP Report: register ff_lm_reg[1] is absorbed into DSP ff_lm_reg[1].
+DSP Report: register ff_lm_reg[1] is absorbed into DSP ff_lm_reg[1].
+DSP Report: register ff_lm_reg[1] is absorbed into DSP ff_lm_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP ff_lm_reg[1].
+DSP Report: Generating DSP ff_hl_reg[1], operation Mode is: (A2*B2)'.
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hl_reg[1].
+DSP Report: register ff_hl_reg[1] is absorbed into DSP ff_hl_reg[1].
+DSP Report: register ff_hl_reg[1] is absorbed into DSP ff_hl_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP ff_hl_reg[1].
+DSP Report: Generating DSP ff_ll_reg[1], operation Mode is: (A2*B2)'.
+DSP Report: register ff_ll_reg[1] is absorbed into DSP ff_ll_reg[1].
+DSP Report: register ff_ll_reg[1] is absorbed into DSP ff_ll_reg[1].
+DSP Report: register ff_ll_reg[1] is absorbed into DSP ff_ll_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP ff_ll_reg[1].
+DSP Report: Generating DSP p_3_out, operation Mode is: (A:0x6666)*B2.
+DSP Report: register error_current_reg[1] is absorbed into DSP p_3_out.
+DSP Report: operator p_3_out is absorbed into DSP p_3_out.
+DSP Report: operator p_3_out is absorbed into DSP p_3_out.
+DSP Report: Generating DSP p_3_out, operation Mode is: A2*(B:0x6666).
+DSP Report: register p_3_out is absorbed into DSP p_3_out.
+DSP Report: operator p_3_out is absorbed into DSP p_3_out.
+DSP Report: operator p_3_out is absorbed into DSP p_3_out.
+DSP Report: Generating DSP product_p_reg[1], operation Mode is: (PCIN>>17)+A2*(B:0x117).
+DSP Report: register product_p_reg[1] is absorbed into DSP product_p_reg[1].
+DSP Report: register product_p_reg[1] is absorbed into DSP product_p_reg[1].
+DSP Report: operator p_3_out is absorbed into DSP product_p_reg[1].
+DSP Report: operator p_3_out is absorbed into DSP product_p_reg[1].
+DSP Report: Generating DSP p_2_in, operation Mode is: A2*(B:0x970f).
+DSP Report: register cap_iq_reg is absorbed into DSP p_2_in.
+DSP Report: operator p_2_in is absorbed into DSP p_2_in.
+DSP Report: operator p_2_in is absorbed into DSP p_2_in.
+DSP Report: Generating DSP ff_hh_reg[0], operation Mode is: (A2*B'')'.
+DSP Report: register ff_lh_reg[0] is absorbed into DSP ff_hh_reg[0].
+DSP Report: register ff_lh_reg[0] is absorbed into DSP ff_hh_reg[0].
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hh_reg[0].
+DSP Report: register ff_hh_reg[0] is absorbed into DSP ff_hh_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP ff_hh_reg[0].
+DSP Report: Generating DSP ff_lh_reg[0], operation Mode is: (A2*B'')'.
+DSP Report: register ff_lh_reg[0] is absorbed into DSP ff_lh_reg[0].
+DSP Report: register ff_lh_reg[0] is absorbed into DSP ff_lh_reg[0].
+DSP Report: register ff_lh_reg[0] is absorbed into DSP ff_lh_reg[0].
+DSP Report: register ff_lh_reg[0] is absorbed into DSP ff_lh_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP ff_lh_reg[0].
+DSP Report: Generating DSP ff_hm_reg[0], operation Mode is: (A''*B2)'.
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hm_reg[0].
+DSP Report: register ff_lm_reg[0] is absorbed into DSP ff_hm_reg[0].
+DSP Report: register ff_lm_reg[0] is absorbed into DSP ff_hm_reg[0].
+DSP Report: register ff_hm_reg[0] is absorbed into DSP ff_hm_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP ff_hm_reg[0].
+DSP Report: Generating DSP ff_lm_reg[0], operation Mode is: (A''*B2)'.
+DSP Report: register ff_lm_reg[0] is absorbed into DSP ff_lm_reg[0].
+DSP Report: register ff_lm_reg[0] is absorbed into DSP ff_lm_reg[0].
+DSP Report: register ff_lm_reg[0] is absorbed into DSP ff_lm_reg[0].
+DSP Report: register ff_lm_reg[0] is absorbed into DSP ff_lm_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP ff_lm_reg[0].
+DSP Report: Generating DSP ff_hl_reg[0], operation Mode is: (A''*B2)'.
+DSP Report: register ff_hm_reg[1] is absorbed into DSP ff_hl_reg[0].
+DSP Report: register ff_ll_reg[0] is absorbed into DSP ff_hl_reg[0].
+DSP Report: register ff_ll_reg[0] is absorbed into DSP ff_hl_reg[0].
+DSP Report: register ff_hl_reg[0] is absorbed into DSP ff_hl_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP ff_hl_reg[0].
+DSP Report: Generating DSP ff_ll_reg[0], operation Mode is: (A''*B2)'.
+DSP Report: register ff_ll_reg[0] is absorbed into DSP ff_ll_reg[0].
+DSP Report: register ff_ll_reg[0] is absorbed into DSP ff_ll_reg[0].
+DSP Report: register ff_ll_reg[0] is absorbed into DSP ff_ll_reg[0].
+DSP Report: register ff_ll_reg[0] is absorbed into DSP ff_ll_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP ff_ll_reg[0].
+DSP Report: Generating DSP product_aw_reg[1], operation Mode is: ((A:0x333333)*B)'.
+DSP Report: register product_aw_reg[1] is absorbed into DSP product_aw_reg[1].
+DSP Report: operator p_0_in is absorbed into DSP product_aw_reg[1].
+DSP Report: operator p_0_in is absorbed into DSP product_aw_reg[1].
+DSP Report: Generating DSP p_0_in, operation Mode is: (A:0x333333)*B.
+DSP Report: operator p_0_in is absorbed into DSP p_0_in.
+DSP Report: operator p_0_in is absorbed into DSP p_0_in.
+DSP Report: Generating DSP product_aw_reg[1], operation Mode is: (PCIN>>17)+(A:0x333333)*B.
+DSP Report: register product_aw_reg[1] is absorbed into DSP product_aw_reg[1].
+DSP Report: operator p_0_in is absorbed into DSP product_aw_reg[1].
+DSP Report: operator p_0_in is absorbed into DSP product_aw_reg[1].
+DSP Report: Generating DSP p_2_out, operation Mode is: (A:0x4bd70a)*B2.
+DSP Report: register p_2_out is absorbed into DSP p_2_out.
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP product_i_reg[1], operation Mode is: (PCIN>>17)+(A:0x4bd70a)*B2.
+DSP Report: register error_current_reg[1] is absorbed into DSP product_i_reg[1].
+DSP Report: register product_i_reg[1] is absorbed into DSP product_i_reg[1].
+DSP Report: operator p_2_out is absorbed into DSP product_i_reg[1].
+DSP Report: operator p_2_out is absorbed into DSP product_i_reg[1].
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '19' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[0]' and it is trimmed from '48' to '33' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '36' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[0]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+DSP Report: Generating DSP product_aw_reg[0], operation Mode is: ((A:0x333333)*B2)'.
+DSP Report: register product_aw_reg[0] is absorbed into DSP product_aw_reg[0].
+DSP Report: register product_aw_reg[0] is absorbed into DSP product_aw_reg[0].
+DSP Report: operator p_2_in is absorbed into DSP product_aw_reg[0].
+DSP Report: operator p_2_in is absorbed into DSP product_aw_reg[0].
+DSP Report: Generating DSP p_2_in, operation Mode is: (A:0x333333)*B2.
+DSP Report: register p_2_in is absorbed into DSP p_2_in.
+DSP Report: operator p_2_in is absorbed into DSP p_2_in.
+DSP Report: operator p_2_in is absorbed into DSP p_2_in.
+DSP Report: Generating DSP product_aw_reg[0], operation Mode is: (PCIN>>17)+(A:0x333333)*B2.
+DSP Report: register product_aw_reg[0] is absorbed into DSP product_aw_reg[0].
+DSP Report: register product_aw_reg[0] is absorbed into DSP product_aw_reg[0].
+DSP Report: operator p_2_in is absorbed into DSP product_aw_reg[0].
+DSP Report: operator p_2_in is absorbed into DSP product_aw_reg[0].
+DSP Report: Generating DSP p_4_out, operation Mode is: (A:0x4bd70a)*B2.
+DSP Report: register p_4_out is absorbed into DSP p_4_out.
+DSP Report: operator p_4_out is absorbed into DSP p_4_out.
+DSP Report: operator p_4_out is absorbed into DSP p_4_out.
+DSP Report: Generating DSP product_i_reg[0], operation Mode is: (PCIN>>17)+(A:0x4bd70a)*B2.
+DSP Report: register error_current_reg[0] is absorbed into DSP product_i_reg[0].
+DSP Report: register product_i_reg[0] is absorbed into DSP product_i_reg[0].
+DSP Report: operator p_4_out is absorbed into DSP product_i_reg[0].
+DSP Report: operator p_4_out is absorbed into DSP product_i_reg[0].
+DSP Report: Generating DSP p_5_out, operation Mode is: (A:0x6666)*B2.
+DSP Report: register error_current_reg[0] is absorbed into DSP p_5_out.
+DSP Report: operator p_5_out is absorbed into DSP p_5_out.
+DSP Report: operator p_5_out is absorbed into DSP p_5_out.
+DSP Report: Generating DSP p_5_out, operation Mode is: A2*(B:0x6666).
+DSP Report: register p_5_out is absorbed into DSP p_5_out.
+DSP Report: operator p_5_out is absorbed into DSP p_5_out.
+DSP Report: operator p_5_out is absorbed into DSP p_5_out.
+DSP Report: Generating DSP product_p_reg[0], operation Mode is: (PCIN>>17)+A2*(B:0x117).
+DSP Report: register product_p_reg[0] is absorbed into DSP product_p_reg[0].
+DSP Report: register product_p_reg[0] is absorbed into DSP product_p_reg[0].
+DSP Report: operator p_5_out is absorbed into DSP product_p_reg[0].
+DSP Report: operator p_5_out is absorbed into DSP product_p_reg[0].
+DSP Report: Generating DSP bus_product0, operation Mode is: (A:0x1604a)*B.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product0.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product0.
+DSP Report: Generating DSP bus_product_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register bus_product_reg is absorbed into DSP bus_product_reg.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product_reg.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product_reg.
+DSP Report: Generating DSP bus_product0, operation Mode is: A2*(B:0x1604a).
+DSP Report: register bus_product0 is absorbed into DSP bus_product0.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product0.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product0.
+DSP Report: Generating DSP bus_product_reg, operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register bus_product_reg is absorbed into DSP bus_product_reg.
+DSP Report: register bus_product_reg is absorbed into DSP bus_product_reg.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product_reg.
+DSP Report: operator bus_product0 is absorbed into DSP bus_product_reg.
+DSP Report: Generating DSP scaled_q0, operation Mode is: A*B2.
+DSP Report: register scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: Generating DSP scaled_q_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register work_scale_reg is absorbed into DSP scaled_q_reg.
+DSP Report: register scaled_q_reg is absorbed into DSP scaled_q_reg.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q_reg.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q_reg.
+DSP Report: Generating DSP scaled_q0, operation Mode is: A2*B2.
+DSP Report: register scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: register scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q0.
+DSP Report: Generating DSP scaled_q_reg, operation Mode is: (PCIN>>17)+A2*B2.
+DSP Report: register work_scale_reg is absorbed into DSP scaled_q_reg.
+DSP Report: register scaled_q_reg is absorbed into DSP scaled_q_reg.
+DSP Report: register scaled_q_reg is absorbed into DSP scaled_q_reg.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q_reg.
+DSP Report: operator scaled_q0 is absorbed into DSP scaled_q_reg.
+DSP Report: Generating DSP scaled_d0, operation Mode is: A*B2.
+DSP Report: register scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: Generating DSP scaled_d_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register work_scale_reg is absorbed into DSP scaled_d_reg.
+DSP Report: register scaled_d_reg is absorbed into DSP scaled_d_reg.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d_reg.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d_reg.
+DSP Report: Generating DSP scaled_d0, operation Mode is: A2*B2.
+DSP Report: register scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: register scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d0.
+DSP Report: Generating DSP scaled_d_reg, operation Mode is: (PCIN>>17)+A2*B2.
+DSP Report: register work_scale_reg is absorbed into DSP scaled_d_reg.
+DSP Report: register scaled_d_reg is absorbed into DSP scaled_d_reg.
+DSP Report: register scaled_d_reg is absorbed into DSP scaled_d_reg.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d_reg.
+DSP Report: operator scaled_d0 is absorbed into DSP scaled_d_reg.
+DSP Report: Generating DSP square_q_reg, operation Mode is: (A*B2)'.
+DSP Report: register square_q_reg is absorbed into DSP square_q_reg.
+DSP Report: register square_q_reg is absorbed into DSP square_q_reg.
+DSP Report: operator square_q0 is absorbed into DSP square_q_reg.
+DSP Report: operator square_q0 is absorbed into DSP square_q_reg.
+DSP Report: Generating DSP square_q0, operation Mode is: A*B2.
+DSP Report: register square_q0 is absorbed into DSP square_q0.
+DSP Report: operator square_q0 is absorbed into DSP square_q0.
+DSP Report: operator square_q0 is absorbed into DSP square_q0.
+DSP Report: Generating DSP square_q_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register square_q_reg is absorbed into DSP square_q_reg.
+DSP Report: register square_q_reg is absorbed into DSP square_q_reg.
+DSP Report: operator square_q0 is absorbed into DSP square_q_reg.
+DSP Report: operator square_q0 is absorbed into DSP square_q_reg.
+DSP Report: Generating DSP square_q0, operation Mode is: A2*B2.
+DSP Report: register square_q0 is absorbed into DSP square_q0.
+DSP Report: register square_q0 is absorbed into DSP square_q0.
+DSP Report: operator square_q0 is absorbed into DSP square_q0.
+DSP Report: operator square_q0 is absorbed into DSP square_q0.
+DSP Report: Generating DSP square_q_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register square_q_reg is absorbed into DSP square_q_reg.
+DSP Report: register square_q_reg is absorbed into DSP square_q_reg.
+DSP Report: operator square_q0 is absorbed into DSP square_q_reg.
+DSP Report: operator square_q0 is absorbed into DSP square_q_reg.
+DSP Report: Generating DSP square_d_reg, operation Mode is: (A*B2)'.
+DSP Report: register square_d_reg is absorbed into DSP square_d_reg.
+DSP Report: register square_d_reg is absorbed into DSP square_d_reg.
+DSP Report: operator square_d0 is absorbed into DSP square_d_reg.
+DSP Report: operator square_d0 is absorbed into DSP square_d_reg.
+DSP Report: Generating DSP square_d0, operation Mode is: A*B2.
+DSP Report: register square_d0 is absorbed into DSP square_d0.
+DSP Report: operator square_d0 is absorbed into DSP square_d0.
+DSP Report: operator square_d0 is absorbed into DSP square_d0.
+DSP Report: Generating DSP square_d_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register square_d_reg is absorbed into DSP square_d_reg.
+DSP Report: register square_d_reg is absorbed into DSP square_d_reg.
+DSP Report: operator square_d0 is absorbed into DSP square_d_reg.
+DSP Report: operator square_d0 is absorbed into DSP square_d_reg.
+DSP Report: Generating DSP square_d0, operation Mode is: A2*B2.
+DSP Report: register square_d0 is absorbed into DSP square_d0.
+DSP Report: register square_d0 is absorbed into DSP square_d0.
+DSP Report: operator square_d0 is absorbed into DSP square_d0.
+DSP Report: operator square_d0 is absorbed into DSP square_d0.
+DSP Report: Generating DSP square_d_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register square_d_reg is absorbed into DSP square_d_reg.
+DSP Report: register square_d_reg is absorbed into DSP square_d_reg.
+DSP Report: operator square_d0 is absorbed into DSP square_d_reg.
+DSP Report: operator square_d0 is absorbed into DSP square_d_reg.
+DSP Report: Generating DSP cmp11, operation Mode is: A*(B:0x1b1).
+DSP Report: operator cmp11 is absorbed into DSP cmp11.
+DSP Report: Generating DSP cmp10, operation Mode is: PCIN-A*(B:0xfa).
+DSP Report: operator cmp10 is absorbed into DSP cmp10.
+DSP Report: operator cmp11 is absorbed into DSP cmp10.
+DSP Report: Generating DSP cmp20, operation Mode is: C-A*(B:0xfa).
+DSP Report: operator cmp20 is absorbed into DSP cmp20.
+DSP Report: operator cmp11 is absorbed into DSP cmp20.
+DSP Report: Generating DSP value1, operation Mode is: A*(B:0x21d4).
+DSP Report: operator value1 is absorbed into DSP value1.
+DSP Report: Generating DSP value0, operation Mode is: C+A*(B:0x3a98).
+DSP Report: operator value0 is absorbed into DSP value0.
+DSP Report: operator value1 is absorbed into DSP value0.
+DSP Report: Generating DSP value0, operation Mode is: A*(B:0x43a9).
+DSP Report: operator value0 is absorbed into DSP value0.
+DSP Report: Generating DSP value0, operation Mode is: PCIN-A*(B:0x3a98).
+DSP Report: operator value0 is absorbed into DSP value0.
+DSP Report: operator value1 is absorbed into DSP value0.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP t_stage_valid4, operation Mode is: PCIN+A*B.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: operator t_stage_valid4 is absorbed into DSP t_stage_valid4.
+DSP Report: Generating DSP alpha_product0, operation Mode is: A*(B:0xaaab).
+DSP Report: operator alpha_product0 is absorbed into DSP alpha_product0.
+DSP Report: Generating DSP beta_product0, operation Mode is: A*(B:0x93cd).
+DSP Report: operator beta_product0 is absorbed into DSP beta_product0.
+DSP Report: Generating DSP p_bs0, operation Mode is: A*B.
+DSP Report: operator p_bs0 is absorbed into DSP p_bs0.
+DSP Report: Generating DSP p_ac0, operation Mode is: A*B.
+DSP Report: operator p_ac0 is absorbed into DSP p_ac0.
+DSP Report: Generating DSP p_as0, operation Mode is: A*B.
+DSP Report: operator p_as0 is absorbed into DSP p_as0.
+DSP Report: Generating DSP p_bc0, operation Mode is: A*B.
+DSP Report: operator p_bc0 is absorbed into DSP p_bc0.
+DSP Report: Generating DSP inverse_park/p_bs0, operation Mode is: A*B.
+DSP Report: operator inverse_park/p_bs0 is absorbed into DSP inverse_park/p_bs0.
+DSP Report: Generating DSP inverse_park/p_ac0, operation Mode is: A*B.
+DSP Report: operator inverse_park/p_ac0 is absorbed into DSP inverse_park/p_ac0.
+DSP Report: Generating DSP inverse_park/p_bc0, operation Mode is: A*B.
+DSP Report: operator inverse_park/p_bc0 is absorbed into DSP inverse_park/p_bc0.
+DSP Report: Generating DSP inverse_park/p_as0, operation Mode is: A*B.
+DSP Report: operator inverse_park/p_as0 is absorbed into DSP inverse_park/p_as0.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[47]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[46]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[45]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[44]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[43]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[42]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[41]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[40]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[39]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[38]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[37]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[36]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[35]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[34]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[33]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[32]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[31]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[30]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[29]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[28]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[27]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[26]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[25]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[24]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[23]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[22]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[21]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[20]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[19]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[18]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[17]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[47]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[46]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[45]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[44]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[43]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[42]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[41]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[40]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[39]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[38]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[37]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[36]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[35]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[34]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[33]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[32]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[31]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[30]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[29]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[28]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[27]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[26]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[25]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[24]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[23]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[22]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[21]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[20]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[19]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[18]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[17]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[15]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[14]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[13]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[12]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[11]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[10]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[9]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[8]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[7]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[6]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[5]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[4]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[3]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[2]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[1]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[0]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[47]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[46]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[45]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[44]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[43]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[42]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[41]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[40]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[39]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[38]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[37]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[36]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[35]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[34]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[33]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[32]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[31]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[30]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[29]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[28]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[27]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[26]) is unused and will be removed from module mc_dq_limiter.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1779.051 ; gain = 954.516
+---------------------------------------------------------------------------------
+ Sort Area is mc_foc_current_core__GC0 inverse_park/p_ac0_5e : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 inverse_park/p_as0_60 : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 inverse_park/p_bc0_61 : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 inverse_park/p_bs0_5f : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 p_ac0_5a : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 p_as0_5d : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 p_bc0_5c : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 p_bs0_5b : 0 0 : 3566 3566 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 alpha_product0_57 : 0 0 : 1677 1677 : Used 1 time 100
+ Sort Area is mc_foc_current_core__GC0 beta_product0_59 : 0 0 : 1677 1677 : Used 1 time 100
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_4f : 0 0 : 3566 10252 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_4f : 0 1 : 3101 10252 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_4f : 0 2 : 3585 10252 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_55 : 0 0 : 3566 10252 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_55 : 0 1 : 3101 10252 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_55 : 0 2 : 3585 10252 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_4b : 0 0 : 3101 9787 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_4b : 0 1 : 3585 9787 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_4b : 0 2 : 3101 9787 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_54 : 0 0 : 3101 9787 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_54 : 0 1 : 3585 9787 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_54 : 0 2 : 3101 9787 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_51 : 0 0 : 3368 7975 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_51 : 0 1 : 3585 7975 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_51 : 0 2 : 1022 7975 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_56 : 0 0 : 3368 7975 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_56 : 0 1 : 3585 7975 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 t_stage_valid4_56 : 0 2 : 1022 7975 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_d0_38 : 0 0 : 2384 5470 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_d0_38 : 0 1 : 3086 5470 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_q0_35 : 0 0 : 2384 5470 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_q0_35 : 0 1 : 3086 5470 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_d0_37 : 0 0 : 2737 5376 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_d0_37 : 0 1 : 2639 5376 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_q0_32 : 0 0 : 2737 5376 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 scaled_q0_32 : 0 1 : 2639 5376 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_d0_39 : 0 0 : 2737 5182 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_d0_39 : 0 1 : 2445 5182 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_q0_3c : 0 0 : 2737 5182 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_q0_3c : 0 1 : 2445 5182 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_2_in_25 : 0 0 : 2384 4829 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_2_in_25 : 0 1 : 2445 4829 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_d0_3a : 0 0 : 2384 4829 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_d0_3a : 0 1 : 2445 4829 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_q0_3d : 0 0 : 2384 4829 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_q0_3d : 0 1 : 2445 4829 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_0_in_1f : 0 0 : 2366 4793 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_0_in_1f : 0 1 : 2427 4793 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 bus_product0_2c : 0 0 : 1679 4224 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 bus_product0_2c : 0 1 : 2545 4224 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_2_out_1c : 0 0 : 2404 3187 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_2_out_1c : 0 1 : 783 3187 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_4_out_24 : 0 0 : 2404 3187 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_4_out_24 : 0 1 : 783 3187 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_ll_reg[0]_12 : 0 0 : 3176 3176 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_lm_reg[0]_16 : 0 0 : 3176 3176 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_ll_reg[1]_7 : 0 0 : 3151 3151 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_lm_reg[1]_b : 0 0 : 3151 3151 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_hl_reg[0]_14 : 0 0 : 2877 2877 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_hm_reg[0]_17 : 0 0 : 2877 2877 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_hl_reg[1]_9 : 0 0 : 2852 2852 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_hm_reg[1]_c : 0 0 : 2852 2852 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 value1_44 : 0 0 : 1029 2534 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 value1_44 : 0 1 : 1505 2534 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 bus_product0_2f : 0 0 : 858 2416 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 bus_product0_2f : 0 1 : 1558 2416 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_3_out_0 : 0 0 : 1397 2170 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_3_out_0 : 0 1 : 773 2170 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_5_out_2a : 0 0 : 1397 2170 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_5_out_2a : 0 1 : 773 2170 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_0_in_5 : 0 0 : 1845 1845 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_2_in_11 : 0 0 : 1845 1845 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 cmp11_3f : 0 0 : 746 1728 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 cmp11_3f : 0 1 : 982 1728 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 value0_49 : 0 0 : 1443 1443 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 value0_47 : 0 0 : 1342 1342 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_lh_reg[0]_18 : 0 0 : 1174 1174 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_lh_reg[1]_d : 0 0 : 1164 1164 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_hh_reg[0]_1a : 0 0 : 1116 1116 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 ff_hh_reg[1]_f : 0 0 : 1106 1106 : Used 1 time 0
+ Sort Area is mc_sector_svpwm__GB0 cmp20_42 : 0 0 : 982 982 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 p_3_out_3 : 0 0 : 855 855 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 p_5_out_2b : 0 0 : 855 855 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB1 product_aw_reg[0]_28 : 0 0 : 540 540 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_d_reg_3b : 0 0 : 540 540 : Used 1 time 0
+ Sort Area is mc_pi_dq_core__GC0 square_q_reg_3e : 0 0 : 540 540 : Used 1 time 0
+ Sort Area is mc_pi_dq_eval__GB0 product_aw_reg[1]_22 : 0 0 : 534 534 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++--------------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name         | DSP Mapping                | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG |
++--------------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|mc_pi_dq_eval       | A2*(B:0x970f)              | 25     | 17     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (A2*B2)'                   | 16     | 10     | -      | -      | 26     | 1    | 1    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A2*B2)'                   | 17     | 10     | -      | -      | 27     | 1    | 1    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A2*B2)'                   | 25     | 16     | -      | -      | 41     | 1    | 1    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | (A2*B2)'                   | 25     | 17     | -      | -      | 42     | 1    | 1    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A2*B2)'                   | 25     | 16     | -      | -      | 41     | 1    | 1    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | (A2*B2)'                   | 25     | 17     | -      | -      | 42     | 1    | 1    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A:0x6666)*B2              | 9      | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A2*(B:0x6666)              | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A2*(B:0x117)    | 18     | 10     | -      | -      | 36     | 1    | 0    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A2*(B:0x970f)              | 25     | 17     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (A2*B'')'                  | 16     | 10     | -      | -      | 26     | 1    | 2    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A2*B'')'                  | 17     | 10     | -      | -      | 27     | 1    | 2    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A''*B2)'                  | 25     | 16     | -      | -      | 41     | 2    | 1    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | (A''*B2)'                  | 25     | 17     | -      | -      | 42     | 2    | 1    | -    | -    | -     | 1    | 0    |
+|mc_pi_dq_eval       | (A''*B2)'                  | 25     | 16     | -      | -      | 41     | 2    | 1    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | (A''*B2)'                  | 25     | 17     | -      | -      | 42     | 2    | 1    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | ((A:0x333333)*B)'          | 23     | 6      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | (A:0x333333)*B             | 23     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+(A:0x333333)*B  | 23     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A:0x4bd70a)*B2            | 24     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (PCIN>>17)+(A:0x4bd70a)*B2 | 24     | 9      | -      | -      | 33     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | ((A:0x333333)*B2)'         | 23     | 6      | -      | -      | 48     | 0    | 1    | -    | -    | -     | 1    | 0    |
+|mc_foc_gate_top     | (A:0x333333)*B2            | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+(A:0x333333)*B2 | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A:0x4bd70a)*B2            | 24     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (PCIN>>17)+(A:0x4bd70a)*B2 | 24     | 9      | -      | -      | 33     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A:0x6666)*B2              | 9      | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A2*(B:0x6666)              | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A2*(B:0x117)    | 18     | 10     | -      | -      | 36     | 1    | 0    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | (A:0x1604a)*B              | 18     | 9      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B             | 14     | 9      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A2*(B:0x1604a)             | 18     | 18     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A2*B            | 18     | 14     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A*B2                       | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B2            | 23     | 17     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A2*B2                      | 18     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A2*B2           | 18     | 17     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A*B2                       | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B2            | 23     | 17     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A2*B2                      | 18     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A2*B2           | 18     | 17     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | (A*B2)'                    | 23     | 6      | -      | -      | 48     | 0    | 1    | -    | -    | -     | 1    | 0    |
+|mc_dq_limiter       | A*B2                       | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B2            | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A2*B2                      | 18     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B2            | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | (A*B2)'                    | 23     | 6      | -      | -      | 48     | 0    | 1    | -    | -    | -     | 1    | 0    |
+|mc_dq_limiter       | A*B2                       | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B2            | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A2*B2                      | 18     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17)+A*B2            | 23     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_svpwm_sector_xyz | A*(B:0x1b1)                | 25     | 10     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-A*(B:0xfa)            | 25     | 9      | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C-A*(B:0xfa)               | 25     | 9      | 36     | -      | 36     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*(B:0x21d4)               | 25     | 15     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C+A*(B:0x3a98)             | 25     | 15     | 41     | -      | 41     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*(B:0x43a9)               | 25     | 16     | -      | -      | 42     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-A*(B:0x3a98)          | 25     | 15     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                        | 22     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 5      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                        | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B                   | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                        | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B                   | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                        | 22     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 5      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                        | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B                   | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                        | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17)+A*B             | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B                   | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_clarke           | A*(B:0xaaab)               | 25     | 17     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_clarke           | A*(B:0x93cd)               | 25     | 17     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_park             | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_park             | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_park             | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_park             | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_inv_park         | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_inv_park         | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_inv_park         | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_inv_park         | A*B                        | 25     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 0    |
++--------------------+----------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:51 . Memory (MB): peak = 1959.387 ; gain = 1134.852
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:04 ; elapsed = 00:01:09 . Memory (MB): peak = 2166.465 ; gain = 1341.930
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance control/foc/current_transform/sincos/mirror_read_data_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance control/foc/current_transform/sincos/mirror_read_data_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance control/foc/current_transform/sincos/mirror_read_data_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance control/foc/current_transform/sincos/mirror_read_data_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 2175.516 ; gain = 1350.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:13 ; elapsed = 00:01:19 . Memory (MB): peak = 2349.387 ; gain = 1524.852
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:13 ; elapsed = 00:01:19 . Memory (MB): peak = 2349.387 ; gain = 1524.852
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:16 ; elapsed = 00:01:21 . Memory (MB): peak = 2356.738 ; gain = 1532.203
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:16 ; elapsed = 00:01:21 . Memory (MB): peak = 2356.738 ; gain = 1532.203
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:16 ; elapsed = 00:01:22 . Memory (MB): peak = 2377.359 ; gain = 1552.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:16 ; elapsed = 00:01:22 . Memory (MB): peak = 2377.359 ; gain = 1552.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++--------------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name         | DSP Mapping         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG |
++--------------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|mc_clarke           | (A*B)'              | 30     | 16     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_clarke           | (A*B)'              | 30     | 16     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_park             | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_park             | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_park             | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_park             | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_inv_park         | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_inv_park         | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_inv_park         | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_inv_park         | (A*B)'              | 30     | 18     | -      | -      | 43     | 0    | 0    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | A''*B               | 30     | 16     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (A''*B')'           | 30     | 18     | -      | -      | 26     | 2    | 1    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A''*B')'           | 16     | 18     | -      | -      | 27     | 2    | 1    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A'*B'')'           | 24     | 18     | -      | -      | 41     | 1    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A'*B'')'           | 24     | 16     | -      | -      | 42     | 1    | 2    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A'*B'')'           | 24     | 18     | -      | -      | 41     | 1    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A'*B'')'           | 24     | 16     | -      | -      | 42     | 1    | 2    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | A'*B                | 30     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A'*B                | 17     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17+A'*B)'    | 17     | 9      | -      | -      | 36     | 1    | 0    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A''*B               | 30     | 16     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (A''*B'')'          | 30     | 18     | -      | -      | 26     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A''*B'')'          | 16     | 18     | -      | -      | 27     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A''*B'')'          | 24     | 18     | -      | -      | 41     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A''*B'')'          | 24     | 16     | -      | -      | 42     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | (A''*B'')'          | 24     | 18     | -      | -      | 41     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A''*B'')'          | 24     | 16     | -      | -      | 42     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A*B'')'            | 22     | 18     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A*B''               | 22     | 17     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17+A*B'')'   | 0      | 17     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A*B'                | 23     | 17     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (PCIN>>17+A*B')'    | 0      | 18     | -      | -      | 33     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | (A*B'')'            | 22     | 18     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A*B''               | 22     | 17     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17+A*B'')'   | 0      | 17     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A*B'                | 23     | 17     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    |
+|mc_pi_dq_eval       | (PCIN>>17+A*B')'    | 0      | 18     | -      | -      | 33     | 0    | 1    | -    | -    | -     | 0    | 1    |
+|mc_pi_dq_eval       | A'*B                | 30     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A'*B                | 17     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | (PCIN>>17+A'*B)'    | 17     | 9      | -      | -      | 36     | 1    | 0    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A*B''               | 17     | 8      | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A*B'')'   | 13     | 8      | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B               | 17     | 17     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B)'   | 17     | 13     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B'              | 30     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B')'  | 30     | 16     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B'              | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B')'  | 17     | 16     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B'              | 30     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B')'  | 30     | 16     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B'              | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B')'  | 17     | 16     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | (A''*B'')'          | 30     | 18     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B''             | 30     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B'')' | 30     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B''             | 17     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B'')' | 30     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | (A''*B'')'          | 30     | 18     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B''             | 30     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B'')' | 30     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_dq_limiter       | A''*B''             | 17     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    |
+|mc_dq_limiter       | (PCIN>>17+A''*B'')' | 30     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 1    |
+|mc_foc_gate_top     | A*B                 | 21     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 4      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                 | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B            | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                 | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B            | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                 | 21     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 4      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                 | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B            | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | A*B                 | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN>>17+A*B        | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_foc_gate_top     | PCIN+A*B            | 17     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*B                 | 30     | 9      | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-(A*B)          | 30     | 8      | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C-(A*B)             | 30     | 8      | 48     | -      | 36     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*B                 | 30     | 14     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | C+A*B               | 30     | 14     | 48     | -      | 41     | 0    | 0    | 0    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | A*B                 | 30     | 15     | -      | -      | 42     | 0    | 0    | -    | -    | -     | 0    | 0    |
+|mc_svpwm_sector_xyz | PCIN-(A*B)          | 30     | 14     | -      | -      | 41     | 0    | 0    | -    | -    | -     | 0    | 0    |
++--------------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes:
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage:
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |  2514|
+|3     |DSP48E1  |    87|
+|23    |LUT1     |  1096|
+|24    |LUT2     |  7778|
+|25    |LUT3     |  1199|
+|26    |LUT4     |  1989|
+|27    |LUT5     |  1359|
+|28    |LUT6     |   563|
+|29    |MUXF7    |    80|
+|30    |RAMB36E1 |     2|
+|32    |FDCE     |  4056|
+|33    |FDPE     |    74|
+|34    |FDRE     |  4348|
+|35    |IBUF     |   200|
+|36    |OBUF     |    13|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:16 ; elapsed = 00:01:22 . Memory (MB): peak = 2377.359 ; gain = 1552.824
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 338 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:08 ; elapsed = 00:01:18 . Memory (MB): peak = 2377.359 ; gain = 1502.164
+Synthesis Optimization Complete : Time (s): cpu = 00:01:16 ; elapsed = 00:01:22 . Memory (MB): peak = 2377.359 ; gain = 1552.824
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.103 . Memory (MB): peak = 2386.590 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2683 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2395.859 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 182487ad
+INFO: [Common 17-83] Releasing license: Vivado_Synthesis
+60 Infos, 145 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:01:31 . Memory (MB): peak = 2395.863 ; gain = 1803.441
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 2395.863 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.runs/synth_1/mc_foc_gate_top.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file mc_foc_gate_top_utilization_synth.rpt -pb mc_foc_gate_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Sep 20 16:25:17 2026...
