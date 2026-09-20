@@ -1,0 +1,4 @@
+Slice LUT=10903
+FF=8454
+DSP=87
+BRAM=2

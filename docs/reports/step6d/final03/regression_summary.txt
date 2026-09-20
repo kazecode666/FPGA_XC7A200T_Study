@@ -1,0 +1,1 @@
+PASS: D6 reference, adapter+PWM, D6 profiles0/1 DEMO0, default DEMO1, original C4 profiles0/1 and original PWM.

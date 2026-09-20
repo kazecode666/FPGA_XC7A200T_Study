@@ -1,0 +1,9 @@
+PASS original tracked binary diff unchanged (16 paths); all 75 original untracked paths retained with original sizes.
+No old RTL/reference/project/report committed changes.
+MAIN=D:/Project/FPGA_XC7A200T gitdir=.git
+Base main=44e8a8ec98bc011f7b459def146e75ffe1ad75eb
+C4 merge=a2f4d1eb63c4cabd5e938d428e4fa436936690d2
+No new worktree/clone, stash, forced checkout, cleanup or file hashes.
+D:/Project/FPGA_XC7A200T                                          183c294 [step6d-foc-pwm]
+C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T 44d3e74 [step6c2-pi-dq-limiter]
+C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T  c3910a0 [step6c3-sector-svpwm]

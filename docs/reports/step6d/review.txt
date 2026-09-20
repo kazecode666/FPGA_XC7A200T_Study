@@ -1,0 +1,5 @@
+Fresh whole-branch read-only review at 183c2942 against base44e8a8ec.
+Reviewed RTL, TBs, reference/vectors, build, XPR, wave, README.
+No actionable findings; no deferred minors.
+Confirmed final03 functional markers and timing512/516/2499; voltage error0.0087464V.
+At review time route/timing, GUI evidence and final report pending; these are verified separately in final acceptance evidence.

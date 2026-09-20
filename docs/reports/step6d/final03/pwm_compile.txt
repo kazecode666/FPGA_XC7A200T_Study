@@ -1,0 +1,6 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xvlog.bat -sv D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/motor_pwm_core.sv D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/tb/motor_pwm_core_tb.sv
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/motor_pwm_core.sv" into library work
+INFO: [VRFC 10-311] analyzing module motor_pwm_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/tb/motor_pwm_core_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module motor_pwm_core_tb
+Tcl status=0; process status=0

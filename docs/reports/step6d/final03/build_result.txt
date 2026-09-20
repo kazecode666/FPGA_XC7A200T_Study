@@ -1,0 +1,9 @@
+PASS
+STEP6D_BUILD_PASS
+Run=final03
+Tested code commit=183c2942b865d309b1f920803cb75c79463338eb
+Default PI_PROFILE=0
+MAIN=D:/Project/FPGA_XC7A200T
+WNS=2.053 TNS=0.000 WHS=0.069 THS=0.000
+Routed=19943/19943 errors=0
+No bitstream or hardware; profile 1 simulation only
