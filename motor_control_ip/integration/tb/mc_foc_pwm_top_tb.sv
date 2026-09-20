@@ -8,6 +8,7 @@ module mc_foc_pwm_top_tb #(parameter int PI_PROFILE=0,DEMO=1);
   logic pi_reset=0,uq_zero_en=0;
   logic sample_request,sample_ready,pwm_u,pwm_v,pwm_w,needs_reset;
   logic [2:0] fault_code;
+  logic pwm_command_loaded;
   always #10 clk=~clk;
   mc_foc_pwm_top #(.PI_PROFILE(PI_PROFILE)) dut(.*);
   longint signed vec[0:196][0:21];

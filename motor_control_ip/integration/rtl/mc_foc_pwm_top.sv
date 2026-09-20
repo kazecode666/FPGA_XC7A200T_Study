@@ -8,7 +8,8 @@ module mc_foc_pwm_top #(parameter int PI_PROFILE=0) (
   input logic signed [24:0] id_ref,iq_ref,vdc,
   input logic pi_reset,uq_zero_en,
   output logic sample_request,sample_ready,pwm_u,pwm_v,pwm_w,needs_reset,
-  output logic [2:0] fault_code
+  output logic [2:0] fault_code,
+  output logic pwm_command_loaded
 );
   logic started,operating,transaction_pending,cmp_sent,foc_seen,await_load;
   logic foc_ready,foc_result_valid,foc_command_valid;
@@ -24,6 +25,7 @@ module mc_foc_pwm_top #(parameter int PI_PROFILE=0) (
   logic [11:0] expected_u,expected_v,expected_w;
   logic [31:0] carrier_id,sample_cycle_id,active_cycle_id;
 
+  assign pwm_command_loaded=compare_load_event;
   assign operating=reset_n && run_enable && !needs_reset;
   assign pwm_enable=operating;
   assign impending_zero=operating && tbctr==12'd1 && !count_up;
