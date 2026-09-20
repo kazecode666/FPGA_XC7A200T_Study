@@ -53,8 +53,9 @@ proc simulate {name top sources marker fragments vector_dir {generics {}}} {
     }
     cd $dir
     run_command ${name}_compile [list [file join $bin xvlog.bat] -sv {*}$sources]
-    set elaborate [list [file join $bin xelab.bat] $top -s ${name}_snapshot]
-    foreach generic $generics {lappend elaborate -generic_top \"$generic\"}
+    # Bypass cmd.exe's '=' splitting in the Windows batch wrapper.
+    set elaborate [list [file join $bin unwrapped win64.o xelab.exe] $top -s ${name}_snapshot]
+    foreach generic $generics {lappend elaborate -generic_top $generic}
     run_command ${name}_elaborate $elaborate
     set command [list [file join $bin xsim.bat] ${name}_snapshot -runall]
     # xsim.bat requires the plusarg value to retain literal quotes on Windows.
