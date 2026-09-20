@@ -1,0 +1,7 @@
+Command: python scripts/step6c4_foc_reference_test.py
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
+Tcl status=0; process status=0

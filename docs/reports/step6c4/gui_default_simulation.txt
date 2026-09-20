@@ -1,0 +1,17 @@
+PASS
+GUI_DEFAULT_SIMULATION_PASS
+MAIN=D:/Project/FPGA_XC7A200T
+XPR=D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.xpr
+Vivado=2026.1
+Profile=PI_PROFILE=0
+Scope=/mc_foc_current_core_tb/Initial202_36
+Wave=D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.sim/step6c4_gui.wcfg
+WDB=D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.sim/sim_1/behav/xsim/mc_foc_current_core_tb_behav.wdb
+Time resolution is 1 ps
+C4_BASE_PASS profile=0 historical=80 seeded=256 rows=336 spacing=5000
+C4_PROTOCOL_PASS profile=0 earliest=5 enable_blocked=20 busy_disable_complete=1 invalid_bus=2 reset_aborts=2 downstream_error=1 missing_valid=1 needs_reset_recovery=1
+ALL STEP 6C4 FOC CURRENT TESTS PASSED profile=0 base=336 accepted=349 responses=347 aborted=2 latency=512 poisoned=175616
+$finish called at time : 33743591 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_foc_current_core_tb.sv" Line 222
+
+synth_1 STATUS=synth_design Complete! NEEDS_REFRESH=0 DIRECTORY=D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.runs/synth_1
+impl_1 STATUS=route_design Complete! NEEDS_REFRESH=0 DIRECTORY=D:/Project/FPGA_XC7A200T/FOC_Current/FOC_Current.runs/impl_1

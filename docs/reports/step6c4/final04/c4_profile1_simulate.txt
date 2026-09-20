@@ -1,0 +1,5 @@
+Time resolution is 1 ps
+C4_BASE_PASS profile=1 historical=80 seeded=256 rows=336 spacing=5000
+C4_PROTOCOL_PASS profile=1 earliest=5 enable_blocked=20 busy_disable_complete=1 invalid_bus=2 reset_aborts=2 downstream_error=1 missing_valid=1 needs_reset_recovery=1
+ALL STEP 6C4 FOC CURRENT TESTS PASSED profile=1 base=336 accepted=349 responses=347 aborted=2 latency=512 poisoned=175616
+$finish called at time : 33743591 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_foc_current_core_tb.sv" Line 222
