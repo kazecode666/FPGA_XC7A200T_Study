@@ -4,14 +4,14 @@ GitHub 保存 ChatGPT 设计/Review 与 Codex 本地实现之间的交接；用�
 
 ## 当前用户要求：本地主目录实施，功能优先
 
-- 这是学习项目。先把框架与主功能跑通，再做必要的数值、协议和实现时序检查；不建设产品级测试平台。
-- **从 Step 6C4 起，实际整合必须在用户原本的本地项目目录进行，不再创建 linked worktree、额外 clone 或云端实施副本。** 这个明确要求覆盖旧任务/技能中的默认隔离建议。
-- 可以在同一个本地主目录建立功能分支。分支不等于另一个文件夹。结束时该目录仍保留 C4 文件和可用 Vivado 工程，不能只返回 worktree 路径。
+- 这是学习项目。先把框架与主功能跑通，再做必要数值、握手和实现时序检查；不建设产品级失败测试平台。
+- **从 Step 6C4 起，实际整合必须在用户原本的本地项目目录进行，不再创建 linked worktree、额外 clone 或云端实施副本。** 这个要求覆盖旧任务/技能中的默认隔离建议。
+- 上次确认的 MAIN 为 `D:/Project/FPGA_XC7A200T`；每次仍须核对 Git 主工作树、远端、当前分支和本地修改。可以在同一个 MAIN 建立功能分支，不另建文件夹。
 - ChatGPT 负责接口约定、任务交接、设计决定及 PR Review；Codex 负责本地主目录同步、授权 RTL/TB/Tcl/XDC 实现、Python/Vivado 运行、报告和实现 PR。
-- 保留用户未提交/未跟踪文件以及旧 worktree；不使用 reset --hard、clean -fd、强制切分支、自动 stash、整体目录覆盖或自动清理。
+- 保留用户未提交/未跟踪文件、硬件资料、旧 worktree 和已完成的本地仿真/实现结果；禁止 reset --hard、clean -fd、强制切分支、自动 stash、整体目录覆盖或自动清理。
 - 不使用 SHA-256/文件哈希验收。使用 Git 状态/差异、真实源码路径、测试和工具报告。
-- 不猜引脚、时钟、数值尺度、极性、状态更新和事务时序。遇到阻塞同步的本地冲突，列出实际路径，不以删除用户内容解决。
-- 实现完成停在开放 PR；不自动合并、不自动开始下一阶段、不生成 bitstream 或操作硬件。
+- 不猜引脚、时钟、数值尺度、极性或边沿时序。本地目录不可访问或同步有冲突时，报告具体问题，不换 worktree 继续。
+- 实现完成停在开放 PR；不自动合并、不开始下一阶段、不生成 bitstream、不操作硬件。
 
 ## 已接受基线
 
@@ -19,70 +19,80 @@ GitHub 保存 ChatGPT 设计/Review 与 Codex 本地实现之间的交接；用�
 |---|---|
 | Steps 1–4 | PWM 学习、综合、50 MHz 路由/时序基线 |
 | Steps 5A/5B | LED blink/breathing，已做板级演示 |
-| Step 6A | Simulink PI-FOC 算法审计，PR #10 已合并 |
+| Step 6A | Simulink PI-FOC 审计，PR #10 已合并 |
 | Step 6B | 三相 motor PWM，PR #11 已合并 |
 | Step 6C1 | 定点变换，PR #12 已合并 |
 | Step 6C2 | dq PI、前馈、圆形限幅，PR #14 已合并 |
 | Step 6C3 | Sector SVPWM，PR #17 已合并 |
-| Step 6C4 | 当前：本地主项目整合任务 |
-| Step 6D | 后续：duty_to_cmp / PWM 时间集成 |
+| Step 6C4 | 完整 FOC 电流算法核、本地主目录工程，PR #19 已合并 |
+| Step 6D | 当前：本地主目录 FOC→PWM 任务交接 |
 
-C3 接受提交：`4eb050bd62f6ac7c80ecf3f0a4a017d62f07d1ef`。C1/C2/C3 已合并，先从 Git 主线同步到本地主目录，不从各个旧 worktree 分别拼接代码。
+C4 合并提交：`a2f4d1eb63c4cabd5e938d428e4fa436936690d2`。完整算法核为 `mc_foc_current_core`，S26/F24 原始调制量输出，N+512 完成；两套 PI 参数功能仿真通过，只有默认 profile 0 做过整核 route。原本地工程 `FOC_Current/FOC_Current.xpr` 必须保留。
 
-## 依据与保护范围
-
-读取当前任务及 `coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`，再查看已验收的阶段规格和真实接口。数学参考来自 Step 6A audit/golden；历史 DSP/MIL 原始计数不能替代 FPGA 归一化 duty 契约。
-
-本轮 C1/C2/C3 已验收 RTL/TB/ROM/fixtures/projects/scripts/reports、PWM、Simulink、Step 6A source/golden/verifier 全部只读。同步已合并文件不授权改写其内容。旧非阻塞建议不混进本任务。
-
-## 当前唯一 C4 任务书
+## 当前唯一 Step 6D 任务书
 
 ```text
-coordination/tasks/step6c4_foc_local_integration.md
+coordination/tasks/step6d_foc_pwm_local_integration.md
 ```
 
-此文件合并了接口契约、主目录操作规则、测试范围和实施计划，不再要求另一份重复的规划 PR。本文档变更不是 RTL 实现完成的声明。
+该文件合并接口修订、工作目录规则和四步实施计划；不需要再开一轮重复规格/计划 PR。本交接 PR 仅有文档，不代表 6D RTL、仿真或本地操作已完成。
 
-核心范围：
+读取任务、`coordination/specs/step6_motor_control_pwm_pi_foc_architecture.md`、C4 RTL/README 和 `motor_control_ip/pwm/rtl/motor_pwm_core.sv` 的真实接口。
+
+**极性修订优先级：** 6D 任务第 2 节明确区分旧 C3/C4 原始调制量 `d_foc` 与上管 HIGH 比例 `D_high`，并覆盖旧文档将二者直接等同的表述：
 
 ```text
-mc_current_transform -> mc_pi_dq_core -> mc_inv_park -> mc_sector_svpwm
-                           |
-                    仅 C2 管理 PI 状态
-
-输入：完整三相电流/角度/速度/参考/母线/PI命令样本
-输出：S26/F24 duty + result_valid/error_code + command_valid
-顶层：mc_foc_current_core，PI_PROFILE=0/1，固定 N+512
-本地工程：FOC_Current/FOC_Current.xpr
+D_high = clamp(1 - d_foc, 0, 1)
+CMP = round(D_high * 2500)
 ```
 
-保存同一笔 sin/cos 和 vdc；错误不作为有效 duty。enable 只控制接受，不是急停。C2 成功就更新状态，不假装可以在后级错误时自动回滚。内部时序故障报告后需硬件复位恢复。
+C4 数学值及 Step 6A golden 不变；Step 6B 仍是 HIGH duty=CMP/TBPRD，不翻转 pwm 引脚、不交换相序。本次只是定义仿真中的上管逻辑请求，不确认真实门极驱动器极性。其余已验收契约不变。
 
-两套参数做整链仿真，默认 profile 0 做整核 50 MHz route；不把独立 C3 的浮点误差门槛/扇区例外外推为 C4 指标。整链 RTL 对组合整数参考逐位一致；原 Step 6A 浮点误差单独如实报告。
+C1–C4/PWM 的 RTL、TB、ROM、参考、向量、旧项目及报告，Simulink 和 Step 6A 全部只读。本轮仅增加任务书授权的 integration、FOC_PWM、6D 脚本和报告文件；不修旧模块、不把旧 worktree 复制回来。
+
+## 本轮核心范围
+
+```text
+mc_foc_current_core -> mc_duty_to_cmp -> motor_pwm_core
+        已有               新增              已有
+
+新增 mc_foc_pwm_top：峰值后固定一拍供数窗口、命令位置预留、目标 ZERO 归属、启停
+时钟 50 MHz；载波 TBPRD=2500；PWM 10 kHz
+C4 N+512；适配与无反压命令握手预计到 N+516，必须实际测量
+三相 shadow 同拍接收，下一 ZERO 原子装载；不能丢失或应用过期命令
+```
+
+默认 GUI 是干净的 DEMO=1：峰值供数后输入保持，不每拍毒化输入，约 24 个周期足以观察主链。DEMO=0 运行两套参数的历史输入集成自检与少量关键边界。默认 profile 0 做完整 6D 顶层 50 MHz route，profile 1 仅仿真则如实声明。
+
+新增本地 `FOC_PWM/FOC_PWM.xpr`，引用 MAIN 里的源码、ROM/向量；保留本地 .sim/.runs/WDB/DCP，真正打开默认演示。只返回远端 PR 或 worktree 路径不算完成。
 
 ## Codex 启动指令
 
-用户已要求推进 Step 6C4，并指定本地主项目实施。接受本交接 PR 后，在 Codex 的本地主项目会话中执行：
+接受本交接 PR 后，由用户在本地 Codex 项目会话执行：
 
 ```text
-开始 Step 6C4，读取 coordination/HANDOFF.md 和
-coordination/tasks/step6c4_foc_local_integration.md。
+开始 Step 6D。先读取 coordination/HANDOFF.md 和
+coordination/tasks/step6d_foc_pwm_local_integration.md。
 
-先检查当前目录、git rev-parse --show-toplevel、git worktree list --porcelain、
-远端与本地修改，确定用户原本的主项目绝对路径 MAIN。
-把已经合并的 C1/C2/C3 非破坏性地同步到 MAIN。
-所有新源码、FOC_Current 工程、仿真和综合都在 MAIN 进行。
-不要新建 worktree，不要复制整个旧 worktree，不删除用户原有文件。
-在 MAIN 内使用 step6c4-foc-current 分支。
+确认 MAIN 是我的原始本地主项目 D:/Project/FPGA_XC7A200T，核对 Git 远端、
+主工作树和用户修改，安全同步已合并 main，在同目录使用 step6d-foc-pwm 分支。
+不要创建 worktree/额外 clone，不覆盖我的修改，不清理旧工程。
 
-按任务书跑通四个模块的完整主链，完成 512 拍调度、两套参数整链仿真、
-实际 Step 6A 原始输入回放、默认参数的 Vivado 50 MHz 综合/路由。
-保留 FOC_Current.xpr 的本地实际运行结果，并实际启动该工程的默认仿真。
-按任务书生成简短报告与学习波形；不用额外搭建大型失败测试框架。
+先实现 d_foc -> D_high -> CMP 的显式极性适配和单笔握手保持，
+再连接已有 C4 与 PWM，跑通峰值供数、FOC 计算、下一 ZERO 三相装载。
+保留 C4/PWM/参考文件不变，不用 NOT 输出或相序交换掩盖极性。
 
-最后提交实现 PR：Step 6C4: Integrate PI-FOC in the main local project。
-向用户返回 MAIN 和 FOC_Current.xpr 的真实绝对路径；不要只给 worktree 路径。
-停在开放 PR 等待 Review，不自动合并，不进入 Step 6D，不生成 bitstream。
+默认演示输入保持稳定，让我能直接看懂占空比和 PWM；
+必要的自动检查另用 DEMO=0，不搭产品级失败测试框架。
+完成两套参数集成仿真、关键原 C4/PWM 回归及默认参数 50 MHz 综合/route。
+
+在 MAIN 留下 FOC_PWM/FOC_PWM.xpr 和真实仿真/实现结果，
+实际打开并运行默认 PI_PROFILE=0、DEMO=1 演示，加载 wave_step6d.tcl。
+写 coordination/reports/step6d_codex_report.md 和 docs/reports/step6d/ 证据。
+
+提交实现 PR：Step 6D: Integrate FOC duty adapter and motor PWM。
+返回本地 XPR 绝对路径和演示打开步骤，停在开放 PR 等待 Review。
+不自动合并，不生成 bitstream，不接电机/功率级，不进入下一阶段。
 ```
 
-如果当前会话不能访问 MAIN，明确报告而不是换目录继续实施。ADC、编码器、PWM 连接、互补门极/死区/保护、MPSoC 均不在 C4 范围内。
+本轮没有电机模型闭环、ADC/编码器、六路互补门极、死区/过流保护、AXI/MPSoC、板级引脚或硬件验证。停止/故障后的复位恢复只是数字接口约定，不是硬件安全认证。
