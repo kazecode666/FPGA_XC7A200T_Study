@@ -1,0 +1,4 @@
+Command: python scripts/step6d_foc_pwm_reference.py --check
+STEP6D_REFERENCE_PASS rows=197 historical=160 tail=2 direction=10 demo=24 demo_tail=1
+DIRECTION_PASS sectors=6 max_voltage_error=0.00874639032811 limit=0.0202 V
+Tcl status=0; process status=0

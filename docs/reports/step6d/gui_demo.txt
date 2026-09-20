@@ -1,0 +1,16 @@
+PASS actual Vivado GUI launch and run
+XPR=FOC_PWM directory=D:/Project/FPGA_XC7A200T/FOC_PWM
+MAIN=D:/Project/FPGA_XC7A200T
+Simulation generic=PI_PROFILE=0 DEMO=1
+Source generic=PI_PROFILE=0
+Time resolution is 1 ps
+D6_D_CURRENT active_row=177 cmp=1165,1335,1335 high=2330,2670,2670 alpha_foc=-2.181243896484 alpha_pwm=-2.176000000000
+D6_CHAIN_PASS profile=0 demo=1 base=24 tail=1 accepts=25 loads=25 full_cycles=24 foc_latency=512 cmp_latency=516 target_zero=2499
+D6_ACTIVE_VOLTAGE_OBSERVATION profile=0 demo=1 max_alpha_error=0.008942675781 max_beta_error=0.009488894960 (all cases including clamp; no linearity claim)
+STEP6D_DEMO_PASS samples=24 tail=1 full_cycles=24 stable_inputs=1
+$finish called at time : 2500131 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv" Line 168
+
+synth_1 STATUS=synth_design Complete! PROGRESS=100% NEEDS_REFRESH=0
+impl_1 STATUS=route_design Complete! PROGRESS=100% NEEDS_REFRESH=0
+
+Vivado GUI process window confirmed: FOC_PWM - [D:/Project/FPGA_XC7A200T/FOC_PWM/FOC_PWM.xpr] - Vivado 2026.1

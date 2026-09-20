@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+D6_CHAIN_PASS profile=1 demo=0 base=80 tail=1 accepts=81 loads=81 full_cycles=80 foc_latency=512 cmp_latency=516 target_zero=2499
+D6_ACTIVE_VOLTAGE_OBSERVATION profile=1 demo=0 max_alpha_error=0.010487792969 max_beta_error=0.009658628944 (all cases including clamp; no linearity claim)
+D6_PROTOCOL_PASS profile=1 stop=1 invalid_bus=1 reset_abort=1 deadline=1 missing_sample=1 occupied_peak=1
+ALL STEP 6D FOC PWM TESTS PASSED profile=1 base=80 tail=1 full_cycles=80 protocols=6
+$finish called at time : 8987411 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv" Line 170

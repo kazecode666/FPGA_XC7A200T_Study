@@ -1,0 +1,23 @@
+Command: E:/AMDDesignTools/2026.1/Vivado/bin/xsim.bat c4_1_snapshot -runall -testplusarg {"VECTOR_DIR=D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c4"}
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Sep 20 12:57:21 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/c4_1_snapshot/xsim_script.tcl
+# xsim {c4_1_snapshot} -testplusarg "VECTOR_DIR=D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/vectors/step6c4" -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+C4_BASE_PASS profile=1 historical=80 seeded=256 rows=336 spacing=5000
+C4_PROTOCOL_PASS profile=1 earliest=5 enable_blocked=20 busy_disable_complete=1 invalid_bus=2 reset_aborts=2 downstream_error=1 missing_valid=1 needs_reset_recovery=1
+ALL STEP 6C4 FOC CURRENT TESTS PASSED profile=1 base=336 accepted=349 responses=347 aborted=2 latency=512 poisoned=175616
+$finish called at time : 33743591 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/tb/mc_foc_current_core_tb.sv" Line 222
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:38 . Memory (MB): peak = 229.238 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 27396 KB (Peak: 27396 KB), Simulation CPU Usage: 32171 ms
+INFO: [Common 17-206] Exiting xsim at Sun Sep 20 12:58:01 2026...
+Tcl status=0; process status=0
