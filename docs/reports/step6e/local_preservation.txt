@@ -1,0 +1,25 @@
+PASS original16tracked binary diff unchanged; original97untracked paths and sizes retained.
+MAIN=D:/Project/FPGA_XC7A200T; gitdir/common=.git
+Base=fcc33bb70107811e99ddab11187906696b4b24db; branch=step6e-complementary-pwm
+No new worktree/clone, stash, overwrite, cleanup or file hashes.
+Old FOC_PWM interface source changed only as authorized; previous checkpoints preserved, not timing evidence for new interface. No old XPR opened/rebuilt for acceptance.
+FOC_Current retained *.dcp count=5
+FOC_Current/FOC_Current.runs/impl_1/mc_foc_current_core_opt.dcp
+FOC_Current/FOC_Current.runs/impl_1/mc_foc_current_core_physopt.dcp
+FOC_Current/FOC_Current.runs/impl_1/mc_foc_current_core_placed.dcp
+FOC_Current/FOC_Current.runs/impl_1/mc_foc_current_core_routed.dcp
+FOC_Current/FOC_Current.runs/synth_1/mc_foc_current_core.dcp
+FOC_Current retained *.wdb count=2
+FOC_Current/FOC_Current.sim/gui_interrupted.wdb
+FOC_Current/FOC_Current.sim/sim_1/behav/xsim/mc_foc_current_core_tb_behav.wdb
+FOC_PWM retained *.dcp count=5
+FOC_PWM/FOC_PWM.runs/impl_1/mc_foc_pwm_top_opt.dcp
+FOC_PWM/FOC_PWM.runs/impl_1/mc_foc_pwm_top_physopt.dcp
+FOC_PWM/FOC_PWM.runs/impl_1/mc_foc_pwm_top_placed.dcp
+FOC_PWM/FOC_PWM.runs/impl_1/mc_foc_pwm_top_routed.dcp
+FOC_PWM/FOC_PWM.runs/synth_1/mc_foc_pwm_top.dcp
+FOC_PWM retained *.wdb count=1
+FOC_PWM/FOC_PWM.sim/sim_1/behav/xsim/mc_foc_pwm_top_tb_behav.wdb
+D:/Project/FPGA_XC7A200T                                          701acd8 [step6e-complementary-pwm]
+C:/Users/lww/.codex/worktrees/step6c2-pi-dq-limiter/FPGA_XC7A200T 44d3e74 [step6c2-pi-dq-limiter]
+C:/Users/lww/.codex/worktrees/step6c3-sector-svpwm/FPGA_XC7A200T  c3910a0 [step6c3-sector-svpwm]

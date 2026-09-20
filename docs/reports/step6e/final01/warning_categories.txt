@@ -1,0 +1,150 @@
+Anchored severity lines retained from actual run logs.
+
+synth_1 status=synth_design Complete! progress=100%
+Counts include repeated anchored lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 145
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[0]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[10]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[11]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[12]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[13]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[14]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[15]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[17]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[17]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[18]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[18]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[19]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[19]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[1]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[20]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[20]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[21]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[21]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[22]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[22]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[23]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[23]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[24]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[24]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[25]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[25]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[26]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[26]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[27]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[27]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[28]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[28]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[29]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[29]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[2]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[30]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[30]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[31]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[31]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[32]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[32]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[33]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[33]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[34]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[34]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[35]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[35]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[36]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[36]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[37]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[37]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[38]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[38]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[39]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[39]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[3]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[40]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[40]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[41]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[41]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[42]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[42]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[43]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[43]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[44]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[44]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[45]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[45]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[46]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[46]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[47]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[47]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[4]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[5]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[6]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[7]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[8]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (bus_product_reg[9]__0) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[26]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[27]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[28]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[29]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[30]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[31]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[32]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[33]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[34]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[35]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[36]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[37]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[38]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[39]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[40]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[41]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[42]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[43]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[44]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[45]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[46]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3332] Sequential element (scaled_q_reg[47]) is unused and will be removed from module mc_dq_limiter.
+WARNING: [Synth 8-3936] Found unconnected internal register 'grown_root_reg' and it is trimmed from '41' to '40' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_isqrt_u80.sv:22]
+WARNING: [Synth 8-3936] Found unconnected internal register 'next_rem_reg' and it is trimmed from '42' to '41' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv:21]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[0]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[0]' and it is trimmed from '48' to '33' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[1]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_i_reg[1]' and it is trimmed from '48' to '33' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:86]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '19' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[0]' and it is trimmed from '48' to '36' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '17' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '19' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-3936] Found unconnected internal register 'product_p_reg[1]' and it is trimmed from '48' to '36' bits. [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv:85]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:446]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:448]
+WARNING: [Synth 8-6014] Unused sequential element active_cycle_id_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv:80]
+WARNING: [Synth 8-6014] Unused sequential element base_debug_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:303]
+WARNING: [Synth 8-6014] Unused sequential element candidate_hd_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:91]
+WARNING: [Synth 8-6014] Unused sequential element candidate_hq_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:91]
+WARNING: [Synth 8-6014] Unused sequential element candidate_scale_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:94]
+WARNING: [Synth 8-6014] Unused sequential element cap_sat_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:84]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_d_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_d_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_q_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_du_q_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_sat_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_scale_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_ud_hi_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_ud_raw_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_uq_hi_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:106]
+WARNING: [Synth 8-6014] Unused sequential element dbg_uq_raw_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xd_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xd_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xq_next_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:105]
+WARNING: [Synth 8-6014] Unused sequential element dbg_xq_old_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:104]
+WARNING: [Synth 8-6014] Unused sequential element denominator_debug_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:304]
+WARNING: [Synth 8-6014] Unused sequential element error_stage_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:78]
+WARNING: [Synth 8-6014] Unused sequential element last_foc_error_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv:77]
+WARNING: [Synth 8-6014] Unused sequential element sat_state_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv:102]
+WARNING: [Synth 8-6014] Unused sequential element saved_alpha_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:83]
+WARNING: [Synth 8-6014] Unused sequential element saved_beta_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv:83]
+WARNING: [Synth 8-6014] Unused sequential element sum_num_debug_reg was removed.  [D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv:302]
+WARNING: [Synth 8-7129] Port theta_e[0] in module mc_sincos_lut is either unconnected or has no load
+WARNING: [Synth 8-7129] Port theta_e[1] in module mc_sincos_lut is either unconnected or has no load
+
+impl_1 status=route_design Complete! progress=100%
+Counts include repeated anchored lines: ERROR 0 {CRITICAL WARNING} 0 WARNING 0

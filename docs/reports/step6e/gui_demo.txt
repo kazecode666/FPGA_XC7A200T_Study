@@ -1,0 +1,15 @@
+PASS actual Vivado GUI default demo
+MAIN=D:/Project/FPGA_XC7A200T
+XPR=D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.xpr
+Simulation=PI_PROFILE=0 DEMO=1 DEADTIME_CYCLES=25
+Synthesis=PI_PROFILE=0 DEADTIME_CYCLES=25
+Time resolution is 1 ps
+E6_CHAIN_PASS profile=0 demo=1 base=24 tail=1 accepts=25 loads=25 full_cycles=24 foc_latency=512 cmp_latency=516 target_zero=2499
+E6_GATE_EDGES checked=125007 H=25,25,25 L=24,24,24 first_open=S+27 deadtime=25
+STEP6E_DEMO_PASS samples=24 tail=1 full_cycles=24 stable_inputs=1 deadtime=25
+$finish called at time : 2500131 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_gate_top_tb.sv" Line 243
+
+synth_1 STATUS=synth_design Complete! PROGRESS=100% NEEDS_REFRESH=0
+impl_1 STATUS=route_design Complete! PROGRESS=100% NEEDS_REFRESH=0
+
+GUI window verified: FOC_Gates - [D:/Project/FPGA_XC7A200T/FOC_Gates/FOC_Gates.xpr] - Vivado 2026.1

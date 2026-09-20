@@ -1,0 +1,10 @@
+PASS
+sys_clk=20.000 ns
+routable=19989 fully_routed=19989 routing_errors=0
+WNS=2.257 TNS=0.000 setup_failing=0 setup_total=20198
+WHS=0.041 THS=0.000 hold_failing=0 hold_total=20198
+max SLACK=2.257 STARTPOINT=control/foc/svpwm/divider_denominator_reg[29]/C ENDPOINT=control/foc/svpwm/t1_debug_reg[1]/CE
+min SLACK=0.041 STARTPOINT=control/foc/pi_core/eval_engine/ff_pair1_reg[0][65]/C ENDPOINT=control/foc/pi_core/eval_engine/ff_pair01_reg[0][65]/D
+
+no_clock=0 unconstrained_internal_endpoints=0 loops=0 latch_loops=0
+Clock-only internal core timing; board pins, IOSTANDARD and external I/O delays are absent.
