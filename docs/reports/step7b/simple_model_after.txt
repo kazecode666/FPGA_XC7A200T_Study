@@ -1,0 +1,54 @@
+Model=PMLSM_ThreeLoop_Simple
+Solver=FixedStepDiscrete
+FixedStep=PMLSM_Ts_s
+InitFcn=reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));
+PMLSM_ThreeLoop_Simple/Read_x_mm_local1:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:1
+PMLSM_ThreeLoop_Simple/Read_x_mm_local:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:2
+PMLSM_ThreeLoop_Simple/Read_v_local:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:3
+PMLSM_ThreeLoop_Simple/Read_ia_0:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:4
+PMLSM_ThreeLoop_Simple/Read_ib_0:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:5
+PMLSM_ThreeLoop_Simple/Read_ic_0:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:6
+PMLSM_ThreeLoop_Simple/Read_theta_e_0:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:7
+PMLSM_ThreeLoop_Simple/Read_omega_e_0:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:8
+PMLSM_ThreeLoop_Simple/Read_Pos_EN:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:9
+PMLSM_ThreeLoop_Simple/Read_Close_EN:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:10
+PMLSM_ThreeLoop_Simple/Read_v_cmd:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:11
+PMLSM_ThreeLoop_Simple/Read_id_cmd:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:12
+PMLSM_ThreeLoop_Simple/Read_iq_mode:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:13
+PMLSM_ThreeLoop_Simple/Read_iq_cmd:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:14
+PMLSM_ThreeLoop_Simple/Effective_PI_Reset:1 -> PMLSM_ThreeLoop_Simple/Control_Task_10kHz:15
+PMLSM_ThreeLoop_Simple/Control_Task_10kHz:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:1
+PMLSM_ThreeLoop_Simple/Control_Task_10kHz:2 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:2
+PMLSM_ThreeLoop_Simple/Control_Task_10kHz:3 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:3
+PMLSM_ThreeLoop_Simple/Read_theta_e_1:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:4
+PMLSM_ThreeLoop_Simple/Read_vdc_cmd:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:5
+PMLSM_ThreeLoop_Simple/Read_ia_local:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:6
+PMLSM_ThreeLoop_Simple/Read_ib_local:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:7
+PMLSM_ThreeLoop_Simple/Read_ic_local:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:8
+PMLSM_ThreeLoop_Simple/Read_PWM_EN:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:9
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime:1 -> PMLSM_ThreeLoop_Simple/PMLSM_Plant_Model:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime:2 -> PMLSM_ThreeLoop_Simple/PMLSM_Plant_Model:2
+PMLSM_ThreeLoop_Simple/Read_load_cmd:1 -> PMLSM_ThreeLoop_Simple/PMLSM_Plant_Model:3
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_PI_Reset tag=PI_Reset
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_PWM_EN tag=PWM_EN
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_ia tag=ia
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_ib tag=ib
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_ic tag=ic
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_id_cmd tag=id_cmd
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_iq_cmd tag=iq_cmd
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_theta tag=theta
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_vdc tag=vdc
+LIVE_SOURCE=PMLSM_ThreeLoop_Simple/FPGA_Live_we tag=we
+PortPaths=/mc_foc_cosim_top/run_enable;/mc_foc_cosim_top/ia;/mc_foc_cosim_top/ib;/mc_foc_cosim_top/ic;/mc_foc_cosim_top/theta_e;/mc_foc_cosim_top/we;/mc_foc_cosim_top/id_ref;/mc_foc_cosim_top/iq_ref;/mc_foc_cosim_top/vdc;/mc_foc_cosim_top/pi_reset;/mc_foc_cosim_top/uq_zero_en;/mc_foc_cosim_top/cmp_u_active;/mc_foc_cosim_top/cmp_v_active;/mc_foc_cosim_top/cmp_w_active;/mc_foc_cosim_top/accepted_sample_id;/mc_foc_cosim_top/active_command_id;/mc_foc_cosim_top/active_valid;/mc_foc_cosim_top/needs_reset;/mc_foc_cosim_top/fault_code;
+PortModes=[1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2]
+PortTimes=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5e-05,5e-05,5e-05,5e-05,5e-05,5e-05,5e-05,5e-05]
+PortSigns=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+PortFracLengths=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+ClockPaths=/mc_foc_cosim_top/clk;/mc_foc_cosim_top/reset_n;
+ClockTimes=[2e-8 2e-7]
+PreRunTime=0
+TimingMode=s
+TimingScaleFactor=1
+FPGA_BRANCH_DRIVES_PLANT=0
+LEGACY_CONTROL_DRIVES_INVERTER=1
+MODEL_UPDATE=PASS

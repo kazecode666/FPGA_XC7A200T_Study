@@ -3,6 +3,9 @@ function step7b_run_cosim(mode)
 if nargin==0, mode='minimal'; end
 root=fileparts(fileparts(mfilename('fullpath')));
 assert(strcmp(version('-release'),'2026b'));
+if any(strcmp(mode,{'foc','legacy'}))
+    step7b_run_foc(mode); return;
+end
 assert(strcmp(mode,'minimal'),'Unsupported test mode');
 file=fullfile(root,'simulink模型','PMLSM_HDL_Cosim_Minimal.slx');
 assert(isfile(file),'STEP7B_MISSING_MINIMAL_MODEL');

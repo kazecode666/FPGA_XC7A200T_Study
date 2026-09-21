@@ -1,0 +1,7 @@
+columns=time cmp_u cmp_v cmp_w accepted_id active_id valid needs_reset fault duty_u duty_v duty_w range_flags(11)
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+5e-05 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0.0001 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0.00015 1165 1335 1335 1 1 1 0 0 0.466 0.534 0.534 0 0 0 0 0 0 0 0 0 0 0
+0.0002 1165 1335 1335 2 1 1 0 0 0.466 0.534 0.534 0 0 0 0 0 0 0 0 0 0 0
+STEP7B_FOC_COSIM_SMOKE_PASS
