@@ -1,0 +1,33 @@
+STEP7B_ACCEPTANCE_START 2026-09-21 21:33:03
+STEP7B_ENVIRONMENT_PASS
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7B_SIMPLE_STRUCTURE_PASS
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7B_SIMULINK_MINIMAL_COSIM_PASS
+
+STEP7B_FOC_WRAPPER_PASS first_cmp=1165,1335,1335 disable=1 reset_required=1 reset_ids=1
+ALL STEP 6D FOC PWM TESTS PASSED profile=0 base=80 tail=1 full_cycles=80 protocols=6
+ALL STEP 6D FOC PWM TESTS PASSED profile=1 base=80 tail=1 full_cycles=80 protocols=6
+ALL STEP 6E FOC GATE TESTS PASSED profile=0 deadtime=25 base=80 tail=1 full_cycles=80 shutdown=10
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7B_FOC_COSIM_SMOKE_PASS
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7B_TIMING_ALIGNMENT_PASS runs=3 A_index=5 B_index=6 mapping=NEW
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7B_LEGACY_SHORT_RUN_PASS

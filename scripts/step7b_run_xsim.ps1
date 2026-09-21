@@ -35,7 +35,7 @@ function Invoke-Test([string]$test){
    Write-Output 'EXPECTED_RED missing mc_foc_cosim_top';return
   }
   if($rc -eq 0){$output+=& "$bin/xsim.bat" step7b_snapshot -runall 2>&1;$rc=$LASTEXITCODE}
-  $output | Set-Content (Join-Path $root "docs/reports/step7b/$log")
+  $output | ForEach-Object {$_.ToString().TrimEnd()} | Set-Content (Join-Path $root "docs/reports/step7b/$log")
   if($rc -ne 0 -or ($output -join "`n") -notmatch [regex]::Escape($marker) -or ($output -join "`n") -match '(?m)^(ERROR|Fatal|FATAL)') {throw "$test failed; inspect $log"}
   $output | Select-String $marker
  }finally{Pop-Location}
