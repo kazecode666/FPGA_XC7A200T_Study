@@ -1,0 +1,143 @@
+BASELINE_BEGIN
+MATLAB=26.2.0.3340147 (R2026b) Prerelease Update 3
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+AS_FOUND_BYTES=388909
+[警告: 未加载模块图 'PMLSM_ThreeLoop_Simple' 的工作区，因为加载 MATLAB 文件 'init_PMLSM_ThreeLoop_Simple.m' 时出错。]
+[> 位置：pLoadSystem (第 40 行)
+位置: load_system (第 17 行)
+位置: baseline_probe (第 8 行)
+位置: run (第 100 行)]
+[警告: 未定义与 'double' 类型的输入参数相对应的函数 'design_PMLSM_three_loop'。]
+[> 位置：pLoadSystem (第 40 行)
+位置: load_system (第 17 行)
+位置: baseline_probe (第 8 行)
+位置: run (第 100 行)]
+MODEL=D:\Project\FPGA_XC7A200T\simulink模型\PMLSM_ThreeLoop_Simple.slx
+ModelVersion=1.103
+SolverType=Fixed-step
+Solver=FixedStepDiscrete
+FixedStep=PMLSM_Ts_s
+InitFcn=reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));
+PreLoadFcn=
+PostLoadFcn=
+StartFcn=
+StopFcn=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Control_Task_10kHz | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Control_Tick_10kHz | BlockType=FunctionCallGenerator | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Effective_PI_Reset | BlockType=Logic | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_ia | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_ib | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_ic | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_omega_e | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_theta_e | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_v_mmps | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_x_mm | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_Close_EN | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_PI_Reset | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_PWM_EN | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_Pos_EN | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_Time | BlockType=DigitalClock | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_id_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_iq_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_iq_mode | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_load_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_v_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_vdc_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Inverter_DeadTime | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/PMLSM_Plant_Model | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/PWM_Disabled | BlockType=Logic | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/PWM_For_PI_Reset | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Position_Response | BlockType=Scope | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_Close_EN | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_PI_Reset | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_PWM_EN | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_Pos_EN | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ia_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ia_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ib_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ib_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ic_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ic_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_id_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_iq_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_iq_mode | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_load_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_omega_e_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_theta_e_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_theta_e_1 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_v_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_v_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_vdc_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_x_mm_2 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_x_mm_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_x_mm_local1 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Scope_Reference | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Signal_x_ref | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Simple_Host | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Unused_Plant_Id | BlockType=Terminator | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Unused_Plant_Iq | BlockType=Terminator | ReferenceBlock=
+[警告: 使用不带 'Variants' 参数的 find_mdlrefs 会在搜索中跳过非活动的 Variant Subsystem 模块。此行为将在以后的版本中更改，以查看可变子系统的所有选择项。要查找仿真或代码生成中的活动模块，请编译模型，并使用内置变
+体过滤器和 'MatchFilter' 选项。要查找所有模块，请使用具有 'MatchFilter' 选项的 '@Simulink.match.allVariants' 过滤器。]
+[> 位置：Simulink.ModelReference.internal/ModelRefHierarchy/searchEntry
+位置: Simulink.ModelReference.internal/ModelRefHierarchy/search
+位置: find_mdlrefs
+位置: baseline_probe (第 20 行)
+位置: run (第 100 行)]
+    {'PMLSM_ThreeLoop_Simple'}
+
+MODEL_WORKSPACE_SOURCE=MATLAB File
+MODEL_WORKSPACE_FILE=init_PMLSM_ThreeLoop_Simple.m
+MODEL_WORKSPACE_VARS
+  包含以下字段的 50×1 struct 数组:
+
+    name
+    size
+    bytes
+    class
+    global
+    sparse
+    complex
+    nesting
+    persistent
+
+{错误使用 baseline_probe (第 24 行)
+计算 block_diagram 'PMLSM_ThreeLoop_Simple' 的 'InitFcn' 回调时出错。
+回调字符串为 'reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));'
+
+出错 run (第 100 行)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ - 显示完整栈跟踪
+原因:
+    错误使用 baseline_probe (第 24 行)
+    未加载模块图 'PMLSM_ThreeLoop_Simple' 的工作区，因为加载 MATLAB 文件 'init_PMLSM_ThreeLoop_Simple.m' 时出错。 - 显示完整栈跟踪
+        错误使用 baseline_probe (第 24 行)
+        未定义与 'double' 类型的输入参数相对应的函数 'design_PMLSM_three_loop'。 - 显示完整栈跟踪
+}
+
+MODEL_UPDATE=FAIL
+ROOT_CAUSE=design_PMLSM_three_loop is missing from repository and unresolved in R2026b.
+AS_FOUND_FILE=not saved; size 388909 bytes; last write 2026-09-15 10:10:59 unchanged after inspection.
+TASK1_GATE=BLOCKED; do not begin Task 2 or FPGA edits until original dependency is provided.

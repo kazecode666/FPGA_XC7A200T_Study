@@ -1,0 +1,24 @@
+% Step 7B monitor configuration only; original motor/PI parameters are untouched.
+FPGA_Cosim_Enable = 1;
+FPGA_Cosim_Input_Mode = 0;
+FPGA_CLK_Hz = 50e6;
+FPGA_CLK_Period_s = 20e-9;
+FPGA_PWM_Hz = 10e3;
+FPGA_TBPRD = 2500;
+FPGA_Cosim_Ts_s = 50e-6;
+FPGA_Current_FWL = 24;
+FPGA_Current_FL = 15;
+FPGA_Theta_WL = 16;
+FPGA_We_WL = 32;
+FPGA_We_FL = 16;
+FPGA_RefVdc_WL = 25;
+FPGA_RefVdc_FL = 15;
+FPGA_Smoke_ia_A = 1.0;
+FPGA_Smoke_ib_A = -0.5;
+FPGA_Smoke_ic_A = -0.5;
+FPGA_Smoke_theta_rad = 0.0;
+FPGA_Smoke_we_radps = 0.0;
+FPGA_Smoke_id_ref_A = 0.0;
+FPGA_Smoke_iq_ref_A = 0.0;
+FPGA_Smoke_vdc_V = 48.0;
+FPGA_Smoke_CMP_Expected = uint16([1165 1335 1335]);

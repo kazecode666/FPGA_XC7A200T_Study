@@ -1,0 +1,74 @@
+MATLAB=26.2.0.3340147 (R2026b) Prerelease Update 3
+MODEL=D:\Project\FPGA_XC7A200T\simulink模型\PMLSM_ThreeLoop_Simple.slx
+AS_FOUND_BYTES=388909
+ModelVersion=1.103
+SolverType=Fixed-step
+Solver=FixedStepDiscrete
+FixedStep=PMLSM_Ts_s
+InitFcn=reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));
+PreLoadFcn=
+PostLoadFcn=
+StartFcn=
+StopFcn=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Control_Task_10kHz | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Control_Tick_10kHz | BlockType=FunctionCallGenerator | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Effective_PI_Reset | BlockType=Logic | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_ia | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_ib | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_ic | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_omega_e | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_theta_e | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_v_mmps | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Feedback_x_mm | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_Close_EN | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_PI_Reset | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_PWM_EN | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_Pos_EN | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_Time | BlockType=DigitalClock | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_id_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_iq_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_iq_mode | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_load_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_v_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Host_vdc_cmd | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Inverter_DeadTime | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/PMLSM_Plant_Model | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/PWM_Disabled | BlockType=Logic | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/PWM_For_PI_Reset | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Position_Response | BlockType=Scope | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_Close_EN | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_PI_Reset | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_PWM_EN | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_Pos_EN | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ia_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ia_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ib_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ib_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ic_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_ic_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_id_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_iq_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_iq_mode | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_load_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_omega_e_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_theta_e_0 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_theta_e_1 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_v_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_v_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_vdc_cmd | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_x_mm_2 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_x_mm_local | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Read_x_mm_local1 | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Scope_Reference | BlockType=From | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Signal_x_ref | BlockType=Goto | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Simple_Host | BlockType=SubSystem | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Unused_Plant_Id | BlockType=Terminator | ReferenceBlock=
+ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Unused_Plant_Iq | BlockType=Terminator | ReferenceBlock=
+REFERENCED_MODELS=PMLSM_ThreeLoop_Simple
+REFERENCE_BLOCKS=
+MODEL_WORKSPACE_SOURCE=MATLAB File
+MODEL_WORKSPACE_FILE=init_PMLSM_ThreeLoop_Simple.m
+DEPENDENCY design_PMLSM_three_loop=D:\Project\FPGA_XC7A200T\simulink模型\design_PMLSM_three_loop.m
+DEPENDENCY pmlsm_scurve_profile=D:\Project\FPGA_XC7A200T\simulink模型\pmlsm_scurve_profile.m
+MODEL_UPDATE=PASS
+AS_FOUND_FILE_UNCHANGED=PASS

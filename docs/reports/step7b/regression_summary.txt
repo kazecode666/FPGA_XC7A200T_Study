@@ -1,0 +1,21 @@
+Fresh full sequence completed 2026-09-21 21:51:50
+AMD_SUPPORT_PACKAGE=PASS version=26.2.2
+STEP7B_SIMPLE_STRUCTURE_PASS
+STEP7B_SIMULINK_MINIMAL_COSIM_PASS values=6 inputs=0,1,42,127,254,255 outputs=1,2,43,128,255,0
+STEP7B_FOC_WRAPPER_PASS first_cmp=1165,1335,1335 disable=1 reset_required=1 reset_ids=1
+D6_CHAIN_PASS profile=0 demo=0 base=80 tail=1 accepts=81 loads=81 full_cycles=80 foc_latency=512 cmp_latency=516 target_zero=2499
+D6_PROTOCOL_PASS profile=0 stop=1 invalid_bus=1 reset_abort=1 deadline=1 missing_sample=1 occupied_peak=1
+ALL STEP 6D FOC PWM TESTS PASSED profile=0 base=80 tail=1 full_cycles=80 protocols=6
+D6_CHAIN_PASS profile=1 demo=0 base=80 tail=1 accepts=81 loads=81 full_cycles=80 foc_latency=512 cmp_latency=516 target_zero=2499
+D6_PROTOCOL_PASS profile=1 stop=1 invalid_bus=1 reset_abort=1 deadline=1 missing_sample=1 occupied_peak=1
+ALL STEP 6D FOC PWM TESTS PASSED profile=1 base=80 tail=1 full_cycles=80 protocols=6
+E6_CHAIN_PASS profile=0 demo=0 base=80 tail=1 accepts=81 loads=81 full_cycles=80 foc_latency=512 cmp_latency=516 target_zero=2499
+E6_SHUTDOWN_PASS trip_H_L_wait_terminal=4 stop=2 preload_trip=1 old_fault=1 fresh_reset=1 held_trip_reset=1 stop_trip_delay=0 control_fault_delay=1
+ALL STEP 6E FOC GATE TESTS PASSED profile=0 deadtime=25 base=80 tail=1 full_cycles=80 shutdown=10
+STEP7B_FOC_COSIM_SMOKE_PASS first_active_CMP=1165,1335,1335
+STEP7B_TIMING_ALIGNMENT_PASS runs=3 A_index=5 B_index=6 mapping=NEW
+STEP7B_LEGACY_SHORT_RUN_PASS
+FPGA_BRANCH_DRIVES_PLANT=0
+LEGACY_CONTROL_DRIVES_INVERTER=1
+FINAL_RUNTIME_ROM_FILE_NOT_FOUND=0
+STEP7B_FULL_ACCEPTANCE_PASS

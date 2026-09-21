@@ -1,0 +1,36 @@
+Communication=50us HDL_clock=20ns reset_release=200ns PreRunTime=0 timescale=1s:1s
+Vector A data_row_1based=6 index=5 raw=0000000000000000 0000000000000000 0000000000000005 0000000000008000 ffffffffffffc000 ffffffffffffc000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000180000 0000000000000000 0000000000000000 000000000088b998 0000000000774668 0000000000774668 000000000000048d 0000000000000537 0000000000000537 fffffffffffee8cd 0000000000000000 0000000000000004
+Vector B data_row_1based=7 index=6 raw=0000000000000000 0000000000000000 0000000000000006 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000180000 0000000000000001 0000000000000000 0000000000800000 0000000000800000 0000000000800000 00000000000004e2 00000000000004e2 00000000000004e2 0000000000000000 0000000000000000 0000000000000002
+Physical columns=ia ib ic theta_rad we id_ref iq_ref vdc pi_reset uq_zero_en
+Vector A physical=[1 -0.5 -0.5 0 0 0 0 48 0 0] expected_CMP=[1165 1335 1335]
+Vector B physical=[0 0 0 0 0 0 0 48 1 0] expected_CMP=[1250 1250 1250]
+Run=1 first_active_time=0.00015 second_active_time=0.00025 first_CMP=[1250 1250 1250] second_CMP=[1250 1250 1250]
+run=1 t=0 accepted=0 active=0 valid=0 CMP=[0 0 0]
+run=1 t=5e-05 accepted=0 active=0 valid=0 CMP=[0 0 0]
+run=1 t=0.0001 accepted=1 active=0 valid=0 CMP=[0 0 0]
+run=1 t=0.00015 accepted=1 active=1 valid=1 CMP=[1250 1250 1250]
+run=1 t=0.0002 accepted=2 active=1 valid=1 CMP=[1250 1250 1250]
+run=1 t=0.00025 accepted=2 active=2 valid=1 CMP=[1250 1250 1250]
+run=1 t=0.0003 accepted=3 active=2 valid=1 CMP=[1250 1250 1250]
+Run=2 first_active_time=0.00015 second_active_time=0.00025 first_CMP=[1250 1250 1250] second_CMP=[1250 1250 1250]
+run=2 t=0 accepted=0 active=0 valid=0 CMP=[0 0 0]
+run=2 t=5e-05 accepted=0 active=0 valid=0 CMP=[0 0 0]
+run=2 t=0.0001 accepted=1 active=0 valid=0 CMP=[0 0 0]
+run=2 t=0.00015 accepted=1 active=1 valid=1 CMP=[1250 1250 1250]
+run=2 t=0.0002 accepted=2 active=1 valid=1 CMP=[1250 1250 1250]
+run=2 t=0.00025 accepted=2 active=2 valid=1 CMP=[1250 1250 1250]
+run=2 t=0.0003 accepted=3 active=2 valid=1 CMP=[1250 1250 1250]
+Run=3 first_active_time=0.00015 second_active_time=0.00025 first_CMP=[1250 1250 1250] second_CMP=[1250 1250 1250]
+run=3 t=0 accepted=0 active=0 valid=0 CMP=[0 0 0]
+run=3 t=5e-05 accepted=0 active=0 valid=0 CMP=[0 0 0]
+run=3 t=0.0001 accepted=1 active=0 valid=0 CMP=[0 0 0]
+run=3 t=0.00015 accepted=1 active=1 valid=1 CMP=[1250 1250 1250]
+run=3 t=0.0002 accepted=2 active=1 valid=1 CMP=[1250 1250 1250]
+run=3 t=0.00025 accepted=2 active=2 valid=1 CMP=[1250 1250 1250]
+run=3 t=0.0003 accepted=3 active=2 valid=1 CMP=[1250 1250 1250]
+Rule: B updated at Simulink t=50us is captured by accepted_sample_id=1; active_command_id=1 and 2 both match B.
+The reset lasts 200ns with no prerun, so the first HDL peak occurs just AFTER the 50us data hit, not exactly coincident with it.
+Observed communication grid: accepted ID 1 at 100us, active ID 1 at 150us; accepted ID 2 at 200us, active ID 2 at 250us.
+No full-period delay inserted. Contract applies to frozen reset/clock/prerun; changing these requires revalidation.
+Three fresh simulations: identical NEW mapping, faults=0, range_flags=0.
+STEP7B_TIMING_ALIGNMENT_PASS
