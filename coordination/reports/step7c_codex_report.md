@@ -62,3 +62,9 @@ This is actual Simulink/HDL Verifier/XSI exchange with an average plant, not har
 ## M. Step 7D entry boundary
 
 After ChatGPT Review accepts this open implementation PR, a separately authorized Step 7D may restore Simulink speed/position outer-loop current references. It must reuse the static backend, shared ideal-duty/deadtime boundary, live feedback and verified 1 us timing. This implementation stops before that work and does not merge its PR.
+
+## Independent final review
+
+A fresh-context GPT-6-Astra reviewer inspected `b96a5ff..ea09f37`, native SLX contents, plan/spec, approved saturation exception and committed acceptance evidence. Critical=0, Important=0, Minor=0; ready for an open implementation PR, without merge authorization. It did not rerun simulations or change files. Hardware/gate-level physics, deferred outer loops/Step 7D, other tool versions/paths, and unrelated user files remain outside the reviewed claims.
+
+Execution rulings: use the original directory and a feature branch directly from fetched main (local main left untouched, staging kept narrow); remove only the output-free old monitor in memory for the pre-edit baseline (proves legacy numerics, not the old monitor runtime); perform final review before PR publication and retain scratch files (no cleanup, final ledger test completion precedes publishing). The explicit user-approved Gain/Bias-only extraction governs over the initial taskbook saturation assumption.
