@@ -12,3 +12,6 @@ STEP7C_Iq_Profile_A=[0 0.5 0 -0.5 0 0]';
 STEP7C_Vdc_V=48;
 STEP7C_Load_N=0;
 STEP7C_PI_PROFILE=0;
+STEP7C_iq_ref_ts=timeseries(STEP7C_Iq_Profile_A,STEP7C_Iq_Profile_Time_s);
+STEP7C_id_ref_ts=timeseries(zeros(size(STEP7C_Iq_Profile_Time_s)),STEP7C_Iq_Profile_Time_s);
+STEP7C_run_gate_ts=timeseries([1;1],[0;STEP7C_StopTime_s]);
