@@ -1,0 +1,28 @@
+VERSION=26.2.0.3340147 (R2026b) Prerelease Update 3
+RELEASE=2026b
+ROOT=D:\Program Files\MATLAB\R2026b_Prerelease
+PLATFORM=PCWIN64
+PRODUCT C2000 Microcontroller Blockset | 26.2 | (R2026b)
+PRODUCT Control System Toolbox | 26.2 | (R2026b)
+PRODUCT DSP HDL Toolbox | 26.2 | (R2026b)
+PRODUCT DSP System Toolbox | 26.2 | (R2026b)
+PRODUCT Embedded Coder | 26.2 | (R2026b)
+PRODUCT Fixed-Point Designer | 26.2 | (R2026b)
+PRODUCT HDL Coder | 26.2 | (R2026b)
+PRODUCT HDL Verifier | 26.2 | (R2026b)
+PRODUCT MATLAB | 26.2 | (R2026b)
+PRODUCT MATLAB Coder | 26.2 | (R2026b)
+PRODUCT MATLAB Compiler | 26.2 | (R2026b)
+PRODUCT MATLAB MCP Server Toolbox | 0.4.0 | (R2026a)
+PRODUCT MATLAB Report Generator | 26.2 | (R2026b)
+PRODUCT Motor Control Blockset | 26.2 | (R2026b)
+PRODUCT Signal Processing Toolbox | 26.2 | (R2026b)
+PRODUCT Simscape | 26.2 | (R2026b)
+PRODUCT Simscape Electrical | 26.2 | (R2026b)
+PRODUCT Simscape Multibody | 26.2 | (R2026b)
+PRODUCT Simulink | 26.2 | (R2026b)
+PRODUCT Simulink Coder | 26.2 | (R2026b)
+PRODUCT Simulink Compiler | 26.2 | (R2026b)
+PRODUCT Simulink Report Generator | 26.2 | (R2026b)
+PRODUCT SoC Blockset | 26.2 | (R2026b)
+PRODUCT Stateflow | 26.2 | (R2026b)

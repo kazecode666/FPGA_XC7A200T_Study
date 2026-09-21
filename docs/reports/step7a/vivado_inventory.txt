@@ -1,0 +1,17 @@
+vivado v2026.1 (64-bit)
+Tool Version Limit: 2026.06
+SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+Inventory scope: PATH, Windows uninstall registry, C:/AMD, C:/Xilinx,
+D:/AMD, D:/Xilinx, E:/AMD, E:/Xilinx, C:/AMDDesignTools,
+D:/AMDDesignTools, E:/AMDDesignTools.
+Only E:/AMDDesignTools exists among these roots; tool release directory: 2026.1.
+Vivado executable: E:/AMDDesignTools/2026.1/Vivado/bin/vivado.bat
+where.exe vivado: not found (invoked by absolute path).
+Vivado 2024.1 / 2025.1.1: not found in checked roots or uninstall registry.
+This is a bounded inventory, not a whole-disk assertion about portable copies.
+Vivado BASIC license recognized by actual wizard-launched Vivado; expires 2027-07-27.

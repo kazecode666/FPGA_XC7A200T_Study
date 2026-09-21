@@ -1,0 +1,227 @@
+ENTRIES
+hdldaemon: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\edalink\foundation\hdllink\hdldaemon.mexw64
+hdlsetuptoolpath: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\shared\hdlshared\hdlsetuptoolpath.m
+cosimWizard: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\edalink\foundation\hdllink\cosimWizard.p
+hdlcosim: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\edalink\foundation\hdllink\hdlcosim.p
+vivado:
+socModelCreator: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\shared\soc\socmodelcreator\socModelCreator.p
+hdlcoder.WorkflowConfig: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\hdlcoder\hdlcommon\+hdlcoder\WorkflowConfig.m
+fi: D:\Program Files\MATLAB\R2026b_Prerelease\toolbox\fixedpoint\fixedpoint\fi.m
+
+
+HELP_HDL_COSIM
+ hdlcosim - Create HDLCosimulation System object
+
+    语法
+      hdlc = hdlcosim
+      hdlc = hdlcosim(HDLSimulator=Simulator)
+      hdlc = hdlcosim(HDLSimulator='Vivado Simulator')
+      hdlc = hdlcosim(___, Name=Value)
+
+    输入参数
+      HDLSimulator - HDL Simulator for cosimulation
+        ModelSim | Xcelium | VCS | Vivado Simulator
+
+    输出参数
+      hdlc - Interface to HDL DUT
+        HDL Cosimulation System object
+
+    示例
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlverifier/ref/hdlcosim.html#mw_dbf20443-6b6f-4530-9da6-431ccdd52a37')
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlverifier/ref/hdlcosim.html#mw_049f0756-ec73-4790-88ba-e77efc85507b')
+
+    另请参阅 Cosimulation Wizard, hdlverifier.HDLCosimulation
+
+    已在 R2012b 中的 HDL Verifier 中引入
+    hdlcosim 的文档
+       doc hdlcosim
+
+
+
+HELP_TOOLPATH
+ hdlsetuptoolpath - Set up system environment to access FPGA synthesis software
+
+    语法
+      hdlsetuptoolpath('ToolName',TOOLNAME,'ToolPath',TOOLPATH)
+      SynthesisToolPath = hdlsetuptoolpath('ToolName',TOOLNAME,'ToolPath',TOOLPATH)
+
+    输入参数
+      TOOLNAME - Synthesis tool name
+        character vector
+      TOOLPATH - Full path to the synthesis tool executable or batch file
+        character vector
+
+    输出参数
+      SynthesisToolPath - Full path of the synthesis tool
+        character vector
+
+    示例
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlcoder/ref/hdlsetuptoolpath.html#burmn3k-5')
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlcoder/ref/hdlsetuptoolpath.html#mw_35d5fa01-52ef-4b64-b75d-ffbdcdf2662f')
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlcoder/ref/hdlsetuptoolpath.html#burmn3k-6')
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlcoder/ref/hdlsetuptoolpath.html#burmn3k-7')
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlcoder/ref/hdlsetuptoolpath.html#d127e6103')
+      web('D:\Program Files\MATLAB\R2026b_Prerelease\help/hdlcoder/ref/hdlsetuptoolpath.html#mw_70c4e0b5-5a26-4c7e-8495-f20d75517ccd')
+
+    另请参阅 startup, setenv
+
+    已在 R2011a 中的 HDL Coder 中引入
+    hdlsetuptoolpath 的文档
+       doc hdlsetuptoolpath
+
+
+
+PROBE_COMPLETE
+
+LOCAL_HELP
+ cosimulationConfiguration - Configure HDL cosimulation workflow
+    The cosimulationConfiguration object controls the creation of an HDL
+    Cosimulation block or System object for a specified HDL module.
+
+    创建
+      语法
+        cosimObj = cosimulationConfiguration(HDLSimulator,SubWorkflow,HDLTopLevelName)
+        cosimObj = cosimulationConfiguration(MATfile)
+
+    属性
+      Workflow
+        HDLSimulator - HDL simulator to use
+          'ModelSim' | 'Xcelium' | 'Vivado Simulator' | 'VCS'
+        SubWorkflow - Cosimulation kind
+          'Simulink' | 'MATLAB System Object'
+        HDLTopLevelName - Name of top level HDL module or entity
+          string
+
+      HDL Compilation
+        HDLFiles - HDL files for cosimulation
+          string | character vector | cell array
+        HDLSimulatorPath - HDL simulator location
+          string | character vector
+        HDLVhdlanFlags - VCS flags for VHDL compilation
+          '-smart_order' (默认值) | vhdlan flags
+        HDLVloganFlags - VCS flags for Verilog and SystemVerilog compilation
+          '-unit_timescale=1ns/1ns' (默认值) | vlogan flags
+        HDLCompilationCommand - Compilation commands to use
+          string | character vector
+        HDLParameterFile - Set values for HDL parameters or generics
+          '' (默认值) | 'GENERATE_AND_EDIT' | filename
+        HDLElaborationOptions - Options for HDL elaboration tool
+          string | character vector
+        HDLSimulationOptions - Options for HDL simulation tool
+          string | character vector
+
+      HDL Timing
+        HDLTimeUnit - Time unit for HDL simulation
+          fs | ps | ns | us | ms | s
+        PreCosimulationRunTime - Time to run HDL simulator before cosimulation starts
+          integer
+        AutoTimeScale - Automatically determine timescale
+          true (默认值) | false
+        TimeScale - Explicitly set timescale
+          {1, 's'} (默认值) | scale factor and time unit
+        SampleTime - HDL time for each System object evaluation
+          nonnegative numeric
+
+      HDL Simulator Connection
+        Connection - Type of connectivity to the HDL simulator
+          Socket (默认值) | Shared Memory
+
+      Port Interface Properties
+        ClockPortRegularExpression - Expression for auto-assigning ports to clocks
+          'clk$|clock$' (默认值) | regular expression
+        ResetPortRegularExpression - Expression for auto-assigning ports to resets
+          'rst$|reset$|rst_n$|reset_n$|reset_x$' (默认值) |
+          regular expression
+        UnusedPortRegularExpression - Expression for auto-assigning ports as unused
+          '' (默认值) | regular expression
+        InputDataPorts - Display input ports
+          table
+        OutputDataPorts - Display output ports
+          table
+        ClockPorts - Display clock ports
+          table
+        ResetPorts - Display reset ports
+          table
+        UnusedPorts - Display unused ports
+          table
+
+    对象函数
+      portInterface - Display port specifications
+      runWorkflow   - Execute cosimulation workflow and generate required artifacts
+      specifyClock  - Assign clock ports to cosimulation block or System object
+      specifyInput  - Assign HDL input ports to cosimulation block or System object
+      specifyOutput - Assign HDL output ports to cosimulation block or System object
+      specifyReset  - Assign reset ports to cosimulation block or System object
+      specifyUnused - Label HDL ports as unused ports
+
+    示例
+      openExample('hdlverifier/CosimCommandLineSimulinkExample')
+
+    另请参阅 Cosimulation Wizard
+
+    已在 R2022b 中的 HDL Verifier 中引入
+    cosimulationConfiguration 的文档
+       doc cosimulationConfiguration
+
+
+ hdlverifier.VivadoHDLCosimulation - Create a System object for HDL cosimulation with the Vivado simulator and MATLAB
+
+    创建
+      语法
+        hdlc = hdlcosim_topLevel
+
+      属性
+        InputSignals - Input paths in HDL code
+          '' (默认值) | string | character vector |
+          cell array of character vectors
+        OutputSignals - Output paths in HDL code
+          '' (默认值) | string | character vector |
+          cell array of character vectors
+        OutputDataTypes - Data types of output signals
+          '' (默认值) | 'fixedpoint' | 'double' | 'single'
+        OutputSigned - Sign of outputs
+          false (默认值) | true | logical vector
+        OutputFractionLengths - Output fraction lengths
+          0 (默认值) | integer | vector of integers
+        ClockResetSignals - Clock and reset signals to drive in HDL code
+          '' (默认值) | string | character vector | cell array of strings |
+          cell array of character vectors
+        ClockResetTypes - Clock and reset waveform types to generate
+          '' (默认值) | string | character vector | cell array of strings |
+          cell array of character vectors
+        ClockResetTimes - HDL times for clock period or step function duration
+          { } (默认值) | cell array of positive integer and time unit |
+          cell array of cell arrays
+        PreRunTime - Delay in HDL simulator before cosimulation
+          {0,'ns'} (默认值) | cell array
+        SampleTime - Elapsed simulator time between calls to the System object
+          {10,'ns'} (默认值) | cell array
+
+        XSIData - Data structure that matches the cosimulation interface to vivadosimlib.slx library
+          struct
+
+    使用
+      语法
+        hdloutputs = hdlc(hdlinputs)
+
+      输入参数
+        hdlinputs - Inputs to HDL simulator
+          comma-separated list of values for HDL input ports
+
+      输出参数
+        hdloutputs - Outputs from the HDL simulator
+          scalar | vector
+
+    对象函数
+      step    - Run System object algorithm
+      release - Release resources and allow changes to System object property values and input characteristics
+      reset   - Reset internal states of System object
+
+    示例
+      openExample('hdlverifier/CosimWizardForMATLABSystemObjectExample')
+
+    另请参阅 hdlverifier.HDLCosimulation, Cosimulation Wizard
+
+    已在 R2022a 中的 HDL Verifier 中引入
+    hdlverifier.VivadoHDLCosimulation 的文档
+       doc hdlverifier.VivadoHDLCosimulation

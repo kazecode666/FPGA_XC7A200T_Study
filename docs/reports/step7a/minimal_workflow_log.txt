@@ -1,0 +1,181 @@
+MINIMAL_BEGIN
+TRIAL_DIR=<SYSTEM_TEMP>\tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+-------------------- Cosimulation Type Step ------------------
+Select the type of cosimulation you want to do.If the HDL simulator executable you want to use is not on the system path in your environment you must specify its location.
+[警告: Vivado Simulator version 2026.1 has not been fully tested with the current release. Use the recommended version 2025.1.1 instead.]
+[> 位置：CosimWizardPkg/CosimTypeStep/handleValidationWarning
+位置: CosimWizardPkg/CosimTypeStep/handleValidationResult
+位置: CosimWizardPkg/CosimTypeStep/validateSimulatorSetup
+位置: CosimWizardPkg/CosimTypeStep/onNext
+位置: CosimWizardPkg.CosimWizardDlg/onNext
+位置: cosimulationConfiguration/l_CosimTypeStep
+位置: cosimulationConfiguration/runWorkflow]
+-------------------- HDL Files Step ------------------
+Add all VHDL, Verilog, and/or script files to be used in cosimulation to the following table. If the file type cannot be automatically detected or the detection result is incorrect, specify the correct file type in the table. If possible, we will determine the compilation order automatically using HDL simulator provided functionality. Then the HDL files can be added in any order.
+-------------------- HDL Compilation Step ------------------
+HDL Verifier has automatically generated the following HDL compilation commands. You can customize these commands with optional parameters as specified in the HDL simulator documentation but they are sufficient as shown to compile your HDL code for cosimulation. The HDL files will be compiled when you click Next.
+Compiling HDL design. Please wait ...
+###Compiling HDL design
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 27-jul-2027.
+
+****** Vivado v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Mon Sep 21 15:27:59 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project'
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 594.504 ; gain = 266.168
+Command: launch_simulation  -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Mon Sep 21 15:28:13 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'cosim_counter'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/AMDDesignTools/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'cosim_counter' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj cosim_counter_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/cosim_counter.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cosim_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot mwcosim_query xil_defaultlib.cosim_counter xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot mwcosim_query xil_defaultlib.cosim_counter xil_defaultlib.glbl -log elaborate.log
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.cosim_counter
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot mwcosim_query
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "mwcosim_query -key {Behavioral:sim_1:Functional:cosim_counter} -tclbatch {cosim_counter.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cosim_counter.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'mwcosim_query' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 616.785 ; gain = 22.281
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 21 15:28:27 2026...
+...done
+-------------------- Simulation Options Step ------------------
+Specify the name of the HDL module for cosimulation. The Cosimulation Wizard will launch the HDL simulator load the specified module, and populate the port list of that HDL module before the next step.
+Elaborating and Loading HDL simulation image. Please wait ...
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 27-jul-2027.
+
+****** Vivado v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Mon Sep 21 15:28:34 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project'
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-5713] Board part '' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build
+open_project: Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 597.645 ; gain = 271.629
+Command: launch_simulation  -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Mon Sep 21 15:29:22 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'cosim_counter'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/AMDDesignTools/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'cosim_counter' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj cosim_counter_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+"xelab --incr --debug off --dll --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot design xil_defaultlib.cosim_counter xil_defaultlib.glbl -log elaborate.log  --timescale 1ps/1ps --override_timeprecision "
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug off --dll --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot design xil_defaultlib.cosim_counter xil_defaultlib.glbl -log elaborate.log --timescale 1ps/1ps --override_timeprecision
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.cosim_counter
+Compiling module xil_defaultlib.glbl
+Built XSI simulation shared library xsim.dir/design/xsimk.dll
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "design -key {Behavioral:sim_1:Functional:cosim_counter} -tclbatch {cosim_counter.tcl} -log {simulate.log}"
+INFO: [USF-XSim-6] Shared library for snapshot 'design' generated:<SYSTEM_TEMP>/tp074e77bc_34e9_4c3e_8732_14e7e52e5c5b/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim/xsim.dir/design/xsimk.dll
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 604.062 ; gain = 6.418
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 21 15:29:32 2026...
+The Vivado Simulator does not support automatic parameter file generation. You can use non-default parameters values by including them in your compilation commands.
+...done
+-------------------- Input/Output Ports Step ------------------
+Specify all input and output port types. Input signals that are identified as 'Clock' and 'Reset' signals will be forced in the HDL simulator through Tcl commands. You can specify the timing parameters for forced 'Clock' and 'Reset' signals in the next step. If you want to drive your HDL clock and reset signals with MATLAB variables, mark them as 'Input'.
+-------------------- Output Port Details Step ------------------
+Set the data type and fraction length for each output port.
+-------------------- System Obj. Generation Step ------------------
+When you click Finish, the Cosimulation Wizard performs the following actions:
+ - Creates a derived HDL Cosimulation system object class configured to your specifications.
+ - Generates the scripts to compile your HDL code and launch the HDL simulator according to the choices you made with this assistant.
+
+Generating system object ... Please wait.
+...done
+WORKFLOW_GENERATED
+  包含以下字段的 18×1 struct 数组:
+
+    name
+    folder
+    date
+    bytes
+    isdir
+    datenum
+
+PATH_RESTORED=1
+MINIMAL_END
