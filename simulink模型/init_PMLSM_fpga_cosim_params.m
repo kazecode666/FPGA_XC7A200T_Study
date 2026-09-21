@@ -22,3 +22,4 @@ FPGA_Smoke_id_ref_A = 0.0;
 FPGA_Smoke_iq_ref_A = 0.0;
 FPGA_Smoke_vdc_V = 48.0;
 FPGA_Smoke_CMP_Expected = uint16([1165 1335 1335]);
+init_PMLSM_step7c_params;
