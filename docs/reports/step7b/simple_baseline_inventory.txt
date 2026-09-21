@@ -25,16 +25,16 @@ MATLAB=26.2.0.3340147 (R2026b) Prerelease Update 3
     ignoredLegacyPath: ''
 
 AS_FOUND_BYTES=388909
-[警告: 未加载模块图 'PMLSM_ThreeLoop_Simple' 的工作区，因为加载 MATLAB 文件 'init_PMLSM_ThreeLoop_Simple.m' 时出错。] 
+[警告: 未加载模块图 'PMLSM_ThreeLoop_Simple' 的工作区，因为加载 MATLAB 文件 'init_PMLSM_ThreeLoop_Simple.m' 时出错。]
 [> 位置：pLoadSystem (第 40 行)
 位置: load_system (第 17 行)
 位置: baseline_probe (第 8 行)
-位置: run (第 100 行)] 
-[警告: 未定义与 'double' 类型的输入参数相对应的函数 'design_PMLSM_three_loop'。] 
+位置: run (第 100 行)]
+[警告: 未定义与 'double' 类型的输入参数相对应的函数 'design_PMLSM_three_loop'。]
 [> 位置：pLoadSystem (第 40 行)
 位置: load_system (第 17 行)
 位置: baseline_probe (第 8 行)
-位置: run (第 100 行)] 
+位置: run (第 100 行)]
 MODEL=D:\Project\FPGA_XC7A200T\simulink模型\PMLSM_ThreeLoop_Simple.slx
 ModelVersion=1.103
 SolverType=Fixed-step
@@ -100,12 +100,12 @@ ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Simple_Host | BlockType=SubSystem | ReferenceB
 ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Unused_Plant_Id | BlockType=Terminator | ReferenceBlock=
 ROOT_BLOCK=PMLSM_ThreeLoop_Simple/Unused_Plant_Iq | BlockType=Terminator | ReferenceBlock=
 [警告: 使用不带 'Variants' 参数的 find_mdlrefs 会在搜索中跳过非活动的 Variant Subsystem 模块。此行为将在以后的版本中更改，以查看可变子系统的所有选择项。要查找仿真或代码生成中的活动模块，请编译模型，并使用内置变
-体过滤器和 'MatchFilter' 选项。要查找所有模块，请使用具有 'MatchFilter' 选项的 '@Simulink.match.allVariants' 过滤器。] 
+体过滤器和 'MatchFilter' 选项。要查找所有模块，请使用具有 'MatchFilter' 选项的 '@Simulink.match.allVariants' 过滤器。]
 [> 位置：Simulink.ModelReference.internal/ModelRefHierarchy/searchEntry
 位置: Simulink.ModelReference.internal/ModelRefHierarchy/search
 位置: find_mdlrefs
 位置: baseline_probe (第 20 行)
-位置: run (第 100 行)] 
+位置: run (第 100 行)]
     {'PMLSM_ThreeLoop_Simple'}
 
 MODEL_WORKSPACE_SOURCE=MATLAB File
@@ -135,7 +135,7 @@ evalin('caller', strcat(scriptStem, ';'));
     未加载模块图 'PMLSM_ThreeLoop_Simple' 的工作区，因为加载 MATLAB 文件 'init_PMLSM_ThreeLoop_Simple.m' 时出错。 - 显示完整栈跟踪
         错误使用 baseline_probe (第 24 行)
         未定义与 'double' 类型的输入参数相对应的函数 'design_PMLSM_three_loop'。 - 显示完整栈跟踪
-} 
+}
 
 MODEL_UPDATE=FAIL
 ROOT_CAUSE=design_PMLSM_three_loop is missing from repository and unresolved in R2026b.
