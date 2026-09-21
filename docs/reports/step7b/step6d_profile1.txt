@@ -72,7 +72,7 @@ Built simulation snapshot step7b_snapshot
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Mon Sep 21 21:33:41 2026
+  **** Start of session at: Mon Sep 21 21:51:21 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -86,4 +86,4 @@ D6_PROTOCOL_PASS profile=1 stop=1 invalid_bus=1 reset_abort=1 deadline=1 missing
 ALL STEP 6D FOC PWM TESTS PASSED profile=1 base=80 tail=1 full_cycles=80 protocols=6
 $finish called at time : 8987411 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv" Line 172
 exit
-INFO: [Common 17-206] Exiting xsim at Mon Sep 21 21:33:43 2026...
+INFO: [Common 17-206] Exiting xsim at Mon Sep 21 21:51:25 2026...
