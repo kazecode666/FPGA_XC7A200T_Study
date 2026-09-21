@@ -1,7 +1,8 @@
 function result=step7c_run_scenario(name,commTs)
 if nargin<2, commTs=1e-6; end
 if strcmp(name,'legacy'), result=step7c_capture_legacy_baseline('after'); return; end
-assert(any(strcmp(name,{'ideal','deadtime','stop'})),'Unsupported scenario');
+assert(any(strcmp(name,{'ideal','deadtime','stop','convergence'})),'Unsupported scenario');
+assert(any(abs(commTs-[1e-6 .5e-6])<1e-15));
 deadtime=double(strcmp(name,'deadtime'))*1e-6;
 root=fileparts(fileparts(mfilename('fullpath'))); p=pwd; mp=path; ep=getenv('PATH'); ev=getenv('XILINX_VIVADO');
 c=onCleanup(@() restore(p,mp,ep,ev)); %#ok<NASGU>
@@ -16,6 +17,7 @@ for k=1:5, tap(a,['Select_' names{k}],['live_' names{k}]); end
 v=[m '/Inverter_DeadTime']; for k=1:3, tap(v,['Backend_Duty_' num2str(k)],['selected_' num2str(k)]); end
 tap(v,'Backend_Enable','selected_enable');
 si=Simulink.SimulationInput(m); si=si.setModelParameter('FixedStep',num2str(commTs,17),'StopTime','0.031','ReturnWorkspaceOutputs','on');
+if strcmp(name,'convergence'), si=si.setModelParameter('StopTime','0.012'); end
 for pair={'CONTROL_BACKEND',1;'FPGA_Cosim_Enable',1;'FPGA_Cosim_Input_Mode',1;'FPGA_Reference_Mode',0;'FPGA_Cosim_Ts_s',commTs;'STEP7C_Comm_Ts_s',commTs}'
     si=si.setVariable(pair{1},pair{2});
 end
