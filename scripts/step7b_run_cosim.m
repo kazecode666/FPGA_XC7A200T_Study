@@ -1,7 +1,8 @@
-function step7b_run_cosim(mode)
+function step7b_run_cosim(mode,reportDir)
 % Assertions read simulator outputs, never a MATLAB-only replacement.
 if nargin==0, mode='minimal'; end
 root=fileparts(fileparts(mfilename('fullpath')));
+if nargin<2, reportDir=fullfile(root,'docs','reports','step7b'); end
 assert(strcmp(version('-release'),'2026b'));
 if strcmp(mode,'timing'), step7b_timing_alignment; return; end
 if any(strcmp(mode,{'foc','legacy'}))
@@ -16,7 +17,7 @@ hdlsetuptoolpath('ToolName','Xilinx Vivado','ToolPath','E:/AMDDesignTools/2026.1
 cd(fullfile(root,'.Xil','step7b_minimal_cosim'));
 load_system(file); mdl='PMLSM_HDL_Cosim_Minimal';
 closeModel=onCleanup(@() close_system(mdl,0)); %#ok<NASGU>
-fid=fopen(fullfile(root,'docs','reports','step7b','minimal_cosim_result.txt'),'w');
+fid=fopen(fullfile(reportDir,'minimal_cosim_result.txt'),'w');
 closeLog=onCleanup(@() fclose(fid)); %#ok<NASGU>
 inputs=[0 1 42 127 254 255]; expected=[1 2 43 128 255 0];
 for k=1:numel(inputs)

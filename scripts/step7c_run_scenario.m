@@ -28,7 +28,7 @@ si=si.setVariable('STEP7C_run_gate_ts',timeseries([1;1],[0;.031]));
 if strcmp(name,'stop'), si=si.setVariable('STEP7C_run_gate_ts',timeseries([1;0;0],[0;.008;.031])); end
 init=sprintf('mw=get_param(bdroot,''ModelWorkspace''); mw.assignin(''PMLSM_Ts_s'',%.17g); mw.assignin(''PMLSM_deadtime_s'',0); mw.assignin(''PMLSM_deadtime_ratio'',0); mw.assignin(''Host_Enable_Schedule'',[0 1 0 1]); mw.assignin(''Host_Load_N'',0); mw.assignin(''Udc'',48);',commTs);
 init=[init sprintf(' mw.assignin(''PMLSM_deadtime_s'',%.17g); mw.assignin(''PMLSM_deadtime_ratio'',%.17g);',deadtime,deadtime/1e-4)];
-si=si.setModelParameter('InitFcn',[get_param(m,'InitFcn') newline init],'StartFcn',sprintf('step7c_assert_timing([],bdroot,%.17g);',commTs));
+si=si.setModelParameter('InitFcn',[get_param(m,'InitFcn') newline init],'StartFcn',sprintf('step7c_check_scenario_start(bdroot,%.17g,%.17g);',commTs,deadtime));
 out=sim(si); ts=out.get('step7c_monitor'); result=struct('time',ts.Time,'data',double(ts.Data),'commTs',commTs,'name',name);
 f=out.get('fpga_monitor'); result.rangeFlags=max(double(f.Data(:,12:end)),[],1);
 result.live=zeros(numel(ts.Time),5); result.selected=zeros(numel(ts.Time),4);

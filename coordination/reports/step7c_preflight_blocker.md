@@ -1,5 +1,7 @@
 # Step 7C Task 2 topology gate
 
+**Resolved by explicit user approval on 2026-09-22.** Extract only the Gain/Bias pair, retain the shared post-deadtime saturation, and add no legacy pre-deadtime saturation. The implementation followed this resolution; all 17 legacy maximum differences are zero. `structure_after.txt` records `LEGACY_PRE_DEADTIME_SATURATION=0` and `SHARED_POST_DEADTIME_SATURATION=1`. The original gate record below is retained as history, not current status. See `step7c_codex_report.md` for completed dynamic validation.
+
 2026-09-22. PR #30 is merged at `b96a5ff617182eeab97a99e88a6e63068b79e39e`. Implementation branch: `step7c-dynamic-current-loop-cosim`.
 
 Task 1 captured the unmodified legacy numerical baseline in commit `a95fe9a`. The 5 ms test has 101 samples at 50 us, with 100 us controller outputs held on that grid. It ran from the project root without HDL setup. The output-free Step 7B monitor was removed only in memory to avoid XSI initialization; the SLX was never saved. User SLX layout modifications and unrelated tracked/untracked changes are preserved.

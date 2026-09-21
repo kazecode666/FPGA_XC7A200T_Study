@@ -1,0 +1,90 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_fxp_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_clarke.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_clarke
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sincos_lut.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_sincos_lut
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_park.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_park
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_inv_park.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_inv_park
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_current_transform.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_current_transform
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_isqrt_u80.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_isqrt_u80
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_udiv_u72_u41
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_eval.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_eval
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_dq_limiter.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_dq_limiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_pi_dq_core.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_pi_dq_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_svpwm_sector_xyz
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_sector_svpwm.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_sector_svpwm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/foc/rtl/mc_foc_current_core.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_foc_current_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/pwm/rtl/motor_pwm_core.sv" into library work
+INFO: [VRFC 10-311] analyzing module motor_pwm_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_duty_to_cmp.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_duty_to_cmp
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/rtl/mc_foc_pwm_top.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_foc_pwm_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module mc_foc_pwm_top_tb
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe mc_foc_pwm_top_tb -s step7b_snapshot -generic_top PI_PROFILE=0 -generic_top DEMO=0
+Multi-threading is on. Using 30 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package work.mc_fxp_pkg
+Compiling package work.mc_pi_fxp_pkg
+Compiling package work.mc_svpwm_pkg
+Compiling module work.mc_clarke
+Compiling module work.mc_sincos_lut
+Compiling module work.mc_park
+Compiling module work.mc_current_transform
+Compiling module work.mc_pi_dq_eval_default
+Compiling module work.mc_isqrt_u80
+Compiling module work.mc_udiv_u72_u41
+Compiling module work.mc_dq_limiter
+Compiling module work.mc_pi_dq_core_default
+Compiling module work.mc_inv_park
+Compiling module work.mc_svpwm_sector_xyz
+Compiling module work.mc_sector_svpwm
+Compiling module work.mc_foc_current_core
+Compiling module work.mc_duty_to_cmp
+Compiling module work.motor_pwm_core_default
+Compiling module work.mc_foc_pwm_top
+Compiling module work.mc_foc_pwm_top_tb(DEMO=0)
+Built simulation snapshot step7b_snapshot
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Sep 22 01:18:44 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/step7b_snapshot/xsim_script.tcl
+# xsim {step7b_snapshot} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+D6_D_CURRENT active_row=5 cmp=1165,1335,1335 high=2330,2670,2670 alpha_foc=-2.181243896484 alpha_pwm=-2.176000000000
+D6_CHAIN_PASS profile=0 demo=0 base=80 tail=1 accepts=81 loads=81 full_cycles=80 foc_latency=512 cmp_latency=516 target_zero=2499
+D6_ACTIVE_VOLTAGE_OBSERVATION profile=0 demo=0 max_alpha_error=0.011079052734 max_beta_error=0.010152028523 (all cases including clamp; no linearity claim)
+D6_PROTOCOL_PASS profile=0 stop=1 invalid_bus=1 reset_abort=1 deadline=1 missing_sample=1 occupied_peak=1
+ALL STEP 6D FOC PWM TESTS PASSED profile=0 base=80 tail=1 full_cycles=80 protocols=6
+$finish called at time : 8987411 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv" Line 172
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Sep 22 01:18:47 2026...

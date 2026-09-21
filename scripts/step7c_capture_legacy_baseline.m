@@ -27,6 +27,11 @@ end
 si=Simulink.SimulationInput(m); si=si.setModelParameter('StopTime','5e-3','ReturnWorkspaceOutputs','on');
 overrides={'Host_Enable_Schedule',[0 1 0 1];'Host_Iq_Test_Mode',1;'Host_Id_A',0;'Host_Iq_A',0.2;'Host_Load_N',0};
 for k=1:size(overrides,1), si=si.setVariable(overrides{k,1},overrides{k,2},'Workspace',m); end
+checks='';
+for k=1:size(overrides,1)
+    checks=[checks sprintf('assert(isequal(slResolve(''%s'',bdroot),%s),''LEGACY_OVERRIDE_MISMATCH'');',overrides{k,1},mat2str(overrides{k,2},17))]; %#ok<AGROW>
+end
+si=si.setModelParameter('StartFcn',checks);
 if strcmp(stage,'after'), si=si.setVariable('CONTROL_BACKEND',0); end
 out=sim(si); t=(0:50e-6:5e-3)'; data=zeros(numel(t),numel(vars));
 for k=1:numel(vars)

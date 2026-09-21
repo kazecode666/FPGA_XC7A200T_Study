@@ -1,0 +1,101 @@
+--- structure_after.txt ---
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/duty:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sum:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sum:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sat:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sat:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/v0_eff_calc:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_1:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Legacy_Counts_To_Duty:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_1:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/fpga_duty_u:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_1:2
+PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:10
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_B_DeadTime/duty:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_B_DeadTime/d_sum:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_B_DeadTime/d_sum:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_B_DeadTime/d_sat:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_B_DeadTime/d_sat:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_B_DeadTime/v0_eff_calc:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_2:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model:2
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Legacy_Counts_To_Duty:2 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_2:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/fpga_duty_v:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_2:2
+PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim:2 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:11
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_C_DeadTime/duty:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_C_DeadTime/d_sum:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_C_DeadTime/d_sum:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_C_DeadTime/d_sat:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_C_DeadTime/d_sat:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_C_DeadTime/v0_eff_calc:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_3:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model:3
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Legacy_Counts_To_Duty:3 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_3:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/fpga_duty_w:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_3:2
+PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim:3 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:12
+PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim:4 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime:13
+FPGA_DUTY_SOURCE=FPGA_HDL_Cosim outputs
+FPGA_TO_PWM_UPDATE_HALFTS_PATH=0
+FPGA_TO_LEGACY_COUNT_MAPPING_PATH=0
+ONE_DEADTIME_VOLTAGE_MODEL=1
+ONE_PMLSM_PLANT_MODEL=1
+LEGACY_PRE_DEADTIME_SATURATION=0
+SHARED_POST_DEADTIME_SATURATION=1
+STEP7C_STRUCTURE_PASS
+
+--- legacy_compare.txt ---
+max_abs_differences=[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+STEP7C_LEGACY_EQUIVALENCE_PASS
+LEGACY_REQUIRES_XSI=0
+
+--- minimal_cosim_result.txt ---
+input=0 output=1 reset_output=0 PASS
+input=1 output=2 reset_output=0 PASS
+input=42 output=43 reset_output=0 PASS
+input=127 output=128 reset_output=0 PASS
+input=254 output=255 reset_output=0 PASS
+input=255 output=0 reset_output=0 PASS
+STEP7B_SIMULINK_MINIMAL_COSIM_PASS
+
+--- foc_wrapper_xsim.txt ---
+STEP7B_FOC_WRAPPER_PASS first_cmp=1165,1335,1335 disable=1 reset_required=1 reset_ids=1
+--- step6d_profile0.txt ---
+ALL STEP 6D FOC PWM TESTS PASSED profile=0 base=80 tail=1 full_cycles=80 protocols=6
+--- step6e_regression.txt ---
+ALL STEP 6E FOC GATE TESTS PASSED profile=0 deadtime=25 base=80 tail=1 full_cycles=80 shutdown=10
+--- timing_1us.txt ---
+commTs=1e-6 plant_step=1e-6 Ts_ACR=1e-4 HDL_clock=20e-9 reset=200e-9 prerun=0 timescale=1:1
+accepted_transition_times=[5.1e-05 0.00015099999999999998 0.00025099999999999998 0.00035099999999999997 0.00045099999999999996]
+active_transition_times=[0.000101 0.00020099999999999998 0.000301 0.00040099999999999999]
+visibility_relative_to_accept_plus_half_period=[0 -6.7762635780344027e-21 2.0328790734103208e-20 2.0328790734103208e-20]
+fault=0 needs_reset=0
+STEP7C_1US_TIMING_PASS
+
+--- dynamic_ideal.txt ---
+scenario=ideal commTs=1e-6 plant_step=1e-6 Ts_ACR=1e-4 PI_PROFILE=0 Vdc=48 load=0
+deadtime_s=0 deadtime_ratio=0
+columns=id_ref iq_ref id iq ia ib ic x_mm v_mmps theta_e omega_e cmp_u cmp_v cmp_w duty_u duty_v duty_w accepted_id active_id valid bridge fault needs_reset vd vq
+min=[0 -0.5 -0.0010410163003480666 -0.50065236392260204 -0.027610172926373022 -0.47291939264767513 -0.43105250736539807 0 -0.073029245368885901 0 -0.0076476046916032795 0 0 0 0 0 0 0 0 0 0 0 0 -0.01686712810600953 -1.0401653736253442]
+max=[0 0.5 0.0009865163856364208 0.5008582003730635 0.095059593836115383 0.44649860769667465 0.38713879143695362 1.8299632944761792 122.02765925845515 0.19163330807551135 12.778706595370707 1266 1378 1296 0.50640000000000007 0.55120000000000002 0.51839999999999997 310 309 1 1 0 0 0.015655448143772066 2.842651809288165]
+final=[0 0 2.4295148936298333e-05 -0.00018295198396585955 5.8694358553529502e-05 -0.00018088097494510096 0.00012218661639157145 1.8298782995390348 -0.073029245368885901 0.19162440742650713 -0.0076476046916032795 1250 1250 1250 0.5 0.5 0.5 310 309 1 1 0 0 0 0]
+positive_acceleration_mm_s2=12122.629024120075 negative_acceleration_mm_s2=-12123.973781472567
+q_positive_RMS=0.10862838270184701 q_negative_RMS=0.10830533659251225
+LIVE_ADAPTER_EQUALS_PLANT=1 SELECTED_DUTY_DELAY_S=0 RANGE_FLAGS=[0 0 0 0 0 0 0 0 0 0 0]
+STEP7C_DYNAMIC_IDEAL_PASS
+
+--- dynamic_deadtime.txt ---
+scenario=deadtime commTs=1e-6 plant_step=1e-6 Ts_ACR=1e-4 PI_PROFILE=0 Vdc=48 load=0
+deadtime_s=9.9999999999999995e-07 deadtime_ratio=0.01
+columns=id_ref iq_ref id iq ia ib ic x_mm v_mmps theta_e omega_e cmp_u cmp_v cmp_w duty_u duty_v duty_w accepted_id active_id valid bridge fault needs_reset vd vq
+min=[0 -0.5 -0.062648494063210963 -0.50037316658370934 -0.0038159722923791217 -0.47262667210488185 -0.43338779549654205 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.42875674172090372 -0.97001489026523025]
+max=[0 0.5 0.023499970455295078 0.50035074866097762 0.094021139757562641 0.433876797459673 0.3967261555846493 1.8260677281485791 117.23967518829654 0.19122536532363268 12.277310076026867 1289 1400 1318 0.51560000000000006 0.56000000000000005 0.5272 310 309 1 1 0 0 0.36035069599931202 2.7735728762176581]
+final=[0 0 0.00036429684688268113 -0.00089526070732162644 0.00052781157231093063 -0.0009651291123098434 0.00043731753999891277 1.8260677281485791 4.9346701771580017 0.19122536532363268 0.51675745254827399 1273 1227 1271 0.50919999999999999 0.49080000000000001 0.50840000000000007 310 309 1 1 0 0 7.4488220321017665e-05 0.067731192603594656]
+positive_acceleration_mm_s2=11933.262047677326 negative_acceleration_mm_s2=-11666.626137069672
+q_positive_RMS=0.13345661129219782 q_negative_RMS=0.16311367687856576
+LIVE_ADAPTER_EQUALS_PLANT=1 SELECTED_DUTY_DELAY_S=0 RANGE_FLAGS=[0 0 0 0 0 0 0 0 0 0 0]
+STEP7C_DYNAMIC_DEADTIME_PASS
+
+--- dynamic_stop.txt ---
+stop_time=0.008 maximum_visibility_delay=1e-6 deadtime=0
+pre_stop_state=[0 0.5 -6.1597393069895521e-05 0.49946712682251909 -0.012404883592387644 0.43862023753918866 -0.42621535394680099 0.23601529539446359 75.466213380616892 0.024715463938202394 7.9028033850261927 1245 1353 1147 0.498 0.54120000000000001 0.45880000000000004 80 79 1 1 0 0 -0.0075475531117980901 2.2844199951939723]
+final_state=[0 0 -2.4592949092413082e-06 -0.013017080000228635 0.0010612726086505193 -0.011766229687540892 0.010704957078890371 0.78121608151856026 1.8210629493410846 0.0818087567521638 0.19070126611248378 1245 1353 1147 0.498 0.54120000000000001 0.45880000000000004 80 79 0 0 0 1 0 0]
+post_stop_valid_max=0 bridge_max=0 abs_vdq_max=0 needs_reset_max=1 fault_max=0
+STEP7C_DYNAMIC_STOP_PASS
+
+--- convergence_1us_vs_0p5us.txt ---
+horizon=0.012 common_samples=12001 interpolation=none
+max_delta_iq_A_id_A_v_mmps_x_mm=[0.00031420316173297325 6.3694625897968101e-06 0.0059230801150231827 7.5129772271531614e-05]
+limits=[0.05 0.05 2 0.02]
+accepted_active_counts_1us_0p5us=[120 119;120 119]
+control_period=0.0001
+SAVED_PORT_TIMES=1e-6 SAVED_DEFAULT_BACKEND=0
+STEP7C_CONVERGENCE_PASS
+
+STEP7C_FULL_ACCEPTANCE_PASS

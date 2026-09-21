@@ -1,5 +1,6 @@
-function step7b_generate_minimal_cosim(rebuild)
+function step7b_generate_minimal_cosim(rebuild,saveModel)
 if nargin==0, rebuild=true; end
+if nargin<2, saveModel=true; end
 root=fileparts(fileparts(mfilename('fullpath')));
 assert(strcmp(version('-release'),'2026b'));
 oldpwd=pwd; oldpath=getenv('PATH'); oldvivado=getenv('XILINX_VIVADO');
@@ -16,6 +17,10 @@ specifyClock(c,'clk','Period',20,'Edge','Rising');
 specifyReset(c,'reset_n','InitialValue',0,'Duration',200);
 specifyOutput(c,'out_data','SampleTime',1e-6);
 if rebuild, runWorkflow(c); end
+if ~saveModel
+    if bdIsLoaded('hdlverifier_wizard_step7b_counter'), close_system('hdlverifier_wizard_step7b_counter',0); end
+    fprintf('STEP7B_MINIMAL_RUNTIME_ONLY_GENERATED\n'); return;
+end
 generated='hdlverifier_wizard_step7b_counter';
 load_system(fullfile(work,[generated '.slx']));
 b=find_system(generated,'SearchDepth',1,'ReferenceBlock','vivadosimlib/HDL Cosimulation');
