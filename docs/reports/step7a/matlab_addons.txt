@@ -1,0 +1,38 @@
+ADDONS
+                            Name                             Version     Enabled    Identifier
+    _____________________________________________________    ________    _______    __________
+
+    "Fixed-Point Designer"                                   "26.2"         1       "PO"
+    "DSP System Toolbox"                                     "26.2"         1       "DS"
+    "SoC Blockset"                                           "26.2"         1       "HW"
+    "C2000 Microcontroller Blockset"                         "26.2"         1       "C2"
+    "MATLAB Compiler"                                        "26.2"         1       "CO"
+    "Control System Toolbox"                                 "26.2"         1       "CT"
+    "HDL Verifier"                                           "26.2"         1       "ES"
+    "HDL Coder"                                              "26.2"         1       "HD"
+    "Embedded Coder"                                         "26.2"         1       "EC"
+    "DSP HDL Toolbox"                                        "26.2"         1       "HS"
+    "MATLAB Coder"                                           "26.2"         1       "ME"
+    "MATLAB Support for MinGW-w64 C/C++/Fortran Compiler"    "26.2.2"       1       "ML_MINGW"
+    "MATLAB Report Generator"                                "26.2"         1       "MR"
+    "Simscape Multibody"                                     "26.2"         1       "MS"
+    "Motor Control Blockset"                                 "26.2"         1       "MT"
+    "Simscape Electrical"                                    "26.2"         1       "PS"
+    "Simulink Coder"                                         "26.2"         1       "RT"
+    "Stateflow"                                              "26.2"         1       "SF"
+    "Signal Processing Toolbox"                              "26.2"         1       "SG"
+    "Simulink Compiler"                                      "26.2"         1       "SK"
+    "Simulink"                                               "26.2"         1       "SL"
+    "Simulink Report Generator"                              "26.2"         1       "SR"
+    "Simscape"                                               "26.2"         1       "SS"
+
+
+
+SECOND_PROBE_BEGIN
+SoC_Blockset=1
+SUPPORT_ROOT
+C:\ProgramData\MATLAB\SupportPackages\R2026bPrerelease
+SUPPORT_INSTALLED
+                Name: 'MATLAB Support for MinGW-w64 C/C++/Fortran Compiler'
+    InstalledVersion: '26.2.2'
+         BaseProduct: ''

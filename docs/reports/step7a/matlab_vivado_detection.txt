@@ -1,0 +1,33 @@
+VIVADO_TOOL_DETECTION
+OLD_XILINX_VIVADO=
+OLD_PATH_HAS_VIVADO=0
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+E:\AMDDesignTools\2026.1\Vivado\bin
+TOOL_SETUP=PASS
+COSIM_OBJECT
+  hdlverifier.VivadoHDLCosimulation - 属性:
+
+             InputSignals: ''
+            OutputSignals: ''
+             OutputSigned: 0
+          OutputDataTypes: ''
+    OutputFractionLengths: 0
+        ClockResetSignals: ''
+          ClockResetTypes: ''
+          ClockResetTimes: {[]  []}
+               PreRunTime: {[0]  'ns'}
+               SampleTime: {[10]  'ns'}
+                  XSIData: [1×1 struct]
+
+PATH_RESTORED=1
+
+
+Actual cosimulationConfiguration/runWorkflow version check (local R2026b Prerelease Update 3):
+Vivado Simulator version 2026.1 has not been fully tested with the current release. Use the recommended version 2025.1.1 instead.
+This was a warning, not a hard rejection. No warning suppression, patch, or version-check bypass was used.
+The workflow continued, compiled the HDL, generated the XSI design DLL and MATLAB interface.
+See minimal_workflow_log.txt and minimal_cosim_result.txt for actual execution.
+Public documentation recommends 2024.1; local prerelease runtime recommends 2025.1.1.

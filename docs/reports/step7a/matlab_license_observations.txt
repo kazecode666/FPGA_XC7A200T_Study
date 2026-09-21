@@ -1,0 +1,25 @@
+CHECKOUT
+EDA_Simulator_Link=1
+Simulink_HDL_Coder=1
+fixed_point_toolbox=1
+Simulink=1
+FI_CALL=3
+SIMULINK_LOAD=PASS
+
+INUSE_FEATURES_ONLY
+eda_simulator_link
+fixed_point_toolbox
+matlab
+matlab_coder
+simulink
+simulink_hdl_coder
+
+
+SoC_Blockset checkout=1 (second batch); feature confirmed in toolbox/target/codertarget/sltoolstrip/m/+codertarget/+sltoolstrip/EmbeddedHardwareBoardContext.m:512. Prerelease startup reports license expires in 9 days on audit date 2026-09-21.
+
+License feature provenance (relative to MATLABROOT, read before checkout):
+EDA_Simulator_Link: toolbox/edalink/extensions/vivadosim/vivadosim/hdlblocks.m:9
+Simulink_HDL_Coder: toolbox/hdlcoder/hdlcoder/hdlblocks.m:11
+fixed_point_toolbox: toolbox/hdlcoder/hdldesignpatterns/matlabhdl/debug/mlhdlc_debug_setup_runme.m:18
+Simulink: toolbox/hdlcoder/hdldesignpatterns/matlabhdl/ml2sl/mlhdlc_tutorial_mlhdlc_to_slhdlc.m:77
+License inuse output was restricted to feature names; no user/host/license identifier was retained.

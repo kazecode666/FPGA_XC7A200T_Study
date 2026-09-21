@@ -1,0 +1,47 @@
+EXCHANGE_BEGIN
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+tick=0 clk=0 reset_n=0 input=0 output=0
+tick=1 clk=0 reset_n=0 input=0 output=0
+tick=2 clk=0 reset_n=0 input=0 output=0
+tick=3 clk=0 reset_n=1 input=0 output=0
+tick=4 clk=0 reset_n=1 input=0 output=0
+tick=5 clk=1 reset_n=1 input=0 output=1
+tick=6 clk=1 reset_n=1 input=0 output=1
+tick=7 clk=0 reset_n=1 input=0 output=1
+PAIR_PASS input=0 output=1 expected=1
+tick=8 clk=0 reset_n=1 input=1 output=1
+tick=9 clk=0 reset_n=1 input=1 output=1
+tick=10 clk=1 reset_n=1 input=1 output=2
+tick=11 clk=1 reset_n=1 input=1 output=2
+tick=12 clk=0 reset_n=1 input=1 output=2
+PAIR_PASS input=1 output=2 expected=2
+tick=13 clk=0 reset_n=1 input=42 output=2
+tick=14 clk=0 reset_n=1 input=42 output=2
+tick=15 clk=1 reset_n=1 input=42 output=43
+tick=16 clk=1 reset_n=1 input=42 output=43
+tick=17 clk=0 reset_n=1 input=42 output=43
+PAIR_PASS input=42 output=43 expected=43
+tick=18 clk=0 reset_n=1 input=127 output=43
+tick=19 clk=0 reset_n=1 input=127 output=43
+tick=20 clk=1 reset_n=1 input=127 output=128
+tick=21 clk=1 reset_n=1 input=127 output=128
+tick=22 clk=0 reset_n=1 input=127 output=128
+PAIR_PASS input=127 output=128 expected=128
+tick=23 clk=0 reset_n=1 input=254 output=128
+tick=24 clk=0 reset_n=1 input=254 output=128
+tick=25 clk=1 reset_n=1 input=254 output=255
+tick=26 clk=1 reset_n=1 input=254 output=255
+tick=27 clk=0 reset_n=1 input=254 output=255
+PAIR_PASS input=254 output=255 expected=255
+tick=28 clk=0 reset_n=1 input=255 output=255
+tick=29 clk=0 reset_n=1 input=255 output=255
+tick=30 clk=1 reset_n=1 input=255 output=0
+tick=31 clk=1 reset_n=1 input=255 output=0
+tick=32 clk=0 reset_n=1 input=255 output=0
+PAIR_PASS input=255 output=0 expected=0
+REAL_COSIM_EXCHANGE=PASS
+PATH_RESTORED=1
+EXCHANGE_END

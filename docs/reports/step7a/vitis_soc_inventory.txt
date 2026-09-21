@@ -1,0 +1,22 @@
+
+****** Xilinx Vitis Development Environment
+****** Vitis v2026.1 (64-bit)
+****** SW Build 6497934 on 2026-06-16-17:22:28
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+Executable: E:/AMDDesignTools/2026.1/Vitis/bin/vitis.bat
+Successful inventory command: vitis.bat --version
+An initial -version option was rejected; --version is the documented option.
+sourceVersion.txt: release 2026.1.0; buildVersion 2026.1.0-6493734-738.
+SoC Blockset 26.2 installed; SoC_Blockset checkout=1.
+socModelCreator exists at toolbox/shared/soc/socmodelcreator/socModelCreator.p.
+AMD board/SoC package absent from active R2026b installedAddons and getInstalled.
+Consequently AMD board-specific Zynq/MPSoC package recognition is not established.
+General Vivado path setup succeeded; this does not prove SoC toolchain compatibility.
+No Vitis workspace, XSA, BSP, Linux configuration or SoC migration performed.
+
+Local SoC sources contain Zynq ZC706 examples (socMemoryProfiler.m)
+and Zynq UltraScale+ MPSoC ZCU102 (selectHardwareBoard.m).
+These are generic product entries, not evidence that the AMD support package is installed.
