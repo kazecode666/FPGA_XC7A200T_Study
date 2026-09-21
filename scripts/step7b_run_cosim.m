@@ -3,6 +3,7 @@ function step7b_run_cosim(mode)
 if nargin==0, mode='minimal'; end
 root=fileparts(fileparts(mfilename('fullpath')));
 assert(strcmp(version('-release'),'2026b'));
+if strcmp(mode,'timing'), step7b_timing_alignment; return; end
 if any(strcmp(mode,{'foc','legacy'}))
     step7b_run_foc(mode); return;
 end
