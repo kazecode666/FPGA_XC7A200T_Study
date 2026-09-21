@@ -382,11 +382,21 @@ This keeps legacy compile/run from requiring the XSI block.
 Add subsystem outputs:
 
 ```text
-1 fpga_duty_u
-2 fpga_duty_v
-3 fpga_duty_w
-4 fpga_bridge_enable
+1  fpga_duty_u
+2  fpga_duty_v
+3  fpga_duty_w
+4  fpga_bridge_enable
+5  cmp_u_active
+6  cmp_v_active
+7  cmp_w_active
+8  accepted_sample_id
+9  active_command_id
+10 active_valid
+11 fault_code
+12 needs_reset
 ```
+
+Only outputs 1–4 may connect to the shared inverter. Outputs 5–12 are monitor/status only.
 
 Use existing output-adapter duties:
 
@@ -601,12 +611,14 @@ It must:
 
 - [ ] **Step 6: Make plant step an explicit simulation override, not a controller-period rewrite**
 
-For FPGA dynamic runs use:
+For FPGA dynamic runs use targeted model-workspace overrides:
 
-```text
-PMLSM_Ts_s = commTs
-model FixedStep = commTs
+```matlab
+si = si.setVariable('PMLSM_Ts_s',commTs,'Workspace',mdl);
+si = si.setModelParameter('FixedStep',sprintf('%.17g',commTs));
 ```
+
+and likewise target plant/deadtime variables to the model workspace when they are defined there.
 
 Do not set:
 
@@ -723,7 +735,7 @@ Log at minimum:
 25 inverter_vq
 ```
 
-Use a Mux of double-converted values and one `To Workspace` named:
+Source FPGA status/CMP values from `FPGA_HDL_Cosim` monitor outputs 5–12 added in Task 2; source only duty/bridge outputs 1–4 into the inverter. Use a Mux of double-converted values and one `To Workspace` named:
 
 ```text
 step7c_monitor
@@ -742,11 +754,14 @@ function result = step7c_run_scenario(name,commTs)
 Supported names:
 
 ```text
+legacy
 ideal
 deadtime
 stop
 convergence
 ```
+
+For `legacy`, set `CONTROL_BACKEND=0`, do not call `hdlsetuptoolpath`, do not change into `.Xil`, and run the same short deterministic legacy scenario used by Task 1. This provides the final reproduction entry point for the XSI-independent backend.
 
 For `ideal` set:
 
