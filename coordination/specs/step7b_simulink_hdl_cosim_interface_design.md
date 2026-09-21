@@ -4,7 +4,8 @@
 **日期：2026-09-21**  
 **基线：** main = `c07792fd55e175f7dae2a94ffe5b2c19093b1513`（Step 7A / PR #25 已合并）  
 **目标路线：** 采用 **方案 B：以 FPGA 中实际生效的 `CMP_active` / active duty 作为 Simulink 平均值逆变器的控制边界**。  
-**本阶段性质：** 工具链与接口集成，不做电机动态闭环验收。
+**本阶段性质：** 工具链与接口集成，不做电机动态闭环验收。  
+**主 Simulink 集成模型：** `simulink模型/PMLSM_ThreeLoop_Simple.slx`。该模型是用户此前将真实 DSP 控制逻辑做功能简化后保留的三闭环仿真副本，保留核心控制算法、平均值逆变器/死区和 PMLSM plant，删除了大量当前 FPGA 联调不需要的控制接口与观测系统。Step 7B/7C 优先基于它搭建，不再以完整 `PMLSM_MIL_ControlCore_Sim.slx` 作为主改造对象。
 
 **环境补充：** 用户在 Step 7A 合并后已安装 SoC Blockset Support Package for AMD FPGA and SoC Devices。Step 7B 启动时只需用 R2026b 重新确认该 support package 已被当前 release 识别并记录版本；这不是重新做 7A。纯 Vivado Simulator/XSI co-sim 仍以 HDL Verifier 产品能力为准，support package 识别失败时应报告，但不应据此伪造或绕过 simulator 测试结果。
 
@@ -34,8 +35,11 @@ Step 7B 要把 Step 7A 的“MATLAB System Object ↔ Vivado XSI 最小联合仿
 3. **建立 FOC co-sim smoke model**  
    由 Simulink HDL Cosimulation Block 用固定已知输入驱动完整 FOC→CMP→PWM 装载链，确认第一笔实际生效的 `CMP_active` 与 Step 6D 已验收值一致。
 
-4. **冻结后续 7C 的 MIL plant 接口边界**  
-   明确现有 MIL 模型中哪些模块保留、替换、旁路，并把 deadtime、PWM update delay、采样、定点转换、时间同步的责任分配写死。
+4. **冻结后续 7C 的 Simple model 接口边界**  
+   以 `PMLSM_ThreeLoop_Simple.slx` 为主模型，明确其中 `Simple_Host`、`Control_Task_10kHz`、`Inverter_DeadTime`、`PMLSM_Plant_Model` 以及信号标签之间哪些保留、替换、旁路，并把 deadtime、PWM update delay、采样、定点转换、时间同步的责任分配写死。
+
+5. **把本地 Simple 模型纳入 GitHub 可追踪基线**  
+   当前 GitHub `main` 尚未包含 `PMLSM_ThreeLoop_Simple.slx`。Codex 实施 7B 时必须先从原始 MAIN 中读取该本地文件，记录结构并在修改前作为第一笔基线提交纳入实现分支；后续模型修改、脚本、RTL wrapper 和报告必须继续提交/推送到 GitHub，实现 PR 不能只留下本地结果。
 
 Step 7B **不闭合电机电流环**。动态 plant 闭环留给 Step 7C。
 
@@ -45,17 +49,43 @@ Step 7B **不闭合电机电流环**。动态 plant 闭环留给 Step 7C。
 
 ### 2.1 允许直接修改项目中的 Simulink 副本
 
-用户已明确：仓库 `simulink模型/` 下的模型是可修改副本，Codex 可以直接改。
+用户已明确：仓库/本地主项目 `simulink模型/` 下的模型是可修改副本，Codex 可以直接改。
 
-Step 7B/后续允许修改：
+**Step 7B 的主对象：**
+
+```text
+simulink模型/PMLSM_ThreeLoop_Simple.slx
+```
+
+该 Simple 模型从用户截图和描述可见的顶层主链为：
+
+```text
+Simple_Host
+   │ refs / enable / reset / load
+   v
+Control_Task_10kHz
+   │ cmp_a/b/c_counts
+   v
+Inverter_DeadTime
+   │ vd / vq
+   v
+PMLSM_Plant_Model
+   │ ia / ib / x_mm / v / theta_e / omega_e
+   └────────────── feedback tags ──────────────> Control_Task_10kHz
+```
+
+Step 7B 优先围绕这条简化主链增加 FPGA co-sim 接口。
+
+完整模型：
 
 ```text
 simulink模型/PMLSM_MIL_ControlCore_Sim.slx
 simulink模型/PMLSM_ControlCore_Block.slx
-simulink模型/init_PMLSM_*.m
 ```
 
-但只按当前阶段需要修改，不做无关重构。
+降级为**参考模型/算法来源**。除非实施中发现 Simple 模型缺少必须的参数或 block 需要对照，否则 7B 不主动修改它们。
+
+参数脚本 `simulink模型/init_PMLSM_*.m` 可按当前阶段需要小范围修改或新增 co-sim 参数文件，但不做无关重构。
 
 ### 2.2 外部原始模型目录继续只读
 
@@ -79,6 +109,22 @@ FOC_Gates/
 
 历史 C1–C4、PWM、gate RTL 和参考向量默认只读。  
 仅允许为 co-sim 增加新的 wrapper，以及本规格明确授权的只读监视端口扩展。
+
+
+### 2.4 本地 Simple 模型与 GitHub 同步规则
+
+截至本规格修订时，GitHub `main` 的 `simulink模型/` 目录尚未出现 `PMLSM_ThreeLoop_Simple.slx`，因此它应视为用户原始 MAIN 中的本地新增文件，而不是远端已有基线。
+
+Codex 开始实施时必须：
+
+1. 在 `D:/Project/FPGA_XC7A200T/simulink模型/PMLSM_ThreeLoop_Simple.slx` 核对真实文件；
+2. 用 MATLAB/Simulink API 只读导出顶层 block inventory、solver、sample time、InitFcn 和关键 subsystem path；
+3. **在任何功能修改之前**，把 as-found 的 Simple 模型作为独立 baseline commit 加入 7B 实现分支；
+4. 后续改动再用后续 commit 提交，使 Git 历史能区分“用户原始简化模型”和“FPGA co-sim 改造”；
+5. 推送实现分支并创建 GitHub PR，不能只更新本地 D 盘模型；
+6. 不把 `.slxc`、`slprj`、Vivado/MATLAB cache 或系统 TEMP 产物整体提交。
+
+如果本地实际文件名、模型引用或依赖与用户描述不一致，先报告并以真实文件为准，不凭截图复制模型。
 
 ---
 
@@ -137,41 +183,47 @@ RTL 六路 deadtime：保留，但不进入 plant 主链
 
 ## 4. Step 7B 总体架构
 
+Step 7B 采用“**Simple 模型作为集成骨架，FPGA branch 先并联观察、不抢 plant 控制权**”的方式：
+
 ```text
-                    Simulink
-        ┌──────────────────────────────┐
-        │ fixed-point input adapter    │
-        │  ia ib ic theta we ref vdc   │
-        └──────────────┬───────────────┘
-                       │
-                       v
-        ┌──────────────────────────────┐
-        │ HDL Cosimulation Block       │
-        │ Vivado Simulator / XSI       │
-        └──────────────┬───────────────┘
-                       │
-                       v
-             mc_foc_cosim_top
-                       │
-                       v
-              mc_foc_pwm_top
-                       │
-        FOC → adapter → PWM carrier
-                       │
-                    ZERO load
-                       │
-                       v
-         CMP_u/v/w_active + command_id
-                       │
-                       v
-        ┌──────────────────────────────┐
-        │ Simulink output adapter      │
-        │ duty = CMP_active / 2500     │
-        └──────────────────────────────┘
+PMLSM_ThreeLoop_Simple.slx
+
+Simple_Host
+     │
+     ├──────────────────────────────┐
+     │                              │
+     v                              v
+existing Control_Task_10kHz    FPGA_HDL_Cosim (new, 7B)
+     │ cmp counts                   │ fixed-point inputs
+     │                              v
+     │                       HDL Cosimulation Block
+     │                              │
+     │                       mc_foc_cosim_top
+     │                              │
+     │                       CMP_active + command_id
+     │                              │
+     │                         log / assertion only
+     │
+     v
+Inverter_DeadTime  <── 7B 仍由 existing controller 驱动
+     │
+     v
+PMLSM_Plant_Model
+     │
+     └── ia/ib/x/v/theta/we feedback
 ```
 
-Step 7B 只在 smoke model 中运行到第一笔/少量 active command。  
-Step 7C 再把 output adapter 接入 `Power_Plant_Feedback`。
+因此 7B 可以直接在用户简化三闭环模型里搭好未来 FPGA backend，但不改变当前 plant 的默认控制源。
+
+Step 7C 再把：
+
+```text
+FPGA_HDL_Cosim.CMP_active / 2500
+```
+
+通过明确的 backend selector 接到 `Inverter_DeadTime`，并旁路旧 count polarity / PWM update delay。
+
+仍保留一个独立的最小 counter model 来证明 Simulink HDL Cosimulation Block 本身能工作，但**不再新增第二个完整 FOC smoke SLX**。完整 FOC smoke 直接在 `PMLSM_ThreeLoop_Simple.slx` 的并联 `FPGA_HDL_Cosim` subsystem 中完成。
 
 ---
 
@@ -561,13 +613,18 @@ STEP7B_SIMULINK_MINIMAL_COSIM_PASS
 
 ---
 
-## 11. FOC co-sim smoke model
+## 11. Simple 模型中的 FOC co-sim smoke branch
 
-建立：
+Step 7B **不再创建** `PMLSM_FOC_HDL_Cosim_Smoke.slx`。
+
+FOC smoke 直接落在：
 
 ```text
-simulink模型/PMLSM_FOC_HDL_Cosim_Smoke.slx
+simulink模型/PMLSM_ThreeLoop_Simple.slx
+  /FPGA_HDL_Cosim
 ```
+
+这个新 subsystem 在 7B 中与现有 `Control_Task_10kHz` **并联观察**，不驱动 `Inverter_DeadTime`。
 
 ### 11.1 HDL DUT
 
@@ -579,7 +636,7 @@ mc_foc_cosim_top
 
 HDL source 使用仓库现有 C1–C4、adapter、motor_pwm_core 及 wrapper。
 
-不使用 Step 6E gate layer作为 plant 接口。
+不使用 Step 6E gate layer 作为 plant 接口。
 
 ### 11.1.1 HDL source / ROM staging
 
@@ -597,7 +654,18 @@ motor_control_ip/foc/rom/sin_qw_4096x18.mem
 
 允许在生成/启动脚本中把该 `.mem` 作为 simulation data file 加入或复制到实际 XSim 运行目录；**不允许为了 co-sim 修改 ROM 内容或改变已验收 LUT 数学**。日志必须确认没有 readmemh file-not-found，并至少用历史 smoke CMP 证明 ROM 内容实际生效。
 
-### 11.2 默认参数
+### 11.2 Simple 模型中的输入来源
+
+`FPGA_HDL_Cosim` 预留两种输入来源，但 7B 默认使用 smoke source：
+
+```text
+FPGA_Cosim_Input_Mode = 0 : fixed smoke constants (7B default)
+FPGA_Cosim_Input_Mode = 1 : Simple model live feedback / refs (7C 使用)
+```
+
+7B 模式 0 不参与 plant 驱动，只验证完整 HDL 链。
+
+### 11.3 默认参数
 
 ```text
 PI_PROFILE = 0
@@ -606,7 +674,7 @@ PWM = 10 kHz
 TBPRD = 2500
 ```
 
-### 11.3 固定 smoke 输入
+### 11.4 固定 smoke 输入
 
 第一笔采用历史 d_current：
 
@@ -626,7 +694,7 @@ run_enable = 1
 
 这些量在第一笔命令完成前保持稳定。
 
-### 11.4 第一笔预期 active CMP
+### 11.5 第一笔预期 active CMP
 
 历史已验收第一笔：
 
@@ -646,21 +714,21 @@ D_w = 1335 / 2500 = 0.5340
 
 注意这是 **D_high**，不是原始 C4 `d_foc`。
 
-smoke 只把第一笔结果作为 golden。  
-由于 PI 积分器后续会继续更新，不要求后续命令保持相同 CMP。
+smoke 只把第一笔结果作为 golden。由于 PI 积分器后续会继续更新，不要求后续命令保持相同 CMP。
 
-### 11.5 smoke 验收
+### 11.6 smoke 验收
 
 必须确认：
 
-- Simulink block 真正启动 Vivado/XSI；
+- `PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim` 内的 Simulink HDL Cosimulation Block 真正启动 Vivado/XSI；
 - accepted_sample_id 从 0→1；
 - active_command_id 从 0→1；
 - active_valid 在第一笔装载后变 1；
 - 第一笔 CMP 是 1165/1335/1335；
 - needs_reset=0；
 - fault_code=0；
-- 日志显示 input fixed-point 值与 HDL 端口格式一致。
+- 日志显示 input fixed-point 值与 HDL 端口格式一致；
+- **现有 `Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model` 主链在 7B 中仍保持原连接，FPGA branch 不影响 plant。**
 
 成功标记：
 
@@ -670,64 +738,119 @@ STEP7B_FOC_COSIM_SMOKE_PASS
 
 ---
 
-## 12. 项目 MIL 模型的 Retain / Replace / Bypass 设计
+## 12. PMLSM_ThreeLoop_Simple 的 Retain / Replace / Bypass 设计
 
-这张表冻结 Step 7C 的边界。
+这张表冻结 Step 7C/7D 的主模型边界。
 
-| MIL component | Decision | Reason |
-|---|---|---|
-| `Power_Plant_Feedback` 电机 dq/机械模型 | RETAIN | 作为 plant |
-| 平均值逆变器 | RETAIN | 与 active duty 边界匹配 |
-| 平均逆变器 deadtime model | RETAIN | 7C deadtime 由 Simulink plant 侧负责 |
-| 原 `1-C/7500` duty/count mapping | BYPASS | 新 HDL 输出已是 `D_high=CMP/2500` |
-| 原 `PWM_Update_Delay` | BYPASS | HDL 已真实完成 shadow/next-ZERO 更新 |
-| 原 PI current controller | REPLACE | 由 RTL C2 |
-| 原 Clarke/Park/inverse Park/SVPWM | REPLACE | 由 RTL C1/C3/C4 |
-| 原 DSP ePWM count/update path | REPLACE | 由 `motor_pwm_core` |
-| 原速度/位置反馈 plant signals | RETAIN | 7D 外环需要 |
-| encoder quantization/model | DEFER / optional | 7C 先用 ideal x/v → theta/we |
-| Simulink speed loop | DEFER to 7D | 7C 先闭电流环 |
-| Simulink position loop | DEFER to 7D | 7C 先闭电流环 |
-| Startup/test command generator | RETAIN selectively | 作为测试激励来源 |
-| Step 6E six-gate deadtime | OBSERVE ONLY in current plant path | 防止与平均 deadtime 重复 |
+| Simple model component | 7B | 7C/7D decision | Reason |
+|---|---|---|---|
+| `Simple_Host` | RETAIN | RETAIN selectively | 提供位置/速度/电流测试给定、enable/reset/load 等简化控制入口 |
+| `Control_Task_10kHz` | RETAIN as plant source | SPLIT/REPLACE progressively | 7B 保持原控制；7C 电流测试模式由 FPGA 内环替代；7D 再决定外环保留/拆分 |
+| `Inverter_DeadTime` | RETAIN | RETAIN | 作为 average inverter + plant-side deadtime |
+| `PMLSM_Plant_Model` | RETAIN | RETAIN | 电气/机械 plant |
+| 原 `cmp_a/b/c_counts` 到 inverter 的旧映射 | RETAIN in 7B | BYPASS on FPGA backend | FPGA 输出已是 `D_high=CMP_active/2500` |
+| 原 PWM update delay/近似（若 Simple 内仍存在） | RETAIN in legacy branch | BYPASS on FPGA backend | HDL 已真实完成 shadow/next-ZERO 更新 |
+| 原 PI/Clarke/Park/SVPWM | RETAIN in legacy branch | REPLACE on FPGA backend | 由 RTL C1–C4 |
+| 原速度/位置环 | RETAIN | DEFER decision to 7D | 当前 FPGA 只实现内环 |
+| plant `ia/ib/ic/x_mm/v/theta_e/omega_e` | RETAIN | RETAIN | FPGA input / outer-loop feedback |
+| encoder quantization/model（若 Simple 已删除则不恢复） | NO CHANGE | OPTIONAL later | 7C 先用理想 plant 状态 |
+| Step 6E six-gate deadtime | OBSERVE ONLY | OBSERVE ONLY in average plant path | 防止与 `Inverter_DeadTime` 重复 |
+
+### 12.1 7C 电流环模式的预期切换
+
+7C 先使用 Simple 模型已有的 current-test / iq-test 接口，不要求立即把三闭环全部迁移：
+
+```text
+Simple_Host iq_test_ref / id_ref / enable
+                │
+                v
+        FPGA_HDL_Cosim
+                │
+        active CMP / 2500
+                │
+                v
+        Inverter_DeadTime
+                │
+                v
+        PMLSM_Plant_Model
+```
+
+速度环和位置环在 7C 可以保持关闭。
+
+### 12.2 7D 三闭环方向
+
+到 7D 再从 `Control_Task_10kHz` 中保留/拆出速度环与位置环的参考生成逻辑，使：
+
+```text
+Simulink position/speed outer loops
+             ↓ id_ref / iq_ref
+FPGA HDL current loop + PWM
+             ↓ active duty
+Simulink inverter + plant
+```
+
+不要在 7B 提前重构外环。
 
 ---
 
-## 13. 对仓库 Simulink 副本的 Step 7B 修改策略
+## 13. 对 PMLSM_ThreeLoop_Simple 的 Step 7B 修改策略
 
-### 13.1 可以直接修改，但不提前改 plant 控制权
+### 13.1 先保留用户原始 Simple 基线，再修改
 
-Step 7B 允许直接修改：
+由于该文件目前只在用户本地主目录、尚未进入 GitHub main：
 
-```text
-simulink模型/PMLSM_MIL_ControlCore_Sim.slx
-```
+1. Codex 先只读打开/Update Model，导出结构；
+2. 确认用户本地文件不是 cache/临时备份；
+3. **第一笔实现提交只把 as-found `PMLSM_ThreeLoop_Simple.slx` 和结构清单纳入 Git**；
+4. 第二笔及以后提交才增加 FPGA co-sim 功能。
 
-但本阶段只允许：
+这样 GitHub 能保留用户这版“简化 DSP 三闭环模型”的原始快照，而不是只看到改完后的二进制 SLX。
 
-- 添加注释/annotation，标记未来 FPGA backend 接入点；
-- 添加不改变当前 plant 驱动源的 observation / helper subsystem；
-- 增加 Step 7B 相关日志或参数入口；
-- 保持原 Simulink controller 仍是默认 plant 驱动源。
+### 13.2 7B 在 Simple 模型里新增的内容
 
-**不在 7B 把 plant 真正切到 FPGA。**
-
-真正替换 plant 驱动源在 7C。
-
-### 13.2 不强制复制整个 MIL 模型
-
-不要为了 co-sim 再复制一个完整三闭环主模型。
-
-允许新增的独立模型仅限：
+允许增加：
 
 ```text
-PMLSM_HDL_Cosim_Minimal.slx
-PMLSM_FOC_HDL_Cosim_Smoke.slx
+PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim
 ```
 
-它们是工具/接口验证模型，不是第二套 MIL。
+内部建议再分：
 
-### 13.3 参数脚本
+```text
+FPGA_Input_Adapter
+HDL_Cosimulation
+FPGA_Output_Adapter
+FPGA_Cosim_Monitor
+```
+
+还可添加：
+
+- `FPGA_Cosim_Input_Mode`；
+- active CMP / duty / ids / fault logging；
+- 注释说明未来 7C backend selector 接入点；
+- 最少量 scope/display/assert 辅助。
+
+7B **不改变**：
+
+```text
+Control_Task_10kHz -> Inverter_DeadTime
+```
+
+的 plant 默认驱动关系。
+
+### 13.3 独立最小模型只保留一个
+
+允许新增：
+
+```text
+simulink模型/PMLSM_HDL_Cosim_Minimal.slx
+```
+
+用于证明 Simulink HDL Cosimulation Block + Vivado 2026.1。
+
+不再新增第二个完整 FOC smoke 模型；FOC smoke 直接在 Simple 模型并联 branch 内完成。
+
+### 13.4 参数脚本
 
 可新增：
 
@@ -737,7 +860,7 @@ simulink模型/init_PMLSM_fpga_cosim_params.m
 
 只放：
 
-- co-sim enable；
+- co-sim enable / smoke mode；
 - Vivado tool path 可配置项；
 - HDL clock；
 - co-sim communication period；
@@ -746,6 +869,26 @@ simulink模型/init_PMLSM_fpga_cosim_params.m
 - future backend selector placeholder。
 
 不得在 7B 改写 motor/plant 参数。
+
+### 13.5 GitHub 同步是交付的一部分
+
+Step 7B 实现完成必须同时满足：
+
+```text
+local MAIN has runnable SLX/RTL
+AND
+Git implementation branch contains authorized model/RTL/script/report changes
+AND
+open PR exists for ChatGPT Review
+```
+
+不接受：
+
+- 只改本地 `.slx` 不 commit；
+- 只提交文字报告、不提交可复现模型；
+- 把用户原始 Simple 模型留成 untracked；
+- 只返回一个本地路径而不 push GitHub；
+- 提交 Simulink/Vivado cache 垃圾代替真正模型源文件。
 
 ---
 
@@ -881,15 +1024,17 @@ needs_reset = 0
 
 无需重新跑所有 C1/C2/C3 单元和完整 route。
 
-### 18.4 Simulink 原 MIL 默认路径
+### 18.4 PMLSM_ThreeLoop_Simple 默认路径
 
-如果 Step 7B 修改了 `PMLSM_MIL_ControlCore_Sim.slx`：
+Step 7B 修改 `PMLSM_ThreeLoop_Simple.slx` 后必须确认：
 
-- 原 controller 仍为默认 plant source；
+- `Control_Task_10kHz` 仍是默认 plant source；
+- `Inverter_DeadTime -> PMLSM_Plant_Model` 仍按原 Simple 主链工作；
+- `FPGA_HDL_Cosim` 在 7B 只是并联 smoke/monitor branch，不驱动 plant；
 - Update Model 无 error；
 - 至少做一个短时 baseline run 或模型初始化检查；
-- 不把 FPGA smoke 子系统意外接入 plant；
-- 不改变原默认测试模式的数值结果作为本阶段目标。
+- Simple 模型原有 current/speed/position enable 接口没有因新增 branch 被破坏；
+- GitHub 中存在修改前 baseline commit 和修改后实现 commit。
 
 ---
 
@@ -916,16 +1061,17 @@ needs_reset = 0
 
 ## 20. Step 7C 的预期入口
 
-Step 7B 完成后，Step 7C 将直接复用：
+Step 7B 完成后，Step 7C 将直接在 `PMLSM_ThreeLoop_Simple.slx` 中复用：
 
 ```text
-mc_foc_cosim_top
-HDL Cosimulation Block
-fixed-point adapters
-active CMP output adapter
+FPGA_HDL_Cosim
+  ├─ mc_foc_cosim_top
+  ├─ HDL Cosimulation Block
+  ├─ fixed-point adapters
+  └─ active CMP output adapter
 ```
 
-并真正形成：
+并把该 branch 正式接入 `Inverter_DeadTime`，形成：
 
 ```text
 Simulink motor current
@@ -974,6 +1120,6 @@ R2026b Prerelease + Vivado 2026.1 的实际兼容性以 Step 7A 本机成功证�
 
 Step 7B 完成的含义是：
 
-> Simulink HDL Cosimulation Block 已经能够通过 Vivado 2026.1 驱动现有完整 FOC/PWM RTL，并读到真实 ZERO 装载后的 active CMP；同时 MIL plant 的后续替换边界已经冻结。
+> `PMLSM_ThreeLoop_Simple.slx` 已被纳入 GitHub 基线，并在不改变原 plant 默认控制源的前提下增加可运行的 FPGA HDL co-sim branch；Simulink HDL Cosimulation Block 能够通过 Vivado 2026.1 驱动现有完整 FOC/PWM RTL并读到真实 ZERO 装载后的 active CMP，同时 7C 在 Simple 模型内的后续切换边界已经冻结。
 
 它**不意味着**电机闭环已经正确，也不意味着 Simulink plant 与 RTL deadtime/ADC/外环全部完成集成。
