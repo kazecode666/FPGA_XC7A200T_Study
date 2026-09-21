@@ -1,0 +1,34 @@
+MATLAB=26.2.0.3340147 (R2026b) Prerelease Update 3
+RELEASE=2026b
+ADDON=Fixed-Point Designer version=26.2 enabled=1
+ADDON=DSP System Toolbox version=26.2 enabled=1
+ADDON=SoC Blockset version=26.2 enabled=1
+ADDON=C2000 Microcontroller Blockset version=26.2 enabled=1
+ADDON=MATLAB Compiler version=26.2 enabled=1
+ADDON=Control System Toolbox version=26.2 enabled=1
+ADDON=HDL Verifier version=26.2 enabled=1
+ADDON=HDL Coder version=26.2 enabled=1
+ADDON=Embedded Coder version=26.2 enabled=1
+ADDON=DSP HDL Toolbox version=26.2 enabled=1
+ADDON=MATLAB Coder version=26.2 enabled=1
+ADDON=MATLAB Support for MinGW-w64 C/C++/Fortran Compiler version=26.2.2 enabled=1
+ADDON=MATLAB Report Generator version=26.2 enabled=1
+ADDON=Simscape Multibody version=26.2 enabled=1
+ADDON=Motor Control Blockset version=26.2 enabled=1
+ADDON=Simscape Electrical version=26.2 enabled=1
+ADDON=Simulink Coder version=26.2 enabled=1
+ADDON=Stateflow version=26.2 enabled=1
+ADDON=Signal Processing Toolbox version=26.2 enabled=1
+ADDON=Simulink Compiler version=26.2 enabled=1
+ADDON=Simulink version=26.2 enabled=1
+ADDON=Simulink Report Generator version=26.2 enabled=1
+ADDON=Simscape version=26.2 enabled=1
+ADDON=SoC Blockset Support Package for AMD FPGA and SoC Devices version=26.2.2 enabled=1
+AMD_SUPPORT_PACKAGE=PASS version=26.2.2
+SUPPORT_PACKAGE=MATLAB Support for MinGW-w64 C/C++/Fortran Compiler version=26.2.2
+SUPPORT_PACKAGE=SoC Blockset Support Package for AMD FPGA and SoC Devices version=26.2.2
+LICENSE=EDA_Simulator_Link checkout=PASS
+LICENSE=Simulink checkout=PASS
+LICENSE=fixed_point_toolbox checkout=PASS
+HDL_VERIFIER_LICENSE=PASS
+VIVADO=E:/AMDDesignTools/2026.1/Vivado/bin/vivado.bat
