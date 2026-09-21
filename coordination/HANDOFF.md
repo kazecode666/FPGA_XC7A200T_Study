@@ -1,16 +1,16 @@
 # ChatGPT ↔ Codex Project Handoff
 
-GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可以直接打开的 Vivado/MATLAB 工程及真实运行结果。
+GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可直接打开的 Vivado/Simulink 工程与真实运行结果。
 
 ## 工作约定
 
-- 这是学习项目。先验证主链与工具联动，再做必要检查，不建设产品级基础设施。
+- 这是学习项目。先把主链和工具联动跑通，再做必要验证，不建设产品级基础设施。
 - 实际实施仅在用户原始主目录 `D:/Project/FPGA_XC7A200T`，不新建 linked worktree、额外 clone 或云端实施副本。
-- ChatGPT 负责接口设计、任务交接和 PR Review；Codex 负责本地环境审计、授权实现、MATLAB/Vivado 执行、报告和开放 PR。
-- 保留用户 tracked/untracked 内容、硬件资料、旧 worktree、`FOC_Current`、`FOC_PWM`、`FOC_Gates` 的本地结果。
-- 不使用 reset --hard、clean -fd、强制切分支、自动 stash、整体覆盖或自动清理。
-- 不使用文件哈希作为验收；使用 Git 差异、真实工具输出和可复现实验。
-- 实现/审计完成停在开放 PR；不自动合并、不自动开始下一阶段。
+- ChatGPT 负责架构、任务交接和 PR Review；Codex 负责本地非破坏性同步、MATLAB/Vivado 执行、授权 RTL/SLX/script 修改、报告和开放实现 PR。
+- 保留用户 tracked/untracked 内容、硬件资料、旧 worktree、`FOC_Current`、`FOC_PWM`、`FOC_Gates` 和本地仿真/实现结果。
+- 不使用 `reset --hard`、`clean -fd`、强制切分支、自动 stash、整体覆盖或自动清理。
+- 不使用文件哈希作为验收；使用 Git 状态/差异、真实工具输出和可复现实验。
+- 实现完成停在开放 PR；不自动合并、不开始下一阶段、不生成 bitstream、不操作硬件。
 
 ## 已接受基线
 
@@ -24,122 +24,161 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 6C4 | 完整 FOC 电流算法核，PR #19 已合并 |
 | Step 6D | FOC→CMP→三相 PWM，PR #21 已合并 |
 | Step 6E | 六路互补 PWM、死区、同步关断，PR #23 已合并 |
-| Step 7A | 当前：MATLAB R2026b / AMD HDL co-simulation 环境审计 |
+| Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim 环境审计，PR #25 已合并 |
+| Step 7B | 当前：Simulink HDL Cosimulation Block + active-CMP 接口集成 |
 
-Step 6E 合并提交：`dcbbd6f5744f5282cb00d38a301298dacb3007fe`。
-
-当前数字控制器基线已经具备：
-
+当前 main（任务书编写时）：
 ```text
-三相电流/角度/参考
- -> FOC
- -> d_foc
- -> D_high / CMP
- -> 三相 center-aligned PWM
- -> 六路互补逻辑 + 参数化死区
+ce9a875449b933cba0bf6d3f2e68b7dc30159280
 ```
 
-本地主工程：
+Step 7A 已实测：
+- R2026b Prerelease Update 3 + HDL Verifier + Vivado Simulator 2026.1 可以通过 XSI 完成真实 MATLAB System Object ↔ HDL 数据交换；
+- Vivado 2026.1 会给“未 fully tested”警告但本机没有 hard reject；
+- 用户在 Step 7A 合并后又安装了 SoC Blockset Support Package for AMD FPGA and SoC Devices，Step 7B 启动时只需重新确认当前 R2026b 是否识别它。
+
+## Step 7B 已批准设计
+
+规格：
 
 ```text
-FOC_Current/FOC_Current.xpr
-FOC_PWM/FOC_PWM.xpr
-FOC_Gates/FOC_Gates.xpr
+coordination/specs/step7b_simulink_hdl_cosim_interface_design.md
 ```
 
-后续用户路线已经确定：优先复用已有 Simulink 平均值逆变器（含死区效应）和电机模型，与当前 HDL 控制器做联合仿真；以后再研究 JMAG/Maxwell 电磁模型联动。不要主动重写一套 SystemVerilog 电机模型。
+用户已批准并合并 PR #26。
 
-## 当前 Step 7A 任务
+核心冻结点：
 
-唯一任务书：
+1. **长期 Simulink↔HDL 边界采用方案 B：**
+   ```text
+   D_high = CMP_active / 2500
+   ```
+   FPGA/RTL 负责 FOC、SVPWM、极性适配、CMP 量化、shadow 和 ZERO 装载；Simulink 看到真正已经生效的 active compare。
+
+2. **主 Simulink 集成骨架改为：**
+   ```text
+   simulink模型/PMLSM_ThreeLoop_Simple.slx
+   ```
+   它是用户此前做过功能简化的三闭环副本，保留核心控制、平均值逆变器/死区和 PMLSM plant。
+
+3. **当前 GitHub main 尚未包含该 Simple 模型。**
+   Codex 实施时必须先读取用户本地 as-found 文件，并在任何功能修改之前先做独立 baseline commit，把原始 Simple 模型同步到 GitHub。
+
+4. Step 7B 新增并联：
+   ```text
+   PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim
+   ```
+   但本阶段只做 smoke/monitor，不允许接管：
+   ```text
+   Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model
+   ```
+
+5. 第一个完整 FOC Simulink smoke 必须使用历史 d_current 输入，并得到真实 active CMP：
+   ```text
+   1165,1335,1335
+   ```
+
+6. HDL 50 MHz / 20 ns；初始 Simulink↔HDL 通信目标 50 us。必须实测并冻结 50 us 数据更新与 carrier peak 的 scheduler 顺序，不能带 race 进入 Step 7C。
+
+7. 平均值逆变器 deadtime 继续由 Simulink plant 侧负责；Step 6E 六路 gate/deadtime 不进入当前 plant 主链，避免重复 deadtime。
+
+8. 旧 MIL/Simple 的 PWM update-delay 近似在未来 FPGA backend 下旁路，因为 RTL 已真实完成 shadow/next-ZERO 装载。
+
+## 当前唯一 Step 7B Codex 任务书
 
 ```text
-coordination/tasks/step7a_matlab_hdl_cosim_environment_audit.md
+coordination/tasks/step7b_simulink_hdl_cosim_local_integration.md
 ```
 
-这是**环境审计 + 最小联合仿真可行性试验**，不是完整 FOC/Simulink 集成。
+这份文件已经把正式 implementation plan 和 Codex 启动提示合并在一起，不再另开重复任务文档。
 
-用户当前环境已知：
+实施顺序：
 
-- MATLAB/Simulink：R2026b；
-- 已更新 SoC Blockset Support Package for AMD FPGA and SoC Devices；
-- Vivado：当前工程使用 2026.1；
-- 操作系统：Windows；
-- 当前 HDL 开发与 route 基线继续使用 Vivado 2026.1。
-
-官方当前基线需在报告中对照：
-
-- R2026b 起，AMD HDL Coder/HDL Verifier 等旧 support package 功能合并到 SoC Blockset Support Package for AMD FPGA and SoC Devices；
-- support-package 合并不自动等于 HDL Verifier 产品许可；
-- HDL co-simulation 属于 HDL Verifier；
-- MathWorks 当前公开的 Vivado Simulator 推荐/完整测试版本仍为 2024.1。
-
-因此 Step 7A 必须用本机证据判断 **R2026b + Vivado 2026.1** 是否实际可用，而不是凭版本名称推断。
+```text
+Task 1  读取/提交 as-found PMLSM_ThreeLoop_Simple baseline
+Task 2  最小 Simulink HDL Cosimulation Block ↔ Vivado 2026.1
+Task 3  active CMP 只读端口 + mc_foc_cosim_top + XSim 回归
+Task 4  Simple 模型并联 FPGA_HDL_Cosim + FOC smoke
+Task 5  冻结 50 us scheduler/transaction contract
+Task 6  最终回归、报告、GitHub 实现 PR
+```
 
 ## Codex 启动指令
 
-在用户本地 Codex 会话执行：
+用户在本地 Codex 会话执行：
 
 ```text
-开始 Step 7A 环境审计。
+开始 Step 7B，严格按 executing-plans 顺序执行。
 
 先读取：
 coordination/HANDOFF.md
-coordination/tasks/step7a_matlab_hdl_cosim_environment_audit.md
+coordination/specs/step7b_simulink_hdl_cosim_interface_design.md
+coordination/tasks/step7b_simulink_hdl_cosim_local_integration.md
 
-只在原始主目录 D:/Project/FPGA_XC7A200T 工作。
-先检查 Git 工作树/远端/本地修改；不要创建 worktree 或额外 clone。
-本任务不修改 FOC/PWM RTL，不重建已有工程，不安装或卸载任何软件。
+只在我的原始主项目：
+D:/Project/FPGA_XC7A200T
+中工作。
 
-按任务书检查：
-1. MATLAB R2026b 的实际版本、ver、addons；
-2. Simulink、SoC Blockset、HDL Verifier、HDL Coder、Fixed-Point Designer 的安装与许可可用性；
-3. SoC Blockset Support Package for AMD 的实际安装版本；
-4. Vivado 2026.1 和机器上其他 Vivado/Vitis 版本；
-5. R2026b 本地文档/工具对 Vivado Simulator 的版本识别；
-6. 若所需产品/许可齐全，使用系统临时目录做一个最小 HDL co-sim 示例，证明 MATLAB/Simulink 与 Vivado Simulator 真正交换数据。
+先核对 Git 主工作树、远端、当前修改和已合并 main。
+不要创建 worktree/额外 clone，不 stash，不 reset/clean，不覆盖我的文件。
 
-不要用完整 FOC 当第一个联通例子。
-不要 patch MathWorks 版本检测。
-不要改 Windows 全局 PATH。
-如需临时 MATLAB tool path 配置，先记录旧值、当前会话修改、结束前恢复。
+非常重要：
+simulink模型/PMLSM_ThreeLoop_Simple.slx 是我本地已有但之前未同步 GitHub 的模型。
+先用 MATLAB/Simulink API 只读检查真实结构，在任何功能修改前，
+把 as-found 的 Simple 模型和 baseline inventory 作为第一笔实现 commit 纳入分支。
+之后再开始修改，并把所有授权的 SLX/RTL/scripts/reports 继续同步到 GitHub。
+不要只改本地模型。
 
-最后给出 A/B/C/D 之一：
-A READY_NOW
-B READY_WITH_SUPPORTED_VIVADO
-C MISSING_COMPONENT_OR_LICENSE
-D OTHER_BLOCKER
+按任务书先做最小 Simulink HDL Cosimulation Block + Vivado 2026.1 联通；
+再做 mc_foc_cosim_top 和 active CMP 只读端口；
+然后在 PMLSM_ThreeLoop_Simple.slx 中新增并联 FPGA_HDL_Cosim branch。
 
-写：
-coordination/reports/step7a_matlab_hdl_cosim_environment_audit.md
-docs/reports/step7a/
+Step 7B 中 FPGA branch 只能 smoke/monitor，
+不得接管 Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model 主链。
+第一笔 d_current 的真实 active CMP 必须检查为 1165/1335/1335。
 
-提交 PR：
-Step 7A: Audit MATLAB R2026b HDL co-simulation environment
+把 50 us Simulink 数据更新与 HDL carrier peak 的 scheduler 顺序实际测出来，
+连续三次新鲜仿真一致后冻结 timing contract，不凭假设。
 
-停在开放 PR 等待 Review。
-不要自动安装 Vivado 2024.1，不要开始完整 FOC/Simulink 联合仿真，不要开始 Vitis/SoC 迁移。
+确认新安装的 SoC Blockset Support Package for AMD 是否被 R2026b 识别；
+这不是重新做 Step 7A，也不要因为 support package 问题去 patch MATLAB。
+HDL simulator 仍使用现有 Vivado 2026.1。
+
+完整重跑任务书列出的 Step 7B 验收和原 6D/6E必要回归。
+不跑 bitstream、不操作硬件、不开始电机闭环、不进入 Step 7C。
+
+最后写：
+coordination/reports/step7b_codex_report.md
+docs/reports/step7b/
+
+推送实现分支并创建 PR：
+Step 7B: Add Simulink HDL co-simulation interface
+
+返回 PR、本地模型路径和复现步骤，停在开放 PR 等待 ChatGPT Review。
 ```
 
-## 本阶段完成边界
+## 后续边界
 
-Step 7A 只回答“现有电脑环境是否具备 HDL 联合仿真条件，以及卡在哪里”。
-
-后续如果环境 Ready，再单独设计：
+Step 7B 结束时，只证明：
 
 ```text
-Simulink 平均值逆变器/电机模型
-              ⇅
-HDL Verifier co-simulation
-              ⇅
-现有 FOC/PWM HDL
+Simulink HDL Cosimulation Block
+        ↕
+Vivado 2026.1 / XSI
+        ↕
+existing FOC/PWM HDL
+        ↓
+real CMP_active
 ```
 
-联调阶段必须区分：
+并且这些结果已经挂进 Simple 模型的并联 branch。
 
-- Simulink 逆变器接受的是 duty、active CMP、三路 raw PWM 还是六路 gate；
-- 死区由哪一侧建模，避免 RTL 与 Simulink 重复计算；
-- Simulink solver/sample time 与 50 MHz HDL 时钟、100 us 控制周期、ZERO 更新的映射；
-- 定点/浮点边界及角度/电流/母线单位。
+Step 7C 才正式把：
 
-这些接口不在 Step 7A 中实现。
+```text
+CMP_active / 2500
+```
+
+接入 `Inverter_DeadTime`，闭合静止电流环。
+
+Step 7D 再恢复/拆分速度环和位置环，形成完整三闭环联合仿真。
