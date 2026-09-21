@@ -75,7 +75,7 @@ Built simulation snapshot step7b_snapshot
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Sep 22 01:18:36 2026
+  **** Start of session at: Tue Sep 22 01:21:35 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -86,4 +86,4 @@ run -all
 STEP7B_FOC_WRAPPER_PASS first_cmp=1165,1335,1335 disable=1 reset_required=1 reset_ids=1
 $finish called at time : 100560 ns : File "D:/Project/FPGA_XC7A200T/motor_control_ip/integration/tb/mc_foc_cosim_top_tb.sv" Line 33
 exit
-INFO: [Common 17-206] Exiting xsim at Tue Sep 22 01:18:37 2026...
+INFO: [Common 17-206] Exiting xsim at Tue Sep 22 01:21:36 2026...
