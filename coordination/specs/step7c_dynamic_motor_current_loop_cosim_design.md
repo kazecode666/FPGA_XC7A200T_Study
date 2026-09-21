@@ -300,9 +300,10 @@ PMLSM_deadtime_s = 0
 
 ```text
 PMLSM_deadtime_s = 1 us
+PMLSM_deadtime_ratio = PMLSM_deadtime_s / Ts = 0.01
 ```
 
-用于观察当前 Simple 模型平均 deadtime 对闭环的影响。
+用于观察当前 Simple 模型平均 deadtime 对闭环的影响。若测试脚本通过 `SimulationInput` 覆盖 deadtime，必须同时重算/覆盖 ratio，不能只改 `PMLSM_deadtime_s` 留下旧 ratio。
 
 不把 RTL 500 ns 参数改成 1 us，也不把 Simulink 1 us 改成 500 ns来“统一数字”。二者属于不同抽象层。
 
@@ -381,7 +382,7 @@ FPGA_Reference_Mode = 1
     future host/outer-loop reference
 ```
 
-Step 7C accepted dynamic tests使用：
+Step 7C accepted dynamic tests 使用：
 
 ```text
 FPGA_Cosim_Input_Mode = 1
@@ -445,6 +446,8 @@ PI_PROFILE = 0
 ## 10. Backend enable / stop / fault 语义
 
 ### 10.1 FPGA bridge enable
+
+FPGA backend 的 `run_enable` 只由 PWM/backend enable 语义决定，不能被 legacy speed/position loop enable 隐式控制。
 
 定义：
 
@@ -655,28 +658,21 @@ PMLSM_deadtime_s = 1 us
 
 不要求两组完全相同。
 
-### 13.3 Scenario C — voltage saturation / recovery
+### 13.3 Scenario C — stop during free motion
 
-以较低 `vdc` 或较短的较高电流参考产生可控限幅，然后恢复正常 reference。
+使用 Scenario A 的自由运动状态，在 motor 已有非零速度和非零 electrical angle 时关闭 `PWM_EN`。
 
-目标：
+必须：
 
-- 观察 FPGA voltage limiter 确实进入限制；
-- reference 回到可达范围后电流重新收敛；
-- 不触发协议 fault；
-- 不造成 persistent stale command。
-
-具体 `vdc` 和 reference 数值由实现前的短 probe 根据实际 limiter 选择，必须写进最终报告，不允许通过大范围扫参数“碰巧找到能过的”。
-
-### 13.4 Scenario D — stop
-
-在动态运动过程中关闭 `PWM_EN`：
-
-- average inverter 应停止应用有效 active duty；
+- average inverter 停止应用有效 FPGA duty；
 - `active_valid` 进入无效；
-- plant 电流按当前 average-model shutdown 语义自然变化；
-- 不允许旧 command 继续以 enabled 状态驱动 plant；
-- 本 scenario 不要求无 reset 自动恢复。
+- `fpga_bridge_enable=0`；
+- plant 电流按当前 average-model disabled 语义自然变化；
+- 旧 active CMP 可以作为历史状态保留，但不能以 enabled 状态继续驱动 plant；
+- 不要求无 reset 自动恢复；
+- 无 NaN/Inf。
+
+本阶段不把 voltage-saturation/anti-windup 压力测试列为必须验收项。等第一版自由运动闭环稳定后，再单独增加更高参考或低母线场景。
 
 ---
 
@@ -700,7 +696,7 @@ iq_plant
 - peak overshoot；
 - steady tracking error；
 - max |id|；
-- saturation recovery time。
+- stop 后 current decay / response。
 
 ### 14.2 Mechanical motion
 
