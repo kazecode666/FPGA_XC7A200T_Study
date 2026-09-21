@@ -4,8 +4,8 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 
 ## 工作约定
 
-- 这是学习项目。先把主链和工具联动跑通，再做必要验证，不建设产品级基础设施。
-- 实际实施仅在用户原始主目录 `D:/Project/FPGA_XC7A200T`，不新建 linked worktree、额外 clone 或云端实施副本。
+- 学习项目：优先把控制主链和联合仿真跑通，再做必要验证，不建设产品级基础设施。
+- 实际实施仅在 `D:/Project/FPGA_XC7A200T`，不新建 linked worktree、额外 clone 或云端实施副本。
 - ChatGPT 负责架构、任务交接和 PR Review；Codex 负责本地非破坏性同步、MATLAB/Vivado 执行、授权 RTL/SLX/script 修改、报告和开放实现 PR。
 - 保留用户 tracked/untracked 内容、硬件资料、旧 worktree、`FOC_Current`、`FOC_PWM`、`FOC_Gates` 和本地仿真/实现结果。
 - 不使用 `reset --hard`、`clean -fd`、强制切分支、自动 stash、整体覆盖或自动清理。
@@ -24,172 +24,260 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 6C4 | 完整 FOC 电流算法核，PR #19 已合并 |
 | Step 6D | FOC→CMP→三相 PWM，PR #21 已合并 |
 | Step 6E | 六路互补 PWM、死区、同步关断，PR #23 已合并 |
-| Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim 环境审计，PR #25 已合并 |
-| Step 7B | 本地实现及完整验收完成，等待开放实现 PR 的 ChatGPT Review |
+| Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim，PR #25 已合并 |
+| Step 7B | Simulink HDL Cosimulation block + active-CMP smoke，PR #28 已合并 |
+| Step 7C | 当前：自由运动 PMLSM + FPGA 电流环动态闭环 |
 
-## Step 7B 实现交付（2026-09-21）
-
-- 报告：`coordination/reports/step7b_codex_report.md`；复现：`docs/reports/step7b/README.md`。
-- Simple as-found baseline 独立提交 `6774035`，用户补齐原始依赖后才开始 co-sim 修改。
-- 主集成骨架为 `simulink模型/PMLSM_ThreeLoop_Simple.slx`；新增 `FPGA_HDL_Cosim` 仅并联 smoke/monitor、没有输出端口。原 `Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model` 保持。
-- 真实 Simulink HDL block/XSI 最小六值、完整 FOC smoke 首笔 active CMP `1165/1335/1335`、6D profile0/profile1、6E profile0、legacy 短仿真全部通过。
-- 边界仍冻结为 `D_high = CMP_active / 2500`，7B 中这些 duty 只用于记录。
-- 50 us 通信、20 ns HDL 时钟、200 ns 复位、prerun=0：50 us 更新的 NEW B 被 accepted ID1 使用；通信网格上 100 us 观察到 accepted ID1，150 us 观察到 active ID1。三次独立运行一致。首个 peak 稍晚于 50 us；改变复位/预运行设置必须重验。
-- AMD support package 26.2.2 被 R2026b 识别；Vivado 2026.1 仍有 not fully tested 警告，但本机实际运行通过。
-- **Step 7C 未开始**。首次 FPGA plant 电流闭环留到 Step 7C；本 PR 不合并、不生成 bitstream、不操作硬件。
-
-当前 main（任务书编写时）：
-```text
-ce9a875449b933cba0bf6d3f2e68b7dc30159280
-```
-
-Step 7A 已实测：
-- R2026b Prerelease Update 3 + HDL Verifier + Vivado Simulator 2026.1 可以通过 XSI 完成真实 MATLAB System Object ↔ HDL 数据交换；
-- Vivado 2026.1 会给“未 fully tested”警告但本机没有 hard reject；
-- 用户在 Step 7A 合并后又安装了 SoC Blockset Support Package for AMD FPGA and SoC Devices，Step 7B 启动时只需重新确认当前 R2026b 是否识别它。
-
-## Step 7B 已批准设计
-
-规格：
+当前 main（Step 7C 任务书编写时）：
 
 ```text
-coordination/specs/step7b_simulink_hdl_cosim_interface_design.md
+9d70c901046efbd6364c60d6d4c0ce12bb4c5f62
 ```
 
-用户已批准并合并 PR #26。
+## Step 7B 已接受实现
+
+Step 7B merge：
+
+```text
+PR #28
+merge 9572a73e09fa477d03bc56f22627b7599118de5f
+```
+
+已验证：
+
+- `PMLSM_ThreeLoop_Simple.slx` 已进入 Git 历史，原始 as-found baseline 是 `6774035`；
+- R2026b + HDL Verifier + Vivado 2026.1 的真实 Simulink HDL Cosimulation block/XSI 路径可用；
+- `mc_foc_cosim_top` 导出实际 `CMP_active`、accepted/active command IDs、valid/fault 状态；
+- 历史 d-current smoke 第一笔 active CMP = `1165/1335/1335`；
+- `FPGA_HDL_Cosim` 在 Step 7B 中只是并联 monitor，不驱动 plant；
+- 原 `Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model` 保持；
+- 50 us exchange 下，实际 active load 发生后 Simulink 可能到下一个 50 us 网格才看到命令，因此不适合作为 Step 7C plant actuation reference；
+- AMD SoC Blockset support package 26.2.2 已被当前 R2026b 识别；
+- Step 6D profile0/1、Step 6E profile0 和 Step 7B smoke/时序均有 accepted evidence。
+
+Step 7B 报告：
+
+```text
+coordination/reports/step7b_codex_report.md
+docs/reports/step7b/
+```
+
+## Step 7C 已批准设计
+
+设计规格：
+
+```text
+coordination/specs/step7c_dynamic_motor_current_loop_cosim_design.md
+```
+
+PR #29 已合并：
+
+```text
+merge 9d70c901046efbd6364c60d6d4c0ce12bb4c5f62
+```
 
 核心冻结点：
 
-1. **长期 Simulink↔HDL 边界采用方案 B：**
+1. **Plant 自由运动。**
+   - 不锁 position/speed；
+   - 不增加 soft/hard travel limit；
+   - 电气/机械状态正常积分。
+
+2. **本阶段只闭 FPGA 电流环。**
+   ```text
+   scripted id_ref/iq_ref
+          ↓
+   FPGA HDL current loop
+          ↓
+   average inverter
+          ↓
+   free-moving PMLSM
+   ```
+   速度环/位置环留给 Step 7D。
+
+3. **静态控制后端。**
+   ```text
+   CONTROL_BACKEND=0 legacy Simulink
+   CONTROL_BACKEND=1 FPGA HDL
+   ```
+   不做运行时无扰切换。
+
+4. **只有一套 inverter/deadtime 和一套 plant。**
+   Legacy 与 FPGA 只在 normalized duty 入口前分流。
+
+5. **FPGA plant boundary：**
    ```text
    D_high = CMP_active / 2500
    ```
-   FPGA/RTL 负责 FOC、SVPWM、极性适配、CMP 量化、shadow 和 ZERO 装载；Simulink 看到真正已经生效的 active compare。
-
-2. **主 Simulink 集成骨架改为：**
+   FPGA 路径必须旁路：
    ```text
-   simulink模型/PMLSM_ThreeLoop_Simple.slx
-   ```
-   它是用户此前做过功能简化的三闭环副本，保留核心控制、平均值逆变器/死区和 PMLSM plant。
-
-3. **当前 GitHub main 尚未包含该 Simple 模型。**
-   Codex 实施时必须先读取用户本地 as-found 文件，并在任何功能修改之前先做独立 baseline commit，把原始 Simple 模型同步到 GitHub。
-
-4. Step 7B 新增并联：
-   ```text
-   PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim
-   ```
-   但本阶段只做 smoke/monitor，不允许接管：
-   ```text
-   Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model
+   PWM_Update_HalfTs
+   legacy count scaling
+   legacy polarity inversion
    ```
 
-5. 第一个完整 FOC Simulink smoke 必须使用历史 d_current 输入，并得到真实 active CMP：
+6. **Deadtime 只由 Simulink average inverter 负责。**
+   Step 6E gate/deadtime 不进入 average plant。
+
+7. **动态 FPGA feedback：**
    ```text
-   1165,1335,1335
+   ia / ib / ic
+   theta_e
+   omega_e
+   ```
+   必须来自正在运动的 plant，不得继续用 Step 7B fixed smoke。
+
+8. **Reference timing：**
+   ```text
+   HDL clock                  20 ns
+   PWM/current transaction    100 us
+   Simulink↔HDL exchange       1 us
+   plant integration           1 us
+   XSI reset                 200 ns
+   PreRunTime                  0
+   physical time             1:1
+   ```
+   `Ts_ACR` 继续是 100 us。
+
+9. **默认自由运动 current profile：**
+   ```text
+   0–1 ms      iq_ref =  0 A
+   1–11 ms     iq_ref = +0.5 A
+   11–16 ms    iq_ref =  0 A
+   16–26 ms    iq_ref = -0.5 A
+   26–31 ms    iq_ref =  0 A
+
+   id_ref = 0
+   vdc    = 48 V
+   load   = 0 N
    ```
 
-6. HDL 50 MHz / 20 ns；初始 Simulink↔HDL 通信目标 50 us。必须实测并冻结 50 us 数据更新与 carrier peak 的 scheduler 顺序，不能带 race 进入 Step 7C。
+10. **Acceptance scenarios：**
+    - ideal average inverter / no deadtime；
+    - Simulink average deadtime = 1 us；
+    - stop during free motion；
+    - 1 us vs 0.5 us convergence。
 
-7. 平均值逆变器 deadtime 继续由 Simulink plant 侧负责；Step 6E 六路 gate/deadtime 不进入当前 plant 主链，避免重复 deadtime。
+11. **PI_PROFILE=0 保持。**
+    闭环首次异常先检查 sign/phase/theta/we/delay/deadtime/timing，不能第一反应重调 PI。
 
-8. 旧 MIL/Simple 的 PWM update-delay 近似在未来 FPGA backend 下旁路，因为 RTL 已真实完成 shadow/next-ZERO 装载。
-
-## 当前唯一 Step 7B Codex 任务书
+## 当前唯一 Step 7C Codex 任务书
 
 ```text
-coordination/tasks/step7b_simulink_hdl_cosim_local_integration.md
+coordination/tasks/step7c_dynamic_motor_current_loop_cosim.md
 ```
-
-这份文件已经把正式 implementation plan 和 Codex 启动提示合并在一起，不再另开重复任务文档。
 
 实施顺序：
 
 ```text
-Task 1  读取/提交 as-found PMLSM_ThreeLoop_Simple baseline
-Task 2  最小 Simulink HDL Cosimulation Block ↔ Vivado 2026.1
-Task 3  active CMP 只读端口 + mc_foc_cosim_top + XSim 回归
-Task 4  Simple 模型并联 FPGA_HDL_Cosim + FOC smoke
-Task 5  冻结 50 us scheduler/transaction contract
-Task 6  最终回归、报告、GitHub 实现 PR
+Task 1  抓取修改前 legacy numeric baseline
+Task 2  normalized-duty boundary + static backend + legacy equivalence
+Task 3  1 us HDL Cosimulation timing + direct current-test refs
+Task 4  ideal inverter 自由运动 FPGA 电流闭环
+Task 5  1 us average deadtime + dynamic stop
+Task 6  1 us vs 0.5 us convergence
+Task 7  最终回归、报告、GitHub PR
 ```
 
 ## Codex 启动指令
 
-用户在本地 Codex 会话执行：
+本地 Codex 执行：
 
 ```text
-开始 Step 7B，严格按 executing-plans 顺序执行。
+开始 Step 7C，严格按 executing-plans 顺序执行。
 
 先读取：
 coordination/HANDOFF.md
-coordination/specs/step7b_simulink_hdl_cosim_interface_design.md
-coordination/tasks/step7b_simulink_hdl_cosim_local_integration.md
+coordination/specs/step7c_dynamic_motor_current_loop_cosim_design.md
+coordination/tasks/step7c_dynamic_motor_current_loop_cosim.md
 
-只在我的原始主项目：
+只在：
 D:/Project/FPGA_XC7A200T
-中工作。
+工作。
 
-先核对 Git 主工作树、远端、当前修改和已合并 main。
-不要创建 worktree/额外 clone，不 stash，不 reset/clean，不覆盖我的文件。
+先核对 Git 主工作树、origin/main 和所有本地 tracked/untracked 修改。
+不要创建 worktree/额外 clone，不 stash，不 reset/clean，不覆盖或删除我的文件。
+
+Step 7C 的目标是第一次让 FPGA HDL current loop 真正驱动自由运动的
+PMLSM_ThreeLoop_Simple average inverter + motor plant。
 
 非常重要：
-simulink模型/PMLSM_ThreeLoop_Simple.slx 是我本地已有但之前未同步 GitHub 的模型。
-先用 MATLAB/Simulink API 只读检查真实结构，在任何功能修改前，
-把 as-found 的 Simple 模型和 baseline inventory 作为第一笔实现 commit 纳入分支。
-之后再开始修改，并把所有授权的 SLX/RTL/scripts/reports 继续同步到 GitHub。
-不要只改本地模型。
+1. 不锁定位置/速度，不增加行程限制。
+2. 先抓取当前 legacy numeric baseline，再改 SLX。
+3. CONTROL_BACKEND 必须是静态选择：
+   0 = legacy Simulink，
+   1 = FPGA HDL。
+   legacy 模式必须能从项目根目录运行，不调用 HDL setup、不依赖 XSI runtime。
+4. 只保留一套 inverter/deadtime 和一套 motor plant。
+5. legacy 保留原 PWM_Update_HalfTs 和旧 count/polarity mapping。
+6. FPGA backend 必须直接使用 CMP_active/2500，
+   严禁再走旧 PWM delay、旧 count mapping 或旧 polarity inversion。
+7. average deadtime 只由 Simulink 负责，不接 Step 6E gate deadtime。
+8. FPGA live feedback 必须来自正在运动的 plant：
+   ia/ib/ic/theta_e/omega_e。
+9. Step 7C 直接使用 scripted id/iq current test；
+   不接速度环和位置环。
+10. PI_PROFILE=0，不先调 PI。
 
-按任务书先做最小 Simulink HDL Cosimulation Block + Vivado 2026.1 联通；
-再做 mc_foc_cosim_top 和 active CMP 只读端口；
-然后在 PMLSM_ThreeLoop_Simple.slx 中新增并联 FPGA_HDL_Cosim branch。
+参考 timing：
+HDL clock = 20 ns
+current/PWM period = 100 us
+Simulink-HDL communication = 1 us
+plant step = 1 us
+XSI reset = 200 ns
+PreRunTime = 0
+physical timescale = 1:1
 
-Step 7B 中 FPGA branch 只能 smoke/monitor，
-不得接管 Control_Task_10kHz -> Inverter_DeadTime -> PMLSM_Plant_Model 主链。
-第一笔 d_current 的真实 active CMP 必须检查为 1165/1335/1335。
+控制周期 Ts_ACR 必须继续是 100 us，不能跟 plant step 变成 1 us。
 
-把 50 us Simulink 数据更新与 HDL carrier peak 的 scheduler 顺序实际测出来，
-连续三次新鲜仿真一致后冻结 timing contract，不凭假设。
+默认自由运动 iq profile：
+0-1 ms      0 A
+1-11 ms    +0.5 A
+11-16 ms    0 A
+16-26 ms   -0.5 A
+26-31 ms    0 A
+id_ref=0，vdc=48 V，load=0 N。
 
-确认新安装的 SoC Blockset Support Package for AMD 是否被 R2026b 识别；
-这不是重新做 Step 7A，也不要因为 support package 问题去 patch MATLAB。
-HDL simulator 仍使用现有 Vivado 2026.1。
+按任务书完成：
+- legacy before/after equivalence；
+- static backend + normalized-duty refactor；
+- 1 us HDL block timing；
+- ideal inverter dynamic current loop；
+- 1 us average deadtime dynamic loop；
+- stop during motion；
+- 1 us vs 0.5 us convergence；
+- Step 7B minimal/wrapper、6D profile0、6E profile0必要回归。
 
-完整重跑任务书列出的 Step 7B 验收和原 6D/6E必要回归。
-不跑 bitstream、不操作硬件、不开始电机闭环、不进入 Step 7C。
+如果第一次动态闭环发散，按任务书顺序检查：
+duty polarity -> phase order -> theta -> we -> current signs ->
+duplicate PWM delay -> duplicate deadtime -> communication timing -> PI。
+不要第一反应就改 PI，也不要用换相/最终负号掩盖接口错误。
 
-最后写：
-coordination/reports/step7b_codex_report.md
-docs/reports/step7b/
+最终写：
+coordination/reports/step7c_codex_report.md
+docs/reports/step7c/
 
-推送实现分支并创建 PR：
-Step 7B: Add Simulink HDL co-simulation interface
+推送分支并创建：
+Step 7C: Close dynamic FPGA current loop with free-moving PMLSM
 
-返回 PR、本地模型路径和复现步骤，停在开放 PR 等待 ChatGPT Review。
+停在开放 PR 等待 ChatGPT Review。
+不要开始 Step 7D，不跑 bitstream，不操作硬件。
 ```
 
-## 后续边界
+## Step 7D 边界
 
-Step 7B 结束时，只证明：
+Step 7C 只负责运动中的 FPGA 内环。
+
+Step 7D 才恢复：
 
 ```text
-Simulink HDL Cosimulation Block
-        ↕
-Vivado 2026.1 / XSI
-        ↕
-existing FOC/PWM HDL
-        ↓
-real CMP_active
+Simulink position/speed outer loops
+             ↓
+        id_ref / iq_ref
+             ↓
+      FPGA current loop
+             ↓
+ average inverter + free plant
 ```
 
-并且这些结果已经挂进 Simple 模型的并联 branch。
-
-Step 7C 才正式把：
-
-```text
-CMP_active / 2500
-```
-
-接入 `Inverter_DeadTime`，闭合静止电流环。
-
-Step 7D 再恢复/拆分速度环和位置环，形成完整三闭环联合仿真。
+Step 7D 应复用 Step 7C 已冻结的 backend、normalized active-duty boundary、live plant feedback 和 1 us reference timing，不重新定义 Simulink↔HDL 接口。
