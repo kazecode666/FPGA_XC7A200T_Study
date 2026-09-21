@@ -6,6 +6,8 @@
 **目标路线：** 采用 **方案 B：以 FPGA 中实际生效的 `CMP_active` / active duty 作为 Simulink 平均值逆变器的控制边界**。  
 **本阶段性质：** 工具链与接口集成，不做电机动态闭环验收。
 
+**环境补充：** 用户在 Step 7A 合并后已安装 SoC Blockset Support Package for AMD FPGA and SoC Devices。Step 7B 启动时只需用 R2026b 重新确认该 support package 已被当前 release 识别并记录版本；这不是重新做 7A。纯 Vivado Simulator/XSI co-sim 仍以 HDL Verifier 产品能力为准，support package 识别失败时应报告，但不应据此伪造或绕过 simulator 测试结果。
+
 ---
 
 ## 1. 设计目标
@@ -578,6 +580,22 @@ mc_foc_cosim_top
 HDL source 使用仓库现有 C1–C4、adapter、motor_pwm_core 及 wrapper。
 
 不使用 Step 6E gate layer作为 plant 接口。
+
+### 11.1.1 HDL source / ROM staging
+
+FOC smoke 必须使用仓库真实 RTL source set，保持 package 编译依赖顺序可解析。特别注意 `mc_sincos_lut.sv` 当前通过：
+
+```text
+$readmemh("sin_qw_4096x18.mem", ...)
+```
+
+加载 ROM。因此 Cosimulation Wizard 生成的 Vivado/XSim 工作目录必须能解析：
+
+```text
+motor_control_ip/foc/rom/sin_qw_4096x18.mem
+```
+
+允许在生成/启动脚本中把该 `.mem` 作为 simulation data file 加入或复制到实际 XSim 运行目录；**不允许为了 co-sim 修改 ROM 内容或改变已验收 LUT 数学**。日志必须确认没有 readmemh file-not-found，并至少用历史 smoke CMP 证明 ROM 内容实际生效。
 
 ### 11.2 默认参数
 
