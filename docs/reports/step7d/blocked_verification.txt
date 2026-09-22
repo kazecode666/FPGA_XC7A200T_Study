@@ -1,5 +1,7 @@
-SCOPE=Fresh contract tests and read-only verification of current saved evidence; not Task 8 full acceptance
+SCOPE=Post-review contract tests and saved-evidence verification; not Task 8 full acceptance
 COMMAND=step7d_test_contracts; step7d_verify_task3_evidence; step7d_verify_blocker;
+RED=empty active command records were incorrectly accepted before the evaluator fix
+GREEN=empty active, truncated tail, NaN time, wrong pairing, wrong phase, wrong backend all rejected
 MATLAB_RELEASE=R2026b Prerelease Update 3
 STEP7D_SCENARIO_TESTS_PASS
 STEP7D_CONTRACT_TESTS_PASS

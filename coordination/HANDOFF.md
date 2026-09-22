@@ -29,11 +29,11 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 7C | PR #31 已合并；本地后续布局改动继续保留 |
 | Step 7D | Tasks 1–3 通过；Task 4 ideal 通过、deadtime 速度门槛失败并停止。Tasks 5–8 未开始；见 `coordination/reports/step7d_codex_report.md`，等待 Review 决定诊断范围 |
 
-## Step 7D Task 1 差异报告（2026-09-22）
+## Step 7D Task 1 初始差异与后续处理（2026-09-22）
 
-任务书 PR #32 已合并，实施审计从 `e7f707b` 在原始工作树的 `codex/step7d-outer-loops-cosim` 分支开始。真实 SLX 中 root `iq_cmd` 的来源是 `Simple_Host/10`（`Host_Iq_A`），外环选中 `iq_ref` 则在 `Control_Task_10kHz/Reference_Manager/2` 内部，控制任务仅导出三个 CMP。直接切换 `FPGA_Reference_Mode=1` 不能闭合外环。
+任务书 PR #32 已合并，实施审计从 `e7f707b` 在原始工作树的 `codex/step7d-outer-loops-cosim` 分支开始。初始 SLX 中 root `iq_cmd` 的来源是 `Simple_Host/10`（`Host_Iq_A`），外环选中 `iq_ref` 则在 `Control_Task_10kHz/Reference_Manager/2` 内部，当时控制任务仅导出三个 CMP。直接切换 `FPGA_Reference_Mode=1` 不能闭合外环。
 
-曾按任务书第 11 节报告差异，随后用户明确：Host 在三闭环下给位置参考，iq_test_ref 仅用于外环开环的电流测试。按此边界恢复 Task 1，后续最小接线导出现有外环选中 id/iq，同时保留原 Host 标签语义。详见 `coordination/reports/step7d_preflight_blocker.md`。目前尚无 Step 7D FULL PASS，未保存模型/初始化修改。下文 Step 7C 交付段保留其当时的历史状态。
+曾按任务书第 11 节报告差异，随后用户明确：Host 在三闭环下给位置参考，iq_test_ref 仅用于外环开环的电流测试。Task 1 基线提交后，Task 3 已保存最小 SLX 接线，导出现有外环选中 id/iq，同时保留原 Host 标签语义；初始化文件未修改。目前 Task 4 deadtime 速度门槛失败，尚无 Step 7D FULL PASS。详见 `coordination/reports/step7d_codex_report.md`；初始差异证据保留在 `step7d_preflight_blocker.md`。下文 Step 7C 交付段保留其当时的历史状态。
 
 ## Step 7C 实现交付（2026-09-22）
 

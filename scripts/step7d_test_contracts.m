@@ -7,16 +7,30 @@ bad=r; bad=rmfield(bad,'iq_A'); reject(@()step7d_assert_result(bad,cfg),'Step7D:
 bad=r; bad.v_mmps(10)=NaN; reject(@()step7d_assert_result(bad,cfg),'Step7D:NonFinite');
 badcfg=cfg; badcfg.windows.speed=[2 3]; reject(@()step7d_assert_result(r,badcfg),'Step7D:EmptyWindow');
 good=r; good.cfg.backend=1; good.fault_code=zeros(size(good.time_s)); good.needs_reset=good.fault_code; good.range_flags=good.fault_code;
-good.command_events=struct('accepted_time_s',(0:1e-4:1.2)','accepted_id',(1:12001)', ...
- 'active_time_s',(.00005:1e-4:1.2)','active_id',(1:12000)');
+good.command_events=struct('accepted_time_s',(.00005+cfg.commTs:1e-4:cfg.stopTime)','accepted_id',(1:12000)', ...
+ 'active_time_s',(.0001+cfg.commTs:1e-4:cfg.stopTime)','active_id',(1:11999)');
 step7d_assert_result(good,good.cfg);
 bad=good; bad.command_events.accepted_id(2)=3;
 reject(@()step7d_assert_result(bad,bad.cfg),'Step7D:CommandSequence');
+bad=good; bad.command_events.active_id=[]; bad.command_events.active_time_s=[];
+reject(@()step7d_assert_result(bad,bad.cfg),'Step7D:CommandSequence');
+bad=good;
+for n=fieldnames(bad.command_events)', bad.command_events.(n{1})=bad.command_events.(n{1})(1:50); end
+reject(@()step7d_assert_result(bad,bad.cfg),'Step7D:CommandCoverage');
+bad=good; bad.command_events.active_time_s(10)=NaN;
+reject(@()step7d_assert_result(bad,bad.cfg),'Step7D:CommandSequence');
+bad=good; bad.command_events.active_id=bad.command_events.active_id+1;
+reject(@()step7d_assert_result(bad,bad.cfg),'Step7D:CommandPair');
+bad=good; bad.command_events.active_time_s=bad.command_events.active_time_s+cfg.commTs*2;
+bad.command_events.accepted_time_s=bad.command_events.accepted_time_s+cfg.commTs*2;
+reject(@()step7d_assert_result(bad,bad.cfg),'Step7D:CommandCoverage');
 % Startup mutations must be read from the actual model, not merely cfg.
 m='PMLSM_ThreeLoop_Simple'; assert(~bdIsLoaded(m)); addpath(fullfile(fileparts(fileparts(mfilename('fullpath'))),'simulink模型'));
 load_system(m); cm=onCleanup(@()close_system(m,0)); %#ok<NASGU>
 mw=get_param(m,'ModelWorkspace'); cfg.backend=1;
 reject(@()step7d_check_start(m,cfg),'Step7D:ReferenceMode');
+mw.assignin('FPGA_Reference_Mode',1);
+reject(@()step7d_check_start(m,cfg),'Step7D:Backend');
 mw.assignin('FPGA_Reference_Mode',1); mw.assignin('Ts_ASR',1e-6);
 reject(@()step7d_check_start(m,cfg),'Step7D:ControlPeriod');
 clear cm

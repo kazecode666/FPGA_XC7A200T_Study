@@ -11,8 +11,26 @@ end
 if cfg.backend==1
  assert(isfield(r,'command_events'),'Step7D:MissingField','Missing command events.');
  ev=r.command_events;
- assert(isfield(ev,'accepted_id') && isfield(ev,'active_id') && ~isempty(ev.accepted_id),'Step7D:CommandSequence','Missing command IDs.');
+ for n={'accepted_id','active_id','accepted_time_s','active_time_s'}
+  assert(isfield(ev,n{1}) && isnumeric(ev.(n{1})) && isvector(ev.(n{1})) && ~isempty(ev.(n{1})) && all(isfinite(ev.(n{1}))), ...
+   'Step7D:CommandSequence','Missing/nonfinite command event field %s',n{1});
+ end
+ assert(numel(ev.accepted_id)==numel(ev.accepted_time_s) && numel(ev.active_id)==numel(ev.active_time_s), ...
+  'Step7D:CommandSequence','Command ID/time dimensions differ.');
+ assert(all(ev.accepted_id>=1 & ev.accepted_id==fix(ev.accepted_id)) && all(ev.active_id>=1 & ev.active_id==fix(ev.active_id)) && ...
+  all(diff(ev.accepted_time_s)>0) && all(diff(ev.active_time_s)>0),'Step7D:CommandSequence','Invalid command event values.');
  assert(all(diff(ev.accepted_id)==1) && all(diff(ev.active_id)==1),'Step7D:CommandSequence','Skipped/repeated command.');
+ [found,pair]=ismember(ev.active_id(:),ev.accepted_id(:));
+ assert(all(found),'Step7D:CommandPair','Active command has no accepted command.');
+ at=ev.accepted_time_s(:); vt=ev.active_time_s(:);
+ assert(all(abs(vt-at(pair)-50e-6)<=cfg.commTs+1e-12),'Step7D:CommandPair','Wrong accepted/active pairing or delay.');
+ if ~strcmp(cfg.name,'stop_restart_inhibit')
+  expectedAccepted=(50e-6+cfg.commTs:1e-4:cfg.stopTime)';
+  expectedActive=(100e-6+cfg.commTs:1e-4:cfg.stopTime)';
+  assert(numel(at)==numel(expectedAccepted) && numel(vt)==numel(expectedActive),'Step7D:CommandCoverage','Command records do not cover the full run.');
+  assert(all(abs(at-expectedAccepted)<1e-12) && all(abs(vt-expectedActive)<1e-12) && ev.accepted_id(1)==1 && ev.active_id(1)==1, ...
+   'Step7D:CommandCoverage','Command phase or initial ID differs.');
+ end
 end
 metrics=struct('speed',[],'position',[]);
 for k=1:size(cfg.windows.speed,1)
