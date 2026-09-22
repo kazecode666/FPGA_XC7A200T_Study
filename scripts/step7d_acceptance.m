@@ -8,12 +8,12 @@ assert(isfolder(beforeRawDir),'Step7D:MissingBaseline','Provide original Task1 r
 runid=char(datetime('now','Format','yyyyMMdd_HHmmss_SSS'));
 reportDir=fullfile(root,'docs','reports','step7d',['acceptance_' runid]);
 assert(~isfolder(reportDir)); mkdir(reportDir);
+try
 [rc,commit]=system('git rev-parse HEAD'); assert(rc==0);
 modelFile=fullfile(root,'simulink模型','PMLSM_ThreeLoop_Simple.slx'); modelHash=fileHash(modelFile);
 f=fopen(fullfile(reportDir,'tested_revision.txt'),'w');
 fprintf(f,'ACCEPTANCE_ID=%s\nCOMMIT=%sMATLAB=%s\nBASELINE=%s\n',runid,commit,version,beforeRawDir); fclose(f);
 f=fopen(fullfile(reportDir,'tested_revision.txt'),'a'); fprintf(f,'MODEL_SHA256=%s\n',modelHash); fclose(f);
-try
  step7d_test_contracts;
  step7c_generate_foc_cosim(1e-6,true);
  currentDir=fullfile(reportDir,'current_prerequisite'); mkdir(currentDir);
@@ -59,7 +59,10 @@ end
 end
 function value=fileHash(file)
 % This R2026b installation intentionally has no Java runtime.
-command=sprintf('powershell.exe -NoProfile -Command "(Get-FileHash -Algorithm SHA256 -LiteralPath ''%s'').Hash"',strrep(file,'''',''''''));
+oldpwd=pwd; c=onCleanup(@()cd(oldpwd)); %#ok<NASGU>
+[folder,name,ext]=fileparts(file); cd(folder);
+% Keep the Unicode directory out of the system command encoding boundary.
+command=sprintf('powershell.exe -NoProfile -Command "[BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([IO.File]::ReadAllBytes(''%s''))).Replace(''-'','''')"',strrep([name ext],'''',''''''));
 [rc,output]=system(command); value=lower(strtrim(output));
-assert(rc==0 && ~isempty(regexp(value,'^[0-9a-f]{64}$','once')),'Step7D:ModelHash','Cannot record saved model hash.');
+assert(rc==0 && ~isempty(regexp(value,'^[0-9a-f]{64}$','once')),'Step7D:ModelHash','Cannot record saved model hash: %s',output);
 end
