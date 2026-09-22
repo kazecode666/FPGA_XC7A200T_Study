@@ -20,7 +20,8 @@ module mc_foc_cosim_top_tb;
     reset_n=1;run_enable=1;
     wait(active_command_id==1); #1;
     assert(accepted_sample_id>=1 && active_valid) else $fatal(1,"STEP7B_WRAPPER_FAIL valid");
-    assert(cmp_u_active==1165 && cmp_v_active==1335 && cmp_w_active==1335)
+    // AUM3-S4 profile0; independently derived by step7d_sync_pi_fixtures.py.
+    assert(cmp_u_active==909 && cmp_v_active==1591 && cmp_w_active==1591)
       else $fatal(1,"STEP7B_WRAPPER_FAIL first CMP %d %d %d",cmp_u_active,cmp_v_active,cmp_w_active);
     assert(!needs_reset && fault_code==0) else $fatal(1,"STEP7B_WRAPPER_FAIL fault");
     @(negedge clk);run_enable=0; @(posedge clk);#1;
@@ -29,7 +30,7 @@ module mc_foc_cosim_top_tb;
     assert(!active_valid && needs_reset) else $fatal(1,"STEP7B_WRAPPER_FAIL stale recovery");
     reset_n=0;run_enable=0; repeat(5) @(negedge clk);
     assert(accepted_sample_id==0 && active_command_id==0 && !active_valid) else $fatal(1,"STEP7B_WRAPPER_FAIL reset");
-    $display("STEP7B_FOC_WRAPPER_PASS first_cmp=1165,1335,1335 disable=1 reset_required=1 reset_ids=1");
+    $display("STEP7B_FOC_WRAPPER_PASS first_cmp=909,1591,1591 disable=1 reset_required=1 reset_ids=1");
     $finish;
   end
 endmodule

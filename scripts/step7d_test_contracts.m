@@ -1,6 +1,12 @@
 function step7d_test_contracts
 assert(exist('step7d_assert_result','file')==2 && exist('step7d_check_start','file')==2, ...
  'Step7D:MissingContracts','Step7D result/start contracts are not implemented.');
+root=fileparts(fileparts(mfilename('fullpath')));
+reports=fullfile(root,'.Xil','step7d',['report_contract_' char(datetime('now','Format','yyyyMMdd_HHmmss_SSS'))]); mkdir(reports);
+reject(@()step7d_require_report(fullfile(reports,'missing.txt'),'PASS'),'Step7D:MissingReport');
+f=fopen(fullfile(reports,'complete.txt'),'w'); fprintf(f,'VALIDATED_CASE_PASS\n'); fclose(f);
+step7d_require_report(fullfile(reports,'complete.txt'),'VALIDATED_CASE_PASS');
+reject(@()step7d_require_report(fullfile(reports,'complete.txt'),'OTHER_CASE_PASS'),'Step7D:MissingGate');
 cfg=step7d_scenarios('speed_ideal'); cfg.backend=0; r=fixture(cfg);
 step7d_assert_result(r,cfg);
 bad=r; bad.control_events.position(end)=[];

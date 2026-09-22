@@ -92,99 +92,106 @@
       "absolute_error": 2.1720029052901824e-05
     },
     "ud_lim": {
-      "profile": 1,
-      "source_row": 98,
-      "case_id": "angle_1.5708",
-      "absolute_error": 9.584864214984279e-05
+      "profile": 0,
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 24.494867769676716
     },
     "uq_lim": {
-      "profile": 1,
-      "source_row": 146,
-      "case_id": "feedforward",
-      "absolute_error": 0.0001338324360489196
+      "profile": 0,
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 16.32993219150323
     },
     "v_alpha": {
-      "profile": 1,
-      "source_row": 150,
-      "case_id": "sat_hold_1",
-      "absolute_error": 0.0018247646651232685
+      "profile": 0,
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 24.494867769676716
     },
     "v_beta": {
       "profile": 0,
-      "source_row": 69,
-      "case_id": "sat_start",
-      "absolute_error": 0.00469674940050524
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 16.32993219150323
     },
     "ud_raw": {
-      "profile": 1,
-      "source_row": 98,
-      "case_id": "angle_1.5708",
-      "absolute_error": 8.589466647235255e-05
+      "profile": 0,
+      "source_row": 70,
+      "case_id": "sat_hold_1",
+      "absolute_error": 222.97500078678132
     },
     "uq_raw": {
-      "profile": 1,
-      "source_row": 146,
-      "case_id": "feedforward",
-      "absolute_error": 0.00012065980955355826
+      "profile": 0,
+      "source_row": 70,
+      "case_id": "sat_hold_1",
+      "absolute_error": 148.65000052452086
     },
     "t1": {
-      "profile": 1,
-      "source_row": 150,
-      "case_id": "sat_hold_1",
-      "absolute_error": 0.000141759891589599
+      "profile": 0,
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 0.4273099167479712
     },
     "t2": {
       "profile": 0,
-      "source_row": 69,
-      "case_id": "sat_start",
-      "absolute_error": 0.00016948426452173537
+      "source_row": 78,
+      "case_id": "q_zero",
+      "absolute_error": 0.6459736450783377
     },
     "duty_u": {
-      "profile": 1,
-      "source_row": 146,
-      "case_id": "feedforward",
-      "absolute_error": 4.887922935559175e-05
+      "profile": 0,
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 0.5300589110276777
     },
     "duty_v": {
       "profile": 0,
-      "source_row": 69,
-      "case_id": "sat_start",
-      "absolute_error": 1.3889759624352571e-05
+      "source_row": 74,
+      "case_id": "recovery_1",
+      "absolute_error": 0.5300589110276777
     },
     "duty_w": {
-      "profile": 1,
-      "source_row": 150,
-      "case_id": "sat_hold_1",
-      "absolute_error": 0.00015563739717683323
+      "profile": 0,
+      "source_row": 78,
+      "case_id": "q_zero",
+      "absolute_error": 0.32298682253916877
     },
     "du_d_z": {
-      "profile": 1,
-      "source_row": 156,
-      "case_id": "recovery_3",
-      "absolute_error": 2.275798979489707e-06
+      "profile": 0,
+      "source_row": 71,
+      "case_id": "sat_hold_2",
+      "absolute_error": 222.97500069032162
     },
     "du_q_z": {
-      "profile": 1,
-      "source_row": 156,
-      "case_id": "recovery_3",
-      "absolute_error": 1.4973311017740798e-06
+      "profile": 0,
+      "source_row": 71,
+      "case_id": "sat_hold_2",
+      "absolute_error": 148.65000046021444
     }
   },
   "historical_differences": {
     "sector": [
       {
         "profile": 0,
-        "source_row": 51,
-        "case_id": "edge_1_1.732",
-        "sector_source": 3,
-        "sector_fixed": 1
+        "source_row": 54,
+        "case_id": "edge_-1_1.732",
+        "sector_source": 1,
+        "sector_fixed": 5
       },
       {
         "profile": 0,
-        "source_row": 63,
-        "case_id": "edge_1_-1.732",
+        "source_row": 60,
+        "case_id": "edge_-1_-1.732",
+        "sector_source": 6,
+        "sector_fixed": 4
+      },
+      {
+        "profile": 0,
+        "source_row": 74,
+        "case_id": "recovery_1",
         "sector_source": 2,
-        "sector_fixed": 6
+        "sector_fixed": 5
       },
       {
         "profile": 1,
@@ -201,7 +208,43 @@
         "sector_fixed": 4
       }
     ],
-    "sat_old": []
+    "sat_old": [
+      {
+        "profile": 0,
+        "source_row": 75,
+        "case_id": "recovery_2",
+        "sat_old_source": 0,
+        "sat_old_fixed": 1
+      },
+      {
+        "profile": 0,
+        "source_row": 76,
+        "case_id": "recovery_3",
+        "sat_old_source": 0,
+        "sat_old_fixed": 1
+      },
+      {
+        "profile": 0,
+        "source_row": 77,
+        "case_id": "recovery_4",
+        "sat_old_source": 0,
+        "sat_old_fixed": 1
+      },
+      {
+        "profile": 0,
+        "source_row": 78,
+        "case_id": "q_zero",
+        "sat_old_source": 0,
+        "sat_old_fixed": 1
+      },
+      {
+        "profile": 0,
+        "source_row": 79,
+        "case_id": "reset_after_sat",
+        "sat_old_source": 0,
+        "sat_old_fixed": 1
+      }
+    ]
   },
   "float_policy": "observations only; no inherited C3 tolerance or sector allow-list"
 }
