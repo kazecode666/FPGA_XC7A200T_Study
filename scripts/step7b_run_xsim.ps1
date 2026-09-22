@@ -1,4 +1,4 @@
-param([ValidateSet('red','wrapper','d6p0','d6p1','e6','all')][string]$Mode='all')
+param([ValidateSet('red','wrapper','d6p0','d6p1','e6','all')][string]$Mode='all', [string]$ReportDirectory='docs/reports/step7b')
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
 $bin='E:/AMDDesignTools/2026.1/Vivado/bin'
@@ -35,7 +35,7 @@ function Invoke-Test([string]$test){
    Write-Output 'EXPECTED_RED missing mc_foc_cosim_top';return
   }
   if($rc -eq 0){$output+=& "$bin/xsim.bat" step7b_snapshot -runall 2>&1;$rc=$LASTEXITCODE}
-  $output | ForEach-Object {$_.ToString().TrimEnd()} | Set-Content (Join-Path $root "docs/reports/step7b/$log")
+  $output | ForEach-Object {$_.ToString().TrimEnd()} | Set-Content (Join-Path $root "$ReportDirectory/$log")
   if($rc -ne 0 -or ($output -join "`n") -notmatch [regex]::Escape($marker) -or ($output -join "`n") -match '(?m)^(ERROR|Fatal|FATAL)') {throw "$test failed; inspect $log"}
   $output | Select-String $marker
  }finally{Pop-Location}

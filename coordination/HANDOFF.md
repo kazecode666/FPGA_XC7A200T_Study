@@ -26,7 +26,21 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 6E | 六路互补 PWM、死区、同步关断，PR #23 已合并 |
 | Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim，PR #25 已合并 |
 | Step 7B | Simulink HDL Cosimulation block + active-CMP smoke，PR #28 已合并 |
-| Step 7C | 当前：自由运动 PMLSM + FPGA 电流环动态闭环 |
+| Step 7C | 实现及完整本地验收完成，开放实现 PR 等待 ChatGPT Review |
+
+## Step 7C 实现交付（2026-09-22）
+
+分支 `step7c-dynamic-current-loop-cosim` 从任务书 PR #30 合并点 `b96a5ff617182eeab97a99e88a6e63068b79e39e` 开始。完整验收输出 `STEP7C_FULL_ACCEPTANCE_PASS`；详见 `coordination/reports/step7c_codex_report.md` 和 `docs/reports/step7c/README.md`。
+
+- 静态 `CONTROL_BACKEND=0` 是原 legacy，根目录可运行且不初始化 XSI；`1` 是实际 FPGA/XSI 电流环。保存默认仍为 0。
+- 用户批准只提取 legacy Gain/Bias；不增加 pre-deadtime saturation。两个后端共用原 `deadtime correction -> d_sum -> d_sat -> v0_eff_calc`。17 路 legacy 数值最大差异全部为 0。
+- FPGA `CMP_active/2500` 直接进入 ideal-duty 边界，不经过原 PWM 半周期延迟或极性映射。保留唯一 inverter/deadtime 与自由运动 plant。
+- FPGA reference 为 1 us exchange/plant、20 ns HDL clock、100 us current/PWM transaction、200 ns reset、zero prerun。四个 plant 积分器实际步长和 `Ts_ACR=100 us` 均有启动检查。
+- 当前只用 scripted id=0、iq=0/+0.5/0/-0.5/0 A（边界 1/11/16/26/31 ms），Vdc=48 V、load=0；不接速度/位置环，不锁定机械运动或增加行程限制。
+- ideal、1 us Simulink 平均死区、8 ms 运动中 stop 均通过；PI_PROFILE=0 未调参，未修改 RTL。停机 needs_reset=1、bridge=0、vd/vq=0。
+- 1 us 对 0.5 us 最大差异 `[iq,id,v,x]` = `[0.0003142032 A,0.00000636946 A,0.00592308 mm/s,0.0000751298 mm]`；12 ms 两种步长 accepted/active 均为 120/119。
+- Step 7B minimal/wrapper、6D profile0 DEMO=0、6E profile0 DEMO=0 已重新通过。
+- Step 7D 需另行授权，恢复外环时复用此 current-loop 边界；当前不合并 PR、不开始 Step 7D、不操作硬件。
 
 当前 main（Step 7C 任务书编写时）：
 

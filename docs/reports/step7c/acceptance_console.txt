@@ -1,0 +1,115 @@
+
+	Prerelease License -- for engineering feedback and testing
+	purposes only. Not for sale.
+
+    ----------------------------------------------------
+	��������֤���� 8 �����ڡ�
+	����ϵͳ����Ա��
+	MathWorks ��˾��ϵ���Ա�����������֤��
+    ----------------------------------------------------
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ? MATLAB 26.2.0.3340147 (R2026b) Prerelease Update 3
+  ? Simulink installed and licensed
+
+MATLAB Environment
+  ? All 9 tool entry points on path
+  ? Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ? matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ? shareMATLABSession available (MATLAB-side MCP components installed)
+  ? MATLAB connector running (port 31515)
+
+===============================================
+Result: PASS
+
+1 structure
+STEP7C_STRUCTURE_PASS
+2 legacy root/no XSI; 3 numeric comparison
+STEP7C_LEGACY_BASELINE_CAPTURE_PASS stage=after samples=101
+4 minimal
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7B_SIMULINK_MINIMAL_COSIM_PASS
+XSim wrapper
+
+STEP7B_FOC_WRAPPER_PASS first_cmp=1165,1335,1335 disable=1 reset_required=1 reset_ids=1
+
+
+
+XSim d6p0
+
+ALL STEP 6D FOC PWM TESTS PASSED profile=0 base=80 tail=1 full_cycles=80 protocols=6
+
+
+
+XSim e6
+
+ALL STEP 6E FOC GATE TESTS PASSED profile=0 deadtime=25 base=80 tail=1 full_cycles=80 shutdown=10
+
+
+
+8 timing
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=1e-6
+STEP7C_1US_TIMING_PASS
+9 ideal
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=9.9999999999999995e-07
+ACTUAL_SCENARIO dt=0 ratio=0 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=0 Vdc=48 load=0 reference=scripted feedback=live
+STEP7C_DYNAMIC_IDEAL_PASS
+10 deadtime
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=9.9999999999999995e-07
+ACTUAL_SCENARIO dt=1e-06 ratio=0.01 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=9.9999999999999995e-07 Vdc=48 load=0 reference=scripted feedback=live
+STEP7C_DYNAMIC_DEADTIME_PASS
+11 stop
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=9.9999999999999995e-07
+ACTUAL_SCENARIO dt=0 ratio=0 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=0 Vdc=48 load=0 reference=scripted feedback=live
+STEP7C_DYNAMIC_STOP_PASS
+12 convergence
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=9.9999999999999995e-07
+ACTUAL_SCENARIO dt=0 ratio=0 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=0 Vdc=48 load=0 reference=scripted feedback=live
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=4.9999999999999998e-07
+ACTUAL_SCENARIO dt=0 ratio=0 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=0 Vdc=48 load=0 reference=scripted feedback=live
+STEP7C_CONVERGENCE_PASS deltas=[0.0003142031617 6.36946259e-06 0.005923080115 7.512977227e-05]
+STEP7C_FULL_ACCEPTANCE_PASS
