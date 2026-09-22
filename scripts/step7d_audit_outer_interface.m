@@ -13,12 +13,17 @@ f=fopen(fullfile(reportDir,'outer_interface_gate.txt'),'w');
 assert(f>=0); cf=onCleanup(@()fclose(f)); %#ok<NASGU>
 fprintf(f,'MATLAB=%s\nMODEL=%s\nMODEL_SAVED=0\nHDL_SETUP_CALLED=0\nSIMULATION_RUN=0\n',version,get_param(m,'FileName'));
 ref=Simulink.ID.getFullName([m ':1744']);
+outer=Simulink.ID.getFullName([m ':991']); task=Simulink.ID.getFullName([m ':505']);
 ph=get_param(ref,'PortHandles'); h=source(ph.Inport(1));
 fprintf(f,'Live iq branch of %s:\n',ref);
 for k=1:30
  b=get_param(h,'Parent'); typ=get_param(b,'BlockType'); pn=get_param(h,'PortNumber');
  fprintf(f,'  %s output %d (%s)\n',b,pn,typ);
- if strcmp(typ,'DataTypeConversion')
+ if strcmp(b,outer), break;
+ elseif strcmp(b,task)
+  op=find_system(b,'SearchDepth',1,'BlockType','Outport','Port',num2str(pn)); assert(numel(op)==1);
+  p=get_param(op{1},'PortHandles'); h=source(p.Inport(1));
+ elseif strcmp(typ,'DataTypeConversion')
   p=get_param(b,'PortHandles'); h=source(p.Inport(1));
  elseif strcmp(typ,'From')
   gs=find_system(get_param(b,'Parent'),'SearchDepth',1,'BlockType','Goto','GotoTag',get_param(b,'GotoTag'));
@@ -34,11 +39,9 @@ for k=1:30
  end
 end
 actual=get_param(h,'Parent'); actualPort=get_param(h,'PortNumber');
-outer=Simulink.ID.getFullName([m ':991']); task=Simulink.ID.getFullName([m ':505']);
 p=get_param(task,'PortHandles');
 fprintf(f,'ACTUAL_SOURCE=%s/%d\nEXPECTED_OUTER_REFERENCE=%s/2\nCONTROL_TASK_OUTPUT_COUNT=%d\n',actual,actualPort,outer,numel(p.Outport));
-fprintf(f,'Outer producer: Speed_Loop/1 -> local [iq_ref_normal] -> Reference_Manager/1 -> selected iq_ref output 2.\n');
-fprintf(f,'Root iq_cmd is Simple_Host iq_test_ref, not the selected outer reference.\n');
+fprintf(f,'Separately audited outer producer: Speed_Loop/1 -> local [iq_ref_normal] -> Reference_Manager/1 -> selected iq_ref output 2.\n');
 if ~strcmp(actual,outer) || actualPort~=2
  fprintf(f,'STEP7D_TASK1_BLOCKED_LIVE_REFERENCE_SOURCE\n');
  error('Step7D:LiveReferenceSourceMismatch', ...

@@ -1,9 +1,10 @@
-function step7d_capture_baseline(reportDir)
+function step7d_capture_baseline(reportDir,beforeRawDir)
 % Task 1: untouched-controller legacy baselines; temporary high-level sources.
 root=fileparts(fileparts(mfilename('fullpath'))); p=pwd; mp=path;
 c=onCleanup(@()restore(p,mp)); %#ok<NASGU>
 cd(root); addpath(fullfile(root,'simulink模型')); assert(strcmp(version('-release'),'2026b'));
-assert(nargin==1 && ~isfolder(reportDir),'Step7D:ExistingReport','Supply a fresh report directory.');
+if nargin<2, beforeRawDir=''; end
+assert(~isfolder(reportDir),'Step7D:ExistingReport','Supply a fresh report directory.');
 m='PMLSM_ThreeLoop_Simple'; assert(~bdIsLoaded(m),'Step7D:ModelAlreadyLoaded','Save and close the model first.');
 gate=library.settingsLookup(); assert(gate.gatePass); mkdir(reportDir);
 rawDir=fullfile(root,'.Xil','step7d',char(datetime('now','Format','yyyyMMdd_HHmmss_SSS'))); mkdir(rawDir);
@@ -37,6 +38,7 @@ fprintf(fid,'MODEL_SAVED=0\nHDL_SETUP_CALLED=0\nBACKEND=0\nRAW_DIR=%s\n',rawDir)
 fprintf(fid,'Temporary boundary replacements: Simple_Host/7 -> Host_v_cmd becomes TestSpeedRequest; Simple_Host/3 -> Host_load_cmd becomes TestLoad. No outer-controller/plant feedback replacement.\n');
 names={'current_native','speed_deadtime','position_deadtime','speed_ideal','speed_deadtime','position_ideal','position_deadtime','position_negative_deadtime'};
 steps=[50e-6 50e-6 50e-6 repmat(1e-6,1,5)];
+if ~isempty(beforeRawDir), names=names(1:3); steps=steps(1:3); end
 for n=1:numel(names)
  name=names{n};
  if strcmp(name,'current_native')
@@ -81,6 +83,16 @@ for n=1:numel(names)
  r.signals.v_request=interp1(cfg.signals.speed(:,1),cfg.signals.speed(:,2),r.time_s,'linear');
  r.signals.load=interp1(cfg.signals.load(:,1),cfg.signals.load(:,2),r.time_s,'previous');
  save(fullfile(rawDir,[label '.mat']),'r','-v7.3');
+ if ~isempty(beforeRawDir)
+  before=load(fullfile(beforeRawDir,[label '.mat']),'r');
+  assert(isequal(before.r.time_s,r.time_s) && isequal(before.r.events,r.events),'Step7D:LegacySchedule','Legacy scheduling changed.');
+  fields=fieldnames(before.r.signals);
+  for j=1:numel(fields)
+   err=max(abs(before.r.signals.(fields{j})-r.signals.(fields{j})));
+   fprintf(fid,'EQUIVALENCE %s %s max_abs_error=%.17g\n',label,fields{j},err);
+   assert(err<=1e-10,'Step7D:LegacyEquivalence','Legacy %s changed in %s',fields{j},label);
+  end
+ end
  fprintf(fid,'\n%s\nCONFIG=%s\nEFFECTIVE=%s\n',label,jsonencode(cfg),jsonencode(r.effective_config));
  fprintf(fid,'EVENT_COUNTS current=%d speed=%d position=%d\n',numel(r.events.current),numel(r.events.speed),numel(r.events.position));
  fprintf(fid,'PEAKS=%s\n',jsonencode(r.peaks));
@@ -94,7 +106,8 @@ for n=1:numel(names)
  fprintf(fid,'CAPTURE_COMPLETE=%s\n',label); fprintf('BASELINE_CAPTURED %s\n',label);
  clear out r
 end
-fprintf(fid,'STEP7D_BASELINE_BEFORE_PASS\n'); disp('STEP7D_BASELINE_BEFORE_PASS');
+if isempty(beforeRawDir), verdict='STEP7D_BASELINE_BEFORE_PASS'; else, verdict='STEP7D_LEGACY_EQUIVALENCE_PASS'; end
+fprintf(fid,'%s\n',verdict); disp(verdict);
 end
 function issues=evaluateBaseline(r,f)
 c=r.cfg; s=r.signals; t=r.time_s; issues={};

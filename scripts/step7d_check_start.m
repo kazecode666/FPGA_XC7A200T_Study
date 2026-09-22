@@ -31,6 +31,14 @@ if cfg.backend==1
  b=find_system(m,'MatchFilter',@Simulink.match.allVariants,'Name','HDL_Cosimulation'); assert(numel(b)==1);
  pt=str2num(get_param(b{1},'PortTimes')); %#ok<ST2NM>
  assert(numel(pt)==19 && all(abs(pt(12:19)-cfg.commTs)<1e-15),'Step7D:HDLTiming','HDL output times mismatch.');
+ assert(isequal(str2num(get_param(b{1},'ClockTimes')),[20e-9 200e-9]),'Step7D:HDLTiming','Clock/reset physical times mismatch.'); %#ok<ST2NM>
+ assert(str2double(get_param(b{1},'PreRunTime'))==0,'Step7D:HDLTiming','HDL prerun must be zero.');
+ effective.unselected_iq_script=double(slResolve('STEP7C_iq_ref_ts',m).Data(:))';
+ effective.unselected_id_script=double(slResolve('STEP7C_id_ref_ts',m).Data(:))';
+ effective.smoke_iq=slResolve('FPGA_Smoke_iq_ref_A',m);
+ if isfield(cfg,'canaryEnabled') && cfg.canaryEnabled
+  assert(all(effective.unselected_iq_script==.17) && all(effective.unselected_id_script==-.09) && effective.smoke_iq==-.3,'Step7D:CanaryConfig','Canary overridden before startup.');
+ end
  gate=slResolve('STEP7C_run_gate_ts',m);
  assert(all(gate.Data==1) && gate.Time(1)==0 && gate.Time(end)>=cfg.stopTime,'Step7D:RunGate','Normal run gate must cover full duration.');
 end

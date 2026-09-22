@@ -16,7 +16,7 @@ ops={}; kinds={'speed','load','pwm','reset'}; dest=[1249 941 1247 1257];
 for k=1:4
  mode='off'; if k==1, mode='on'; end
  ops{end+1}=struct('op','add_block','type','FromWorkspace','name',['Step7D_Test_' kinds{k}],'ref',kinds{k}, ...
-  'params',struct('VariableName',['STEP7D_' kinds{k} '_ts'],'Interpolate',mode,'SampleTime','0','OutputAfterFinalValue','Holding final value')); %#ok<AGROW>
+  'params',struct('VariableName',['STEP7D_' kinds{k} '_ts'],'Interpolate',mode,'SampleTime',num2str(cfg.commTs,17),'OutputAfterFinalValue','Holding final value')); %#ok<AGROW>
  ops{end+1}=struct('op','connect','target',sprintf('#%s.y1 -> blk_%d.u1',kinds{k},dest(k))); %#ok<AGROW>
 end
 result=model_edit(m,'root',jsonencode(ops),'incremental'); disp(result); model_read(m,'root'); disp(model_check(m,'root','["unconnected_ports","unconnected_lines"]'));
