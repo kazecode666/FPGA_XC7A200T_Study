@@ -27,7 +27,7 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim，PR #25 已合并 |
 | Step 7B | Simulink HDL Cosimulation block + active-CMP smoke，PR #28 已合并 |
 | Step 7C | PR #31 已合并；本地后续布局改动继续保留 |
-| Step 7D | Task 1 进行中：用户已澄清 Host 请求与外环电流参考职责，继续修改前基线；尚未实施接入 |
+| Step 7D | Tasks 1–3 通过；Task 4 ideal 通过、deadtime 速度门槛失败并停止。Tasks 5–8 未开始；见 `coordination/reports/step7d_codex_report.md`，等待 Review 决定诊断范围 |
 
 ## Step 7D Task 1 差异报告（2026-09-22）
 

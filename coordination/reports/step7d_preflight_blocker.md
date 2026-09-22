@@ -1,8 +1,10 @@
 # Step 7D Task 1 blocker: live iq_cmd is a Host test command
 
-Date: 2026-09-22. Status: **Historical Task 1 topology finding; user clarification received, Task 1 baseline work resumed. Tasks 2–8 not started.**
+Date: 2026-09-22. Status: **Historical Task 1 topology finding, resolved by user clarification and verified minimal wiring. Tasks 1–3 complete. Current Task 4 performance blocker is documented in `step7d_codex_report.md`.**
 
 The user clarified that Simple_Host is the upper-computer request source: iq_test_ref is for open-outer-loop current tests; three-loop control must use position reference. This resolves the architectural decision below: preserve Host test-command semantics and later expose the existing selected outer references through minimal wiring. Baselines and their gates must precede that wiring. The original source audit remains an expected failure on the unchanged model.
+
+Resolution evidence: baseline commit `f6e4e50` preceded wiring commit `41a1b4a`. Reference_Manager outputs 1/2 are exported through new Control_Task outports 4/5 and local tags S7D_Outer_Id/Iq. The original Host test tags retain their meaning. `docs/reports/step7d/task3_verified/` proves real live input and full-rate canary equality, 100 us accepted periods and 50 us accepted-to-active delay. `task3_legacy_after/` proves all native baseline signals and outer states remain equivalent within 1e-10. The historical sections below describe the pre-edit finding, not current model connectivity.
 
 ## Finding and stop rule
 
