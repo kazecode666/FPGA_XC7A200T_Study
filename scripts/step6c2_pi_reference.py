@@ -71,8 +71,8 @@ def quantize(text, fraction):
 def constants():
     with localcontext() as ctx:
         ctx.prec=90
-        return {'KP':[quantize('2.18125',24),quantize('4.3625',24)],
-                'KI_TS':[quantize('0.29625',24),quantize('0.5925',24)],
+        return {'KP':[quantize('8.725',24),quantize('4.3625',24)],
+                'KI_TS':[quantize('1.185',24),quantize('0.5925',24)],
                 'KAW':quantize('0.2',24),'LD':quantize('0.001745',30),
                 'LQ':quantize('0.001745',30),'PSI_F':quantize('0.141',30),
                 'C_UMAX':int((Decimal('0.9')/Decimal(3).sqrt()*(1<<30)).to_integral_value(rounding=ROUND_FLOOR)),
@@ -124,7 +124,8 @@ def limiter_raw(ud:int, uq:int, vdc:int)->dict:
     return result
 
 
-def pi_eval(state, s, profile):
+def pi_eval(state, s, profile, coefficients=None):
+    coeff = C if coefficients is None else coefficients
     validate_state(state); validate_sample(s)
     require(type(profile) is int and profile in (0,1),'invalid PI profile')
     result=dict(error_code=0,ud_raw=0,uq_raw=0,xd_next=state[0],xq_next=state[1])
@@ -133,8 +134,8 @@ def pi_eval(state, s, profile):
         return result
     xd,xq,dd,dq,_=state
     ed=s['id_ref']-s['id_meas']; eq=0 if s['uq_zero_en'] else s['iq_ref']-s['iq_meas']
-    pd=round_shift_away(ed*C['KP'][profile],15); pq=round_shift_away(eq*C['KP'][profile],15)
-    di=round_shift_away(ed*C['KI_TS'][profile],15); qi=round_shift_away(eq*C['KI_TS'][profile],15)
+    pd=round_shift_away(ed*coeff['KP'][profile],15); pq=round_shift_away(eq*coeff['KP'][profile],15)
+    di=round_shift_away(ed*coeff['KI_TS'][profile],15); qi=round_shift_away(eq*coeff['KI_TS'][profile],15)
     da=round_shift_away(dd*C['KAW'],24); qa=round_shift_away(dq*C['KAW'],24)
     fd=round_shift_away(-s['we']*C['LQ']*s['iq_meas'],37)
     fq=round_shift_away(s['we']*(C['LD']*s['id_meas']+(C['PSI_F']<<15)),37)
@@ -148,8 +149,8 @@ def pi_eval(state, s, profile):
     return result
 
 
-def pi_step(state:tuple[int,int,int,int,int], sample:dict, profile:int)->dict:
-    e=pi_eval(state,sample,profile)
+def pi_step(state:tuple[int,int,int,int,int], sample:dict, profile:int, coefficients=None)->dict:
+    e=pi_eval(state,sample,profile,coefficients)
     result={**dict.fromkeys(LIMIT_FIELDS,0),'old_state':state,'next_state':state,
             'ud_raw':0,'uq_raw':0,'error_code':e['error_code']}
     result.update(du_d_next=state[2],du_q_next=state[3])
@@ -208,6 +209,10 @@ def limiter_inputs():
 
 
 def replay_actual():
+    # Step6A reports are immutable historical evidence with the old profile0.
+    # Only this historical comparison uses old coefficients; current fixtures
+    # below replay the same inputs with current coefficients and fresh state.
+    historical={**C,'KP':[36595302,73190605],'KI_TS':[4970250,9940500]}
     with SOURCE.open(encoding='utf-8-sig',newline='') as f: source=list(csv.DictReader(f))
     require(len(source)==160,'golden count must equal 160')
     names=['ud_raw','uq_raw','ud_lim','uq_lim','du_d_z','du_q_z']
@@ -226,7 +231,7 @@ def replay_actual():
             s={key:quantize(row['id' if key=='id_meas' else 'iq' if key=='iq_meas' else key],
                            0 if key in ('pi_reset','uq_zero_en') else 16 if key=='we' else 15) for key in INPUTS}
             for key in ('pi_reset','uq_zero_en'): require(Decimal(row[key]) in (0,1),'nonboolean source command')
-            r=pi_step(state,s,profile); require(r['error_code']==0,'golden must succeed')
+            r=pi_step(state,s,profile,historical); require(r['error_code']==0,'golden must succeed')
             out={'profile':profile,'parameter_profile':label,'row':idx+1,'source_row':profile*80+idx+1,
                  'case_id':row['case_id'],'time_s':row['time_s'],**s}
             for key,value in zip(STATE_NAMES,state): out[key+'_old_raw']=value
@@ -331,8 +336,10 @@ def build_artifacts():
     artifacts[COMPARISON]=output.getvalue()
     golden=[]
     for row in history:
-        s={k:row[k] for k in INPUTS}; state=tuple(row[k+'_old_raw'] for k in STATE_NAMES)
-        data,_=core_row(row['profile'],0,row['row']-1,int(row['row']==1),s,state); golden.append(data)
+        s={k:row[k] for k in INPUTS}
+        if row['row']==1: state=(0,0,0,0,0)
+        data,current=core_row(row['profile'],0,row['row']-1,int(row['row']==1),s,state)
+        golden.append(data); state=current['next_state']
     add('golden_core_vectors.txt',CORE_SCHEMA,golden)
     seeded=[]; errors=[]; evals=[]
     for p in (0,1):

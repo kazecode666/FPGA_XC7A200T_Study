@@ -279,8 +279,8 @@ module mc_pi_fxp_tb;
       if (PI_PROFILE_REAL_COMMISSIONING != 0 || PI_PROFILE_MIL_PI_OVERRIDE != 1)
         fail("profile identifiers");
 
-      if (PI_KP_REAL_COMMISSIONING !== 32'sd36595302 ||
-          PI_KI_TS_REAL_COMMISSIONING !== 32'sd4970250 ||
+      if (PI_KP_REAL_COMMISSIONING !== 32'sd146381210 ||
+          PI_KI_TS_REAL_COMMISSIONING !== 32'sd19881001 ||
           PI_KAW_D_REAL_COMMISSIONING !== 32'sd3355443 ||
           PI_KAW_Q_REAL_COMMISSIONING !== 32'sd3355443)
         fail("real_commissioning coefficient literals");

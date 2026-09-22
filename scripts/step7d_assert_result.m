@@ -53,8 +53,13 @@ for k=1:size(cfg.windows.position,1)
  assert(err<=cfg.thresholds.positionMax && vp<=cfg.thresholds.positionSpeedMax,'Step7D:PositionPerformance','Position window %d failed.',k);
 end
 for name={'current','speed','position'}
- et=r.control_events.(name{1}); dt=struct('current',1e-4,'speed',1e-3,'position',1e-2);
- assert(numel(et)>=2 && all(abs(diff(et)-dt.(name{1}))<1e-12),'Step7D:ExecutionTiming','Wrong execution period: %s',name{1});
+ % Phases measured in Task3 interface_gate.txt, not inferred from names.
+ dt=struct('current',1e-4,'speed',1e-3,'position',1e-2);
+ first=struct('current',0,'speed',.0009,'position',.0099);
+ expected=(first.(name{1}):dt.(name{1}):cfg.stopTime)';
+ actual=r.control_events.(name{1}); actual=actual(:);
+ assert(numel(actual)==numel(expected) && all(abs(actual-expected)<1e-12), ...
+  'Step7D:ExecutionTiming','Incomplete or off-grid execution events: %s',name{1});
 end
 if strcmp(cfg.purpose,'performance') && ~strcmp(cfg.name,'stop_restart_inhibit')
  et=r.control_events.current; et=et(et>=.002 & et<=cfg.stopTime);

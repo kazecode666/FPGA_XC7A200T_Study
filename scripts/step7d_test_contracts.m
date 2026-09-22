@@ -3,6 +3,8 @@ assert(exist('step7d_assert_result','file')==2 && exist('step7d_check_start','fi
  'Step7D:MissingContracts','Step7D result/start contracts are not implemented.');
 cfg=step7d_scenarios('speed_ideal'); cfg.backend=0; r=fixture(cfg);
 step7d_assert_result(r,cfg);
+bad=r; bad.control_events.position(end)=[];
+reject(@()step7d_assert_result(bad,cfg),'Step7D:ExecutionTiming');
 bad=r; bad=rmfield(bad,'iq_A'); reject(@()step7d_assert_result(bad,cfg),'Step7D:MissingField');
 bad=r; bad.v_mmps(10)=NaN; reject(@()step7d_assert_result(bad,cfg),'Step7D:NonFinite');
 badcfg=cfg; badcfg.windows.speed=[2 3]; reject(@()step7d_assert_result(r,badcfg),'Step7D:EmptyWindow');

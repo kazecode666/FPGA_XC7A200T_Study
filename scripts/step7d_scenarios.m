@@ -21,6 +21,7 @@ if contains(name,'position') || strcmp(name,'convergence_prefix')
 end
 if contains(name,'deadtime') || any(strcmp(name,{'stop_restart_inhibit','fresh_start'}))
  cfg.deadtime_s=1e-6; cfg.thresholds.idMax=.5; cfg.thresholds.iqRMSE=.1;
+ cfg.thresholds.speedMAE=1.5; cfg.thresholds.speedRMSE=1.5;
 end
 if strcmp(name,'position_negative_deadtime')
  cfg.host.Host_Target_mm=-1; cfg.signals.load=[0 0;1.2 0]; cfg.windows.position=[1.1 1.2];
