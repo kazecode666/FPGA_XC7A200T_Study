@@ -58,8 +58,8 @@ catch e
 end
 end
 function value=fileHash(file)
-f=fopen(file,'rb'); assert(f>=0); c=onCleanup(@()fclose(f)); %#ok<NASGU>
-bytes=fread(f,Inf,'*uint8'); digest=java.security.MessageDigest.getInstance('SHA-256');
-digest.update(typecast(bytes,'int8')); raw=typecast(digest.digest(),'uint8');
-value=lower(reshape(dec2hex(raw,2).',1,[]));
+% This R2026b installation intentionally has no Java runtime.
+command=sprintf('powershell.exe -NoProfile -Command "(Get-FileHash -Algorithm SHA256 -LiteralPath ''%s'').Hash"',strrep(file,'''',''''''));
+[rc,output]=system(command); value=lower(strtrim(output));
+assert(rc==0 && ~isempty(regexp(value,'^[0-9a-f]{64}$','once')),'Step7D:ModelHash','Cannot record saved model hash.');
 end
