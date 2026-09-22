@@ -1,0 +1,13 @@
+Task 2 fresh test: scripts/step7d_test_contracts.m
+RED: Step7D:MissingContracts before implementation.
+GREEN: STEP7D_CONTRACT_TESTS_PASS in contracts_final.log.
+Negative: live reference mode=0 -> Step7D:ReferenceMode
+Negative: effective Ts_ASR=1us -> Step7D:ControlPeriod
+Negative: missing iq_A -> Step7D:MissingField
+Negative: NaN speed -> Step7D:NonFinite
+Negative: empty speed window -> Step7D:EmptyWindow
+Negative: accepted command jump -> Step7D:CommandSequence
+Positive: valid legacy and FPGA synthetic fixtures pass (not HDL evidence).
+Positive: real backend0 fresh_start completes 20ms from project root; no HDL setup or runtime cwd.
+Positive: scenario speed interpolation and load zero-order hold tests pass.
+Tool warnings: expected unused Host outputs after in-memory sources; toolkit layout/library-link metadata warnings. No SLX save.

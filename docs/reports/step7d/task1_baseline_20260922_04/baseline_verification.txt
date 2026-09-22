@@ -1,0 +1,9 @@
+01_current_native_50us.mat samples=101 finite=1 effective_backend=0 events=[51 5 0]
+02_speed_deadtime_50us.mat samples=24001 finite=1 effective_backend=0 events=[12001 1200 120]
+03_position_deadtime_50us.mat samples=24001 finite=1 effective_backend=0 events=[12001 1200 120]
+04_speed_ideal_1us.mat samples=12001 finite=1 effective_backend=0 events=[12001 1200 120]
+05_speed_deadtime_1us.mat samples=12001 finite=1 effective_backend=0 events=[12001 1200 120]
+06_position_ideal_1us.mat samples=12001 finite=1 effective_backend=0 events=[12001 1200 120]
+07_position_deadtime_1us.mat samples=12001 finite=1 effective_backend=0 events=[12001 1200 120]
+08_position_negative_deadtime_1us.mat samples=12001 finite=1 effective_backend=0 events=[12001 1200 120]
+STEP7D_BASELINE_ARTIFACTS_VERIFIED

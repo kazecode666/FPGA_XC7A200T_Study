@@ -16,7 +16,8 @@ import step6c3_svpwm_reference as c3
 
 ROOT=Path(__file__).resolve().parents[1]
 VECTORS=ROOT/'motor_control_ip/foc/tb/vectors/step6c4'
-CSV_PATH=ROOT/'coordination/reports/step6c4_foc_fixed_vectors.csv'
+# Current-profile comparison is a fixture; accepted historical reports stay frozen.
+CSV_PATH=VECTORS/'current_source_comparison.csv'
 ZERO=(0,0,0,0,0)
 INPUTS='ia ib ic theta_e we id_ref iq_ref vdc pi_reset uq_zero_en'.split()
 STATES=['xd','xq','du_d','du_q','sat']

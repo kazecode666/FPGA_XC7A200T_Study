@@ -1,0 +1,17 @@
+CWD=D:/Project/FPGA_XC7A200T
+BASE_ORIGIN_MAIN=e7f707b1c2d40003f54b065a15411987cb17c9b2
+PR31_MERGE=8b31b988bfe3d935898ca5960df2051c70836f5e
+PR31_ANCESTOR_VERIFIED=1
+BRANCH=codex/step7d-outer-loops-cosim
+REMOTE_DIFF_FROM_PREVIOUS_HEAD=only added Step7D taskbook
+INDEX_INITIALLY_EMPTY=1
+WORKTREE_CLONE_STASH_RESET_CLEAN_USED=0
+ALL_PREEXISTING_TRACKED_DIFFS_PRESERVED_AFTER_AUDIT=1
+INITIAL_TRACKED_DIRTY_ENTRIES=22
+INITIAL_UNTRACKED_FILES=162
+MATLAB=D:/Program Files/MATLAB/R2026b_Prerelease/bin/matlab.exe
+MATLAB_VERSION=26.2.0.3340147 prerelease Update 3
+Vivado executable exists; no new Vivado version probe/runtime execution needed after topology stop.
+USER_CHANGES=hardware-document deletions/moves; four XPR files; two SLX files; Step7C report/plot reruns; caches and historical untracked results.
+FULL_LOCAL_STATUS=.superpowers/sdd/step7d_outer_loops_cosim/git_status_before.txt
+FULL_LOCAL_DIFF=.superpowers/sdd/step7d_outer_loops_cosim/local_changes_before.patch

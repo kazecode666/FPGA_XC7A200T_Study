@@ -1,0 +1,169 @@
+RELEASE=2026b
+ROOT=D:\Program Files\MATLAB\R2026b_Prerelease
+Simulink Agentic Toolkit is already initialized.
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_read\model_read.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_edit\model_edit.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_check\model_check.p
+STEP7D_R2026B_MCP_READY
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+[Autolayout] applied: model=PMLSM_ThreeLoop_Simple, scope=root, mode=incremental, duration_ms=3123.3
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: root
+created:
+  load: blk_1959
+  pwm: blk_1960
+  reset: blk_1961
+  speed: blk_1958
+warnings:
+  - Replaced: blk_523.y7 -> blk_1249.u1
+  - Replaced: blk_523.y3 -> blk_941.u1
+  - Replaced: blk_523.y6 -> blk_1247.u1
+  - Replaced: blk_523.y11 -> blk_1257.u1
+status: warnings
+total_warnings: 4
+validation_scope: root
+checks_run: 
+  - unconnected_ports
+  - unconnected_lines
+
+issues: 
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: load_N
+    port_type: output
+    message: "Port 'load_N' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PWM_EN
+    port_type: output
+    message: "Port 'PWM_EN' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: v_ref_cmd
+    port_type: output
+    message: "Port 'v_ref_cmd' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PI_Reset_EN
+    port_type: output
+    message: "Port 'PI_Reset_EN' of block 'Simple_Host' is not connected"
+
+警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item
+STEP7D_SCENARIO_GATE_PASS speed_ideal purpose=performance
+STEP7D_OUTER_CASE_REPORT_PASS
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+[Autolayout] identity_change: model=PMLSM_ThreeLoop_Simple, scope=root, handle 147.0->147.0, clearing stale state
+[Autolayout] applied: model=PMLSM_ThreeLoop_Simple, scope=root, mode=incremental, duration_ms=1022.6
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: root
+created:
+  load: blk_1959
+  pwm: blk_1960
+  reset: blk_1961
+  speed: blk_1958
+warnings:
+  - Replaced: blk_523.y7 -> blk_1249.u1
+  - Replaced: blk_523.y3 -> blk_941.u1
+  - Replaced: blk_523.y6 -> blk_1247.u1
+  - Replaced: blk_523.y11 -> blk_1257.u1
+status: warnings
+total_warnings: 4
+validation_scope: root
+checks_run: 
+  - unconnected_ports
+  - unconnected_lines
+
+issues: 
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: load_N
+    port_type: output
+    message: "Port 'load_N' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PWM_EN
+    port_type: output
+    message: "Port 'PWM_EN' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: v_ref_cmd
+    port_type: output
+    message: "Port 'v_ref_cmd' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PI_Reset_EN
+    port_type: output
+    message: "Port 'PI_Reset_EN' of block 'Simple_Host' is not connected"
+
+警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item
+STEP7D_SCENARIO_GATE_PASS speed_deadtime purpose=performance
+STEP7D_OUTER_CASE_REPORT_PASS
+STEP7D_REVISED_SPEED_CASES_PASS

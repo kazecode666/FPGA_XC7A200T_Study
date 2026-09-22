@@ -1,10 +1,12 @@
-function step7c_check_structure
+function step7c_check_structure(reportDir)
 root=fileparts(fileparts(mfilename('fullpath'))); addpath(fullfile(root,'simulink模型'));
+if nargin<1, reportDir=fullfile(root,'docs','reports','step7c'); end
+if ~isfolder(reportDir), mkdir(reportDir); end
 m='PMLSM_ThreeLoop_Simple'; assert(~bdIsLoaded(m)); load_system(m);
 c=onCleanup(@() close_system(m,0)); %#ok<NASGU>
 i=[m '/Inverter_DeadTime']; p=[m '/FPGA_HDL_Cosim'];
 assert(getSimulinkBlockHandle([i '/Legacy_Counts_To_Duty'])>0,'STEP7C_MISSING_BACKEND');
-fid=fopen(fullfile(root,'docs','reports','step7c','structure_after.txt'),'w'); cf=onCleanup(@() fclose(fid)); %#ok<NASGU>
+fid=fopen(fullfile(reportDir,'structure_after.txt'),'w'); cf=onCleanup(@() fclose(fid)); %#ok<NASGU>
 assert(isempty(find_system([i '/Legacy_Counts_To_Duty'],'BlockType','Saturate')));
 for k=1:3
     phase=[i '/DeadTime_Voltage_Model/Phase_' char('A'+k-1) '_DeadTime'];
@@ -31,6 +33,16 @@ fprintf('STEP7C_STRUCTURE_PASS\n');
 end
 function check(parent,dst,dp,src,sp,fid)
 ph=get_param([parent '/' dst],'PortHandles'); l=get_param(ph.Inport(dp),'Line'); assert(l>0);
-h=get_param(l,'SrcPortHandle'); assert(strcmp(get_param(h,'Parent'),[parent '/' src]) && get_param(h,'PortNumber')==sp);
+h=get_param(l,'SrcPortHandle');
+for depth=1:32
+ block=get_param(h,'Parent');
+ if ~strcmp(get_param(block,'BlockType'),'From'), break; end
+ scope=get_param(block,'Parent'); tag=get_param(block,'GotoTag');
+ producer=find_system(scope,'SearchDepth',1,'BlockType','Goto','GotoTag',tag);
+ assert(numel(producer)==1 && strcmp(get_param(producer{1},'TagVisibility'),'local'),'Step7C:Route','Unique local Goto required.');
+ ports=get_param(producer{1},'PortHandles'); line=get_param(ports.Inport(1),'Line'); assert(line>0);
+ h=get_param(line,'SrcPortHandle');
+end
+assert(strcmp(get_param(h,'Parent'),[parent '/' src]) && get_param(h,'PortNumber')==sp,'Step7C:Source','Wrong effective source for %s/%s:%d',parent,dst,dp);
 fprintf(fid,'%s/%s:%d -> %s/%s:%d\n',parent,src,sp,parent,dst,dp);
 end

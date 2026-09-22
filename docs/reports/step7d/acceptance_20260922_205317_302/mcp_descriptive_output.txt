@@ -1,0 +1,21 @@
+RELEASE=2026b
+ROOT=D:\Program Files\MATLAB\R2026b_Prerelease
+Simulink Agentic Toolkit is already initialized.
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_read\model_read.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_edit\model_edit.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_check\model_check.p
+STEP7D_R2026B_MCP_READY
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+STEP7D_DESCRIPTIVE_METRICS_WRITTEN
+STEP7D_REPORT_COMPLETENESS_PASS

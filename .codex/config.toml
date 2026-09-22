@@ -1,0 +1,6 @@
+[mcp_servers.matlab_r2026b]
+command = "C:/Users/lww/.matlab/agentic-toolkits/bin/matlab-mcp-server.exe"
+args = ["--matlab-session-mode=new", "--matlab-root", "D:/Program Files/MATLAB/R2026b_Prerelease", "--matlab-display-mode", "nodesktop", "--initial-working-folder", "D:/Project/FPGA_XC7A200T", "--extension-file=C:/Users/lww/.matlab/agentic-toolkits/simulink/tools/tools.json"]
+startup_timeout_sec = 120
+tool_timeout_sec = 1800
+env_vars = ["WINDIR"]

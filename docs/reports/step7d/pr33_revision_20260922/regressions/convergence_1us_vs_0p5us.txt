@@ -1,0 +1,7 @@
+horizon=0.012 common_samples=12001 interpolation=none
+max_delta_iq_A_id_A_v_mmps_x_mm=[0.0022244790759171134 0.00015010386612376576 0.014172308699059499 6.1967808528073931e-05]
+limits=[0.05 0.05 2 0.02]
+accepted_active_counts_1us_0p5us=[120 119;120 119]
+control_period=0.0001
+SAVED_PORT_TIMES=1e-6 SAVED_DEFAULT_BACKEND=0
+STEP7C_CONVERGENCE_PASS

@@ -1,0 +1,2 @@
+origin/main: Host_iq_cmd SID1255 source=['523#out:10']; Control_Task outputs=[('cmp_a_counts', '516'), ('cmp_b_counts', '517'), ('cmp_c_counts', '518')]
+local as-found: Host_iq_cmd SID1255 source=['523#out:10']; Control_Task outputs=[('cmp_a_counts', '516'), ('cmp_b_counts', '517'), ('cmp_c_counts', '518')]

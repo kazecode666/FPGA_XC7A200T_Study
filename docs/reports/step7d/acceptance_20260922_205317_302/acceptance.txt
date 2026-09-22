@@ -1,0 +1,26 @@
+ACCEPTANCE_ID=20260922_205317_302
+TESTED_COMMIT=dc236d2db956e36d4597c054ae96b5f5de4fe410
+current_prerequisite/dynamic_ideal.txt: STEP7C_DYNAMIC_IDEAL_PASS
+current_prerequisite/dynamic_deadtime.txt: STEP7C_DYNAMIC_DEADTIME_PASS
+live_interface/interface_gate.txt: STEP7D_LIVE_INTERFACE_PASS
+outer_limits/outer_limits.txt: STEP7D_OUTER_LIMIT_RESET_PASS
+stop_restart_inhibit/stop_inhibit.txt: STEP7D_STOP_INHIBIT_PASS
+fresh_start/run_summary.txt: STEP7D_SCENARIO_GATE_PASS fresh_start
+convergence/convergence.txt: STEP7D_CONVERGENCE_PASS
+regressions/structure_after.txt: STEP7C_STRUCTURE_PASS
+regressions/legacy_after/baseline_before.txt: STEP7D_LEGACY_EQUIVALENCE_PASS
+regressions/timing_1us.txt: STEP7C_1US_TIMING_PASS
+regressions/dynamic_ideal.txt: STEP7C_DYNAMIC_IDEAL_PASS
+regressions/dynamic_deadtime.txt: STEP7C_DYNAMIC_DEADTIME_PASS
+regressions/dynamic_stop.txt: STEP7C_DYNAMIC_STOP_PASS
+regressions/convergence_1us_vs_0p5us.txt: STEP7C_CONVERGENCE_PASS
+regressions/minimal_cosim_result.txt: STEP7B_SIMULINK_MINIMAL_COSIM_PASS
+regressions/foc_wrapper_xsim.txt: STEP7B_FOC_WRAPPER_PASS
+speed_ideal/run_summary.txt: STEP7D_SCENARIO_GATE_PASS speed_ideal purpose=performance
+speed_deadtime/run_summary.txt: STEP7D_SCENARIO_GATE_PASS speed_deadtime purpose=performance
+position_ideal/run_summary.txt: STEP7D_SCENARIO_GATE_PASS position_ideal purpose=performance
+position_deadtime/run_summary.txt: STEP7D_SCENARIO_GATE_PASS position_deadtime purpose=performance
+position_negative_deadtime/run_summary.txt: STEP7D_SCENARIO_GATE_PASS position_negative_deadtime purpose=performance
+FULL_STEP6_RERUN=0
+MODEL_SAVED=0
+STEP7D_FULL_ACCEPTANCE_PASS

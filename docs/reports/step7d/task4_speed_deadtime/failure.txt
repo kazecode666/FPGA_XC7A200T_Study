@@ -1,0 +1,11 @@
+Step7D:SpeedPerformance
+错误使用 assert
+Speed window 1 failed: [N MAE RMSE MAX MEAN_V SPAN]=[30 1.05212 1.1026456 1.3471521 4.3396399 0]
+
+出错 step7d_assert_result (第 24 行)
+ assert(vrow(2)<=cfg.thresholds.speedMAE && vrow(3)<=cfg.thresholds.speedRMSE && vrow(4)<=cfg.thresholds.speedMax, ...
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+出错 step7d_run_scenario (第 100 行)
+ r.metrics=step7d_assert_result(r,r.cfg); fprintf(f,'METRICS=%s\nSTEP7D_SCENARIO_GATE_PASS %s purpose=%s\n',jsonencode(r.metrics),name,cfg.purpose);
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RAW_DIR=D:\Project\FPGA_XC7A200T\.Xil\step7d\20260922_124923_408

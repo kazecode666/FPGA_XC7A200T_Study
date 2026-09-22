@@ -1,0 +1,2 @@
+SETUP_FAIL: FromWorkspace Interpolate=off cannot use default final-value extrapolation. No simulation completed. Fixed by explicitly holding final value; no controller change.
+Console: .superpowers/sdd/step7d_outer_loops_cosim/baseline_01_console.log

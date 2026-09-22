@@ -1,0 +1,1 @@
+Run 20260922_182833_275 was interrupted before complete simulation output or a result artifact was saved. No speed acceptance result is claimed. At resume, no MATLAB/python process remained. A fresh report directory is used for the retry; this directory is retained as interruption evidence.

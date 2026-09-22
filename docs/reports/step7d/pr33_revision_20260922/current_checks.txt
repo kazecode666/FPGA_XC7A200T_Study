@@ -1,0 +1,40 @@
+RELEASE=2026b
+ROOT=D:\Program Files\MATLAB\R2026b_Prerelease
+Simulink Agentic Toolkit is already initialized.
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_read\model_read.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_edit\model_edit.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_check\model_check.p
+STEP7D_R2026B_MCP_READY
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=9.9999999999999995e-07
+ACTUAL_SCENARIO dt=0 ratio=0 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=0 Vdc=48 load=0 reference=scripted feedback=live
+RAW_DATA=D:\Project\FPGA_XC7A200T\.Xil\step7c_ideal_20260922_182348_226_raw.mat
+STEP7C_DYNAMIC_IDEAL_PASS
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+STEP7C_EFFECTIVE_FIXEDSTEP=9.9999999999999995e-07
+ACTUAL_SCENARIO dt=1e-06 ratio=0.01 Udc=48 load=0 schedule=[0 1 0 1]
+ACTUAL_SIMULATION_WORKSPACE backend=1 enable=1 inputmode=1 refmode=0
+STEP7C_EFFECTIVE_SCENARIO deadtime=9.9999999999999995e-07 Vdc=48 load=0 reference=scripted feedback=live
+RAW_DATA=D:\Project\FPGA_XC7A200T\.Xil\step7c_deadtime_20260922_182353_891_raw.mat
+STEP7C_DYNAMIC_DEADTIME_PASS
+STEP7D_REVISED_CURRENT_CASES_PASS

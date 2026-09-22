@@ -1,0 +1,1536 @@
+RELEASE=2026b
+ROOT=D:\Program Files\MATLAB\R2026b_Prerelease
+Simulink Agentic Toolkit is already initialized.
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_read\model_read.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_edit\model_edit.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_check\model_check.p
+STEP7D_R2026B_MCP_READY
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+[Autolayout] applied: model=PMLSM_ThreeLoop_Simple, scope=root, mode=incremental, duration_ms=5436.8
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: root
+created:
+  load: blk_1959
+  pwm: blk_1960
+  reset: blk_1961
+  speed: blk_1958
+warnings:
+  - Replaced: blk_523.y7 -> blk_1249.u1
+  - Replaced: blk_523.y3 -> blk_941.u1
+  - Replaced: blk_523.y6 -> blk_1247.u1
+  - Replaced: blk_523.y11 -> blk_1257.u1
+status: warnings
+total_warnings: 4
+validation_scope: root
+checks_run: 
+  - unconnected_ports
+  - unconnected_lines
+
+issues: 
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: load_N
+    port_type: output
+    message: "Port 'load_N' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PWM_EN
+    port_type: output
+    message: "Port 'PWM_EN' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: v_ref_cmd
+    port_type: output
+    message: "Port 'v_ref_cmd' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PI_Reset_EN
+    port_type: output
+    message: "Port 'PI_Reset_EN' of block 'Simple_Host' is not connected"
+[Autolayout] applied: model=PMLSM_ThreeLoop_Simple, scope=blk_505, mode=incremental, duration_ms=3944.5
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: blk_505
+created:
+  err: blk_1962
+  unused: blk_1964
+  unusedv: blk_1965
+  zero: blk_1963
+warnings:
+  - Replaced: blk_1264.y1 -> blk_1122.u1
+  - Replaced: blk_510.y1 -> blk_1122.u2
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: blk_505
+token_estimate: 9649
+warnings: 
+  - code: TRUNCATED
+    message: Output truncated after 9 container(s). Token limit reached (9649 tokens used of available budget). Use scope to focus on specific subsystems.
+blocks: 
+  interface: 
+    Inport: 
+      - id: blk_508 #u1
+        Name: x_ref_mm
+      - id: blk_509 #u2
+        Name: x_mm
+      - id: blk_510 #u3
+        Name: v_mmps
+      - id: blk_511 #u4
+        Name: ia
+      - id: blk_512 #u5
+        Name: ib
+      - id: blk_513 #u6
+        Name: ic
+      - id: blk_514 #u7
+        Name: theta_e
+      - id: blk_515 #u8
+        Name: omega_e
+      - id: blk_1041 #u9
+        Name: Position_Loop_EN
+      - id: blk_1040 #u10
+        Name: Close_Loop_EN
+      - id: blk_1042 #u11
+        Name: v_ref_cmd
+      - id: blk_1043 #u12
+        Name: id_ref_cmd
+      - id: blk_1044 #u13
+        Name: iq_test_mode
+      - id: blk_1045 #u14
+        Name: iq_test_ref
+      - id: blk_1046 #u15
+        Name: PI_Reset_EN
+    Outport: 
+      - id: blk_516 #y1
+        Name: cmp_a_counts
+      - id: blk_517 #y2
+        Name: cmp_b_counts
+      - id: blk_518 #y3
+        Name: cmp_c_counts
+      - id: blk_1902 #y4
+        Name: outer_id_ref
+      - id: blk_1903 #y5
+        Name: outer_iq_ref
+    TriggerPort: 
+      - id: blk_767
+        Name: Control_Tick
+  algorithm: 
+    - id: blk_1234
+      Name: Close_Loop_EN_cmd
+      BlockType: DataStoreMemory
+      derived_info: 
+        expression: DataStoreMemory()
+    - id: blk_546
+      Name: FOC_Algorithm
+      BlockType: SubSystem
+      derived_info: 
+        expression: "[cmp_a_counts, cmp_b_counts, cmp_c_counts] = FOC_Algorithm(ia, ib, ic, theta_e, omega_e, iq_ref, id_ref, PI_Reset_EN) where ia=blk_511.y1, ib=blk_512.y1, ic=blk_513.y1, theta_e=blk_514.y1, omega_e=blk_515.y1, iq_ref=blk_944.y1, id_ref=blk_1266.y1, PI_Reset_EN=blk_1268.y1"
+      blocks: 
+        interface: 
+          Inport: 
+            - id: blk_547 #u1
+              Name: ia
+            - id: blk_548 #u2
+              Name: ib
+            - id: blk_549 #u3
+              Name: ic
+            - id: blk_550 #u4
+              Name: theta_e
+            - id: blk_551 #u5
+              Name: omega_e
+            - id: blk_552 #u6
+              Name: iq_ref
+            - id: blk_1107 #u7
+              Name: id_ref
+            - id: blk_1108 #u8
+              Name: PI_Reset_EN
+          Outport: 
+            - id: blk_735 #y1
+              Name: cmp_a_counts
+            - id: blk_736 #y2
+              Name: cmp_b_counts
+            - id: blk_737 #y3
+              Name: cmp_c_counts
+        algorithm: 
+          - id: blk_553
+            Name: Clark
+            BlockType: SubSystem
+            derived_info: 
+              expression: "[ialpha, ibeta] = Clark(ia, ib, ic) where ia=blk_547.y1, ib=blk_548.y1, ic=blk_549.y1"
+            blocks: 
+              interface: 
+                Inport: 
+                  - id: blk_554 #u1
+                    Name: ia
+                  - id: blk_555 #u2
+                    Name: ib
+                  - id: blk_556 #u3
+                    Name: ic
+                Outport: 
+                  - id: blk_563 #y1
+                    Name: ialpha
+                  - id: blk_564 #y2
+                    Name: ibeta
+              algorithm: 
+                - id: blk_557
+                  Name: Add
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 - u2 - u3 where u1=blk_554.y1, u2=blk_559.y1, u3=blk_560.y1"
+                - id: blk_558
+                  Name: Add1
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 - u2 where u1=blk_555.y1, u2=blk_556.y1"
+                - id: blk_559
+                  Name: Gain
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_555.y1, Gain=0.5"
+                - id: blk_560
+                  Name: Gain1
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_556.y1, Gain=0.5"
+                - id: blk_561
+                  Name: Gain2
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_557.y1, Gain=2/3"
+                - id: blk_562
+                  Name: Gain3
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_558.y1, Gain=1/sqrt(3)"
+            connections: 
+              - id: "blk_560.y1 -> blk_557.u3"
+              - id: "blk_554.y1 -> blk_557.u1"
+              - id: "blk_555.y1 -> blk_558.u1,blk_559.u1"
+              - id: "blk_558.y1 -> blk_562.u1"
+              - id: "blk_556.y1 -> blk_558.u2,blk_560.u1"
+              - id: "blk_562.y1 -> blk_564.u1"
+                signal_name: ibeta
+              - id: "blk_557.y1 -> blk_561.u1"
+              - id: "blk_561.y1 -> blk_563.u1"
+                signal_name: ialf
+              - id: "blk_559.y1 -> blk_557.u2"
+            annotations: 
+              - type: note
+                text: |
+                  alpha=(A-0.5*(B+C))*2/3
+                  Beta=sqrt(3)/2*(B-C)*2/3
+            #... 11 blocks not shown
+          - id: blk_566
+            Name: Id
+            BlockType: SubSystem
+            derived_info: 
+              expression: "ud_raw = Id(id_ref, id, iq, we, du_d_z, PI_Reset_EN) where id_ref=blk_1107.y1, id=blk_946.y1, iq=blk_950.y1, we=blk_957.y1, du_d_z=blk_960.y1, PI_Reset_EN=blk_1270.y1"
+            blocks: 
+              interface: 
+                Inport: 
+                  - id: blk_567 #u1
+                    Name: id_ref
+                  - id: blk_568 #u2
+                    Name: id
+                  - id: blk_569 #u3
+                    Name: iq
+                  - id: blk_570 #u4
+                    Name: we
+                  - id: blk_571 #u5
+                    Name: du_d_z
+                  - id: blk_1099 #u6
+                    Name: PI_Reset_EN
+                Outport: 
+                  - id: blk_587 #y1
+                    Name: ud_raw
+              algorithm: 
+                - id: blk_572
+                  Name:  
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_584.y1, Gain=Ki_ACR*Ts_ACR"
+                - id: blk_573
+                  Name:   
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_584.y1, Gain=Kp_ACR"
+                - id: blk_574
+                  Name: Add1
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 + u2 where u1=blk_573.y1, u2=blk_586.y1"
+                - id: blk_575
+                  Name: Add2
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 + u2 - u3 where u1=blk_586.y1, u2=blk_572.y1, u3=blk_579.y1"
+                - id: blk_576
+                  Name: Constant1
+                  BlockType: Constant
+                  derived_info: 
+                    expression: y1 = Value where Value=PMLSM_Lq_H
+                - id: blk_577
+                  Name: From2
+                  BlockType: From
+                  derived_info: 
+                    expression: y1 = From()
+                - id: blk_578
+                  Name: From6
+                  BlockType: From
+                  derived_info: 
+                    expression: y1 = From()
+                - id: blk_579
+                  Name: Gain
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_578.y1, Gain=Kaw_d"
+                - id: blk_580
+                  Name: Goto2
+                  BlockType: Goto
+                  derived_info: 
+                    expression: Goto(u1) where u1=blk_571.y1
+                - id: blk_581
+                  Name: Goto4
+                  BlockType: Goto
+                  derived_info: 
+                    expression: Goto(u1) where u1=blk_1101.y1
+                - id: blk_582
+                  Name: Product
+                  BlockType: Product
+                  derived_info: 
+                    expression: "y1 = u1 * u2 where u1=blk_569.y1, u2=blk_576.y1"
+                - id: blk_583
+                  Name: Product1
+                  BlockType: Product
+                  derived_info: 
+                    expression: "y1 = u1 * u2 where u1=blk_582.y1, u2=blk_570.y1"
+                - id: blk_1101
+                  Name: Reset_Integral
+                  BlockType: Switch
+                  derived_info: 
+                    expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1100.y1, u2=blk_1099.y1, u3=blk_575.y1, Threshold=0.5"
+                - id: blk_1102
+                  Name: Reset_Output
+                  BlockType: Switch
+                  derived_info: 
+                    expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1100.y1, u2=blk_1099.y1, u3=blk_585.y1, Threshold=0.5"
+                - id: blk_1100
+                  Name: Reset_Zero
+                  BlockType: Constant
+                  derived_info: 
+                    expression: y1 = Value where Value=0
+                - id: blk_584
+                  Name: Sum
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 - u2 where u1=blk_567.y1, u2=blk_568.y1"
+                - id: blk_585
+                  Name: Sum1
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 - u2 where u1=blk_574.y1, u2=blk_583.y1"
+                - id: blk_586
+                  Name: x_d_z
+                  BlockType: UnitDelay
+                  derived_info: 
+                    expression: "y1[k] = u1[k-1] where u1=blk_577.y1"
+            connections: 
+              - id: "blk_583.y1 -> blk_585.u2"
+                signal_name: 解耦项
+              - id: "blk_574.y1 -> blk_585.u1"
+              - id: "blk_586.y1 -> blk_574.u2,blk_575.u1"
+              - id: "blk_579.y1 -> blk_575.u3"
+                signal_name: "u_d,aw"
+              - id: "blk_572.y1 -> blk_575.u2"
+                signal_name: "KiTs_q * e_d"
+              - id: "blk_585.y1 -> blk_1102.u3"
+              - id: "blk_575.y1 -> blk_1101.u3"
+                signal_name: x_d_next
+              - id: "blk_1100.y1 -> blk_1101.u1,blk_1102.u1"
+              - id: "blk_1099.y1 -> blk_1101.u2,blk_1102.u2"
+              - id: "blk_1101.y1 -> blk_581.u1"
+              - id: "blk_1102.y1 -> blk_587.u1"
+              - id: "blk_569.y1 -> blk_582.u1"
+              - id: "blk_567.y1 -> blk_584.u1"
+              - id: "blk_568.y1 -> blk_584.u2"
+              - id: "blk_584.y1 -> blk_572.u1,blk_573.u1"
+              - id: "blk_570.y1 -> blk_583.u2"
+              - id: "blk_582.y1 -> blk_583.u1"
+              - id: "blk_576.y1 -> blk_582.u2"
+              - id: "blk_573.y1 -> blk_574.u1"
+              - id: "blk_571.y1 -> blk_580.u1"
+              - id: "blk_577.y1 -> blk_586.u1"
+              - id: "blk_578.y1 -> blk_579.u1"
+            annotations: 
+              - type: note
+                text: 起到使能时初始化一下的作用
+            #... 25 blocks not shown
+          - id: blk_1270
+            Name: Id_Reset
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_590
+            Name: InversePark
+            BlockType: ParktoClarkeAngleTransform
+            derived_info: 
+              expression: "[y1, y2] = ParktoClarkeAngleTransform(u1, u2, u3) where u1=blk_698.ud_lim, u2=blk_698.uq_lim, u3=blk_955.y1"
+            ReferenceBlock: mcbeeMathTransformLib/Park to Clarke Angle Transform
+          - id: blk_591
+            Name: Iq
+            BlockType: SubSystem
+            derived_info: 
+              expression: "uq_raw = Iq(Iq_ref, id, iq, we, du_q_z, PI_Reset_EN) where Iq_ref=blk_552.y1, id=blk_947.y1, iq=blk_951.y1, we=blk_958.y1, du_q_z=blk_962.y1, PI_Reset_EN=blk_1271.y1"
+            blocks: 
+              interface: 
+                Inport: 
+                  - id: blk_592 #u1
+                    Name: Iq_ref
+                  - id: blk_593 #u2
+                    Name: id
+                  - id: blk_594 #u3
+                    Name: iq
+                  - id: blk_595 #u4
+                    Name: we
+                  - id: blk_596 #u5
+                    Name: du_q_z
+                  - id: blk_1103 #u6
+                    Name: PI_Reset_EN
+                Outport: 
+                  - id: blk_614 #y1
+                    Name: uq_raw
+              algorithm: 
+                - id: blk_597
+                  Name:  
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_611.y1, Gain=Ki_ACR*Ts_ACR"
+                - id: blk_598
+                  Name:   
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_611.y1, Gain=Kp_ACR"
+                - id: blk_599
+                  Name: Add
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 + u2 where u1=blk_609.y1, u2=blk_602.y1"
+                - id: blk_600
+                  Name: Add1
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 + u2 where u1=blk_598.y1, u2=blk_613.y1"
+                - id: blk_601
+                  Name: Add2
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 + u2 - u3 where u1=blk_613.y1, u2=blk_597.y1, u3=blk_605.y1"
+                - id: blk_602
+                  Name: Constant
+                  BlockType: Constant
+                  derived_info: 
+                    expression: y1 = Value where Value=PMLSM_psi_f_Wb
+                - id: blk_603
+                  Name: From2
+                  BlockType: From
+                  derived_info: 
+                    expression: y1 = From()
+                - id: blk_604
+                  Name: From6
+                  BlockType: From
+                  derived_info: 
+                    expression: y1 = From()
+                - id: blk_605
+                  Name: Gain
+                  BlockType: Gain
+                  derived_info: 
+                    expression: "y1 = Gain * u1 where u1=blk_604.y1, Gain=Kaw_q"
+                - id: blk_606
+                  Name: Goto2
+                  BlockType: Goto
+                  derived_info: 
+                    expression: Goto(u1) where u1=blk_596.y1
+                - id: blk_607
+                  Name: Goto6
+                  BlockType: Goto
+                  derived_info: 
+                    expression: Goto(u1) where u1=blk_1105.y1
+                - id: blk_608
+                  Name: Ld
+                  BlockType: Constant
+                  derived_info: 
+                    expression: y1 = Value where Value=PMLSM_Ld_H
+                - id: blk_609
+                  Name: Product
+                  BlockType: Product
+                  derived_info: 
+                    expression: "y1 = u1 * u2 where u1=blk_593.y1, u2=blk_608.y1"
+                - id: blk_610
+                  Name: Product1
+                  BlockType: Product
+                  derived_info: 
+                    expression: "y1 = u1 * u2 where u1=blk_599.y1, u2=blk_595.y1"
+                - id: blk_1105
+                  Name: Reset_Integral
+                  BlockType: Switch
+                  derived_info: 
+                    expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1104.y1, u2=blk_1103.y1, u3=blk_601.y1, Threshold=0.5"
+                - id: blk_1106
+                  Name: Reset_Output
+                  BlockType: Switch
+                  derived_info: 
+                    expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1104.y1, u2=blk_1103.y1, u3=blk_612.y1, Threshold=0.5"
+                - id: blk_1104
+                  Name: Reset_Zero
+                  BlockType: Constant
+                  derived_info: 
+                    expression: y1 = Value where Value=0
+                - id: blk_611
+                  Name: Sum
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 - u2 where u1=blk_592.y1, u2=blk_594.y1"
+                - id: blk_612
+                  Name: Sum1
+                  BlockType: Sum
+                  derived_info: 
+                    expression: "y1 = u1 + u2 where u1=blk_600.y1, u2=blk_610.y1"
+                - id: blk_613
+                  Name: x_q_z
+                  BlockType: UnitDelay
+                  derived_info: 
+                    expression: "y1[k] = u1[k-1] where u1=blk_603.y1"
+            connections: 
+              - id: "blk_610.y1 -> blk_612.u2"
+                signal_name: Ed
+              - id: "blk_600.y1 -> blk_612.u1"
+              - id: "blk_605.y1 -> blk_601.u3"
+                signal_name: "u_q,aw"
+              - id: "blk_597.y1 -> blk_601.u2"
+                signal_name: "KiTs_q * e_q"
+              - id: "blk_613.y1 -> blk_600.u2,blk_601.u1"
+              - id: "blk_612.y1 -> blk_1106.u3"
+              - id: "blk_601.y1 -> blk_1105.u3"
+                signal_name: x_q_next
+              - id: "blk_1104.y1 -> blk_1105.u1,blk_1106.u1"
+              - id: "blk_1103.y1 -> blk_1105.u2,blk_1106.u2"
+              - id: "blk_1105.y1 -> blk_607.u1"
+              - id: "blk_1106.y1 -> blk_614.u1"
+              - id: "blk_595.y1 -> blk_610.u2"
+              - id: "blk_594.y1 -> blk_611.u2"
+              - id: "blk_593.y1 -> blk_609.u1"
+              - id: "blk_608.y1 -> blk_609.u2"
+              - id: "blk_609.y1 -> blk_599.u1"
+              - id: "blk_602.y1 -> blk_599.u2"
+              - id: "blk_599.y1 -> blk_610.u1"
+              - id: "blk_611.y1 -> blk_598.u1,blk_597.u1"
+                signal_name: e_q
+              - id: "blk_598.y1 -> blk_600.u1"
+                signal_name: uq_p
+              - id: "blk_596.y1 -> blk_606.u1"
+              - id: "blk_604.y1 -> blk_605.u1"
+              - id: "blk_603.y1 -> blk_613.u1"
+              - id: "blk_592.y1 -> blk_611.u1"
+            annotations: 
+              - type: note
+                text: 解耦项
+              - type: note
+                text: 积分抗饱和
+            #... 27 blocks not shown
+          - id: blk_1271
+            Name: Iq_Reset
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_617
+            Name: Park
+            BlockType: ClarketoParkAngleTransform
+            derived_info: 
+              expression: "[y1, y2] = ClarketoParkAngleTransform(u1, u2, u3) where u1=blk_553.ialpha, u2=blk_553.ibeta, u3=blk_954.y1"
+            ReferenceBlock: mcbeeMathTransformLib/Clarke to Park Angle Transform
+          - id: blk_960
+            Name: Read_awd_0
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_962
+            Name: Read_awq_0
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_946
+            Name: Read_id_0
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_947
+            Name: Read_id_1
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_950
+            Name: Read_iq_0
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_951
+            Name: Read_iq_1
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_954
+            Name: Read_theta_0
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_955
+            Name: Read_theta_1
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_957
+            Name: Read_we_0
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_958
+            Name: Read_we_1
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1269
+            Name: Reset_Command
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1108.y1
+          - id: blk_618
+            Name: SVPWMG
+            BlockType: SubSystem
+            derived_info: 
+              expression: "[Duty_A, Duty_B, Duty_C, N_] = SVPWMG(Valpha, Vbeta) where Valpha=blk_590.y1, Vbeta=blk_590.y2"
+            #... 11 blocks not shown
+          - id: blk_959
+            Name: Signal_awd
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_698.du_d_z
+          - id: blk_961
+            Name: Signal_awq
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_698.du_q_z
+          - id: blk_945
+            Name: Signal_id
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_617.y1
+          - id: blk_949
+            Name: Signal_iq
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_617.y2
+          - id: blk_953
+            Name: Signal_theta
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_550.y1
+          - id: blk_956
+            Name: Signal_we
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_551.y1
+          - id: blk_696
+            Name: Unused_SatFlag
+            BlockType: Terminator
+            derived_info: 
+              expression: Terminator(u1) where u1=blk_698.sat_flag_z
+          - id: blk_697
+            Name: Unused_Sector
+            BlockType: Terminator
+            derived_info: 
+              expression: Terminator(u1) where u1=blk_618.N_
+          - id: blk_698
+            Name: dq_voltage_limiter
+            BlockType: SubSystem
+            derived_info: 
+              expression: "[ud_lim, uq_lim, du_d_z, du_q_z, sat_flag_z] = dq_voltage_limiter(ud_raw, uq_raw) where ud_raw=blk_566.ud_raw, uq_raw=blk_591.uq_raw"
+            #... 36 blocks not shown
+      connections: 
+        - id: "blk_962.y1 -> blk_591.du_q_z"
+        - id: "blk_960.y1 -> blk_566.du_d_z"
+        - id: "blk_958.y1 -> blk_591.we"
+        - id: "blk_957.y1 -> blk_566.we"
+        - id: "blk_951.y1 -> blk_591.iq"
+        - id: "blk_950.y1 -> blk_566.iq"
+        - id: "blk_947.y1 -> blk_591.id"
+        - id: "blk_946.y1 -> blk_566.id"
+        - id: "blk_552.y1 -> blk_591.Iq_ref"
+        - id: "blk_566.ud_raw -> blk_698.ud_raw"
+        - id: "blk_591.uq_raw -> blk_698.uq_raw"
+        - id: "blk_1108.y1 -> blk_1269.u1"
+        - id: "blk_1107.y1 -> blk_566.id_ref"
+        - id: "blk_1270.y1 -> blk_566.PI_Reset_EN"
+        - id: "blk_1271.y1 -> blk_591.PI_Reset_EN"
+        - id: "blk_590.y2 -> blk_618.Vbeta"
+        - id: "blk_590.y1 -> blk_618.Valpha"
+        - id: "blk_698.uq_lim -> blk_590.u2"
+          signal_name: uq
+        - id: "blk_698.ud_lim -> blk_590.u1"
+          signal_name: ud
+        - id: "blk_698.sat_flag_z -> blk_696.u1"
+        - id: "blk_698.du_q_z -> blk_961.u1"
+        - id: "blk_698.du_d_z -> blk_959.u1"
+        - id: "blk_551.y1 -> blk_956.u1"
+        - id: "blk_617.y2 -> blk_949.u1"
+        - id: "blk_617.y1 -> blk_945.u1"
+        - id: "blk_550.y1 -> blk_953.u1"
+        - id: "blk_553.ibeta -> blk_617.u2"
+        - id: "blk_553.ialpha -> blk_617.u1"
+        - id: "blk_954.y1 -> blk_617.u3"
+        - id: "blk_955.y1 -> blk_590.u3"
+        - id: "blk_547.y1 -> blk_553.ia"
+        - id: "blk_548.y1 -> blk_553.ib"
+        - id: "blk_549.y1 -> blk_553.ic"
+        - id: "blk_618.Duty_A -> blk_735.u1"
+        - id: "blk_618.Duty_B -> blk_736.u1"
+        - id: "blk_618.Duty_C -> blk_737.u1"
+        - id: "blk_618.N -> blk_697.u1"
+      #... 39 blocks not shown
+    - id: blk_1233
+      Name: Inactive_Alignment_Fault
+      BlockType: Constant
+      derived_info: 
+        expression: y1 = Value where Value=0
+    - id: blk_1272
+      Name: Inactive_Alignment_Fault1
+      BlockType: Constant
+      derived_info: 
+        expression: y1 = Value where Value=0
+    - id: blk_943
+      Name: Iq_Command
+      BlockType: Goto
+      derived_info: 
+        expression: Goto(u1) where u1=blk_991.iq_ref
+    - id: blk_1238
+      Name: Iq_Test_Mode_cmd
+      BlockType: DataStoreMemory
+      derived_info: 
+        expression: DataStoreMemory()
+    - id: blk_1236
+      Name: PI_Reset_EN_cmd
+      BlockType: DataStoreMemory
+      derived_info: 
+        expression: DataStoreMemory()
+    - id: blk_1109
+      Name: Position_Loop
+      BlockType: SubSystem
+      derived_info: 
+        control_ports: 
+          u5: trigger
+        expression: "v_ref_pos = Position_Loop(x_ref_mm, x_mm, pos_pi_reset, v_ff_pos) where x_ref_mm=blk_508.y1, x_mm=blk_509.y1, pos_pi_reset=blk_1233.y1, v_ff_pos=blk_1233.y1"
+      blocks: 
+        interface: 
+          Inport: 
+            - id: blk_1110 #u1
+              Name: x_ref_mm
+            - id: blk_1111 #u2
+              Name: x_mm
+            - id: blk_1112 #u3
+              Name: pos_pi_reset
+            - id: blk_1113 #u4
+              Name: v_ff_pos
+          Outport: 
+            - id: blk_1121 #y1
+              Name: v_ref_pos
+          TriggerPort: 
+            - id: blk_1114
+              Name: Trigger
+        algorithm: 
+          - id: blk_1115
+            Name: Dead Zone
+            BlockType: DeadZone
+            derived_info: 
+              expression: "y1 = deadzone(u1, LowerValue, UpperValue) where u1=blk_1118.y1, LowerValue=-Pos_deadband, UpperValue=+Pos_deadband"
+          - id: blk_1116
+            Name: Gain
+            BlockType: Gain
+            derived_info: 
+              expression: "y1 = Gain * u1 where u1=blk_1115.y1, Gain=Kp_pos"
+          - id: blk_1117
+            Name: Saturation
+            BlockType: Saturate
+            derived_info: 
+              expression: "y1 = clamp(u1, LowerLimit, UpperLimit) where u1=blk_1119.y1, LowerLimit=-V_pos_max_mmps, UpperLimit=V_pos_max_mmps"
+          - id: blk_1118
+            Name: Sum
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 - u2 where u1=blk_1110.y1, u2=blk_1111.y1"
+          - id: blk_1119
+            Name: Sum1
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 + u2 where u1=blk_1116.y1, u2=blk_1113.y1"
+          - id: blk_1120
+            Name: Terminator
+            BlockType: Terminator
+            derived_info: 
+              expression: Terminator(u1) where u1=blk_1112.y1
+      connections: 
+        - id: "blk_1117.y1 -> blk_1121.u1"
+          signal_name: obs_v_ref_pos
+        - id: "blk_1112.y1 -> blk_1120.u1"
+        - id: "blk_1119.y1 -> blk_1117.u1"
+        - id: "blk_1113.y1 -> blk_1119.u2"
+        - id: "blk_1116.y1 -> blk_1119.u1"
+        - id: "blk_1115.y1 -> blk_1116.u1"
+        - id: "blk_1118.y1 -> blk_1115.u1"
+          signal_name: e_pos
+        - id: "blk_1111.y1 -> blk_1118.u2"
+        - id: "blk_1110.y1 -> blk_1118.u1"
+      #... 12 blocks not shown
+    - id: blk_944
+      Name: Read_Iq_Command
+      BlockType: From
+      derived_info: 
+        expression: y1 = From()
+    - id: blk_1266
+      Name: Read_id_selected
+      BlockType: From
+      derived_info: 
+        expression: y1 = From()
+    - id: blk_1262
+      Name: Read_iq_speed
+      BlockType: From
+      derived_info: 
+        expression: y1 = From()
+    - id: blk_1268
+      Name: Read_pi_reset
+      BlockType: From
+      derived_info: 
+        expression: y1 = From()
+    - id: blk_1260
+      Name: Read_v_pos
+      BlockType: From
+      derived_info: 
+        expression: y1 = From()
+    - id: blk_1264
+      Name: Read_v_selected
+      BlockType: From
+      derived_info: 
+        expression: y1 = From()
+    - id: blk_991
+      Name: Reference_Manager
+      BlockType: SubSystem
+      derived_info: 
+        expression: "[id_ref, iq_ref, v_ref] = Reference_Manager(iq_ref_normal, v_ref_pos, Pos_Loop_EN, Close_Loop_EN, v_ref_cmd, id_ref_cmd, Iq_Test_Mode, iq_test_ref) where iq_ref_normal=blk_1262.y1, v_ref_pos=blk_1260.y1, Pos_Loop_EN=blk_1041.y1, Close_Loop_EN=blk_1040.y1, v_ref_cmd=blk_1042.y1, id_ref_cmd=blk_1043.y1, Iq_Test_Mode=blk_1044.y1, iq_test_ref=blk_1045.y1"
+      blocks: 
+        interface: 
+          Inport: 
+            - id: blk_992 #u1
+              Name: iq_ref_normal
+            - id: blk_993 #u2
+              Name: v_ref_pos
+            - id: blk_994 #u3
+              Name: Pos_Loop_EN
+            - id: blk_996 #u4
+              Name: Close_Loop_EN
+            - id: blk_1087 #u5
+              Name: v_ref_cmd
+            - id: blk_1088 #u6
+              Name: id_ref_cmd
+            - id: blk_1089 #u7
+              Name: Iq_Test_Mode
+            - id: blk_1090 #u8
+              Name: iq_test_ref
+          Outport: 
+            - id: blk_1037 #y1
+              Name: id_ref
+            - id: blk_1038 #y2
+              Name: iq_ref
+            - id: blk_1039 #y3
+              Name: v_ref
+        algorithm: 
+          - id: blk_1004
+            Name: Constant15
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=0
+          - id: blk_1020
+            Name: Saturation
+            BlockType: Saturate
+            derived_info: 
+              expression: "y1 = clamp(u1, LowerLimit, UpperLimit) where u1=blk_1030.v_ref_set_limited, LowerLimit=-v_ref_max, UpperLimit=v_ref_max"
+          - id: blk_1021
+            Name: Switch
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1090.y1, u2=blk_1089.y1, u3=blk_992.y1, Threshold=0.5"
+          - id: blk_1028
+            Name: Switch9
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1020.y1, u2=blk_996.y1, u3=blk_1004.y1, Threshold=0.5"
+          - id: blk_1029
+            Name: v_ref_closed_sel
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_993.y1, u2=blk_994.y1, u3=blk_1087.y1, Threshold=0.5"
+          - id: blk_1030
+            Name: v_ref_set_slew_limiter
+            BlockType: SubSystem
+            derived_info: 
+              expression: v_ref_set_limited = v_ref_set_slew_limiter(v_ref_set) where v_ref_set=blk_1029.y1
+            #... 6 blocks not shown
+      connections: 
+        - id: "blk_1087.y1 -> blk_1029.u3"
+        - id: "blk_1020.y1 -> blk_1028.u1"
+        - id: "blk_994.y1 -> blk_1029.u2"
+        - id: "blk_1029.y1 -> blk_1030.v_ref_set"
+          signal_name: v_ref_closed
+        - id: "blk_993.y1 -> blk_1029.u1"
+        - id: "blk_1030.v_ref_set_limited -> blk_1020.u1"
+        - id: "blk_1088.y1 -> blk_1037.u1"
+        - id: "blk_992.y1 -> blk_1021.u3"
+        - id: "blk_1004.y1 -> blk_1028.u3"
+        - id: "blk_1089.y1 -> blk_1021.u2"
+        - id: "blk_1090.y1 -> blk_1021.u1"
+        - id: "blk_996.y1 -> blk_1028.u2"
+        - id: "blk_1028.y1 -> blk_1039.u1"
+        - id: "blk_1021.y1 -> blk_1038.u1"
+      #... 17 blocks not shown
+    - id: blk_1265
+      Name: Route_id_selected
+      BlockType: Goto
+      derived_info: 
+        expression: Goto(u1) where u1=blk_991.id_ref
+    - id: blk_1261
+      Name: Route_iq_speed
+      BlockType: Goto
+      derived_info: 
+        expression: Goto(u1) where u1=blk_1122.iq_ref
+    - id: blk_1267
+      Name: Route_pi_reset
+      BlockType: Goto
+      derived_info: 
+        expression: Goto(u1) where u1=blk_1046.y1
+    - id: blk_1259
+      Name: Route_v_pos
+      BlockType: Goto
+      derived_info: 
+        expression: Goto(u1) where u1=blk_1109.v_ref_pos
+    - id: blk_1263
+      Name: Route_v_selected
+      BlockType: Goto
+      derived_info: 
+        expression: Goto(u1) where u1=blk_991.v_ref
+    - id: blk_740
+      Name: Scheduler_10k_1k_100
+      BlockType: SubSystem
+      derived_info: 
+        expression: "[speed_tick, pos_tick] = Scheduler_10k_1k_100()"
+      blocks: 
+        interface: 
+          Outport: 
+            - id: blk_762 #y1
+              Name: speed_tick
+            - id: blk_763 #y2
+              Name: pos_tick
+        algorithm: 
+          - id: blk_741
+            Name: Add1
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 + u2 where u1=blk_759.y1, u2=blk_744.y1"
+          - id: blk_742
+            Name: Add2
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 + u2 where u1=blk_756.y1, u2=blk_746.y1"
+          - id: blk_744
+            Name: Constant1
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=1
+          - id: blk_745
+            Name: Constant2
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=0
+          - id: blk_746
+            Name: Constant3
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=1
+          - id: blk_747
+            Name: Constant4
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=0
+          - id: blk_750
+            Name: |
+              Logical
+              Operator
+            BlockType: Logic
+            derived_info: 
+              expression: "y1 = Logic(u1, u2) where u1=blk_760.y1, u2=blk_757.y1"
+          - id: blk_754
+            Name: pos_cnt_hold_sel
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_755.y1, u2=blk_760.y1, u3=blk_756.y1, Threshold=0.5"
+          - id: blk_755
+            Name: pos_cnt_update_sel
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_747.y1, u2=blk_757.y1, u3=blk_742.y1, Threshold=0.5"
+          - id: blk_756
+            Name: pos_cnt_z
+            BlockType: UnitDelay
+            derived_info: 
+              expression: "y1[k] = u1[k-1] where u1=blk_754.y1"
+          - id: blk_757
+            Name: pos_tc
+            BlockType: CompareToConstant
+            derived_info: 
+              expression: "y1 = (u1 >= const) where u1=blk_742.y1, const=10"
+            ReferenceBlock: simulink/Logic and Bit Operations/Compare To Constant
+          - id: blk_758
+            Name: spd_cnt_next_sel
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_745.y1, u2=blk_760.y1, u3=blk_741.y1, Threshold=0.5"
+          - id: blk_759
+            Name: spd_cnt_z
+            BlockType: UnitDelay
+            derived_info: 
+              expression: "y1[k] = u1[k-1] where u1=blk_758.y1"
+          - id: blk_760
+            Name: spd_tc
+            BlockType: CompareToConstant
+            derived_info: 
+              expression: "y1 = (u1 >= const) where u1=blk_741.y1, const=10"
+            ReferenceBlock: simulink/Logic and Bit Operations/Compare To Constant
+      connections: 
+        - id: "blk_750.y1 -> blk_763.u1"
+        - id: "blk_754.y1 -> blk_756.u1"
+        - id: "blk_755.y1 -> blk_754.u1"
+          signal_name: pos_cnt_update_candidate
+        - id: "blk_747.y1 -> blk_755.u1"
+        - id: "blk_757.y1 -> blk_755.u2,blk_750.u2"
+        - id: "blk_742.y1 -> blk_757.u1,blk_755.u3"
+          signal_name: pos_cnt_inc
+        - id: "blk_746.y1 -> blk_742.u2"
+        - id: "blk_756.y1 -> blk_754.u3,blk_742.u1"
+        - id: "blk_741.y1 -> blk_760.u1,blk_758.u3"
+          signal_name: spd_cnt_inc
+        - id: "blk_758.y1 -> blk_759.u1"
+        - id: "blk_745.y1 -> blk_758.u1"
+        - id: "blk_744.y1 -> blk_741.u2"
+        - id: "blk_760.y1 -> blk_758.u2,blk_754.u2,blk_750.u1,blk_762.u1"
+        - id: "blk_759.y1 -> blk_741.u1"
+      annotations: 
+        - type: note
+          text: speed 计数链(/10)
+        - type: note
+          text: position 计数链(/100)
+      #... 16 blocks not shown
+    - id: blk_1235
+      Name: Set_Close_Loop_EN_cmd
+      BlockType: DataStoreWrite
+      derived_info: 
+        expression: DataStoreWrite(u1) where u1=blk_1040.y1
+    - id: blk_1239
+      Name: Set_Iq_Test_Mode_cmd
+      BlockType: DataStoreWrite
+      derived_info: 
+        expression: DataStoreWrite(u1) where u1=blk_1044.y1
+    - id: blk_1237
+      Name: Set_PI_Reset_EN_cmd
+      BlockType: DataStoreWrite
+      derived_info: 
+        expression: DataStoreWrite(u1) where u1=blk_1046.y1
+    - id: blk_1122
+      Name: Speed_Loop
+      BlockType: SubSystem
+      derived_info: 
+        control_ports: 
+          u4: trigger
+        expression: "iq_ref = Speed_Loop(v_ref, v_mmps, Angle_Init_EN) where v_ref=blk_1962.y1, v_mmps=blk_1963.y1, Angle_Init_EN=blk_1272.y1"
+      blocks: 
+        interface: 
+          Inport: 
+            - id: blk_1123 #u1
+              Name: v_ref
+            - id: blk_1124 #u2
+              Name: v_mmps
+            - id: blk_1125 #u3
+              Name: Angle_Init_EN
+          Outport: 
+            - id: blk_1229 #y1
+              Name: iq_ref
+          TriggerPort: 
+            - id: blk_1128
+              Name: Trigger
+        algorithm: 
+          - id: blk_1129
+            Name:  
+            BlockType: Gain
+            derived_info: 
+              expression: "y1 = Gain * u1 where u1=blk_1163.y1, Gain=Ki_ASR * Ts_ASR"
+          - id: blk_1130
+            Name:   
+            BlockType: Gain
+            derived_info: 
+              expression: "y1 = Gain * u1 where u1=blk_1163.y1, Gain=Kp_ASR"
+          - id: blk_1131
+            Name: Abs
+            BlockType: Abs
+            derived_info: 
+              expression: y1 = abs(u1) where u1=blk_1123.y1
+          - id: blk_1133
+            Name: Add1
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 + u2 + u3 where u1=blk_1167.iq_ff, u2=blk_1130.y1, u3=blk_1228.y1"
+          - id: blk_1134
+            Name: Add2
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 + u2 - u3 where u1=blk_1228.y1, u2=blk_1129.y1, u3=blk_1149.y1"
+          - id: blk_1135
+            Name: Constant1
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=0
+          - id: blk_1136
+            Name: Constant4
+            BlockType: Constant
+            derived_info: 
+              expression: y1 = Value where Value=0
+          - id: blk_1137
+            Name: From
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1139
+            Name: From10
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1141
+            Name: From2
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1145
+            Name: From6
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1147
+            Name: From8
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1148
+            Name: From9
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1149
+            Name: Gain
+            BlockType: Gain
+            derived_info: 
+              expression: "y1 = Gain * u1 where u1=blk_1137.y1, Gain=Kaw_s"
+          - id: blk_1150
+            Name: Goto
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1166.y1
+          - id: blk_1151
+            Name: Goto1
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1131.y1
+          - id: blk_1153
+            Name: Goto3
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1163.y1
+          - id: blk_1154
+            Name: Goto4
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1123.y1
+          - id: blk_1155
+            Name: Goto6
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1165.y1
+          - id: blk_1156
+            Name: Goto7
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1189.speed_int_reset
+          - id: blk_1164
+            Name: PI_Reset_Output
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1136.y1, u2=blk_1140.y1, u3=blk_1159.y1, Threshold=0.5"
+          - id: blk_1140
+            Name: Read_PI_Hard_Reset
+            BlockType: From
+            derived_info: 
+              expression: y1 = From()
+          - id: blk_1157
+            Name: Route_PI_Hard_Reset
+            BlockType: Goto
+            derived_info: 
+              expression: Goto(u1) where u1=blk_1189.pi_hard_reset
+          - id: blk_1158
+            Name: Saturation
+            BlockType: Saturate
+            derived_info: 
+              expression: "y1 = clamp(u1, LowerLimit, UpperLimit) where u1=blk_1134.y1, LowerLimit=-Iq_int_limit, UpperLimit=Iq_int_limit"
+          - id: blk_1159
+            Name: Saturation1
+            BlockType: Saturate
+            derived_info: 
+              expression: "y1 = clamp(u1, LowerLimit, UpperLimit) where u1=blk_1133.y1, LowerLimit=-Speed_loop_Iq_Limit, UpperLimit=Speed_loop_Iq_Limit"
+          - id: blk_1162
+            Name: Subtract
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 - u2 where u1=blk_1133.y1, u2=blk_1159.y1"
+          - id: blk_1163
+            Name: Sum
+            BlockType: Sum
+            derived_info: 
+              expression: "y1 = u1 - u2 where u1=blk_1123.y1, u2=blk_1124.y1"
+          - id: blk_1165
+            Name: Switch1
+            BlockType: Switch
+            derived_info: 
+              expression: "y1 = if (u2 > Threshold) then u1 else u3 where u1=blk_1135.y1, u2=blk_1139.y1, u3=blk_1158.y1, Threshold=0.5"
+          - id: blk_1166
+            Name: Unit Delay
+            BlockType: UnitDelay
+            derived_info: 
+              expression: "y1[k] = u1[k-1] where u1=blk_1162.y1"
+          - id: blk_1189
+            Name: pi_reset_manager
+            BlockType: SubSystem
+            derived_info: 
+              expression: "[pi_hard_reset, speed_int_reset] = pi_reset_manager(Angle_Init_EN, v_ref, abs_v_ref, e_v) where Angle_Init_EN=blk_1125.y1, v_ref=blk_1145.y1, abs_v_ref=blk_1147.y1, e_v=blk_1148.y1"
+            #... 27 blocks not shown
+          - id: blk_1228
+            Name: x_s_z
+            BlockType: UnitDelay
+            derived_info: 
+              expression: "y1[k] = u1[k-1] where u1=blk_1141.y1"
+      connections: 
+        - id: "blk_1124.y1 -> blk_1163.u2"
+        - id: "blk_1158.y1 -> blk_1165.u3"
+        - id: "blk_1165.y1 -> blk_1155.u1"
+        - id: "blk_1139.y1 -> blk_1165.u2"
+        - id: "blk_1189.pi_hard_reset -> blk_1157.u1"
+        - id: "blk_1189.speed_int_reset -> blk_1156.u1"
+        - id: "blk_1140.y1 -> blk_1164.u2"
+        - id: "blk_1148.y1 -> blk_1189.e_v"
+        - id: "blk_1147.y1 -> blk_1189.abs_v_ref"
+        - id: "blk_1145.y1 -> blk_1189.v_ref"
+        - id: "blk_1125.y1 -> blk_1189.Angle_Init_EN"
+        - id: "blk_1131.y1 -> blk_1151.u1"
+        - id: "blk_1228.y1 -> blk_1134.u1,blk_1133.u3"
+          signal_name: x_s_ASR
+        - id: "blk_1167.y1 -> blk_1133.u1"
+        - id: "blk_1130.y1 -> blk_1133.u2"
+        - id: "blk_1136.y1 -> blk_1164.u1"
+        - id: "blk_1164.y1 -> blk_1229.u1"
+        - id: "blk_1135.y1 -> blk_1165.u1"
+        - id: "blk_1137.y1 -> blk_1149.u1"
+        - id: "blk_1166.y1 -> blk_1150.u1"
+        - id: "blk_1162.y1 -> blk_1166.u1"
+          signal_name: diq_ref_ASR
+        - id: "blk_1129.y1 -> blk_1134.u2"
+        - id: "blk_1149.y1 -> blk_1134.u3"
+        - id: "blk_1134.y1 -> blk_1158.u1"
+        - id: "blk_1141.y1 -> blk_1228.u1"
+        - id: "blk_1159.y1 -> blk_1162.u2,blk_1164.u3"
+          signal_name: iq_lim_ASR
+        - id: "blk_1123.y1 -> blk_1154.u1,blk_1131.u1,blk_1163.u1"
+        - id: "blk_1133.y1 -> blk_1159.u1,blk_1162.u1"
+          signal_name: iq_raw_ASR
+        - id: "blk_1163.y1 -> blk_1130.u1,blk_1129.u1,blk_1153.u1"
+          signal_name: e_v_ASR
+      annotations: 
+        - type: note
+          text: 摩擦前馈
+        - type: note
+          text: 积分抗饱和
+        - type: note
+          text: 摩擦前馈
+      #... 36 blocks not shown
+    - id: blk_1962
+      Name: Step7D_Component_Error
+      BlockType: FromWorkspace
+      derived_info: 
+        expression: y1 = FromWorkspace()
+    - id: blk_1963
+      Name: Step7D_Component_Zero
+      BlockType: Constant
+      derived_info: 
+        expression: y1 = Value where Value=0
+    - id: blk_1964
+      Name: Step7D_Unused_Managed_Reference
+      BlockType: Terminator
+      derived_info: 
+        expression: Terminator(u1) where u1=blk_1264.y1
+    - id: blk_1965
+      Name: Step7D_Unused_Plant_Speed
+      BlockType: Terminator
+      derived_info: 
+        expression: Terminator(u1) where u1=blk_510.y1
+connections: 
+  - id: "blk_1962.y1 -> blk_1122.v_ref"
+  - id: "blk_1963.y1 -> blk_1122.v_mmps"
+  - id: "blk_1264.y1 -> blk_1964.u1"
+  - id: "blk_510.y1 -> blk_1965.u1"
+  - id: "blk_991.iq_ref -> blk_943.u1,blk_1903.u1"
+  - id: "blk_991.id_ref -> blk_1265.u1,blk_1902.u1"
+  - id: "blk_1272.y1 -> blk_1122.Angle_Init_EN"
+  - id: "blk_1040.y1 -> blk_991.Close_Loop_EN,blk_1235.u1"
+  - id: "blk_1044.y1 -> blk_991.Iq_Test_Mode,blk_1239.u1"
+  - id: "blk_1046.y1 -> blk_1237.u1,blk_1267.u1"
+  - id: "blk_740.pos_tick -> blk_1109.trigger"
+  - id: "blk_740.speed_tick -> blk_1122.trigger"
+    signal_name: speed_loop_tick
+  - id: "blk_508.y1 -> blk_1109.x_ref_mm"
+  - id: "blk_509.y1 -> blk_1109.x_mm"
+  - id: "blk_1109.v_ref_pos -> blk_1259.u1"
+  - id: "blk_1122.iq_ref -> blk_1261.u1"
+  - id: "blk_1233.y1 -> blk_1109.v_ff_pos,blk_1109.pos_pi_reset"
+  - id: "blk_991.v_ref -> blk_1263.u1"
+  - id: "blk_1260.y1 -> blk_991.v_ref_pos"
+  - id: "blk_1262.y1 -> blk_991.iq_ref_normal"
+  - id: "blk_1266.y1 -> blk_546.id_ref"
+  - id: "blk_1268.y1 -> blk_546.PI_Reset_EN"
+  - id: "blk_1041.y1 -> blk_991.Pos_Loop_EN"
+  - id: "blk_1042.y1 -> blk_991.v_ref_cmd"
+  - id: "blk_1043.y1 -> blk_991.id_ref_cmd"
+  - id: "blk_1045.y1 -> blk_991.iq_test_ref"
+  - id: "blk_511.y1 -> blk_546.ia"
+  - id: "blk_512.y1 -> blk_546.ib"
+  - id: "blk_513.y1 -> blk_546.ic"
+  - id: "blk_514.y1 -> blk_546.theta_e"
+  - id: "blk_515.y1 -> blk_546.omega_e"
+  - id: "blk_546.cmp_a_counts -> blk_516.u1"
+  - id: "blk_546.cmp_b_counts -> blk_517.u1"
+  - id: "blk_546.cmp_c_counts -> blk_518.u1"
+  - id: "blk_944.y1 -> blk_546.iq_ref"
+block_type_descriptions: 
+  DataStoreMemory: Define named data store for signal sharing
+  SubSystem: Group blocks into subsystem for model hierarchy
+  From: Accept signal from Goto block
+  Goto: Send signal to From blocks without connecting lines
+  Terminator: Terminate unconnected output port
+  Logic: "Perform logical operation (AND, OR, NAND, NOR, XOR, NXOR, NOT)"
+  DataStoreWrite: Write data to named data store
+  FromWorkspace: Output data from MATLAB workspace variable
+  TriggerPort: Control subsystem execution with external trigger signal
+status: healthy
+validation_scope: blk_505
+checks_run: 
+  - unconnected_ports
+  - unconnected_lines
+
+警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item
+COMPONENT_RAW=D:\Project\FPGA_XC7A200T\.Xil\step7d\outer_limits_20260922_194836_318.mat
+STEP7D_OUTER_LIMIT_RESET_PASS
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+[Autolayout] identity_change: model=PMLSM_ThreeLoop_Simple, scope=root, handle 147.0->147.0, clearing stale state
+[Autolayout] applied: model=PMLSM_ThreeLoop_Simple, scope=root, mode=incremental, duration_ms=2056.5
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: root
+created:
+  load: blk_1959
+  pwm: blk_1960
+  reset: blk_1961
+  speed: blk_1958
+warnings:
+  - Replaced: blk_523.y7 -> blk_1249.u1
+  - Replaced: blk_523.y3 -> blk_941.u1
+  - Replaced: blk_523.y6 -> blk_1247.u1
+  - Replaced: blk_523.y11 -> blk_1257.u1
+status: warnings
+total_warnings: 4
+validation_scope: root
+checks_run: 
+  - unconnected_ports
+  - unconnected_lines
+
+issues: 
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: load_N
+    port_type: output
+    message: "Port 'load_N' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PWM_EN
+    port_type: output
+    message: "Port 'PWM_EN' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: v_ref_cmd
+    port_type: output
+    message: "Port 'v_ref_cmd' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PI_Reset_EN
+    port_type: output
+    message: "Port 'PI_Reset_EN' of block 'Simple_Host' is not connected"
+
+警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item
+STEP7D_SCENARIO_GATE_PASS stop_restart_inhibit purpose=performance
+STEP7D_STOP_INHIBIT_PASS
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+[Autolayout] identity_change: model=PMLSM_ThreeLoop_Simple, scope=root, handle 147.0->147.0, clearing stale state
+[Autolayout] applied: model=PMLSM_ThreeLoop_Simple, scope=root, mode=incremental, duration_ms=2002.4
+status: ok
+model: PMLSM_ThreeLoop_Simple
+scope: root
+created:
+  load: blk_1959
+  pwm: blk_1960
+  reset: blk_1961
+  speed: blk_1958
+warnings:
+  - Replaced: blk_523.y7 -> blk_1249.u1
+  - Replaced: blk_523.y3 -> blk_941.u1
+  - Replaced: blk_523.y6 -> blk_1247.u1
+  - Replaced: blk_523.y11 -> blk_1257.u1
+status: warnings
+total_warnings: 4
+validation_scope: root
+checks_run: 
+  - unconnected_ports
+  - unconnected_lines
+
+issues: 
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: load_N
+    port_type: output
+    message: "Port 'load_N' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PWM_EN
+    port_type: output
+    message: "Port 'PWM_EN' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: v_ref_cmd
+    port_type: output
+    message: "Port 'v_ref_cmd' of block 'Simple_Host' is not connected"
+  - severity: warning
+    type: unconnected_output
+    block: blk_523
+    blockName: Simple_Host
+    blockPath: PMLSM_ThreeLoop_Simple/Simple_Host
+    port: PI_Reset_EN
+    port_type: output
+    message: "Port 'PI_Reset_EN' of block 'Simple_Host' is not connected"
+
+警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/Inverse Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/A' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/B' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/C' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/D' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/Park Transform' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O1' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/O2' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation/S-Function' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/u' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Compare' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/Constant' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item警告: Overriding parameters of 'PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/Compare To Zero/y' which is inside a library link. These changes can be changed, propagated, or viewed using the 'Library Link' menu item
+STEP7D_SCENARIO_GATE_PASS fresh_start purpose=fresh_start
+STEP7D_FRESH_RESTART_PASS
+STEP7D_TASK6_PASS

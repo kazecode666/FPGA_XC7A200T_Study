@@ -20,8 +20,8 @@ class ReferenceTests(unittest.TestCase):
             self.assertEqual(ref.round_shift_away(x,shift),expected)
 
     def test_constants_and_ranges(self):
-        self.assertEqual(ref.constants(), {'KP':[36595302,73190605],
-            'KI_TS':[4970250,9940500], 'KAW':3355443,'LD':1873679,
+        self.assertEqual(ref.constants(), {'KP':[146381210,73190605],
+            'KI_TS':[19881001,9940500], 'KAW':3355443,'LD':1873679,
             'LQ':1873679,'PSI_F':151397597,'C_UMAX':557932618,'EPS_RAW':17})
         for width in (25,40):
             self.assertTrue(ref.fits_signed(-(1<<(width-1)),width))
@@ -31,9 +31,9 @@ class ReferenceTests(unittest.TestCase):
 
     def test_three_one_amp(self):
         state = (0,0,0,0,0)
-        for raw,old,nxt,out in [(36595302,0,4970250,71475),
-                (41565552,4970250,9940500,81183),
-                (46535802,9940500,14910750,90890)]:
+        for raw,old,nxt,out in [(146381210,0,19881001,285901),
+                (166262211,19881001,39762002,324731),
+                (186143212,39762002,59643003,363561)]:
             r = ref.pi_step(state,ref.sample(id_ref=32768),0)
             self.assertEqual((r['ud_raw'],r['old_state'][0],r['next_state'][0],r['ud_lim']),
                              (raw,old,nxt,out))
@@ -47,7 +47,7 @@ class ReferenceTests(unittest.TestCase):
             self.assertEqual((r['ud_raw'],r['uq_raw']),(-sign*58552,sign*2394864))
             self.assertEqual(r['next_state'][:2],(0,0))
         r=ref.pi_step((0,0,0,0,0),ref.sample(id_meas=32768,iq_meas=65536),0)
-        self.assertEqual((r['ud_raw'],r['uq_raw']),(-36595302,-73190604))
+        self.assertEqual((r['ud_raw'],r['uq_raw']),(-146381210,-292762420))
 
     def test_order_resets_errors(self):
         state = (1000,2000,3000,-4000,1)
@@ -70,7 +70,7 @@ class ReferenceTests(unittest.TestCase):
         r = ref.pi_step(extreme,ref.sample(id_ref=32768),0)
         self.assertEqual((r['error_code'],r['next_state']),(2,extreme))
         self.assertEqual(ref.pi_step(extreme,ref.sample(pi_reset=1,id_ref=32768),0)['error_code'],0)
-        self.assertEqual(ref.pi_step((0,0,0,0,0),ref.sample(id_ref=1),0)['next_state'][0],152)
+        self.assertEqual(ref.pi_step((0,0,0,0,0),ref.sample(id_ref=1),0)['next_state'][0],607)
         # A wide FF term exceeds S40 before valid cancellation with OLD xq.
         cancellation=ref.pi_step((0,1<<38,0,0,0),ref.sample(id_meas=(1<<24)-1,id_ref=(1<<24)-1,we=-(1<<31)),0)
         self.assertEqual(cancellation['error_code'],0)

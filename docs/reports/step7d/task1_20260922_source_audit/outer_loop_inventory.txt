@@ -1,0 +1,47 @@
+Scope: partial read-only Task 1 inventory; stopped on live-reference topology mismatch.
+Model: PMLSM_ThreeLoop_Simple, actual local R2026b SLX.
+
+Outer blocks under Control_Task_10kHz:
+  Position_Loop SID1109: x_ref_mm, x_mm, pos_pi_reset, v_ff_pos -> v_ref_pos.
+  Position loop: dead zone -> Kp_pos -> add v_ff_pos -> +/-V_pos_max_mmps.
+  Existing v_ff_pos and pos_pi_reset are both connected to Inactive_Alignment_Fault=0.
+  Speed_Loop SID1122: v_ref, v_mmps, Angle_Init_EN -> iq_ref.
+  Reference_Manager SID991: speed iq, position v, enables, Host v/id/test-mode/test-iq.
+  Outputs: selected id_ref (1), selected iq_ref (2), managed v_ref (3).
+  v_ref selection -> per-current-task slew limiter +/-0.005 mm/s -> +/-20 mm/s.
+  iq selection: Iq_Test_Mode true -> test reference; false -> Speed_Loop output.
+
+Units and loaded model-workspace values (before InitFcn rerun; not runtime measurements):
+  x mm; v mm/s; ia/ib/ic/id/iq/reference A; theta electrical rad; we electrical rad/s.
+  Ts=Ts_ACR=0.0001 s; Ts_ASR=0.001 s; Ts_POS=0.01 s.
+  PMLSM_Ts_s=0.00005 s; Udc=48 V; deadtime=0.000001 s.
+  Speed_loop_Iq_Limit=1 A; Iq_int_limit=0.5 A; Pos_deadband=0.02 mm.
+  Kp_ASR=0.018033474852681124; Ki_ASR=1.4426779882144898; Kaw_s=0.08; Kp_pos=22.
+  Speed state x_s_z is in A: add Ki_ASR*Ts_ASR*velocity_error, subtract Kaw_s*previous saturation excess; clamp +/-0.5 A; reset switch selects zero.
+  PI output combines proportional term, x_s_z and existing friction compensation, clamps +/-1 A; hard-reset output switch selects zero.
+  Speed reset manager includes explicit PI reset, Iq_Test_Mode and NOT Close_Loop_EN. Zero-reference test is abs(v_ref)<v_ref_zero_eps; current threshold is 0, so zero reference alone does not satisfy this strict test.
+  State/reset behavior not yet simulated.
+
+Structural scheduling (actual event times remain UNVERIFIED):
+  Root Control_Tick_10kHz SID785 FunctionCallGenerator SampleTime=Ts -> Control_Task function-call trigger.
+  Scheduler_10k_1k_100 uses spd_cnt_z and Add1; spd_tc compares incremented count >=10.
+  Position count updates only on speed terminal count; pos_tc compares incremented count >=10.
+  Speed_Loop and Position_Loop use rising-edge triggers from scheduler speed_tick/pos_tick.
+  This structure expresses 10:1 and 100:1 divisions; signal logging sample rate is not accepted as execution proof.
+
+Host/reset:
+  Simple_Host SID523 output 10 iq_test_ref=Host_Iq_A, output 8 id_ref_cmd=Host_Id_A.
+  Local root [iq_cmd] producer Host_iq_cmd SID1255 -> FPGA_Live_iq_cmd SID1475.
+  Local root [id_cmd] producer Host_id_cmd SID1251 -> FPGA_Live_id_cmd SID1472.
+  Both root command tags describe Host requests, not exported Reference_Manager outputs.
+  Simple_Host emits Close_Loop_EN/Position_Loop_EN/PWM_EN from Host_Enable_Schedule and PI_Reset_EN from Host_PI_Reset_EN.
+  Host x_ref uses pmlsm_scurve_profile; its function also computes velocity but the actual Host block only exports position trajectory. Existing position feedforward input is zero, not that derivative.
+  Small-trajectory timing and closed-loop performance not measured due stop gate.
+
+Callbacks:
+  PreLoadFcn=init_PMLSM_fpga_cosim_params;
+  InitFcn=reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));
+  PostLoadFcn/StartFcn/StopFcn empty.
+  Parameters printed above are loaded values; future simulation overrides must be checked after InitFcn.
+
+No file save, signal rewiring, gain change or HDL execution occurred.

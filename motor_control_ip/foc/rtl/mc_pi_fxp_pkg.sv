@@ -24,11 +24,12 @@ package mc_pi_fxp_pkg;
   localparam int PI_PROFILE_REAL_COMMISSIONING = 0;
   localparam int PI_PROFILE_MIL_PI_OVERRIDE    = 1;
 
-  // S32/F24 profile coefficients.  The descriptive profile names keep later
-  // evaluator/core selection readable and prevent deriving profile 1 from an
-  // already rounded profile-0 coefficient.
-  localparam logic signed [31:0] PI_KP_REAL_COMMISSIONING = 32'sd36595302;
-  localparam logic signed [31:0] PI_KI_TS_REAL_COMMISSIONING = 32'sd4970250;
+  // AUM3-S4 S32/F24 coefficients, independently rounded from physical values.
+  // Profile 0: xi=1/sqrt(2), Kp=8.725, Ki*100us=1.185.
+  // Profile 1: xi=1, Kp=4.3625, Ki*100us=0.5925.
+  // Legacy symbol names retained for source compatibility; see PR33 revision.
+  localparam logic signed [31:0] PI_KP_REAL_COMMISSIONING = 32'sd146381210;
+  localparam logic signed [31:0] PI_KI_TS_REAL_COMMISSIONING = 32'sd19881001;
   localparam logic signed [31:0] PI_KAW_D_REAL_COMMISSIONING = 32'sd3355443;
   localparam logic signed [31:0] PI_KAW_Q_REAL_COMMISSIONING = 32'sd3355443;
 

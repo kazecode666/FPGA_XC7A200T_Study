@@ -1,0 +1,2 @@
+NORMALIZATION_FAIL: triggered speed state log starts at its first actual execution (0.9ms); previous interpolation before it returned NaN. No NaN was ignored. Explicit audited zero initial state added, followed by fresh run04.
+Console: .superpowers/sdd/step7d_outer_loops_cosim/baseline_03_console.log
