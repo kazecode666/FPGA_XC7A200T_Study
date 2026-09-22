@@ -1,6 +1,11 @@
-# Step 7D partial implementation and blocked result
+# Step 7D execution evidence
 
-Tasks 1–3 passed. Task 4 `speed_ideal` passed, `speed_deadtime` failed. Tasks 5–8 have not run. This directory is not a full Step 7D acceptance bundle.
+**Revised Step7D full acceptance passed:** `acceptance_20260922_205317_302/acceptance.txt`
+records all 21 fresh gates and `STEP7D_FULL_ACCEPTANCE_PASS`, testing source
+commit `dc236d2`. PR33 remains open for ChatGPT Review. See
+`../../../coordination/reports/step7d_pr33_revision_report.md` for results and limits.
+
+Historical run: Tasks 1–3 passed; Task 4 `speed_ideal` passed and `speed_deadtime` failed. That run stopped before Tasks 5–8.
 
 The paragraph above describes the original pre-revision run. The binding follow-up is
 `coordination/tasks/step7d_pr33_revision.md`: AUM3-S4 profile0 now uses Kp=8.725,
@@ -51,4 +56,45 @@ Key evidence:
 - `task4_speed_deadtime/`: original failure, actual configuration, diagnostic metrics and waveform. `DIAGNOSTIC_ONLY=1` explicitly denotes a failed case; the reporting utility does not change the gate.
 - `../../../coordination/reports/step7d_codex_report.md`: scope, complete status and diagnostic limitations.
 
-Local raw output `.Xil/step7d/<RUN_ID>/` is not committed. A fresh checkout can recreate it through the runner; archived-evidence verifiers require those local artifacts and intentionally fail if they are missing. The scenario runner accepts all taskbook names, but only the completed cases above have been executed; availability of an option is not acceptance of its stage.
+Local raw output `.Xil/step7d/<RUN_ID>/` is not committed. Archived-evidence verifiers require those local artifacts and intentionally fail if they are missing. New revised-profile individual runs in `pr33_revision_20260922/` cover all speed/position cases, limits/reset, stop inhibition, fresh startup, convergence and scoped regressions. Their results are distinct from the historical blocker and from the final aggregate acceptance.
+
+## Full ordered acceptance
+
+After the R2026b/Toolkit initialization above, run:
+
+```matlab
+baselineDir=fullfile(pwd,'.Xil','step7d','20260922_113014_967');
+reportDir=step7d_acceptance(baselineDir);
+step7d_report_descriptive_metrics(reportDir);
+```
+
+The baseline directory is the retained **pre-modification Task1** data. It must
+contain the original native equivalence files and matched-step comparison files;
+see `task1_baseline_20260922_04/baseline_before.txt`. A fresh checkout does not
+include these MAT files: restore the original baseline artifacts before claiming
+before/after equivalence. Do not create a new post-modification baseline and
+label it as the original.
+
+Acceptance creates its own `acceptance_<run ID>` directory, rebuilds XSI, runs
+the required ordered checks and writes `STEP7D_FULL_ACCEPTANCE_PASS` only after
+all 21 report gates. Its model hash only records/protects the input file; actual
+numerical, structural and HDL checks determine acceptance. Failures retain
+`failure.txt` and raw output; fix a diagnosed harness problem or report a taskbook
+stop condition, then use a new run directory. Do not reuse partial reports.
+
+The independent session must not already have `PMLSM_ThreeLoop_Simple` loaded;
+the runner refuses that condition. Another idle desktop is allowed. Avoid saving
+new edits to the SLX while a run is using it. Current revision runs use the latest
+saved local SLX including pre-existing layout edits; that dirty model is preserved
+and not included in this revision's commits. The reported model hash identifies
+this local artifact and does not establish clean-checkout binary equivalence.
+
+Public trajectory fields use seconds, mm, mm/s, A, rad, rad/s, and N. Adapter
+inputs use ia/ib/ic/id_ref/iq_ref in A, theta_e in rad and we in rad/s;
+quantized reference values are decoded A after Q15 conversion. The original
+speed PI integrator is in A, bounded at +/-0.5 A; iq output is bounded at +/-1 A.
+Performance trajectories are on the 100 us grid, controller execution events
+retain their own timestamps, and peaks come from full-rate output. Descriptive
+metrics record full-rate trajectory errors/peaks and the speed-task limit ratio.
+Recovery uses a stated 0.5 mm/s band until the next request/load event, even for
+deadtime; it is descriptive, not an additional acceptance gate.

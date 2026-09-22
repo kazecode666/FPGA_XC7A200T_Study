@@ -1,0 +1,8 @@
+ORIGINAL_SPEED_PI_SID=1122
+COMPONENT_ONLY_NOT_PLANT_EVIDENCE=1
+MODEL_SAVED=0
+RAW=D:\Project\FPGA_XC7A200T\.Xil\step7d\outer_limits_20260922_194247_721.mat
+output_min_max=[-1 1] integral_min_max=[-0.5 0.5]
+antiwindup_max_error=0
+zero_error_integral_min_max=[0.11541423905715928 0.11541423905715928]
+STEP7D_OUTER_LIMIT_RESET_PASS

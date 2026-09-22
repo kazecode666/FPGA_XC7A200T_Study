@@ -1,0 +1,5 @@
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/duty:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sum:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sum:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sat:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/d_sat:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model/Phase_A_DeadTime/v0_eff_calc:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_1:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/DeadTime_Voltage_Model:1
+PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Legacy_Counts_To_Duty:1 -> PMLSM_ThreeLoop_Simple/Inverter_DeadTime/Backend_Duty_1:1

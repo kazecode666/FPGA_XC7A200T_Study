@@ -1,0 +1,34 @@
+RELEASE=2026b
+ROOT=D:\Program Files\MATLAB\R2026b_Prerelease
+Simulink Agentic Toolkit is already initialized.
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_read\model_read.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_edit\model_edit.p
+C:\Users\lww\.matlab\agentic-toolkits\simulink\tools\model_check\model_check.p
+STEP7D_R2026B_MCP_READY
+                found: 0
+         settingsPath: ''
+              enabled: 0
+             dataRoot: ''
+             gatePass: 1
+          kgIndexPath: ''
+        librariesPath: ''
+           policyPath: ''
+                 tier: ''
+        ignoredLegacy: 0
+    ignoredLegacyPath: ''
+
+
+错误使用 assert
+Cannot record saved model hash.
+
+出错 step7d_acceptance>fileHash (第 64 行)
+assert(rc==0 && ~isempty(regexp(value,'^[0-9a-f]{64}$','once')),'Step7D:ModelHash','Cannot record saved model hash.');
+
+出错 step7d_acceptance (第 12 行)
+modelFile=fullfile(root,'simulink模型','PMLSM_ThreeLoop_Simple.slx'); modelHash=fileHash(modelFile);
+
+出错 final_acceptance (第 2 行)
+rd=step7d_acceptance;
+
+出错 run (第 100 行)
+evalin('caller', strcat(scriptStem, ';'));

@@ -1,0 +1,7 @@
+input=0 output=1 reset_output=0 PASS
+input=1 output=2 reset_output=0 PASS
+input=42 output=43 reset_output=0 PASS
+input=127 output=128 reset_output=0 PASS
+input=254 output=255 reset_output=0 PASS
+input=255 output=0 reset_output=0 PASS
+STEP7B_SIMULINK_MINIMAL_COSIM_PASS

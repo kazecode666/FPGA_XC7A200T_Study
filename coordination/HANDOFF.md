@@ -27,13 +27,21 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim，PR #25 已合并 |
 | Step 7B | Simulink HDL Cosimulation block + active-CMP smoke，PR #28 已合并 |
 | Step 7C | PR #31 已合并；本地后续布局改动继续保留 |
-| Step 7D | Tasks 1–3 通过；Task 4 ideal 通过、deadtime 速度门槛失败并停止。Tasks 5–8 未开始；见 `coordination/reports/step7d_codex_report.md`，等待 Review 决定诊断范围 |
+| Step 7D | PR33 修订后 Tasks 1–8 完成，新鲜 `STEP7D_FULL_ACCEPTANCE_PASS`；开放 PR33 等待 ChatGPT Review，见 `coordination/reports/step7d_pr33_revision_report.md`。旧 Task4 失败保留为历史事实 |
+
+## Step 7D PR33 修订交付（2026-09-22）
+
+按 `coordination/tasks/step7d_pr33_revision.md`，profile0 已纠正为 AUM3-S4 ξ=1/√2：Kp=8.725、Ki=11850、KiTs=1.185；profile1、Kaw 和当前 Simple 速度 PI 保持。修订 deadtime 速度接入门槛为 MAE/RMSE≤1.5 mm/s，旧 0.5 门槛失败记录未改写。
+
+独立 R2026b MCP 使用已安装 Toolkit，原 R2026a 配置保留。新鲜验收目录 `docs/reports/step7d/acceptance_20260922_205317_302/`：重建 XSI、代表性电流环、live/canary、速度、正负位置、原 PI 限幅/复位、停止禁止重启、独立 fresh-start、步长收敛和规定回归全部通过；legacy 最大差异为 0。速度 worst-window RMSE：ideal 0.09264、deadtime 0.23609 mm/s；最大位置到位误差 0.02149 mm 以下。
+
+本轮未保存 SLX，测试基于用户最新本地模型；未完成的布局改动保持未提交，详见报告的模型版本与复现限制。未完整重跑 Step6，未引入位置差分/IIR、速度 PI 重整定或新死区补偿；未验证热重启或实机停车。停在开放 PR33，不合并、不开始下一阶段、不操作硬件。
 
 ## Step 7D Task 1 初始差异与后续处理（2026-09-22）
 
 任务书 PR #32 已合并，实施审计从 `e7f707b` 在原始工作树的 `codex/step7d-outer-loops-cosim` 分支开始。初始 SLX 中 root `iq_cmd` 的来源是 `Simple_Host/10`（`Host_Iq_A`），外环选中 `iq_ref` 则在 `Control_Task_10kHz/Reference_Manager/2` 内部，当时控制任务仅导出三个 CMP。直接切换 `FPGA_Reference_Mode=1` 不能闭合外环。
 
-曾按任务书第 11 节报告差异，随后用户明确：Host 在三闭环下给位置参考，iq_test_ref 仅用于外环开环的电流测试。Task 1 基线提交后，Task 3 已保存最小 SLX 接线，导出现有外环选中 id/iq，同时保留原 Host 标签语义；初始化文件未修改。目前 Task 4 deadtime 速度门槛失败，尚无 Step 7D FULL PASS。详见 `coordination/reports/step7d_codex_report.md`；初始差异证据保留在 `step7d_preflight_blocker.md`。下文 Step 7C 交付段保留其当时的历史状态。
+曾按任务书第 11 节报告差异，随后用户明确：Host 在三闭环下给位置参考，iq_test_ref 仅用于外环开环的电流测试。Task 1 基线提交后，Task 3 已保存最小 SLX 接线，导出现有外环选中 id/iq，同时保留原 Host 标签语义；初始化文件未修改。旧 Task 4 deadtime 速度失败保留在 `coordination/reports/step7d_codex_report.md`，初始差异证据保留在 `step7d_preflight_blocker.md`；后续修订结果见上节。下文 Step 7C 交付段保留其当时的历史状态。
 
 ## Step 7C 实现交付（2026-09-22）
 
