@@ -1,0 +1,5 @@
+MODEL_SAVED=0
+HDL_SETUP_CALLED=0
+BACKEND=0
+RAW_DIR=D:\Project\FPGA_XC7A200T\.Xil\step7d\20260922_111040_284
+Temporary boundary replacements: Simple_Host/7 -> Host_v_cmd becomes TestSpeedRequest; Simple_Host/3 -> Host_load_cmd becomes TestLoad. No outer-controller/plant feedback replacement.

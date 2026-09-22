@@ -1,0 +1,18 @@
+MATLAB=26.2.0.3340147 (R2026b) Prerelease Update 3
+MODEL=D:\Project\FPGA_XC7A200T\simulink模型\PMLSM_ThreeLoop_Simple.slx
+MODEL_SAVED=0
+HDL_SETUP_CALLED=0
+SIMULATION_RUN=0
+Live iq branch of PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/FPGA_Input_Adapter/Reference_iq_ref:
+  PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_iq_ref output 1 (DataTypeConversion)
+  PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/FPGA_Input_Adapter/iq_cmd output 1 (Inport)
+  PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/iq_cmd output 1 (Inport)
+  PMLSM_ThreeLoop_Simple/FPGA_Live_iq_cmd output 1 (From)
+  via local tag [iq_cmd], producer PMLSM_ThreeLoop_Simple/Host_iq_cmd
+  PMLSM_ThreeLoop_Simple/Simple_Host output 10 (SubSystem)
+ACTUAL_SOURCE=PMLSM_ThreeLoop_Simple/Simple_Host/10
+EXPECTED_OUTER_REFERENCE=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Reference_Manager/2
+CONTROL_TASK_OUTPUT_COUNT=3
+Outer producer: Speed_Loop/1 -> local [iq_ref_normal] -> Reference_Manager/1 -> selected iq_ref output 2.
+Root iq_cmd is Simple_Host iq_test_ref, not the selected outer reference.
+STEP7D_TASK1_BLOCKED_LIVE_REFERENCE_SOURCE

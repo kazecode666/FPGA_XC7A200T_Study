@@ -1,0 +1,2 @@
+INVALID_MATCHED_METRICS: malformed common-grid construction produced [0,1] rather than the 100us grid. Native captures existed, but matched-speed metrics are invalid and not a plant failure. Replaced by fresh run04.
+Console: .superpowers/sdd/step7d_outer_loops_cosim/baseline_02_console.log

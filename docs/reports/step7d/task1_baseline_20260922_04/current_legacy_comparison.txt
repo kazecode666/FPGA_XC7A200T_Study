@@ -1,0 +1,3 @@
+Fresh Step7D 5ms native capture versus preserved Step7C before trace
+max_abs_differences=[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+STEP7D_CURRENT_BASELINE_COMPARE_PASS

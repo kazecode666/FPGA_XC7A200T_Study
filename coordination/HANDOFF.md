@@ -26,7 +26,14 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 6E | 六路互补 PWM、死区、同步关断，PR #23 已合并 |
 | Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim，PR #25 已合并 |
 | Step 7B | Simulink HDL Cosimulation block + active-CMP smoke，PR #28 已合并 |
-| Step 7C | 实现及完整本地验收完成，开放实现 PR 等待 ChatGPT Review |
+| Step 7C | PR #31 已合并；本地后续布局改动继续保留 |
+| Step 7D | Task 1 进行中：用户已澄清 Host 请求与外环电流参考职责，继续修改前基线；尚未实施接入 |
+
+## Step 7D Task 1 差异报告（2026-09-22）
+
+任务书 PR #32 已合并，实施审计从 `e7f707b` 在原始工作树的 `codex/step7d-outer-loops-cosim` 分支开始。真实 SLX 中 root `iq_cmd` 的来源是 `Simple_Host/10`（`Host_Iq_A`），外环选中 `iq_ref` 则在 `Control_Task_10kHz/Reference_Manager/2` 内部，控制任务仅导出三个 CMP。直接切换 `FPGA_Reference_Mode=1` 不能闭合外环。
+
+曾按任务书第 11 节报告差异，随后用户明确：Host 在三闭环下给位置参考，iq_test_ref 仅用于外环开环的电流测试。按此边界恢复 Task 1，后续最小接线导出现有外环选中 id/iq，同时保留原 Host 标签语义。详见 `coordination/reports/step7d_preflight_blocker.md`。目前尚无 Step 7D FULL PASS，未保存模型/初始化修改。下文 Step 7C 交付段保留其当时的历史状态。
 
 ## Step 7C 实现交付（2026-09-22）
 
