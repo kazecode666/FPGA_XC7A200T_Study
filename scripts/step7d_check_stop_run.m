@@ -4,7 +4,7 @@ txt=fileread(fullfile(reportDir,'run_summary.txt')); p=regexp(txt,'RAW_DIR=([^\r
 a=load(fullfile(p{1},'result.mat'),'r'); r=a.r;
 assert(strcmp(r.cfg.name,'stop_restart_inhibit'));
 a=load(fullfile(p{1},'simulation_output.mat'),'out'); out=a.out;
-ts=out.get('step7c_monitor'); t=double(ts.Time(:)); d=double(ts.Data);
+ts=pmlsm_get_monitor(out,'motor'); t=double(ts.Time(:)); d=double(ts.Data);
 post=t>=.25+r.cfg.commTs-1e-12; pre=find(t<.25,1,'last');
 assert(any(post) && t(end)>=.4-1e-12 && abs(d(pre,9))>2.5 && abs(d(pre,8))>.1,'Step7D:StopNotMoving','Stop must interrupt actual motion.');
 assert(all(isfinite(d),'all') && all(d(post,20:21)==0,'all') && all(d(post,23)==1) && all(d(:,22)==0), ...

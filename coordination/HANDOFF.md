@@ -14,6 +14,12 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 
 ## 已接受基线
 
+### 2026-09-23 正式命名与教学说明
+
+PR33 已合并到 `4d1d349`。后续分支 `codex/pmlsm-formal-signals-guide` 基于用户最新本地 R2026b 模型，提交此前 local From/Goto 布局及正式观测命名：`Motor_Control_Monitor`、`motor_control_monitor`、`fpga_interface_monitor`。控制算法和 358 个 Inport/Outport 参数/几何保持；legacy/FPGA 各自 0.2 s 动态段改名前后全采样日志最大差异均为 0。此验证不替代 PR33 完整性能验收。
+
+用户/ChatGPT 教学入口：[模型中文指南](../docs/PMLSM_MODEL_GUIDE_ZH.md)；本次证据：[名称整理报告](../docs/reports/step7d/formal_names_20260923/README.md)。指南解释静态 backend 切换、live 配置、Host 位置参考、观测字段和可运行命令。后续 PR 保持开放等待 Review，不进入下一阶段。
+
 | 阶段 | 状态 |
 |---|---|
 | Step 6A | Simulink PI-FOC 审计，PR #10 已合并 |
@@ -27,7 +33,7 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 | Step 7A | MATLAB R2026b / Vivado 2026.1 最小 HDL co-sim，PR #25 已合并 |
 | Step 7B | Simulink HDL Cosimulation block + active-CMP smoke，PR #28 已合并 |
 | Step 7C | PR #31 已合并；本地后续布局改动继续保留 |
-| Step 7D | PR33 修订后 Tasks 1–8 完成，新鲜 `STEP7D_FULL_ACCEPTANCE_PASS`；开放 PR33 等待 ChatGPT Review，见 `coordination/reports/step7d_pr33_revision_report.md`。旧 Task4 失败保留为历史事实 |
+| Step 7D | PR33 已合并；修订后 Tasks 1–8 完成，`STEP7D_FULL_ACCEPTANCE_PASS`，见 `coordination/reports/step7d_pr33_revision_report.md`。旧 Task4 失败保留为历史事实；后续正式命名/教学文档单独 Review |
 
 ## Step 7D PR33 修订交付（2026-09-22）
 
