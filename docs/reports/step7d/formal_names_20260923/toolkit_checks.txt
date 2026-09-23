@@ -1,0 +1,26 @@
+MATLAB=26.2.0.3340147 (R2026b) Prerelease Update 3
+SCOPE=root
+status: healthy
+validation_scope: root
+checks_run:
+  - unconnected_ports
+  - unconnected_lines
+SCOPE=blk_1452
+status: healthy
+validation_scope: blk_1452
+checks_run:
+  - unconnected_ports
+  - unconnected_lines
+SCOPE=blk_1748
+status: healthy
+validation_scope: blk_1748
+checks_run:
+  - unconnected_ports
+  - unconnected_lines
+SCOPE=blk_1598
+status: healthy
+validation_scope: blk_1598
+checks_run:
+  - unconnected_ports
+  - unconnected_lines
+MODEL_UPDATE_PASS=1

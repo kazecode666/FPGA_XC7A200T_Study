@@ -38,7 +38,7 @@ for rep=1:3
     si=Simulink.SimulationInput(m);
     si=si.setVariable('FPGA_Cosim_Enable',1); si=si.setVariable('FPGA_Cosim_Input_Mode',0);
     si=si.setModelParameter('FixedStep','50e-6','StopTime','300e-6','ReturnWorkspaceOutputs','on','FastRestart','off');
-    out=sim(si); ts=out.get('fpga_monitor'); d=double(ts.Data);
+    out=sim(si); ts=pmlsm_get_monitor(out,'fpga'); d=double(ts.Data);
     assert(all(d(:,7:8)==0,'all') && all(d(:,12:end)==0,'all'));
     assert(all(d(1,1:8)==0),'XSI reset did not create a fresh state');
     i1=find(d(:,5)==1 & d(:,6)==1,1); i2=find(d(:,5)==2 & d(:,6)==1,1);
