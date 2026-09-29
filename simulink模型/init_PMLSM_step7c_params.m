@@ -1,8 +1,8 @@
 % Static backend; independent Step7C configuration only.
-CONTROL_BACKEND=0;
-FPGA_Reference_Mode=0;
-V_Backend_Legacy=Simulink.Variant('CONTROL_BACKEND == 0');
-V_Backend_FPGA=Simulink.Variant('CONTROL_BACKEND == 1');
+CONTROL_BACKEND=1;
+FPGA_Reference_Mode=1;
+V_Backend_Legacy=Simulink.VariantExpression('CONTROL_BACKEND == 0');
+V_Backend_FPGA=Simulink.VariantExpression('CONTROL_BACKEND == 1');
 STEP7C_Comm_Ts_s=1e-6;
 STEP7C_Convergence_Ts_s=0.5e-6;
 STEP7C_StopTime_s=31e-3;

@@ -29,8 +29,8 @@ if strcmp(name,'stop'), si=si.setVariable('STEP7C_run_gate_ts',timeseries([1;0;0
 init=sprintf('mw=get_param(bdroot,''ModelWorkspace''); mw.assignin(''PMLSM_Ts_s'',%.17g); mw.assignin(''PMLSM_deadtime_s'',0); mw.assignin(''PMLSM_deadtime_ratio'',0); mw.assignin(''Host_Enable_Schedule'',[0 1 0 1]); mw.assignin(''Host_Load_N'',0); mw.assignin(''Udc'',48);',commTs);
 init=[init sprintf(' mw.assignin(''PMLSM_deadtime_s'',%.17g); mw.assignin(''PMLSM_deadtime_ratio'',%.17g);',deadtime,deadtime/1e-4)];
 si=si.setModelParameter('InitFcn',[get_param(m,'InitFcn') newline init],'StartFcn',sprintf('step7c_check_scenario_start(bdroot,%.17g,%.17g);',commTs,deadtime));
-out=sim(si); ts=out.get('step7c_monitor'); result=struct('time',ts.Time,'data',double(ts.Data),'commTs',commTs,'name',name);
-f=out.get('fpga_monitor'); result.rangeFlags=max(double(f.Data(:,12:end)),[],1);
+out=sim(si); ts=pmlsm_get_monitor(out,'motor'); result=struct('time',ts.Time,'data',double(ts.Data),'commTs',commTs,'name',name);
+f=pmlsm_get_monitor(out,'fpga'); result.rangeFlags=max(double(f.Data(:,12:end)),[],1);
 result.live=zeros(numel(ts.Time),5); result.selected=zeros(numel(ts.Time),4);
 for k=1:5, q=out.get(['live_' names{k}]); assert(isequal(q.Time,ts.Time)); result.live(:,k)=double(q.Data); end
 for k=1:3, q=out.get(['selected_' num2str(k)]); assert(isequal(q.Time,ts.Time)); result.selected(:,k)=double(q.Data); end

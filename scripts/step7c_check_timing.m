@@ -17,7 +17,7 @@ si=si.setVariable('Host_Enable_Schedule',[0 1 0 1],'Workspace',m);
 si=si.setModelParameter('InitFcn',[get_param(m,'InitFcn') newline ...
     'mw=get_param(bdroot,''ModelWorkspace''); mw.assignin(''PMLSM_Ts_s'',1e-6); mw.assignin(''Host_Enable_Schedule'',[0 1 0 1]);']);
 si=si.setModelParameter('StartFcn','step7c_assert_timing([],bdroot,1e-6);');
-out=sim(si); ts=out.get('fpga_monitor'); d=double(ts.Data); t=ts.Time;
+out=sim(si); ts=pmlsm_get_monitor(out,'fpga'); d=double(ts.Data); t=ts.Time;
 ai=find(diff(d(:,4))>0)+1; ci=find(diff(d(:,5))>0)+1;
 assert(numel(ai)>=4 && numel(ci)>=4 && all(abs(diff(t(ai))-100e-6)<1e-12));
 assert(all(diff(d(ai,4))==1) && all(diff(d(ci,5))==1));

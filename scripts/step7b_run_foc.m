@@ -19,7 +19,7 @@ else
     assert(strcmp(mode,'foc')); si=si.setVariable('FPGA_Cosim_Enable',1);
     si=si.setModelParameter('FixedStep','50e-6'); file='foc_cosim_result.txt';
 end
-out=sim(si); ts=out.get('fpga_monitor'); data=double(ts.Data);
+out=sim(si); ts=pmlsm_get_monitor(out,'fpga'); data=double(ts.Data);
 fid=fopen(fullfile(root,'docs','reports','step7b',file),'w'); cl=onCleanup(@() fclose(fid)); %#ok<NASGU>
 fprintf(fid,'columns=time cmp_u cmp_v cmp_w accepted_id active_id valid needs_reset fault duty_u duty_v duty_w range_flags(11)\n');
 for k=1:numel(ts.Time), fprintf(fid,'%s\n',strtrim(sprintf('%.12g ',[ts.Time(k) data(k,:)]))); end

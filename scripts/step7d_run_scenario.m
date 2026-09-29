@@ -65,7 +65,7 @@ try
    assert(err<=2^-16+1e-12,'Step7D:Quantization','Q15 reference error'); r.interface.([map{k,1} '_quant_error'])=err;
   end
  end
- monitor=out.get('step7c_monitor'); mt=double(monitor.Time(:)); md=double(monitor.Data);
+ monitor=pmlsm_get_monitor(out,'motor'); mt=double(monitor.Time(:)); md=double(monitor.Data);
  r.cmp_active=holdTicks(mt,md(:,12:14),t,commTs); r.duty_selected=zeros(numel(t),3);
  for k=1:3
   ts=out.logsout.get(sprintf('duty_%d',k)).Values; tt=double(ts.Time(:)); yy=double(ts.Data(:)); r.duty_selected(:,k)=holdTicks(tt,yy,t,commTs);
@@ -88,7 +88,7 @@ try
   r.command_events.accepted_to_active_s=delay;
   state=any(diff(md(:,[20 21 22 23]),1,1)~=0,2); si_idx=[1;find(state)+1];
   r.state_events=struct('time_s',mt(si_idx),'valid_bridge_fault_needs_reset',md(si_idx,[20 21 22 23]));
-  f=out.get('fpga_monitor'); r.range_flags=max(double(f.Data(:,12:end)),[],1);
+  f=pmlsm_get_monitor(out,'fpga'); r.range_flags=max(double(f.Data(:,12:end)),[],1);
   assert(all(md(:,22)==0) && all(r.range_flags==0),'Step7D:HDLFault','Full-rate fault/range flag');
   if ~strcmp(name,'stop_restart_inhibit'), assert(all(md(:,23)==0),'Step7D:UnexpectedReset','Full-rate unexpected reset'); end
  else

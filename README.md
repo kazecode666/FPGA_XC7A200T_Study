@@ -2,6 +2,8 @@
 
 本项目用于 FPGA、Verilog/SystemVerilog 学习和 Vivado 开发流程练习，同时用于建立 ChatGPT、GitHub 和 Codex 的协同开发流程。
 
+PMLSM 三闭环学习入口：[模型、正式信号与后端切换中文指南](docs/PMLSM_MODEL_GUIDE_ZH.md)。包含当前 Simulink/FPGA 联合仿真路径、运行命令、观测量表和供 ChatGPT 使用的教学提示。
+
 ## 开发环境
 
 - Vivado：2026.1
