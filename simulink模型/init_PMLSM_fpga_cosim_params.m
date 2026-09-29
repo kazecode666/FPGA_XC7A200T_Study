@@ -1,6 +1,6 @@
 % Step 7B monitor configuration only; original motor/PI parameters are untouched.
 FPGA_Cosim_Enable = 1;
-FPGA_Cosim_Input_Mode = 0;
+FPGA_Cosim_Input_Mode = 1;
 FPGA_CLK_Hz = 50e6;
 FPGA_CLK_Period_s = 20e-9;
 FPGA_PWM_Hz = 10e3;
