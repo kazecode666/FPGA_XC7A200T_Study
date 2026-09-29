@@ -44,6 +44,30 @@ flowchart LR
 
 `Input_Mode=0` 是固定 smoke 输入；`Reference_Mode=0` 是阶段测试的 scripted 电流参考。这两个 0 都不是“三闭环 live”。仅修改 `CONTROL_BACKEND` 后直接点击 Run，不能保证其他设置正确。
 
+### 在模型窗口中交互运行（Issue #35）
+
+在 MATLAB R2026b 命令窗口执行以下命令。`prepare` 会打开模型，并在**当前 MATLAB 进程及未保存的模型内存**中设置场景、1 µs 固定步长和 live 外环输入。随后直接点击模型工具栏的 **Run**；仿真结束后可以再点一次 **Run**，无需重新准备或重建 RTL。
+
+```matlab
+addpath('D:/Project/FPGA_XC7A200T/scripts');
+pmlsm_prepare_interactive_cosim('backend',1,'scenario','position_deadtime');
+% 此时在打开的 PMLSM_ThreeLoop_Simple 模型窗口点击 Run，可重复运行。
+pmlsm_end_interactive_cosim();
+```
+
+选择原 Simulink 电流环时，先结束当前会话，再准备 `backend=0`：
+
+```matlab
+pmlsm_end_interactive_cosim();
+pmlsm_prepare_interactive_cosim('backend',0,'scenario','position_deadtime');
+% 点击 Run；此路径不需要 XSI runtime。
+pmlsm_end_interactive_cosim();
+```
+
+两种后端均沿用原 Host 位置指令和现有外环。`position_deadtime` 运行 1.2 s 仿真时间；仅检查启动可选 `scenario='fresh_start'`（0.02 s），但它不证明位置性能。FPGA 后端使用仓库本地 `.Xil/step7c_foc_cosim/xsim.dir/design` 中已经生成的 XSI runtime；若文件缺失，准备函数会明确报错，需要先按下文生成 runtime。`prepare` 仅修改当前进程的工具路径，不修改 Windows 全局 PATH。
+
+若模型已打开，`prepare` 接受已保存的模型，不要求关闭；如果还有未保存的编辑，它会先拒绝执行，避免丢失这些编辑。**不要在交互会话中保存模型。**场景的 From Workspace 输入、步长和回调都是临时修改；`end` 会关闭未保存模型，恢复原工作目录、MATLAB 路径、进程环境和原有 base workspace 值。如果会话期间又编辑了模型，`end` 会拒绝丢弃这些新编辑。若要切换后端，先停止仿真并执行 `end`，再执行新的 `prepare`。本入口不会生成 bitstream，也不会连接硬件。
+
 ### 推荐可复现入口
 
 在一个独立 R2026b 会话运行，模型不要在**这个会话**中预先加载；另一个 MATLAB 桌面仅打开界面不妨碍运行。脚本在内存中配置模型，退出后关闭自己的模型且不保存测试改动。
