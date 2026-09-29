@@ -31,7 +31,7 @@ flowchart LR
 
 ## 2. 两种后端怎样切换
 
-这是**启动仿真前的静态切换**，不支持运行中热切换。保存的模型默认 `CONTROL_BACKEND=0`。
+这是**启动仿真前的静态切换**，不支持运行中热切换。2026-09-29 用户最新本地初始化文件保存的默认值为 `CONTROL_BACKEND=1`、live 输入和外环参考均为 1；直接点 Run 仍需先满足 XSI 运行目录和 1 μs 模型步长。下面的场景运行器会设置这些条件。
 
 | 配置 | 原 Simulink 后端 | FPGA 三闭环后端 |
 |---|---|---|
@@ -121,6 +121,16 @@ To Workspace 输出为 timeseries：`Time` 是秒，`Data(:,k)` 对应下表。�
 | 24–25 | `vd_V`, `vq_V` |
 
 `fpga_interface_monitor` 是适配器内部日志：前 3 列 active CMP，第 4–8 列依次 accepted ID、active ID、valid、needs_reset、fault_code，第 9–11 列 raw duty，第 12 列起为各输入 range flags。它的列顺序**不同于**主监视器。
+
+### 在仿真数据检查器（SDI）里找具名通道
+
+截图中的 `motor_control_monitor(12)` 和 `fpga_interface_monitor(12)` 是兼容旧脚本的**向量日志列号**。SDI 不能从 Mux 向量自动得知每列的原信号名。现在模型另外记录了 47 路独立信号：在左侧运行结果中展开上方的 **“信号”** 分组，使用 `motor_...` 和 `fpga_if_...` 的条目绘图；两个向量分组可折叠。新增通道与旧向量对应列的数据逐点相同。
+
+- `motor_`：主监测器 25 路。比如 `motor_x_mm` 是位置，`motor_v_mmps` 是速度，`motor_iq_A` 是实际 q 轴电流，`motor_fpga_iq_ref_A` 是 FPGA 适配器的量化前参考。
+- `fpga_if_`：FPGA 接口的 active CMP、事务编号、有效位、故障和 raw duty，共 11 路。比如 `fpga_if_active_command_id` 对应已经生效的命令。
+- `fpga_if_range_`：11 个输入越界标志。0 表示该输入在接口范围内，1 表示超范围；依次为 `run_enable`、`ia`、`ib`、`ic`、`theta_e`、`we`、`id_ref`、`iq_ref`、`vdc`、`pi_reset`、`uq_zero_en`。这些是接口检查，不是电机位置或速度误差。
+
+常看位置响应可勾选 `motor_x_mm`，并与场景运行器的 `x_ref_mm` 比较；看电流可勾选 `motor_iq_A`、`motor_fpga_iq_ref_A`；看 PWM 装载可勾选 `fpga_if_accepted_sample_id`、`fpga_if_active_command_id`、`motor_fpga_duty_u`。`motor_`/`fpga_if_` 只是 SDI 中用于分组和避免重名的前缀。完整 47 列对应关系及逐点比较结果在 [SDI 通道核对](reports/step7d/sdi_channel_names_20260929/channel_check.txt)。
 
 backend=0 时不要把 FPGA 命令/状态列当作正在驱动电机的证据。场景运行器返回的 `r.id_ref_A`/`r.iq_ref_A` 直接记录原 reference manager，`r.duty_selected` 记录后端选择后的 duty，比较两个后端优先看这些字段。历史 MAT 仍保留旧日志名 `step7c_monitor`/`fpga_monitor`；`pmlsm_get_monitor` 兼容读取，新仿真使用正式名。
 

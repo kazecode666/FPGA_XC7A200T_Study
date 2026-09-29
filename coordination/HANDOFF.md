@@ -16,6 +16,8 @@ GitHub 保存设计、任务书和 Review；用户原始本地主项目保存可
 
 ### 2026-09-23 正式命名与教学说明
 
+2026-09-29 后续：用户指出 SDI 中两个监测向量只有 `(1..25)`/`(1..22)` 列号。基于当天最新模型，以 `666d8ff` 单独记录其 as-found SLX 与初始化模式，再为 47 路监测/接口信号启用具名 SDI 日志；原向量变量和脚本保持。Vivado/XSI `fresh_start` 实际运行及每列逐点对照全为 0，详见 [SDI 通道报告](../docs/reports/step7d/sdi_channel_names_20260929/README.md)。继续在开放 PR34 Review，不进入下一阶段。
+
 PR33 已合并到 `4d1d349`。后续分支 `codex/pmlsm-formal-signals-guide` 基于用户最新本地 R2026b 模型，提交此前 local From/Goto 布局及正式观测命名：`Motor_Control_Monitor`、`motor_control_monitor`、`fpga_interface_monitor`。控制算法和 358 个 Inport/Outport 参数/几何保持；legacy/FPGA 各自 0.2 s 动态段改名前后全采样日志最大差异均为 0。此验证不替代 PR33 完整性能验收。
 
 用户/ChatGPT 教学入口：[模型中文指南](../docs/PMLSM_MODEL_GUIDE_ZH.md)；本次证据：[名称整理报告](../docs/reports/step7d/formal_names_20260923/README.md)。指南解释静态 backend 切换、live 配置、Host 位置参考、观测字段和可运行命令。后续 PR 保持开放等待 Review，不进入下一阶段。
