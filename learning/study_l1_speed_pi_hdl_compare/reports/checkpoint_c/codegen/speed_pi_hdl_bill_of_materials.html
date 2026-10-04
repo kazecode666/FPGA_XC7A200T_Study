@@ -1,0 +1,1018 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+speed_pi_hdl 的高级资源利用率报告
+</title>
+
+</head>
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666" onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdBillOfMaterials'); else local_onload();}} catch(err) {};hdlTableShrink(this, '寄存器_1_1');hdlTableShrink(this, '寄存器_1_2');hdlTableShrink(this, 'Input_Port');hdlTableShrink(this, 'Output_Port');hdlTableShrink(this, '乘法器_2_1');hdlTableShrink(this, '乘法器_2_2');hdlTableShrink(this, '加法器_2_1');hdlTableShrink(this, '加法器_2_2');hdlTableShrink(this, '加法器_2_3');hdlTableShrink(this, '加法器_2_4');hdlTableShrink(this, '减法器_2_1');hdlTableShrink(this, '减法器_2_2');hdlTableShrink(this, '减法器_2_3');hdlTableShrink(this, '减法器_2_4');hdlTableShrink(this, '减法器_2_5');hdlTableShrink(this, '寄存器_2_1');hdlTableShrink(this, '寄存器_2_2');hdlTableShrink(this, '多路复用器_2_1');hdlTableShrink(this, '多路复用器_2_2');hdlTableShrink(this, '多路复用器_2_3');hdlTableShrink(this, '多路复用器_2_4');hdlTableShrink(this, '多路复用器_2_5');hdlTableShrink(this, '多路复用器_2_6');hdlTableShrink(this, '多路复用器_2_7');hdlTableShrink(this, '多路复用器_2_8');hdlTableShrink(this, '多路复用器_2_9');hdlTableShrink(this, '多路复用器_2_10');hdlTableShrink(this, '多路复用器_2_11');">
+<script>
+<!--
+function hdlTableShrink(o,tagNameStr)
+{
+var temp = document.getElementsByName(tagNameStr);
+if (temp[0].style.display == "")
+{
+	temp[0].style.display = "none";
+	o.innerHTML = '<span style="font-family:monospace">[+]</span>';
+}
+else
+{
+	temp[0].style.display = "";
+	o.innerHTML = '<span style="font-family:monospace">[-]</span>';
+}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableCollapseAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[+]</span>';
+	}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableExpandAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[-]</span>';
+	}
+}
+// -->
+</script>
+<font SIZE="+2" COLOR="#000066">
+speed_pi_hdl 的通用资源报告
+</font>
+<br /><br /><br /><a name="摘要">
+<font size="+1" color="#000066">
+<b class="midprod">
+摘要
+</b>
+
+</font>
+
+</a>
+<br /><br /><table width="100%" border="1">
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+乘法器
+</td>
+<td align="center" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+加法器/减法器
+</td>
+<td align="center" valign="top" style="border-style: none">
+14
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+寄存器
+</td>
+<td align="center" valign="top" style="border-style: none">
+23
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+1 位寄存器的总数
+</td>
+<td align="center" valign="top" style="border-style: none">
+550
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+RAM
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+多路复用器
+</td>
+<td align="center" valign="top" style="border-style: none">
+18
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+I/O 位
+</td>
+<td align="center" valign="top" style="border-style: none">
+482
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+静态移位运算符
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+动态移位运算符
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+
+</table>
+<br /><br /><a name="详细报告">
+<font size="+1" color="#000066">
+<b class="midprod">
+详细报告
+</b>
+
+</font>
+
+</a>
+<br /><br /><p><hr /></p><h5>
+子系统的报告: <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:77\')'})"  name="code2model" class="code2model">
+HDLCore
+</a>
+
+</h5>
+<h5>
+寄存器(7)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '寄存器_1_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 寄存器 							: 2
+</span>
+<span name="寄存器_1_1" id="寄存器_1_1">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:104\')'})"  name="code2model" class="code2model">
+in_0_pipe
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:105\')'})"  name="code2model" class="code2model">
+in_1_pipe
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '寄存器_1_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+1-bit 寄存器 							: 5
+</span>
+<span name="寄存器_1_2" id="寄存器_1_2">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:106\')'})"  name="code2model" class="code2model">
+in_2_pipe
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:107\')'})"  name="code2model" class="code2model">
+in_3_pipe
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:109\')'})"  name="code2model" class="code2model">
+in_5_pipe
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:110\')'})"  name="code2model" class="code2model">
+in_6_pipe
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:108\')'})"  name="code2model" class="code2model">
+in_4_pipe
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
+I/O 位数(482)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Input_Port')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+输入位数: 72
+</span>
+<span name="Input_Port" id="Input_Port">
+<ul>
+<li>
+clk: 1 bit
+</li>
+<li>
+init_reset: 1 bit
+</li>
+<li>
+clk_enable: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:133\')'})"  name="code2model" class="code2model">
+v_ref_mmps
+</a>
+: 32 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:134\')'})"  name="code2model" class="code2model">
+v_meas_mmps
+</a>
+: 32 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:135\')'})"  name="code2model" class="code2model">
+enable
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:136\')'})"  name="code2model" class="code2model">
+pi_reset
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:137\')'})"  name="code2model" class="code2model">
+sample_tick
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:138\')'})"  name="code2model" class="code2model">
+angle_init
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:139\')'})"  name="code2model" class="code2model">
+test_mode
+</a>
+: 1 bit
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Output_Port')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+输出位数: 410
+</span>
+<span name="Output_Port" id="Output_Port">
+<ul class="SystemdefinedCollapse" id="7058f48e-b8be-45fe-b462-aa738f637395" dataCollapse="off">
+<li>
+ce_out: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:140\')'})"  name="code2model" class="code2model">
+iq_ref_A
+</a>
+: 25 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:141\')'})"  name="code2model" class="code2model">
+iq_unlimited_A
+</a>
+: 42 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:142\')'})"  name="code2model" class="code2model">
+integrator_A
+</a>
+: 32 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:143\')'})"  name="code2model" class="code2model">
+saturation_active
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:144\')'})"  name="code2model" class="code2model">
+integrator_next_A
+</a>
+: 32 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:145\')'})"  name="code2model" class="code2model">
+previous_excess_A
+</a>
+: 40 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:146\')'})"  name="code2model" class="code2model">
+excess_next_A
+</a>
+: 40 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:147\')'})"  name="code2model" class="code2model">
+hard_reset
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:148\')'})"  name="code2model" class="code2model">
+int_reset
+</a>
+: 1 bit
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:149\')'})"  name="code2model" class="code2model">
+iq_limited_A
+</a>
+: 42 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:150\')'})"  name="code2model" class="code2model">
+error_mmps
+</a>
+: 33 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:151\')'})"  name="code2model" class="code2model">
+P_A
+</a>
+: 40 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:152\')'})"  name="code2model" class="code2model">
+KiTs_A
+</a>
+: 40 bits
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:153\')'})"  name="code2model" class="code2model">
+AW_A
+</a>
+: 40 bits
+</li>
+
+</ul>
+<span class="SDCollapseControl" onclick="collapseSD(this, '7058f48e-b8be-45fe-b462-aa738f637395')" onmouseover="this.style.cursor = 'pointer'">
+&#8743; 更少
+</span>
+<br />
+</span>
+<br /><p><hr /></p><h5>
+子系统的报告: <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:78\')'})"  name="code2model" class="code2model">
+PI
+</a>
+
+</h5>
+<h5>
+乘法器(3)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '乘法器_2_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33x33-bit 乘法器 							: 2
+</span>
+<span name="乘法器_2_1" id="乘法器_2_1">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:106\')'})"  name="code2model" class="code2model">
+P
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:98\')'})"  name="code2model" class="code2model">
+KiTs
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '乘法器_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32x33-bit 乘法器 							: 1
+</span>
+<span name="乘法器_2_2" id="乘法器_2_2">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:113\')'})"  name="code2model" class="code2model">
+SignedError
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
+加法器/减法器(14)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '加法器_2_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+40x40-bit 加法器 							: 0
+</span>
+<span name="加法器_2_1" id="加法器_2_1">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:106\')'})"  name="code2model" class="code2model">
+P
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:98\')'})"  name="code2model" class="code2model">
+KiTs
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:86\')'})"  name="code2model" class="code2model">
+AW
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '加法器_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+73x73-bit 加法器 							: 5
+</span>
+<span name="加法器_2_2" id="加法器_2_2">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:86\')'})"  name="code2model" class="code2model">
+AW
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '加法器_2_3')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+44x44-bit 加法器 							: 2
+</span>
+<span name="加法器_2_3" id="加法器_2_3">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'gm_speed_pi_hdl:84\')'})"  name="code2model" class="code2model">
+Update_stage2
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:116\')'})"  name="code2model" class="code2model">
+Unlimited
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '加法器_2_4')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+25x25-bit 加法器 							: 0
+</span>
+<span name="加法器_2_4" id="加法器_2_4">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:100\')'})"  name="code2model" class="code2model">
+OutputFormat
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '减法器_2_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33x33-bit 减法器 							: 1
+</span>
+<span name="减法器_2_1" id="减法器_2_1">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:89\')'})"  name="code2model" class="code2model">
+Error
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '减法器_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33-bit 减法器 							: 1
+</span>
+<span name="减法器_2_2" id="减法器_2_2">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:87\')'})"  name="code2model" class="code2model">
+AbsRef
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '减法器_2_3')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+44x44-bit 减法器 							: 1
+</span>
+<span name="减法器_2_3" id="减法器_2_3">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:90\')'})"  name="code2model" class="code2model">
+Excess
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '减法器_2_4')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+73x73-bit 减法器 							: 3
+</span>
+<span name="减法器_2_4" id="减法器_2_4">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:86\')'})"  name="code2model" class="code2model">
+AW
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '减法器_2_5')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+45x45-bit 减法器 							: 1
+</span>
+<span name="减法器_2_5" id="减法器_2_5">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:117\')'})"  name="code2model" class="code2model">
+Update
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
+寄存器(16)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '寄存器_2_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+40-bit 寄存器 							: 6
+</span>
+<span name="寄存器_2_1" id="寄存器_2_1">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:107\')'})"  name="code2model" class="code2model">
+PreviousExcess
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '寄存器_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 寄存器 							: 3
+</span>
+<span name="寄存器_2_2" id="寄存器_2_2">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:96\')'})"  name="code2model" class="code2model">
+Integrator
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span style="font-family:monospace">
+25-bit 寄存器 							: 1
+</span>
+<br /><span style="font-family:monospace">
+42-bit 寄存器 							: 2
+</span>
+<br /><span style="font-family:monospace">
+1-bit 寄存器 							: 3
+</span>
+<br /><span style="font-family:monospace">
+33-bit 寄存器 							: 1
+</span>
+<br /><h5>
+多路复用器(18)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+3x40-bit 多路复用器 							: 4
+</span>
+<span name="多路复用器_2_1" id="多路复用器_2_1">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:106\')'})"  name="code2model" class="code2model">
+P
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:98\')'})"  name="code2model" class="code2model">
+KiTs
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:90\')'})"  name="code2model" class="code2model">
+Excess
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:86\')'})"  name="code2model" class="code2model">
+AW
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+2x33-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_2" id="多路复用器_2_2">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:87\')'})"  name="code2model" class="code2model">
+AbsRef
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_3')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+3x32-bit 多路复用器 							: 3
+</span>
+<span name="多路复用器_2_3" id="多路复用器_2_3">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:87\')'})"  name="code2model" class="code2model">
+AbsRef
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:110\')'})"  name="code2model" class="code2model">
+RefSign
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:114\')'})"  name="code2model" class="code2model">
+StateFormat
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_4')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+3x33-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_4" id="多路复用器_2_4">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:113\')'})"  name="code2model" class="code2model">
+SignedError
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_5')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+2x42-bit 多路复用器 							: 2
+</span>
+<span name="多路复用器_2_5" id="多路复用器_2_5">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:101\')'})"  name="code2model" class="code2model">
+OutputLimit
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:101\')'})"  name="code2model" class="code2model">
+OutputLimit
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_6')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+2x44-bit 多路复用器 							: 2
+</span>
+<span name="多路复用器_2_6" id="多路复用器_2_6">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:97\')'})"  name="code2model" class="code2model">
+IntegratorLimit
+</a>
+
+</li>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:97\')'})"  name="code2model" class="code2model">
+IntegratorLimit
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_7')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+3x44-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_7" id="多路复用器_2_7">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:117\')'})"  name="code2model" class="code2model">
+Update
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_8')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+2x32-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_8" id="多路复用器_2_8">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:95\')'})"  name="code2model" class="code2model">
+IntReset
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_9')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+3x42-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_9" id="多路复用器_2_9">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:116\')'})"  name="code2model" class="code2model">
+Unlimited
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_10')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+3x25-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_10" id="多路复用器_2_10">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:100\')'})"  name="code2model" class="code2model">
+OutputFormat
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, '多路复用器_2_11')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+2x25-bit 多路复用器 							: 1
+</span>
+<span name="多路复用器_2_11" id="多路复用器_2_11">
+<ul>
+<li>
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'speed_pi_hdl:93\')'})"  name="code2model" class="code2model">
+HardReset
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><p><hr /></p>
+<script>function postParentWindowMessage(message) {window.parent.postMessage(message, "*");}
+document.addEventListener('click', function () {postParentWindowMessage({message: 'iframeClick'});});</script>
+</body>
+
+</html>

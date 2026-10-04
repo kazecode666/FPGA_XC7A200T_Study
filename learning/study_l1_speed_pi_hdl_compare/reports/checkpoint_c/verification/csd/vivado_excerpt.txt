@@ -1,0 +1,14 @@
+# Vivado v2026.1 (64-bit)
+Command: synth_design -top speed_pi_compare -part xc7a200tfbg484-2 -mode out_of_context
+22 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+Command: opt_design
+19 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+Command: place_design
+26 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+Command: route_design
+9 Infos, 72 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+Command: report_drc -file D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_csd_impl_01/reports/drc.rpt
+# puts "STUDY_L1_C_IMPLEMENTATION_COMPLETE variant=$variant WNS=$wns WHS=$whs FF=$ff DSP=$dsp"
+STUDY_L1_C_IMPLEMENTATION_COMPLETE variant=csd WNS=0.862 WHS=0.140 FF=476 DSP=6

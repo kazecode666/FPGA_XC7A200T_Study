@@ -1,0 +1,947 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct  4 18:30:44 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type max -max_paths 5 -input_pins -file D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_csd_impl_01/reports/critical_paths.rpt
+| Design       : speed_pi_compare
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.862ns  (required time - arrival time)
+  Source:                 core/v_ref_mmps_1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/u_PI/HardReset_out1_hold_reg[24]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50mhz
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50mhz rise@20.000ns - clk_50mhz rise@0.000ns)
+  Data Path Delay:        18.885ns  (logic 12.335ns (65.316%)  route 6.550ns (34.684%))
+  Logic Levels:           37  (CARRY4=24 DSP48E1=2 LUT2=4 LUT4=2 LUT5=1 LUT6=4)
+  Clock Path Skew:        -0.248ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.303ns = ( 21.303 - 20.000 ) 
+    Source Clock Delay      (SCD):    1.558ns
+    Clock Pessimism Removal (CPR):    0.007ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50mhz rise edge)
+                                                      0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=475, unset)          1.558     1.558    core/clk
+    SLICE_X50Y93         FDRE                                         r  core/v_ref_mmps_1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y93         FDRE (Prop_fdre_C_Q)         0.348     1.906 r  core/v_ref_mmps_1_reg[0]/Q
+                         net (fo=6, routed)           0.481     2.387    core/u_PI/Q[0]
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry_i_4/I0
+    SLICE_X51Y93         LUT2 (Prop_lut2_I0_O)        0.242     2.629 r  core/u_PI/Error_out1_carry_i_4/O
+                         net (fo=1, routed)           0.000     2.629    core/u_PI/Error_out1_carry_i_4_n_0
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry/S[0]
+    SLICE_X51Y93         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440     3.069 r  core/u_PI/Error_out1_carry/CO[3]
+                         net (fo=1, routed)           0.000     3.069    core/u_PI/Error_out1_carry_n_0
+    SLICE_X51Y94                                                      r  core/u_PI/Error_out1_carry__0/CI
+    SLICE_X51Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.167 r  core/u_PI/Error_out1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     3.167    core/u_PI/Error_out1_carry__0_n_0
+    SLICE_X51Y95                                                      r  core/u_PI/Error_out1_carry__1/CI
+    SLICE_X51Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.265 r  core/u_PI/Error_out1_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     3.265    core/u_PI/Error_out1_carry__1_n_0
+    SLICE_X51Y96                                                      r  core/u_PI/Error_out1_carry__2/CI
+    SLICE_X51Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.363 r  core/u_PI/Error_out1_carry__2/CO[3]
+                         net (fo=1, routed)           0.000     3.363    core/u_PI/Error_out1_carry__2_n_0
+    SLICE_X51Y97                                                      r  core/u_PI/Error_out1_carry__3/CI
+    SLICE_X51Y97         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.191     3.554 r  core/u_PI/Error_out1_carry__3/O[0]
+                         net (fo=7, routed)           0.820     4.374    core/u_PI/Error_out1[16]
+    DSP48_X3Y38                                                       r  core/u_PI/P_mul_temp__1/B[16]
+    DSP48_X3Y38          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      3.388     7.762 r  core/u_PI/P_mul_temp__1/PCOUT[47]
+                         net (fo=1, routed)           0.002     7.764    core/u_PI/P_mul_temp__1_n_106
+    DSP48_X3Y39                                                       r  core/u_PI/P_mul_temp__2/PCIN[47]
+    DSP48_X3Y39          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.271     9.035 r  core/u_PI/P_mul_temp__2/P[0]
+                         net (fo=2, routed)           0.558     9.592    core/u_PI/P_mul_temp__2_n_105
+    SLICE_X65Y95                                                      r  core/u_PI/P_mul_temp_carry/DI[1]
+    SLICE_X65Y95         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.442    10.034 r  core/u_PI/P_mul_temp_carry/O[2]
+                         net (fo=1, routed)           0.267    10.301    core/u_PI/P_mul_temp_carry_n_5
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_6/I1
+    SLICE_X64Y95         LUT4 (Prop_lut4_I1_O)        0.253    10.554 r  core/u_PI/P_out11_carry_i_6/O
+                         net (fo=1, routed)           0.125    10.680    core/u_PI/P_out11_carry_i_6_n_0
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_3/I4
+    SLICE_X64Y95         LUT5 (Prop_lut5_I4_O)        0.105    10.785 r  core/u_PI/P_out11_carry_i_3/O
+                         net (fo=1, routed)           0.367    11.152    core/u_PI/P_out11_carry_i_3_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry_i_1/I2
+    SLICE_X63Y96         LUT4 (Prop_lut4_I2_O)        0.105    11.257 r  core/u_PI/P_out11_carry_i_1/O
+                         net (fo=1, routed)           0.000    11.257    core/u_PI/P_out11_carry_i_1_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry/S[0]
+    SLICE_X63Y96         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    11.697 r  core/u_PI/P_out11_carry/CO[3]
+                         net (fo=1, routed)           0.000    11.697    core/u_PI/P_out11_carry_n_0
+    SLICE_X63Y97                                                      r  core/u_PI/P_out11_carry__0/CI
+    SLICE_X63Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.795 r  core/u_PI/P_out11_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    11.795    core/u_PI/P_out11_carry__0_n_0
+    SLICE_X63Y98                                                      r  core/u_PI/P_out11_carry__1/CI
+    SLICE_X63Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.893 r  core/u_PI/P_out11_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    11.893    core/u_PI/P_out11_carry__1_n_0
+    SLICE_X63Y99                                                      r  core/u_PI/P_out11_carry__2/CI
+    SLICE_X63Y99         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.991 r  core/u_PI/P_out11_carry__2/CO[3]
+                         net (fo=1, routed)           0.001    11.992    core/u_PI/P_out11_carry__2_n_0
+    SLICE_X63Y100                                                     r  core/u_PI/P_out11_carry__3/CI
+    SLICE_X63Y100        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.090 r  core/u_PI/P_out11_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    12.090    core/u_PI/P_out11_carry__3_n_0
+    SLICE_X63Y101                                                     r  core/u_PI/P_out11_carry__4/CI
+    SLICE_X63Y101        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.188 r  core/u_PI/P_out11_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    12.188    core/u_PI/P_out11_carry__4_n_0
+    SLICE_X63Y102                                                     r  core/u_PI/P_out11_carry__5/CI
+    SLICE_X63Y102        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.277    12.465 r  core/u_PI/P_out11_carry__5/O[1]
+                         net (fo=3, routed)           0.585    13.050    core/u_PI/P_out11_carry__5_n_6
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5_i_3/I0
+    SLICE_X55Y102        LUT2 (Prop_lut2_I0_O)        0.250    13.300 r  core/u_PI/Unlimited_add_temp_carry__5_i_3/O
+                         net (fo=1, routed)           0.000    13.300    core/u_PI/Unlimited_add_temp_carry__5_i_3_n_0
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5/S[1]
+    SLICE_X55Y102        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    13.757 r  core/u_PI/Unlimited_add_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    13.757    core/u_PI/Unlimited_add_temp_carry__5_n_0
+    SLICE_X55Y103                                                     r  core/u_PI/Unlimited_add_temp_carry__6/CI
+    SLICE_X55Y103        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    13.971 f  core/u_PI/Unlimited_add_temp_carry__6/O[2]
+                         net (fo=9, routed)           0.635    14.605    core/u_PI/Unlimited_add_temp_carry__6_n_5
+    SLICE_X47Y107                                                     f  core/u_PI/Sat_LowerRelOp_out_carry_i_1/I0
+    SLICE_X47Y107        LUT2 (Prop_lut2_I0_O)        0.253    14.858 r  core/u_PI/Sat_LowerRelOp_out_carry_i_1/O
+                         net (fo=1, routed)           0.514    15.373    core/u_PI/Sat_LowerRelOp_out_carry_i_1_n_0
+    SLICE_X42Y107                                                     r  core/u_PI/Sat_LowerRelOp_out_carry/CYINIT
+    SLICE_X42Y107        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.494    15.867 r  core/u_PI/Sat_LowerRelOp_out_carry/CO[3]
+                         net (fo=1, routed)           0.000    15.867    core/u_PI/Sat_LowerRelOp_out_carry_n_0
+    SLICE_X42Y108                                                     r  core/u_PI/Sat_LowerRelOp_out_carry__0/CI
+    SLICE_X42Y108        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.207    16.074 f  core/u_PI/Sat_LowerRelOp_out_carry__0/CO[0]
+                         net (fo=131, routed)         0.693    16.766    core/u_PI/Sat_LowerRelOp_out
+    SLICE_X42Y106                                                     f  core/u_PI/HardReset_out1_hold[24]_i_11/I1
+    SLICE_X42Y106        LUT2 (Prop_lut2_I1_O)        0.319    17.085 f  core/u_PI/HardReset_out1_hold[24]_i_11/O
+                         net (fo=5, routed)           0.373    17.458    core/u_PI/HardReset_out1_hold[24]_i_11_n_0
+    SLICE_X43Y103                                                     f  core/u_PI/HardReset_out1_hold[3]_i_7/I3
+    SLICE_X43Y103        LUT6 (Prop_lut6_I3_O)        0.286    17.744 r  core/u_PI/HardReset_out1_hold[3]_i_7/O
+                         net (fo=1, routed)           0.503    18.247    core/u_PI/HardReset_out1_hold[3]_i_7_n_0
+    SLICE_X43Y104                                                     r  core/u_PI/HardReset_out1_hold[3]_i_6/I2
+    SLICE_X43Y104        LUT6 (Prop_lut6_I2_O)        0.105    18.352 r  core/u_PI/HardReset_out1_hold[3]_i_6/O
+                         net (fo=1, routed)           0.000    18.352    core/u_PI/HardReset_out1_hold[3]_i_6_n_0
+    SLICE_X43Y104                                                     r  core/u_PI/HardReset_out1_hold_reg[3]_i_2/S[0]
+    SLICE_X43Y104        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    18.792 r  core/u_PI/HardReset_out1_hold_reg[3]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.792    core/u_PI/HardReset_out1_hold_reg[3]_i_2_n_0
+    SLICE_X43Y105                                                     r  core/u_PI/HardReset_out1_hold_reg[7]_i_2/CI
+    SLICE_X43Y105        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.890 r  core/u_PI/HardReset_out1_hold_reg[7]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.890    core/u_PI/HardReset_out1_hold_reg[7]_i_2_n_0
+    SLICE_X43Y106                                                     r  core/u_PI/HardReset_out1_hold_reg[11]_i_2/CI
+    SLICE_X43Y106        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.988 r  core/u_PI/HardReset_out1_hold_reg[11]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.988    core/u_PI/HardReset_out1_hold_reg[11]_i_2_n_0
+    SLICE_X43Y107                                                     r  core/u_PI/HardReset_out1_hold_reg[15]_i_2/CI
+    SLICE_X43Y107        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    19.086 r  core/u_PI/HardReset_out1_hold_reg[15]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    19.086    core/u_PI/HardReset_out1_hold_reg[15]_i_2_n_0
+    SLICE_X43Y108                                                     r  core/u_PI/HardReset_out1_hold_reg[19]_i_2/CI
+    SLICE_X43Y108        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    19.184 r  core/u_PI/HardReset_out1_hold_reg[19]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    19.184    core/u_PI/HardReset_out1_hold_reg[19]_i_2_n_0
+    SLICE_X43Y109                                                     r  core/u_PI/HardReset_out1_hold_reg[23]_i_3/CI
+    SLICE_X43Y109        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    19.282 r  core/u_PI/HardReset_out1_hold_reg[23]_i_3/CO[3]
+                         net (fo=1, routed)           0.000    19.282    core/u_PI/HardReset_out1_hold_reg[23]_i_3_n_0
+    SLICE_X43Y110                                                     r  core/u_PI/HardReset_out1_hold_reg[24]_i_5/CI
+    SLICE_X43Y110        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180    19.462 r  core/u_PI/HardReset_out1_hold_reg[24]_i_5/O[0]
+                         net (fo=1, routed)           0.369    19.831    core/u_PI/OutputFormat_out11__0[24]
+    SLICE_X44Y109                                                     r  core/u_PI/HardReset_out1_hold[24]_i_2/I5
+    SLICE_X44Y109        LUT6 (Prop_lut6_I5_O)        0.249    20.080 r  core/u_PI/HardReset_out1_hold[24]_i_2/O
+                         net (fo=1, routed)           0.258    20.338    core/u_PI/HardReset_out1[24]
+    SLICE_X45Y109                                                     r  core/u_PI/HardReset_out1_hold[24]_i_1/I2
+    SLICE_X45Y109        LUT6 (Prop_lut6_I2_O)        0.105    20.443 r  core/u_PI/HardReset_out1_hold[24]_i_1/O
+                         net (fo=1, routed)           0.000    20.443    core/u_PI/HardReset_out1_hold[24]_i_1_n_0
+    SLICE_X45Y109        FDRE                                         r  core/u_PI/HardReset_out1_hold_reg[24]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50mhz rise edge)
+                                                     20.000    20.000 r  <hidden>
+                                                      0.000    20.000 r  clk
+                         net (fo=475, unset)          1.303    21.303    core/u_PI/clk
+    SLICE_X45Y109        FDRE                                         r  core/u_PI/HardReset_out1_hold_reg[24]/C
+                         clock pessimism              0.007    21.310    <hidden>
+                         clock uncertainty           -0.035    21.275    <hidden>
+    SLICE_X45Y109        FDRE (Setup_fdre_C_D)        0.030    21.305    core/u_PI/HardReset_out1_hold_reg[24]
+  -------------------------------------------------------------------
+                         required time                         21.305    <hidden>
+                         arrival time                         -20.443    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.862    <hidden>
+
+Slack (MET) :             1.159ns  (required time - arrival time)
+  Source:                 core/v_ref_mmps_1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/u_PI/HardReset_out1_hold_reg[23]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50mhz
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50mhz rise@20.000ns - clk_50mhz rise@0.000ns)
+  Data Path Delay:        18.632ns  (logic 12.220ns (65.586%)  route 6.412ns (34.414%))
+  Logic Levels:           35  (CARRY4=23 DSP48E1=2 LUT2=4 LUT4=2 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.248ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.303ns = ( 21.303 - 20.000 ) 
+    Source Clock Delay      (SCD):    1.558ns
+    Clock Pessimism Removal (CPR):    0.007ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50mhz rise edge)
+                                                      0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=475, unset)          1.558     1.558    core/clk
+    SLICE_X50Y93         FDRE                                         r  core/v_ref_mmps_1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y93         FDRE (Prop_fdre_C_Q)         0.348     1.906 r  core/v_ref_mmps_1_reg[0]/Q
+                         net (fo=6, routed)           0.481     2.387    core/u_PI/Q[0]
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry_i_4/I0
+    SLICE_X51Y93         LUT2 (Prop_lut2_I0_O)        0.242     2.629 r  core/u_PI/Error_out1_carry_i_4/O
+                         net (fo=1, routed)           0.000     2.629    core/u_PI/Error_out1_carry_i_4_n_0
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry/S[0]
+    SLICE_X51Y93         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440     3.069 r  core/u_PI/Error_out1_carry/CO[3]
+                         net (fo=1, routed)           0.000     3.069    core/u_PI/Error_out1_carry_n_0
+    SLICE_X51Y94                                                      r  core/u_PI/Error_out1_carry__0/CI
+    SLICE_X51Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.167 r  core/u_PI/Error_out1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     3.167    core/u_PI/Error_out1_carry__0_n_0
+    SLICE_X51Y95                                                      r  core/u_PI/Error_out1_carry__1/CI
+    SLICE_X51Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.265 r  core/u_PI/Error_out1_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     3.265    core/u_PI/Error_out1_carry__1_n_0
+    SLICE_X51Y96                                                      r  core/u_PI/Error_out1_carry__2/CI
+    SLICE_X51Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.363 r  core/u_PI/Error_out1_carry__2/CO[3]
+                         net (fo=1, routed)           0.000     3.363    core/u_PI/Error_out1_carry__2_n_0
+    SLICE_X51Y97                                                      r  core/u_PI/Error_out1_carry__3/CI
+    SLICE_X51Y97         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.191     3.554 r  core/u_PI/Error_out1_carry__3/O[0]
+                         net (fo=7, routed)           0.820     4.374    core/u_PI/Error_out1[16]
+    DSP48_X3Y38                                                       r  core/u_PI/P_mul_temp__1/B[16]
+    DSP48_X3Y38          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      3.388     7.762 r  core/u_PI/P_mul_temp__1/PCOUT[47]
+                         net (fo=1, routed)           0.002     7.764    core/u_PI/P_mul_temp__1_n_106
+    DSP48_X3Y39                                                       r  core/u_PI/P_mul_temp__2/PCIN[47]
+    DSP48_X3Y39          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.271     9.035 r  core/u_PI/P_mul_temp__2/P[0]
+                         net (fo=2, routed)           0.558     9.592    core/u_PI/P_mul_temp__2_n_105
+    SLICE_X65Y95                                                      r  core/u_PI/P_mul_temp_carry/DI[1]
+    SLICE_X65Y95         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.442    10.034 r  core/u_PI/P_mul_temp_carry/O[2]
+                         net (fo=1, routed)           0.267    10.301    core/u_PI/P_mul_temp_carry_n_5
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_6/I1
+    SLICE_X64Y95         LUT4 (Prop_lut4_I1_O)        0.253    10.554 r  core/u_PI/P_out11_carry_i_6/O
+                         net (fo=1, routed)           0.125    10.680    core/u_PI/P_out11_carry_i_6_n_0
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_3/I4
+    SLICE_X64Y95         LUT5 (Prop_lut5_I4_O)        0.105    10.785 r  core/u_PI/P_out11_carry_i_3/O
+                         net (fo=1, routed)           0.367    11.152    core/u_PI/P_out11_carry_i_3_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry_i_1/I2
+    SLICE_X63Y96         LUT4 (Prop_lut4_I2_O)        0.105    11.257 r  core/u_PI/P_out11_carry_i_1/O
+                         net (fo=1, routed)           0.000    11.257    core/u_PI/P_out11_carry_i_1_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry/S[0]
+    SLICE_X63Y96         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    11.697 r  core/u_PI/P_out11_carry/CO[3]
+                         net (fo=1, routed)           0.000    11.697    core/u_PI/P_out11_carry_n_0
+    SLICE_X63Y97                                                      r  core/u_PI/P_out11_carry__0/CI
+    SLICE_X63Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.795 r  core/u_PI/P_out11_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    11.795    core/u_PI/P_out11_carry__0_n_0
+    SLICE_X63Y98                                                      r  core/u_PI/P_out11_carry__1/CI
+    SLICE_X63Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.893 r  core/u_PI/P_out11_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    11.893    core/u_PI/P_out11_carry__1_n_0
+    SLICE_X63Y99                                                      r  core/u_PI/P_out11_carry__2/CI
+    SLICE_X63Y99         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.991 r  core/u_PI/P_out11_carry__2/CO[3]
+                         net (fo=1, routed)           0.001    11.992    core/u_PI/P_out11_carry__2_n_0
+    SLICE_X63Y100                                                     r  core/u_PI/P_out11_carry__3/CI
+    SLICE_X63Y100        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.090 r  core/u_PI/P_out11_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    12.090    core/u_PI/P_out11_carry__3_n_0
+    SLICE_X63Y101                                                     r  core/u_PI/P_out11_carry__4/CI
+    SLICE_X63Y101        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.188 r  core/u_PI/P_out11_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    12.188    core/u_PI/P_out11_carry__4_n_0
+    SLICE_X63Y102                                                     r  core/u_PI/P_out11_carry__5/CI
+    SLICE_X63Y102        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.277    12.465 r  core/u_PI/P_out11_carry__5/O[1]
+                         net (fo=3, routed)           0.585    13.050    core/u_PI/P_out11_carry__5_n_6
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5_i_3/I0
+    SLICE_X55Y102        LUT2 (Prop_lut2_I0_O)        0.250    13.300 r  core/u_PI/Unlimited_add_temp_carry__5_i_3/O
+                         net (fo=1, routed)           0.000    13.300    core/u_PI/Unlimited_add_temp_carry__5_i_3_n_0
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5/S[1]
+    SLICE_X55Y102        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    13.757 r  core/u_PI/Unlimited_add_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    13.757    core/u_PI/Unlimited_add_temp_carry__5_n_0
+    SLICE_X55Y103                                                     r  core/u_PI/Unlimited_add_temp_carry__6/CI
+    SLICE_X55Y103        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    13.971 f  core/u_PI/Unlimited_add_temp_carry__6/O[2]
+                         net (fo=9, routed)           0.635    14.605    core/u_PI/Unlimited_add_temp_carry__6_n_5
+    SLICE_X47Y107                                                     f  core/u_PI/Sat_LowerRelOp_out_carry_i_1/I0
+    SLICE_X47Y107        LUT2 (Prop_lut2_I0_O)        0.253    14.858 r  core/u_PI/Sat_LowerRelOp_out_carry_i_1/O
+                         net (fo=1, routed)           0.514    15.373    core/u_PI/Sat_LowerRelOp_out_carry_i_1_n_0
+    SLICE_X42Y107                                                     r  core/u_PI/Sat_LowerRelOp_out_carry/CYINIT
+    SLICE_X42Y107        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.494    15.867 r  core/u_PI/Sat_LowerRelOp_out_carry/CO[3]
+                         net (fo=1, routed)           0.000    15.867    core/u_PI/Sat_LowerRelOp_out_carry_n_0
+    SLICE_X42Y108                                                     r  core/u_PI/Sat_LowerRelOp_out_carry__0/CI
+    SLICE_X42Y108        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.207    16.074 f  core/u_PI/Sat_LowerRelOp_out_carry__0/CO[0]
+                         net (fo=131, routed)         0.693    16.766    core/u_PI/Sat_LowerRelOp_out
+    SLICE_X42Y106                                                     f  core/u_PI/HardReset_out1_hold[24]_i_11/I1
+    SLICE_X42Y106        LUT2 (Prop_lut2_I1_O)        0.319    17.085 f  core/u_PI/HardReset_out1_hold[24]_i_11/O
+                         net (fo=5, routed)           0.373    17.458    core/u_PI/HardReset_out1_hold[24]_i_11_n_0
+    SLICE_X43Y103                                                     f  core/u_PI/HardReset_out1_hold[3]_i_7/I3
+    SLICE_X43Y103        LUT6 (Prop_lut6_I3_O)        0.286    17.744 r  core/u_PI/HardReset_out1_hold[3]_i_7/O
+                         net (fo=1, routed)           0.503    18.247    core/u_PI/HardReset_out1_hold[3]_i_7_n_0
+    SLICE_X43Y104                                                     r  core/u_PI/HardReset_out1_hold[3]_i_6/I2
+    SLICE_X43Y104        LUT6 (Prop_lut6_I2_O)        0.105    18.352 r  core/u_PI/HardReset_out1_hold[3]_i_6/O
+                         net (fo=1, routed)           0.000    18.352    core/u_PI/HardReset_out1_hold[3]_i_6_n_0
+    SLICE_X43Y104                                                     r  core/u_PI/HardReset_out1_hold_reg[3]_i_2/S[0]
+    SLICE_X43Y104        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    18.792 r  core/u_PI/HardReset_out1_hold_reg[3]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.792    core/u_PI/HardReset_out1_hold_reg[3]_i_2_n_0
+    SLICE_X43Y105                                                     r  core/u_PI/HardReset_out1_hold_reg[7]_i_2/CI
+    SLICE_X43Y105        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.890 r  core/u_PI/HardReset_out1_hold_reg[7]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.890    core/u_PI/HardReset_out1_hold_reg[7]_i_2_n_0
+    SLICE_X43Y106                                                     r  core/u_PI/HardReset_out1_hold_reg[11]_i_2/CI
+    SLICE_X43Y106        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.988 r  core/u_PI/HardReset_out1_hold_reg[11]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.988    core/u_PI/HardReset_out1_hold_reg[11]_i_2_n_0
+    SLICE_X43Y107                                                     r  core/u_PI/HardReset_out1_hold_reg[15]_i_2/CI
+    SLICE_X43Y107        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    19.086 r  core/u_PI/HardReset_out1_hold_reg[15]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    19.086    core/u_PI/HardReset_out1_hold_reg[15]_i_2_n_0
+    SLICE_X43Y108                                                     r  core/u_PI/HardReset_out1_hold_reg[19]_i_2/CI
+    SLICE_X43Y108        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    19.184 r  core/u_PI/HardReset_out1_hold_reg[19]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    19.184    core/u_PI/HardReset_out1_hold_reg[19]_i_2_n_0
+    SLICE_X43Y109                                                     r  core/u_PI/HardReset_out1_hold_reg[23]_i_3/CI
+    SLICE_X43Y109        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.260    19.444 r  core/u_PI/HardReset_out1_hold_reg[23]_i_3/O[3]
+                         net (fo=1, routed)           0.489    19.933    core/u_PI/OutputFormat_out11__0[23]
+    SLICE_X44Y109                                                     r  core/u_PI/HardReset_out1_hold[23]_i_2/I0
+    SLICE_X44Y109        LUT6 (Prop_lut6_I0_O)        0.257    20.190 r  core/u_PI/HardReset_out1_hold[23]_i_2/O
+                         net (fo=1, routed)           0.000    20.190    core/u_PI/HardReset_out1[23]
+    SLICE_X44Y109        FDRE                                         r  core/u_PI/HardReset_out1_hold_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50mhz rise edge)
+                                                     20.000    20.000 r  <hidden>
+                                                      0.000    20.000 r  clk
+                         net (fo=475, unset)          1.303    21.303    core/u_PI/clk
+    SLICE_X44Y109        FDRE                                         r  core/u_PI/HardReset_out1_hold_reg[23]/C
+                         clock pessimism              0.007    21.310    <hidden>
+                         clock uncertainty           -0.035    21.275    <hidden>
+    SLICE_X44Y109        FDRE (Setup_fdre_C_D)        0.074    21.349    core/u_PI/HardReset_out1_hold_reg[23]
+  -------------------------------------------------------------------
+                         required time                         21.349    <hidden>
+                         arrival time                         -20.190    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  1.159    <hidden>
+
+Slack (MET) :             1.186ns  (required time - arrival time)
+  Source:                 core/v_ref_mmps_1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/u_PI/PreviousExcess_out1_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50mhz
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50mhz rise@20.000ns - clk_50mhz rise@0.000ns)
+  Data Path Delay:        18.563ns  (logic 12.101ns (65.190%)  route 6.462ns (34.810%))
+  Logic Levels:           38  (CARRY4=28 DSP48E1=2 LUT2=3 LUT3=1 LUT4=2 LUT5=2)
+  Clock Path Skew:        -0.248ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.303ns = ( 21.303 - 20.000 ) 
+    Source Clock Delay      (SCD):    1.558ns
+    Clock Pessimism Removal (CPR):    0.007ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50mhz rise edge)
+                                                      0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=475, unset)          1.558     1.558    core/clk
+    SLICE_X50Y93         FDRE                                         r  core/v_ref_mmps_1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y93         FDRE (Prop_fdre_C_Q)         0.348     1.906 r  core/v_ref_mmps_1_reg[0]/Q
+                         net (fo=6, routed)           0.481     2.387    core/u_PI/Q[0]
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry_i_4/I0
+    SLICE_X51Y93         LUT2 (Prop_lut2_I0_O)        0.242     2.629 r  core/u_PI/Error_out1_carry_i_4/O
+                         net (fo=1, routed)           0.000     2.629    core/u_PI/Error_out1_carry_i_4_n_0
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry/S[0]
+    SLICE_X51Y93         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440     3.069 r  core/u_PI/Error_out1_carry/CO[3]
+                         net (fo=1, routed)           0.000     3.069    core/u_PI/Error_out1_carry_n_0
+    SLICE_X51Y94                                                      r  core/u_PI/Error_out1_carry__0/CI
+    SLICE_X51Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.167 r  core/u_PI/Error_out1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     3.167    core/u_PI/Error_out1_carry__0_n_0
+    SLICE_X51Y95                                                      r  core/u_PI/Error_out1_carry__1/CI
+    SLICE_X51Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.265 r  core/u_PI/Error_out1_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     3.265    core/u_PI/Error_out1_carry__1_n_0
+    SLICE_X51Y96                                                      r  core/u_PI/Error_out1_carry__2/CI
+    SLICE_X51Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.363 r  core/u_PI/Error_out1_carry__2/CO[3]
+                         net (fo=1, routed)           0.000     3.363    core/u_PI/Error_out1_carry__2_n_0
+    SLICE_X51Y97                                                      r  core/u_PI/Error_out1_carry__3/CI
+    SLICE_X51Y97         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.191     3.554 r  core/u_PI/Error_out1_carry__3/O[0]
+                         net (fo=7, routed)           0.820     4.374    core/u_PI/Error_out1[16]
+    DSP48_X3Y38                                                       r  core/u_PI/P_mul_temp__1/B[16]
+    DSP48_X3Y38          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      3.388     7.762 r  core/u_PI/P_mul_temp__1/PCOUT[47]
+                         net (fo=1, routed)           0.002     7.764    core/u_PI/P_mul_temp__1_n_106
+    DSP48_X3Y39                                                       r  core/u_PI/P_mul_temp__2/PCIN[47]
+    DSP48_X3Y39          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.271     9.035 r  core/u_PI/P_mul_temp__2/P[0]
+                         net (fo=2, routed)           0.558     9.592    core/u_PI/P_mul_temp__2_n_105
+    SLICE_X65Y95                                                      r  core/u_PI/P_mul_temp_carry/DI[1]
+    SLICE_X65Y95         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.442    10.034 r  core/u_PI/P_mul_temp_carry/O[2]
+                         net (fo=1, routed)           0.267    10.301    core/u_PI/P_mul_temp_carry_n_5
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_6/I1
+    SLICE_X64Y95         LUT4 (Prop_lut4_I1_O)        0.253    10.554 r  core/u_PI/P_out11_carry_i_6/O
+                         net (fo=1, routed)           0.125    10.680    core/u_PI/P_out11_carry_i_6_n_0
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_3/I4
+    SLICE_X64Y95         LUT5 (Prop_lut5_I4_O)        0.105    10.785 r  core/u_PI/P_out11_carry_i_3/O
+                         net (fo=1, routed)           0.367    11.152    core/u_PI/P_out11_carry_i_3_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry_i_1/I2
+    SLICE_X63Y96         LUT4 (Prop_lut4_I2_O)        0.105    11.257 r  core/u_PI/P_out11_carry_i_1/O
+                         net (fo=1, routed)           0.000    11.257    core/u_PI/P_out11_carry_i_1_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry/S[0]
+    SLICE_X63Y96         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    11.697 r  core/u_PI/P_out11_carry/CO[3]
+                         net (fo=1, routed)           0.000    11.697    core/u_PI/P_out11_carry_n_0
+    SLICE_X63Y97                                                      r  core/u_PI/P_out11_carry__0/CI
+    SLICE_X63Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.795 r  core/u_PI/P_out11_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    11.795    core/u_PI/P_out11_carry__0_n_0
+    SLICE_X63Y98                                                      r  core/u_PI/P_out11_carry__1/CI
+    SLICE_X63Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.893 r  core/u_PI/P_out11_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    11.893    core/u_PI/P_out11_carry__1_n_0
+    SLICE_X63Y99                                                      r  core/u_PI/P_out11_carry__2/CI
+    SLICE_X63Y99         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.991 r  core/u_PI/P_out11_carry__2/CO[3]
+                         net (fo=1, routed)           0.001    11.992    core/u_PI/P_out11_carry__2_n_0
+    SLICE_X63Y100                                                     r  core/u_PI/P_out11_carry__3/CI
+    SLICE_X63Y100        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.090 r  core/u_PI/P_out11_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    12.090    core/u_PI/P_out11_carry__3_n_0
+    SLICE_X63Y101                                                     r  core/u_PI/P_out11_carry__4/CI
+    SLICE_X63Y101        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.188 r  core/u_PI/P_out11_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    12.188    core/u_PI/P_out11_carry__4_n_0
+    SLICE_X63Y102                                                     r  core/u_PI/P_out11_carry__5/CI
+    SLICE_X63Y102        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.277    12.465 r  core/u_PI/P_out11_carry__5/O[1]
+                         net (fo=3, routed)           0.585    13.050    core/u_PI/P_out11_carry__5_n_6
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5_i_3/I0
+    SLICE_X55Y102        LUT2 (Prop_lut2_I0_O)        0.250    13.300 r  core/u_PI/Unlimited_add_temp_carry__5_i_3/O
+                         net (fo=1, routed)           0.000    13.300    core/u_PI/Unlimited_add_temp_carry__5_i_3_n_0
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5/S[1]
+    SLICE_X55Y102        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    13.757 r  core/u_PI/Unlimited_add_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    13.757    core/u_PI/Unlimited_add_temp_carry__5_n_0
+    SLICE_X55Y103                                                     r  core/u_PI/Unlimited_add_temp_carry__6/CI
+    SLICE_X55Y103        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    13.971 f  core/u_PI/Unlimited_add_temp_carry__6/O[2]
+                         net (fo=9, routed)           0.635    14.605    core/u_PI/Unlimited_add_temp_carry__6_n_5
+    SLICE_X47Y107                                                     f  core/u_PI/Sat_LowerRelOp_out_carry_i_1/I0
+    SLICE_X47Y107        LUT2 (Prop_lut2_I0_O)        0.253    14.858 r  core/u_PI/Sat_LowerRelOp_out_carry_i_1/O
+                         net (fo=1, routed)           0.514    15.373    core/u_PI/Sat_LowerRelOp_out_carry_i_1_n_0
+    SLICE_X42Y107                                                     r  core/u_PI/Sat_LowerRelOp_out_carry/CYINIT
+    SLICE_X42Y107        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.494    15.867 r  core/u_PI/Sat_LowerRelOp_out_carry/CO[3]
+                         net (fo=1, routed)           0.000    15.867    core/u_PI/Sat_LowerRelOp_out_carry_n_0
+    SLICE_X42Y108                                                     r  core/u_PI/Sat_LowerRelOp_out_carry__0/CI
+    SLICE_X42Y108        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.207    16.074 f  core/u_PI/Sat_LowerRelOp_out_carry__0/CO[0]
+                         net (fo=131, routed)         0.938    17.012    core/u_PI/Sat_LowerRelOp_out
+    SLICE_X49Y101                                                     f  core/u_PI/Excess_sub_temp_carry_i_2/I1
+    SLICE_X49Y101        LUT3 (Prop_lut3_I1_O)        0.297    17.309 r  core/u_PI/Excess_sub_temp_carry_i_2/O
+                         net (fo=1, routed)           0.000    17.309    core/u_PI/Excess_sub_temp_carry_i_2_n_0
+    SLICE_X49Y101                                                     r  core/u_PI/Excess_sub_temp_carry/S[2]
+    SLICE_X49Y101        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.332    17.641 r  core/u_PI/Excess_sub_temp_carry/CO[3]
+                         net (fo=1, routed)           0.000    17.641    core/u_PI/Excess_sub_temp_carry_n_0
+    SLICE_X49Y102                                                     r  core/u_PI/Excess_sub_temp_carry__0/CI
+    SLICE_X49Y102        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.739 r  core/u_PI/Excess_sub_temp_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    17.739    core/u_PI/Excess_sub_temp_carry__0_n_0
+    SLICE_X49Y103                                                     r  core/u_PI/Excess_sub_temp_carry__1/CI
+    SLICE_X49Y103        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.837 r  core/u_PI/Excess_sub_temp_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    17.837    core/u_PI/Excess_sub_temp_carry__1_n_0
+    SLICE_X49Y104                                                     r  core/u_PI/Excess_sub_temp_carry__2/CI
+    SLICE_X49Y104        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.935 r  core/u_PI/Excess_sub_temp_carry__2/CO[3]
+                         net (fo=1, routed)           0.000    17.935    core/u_PI/Excess_sub_temp_carry__2_n_0
+    SLICE_X49Y105                                                     r  core/u_PI/Excess_sub_temp_carry__3/CI
+    SLICE_X49Y105        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.033 r  core/u_PI/Excess_sub_temp_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    18.033    core/u_PI/Excess_sub_temp_carry__3_n_0
+    SLICE_X49Y106                                                     r  core/u_PI/Excess_sub_temp_carry__4/CI
+    SLICE_X49Y106        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.131 r  core/u_PI/Excess_sub_temp_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    18.131    core/u_PI/Excess_sub_temp_carry__4_n_0
+    SLICE_X49Y107                                                     r  core/u_PI/Excess_sub_temp_carry__5/CI
+    SLICE_X49Y107        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.229 r  core/u_PI/Excess_sub_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    18.229    core/u_PI/Excess_sub_temp_carry__5_n_0
+    SLICE_X49Y108                                                     r  core/u_PI/Excess_sub_temp_carry__6/CI
+    SLICE_X49Y108        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.327 r  core/u_PI/Excess_sub_temp_carry__6/CO[3]
+                         net (fo=1, routed)           0.000    18.327    core/u_PI/Excess_sub_temp_carry__6_n_0
+    SLICE_X49Y109                                                     r  core/u_PI/Excess_sub_temp_carry__7/CI
+    SLICE_X49Y109        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.425 r  core/u_PI/Excess_sub_temp_carry__7/CO[3]
+                         net (fo=1, routed)           0.000    18.425    core/u_PI/Excess_sub_temp_carry__7_n_0
+    SLICE_X49Y110                                                     r  core/u_PI/Excess_sub_temp_carry__8/CI
+    SLICE_X49Y110        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.523 r  core/u_PI/Excess_sub_temp_carry__8/CO[3]
+                         net (fo=1, routed)           0.000    18.523    core/u_PI/Excess_sub_temp_carry__8_n_0
+    SLICE_X49Y111                                                     r  core/u_PI/Excess_sub_temp_carry__9/CI
+    SLICE_X49Y111        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180    18.703 r  core/u_PI/Excess_sub_temp_carry__9/O[0]
+                         net (fo=39, routed)          1.169    19.872    core/u_PI/Excess_sub_temp_carry__9_n_7
+    SLICE_X50Y102                                                     r  core/u_PI/PreviousExcess_out1[5]_i_1/I1
+    SLICE_X50Y102        LUT5 (Prop_lut5_I1_O)        0.249    20.121 r  core/u_PI/PreviousExcess_out1[5]_i_1/O
+                         net (fo=1, routed)           0.000    20.121    core/u_PI/Excess_out1[5]
+    SLICE_X50Y102        FDRE                                         r  core/u_PI/PreviousExcess_out1_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50mhz rise edge)
+                                                     20.000    20.000 r  <hidden>
+                                                      0.000    20.000 r  clk
+                         net (fo=475, unset)          1.303    21.303    core/u_PI/clk
+    SLICE_X50Y102        FDRE                                         r  core/u_PI/PreviousExcess_out1_reg[5]/C
+                         clock pessimism              0.007    21.310    <hidden>
+                         clock uncertainty           -0.035    21.275    <hidden>
+    SLICE_X50Y102        FDRE (Setup_fdre_C_D)        0.032    21.307    core/u_PI/PreviousExcess_out1_reg[5]
+  -------------------------------------------------------------------
+                         required time                         21.307    <hidden>
+                         arrival time                         -20.121    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  1.186    <hidden>
+
+Slack (MET) :             1.238ns  (required time - arrival time)
+  Source:                 core/v_ref_mmps_1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/u_PI/PreviousExcess_out1_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50mhz
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50mhz rise@20.000ns - clk_50mhz rise@0.000ns)
+  Data Path Delay:        18.511ns  (logic 12.091ns (65.317%)  route 6.420ns (34.683%))
+  Logic Levels:           37  (CARRY4=27 DSP48E1=2 LUT2=3 LUT3=1 LUT4=2 LUT5=2)
+  Clock Path Skew:        -0.248ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.303ns = ( 21.303 - 20.000 ) 
+    Source Clock Delay      (SCD):    1.558ns
+    Clock Pessimism Removal (CPR):    0.007ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50mhz rise edge)
+                                                      0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=475, unset)          1.558     1.558    core/clk
+    SLICE_X50Y93         FDRE                                         r  core/v_ref_mmps_1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y93         FDRE (Prop_fdre_C_Q)         0.348     1.906 r  core/v_ref_mmps_1_reg[0]/Q
+                         net (fo=6, routed)           0.481     2.387    core/u_PI/Q[0]
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry_i_4/I0
+    SLICE_X51Y93         LUT2 (Prop_lut2_I0_O)        0.242     2.629 r  core/u_PI/Error_out1_carry_i_4/O
+                         net (fo=1, routed)           0.000     2.629    core/u_PI/Error_out1_carry_i_4_n_0
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry/S[0]
+    SLICE_X51Y93         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440     3.069 r  core/u_PI/Error_out1_carry/CO[3]
+                         net (fo=1, routed)           0.000     3.069    core/u_PI/Error_out1_carry_n_0
+    SLICE_X51Y94                                                      r  core/u_PI/Error_out1_carry__0/CI
+    SLICE_X51Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.167 r  core/u_PI/Error_out1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     3.167    core/u_PI/Error_out1_carry__0_n_0
+    SLICE_X51Y95                                                      r  core/u_PI/Error_out1_carry__1/CI
+    SLICE_X51Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.265 r  core/u_PI/Error_out1_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     3.265    core/u_PI/Error_out1_carry__1_n_0
+    SLICE_X51Y96                                                      r  core/u_PI/Error_out1_carry__2/CI
+    SLICE_X51Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.363 r  core/u_PI/Error_out1_carry__2/CO[3]
+                         net (fo=1, routed)           0.000     3.363    core/u_PI/Error_out1_carry__2_n_0
+    SLICE_X51Y97                                                      r  core/u_PI/Error_out1_carry__3/CI
+    SLICE_X51Y97         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.191     3.554 r  core/u_PI/Error_out1_carry__3/O[0]
+                         net (fo=7, routed)           0.820     4.374    core/u_PI/Error_out1[16]
+    DSP48_X3Y38                                                       r  core/u_PI/P_mul_temp__1/B[16]
+    DSP48_X3Y38          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      3.388     7.762 r  core/u_PI/P_mul_temp__1/PCOUT[47]
+                         net (fo=1, routed)           0.002     7.764    core/u_PI/P_mul_temp__1_n_106
+    DSP48_X3Y39                                                       r  core/u_PI/P_mul_temp__2/PCIN[47]
+    DSP48_X3Y39          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.271     9.035 r  core/u_PI/P_mul_temp__2/P[0]
+                         net (fo=2, routed)           0.558     9.592    core/u_PI/P_mul_temp__2_n_105
+    SLICE_X65Y95                                                      r  core/u_PI/P_mul_temp_carry/DI[1]
+    SLICE_X65Y95         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.442    10.034 r  core/u_PI/P_mul_temp_carry/O[2]
+                         net (fo=1, routed)           0.267    10.301    core/u_PI/P_mul_temp_carry_n_5
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_6/I1
+    SLICE_X64Y95         LUT4 (Prop_lut4_I1_O)        0.253    10.554 r  core/u_PI/P_out11_carry_i_6/O
+                         net (fo=1, routed)           0.125    10.680    core/u_PI/P_out11_carry_i_6_n_0
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_3/I4
+    SLICE_X64Y95         LUT5 (Prop_lut5_I4_O)        0.105    10.785 r  core/u_PI/P_out11_carry_i_3/O
+                         net (fo=1, routed)           0.367    11.152    core/u_PI/P_out11_carry_i_3_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry_i_1/I2
+    SLICE_X63Y96         LUT4 (Prop_lut4_I2_O)        0.105    11.257 r  core/u_PI/P_out11_carry_i_1/O
+                         net (fo=1, routed)           0.000    11.257    core/u_PI/P_out11_carry_i_1_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry/S[0]
+    SLICE_X63Y96         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    11.697 r  core/u_PI/P_out11_carry/CO[3]
+                         net (fo=1, routed)           0.000    11.697    core/u_PI/P_out11_carry_n_0
+    SLICE_X63Y97                                                      r  core/u_PI/P_out11_carry__0/CI
+    SLICE_X63Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.795 r  core/u_PI/P_out11_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    11.795    core/u_PI/P_out11_carry__0_n_0
+    SLICE_X63Y98                                                      r  core/u_PI/P_out11_carry__1/CI
+    SLICE_X63Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.893 r  core/u_PI/P_out11_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    11.893    core/u_PI/P_out11_carry__1_n_0
+    SLICE_X63Y99                                                      r  core/u_PI/P_out11_carry__2/CI
+    SLICE_X63Y99         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.991 r  core/u_PI/P_out11_carry__2/CO[3]
+                         net (fo=1, routed)           0.001    11.992    core/u_PI/P_out11_carry__2_n_0
+    SLICE_X63Y100                                                     r  core/u_PI/P_out11_carry__3/CI
+    SLICE_X63Y100        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.090 r  core/u_PI/P_out11_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    12.090    core/u_PI/P_out11_carry__3_n_0
+    SLICE_X63Y101                                                     r  core/u_PI/P_out11_carry__4/CI
+    SLICE_X63Y101        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.188 r  core/u_PI/P_out11_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    12.188    core/u_PI/P_out11_carry__4_n_0
+    SLICE_X63Y102                                                     r  core/u_PI/P_out11_carry__5/CI
+    SLICE_X63Y102        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.277    12.465 r  core/u_PI/P_out11_carry__5/O[1]
+                         net (fo=3, routed)           0.585    13.050    core/u_PI/P_out11_carry__5_n_6
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5_i_3/I0
+    SLICE_X55Y102        LUT2 (Prop_lut2_I0_O)        0.250    13.300 r  core/u_PI/Unlimited_add_temp_carry__5_i_3/O
+                         net (fo=1, routed)           0.000    13.300    core/u_PI/Unlimited_add_temp_carry__5_i_3_n_0
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5/S[1]
+    SLICE_X55Y102        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    13.757 r  core/u_PI/Unlimited_add_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    13.757    core/u_PI/Unlimited_add_temp_carry__5_n_0
+    SLICE_X55Y103                                                     r  core/u_PI/Unlimited_add_temp_carry__6/CI
+    SLICE_X55Y103        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    13.971 f  core/u_PI/Unlimited_add_temp_carry__6/O[2]
+                         net (fo=9, routed)           0.635    14.605    core/u_PI/Unlimited_add_temp_carry__6_n_5
+    SLICE_X47Y107                                                     f  core/u_PI/Sat_LowerRelOp_out_carry_i_1/I0
+    SLICE_X47Y107        LUT2 (Prop_lut2_I0_O)        0.253    14.858 r  core/u_PI/Sat_LowerRelOp_out_carry_i_1/O
+                         net (fo=1, routed)           0.514    15.373    core/u_PI/Sat_LowerRelOp_out_carry_i_1_n_0
+    SLICE_X42Y107                                                     r  core/u_PI/Sat_LowerRelOp_out_carry/CYINIT
+    SLICE_X42Y107        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.494    15.867 r  core/u_PI/Sat_LowerRelOp_out_carry/CO[3]
+                         net (fo=1, routed)           0.000    15.867    core/u_PI/Sat_LowerRelOp_out_carry_n_0
+    SLICE_X42Y108                                                     r  core/u_PI/Sat_LowerRelOp_out_carry__0/CI
+    SLICE_X42Y108        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.207    16.074 f  core/u_PI/Sat_LowerRelOp_out_carry__0/CO[0]
+                         net (fo=131, routed)         0.938    17.012    core/u_PI/Sat_LowerRelOp_out
+    SLICE_X49Y101                                                     f  core/u_PI/Excess_sub_temp_carry_i_2/I1
+    SLICE_X49Y101        LUT3 (Prop_lut3_I1_O)        0.297    17.309 r  core/u_PI/Excess_sub_temp_carry_i_2/O
+                         net (fo=1, routed)           0.000    17.309    core/u_PI/Excess_sub_temp_carry_i_2_n_0
+    SLICE_X49Y101                                                     r  core/u_PI/Excess_sub_temp_carry/S[2]
+    SLICE_X49Y101        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.332    17.641 r  core/u_PI/Excess_sub_temp_carry/CO[3]
+                         net (fo=1, routed)           0.000    17.641    core/u_PI/Excess_sub_temp_carry_n_0
+    SLICE_X49Y102                                                     r  core/u_PI/Excess_sub_temp_carry__0/CI
+    SLICE_X49Y102        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.739 r  core/u_PI/Excess_sub_temp_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    17.739    core/u_PI/Excess_sub_temp_carry__0_n_0
+    SLICE_X49Y103                                                     r  core/u_PI/Excess_sub_temp_carry__1/CI
+    SLICE_X49Y103        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.837 r  core/u_PI/Excess_sub_temp_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    17.837    core/u_PI/Excess_sub_temp_carry__1_n_0
+    SLICE_X49Y104                                                     r  core/u_PI/Excess_sub_temp_carry__2/CI
+    SLICE_X49Y104        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.935 r  core/u_PI/Excess_sub_temp_carry__2/CO[3]
+                         net (fo=1, routed)           0.000    17.935    core/u_PI/Excess_sub_temp_carry__2_n_0
+    SLICE_X49Y105                                                     r  core/u_PI/Excess_sub_temp_carry__3/CI
+    SLICE_X49Y105        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.033 r  core/u_PI/Excess_sub_temp_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    18.033    core/u_PI/Excess_sub_temp_carry__3_n_0
+    SLICE_X49Y106                                                     r  core/u_PI/Excess_sub_temp_carry__4/CI
+    SLICE_X49Y106        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.131 r  core/u_PI/Excess_sub_temp_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    18.131    core/u_PI/Excess_sub_temp_carry__4_n_0
+    SLICE_X49Y107                                                     r  core/u_PI/Excess_sub_temp_carry__5/CI
+    SLICE_X49Y107        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.229 r  core/u_PI/Excess_sub_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    18.229    core/u_PI/Excess_sub_temp_carry__5_n_0
+    SLICE_X49Y108                                                     r  core/u_PI/Excess_sub_temp_carry__6/CI
+    SLICE_X49Y108        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.327 r  core/u_PI/Excess_sub_temp_carry__6/CO[3]
+                         net (fo=1, routed)           0.000    18.327    core/u_PI/Excess_sub_temp_carry__6_n_0
+    SLICE_X49Y109                                                     r  core/u_PI/Excess_sub_temp_carry__7/CI
+    SLICE_X49Y109        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.425 r  core/u_PI/Excess_sub_temp_carry__7/CO[3]
+                         net (fo=1, routed)           0.000    18.425    core/u_PI/Excess_sub_temp_carry__7_n_0
+    SLICE_X49Y110                                                     r  core/u_PI/Excess_sub_temp_carry__8/CI
+    SLICE_X49Y110        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.260    18.685 r  core/u_PI/Excess_sub_temp_carry__8/O[3]
+                         net (fo=39, routed)          1.127    19.812    core/u_PI/Excess_sub_temp_carry__8_n_4
+    SLICE_X50Y103                                                     r  core/u_PI/PreviousExcess_out1[0]_i_1/I3
+    SLICE_X50Y103        LUT5 (Prop_lut5_I3_O)        0.257    20.069 r  core/u_PI/PreviousExcess_out1[0]_i_1/O
+                         net (fo=1, routed)           0.000    20.069    core/u_PI/Excess_out1[0]
+    SLICE_X50Y103        FDRE                                         r  core/u_PI/PreviousExcess_out1_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50mhz rise edge)
+                                                     20.000    20.000 r  <hidden>
+                                                      0.000    20.000 r  clk
+                         net (fo=475, unset)          1.303    21.303    core/u_PI/clk
+    SLICE_X50Y103        FDRE                                         r  core/u_PI/PreviousExcess_out1_reg[0]/C
+                         clock pessimism              0.007    21.310    <hidden>
+                         clock uncertainty           -0.035    21.275    <hidden>
+    SLICE_X50Y103        FDRE (Setup_fdre_C_D)        0.032    21.307    core/u_PI/PreviousExcess_out1_reg[0]
+  -------------------------------------------------------------------
+                         required time                         21.307    <hidden>
+                         arrival time                         -20.069    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  1.238    <hidden>
+
+Slack (MET) :             1.254ns  (required time - arrival time)
+  Source:                 core/v_ref_mmps_1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            core/u_PI/PreviousExcess_out1_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50mhz  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50mhz
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50mhz rise@20.000ns - clk_50mhz rise@0.000ns)
+  Data Path Delay:        18.494ns  (logic 12.101ns (65.431%)  route 6.393ns (34.569%))
+  Logic Levels:           38  (CARRY4=28 DSP48E1=2 LUT2=3 LUT3=1 LUT4=2 LUT5=2)
+  Clock Path Skew:        -0.248ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.303ns = ( 21.303 - 20.000 ) 
+    Source Clock Delay      (SCD):    1.558ns
+    Clock Pessimism Removal (CPR):    0.007ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50mhz rise edge)
+                                                      0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=475, unset)          1.558     1.558    core/clk
+    SLICE_X50Y93         FDRE                                         r  core/v_ref_mmps_1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y93         FDRE (Prop_fdre_C_Q)         0.348     1.906 r  core/v_ref_mmps_1_reg[0]/Q
+                         net (fo=6, routed)           0.481     2.387    core/u_PI/Q[0]
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry_i_4/I0
+    SLICE_X51Y93         LUT2 (Prop_lut2_I0_O)        0.242     2.629 r  core/u_PI/Error_out1_carry_i_4/O
+                         net (fo=1, routed)           0.000     2.629    core/u_PI/Error_out1_carry_i_4_n_0
+    SLICE_X51Y93                                                      r  core/u_PI/Error_out1_carry/S[0]
+    SLICE_X51Y93         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440     3.069 r  core/u_PI/Error_out1_carry/CO[3]
+                         net (fo=1, routed)           0.000     3.069    core/u_PI/Error_out1_carry_n_0
+    SLICE_X51Y94                                                      r  core/u_PI/Error_out1_carry__0/CI
+    SLICE_X51Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.167 r  core/u_PI/Error_out1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     3.167    core/u_PI/Error_out1_carry__0_n_0
+    SLICE_X51Y95                                                      r  core/u_PI/Error_out1_carry__1/CI
+    SLICE_X51Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.265 r  core/u_PI/Error_out1_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     3.265    core/u_PI/Error_out1_carry__1_n_0
+    SLICE_X51Y96                                                      r  core/u_PI/Error_out1_carry__2/CI
+    SLICE_X51Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.363 r  core/u_PI/Error_out1_carry__2/CO[3]
+                         net (fo=1, routed)           0.000     3.363    core/u_PI/Error_out1_carry__2_n_0
+    SLICE_X51Y97                                                      r  core/u_PI/Error_out1_carry__3/CI
+    SLICE_X51Y97         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.191     3.554 r  core/u_PI/Error_out1_carry__3/O[0]
+                         net (fo=7, routed)           0.820     4.374    core/u_PI/Error_out1[16]
+    DSP48_X3Y38                                                       r  core/u_PI/P_mul_temp__1/B[16]
+    DSP48_X3Y38          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      3.388     7.762 r  core/u_PI/P_mul_temp__1/PCOUT[47]
+                         net (fo=1, routed)           0.002     7.764    core/u_PI/P_mul_temp__1_n_106
+    DSP48_X3Y39                                                       r  core/u_PI/P_mul_temp__2/PCIN[47]
+    DSP48_X3Y39          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.271     9.035 r  core/u_PI/P_mul_temp__2/P[0]
+                         net (fo=2, routed)           0.558     9.592    core/u_PI/P_mul_temp__2_n_105
+    SLICE_X65Y95                                                      r  core/u_PI/P_mul_temp_carry/DI[1]
+    SLICE_X65Y95         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.442    10.034 r  core/u_PI/P_mul_temp_carry/O[2]
+                         net (fo=1, routed)           0.267    10.301    core/u_PI/P_mul_temp_carry_n_5
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_6/I1
+    SLICE_X64Y95         LUT4 (Prop_lut4_I1_O)        0.253    10.554 r  core/u_PI/P_out11_carry_i_6/O
+                         net (fo=1, routed)           0.125    10.680    core/u_PI/P_out11_carry_i_6_n_0
+    SLICE_X64Y95                                                      r  core/u_PI/P_out11_carry_i_3/I4
+    SLICE_X64Y95         LUT5 (Prop_lut5_I4_O)        0.105    10.785 r  core/u_PI/P_out11_carry_i_3/O
+                         net (fo=1, routed)           0.367    11.152    core/u_PI/P_out11_carry_i_3_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry_i_1/I2
+    SLICE_X63Y96         LUT4 (Prop_lut4_I2_O)        0.105    11.257 r  core/u_PI/P_out11_carry_i_1/O
+                         net (fo=1, routed)           0.000    11.257    core/u_PI/P_out11_carry_i_1_n_0
+    SLICE_X63Y96                                                      r  core/u_PI/P_out11_carry/S[0]
+    SLICE_X63Y96         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440    11.697 r  core/u_PI/P_out11_carry/CO[3]
+                         net (fo=1, routed)           0.000    11.697    core/u_PI/P_out11_carry_n_0
+    SLICE_X63Y97                                                      r  core/u_PI/P_out11_carry__0/CI
+    SLICE_X63Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.795 r  core/u_PI/P_out11_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    11.795    core/u_PI/P_out11_carry__0_n_0
+    SLICE_X63Y98                                                      r  core/u_PI/P_out11_carry__1/CI
+    SLICE_X63Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.893 r  core/u_PI/P_out11_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    11.893    core/u_PI/P_out11_carry__1_n_0
+    SLICE_X63Y99                                                      r  core/u_PI/P_out11_carry__2/CI
+    SLICE_X63Y99         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    11.991 r  core/u_PI/P_out11_carry__2/CO[3]
+                         net (fo=1, routed)           0.001    11.992    core/u_PI/P_out11_carry__2_n_0
+    SLICE_X63Y100                                                     r  core/u_PI/P_out11_carry__3/CI
+    SLICE_X63Y100        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.090 r  core/u_PI/P_out11_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    12.090    core/u_PI/P_out11_carry__3_n_0
+    SLICE_X63Y101                                                     r  core/u_PI/P_out11_carry__4/CI
+    SLICE_X63Y101        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    12.188 r  core/u_PI/P_out11_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    12.188    core/u_PI/P_out11_carry__4_n_0
+    SLICE_X63Y102                                                     r  core/u_PI/P_out11_carry__5/CI
+    SLICE_X63Y102        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.277    12.465 r  core/u_PI/P_out11_carry__5/O[1]
+                         net (fo=3, routed)           0.585    13.050    core/u_PI/P_out11_carry__5_n_6
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5_i_3/I0
+    SLICE_X55Y102        LUT2 (Prop_lut2_I0_O)        0.250    13.300 r  core/u_PI/Unlimited_add_temp_carry__5_i_3/O
+                         net (fo=1, routed)           0.000    13.300    core/u_PI/Unlimited_add_temp_carry__5_i_3_n_0
+    SLICE_X55Y102                                                     r  core/u_PI/Unlimited_add_temp_carry__5/S[1]
+    SLICE_X55Y102        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    13.757 r  core/u_PI/Unlimited_add_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    13.757    core/u_PI/Unlimited_add_temp_carry__5_n_0
+    SLICE_X55Y103                                                     r  core/u_PI/Unlimited_add_temp_carry__6/CI
+    SLICE_X55Y103        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    13.971 f  core/u_PI/Unlimited_add_temp_carry__6/O[2]
+                         net (fo=9, routed)           0.635    14.605    core/u_PI/Unlimited_add_temp_carry__6_n_5
+    SLICE_X47Y107                                                     f  core/u_PI/Sat_LowerRelOp_out_carry_i_1/I0
+    SLICE_X47Y107        LUT2 (Prop_lut2_I0_O)        0.253    14.858 r  core/u_PI/Sat_LowerRelOp_out_carry_i_1/O
+                         net (fo=1, routed)           0.514    15.373    core/u_PI/Sat_LowerRelOp_out_carry_i_1_n_0
+    SLICE_X42Y107                                                     r  core/u_PI/Sat_LowerRelOp_out_carry/CYINIT
+    SLICE_X42Y107        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.494    15.867 r  core/u_PI/Sat_LowerRelOp_out_carry/CO[3]
+                         net (fo=1, routed)           0.000    15.867    core/u_PI/Sat_LowerRelOp_out_carry_n_0
+    SLICE_X42Y108                                                     r  core/u_PI/Sat_LowerRelOp_out_carry__0/CI
+    SLICE_X42Y108        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.207    16.074 f  core/u_PI/Sat_LowerRelOp_out_carry__0/CO[0]
+                         net (fo=131, routed)         0.938    17.012    core/u_PI/Sat_LowerRelOp_out
+    SLICE_X49Y101                                                     f  core/u_PI/Excess_sub_temp_carry_i_2/I1
+    SLICE_X49Y101        LUT3 (Prop_lut3_I1_O)        0.297    17.309 r  core/u_PI/Excess_sub_temp_carry_i_2/O
+                         net (fo=1, routed)           0.000    17.309    core/u_PI/Excess_sub_temp_carry_i_2_n_0
+    SLICE_X49Y101                                                     r  core/u_PI/Excess_sub_temp_carry/S[2]
+    SLICE_X49Y101        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.332    17.641 r  core/u_PI/Excess_sub_temp_carry/CO[3]
+                         net (fo=1, routed)           0.000    17.641    core/u_PI/Excess_sub_temp_carry_n_0
+    SLICE_X49Y102                                                     r  core/u_PI/Excess_sub_temp_carry__0/CI
+    SLICE_X49Y102        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.739 r  core/u_PI/Excess_sub_temp_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    17.739    core/u_PI/Excess_sub_temp_carry__0_n_0
+    SLICE_X49Y103                                                     r  core/u_PI/Excess_sub_temp_carry__1/CI
+    SLICE_X49Y103        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.837 r  core/u_PI/Excess_sub_temp_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    17.837    core/u_PI/Excess_sub_temp_carry__1_n_0
+    SLICE_X49Y104                                                     r  core/u_PI/Excess_sub_temp_carry__2/CI
+    SLICE_X49Y104        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    17.935 r  core/u_PI/Excess_sub_temp_carry__2/CO[3]
+                         net (fo=1, routed)           0.000    17.935    core/u_PI/Excess_sub_temp_carry__2_n_0
+    SLICE_X49Y105                                                     r  core/u_PI/Excess_sub_temp_carry__3/CI
+    SLICE_X49Y105        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.033 r  core/u_PI/Excess_sub_temp_carry__3/CO[3]
+                         net (fo=1, routed)           0.000    18.033    core/u_PI/Excess_sub_temp_carry__3_n_0
+    SLICE_X49Y106                                                     r  core/u_PI/Excess_sub_temp_carry__4/CI
+    SLICE_X49Y106        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.131 r  core/u_PI/Excess_sub_temp_carry__4/CO[3]
+                         net (fo=1, routed)           0.000    18.131    core/u_PI/Excess_sub_temp_carry__4_n_0
+    SLICE_X49Y107                                                     r  core/u_PI/Excess_sub_temp_carry__5/CI
+    SLICE_X49Y107        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.229 r  core/u_PI/Excess_sub_temp_carry__5/CO[3]
+                         net (fo=1, routed)           0.000    18.229    core/u_PI/Excess_sub_temp_carry__5_n_0
+    SLICE_X49Y108                                                     r  core/u_PI/Excess_sub_temp_carry__6/CI
+    SLICE_X49Y108        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.327 r  core/u_PI/Excess_sub_temp_carry__6/CO[3]
+                         net (fo=1, routed)           0.000    18.327    core/u_PI/Excess_sub_temp_carry__6_n_0
+    SLICE_X49Y109                                                     r  core/u_PI/Excess_sub_temp_carry__7/CI
+    SLICE_X49Y109        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.425 r  core/u_PI/Excess_sub_temp_carry__7/CO[3]
+                         net (fo=1, routed)           0.000    18.425    core/u_PI/Excess_sub_temp_carry__7_n_0
+    SLICE_X49Y110                                                     r  core/u_PI/Excess_sub_temp_carry__8/CI
+    SLICE_X49Y110        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098    18.523 r  core/u_PI/Excess_sub_temp_carry__8/CO[3]
+                         net (fo=1, routed)           0.000    18.523    core/u_PI/Excess_sub_temp_carry__8_n_0
+    SLICE_X49Y111                                                     r  core/u_PI/Excess_sub_temp_carry__9/CI
+    SLICE_X49Y111        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180    18.703 r  core/u_PI/Excess_sub_temp_carry__9/O[0]
+                         net (fo=39, routed)          1.100    19.803    core/u_PI/Excess_sub_temp_carry__9_n_7
+    SLICE_X50Y104                                                     r  core/u_PI/PreviousExcess_out1[14]_i_1/I1
+    SLICE_X50Y104        LUT5 (Prop_lut5_I1_O)        0.249    20.052 r  core/u_PI/PreviousExcess_out1[14]_i_1/O
+                         net (fo=1, routed)           0.000    20.052    core/u_PI/Excess_out1[14]
+    SLICE_X50Y104        FDRE                                         r  core/u_PI/PreviousExcess_out1_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50mhz rise edge)
+                                                     20.000    20.000 r  <hidden>
+                                                      0.000    20.000 r  clk
+                         net (fo=475, unset)          1.303    21.303    core/u_PI/clk
+    SLICE_X50Y104        FDRE                                         r  core/u_PI/PreviousExcess_out1_reg[14]/C
+                         clock pessimism              0.007    21.310    <hidden>
+                         clock uncertainty           -0.035    21.275    <hidden>
+    SLICE_X50Y104        FDRE (Setup_fdre_C_D)        0.032    21.307    core/u_PI/PreviousExcess_out1_reg[14]
+  -------------------------------------------------------------------
+                         required time                         21.307    <hidden>
+                         arrival time                         -20.052    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  1.254    <hidden>
+
+
+
+

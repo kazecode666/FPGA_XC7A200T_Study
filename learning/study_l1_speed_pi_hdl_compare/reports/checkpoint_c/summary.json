@@ -1,0 +1,136 @@
+{
+  "checkpoint": "C",
+  "status": "COMPLETE_WITH_HAND_50MHZ_SETUP_VIOLATION",
+  "base_main": "485439986feb39f45d2b018cae765d7f056833b5",
+  "golden_B1_sha256": "b87195c56830254e65ecc6b9b2d395c2e48c30319fd9c804e71474757742f26c",
+  "all_14_raw_bit_exact": true,
+  "rows_per_implementation": 7842,
+  "valid_events_per_implementation": 2886,
+  "raw_mismatches": 0,
+  "first_source_tick_us": 900,
+  "normal_update_period_us": 1000,
+  "update_interval_clocks": 50000,
+  "minimum_event_interval_clocks": 2,
+  "latency_launch_clocks": 2,
+  "latency_accept_clocks": 1,
+  "testbench_drive_edge": "negedge",
+  "testbench_drive_to_output_ns": 30,
+  "testbench_observation_delay_ns": 1,
+  "global_CE_inflight_stall": true,
+  "synchronous_reset_over_CE": true,
+  "diagnostics": 14,
+  "metrics": {
+    "baseline": {
+      "variant": "baseline",
+      "part": "xc7a200tfbg484-2",
+      "clock_mhz": 50,
+      "mode": "out_of_context",
+      "WNS_ns": 0.331,
+      "WHS_ns": 0.166,
+      "FF": 555,
+      "DSP48": 10,
+      "RAMB18": 0,
+      "RAMB36": 0,
+      "LUT": 685,
+      "critical_source": "core/v_ref_mmps_1_reg[4]/C",
+      "critical_destination": "core/u_PI/PreviousExcess_out1[11]_i_1_psdsp_1/D",
+      "critical_data_delay_ns": 19.409,
+      "critical_logic_levels": 35,
+      "timing_met": true,
+      "latency_launch_clocks": 2
+    },
+    "hand": {
+      "variant": "hand",
+      "part": "xc7a200tfbg484-2",
+      "clock_mhz": 50,
+      "mode": "out_of_context",
+      "WNS_ns": -1.957,
+      "WHS_ns": 0.034,
+      "FF": 555,
+      "DSP48": 10,
+      "RAMB18": 0,
+      "RAMB36": 0,
+      "LUT": 705,
+      "critical_source": "core/ref_q_reg[2]/C",
+      "critical_destination": "core/d_reg[36]/D",
+      "critical_data_delay_ns": 21.632,
+      "critical_logic_levels": 52,
+      "timing_met": false,
+      "latency_launch_clocks": 2
+    },
+    "csd": {
+      "variant": "csd",
+      "part": "xc7a200tfbg484-2",
+      "clock_mhz": 50,
+      "mode": "out_of_context",
+      "WNS_ns": 0.862,
+      "WHS_ns": 0.14,
+      "FF": 476,
+      "DSP48": 6,
+      "RAMB18": 0,
+      "RAMB36": 0,
+      "LUT": 1049,
+      "critical_source": "core/v_ref_mmps_1_reg[0]/C",
+      "critical_destination": "core/u_PI/HardReset_out1_hold_reg[24]/D",
+      "critical_data_delay_ns": 18.885,
+      "critical_logic_levels": 37,
+      "timing_met": true,
+      "latency_launch_clocks": 2
+    }
+  },
+  "RTL_physical_LOC_including_comments": {
+    "hand": 152,
+    "baseline": 718,
+    "csd": 719,
+    "common_adapter": 45
+  },
+  "sources_sha256": {
+    "handwritten/speed_pi_sv.sv": "e18319e533ff275865d7b15ce12e075e8de9c4eea12c00e9fcb7707ce0512bec",
+    "handwritten/speed_pi_compare.sv": "b8605f883cdece388fd0b4e995b4f4ea0bfb10cb070877fd0db2581870bcf33c",
+    "scripts/study_l1_c_tb.sv": "b4ee5ab78c413f762b0c5c1aa2c4357ad9725b36f8b0bf0fc19c00cc003b06d4",
+    "scripts/study_l1_c_vivado.tcl": "a1737f9a11a5bcfc11d51521f7b70f02e1b9bd4b378052d070a834f80c2fa5e0",
+    "scripts/study_l1_50mhz.xdc": "249178d3f06afe939be1dafad2835319120897d08e54a9e6fad59ef55a5c1f56",
+    "generated_hdl/baseline/HDLCore.sv": "0322a7cf3f9f8d10df94966743671655b6688b475b042bd9453b0823fb7e24ae",
+    "generated_hdl/baseline/PI.sv": "37ced0b1a1532011d9fde2d1761e02f11f6596161d43c274e21b26ae10d88e06",
+    "generated_hdl/aw_csd/HDLCore.sv": "b3c563df6bae7efbe9657c24869f57188fda0bb00e5cda689f0ca6cd23906900",
+    "generated_hdl/aw_csd/PI.sv": "45e70ebbc7e9dddf7082d073170a27acb9852953b00c29b3b7ff0bffa363c64c"
+  },
+  "actual_xpr_part_evidence": {
+    "FOC_Current/FOC_Current.xpr": {
+      "part": "xc7a200tfbg484-2",
+      "sha256": "5402430be02b7339cc7fe9af9cfb1fb17bab55b94c99cc7688dca974d277e7c2"
+    },
+    "FOC_Transforms/FOC_Transforms.xpr": {
+      "part": "xc7a200tfbg484-2",
+      "sha256": "ff5677354374b6efec9228f722b1de5abf66ec3f78c1d1905a63d647fc2939cf"
+    },
+    "PWM_Controller/PWM_Controller.xpr": {
+      "part": "xc7a200tfbg484-2",
+      "sha256": "39f4dd8e4a9bd4405dbc158f98c7918148e2df3c7d47914c01d1673c90f5f39d"
+    },
+    "PWM_Breathe/PWM_Breathe.xpr": {
+      "part": "xc7a200tfbg484-2",
+      "sha256": "45e02e690f24106d7f139d114ee5075c8fa4128383b7ccab1b857ecf939b8e5b"
+    }
+  },
+  "user_files_preserved": 288,
+  "frozen_AB_files_preserved": 88,
+  "golden_run": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_golden_final_01",
+  "optimization_run": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_csd_02",
+  "implementation_runs": {
+    "baseline": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_baseline_impl_final_01",
+    "hand": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_hand_impl_02",
+    "csd": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_csd_impl_01"
+  },
+  "xsim_runs": {
+    "baseline": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_baseline_sim_final_01",
+    "hand": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_hand_sim_final_01",
+    "csd": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\c_csd_sim_final_01"
+  },
+  "optimization": "AW Gain ConstMultiplierOptimization: none -> csd (one option, one block)",
+  "timing_scope": "OOC registered IP; no package/board I/O route signoff",
+  "checkpoint_D": false,
+  "full_motor_cosimulation": false,
+  "bitstream": false,
+  "hardware": false
+}

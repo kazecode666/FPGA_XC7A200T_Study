@@ -1,0 +1,163 @@
+GLOBAL_READBACK TargetLanguage actual=SystemVerilog baseline=SystemVerilog
+GLOBAL_READBACK TargetFrequency actual=50 baseline=50
+GLOBAL_READBACK SynthesisTool actual=Xilinx Vivado baseline=Xilinx Vivado
+GLOBAL_READBACK SynthesisToolChipFamily actual=Artix7 baseline=Artix7
+GLOBAL_READBACK SynthesisToolDeviceName actual=xc7a200t baseline=xc7a200t
+GLOBAL_READBACK SynthesisToolPackageName actual=fbg484 baseline=fbg484
+GLOBAL_READBACK SynthesisToolSpeedValue actual=-2 baseline=-2
+GLOBAL_READBACK ClockInputPort actual=clk baseline=clk
+GLOBAL_READBACK ResetInputPort actual=init_reset baseline=init_reset
+GLOBAL_READBACK ResetType actual=Synchronous baseline=Synchronous
+GLOBAL_READBACK ResetAssertedLevel actual=Active-high baseline=active-high
+GLOBAL_READBACK ClockEnableInputPort actual=clk_enable baseline=clk_enable
+GLOBAL_READBACK TriggerAsClock actual=off baseline=off
+GLOBAL_READBACK MinimizeClockEnables actual=off baseline=off
+GLOBAL_READBACK MinimizeGlobalResets actual=off baseline=off
+GLOBAL_READBACK TreatRatesAsHardwareRates actual=off baseline=off
+GLOBAL_READBACK Oversampling actual=1 baseline=1
+GLOBAL_READBACK Traceability actual=on baseline=on
+GLOBAL_READBACK HDLGenerateWebview actual=off baseline=off
+GLOBAL_READBACK ResourceReport actual=on baseline=on
+GLOBAL_READBACK OptimizationReport actual=on baseline=on
+GLOBAL_READBACK GenerateHDLTestBench actual=off baseline=off
+GLOBAL_READBACK GenerateValidationModel actual=on baseline=on
+GLOBAL_READBACK EDAScriptGeneration actual=off baseline=off
+### 正在对模型 'speed_pi_hdl' 运行 HDL 检查。
+### 开始编译模型 'speed_pi_hdl'...
+[警告: 'speed_pi_hdl/HDLCore/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为 0.0800000000745058。出现量化误差，绝对差为
+7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/createPir>setupInitAndCleanupModel
+位置: slhdlcoder.HDLCoder/createPir
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: study_l1_c_csd (第 40 行)] 
+[警告: 'speed_pi_hdl/HDLCore/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为 0.0014426782727241516。出现量化误差，绝对差
+为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/createPir>setupInitAndCleanupModel
+位置: slhdlcoder.HDLCoder/createPir
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: study_l1_c_csd (第 40 行)] 
+[警告: 'speed_pi_hdl/HDLCore/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为 0.018033474683761597。出现量化误差，绝对差为
+1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/createPir>setupInitAndCleanupModel
+位置: slhdlcoder.HDLCoder/createPir
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: study_l1_c_csd (第 40 行)] 
+### 'speed_pi_hdl' 的 HDL 检查已完成，出现 0 个错误、0 个警告和 0 条消息。
+SINGLE_OPTION_PREFLIGHT_PASS AW ConstMultiplierOptimization none -> csd
+### 正在处理模型 <a href="matlab:open_system('speed_pi_hdl')">speed_pi_hdl</a>
+### 正在生成 <a href="matlab:open_system('speed_pi_hdl/HDLCore')">speed_pi_hdl/HDLCore</a> 的 HDL 代码
+### 将模型 <a href="matlab:configset.showParameterGroup('speed_pi_hdl', { 'HDL Code Generation' } )">speed_pi_hdl</a> 的配置集用于 HDL 代码生成参数。
+### 正在对模型 'speed_pi_hdl' 运行 HDL 检查。
+### 开始编译模型 'speed_pi_hdl'...
+[警告: 'speed_pi_hdl/HDLCore/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为 0.0800000000745058。出现量化误差，绝对差为
+7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/createPir>setupInitAndCleanupModel
+位置: slhdlcoder.HDLCoder/createPir
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: slhdlcoder.HDLCoder/runCheckHdlAndPirFrontEnd
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: study_l1_c_csd (第 45 行)] 
+[警告: 'speed_pi_hdl/HDLCore/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为 0.0014426782727241516。出现量化误差，绝对差
+为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/createPir>setupInitAndCleanupModel
+位置: slhdlcoder.HDLCoder/createPir
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: slhdlcoder.HDLCoder/runCheckHdlAndPirFrontEnd
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: study_l1_c_csd (第 45 行)] 
+[警告: 'speed_pi_hdl/HDLCore/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为 0.018033474683761597。出现量化误差，绝对差为
+1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/createPir>setupInitAndCleanupModel
+位置: slhdlcoder.HDLCoder/createPir
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: slhdlcoder.HDLCoder/runCheckHdlAndPirFrontEnd
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: study_l1_c_csd (第 45 行)] 
+### 正在处理模型 'speed_pi_hdl'...
+### 您选择的代码生成和优化选项引入了额外的流水线延迟。
+### 延迟平衡功能已自动插入匹配的延迟以进行补偿。
+### DUT 需要一个初始的流水线建立延迟。每个输出端口都会经历这些额外的延迟。
+### 输出端口 1: 2 个周期。
+### 输出端口 2: 2 个周期。
+### 输出端口 3: 2 个周期。
+### 输出端口 4: 2 个周期。
+### 输出端口 5: 2 个周期。
+### 输出端口 6: 2 个周期。
+### 输出端口 7: 2 个周期。
+### 输出端口 8: 2 个周期。
+### 输出端口 9: 2 个周期。
+### 输出端口 10: 2 个周期。
+### 输出端口 11: 2 个周期。
+### 输出端口 12: 2 个周期。
+### 输出端口 13: 2 个周期。
+### 输出端口 14: 2 个周期。
+### 正在处理... GenerateModel
+### 开始模型生成 'gm_speed_pi_hdl'...
+### 正在生成 DUT 以体现优化相关的更改(IO、面积、流水线)...
+### 模型生成完毕。
+### 生成的模型保存在 <a href="matlab:open_system('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\gm_speed_pi_hdl.slx')">D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\gm_speed_pi_hdl.slx</a>
+### 通过运行以下脚本可以诊断延迟吸收障碍: <a href="matlab:run('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\highlightDelayAbsorption')">D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\highlightDelayAbsorption.m</a>
+### 要清除突出显示，请点击以下 MATLAB 脚本: <a href="matlab:run('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\clearhighlighting.m')">D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\clearhighlighting.m</a>
+### 正在生成新的验证模型: '<a href="matlab:open_system('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\gm_speed_pi_hdl_vnl')">gm_speed_pi_hdl_vnl</a>'。
+### 验证模型生成完毕。
+### 开始为 'speed_pi_hdl' 生成 SystemVerilog 代码。
+### 正在处理... Traceability
+### 将 speed_pi_hdl/HDLCore/PI 作为 D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\PI.sv 处理。
+### 将 speed_pi_hdl/HDLCore 作为 D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\HDLCore.sv 处理。
+### 'speed_pi_hdl' 的代码生成已完成。
+### 正在生成代码生成报告 <a href="matlab:hdlcoder.report.openReportV2Dialog('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl', 'D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl\html\index.html')">index.html</a> 的 HTML 文件
+### 正在创建 HDL 代码生成检查报告 <a href="matlab:hdlcoder.report.openDdgViaHyperlink('speed_pi_hdl', 'D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\c_csd_02\generated\speed_pi_hdl', 'HDLCore_report.html')">HDLCore_report.html</a>
+### 'speed_pi_hdl' 的 HDL 检查已完成，出现 0 个错误、0 个警告和 1 条消息。
+### HDL 代码生成完成。
+STUDY_L1_C_CSD_GENERATION_PASS
