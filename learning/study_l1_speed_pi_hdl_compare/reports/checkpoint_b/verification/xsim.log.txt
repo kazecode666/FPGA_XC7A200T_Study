@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Oct  4 17:19:51 2026
+# Process ID         : 24396
+# Current directory  : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/xsim_fresh_final_01
+# Command line       : xsim.exe -mode tcl -source {xsim.dir/study_l1_baseline/xsim_script.tcl}
+# Log file           : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/xsim_fresh_final_01/xsim.log
+# Journal file       : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/xsim_fresh_final_01\xsim.jou
+# Running On         : DependOnOMEN16
+# Platform           : Windows 11
+# Operating System   : 26300
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 16858 MB
+# Swap memory        : 19327 MB
+# Total Virtual      : 36185 MB
+# Available Virtual  : 11629 MB
+#-----------------------------------------------------------
+source xsim.dir/study_l1_baseline/xsim_script.tcl
+# xsim {study_l1_baseline} -testplusarg VECTORS=D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/b_fresh_final_02/vectors.txt -testplusarg TRACE=D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/xsim_fresh_final_01/trace.csv -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+STUDY_L1_XSIM_PASS rows=2580 ticks=258 fields=14 raw_mismatches=0 first_phase_ns=900000 update_period_ns=1000000 pipeline_cycles=2 launch_to_valid_ns=40
+$finish called at time : 258000511 ns : File "D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/scripts/study_l1_generated_tb.sv" Line 124
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:09 . Memory (MB): peak = 237.527 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct  4 17:20:02 2026...

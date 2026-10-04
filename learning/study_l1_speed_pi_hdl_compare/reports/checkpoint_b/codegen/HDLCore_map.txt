@@ -1,0 +1,2 @@
+speed_pi_hdl/HDLCore/PI --> PI
+speed_pi_hdl/HDLCore --> HDLCore

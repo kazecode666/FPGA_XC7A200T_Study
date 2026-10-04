@@ -1,0 +1,116 @@
+{
+  "Error": {
+    "file": "PI.sv",
+    "line": 136,
+    "token": "assign Error_out1",
+    "meaning": "v_ref - v_meas; signed33/20"
+  },
+  "P": {
+    "file": "PI.sv",
+    "line": 137,
+    "token": "assign P_mul_temp",
+    "meaning": "Kp raw=19363296; convergent cast to signed40/30"
+  },
+  "KiTs": {
+    "file": "PI.sv",
+    "line": 163,
+    "token": "assign KiTs_mul_temp",
+    "meaning": "KiTs raw=1549064; signed40/30 increment"
+  },
+  "PreviousExcess": {
+    "file": "PI.sv",
+    "line": 208,
+    "token": "begin : PreviousExcess_process",
+    "meaning": "UnitDelay of unlimited-limited; semantic reset does not clear it"
+  },
+  "AW": {
+    "file": "PI.sv",
+    "line": 218,
+    "token": "assign AW_mul_temp",
+    "meaning": "Kaw raw=85899346 times previous excess"
+  },
+  "Update": {
+    "file": "PI.sv",
+    "line": 225,
+    "token": "assign Update_op_stage1",
+    "meaning": "old integrator + KiTs - AW; signed44/30 accumulation"
+  },
+  "Integrator": {
+    "file": "PI.sv",
+    "line": 245,
+    "token": "begin : Integrator_process",
+    "meaning": "sample-event CE state register; int-reset selection before update"
+  },
+  "IntegratorLimit": {
+    "file": "PI.sv",
+    "line": 236,
+    "token": "assign IntegratorLimit_out1",
+    "meaning": "clip integral candidate to +/-0.5 A"
+  },
+  "Unlimited": {
+    "file": "PI.sv",
+    "line": 257,
+    "token": "assign Unlimited_add_temp",
+    "meaning": "P + old integrator; signed42/30 output"
+  },
+  "OutputLimit": {
+    "file": "PI.sv",
+    "line": 263,
+    "token": "assign OutputLimit_out1",
+    "meaning": "clip to +/-1 A before excess and external output conversion"
+  },
+  "OutputFormat": {
+    "file": "PI.sv",
+    "line": 266,
+    "token": "assign OutputFormat_out1",
+    "meaning": "convergent signed25/15 FOC boundary"
+  },
+  "Hard": {
+    "file": "PI.sv",
+    "line": 133,
+    "token": "assign Hard_out1",
+    "meaning": "angle_init | pi_reset | test_mode | !enable"
+  },
+  "Int": {
+    "file": "PI.sv",
+    "line": 162,
+    "token": "assign Int_out1",
+    "meaning": "hard | ref-zero | strict overspeed predicate"
+  },
+  "HardReset": {
+    "file": "PI.sv",
+    "line": 270,
+    "token": "assign HardReset_out1",
+    "meaning": "hard reset forces iq reference zero on that valid transaction"
+  },
+  "Tick": {
+    "file": "PI.sv",
+    "line": 169,
+    "token": "begin : Tick_delay",
+    "meaning": "rising-edge tick detector; initialization reset has priority"
+  },
+  "CE": {
+    "file": "PI.sv",
+    "line": 180,
+    "token": "assign enb_gated",
+    "meaning": "clk_enable AND detected speed event; idle state hold"
+  },
+  "OutputHold": {
+    "file": "PI.sv",
+    "line": 273,
+    "token": "begin : iq_ref_A_hold_process",
+    "meaning": "registered output, configured output pipeline absorbed into hold register"
+  },
+  "InputPipeline": {
+    "file": "HDLCore.sv",
+    "line": 109,
+    "token": "begin : in_0_pipe_process",
+    "meaning": "one physical input-register stage, all controls/data aligned"
+  },
+  "ce_out": {
+    "file": "HDLCore.sv",
+    "line": 245,
+    "token": "assign ce_out",
+    "meaning": "global CE; use delayed sample-event valid for result qualification"
+  }
+}

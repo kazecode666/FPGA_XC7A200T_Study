@@ -1,0 +1,51 @@
+MATLAB=26.2.0.3386108 (R2026b)
+FROZEN_PI_PARAMETERS_AND_WIRING_IDENTICAL blocks=54
+CARRIER_B1_ALL_14_RAW_CODES_EXACT rows=2580 ticks=258
+CLOCK_CONTRACT clk=50MHz tick-first=0.9ms period=1ms TriggerAsClock=off
+RESET_CONTRACT init_reset=power-on; pi_reset=sampled command, does not clear excess
+### 正在对模型 'speed_pi_hdl' 运行 HDL 检查。
+### 开始编译模型 'speed_pi_hdl'...
+### 'speed_pi_hdl' 的 HDL 检查已完成，出现 0 个错误、0 个警告和 0 条消息。
+PREFLIGHT_PASS: generation starts only after carrier equivalence and compatibility.
+### 正在处理模型 <a href="matlab:open_system('speed_pi_hdl')">speed_pi_hdl</a>
+### 正在生成 <a href="matlab:open_system('speed_pi_hdl/HDLCore')">speed_pi_hdl/HDLCore</a> 的 HDL 代码
+### 将模型 <a href="matlab:configset.showParameterGroup('speed_pi_hdl', { 'HDL Code Generation' } )">speed_pi_hdl</a> 的配置集用于 HDL 代码生成参数。
+### 正在对模型 'speed_pi_hdl' 运行 HDL 检查。
+### 开始编译模型 'speed_pi_hdl'...
+### 正在处理模型 'speed_pi_hdl'...
+### 您选择的代码生成和优化选项引入了额外的流水线延迟。
+### 延迟平衡功能已自动插入匹配的延迟以进行补偿。
+### DUT 需要一个初始的流水线建立延迟。每个输出端口都会经历这些额外的延迟。
+### 输出端口 1: 2 个周期。
+### 输出端口 2: 2 个周期。
+### 输出端口 3: 2 个周期。
+### 输出端口 4: 2 个周期。
+### 输出端口 5: 2 个周期。
+### 输出端口 6: 2 个周期。
+### 输出端口 7: 2 个周期。
+### 输出端口 8: 2 个周期。
+### 输出端口 9: 2 个周期。
+### 输出端口 10: 2 个周期。
+### 输出端口 11: 2 个周期。
+### 输出端口 12: 2 个周期。
+### 输出端口 13: 2 个周期。
+### 输出端口 14: 2 个周期。
+### 正在处理... GenerateModel
+### 开始模型生成 'gm_speed_pi_hdl'...
+### 正在生成 DUT 以体现优化相关的更改(IO、面积、流水线)...
+### 模型生成完毕。
+### 生成的模型保存在 <a href="matlab:open_system('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\gm_speed_pi_hdl.slx')">D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\gm_speed_pi_hdl.slx</a>
+### 通过运行以下脚本可以诊断延迟吸收障碍: <a href="matlab:run('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\highlightDelayAbsorption')">D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\highlightDelayAbsorption.m</a>
+### 要清除突出显示，请点击以下 MATLAB 脚本: <a href="matlab:run('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\clearhighlighting.m')">D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\clearhighlighting.m</a>
+### 正在生成新的验证模型: '<a href="matlab:open_system('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\gm_speed_pi_hdl_vnl')">gm_speed_pi_hdl_vnl</a>'。
+### 验证模型生成完毕。
+### 开始为 'speed_pi_hdl' 生成 SystemVerilog 代码。
+### 正在处理... Traceability
+### 将 speed_pi_hdl/HDLCore/PI 作为 D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\PI.sv 处理。
+### 将 speed_pi_hdl/HDLCore 作为 D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\HDLCore.sv 处理。
+### 'speed_pi_hdl' 的代码生成已完成。
+### 正在生成代码生成报告 <a href="matlab:hdlcoder.report.openReportV2Dialog('D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl', 'D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl\html\index.html')">index.html</a> 的 HTML 文件
+### 正在创建 HDL 代码生成检查报告 <a href="matlab:hdlcoder.report.openDdgViaHyperlink('speed_pi_hdl', 'D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\b_fresh_final_02\generated\speed_pi_hdl', 'HDLCore_report.html')">HDLCore_report.html</a>
+### 'speed_pi_hdl' 的 HDL 检查已完成，出现 0 个错误、0 个警告和 1 条消息。
+### HDL 代码生成完成。
+HDL_GENERATION_COMPLETE D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/b_fresh_final_02

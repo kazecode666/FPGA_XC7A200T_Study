@@ -1,0 +1,5 @@
+# Preserve native generator/report bytes so Git blobs match recorded SHA256.
+generated_hdl/baseline/*.sv -text -whitespace
+models/speed_pi_hdl.slx -text
+reports/checkpoint_b/codegen/* -text -whitespace
+reports/checkpoint_b/verification/* -text -whitespace
