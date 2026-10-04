@@ -1,0 +1,11 @@
+--- baseline/PI.sv (comments removed)
++++ aw_csd/PI.sv (comments removed)
+@@ -181,7 +181,7 @@
+         end
+       end
+     end
+-  assign AW_mul_temp = 33'sh0051EB852 * PreviousExcess_out1;
++  assign AW_mul_temp = ((((((($signed({PreviousExcess_out1, 26'b00000000000000000000000000}) + $signed({PreviousExcess_out1, 24'b000000000000000000000000})) + $signed({PreviousExcess_out1, 21'b000000000000000000000})) - $signed({PreviousExcess_out1, 16'b0000000000000000})) - $signed({PreviousExcess_out1, 14'b00000000000000})) - $signed({PreviousExcess_out1, 11'b00000000000})) + $signed({PreviousExcess_out1, 6'b000000})) + $signed({PreviousExcess_out1, 4'b0000})) + $signed({PreviousExcess_out1, 1'b0});
+   assign AW_cast = AW_mul_temp[71:0];
+   assign AW_out1 = (((AW_cast[71] == 1'b0) && (AW_cast[70:69] != 2'b00)) || ((AW_cast[71] == 1'b0) && (AW_cast[69:30] == 40'sh7FFFFFFFFF)) ? 40'sh7FFFFFFFFF :
+               ((AW_cast[71] == 1'b1) && (AW_cast[70:69] != 2'b11) ? 40'sh8000000000 :

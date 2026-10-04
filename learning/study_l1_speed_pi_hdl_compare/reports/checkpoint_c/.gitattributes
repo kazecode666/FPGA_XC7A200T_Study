@@ -1,0 +1,3 @@
+verification/** -text -whitespace
+codegen/** -text -whitespace
+workspace_preflight.json -text -whitespace

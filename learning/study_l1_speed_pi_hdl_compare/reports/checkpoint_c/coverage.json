@@ -1,0 +1,101 @@
+{
+  "normal": {
+    "rows": 2580,
+    "rising_events": 258,
+    "positive_linear": 61,
+    "negative_linear": 43,
+    "zero_error": 29,
+    "positive_saturation": 70,
+    "negative_saturation": 70,
+    "aw_nonzero": 140,
+    "release_saturation": 2,
+    "saturated_reversal": 2,
+    "sampled_reset": 3,
+    "disable": 8,
+    "reenable": 2,
+    "angle_reset": 1,
+    "test_reset": 1,
+    "overspeed_reset": 6,
+    "hard_reset_nonzero_excess": 3,
+    "full_raw_min": 0,
+    "full_raw_max": 0,
+    "P_ties": {
+      "total": 0,
+      "positive": 0,
+      "negative": 0,
+      "retained_even": 0,
+      "retained_odd": 0
+    },
+    "KiTs_ties": {
+      "total": 0,
+      "positive": 0,
+      "negative": 0,
+      "retained_even": 0,
+      "retained_odd": 0
+    },
+    "AW_ties": {
+      "total": 0,
+      "positive": 0,
+      "negative": 0,
+      "retained_even": 0,
+      "retained_odd": 0
+    },
+    "output_ties": {
+      "total": 0,
+      "positive": 0,
+      "negative": 0,
+      "retained_even": 0,
+      "retained_odd": 0
+    }
+  },
+  "stress": {
+    "rows": 5262,
+    "rising_events": 2628,
+    "positive_linear": 476,
+    "negative_linear": 243,
+    "zero_error": 68,
+    "positive_saturation": 916,
+    "negative_saturation": 887,
+    "aw_nonzero": 1803,
+    "release_saturation": 77,
+    "saturated_reversal": 834,
+    "sampled_reset": 106,
+    "disable": 112,
+    "reenable": 112,
+    "angle_reset": 39,
+    "test_reset": 36,
+    "overspeed_reset": 422,
+    "hard_reset_nonzero_excess": 201,
+    "full_raw_min": 61,
+    "full_raw_max": 61,
+    "P_ties": {
+      "total": 4,
+      "positive": 2,
+      "negative": 2,
+      "retained_even": 2,
+      "retained_odd": 2
+    },
+    "KiTs_ties": {
+      "total": 4,
+      "positive": 2,
+      "negative": 2,
+      "retained_even": 2,
+      "retained_odd": 2
+    },
+    "AW_ties": {
+      "total": 14,
+      "positive": 7,
+      "negative": 7,
+      "retained_even": 7,
+      "retained_odd": 7
+    },
+    "output_ties": {
+      "total": 8,
+      "positive": 4,
+      "negative": 4,
+      "retained_even": 4,
+      "retained_odd": 4
+    }
+  },
+  "identical_rtl_traces": 3
+}

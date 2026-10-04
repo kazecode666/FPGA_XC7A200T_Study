@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Oct  4 18:32:36 2026
+# Process ID         : 38252
+# Current directory  : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_csd_sim_final_01
+# Command line       : xsim.exe -mode tcl -source {xsim.dir/study_l1_c/xsim_script.tcl}
+# Log file           : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_csd_sim_final_01/xsim.log
+# Journal file       : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_csd_sim_final_01\xsim.jou
+# Running On         : DependOnOMEN16
+# Platform           : Windows 11
+# Operating System   : 26300
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 16858 MB
+# Swap memory        : 19327 MB
+# Total Virtual      : 36185 MB
+# Available Virtual  : 7043 MB
+#-----------------------------------------------------------
+source xsim.dir/study_l1_c/xsim_script.tcl
+# xsim {study_l1_c} -testplusarg NORMAL=D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_golden_final_01/normal_vectors.txt -testplusarg STRESS=D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_golden_final_01/stress_vectors.txt -testplusarg TRACE=D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/c_csd_sim_final_01/trace.csv -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+SUITE_PASS suite=0 rows=2580 gap_clocks=5000
+SUITE_PASS suite=1 rows=5262 gap_clocks=1
+STUDY_L1_C_XSIM_PASS rows=7842 events=2886 normal_events=258 stress_events=2628 fields=14 raw_mismatches=0 continuous_pairs=2626 idle_clocks=12902403 ce_inflight_stalls=1 sustained_high_checks=1292376 latency_clocks=2
+$finish called at time : 258105920 ns : File "D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/scripts/study_l1_c_tb.sv" Line 128
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:20 . Memory (MB): peak = 237.434 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 22352 KB (Peak: 22352 KB), Simulation CPU Usage: 19703 ms
+INFO: [Common 17-206] Exiting xsim at Sun Oct  4 18:32:58 2026...
