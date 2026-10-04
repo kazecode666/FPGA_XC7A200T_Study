@@ -44,6 +44,53 @@ flowchart LR
 
 `Input_Mode=0` 是固定 smoke 输入；`Reference_Mode=0` 是阶段测试的 scripted 电流参考。这两个 0 都不是“三闭环 live”。仅修改 `CONTROL_BACKEND` 后直接点击 Run，不能保证其他设置正确。
 
+### 在模型窗口中交互运行（Issue #35）
+
+每次新开 MATLAB R2026b，都要在**将要点击 Run 的那个 MATLAB 窗口**先准备一次。仅打开 SLX 不会完成联合仿真环境准备；另一个 MATLAB 进程中执行的准备也不会作用于这个窗口。2026-09-30 本机仓库的四个 XSI 文件均已存在，当前使用无需重建 runtime。
+
+**第一步：在 MATLAB 命令窗口只执行下面这段启动命令。**已有模型窗口可以保持打开，但已有编辑须先保存。
+
+```matlab
+addpath('D:/Project/FPGA_XC7A200T/scripts');
+cd('D:/Project/FPGA_XC7A200T');
+pmlsm_prepare_interactive_cosim('backend',1,'scenario','position_deadtime');
+```
+
+等待命令窗口出现 `Interactive co-sim ready: backend=1`。准备函数会打开模型、设置 live 输入和原外环参考、1 µs 固定步长及 HDL 交换步长，并将当前目录切到 `D:/Project/FPGA_XC7A200T/.Xil/step7c_foc_cosim`。可输入 `pwd` 核对。Vivado XSI 从这个目录下的 `xsim.dir/design` 加载 RTL 仿真程序。
+
+**第二步：切到模型窗口点击 Run。**仿真结束后可再次点击 Run；不要在两次运行之间执行 `end`、自动场景运行器、`clear all`，或切换 MATLAB 的 Current Folder。`position_deadtime` 是原外环控制的 1 mm 位置场景，运行 1.2 s 仿真时间。观察 `x_ref_mm`/`x_mm`、`fpga_iq_ref_A`/`iq_A`、`accepted_sample_id`/`active_command_id` 和 `fault_code`。它通过 Vivado Simulator 执行 RTL，当前没有连接实物 FPGA。
+
+**第三步：当天在这个会话里观察完毕后，才执行清理命令。**不要把它连同第一步一起执行。
+
+```matlab
+pmlsm_end_interactive_cosim();
+```
+
+清理后再点击 Run 不再具备 FPGA 联合仿真环境；如需继续观察，重新执行第一步。
+
+选择原 Simulink 电流环时，停止仿真后结束当前会话，再准备 `backend=0`：
+
+```matlab
+pmlsm_end_interactive_cosim();
+pmlsm_prepare_interactive_cosim('backend',0,'scenario','position_deadtime');
+```
+
+然后点击 Run；这条路径无需 XSI runtime。观察完毕后再单独执行清理命令。两种后端均沿用原 Host 位置指令和现有外环。仅检查启动可选 `scenario='fresh_start'`（0.02 s），但它不证明位置性能。若准备函数明确报告 XSI 文件缺失，才按下文生成 runtime；RTL 改变后也要重建。`prepare` 仅修改当前进程的工具路径，不修改 Windows 全局 PATH。
+
+遇到 `proper design directory does not exist` 时，先在**报错的那个 MATLAB 窗口**执行以下只读检查：
+
+```matlab
+pwd
+isfile(fullfile(pwd,'xsim.dir','design','xsim.reloc'))
+isfile(fullfile(pwd,'xsim.dir','design','xsimk.dll'))
+isfile(fullfile(pwd,'xsim.dir','design','xsim.svtype'))
+isfile(fullfile(pwd,'xsim.dir','design','xsim.mem'))
+```
+
+已准备的 FPGA 会话应显示上述 `.Xil/step7c_foc_cosim` 目录和四个 `1`。如果刚打开模型、执行过清理，或自动运行器已经结束，按第一步重新准备；若会话仍在、只是切换了 Current Folder，可用 `cd('D:/Project/FPGA_XC7A200T/.Xil/step7c_foc_cosim')` 恢复目录后再 Run。不要只在未经准备的模型上切目录，因为步长、工具路径和场景变量仍可能未配置。
+
+若模型已打开，`prepare` 接受已保存的模型，不要求关闭；如果还有未保存的编辑，它会先拒绝执行，避免丢失这些编辑。**不要在交互会话中保存模型。**场景的 From Workspace 输入、步长和回调都是临时修改；`end` 会关闭未保存模型，恢复原工作目录、MATLAB 路径、进程环境和原有 base workspace 值。如果会话期间又编辑了模型，`end` 会拒绝丢弃这些新编辑。若要切换后端，先停止仿真并执行 `end`，再执行新的 `prepare`。本入口不会生成 bitstream，也不会连接硬件。
+
 ### 推荐可复现入口
 
 在一个独立 R2026b 会话运行，模型不要在**这个会话**中预先加载；另一个 MATLAB 桌面仅打开界面不妨碍运行。脚本在内存中配置模型，退出后关闭自己的模型且不保存测试改动。
@@ -54,7 +101,7 @@ addpath(fullfile(pwd,'scripts'));
 addpath('C:/Users/lww/.matlab/agentic-toolkits/simulink');
 satk_initialize;
 
-% 第一次使用，或 RTL 改变后，先重建本地 XSI 仿真 runtime：
+% 仅在 runtime 缺失或 RTL 改变后重建；已有有效 runtime 时跳过：
 step7c_generate_foc_cosim(1e-6,true);
 
 % 同一套 1 mm 位置轨迹，分别选择原后端和 FPGA 后端。
