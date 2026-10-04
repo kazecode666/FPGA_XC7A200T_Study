@@ -1,0 +1,608 @@
+SOURCE=D:\Project\FPGA_XC7A200T\simulink模型\PMLSM_ThreeLoop_Simple.slx
+SHA256=074c2ca8c7f708ff50194245382391647481f593e88898245bf68278f02af517
+{"InitFcn": "reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));\npmlsm_interactive_cosim_init(bdroot);", "ModelWorkspace": {"WSDataSource": "MATLAB File", "WSSourceFileName": "init_PMLSM_ThreeLoop_Simple.m"}, "PreLoadFcn": "init_PMLSM_fpga_cosim_params;"}
+
+SYSTEM root
+{'BlockType': 'SubSystem', 'Name': 'Control_Task_10kHz', 'SID': '505'} {}
+{'BlockType': 'FunctionCallGenerator', 'Name': 'Control_Tick_10kHz', 'SID': '785'} {'SampleTime': 'Ts'}
+{'BlockType': 'Logic', 'Name': 'Effective_PI_Reset', 'SID': '1277'} {'Operator': 'OR', 'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'SubSystem', 'Name': 'FPGA_HDL_Cosim', 'SID': '1452'} {}
+{'BlockType': 'DigitalClock', 'Name': 'Host_Time', 'SID': '786'} {'SampleTime': 'Ts_ACR'}
+{'BlockType': 'SubSystem', 'Name': 'Inverter_DeadTime', 'SID': '771'} {}
+{'BlockType': 'SubSystem', 'Name': 'Motor_Control_Monitor', 'SID': '1748'} {}
+{'BlockType': 'SubSystem', 'Name': 'PMLSM_Plant_Model', 'SID': '191'} {}
+{'BlockType': 'Logic', 'Name': 'PWM_Disabled', 'SID': '1276'} {'Operator': 'NOT', 'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'Goto', 'Name': 'Publish_PI_Reset', 'SID': '1257'} {'GotoTag': 'PI_Reset'}
+{'BlockType': 'Goto', 'Name': 'Publish_PWM_EN', 'SID': '1247'} {'GotoTag': 'PWM_EN'}
+{'BlockType': 'Goto', 'Name': 'Publish_accepted_sample_id', 'SID': '1886'} {'GotoTag': 'accepted_sample_id'}
+{'BlockType': 'Goto', 'Name': 'Publish_active_command_id', 'SID': '1888'} {'GotoTag': 'active_command_id'}
+{'BlockType': 'Goto', 'Name': 'Publish_active_valid', 'SID': '1890'} {'GotoTag': 'active_valid'}
+{'BlockType': 'Goto', 'Name': 'Publish_cmp_u_active', 'SID': '1874'} {'GotoTag': 'cmp_u_active'}
+{'BlockType': 'Goto', 'Name': 'Publish_cmp_v_active', 'SID': '1876'} {'GotoTag': 'cmp_v_active'}
+{'BlockType': 'Goto', 'Name': 'Publish_cmp_w_active', 'SID': '1878'} {'GotoTag': 'cmp_w_active'}
+{'BlockType': 'Goto', 'Name': 'Publish_fault_code', 'SID': '1894'} {'GotoTag': 'fault_code'}
+{'BlockType': 'Goto', 'Name': 'Publish_fpga_bridge_enable', 'SID': '1892'} {'GotoTag': 'fpga_bridge_enable'}
+{'BlockType': 'Goto', 'Name': 'Publish_fpga_duty_u', 'SID': '1880'} {'GotoTag': 'fpga_duty_u'}
+{'BlockType': 'Goto', 'Name': 'Publish_fpga_duty_v', 'SID': '1882'} {'GotoTag': 'fpga_duty_v'}
+{'BlockType': 'Goto', 'Name': 'Publish_fpga_duty_w', 'SID': '1884'} {'GotoTag': 'fpga_duty_w'}
+{'BlockType': 'Goto', 'Name': 'Publish_fpga_id_ref_A', 'SID': '1859'} {'GotoTag': 'fpga_id_ref'}
+{'BlockType': 'Goto', 'Name': 'Publish_fpga_iq_ref_A', 'SID': '1861'} {'GotoTag': 'fpga_iq_ref'}
+{'BlockType': 'Goto', 'Name': 'Publish_host_id_ref_A', 'SID': '1251'} {'GotoTag': 'host_id_ref'}
+{'BlockType': 'Goto', 'Name': 'Publish_host_iq_test_mode', 'SID': '1253'} {'GotoTag': 'host_iq_test_mode'}
+{'BlockType': 'Goto', 'Name': 'Publish_host_iq_test_ref_A', 'SID': '1255'} {'GotoTag': 'host_iq_test_ref'}
+{'BlockType': 'Goto', 'Name': 'Publish_host_v_ref_mmps', 'SID': '1249'} {'GotoTag': 'host_v_ref_mmps'}
+{'BlockType': 'Goto', 'Name': 'Publish_ia_A', 'SID': '492'} {'GotoTag': 'ia'}
+{'BlockType': 'Goto', 'Name': 'Publish_ib_A', 'SID': '494'} {'GotoTag': 'ib'}
+{'BlockType': 'Goto', 'Name': 'Publish_ic_A', 'SID': '496'} {'GotoTag': 'ic'}
+{'BlockType': 'Goto', 'Name': 'Publish_id_A', 'SID': '1863'} {'GotoTag': 'id_A'}
+{'BlockType': 'Goto', 'Name': 'Publish_iq_A', 'SID': '1865'} {'GotoTag': 'iq_A'}
+{'BlockType': 'Goto', 'Name': 'Publish_load_N', 'SID': '941'} {'GotoTag': 'load_N'}
+{'BlockType': 'Goto', 'Name': 'Publish_needs_reset', 'SID': '1896'} {'GotoTag': 'needs_reset'}
+{'BlockType': 'Goto', 'Name': 'Publish_omega_e_radps', 'SID': '501'} {'GotoTag': 'we'}
+{'BlockType': 'Goto', 'Name': 'Publish_outer_id_ref_A', 'SID': '1904'} {'GotoTag': 'outer_id_ref'}
+{'BlockType': 'Goto', 'Name': 'Publish_outer_iq_ref_A', 'SID': '1905'} {'GotoTag': 'outer_iq_ref'}
+{'BlockType': 'Goto', 'Name': 'Publish_position_loop_enable', 'SID': '1245'} {'GotoTag': 'position_loop_enable'}
+{'BlockType': 'Goto', 'Name': 'Publish_speed_loop_enable', 'SID': '1243'} {'GotoTag': 'speed_loop_enable'}
+{'BlockType': 'Goto', 'Name': 'Publish_theta_e_rad', 'SID': '498'} {'GotoTag': 'theta_e'}
+{'BlockType': 'Goto', 'Name': 'Publish_v_mmps', 'SID': '489'} {'GotoTag': 'v_mmps'}
+{'BlockType': 'Goto', 'Name': 'Publish_vd_V', 'SID': '1898'} {'GotoTag': 'ud'}
+{'BlockType': 'Goto', 'Name': 'Publish_vdc_V', 'SID': '939'} {'GotoTag': 'Udc'}
+{'BlockType': 'Goto', 'Name': 'Publish_vq_V', 'SID': '1900'} {'GotoTag': 'uq'}
+{'BlockType': 'Goto', 'Name': 'Publish_x_mm', 'SID': '485'} {'GotoTag': 'x_mm'}
+{'BlockType': 'Goto', 'Name': 'Publish_x_ref_mm', 'SID': '926'} {'GotoTag': 'x_ref_mm'}
+{'BlockType': 'From', 'Name': 'Read_PI_Reset_1258', 'SID': '1258'} {'GotoTag': 'PI_Reset'}
+{'BlockType': 'From', 'Name': 'Read_PI_Reset_1481', 'SID': '1481'} {'GotoTag': 'PI_Reset'}
+{'BlockType': 'From', 'Name': 'Read_PWM_EN_1248', 'SID': '1248'} {'GotoTag': 'PWM_EN'}
+{'BlockType': 'From', 'Name': 'Read_PWM_EN_1275', 'SID': '1275'} {'GotoTag': 'PWM_EN'}
+{'BlockType': 'From', 'Name': 'Read_PWM_EN_1454', 'SID': '1454'} {'GotoTag': 'PWM_EN'}
+{'BlockType': 'From', 'Name': 'Read_accepted_sample_id_1887', 'SID': '1887'} {'GotoTag': 'accepted_sample_id'}
+{'BlockType': 'From', 'Name': 'Read_active_command_id_1889', 'SID': '1889'} {'GotoTag': 'active_command_id'}
+{'BlockType': 'From', 'Name': 'Read_active_valid_1891', 'SID': '1891'} {'GotoTag': 'active_valid'}
+{'BlockType': 'From', 'Name': 'Read_cmp_u_active_1875', 'SID': '1875'} {'GotoTag': 'cmp_u_active'}
+{'BlockType': 'From', 'Name': 'Read_cmp_v_active_1877', 'SID': '1877'} {'GotoTag': 'cmp_v_active'}
+{'BlockType': 'From', 'Name': 'Read_cmp_w_active_1879', 'SID': '1879'} {'GotoTag': 'cmp_w_active'}
+{'BlockType': 'From', 'Name': 'Read_fault_code_1895', 'SID': '1895'} {'GotoTag': 'fault_code'}
+{'BlockType': 'From', 'Name': 'Read_fpga_bridge_enable_1893', 'SID': '1893'} {'GotoTag': 'fpga_bridge_enable'}
+{'BlockType': 'From', 'Name': 'Read_fpga_bridge_enable_1961', 'SID': '1961'} {'GotoTag': 'fpga_bridge_enable'}
+{'BlockType': 'From', 'Name': 'Read_fpga_duty_u_1881', 'SID': '1881'} {'GotoTag': 'fpga_duty_u'}
+{'BlockType': 'From', 'Name': 'Read_fpga_duty_u_1958', 'SID': '1958'} {'GotoTag': 'fpga_duty_u'}
+{'BlockType': 'From', 'Name': 'Read_fpga_duty_v_1883', 'SID': '1883'} {'GotoTag': 'fpga_duty_v'}
+{'BlockType': 'From', 'Name': 'Read_fpga_duty_v_1959', 'SID': '1959'} {'GotoTag': 'fpga_duty_v'}
+{'BlockType': 'From', 'Name': 'Read_fpga_duty_w_1885', 'SID': '1885'} {'GotoTag': 'fpga_duty_w'}
+{'BlockType': 'From', 'Name': 'Read_fpga_duty_w_1960', 'SID': '1960'} {'GotoTag': 'fpga_duty_w'}
+{'BlockType': 'From', 'Name': 'Read_fpga_id_ref_A_1860', 'SID': '1860'} {'GotoTag': 'fpga_id_ref'}
+{'BlockType': 'From', 'Name': 'Read_fpga_iq_ref_A_1862', 'SID': '1862'} {'GotoTag': 'fpga_iq_ref'}
+{'BlockType': 'From', 'Name': 'Read_host_id_ref_A_1252', 'SID': '1252'} {'GotoTag': 'host_id_ref'}
+{'BlockType': 'From', 'Name': 'Read_host_iq_test_mode_1254', 'SID': '1254'} {'GotoTag': 'host_iq_test_mode'}
+{'BlockType': 'From', 'Name': 'Read_host_iq_test_ref_A_1256', 'SID': '1256'} {'GotoTag': 'host_iq_test_ref'}
+{'BlockType': 'From', 'Name': 'Read_host_v_ref_mmps_1250', 'SID': '1250'} {'GotoTag': 'host_v_ref_mmps'}
+{'BlockType': 'From', 'Name': 'Read_ia_A_1457', 'SID': '1457'} {'GotoTag': 'ia'}
+{'BlockType': 'From', 'Name': 'Read_ia_A_1867', 'SID': '1867'} {'GotoTag': 'ia'}
+{'BlockType': 'From', 'Name': 'Read_ia_A_493', 'SID': '493'} {'GotoTag': 'ia'}
+{'BlockType': 'From', 'Name': 'Read_ia_A_923', 'SID': '923'} {'GotoTag': 'ia'}
+{'BlockType': 'From', 'Name': 'Read_ib_A_1460', 'SID': '1460'} {'GotoTag': 'ib'}
+{'BlockType': 'From', 'Name': 'Read_ib_A_1868', 'SID': '1868'} {'GotoTag': 'ib'}
+{'BlockType': 'From', 'Name': 'Read_ib_A_495', 'SID': '495'} {'GotoTag': 'ib'}
+{'BlockType': 'From', 'Name': 'Read_ib_A_924', 'SID': '924'} {'GotoTag': 'ib'}
+{'BlockType': 'From', 'Name': 'Read_ic_A_1463', 'SID': '1463'} {'GotoTag': 'ic'}
+{'BlockType': 'From', 'Name': 'Read_ic_A_1869', 'SID': '1869'} {'GotoTag': 'ic'}
+{'BlockType': 'From', 'Name': 'Read_ic_A_497', 'SID': '497'} {'GotoTag': 'ic'}
+{'BlockType': 'From', 'Name': 'Read_ic_A_925', 'SID': '925'} {'GotoTag': 'ic'}
+{'BlockType': 'From', 'Name': 'Read_id_A_1864', 'SID': '1864'} {'GotoTag': 'id_A'}
+{'BlockType': 'From', 'Name': 'Read_iq_A_1866', 'SID': '1866'} {'GotoTag': 'iq_A'}
+{'BlockType': 'From', 'Name': 'Read_load_N_942', 'SID': '942'} {'GotoTag': 'load_N'}
+{'BlockType': 'From', 'Name': 'Read_needs_reset_1897', 'SID': '1897'} {'GotoTag': 'needs_reset'}
+{'BlockType': 'From', 'Name': 'Read_omega_e_radps_1469', 'SID': '1469'} {'GotoTag': 'we'}
+{'BlockType': 'From', 'Name': 'Read_omega_e_radps_1873', 'SID': '1873'} {'GotoTag': 'we'}
+{'BlockType': 'From', 'Name': 'Read_omega_e_radps_502', 'SID': '502'} {'GotoTag': 'we'}
+{'BlockType': 'From', 'Name': 'Read_outer_id_ref_A_1472', 'SID': '1472'} {'GotoTag': 'outer_id_ref'}
+{'BlockType': 'From', 'Name': 'Read_outer_iq_ref_A_1475', 'SID': '1475'} {'GotoTag': 'outer_iq_ref'}
+{'BlockType': 'From', 'Name': 'Read_position_loop_enable_1246', 'SID': '1246'} {'GotoTag': 'position_loop_enable'}
+{'BlockType': 'From', 'Name': 'Read_speed_loop_enable_1244', 'SID': '1244'} {'GotoTag': 'speed_loop_enable'}
+{'BlockType': 'From', 'Name': 'Read_theta_e_rad_1466', 'SID': '1466'} {'GotoTag': 'theta_e'}
+{'BlockType': 'From', 'Name': 'Read_theta_e_rad_1872', 'SID': '1872'} {'GotoTag': 'theta_e'}
+{'BlockType': 'From', 'Name': 'Read_theta_e_rad_499', 'SID': '499'} {'GotoTag': 'theta_e'}
+{'BlockType': 'From', 'Name': 'Read_theta_e_rad_500', 'SID': '500'} {'GotoTag': 'theta_e'}
+{'BlockType': 'From', 'Name': 'Read_v_mmps_1871', 'SID': '1871'} {'GotoTag': 'v_mmps'}
+{'BlockType': 'From', 'Name': 'Read_v_mmps_922', 'SID': '922'} {'GotoTag': 'v_mmps'}
+{'BlockType': 'From', 'Name': 'Read_vd_V_1899', 'SID': '1899'} {'GotoTag': 'ud'}
+{'BlockType': 'From', 'Name': 'Read_vd_V_1962', 'SID': '1962'} {'GotoTag': 'ud'}
+{'BlockType': 'From', 'Name': 'Read_vdc_V_1478', 'SID': '1478'} {'GotoTag': 'Udc'}
+{'BlockType': 'From', 'Name': 'Read_vdc_V_940', 'SID': '940'} {'GotoTag': 'Udc'}
+{'BlockType': 'From', 'Name': 'Read_vq_V_1901', 'SID': '1901'} {'GotoTag': 'uq'}
+{'BlockType': 'From', 'Name': 'Read_vq_V_1963', 'SID': '1963'} {'GotoTag': 'uq'}
+{'BlockType': 'From', 'Name': 'Read_x_mm_1870', 'SID': '1870'} {'GotoTag': 'x_mm'}
+{'BlockType': 'From', 'Name': 'Read_x_mm_921', 'SID': '921'} {'GotoTag': 'x_mm'}
+{'BlockType': 'From', 'Name': 'Read_x_ref_mm_1278', 'SID': '1278'} {'GotoTag': 'x_ref_mm'}
+{'BlockType': 'SubSystem', 'Name': 'Simple_Host', 'SID': '523'} {'ErrorFcn': 'Stateflow.Translate.translate', 'PermitHierarchicalResolution': 'ExplicitOnly', 'TreatAsAtomicUnit': 'on', 'SFBlockType': 'MATLAB Function'}
+{'BlockType': 'FromWorkspace', 'Name': 'Step7D_Interactive_load', 'SID': '1966'} {'VariableName': 'STEP7D_load_ts', 'SampleTime': '9.9999999999999995e-07', 'Interpolate': 'off', 'OutputAfterFinalValue': 'Holding final value'}
+{'BlockType': 'FromWorkspace', 'Name': 'Step7D_Interactive_pwm', 'SID': '1967'} {'VariableName': 'STEP7D_pwm_ts', 'SampleTime': '9.9999999999999995e-07', 'Interpolate': 'off', 'OutputAfterFinalValue': 'Holding final value'}
+{'BlockType': 'FromWorkspace', 'Name': 'Step7D_Interactive_reset', 'SID': '1968'} {'VariableName': 'STEP7D_reset_ts', 'SampleTime': '9.9999999999999995e-07', 'Interpolate': 'off', 'OutputAfterFinalValue': 'Holding final value'}
+{'BlockType': 'FromWorkspace', 'Name': 'Step7D_Interactive_speed', 'SID': '1965'} {'VariableName': 'STEP7D_speed_ts', 'SampleTime': '9.9999999999999995e-07', 'OutputAfterFinalValue': 'Holding final value'}
+{'BlockType': 'Terminator', 'Name': 'Unused_Plant_Id', 'SID': '483'} {}
+{'BlockType': 'Terminator', 'Name': 'Unused_Plant_Iq', 'SID': '484'} {}
+WIRE 786#out:1 -> ['523#in:1']
+WIRE 523#out:2 -> ['939#in:1']
+WIRE 523#out:10 -> ['1255#in:1']
+WIRE 523#out:9 -> ['1253#in:1']
+WIRE 523#out:8 -> ['1251#in:1']
+WIRE 523#out:5 -> ['1245#in:1']
+WIRE 523#out:4 -> ['1243#in:1']
+WIRE 1275#out:1 -> ['1276#in:1']
+WIRE 1276#out:1 -> ['1277#in:2']
+WIRE 1277#out:1 -> ['505#in:15']
+WIRE 1244#out:1 -> ['505#in:10']
+WIRE 1246#out:1 -> ['505#in:9']
+WIRE 1250#out:1 -> ['505#in:11']
+WIRE 1252#out:1 -> ['505#in:12']
+WIRE 1254#out:1 -> ['505#in:13']
+WIRE 1256#out:1 -> ['505#in:14']
+WIRE 1258#out:1 -> ['1277#in:1']
+WIRE 523#out:1 -> ['926#in:1']
+WIRE 921#out:1 -> ['505#in:2']
+WIRE 922#out:1 -> ['505#in:3']
+WIRE 493#out:1 -> ['505#in:4']
+WIRE 495#out:1 -> ['505#in:5']
+WIRE 497#out:1 -> ['505#in:6']
+WIRE 502#out:1 -> ['505#in:8']
+WIRE 499#out:1 -> ['505#in:7']
+WIRE 785#out:1 -> ['505#trigger']
+WIRE 1278#out:1 -> ['505#in:1']
+WIRE 1901#out:1 -> ['1748#in:25']
+WIRE 1899#out:1 -> ['1748#in:24']
+WIRE 1897#out:1 -> ['1748#in:23']
+WIRE 1895#out:1 -> ['1748#in:22']
+WIRE 1893#out:1 -> ['1748#in:21']
+WIRE 1891#out:1 -> ['1748#in:20']
+WIRE 1889#out:1 -> ['1748#in:19']
+WIRE 1887#out:1 -> ['1748#in:18']
+WIRE 1885#out:1 -> ['1748#in:17']
+WIRE 1883#out:1 -> ['1748#in:16']
+WIRE 1881#out:1 -> ['1748#in:15']
+WIRE 1879#out:1 -> ['1748#in:14']
+WIRE 1877#out:1 -> ['1748#in:13']
+WIRE 1875#out:1 -> ['1748#in:12']
+WIRE 1873#out:1 -> ['1748#in:11']
+WIRE 1872#out:1 -> ['1748#in:10']
+WIRE 1871#out:1 -> ['1748#in:9']
+WIRE 1870#out:1 -> ['1748#in:8']
+WIRE 1869#out:1 -> ['1748#in:7']
+WIRE 1868#out:1 -> ['1748#in:6']
+WIRE 1867#out:1 -> ['1748#in:5']
+WIRE 1866#out:1 -> ['1748#in:4']
+WIRE 1864#out:1 -> ['1748#in:3']
+WIRE 1862#out:1 -> ['1748#in:2']
+WIRE 1860#out:1 -> ['1748#in:1']
+WIRE 1452#out:12 -> ['1896#in:1']
+WIRE 1452#out:11 -> ['1894#in:1']
+WIRE 1452#out:10 -> ['1890#in:1']
+WIRE 1452#out:9 -> ['1888#in:1']
+WIRE 1452#out:8 -> ['1886#in:1']
+WIRE 1452#out:7 -> ['1878#in:1']
+WIRE 1452#out:6 -> ['1876#in:1']
+WIRE 1452#out:5 -> ['1874#in:1']
+WIRE 1452#out:14 -> ['1861#in:1']
+WIRE 1452#out:13 -> ['1859#in:1']
+WIRE 1452#out:4 -> ['1892#in:1']
+WIRE 1452#out:3 -> ['1884#in:1']
+WIRE 1452#out:2 -> ['1882#in:1']
+WIRE 1452#out:1 -> ['1880#in:1']
+WIRE 1481#out:1 -> ['1452#in:10']
+WIRE 1478#out:1 -> ['1452#in:9']
+WIRE 1475#out:1 -> ['1452#in:8']
+WIRE 1472#out:1 -> ['1452#in:7']
+WIRE 1469#out:1 -> ['1452#in:6']
+WIRE 1466#out:1 -> ['1452#in:5']
+WIRE 1463#out:1 -> ['1452#in:4']
+WIRE 1460#out:1 -> ['1452#in:3']
+WIRE 1457#out:1 -> ['1452#in:2']
+WIRE 1454#out:1 -> ['1452#in:1']
+WIRE 191#out:6 -> ['485#in:1']
+WIRE 191#out:7 -> ['489#in:1']
+WIRE 191#out:3 -> ['492#in:1']
+WIRE 191#out:4 -> ['494#in:1']
+WIRE 191#out:5 -> ['496#in:1']
+WIRE 191#out:8 -> ['498#in:1']
+WIRE 191#out:9 -> ['501#in:1']
+WIRE 191#out:1 -> ['483#in:1', '1863#in:1']
+WIRE 191#out:2 -> ['484#in:1', '1865#in:1']
+WIRE 942#out:1 -> ['191#in:3']
+WIRE 505#out:5 -> ['1905#in:1']
+WIRE 505#out:4 -> ['1904#in:1']
+WIRE 1963#out:1 -> ['191#in:2']
+WIRE 1962#out:1 -> ['191#in:1']
+WIRE 1961#out:1 -> ['771#in:13']
+WIRE 1960#out:1 -> ['771#in:12']
+WIRE 1959#out:1 -> ['771#in:11']
+WIRE 1958#out:1 -> ['771#in:10']
+WIRE 925#out:1 -> ['771#in:8']
+WIRE 924#out:1 -> ['771#in:7']
+WIRE 923#out:1 -> ['771#in:6']
+WIRE 500#out:1 -> ['771#in:4']
+WIRE 940#out:1 -> ['771#in:5']
+WIRE 771#out:1 -> ['1898#in:1']
+WIRE 771#out:2 -> ['1900#in:1']
+WIRE 1248#out:1 -> ['771#in:9']
+WIRE 505#out:1 -> ['771#in:1']
+WIRE 505#out:2 -> ['771#in:2']
+WIRE 505#out:3 -> ['771#in:3']
+WIRE 1968#out:1 -> ['1257#in:1']
+WIRE 1967#out:1 -> ['1247#in:1']
+WIRE 1966#out:1 -> ['941#in:1']
+WIRE 1965#out:1 -> ['1249#in:1']
+
+SYSTEM 191
+{'BlockType': 'Inport', 'Name': 'vd', 'SID': '192'} {}
+{'BlockType': 'Inport', 'Name': 'vq', 'SID': '193'} {'Port': '2'}
+{'BlockType': 'Inport', 'Name': 'load_force', 'SID': '194'} {'Port': '3'}
+{'BlockType': 'From', 'Name': 'From', 'SID': '1449'} {'GotoTag': 'we'}
+{'BlockType': 'From', 'Name': 'From1', 'SID': '1451'} {'GotoTag': 'we'}
+{'BlockType': 'Goto', 'Name': 'Goto', 'SID': '1450'} {'GotoTag': 'we'}
+{'BlockType': 'Mux', 'Name': 'abc_mux', 'SID': '195'} {'Inputs': '3', 'DisplayOption': 'bar'}
+{'BlockType': 'Mux', 'Name': 'alpha_beta_mux', 'SID': '196'} {'Inputs': '2', 'DisplayOption': 'bar'}
+{'BlockType': 'Fcn', 'Name': 'did_dt', 'SID': '197'} {'Expr': '(u[1]-PMLSM_Rs_ohm*u[2]+u[3]*PMLSM_Lq_H*u[4])/PMLSM_Ld_H'}
+{'BlockType': 'Mux', 'Name': 'did_mux', 'SID': '198'} {'DisplayOption': 'bar'}
+{'BlockType': 'Fcn', 'Name': 'diq_dt', 'SID': '199'} {'Expr': '(u[1]-PMLSM_Rs_ohm*u[2]-u[3]*PMLSM_Ld_H*u[4]-u[3]*PMLSM_psi_f_Wb)/PMLSM_Lq_H'}
+{'BlockType': 'Mux', 'Name': 'diq_mux', 'SID': '200'} {'DisplayOption': 'bar'}
+{'BlockType': 'Mux', 'Name': 'force_mux', 'SID': '201'} {'Inputs': '3', 'DisplayOption': 'bar'}
+{'BlockType': 'Fcn', 'Name': 'force_to_dv', 'SID': '202'} {'Expr': '(PMLSM_Kf_peak_N_per_Apeak*u[1]-u[3]-PMLSM_Bv_N_per_mps*u[2]-PMLSM_Fc_N*tanh(u[2]/PMLSM_v_eps_mps))/PMLSM_M_kg'}
+{'BlockType': 'Fcn', 'Name': 'i_alpha_calc', 'SID': '203'} {'Expr': 'u[1]*cos(u[3])-u[2]*sin(u[3])'}
+{'BlockType': 'Fcn', 'Name': 'i_beta_calc', 'SID': '204'} {'Expr': 'u[1]*sin(u[3])+u[2]*cos(u[3])'}
+{'BlockType': 'Fcn', 'Name': 'ib_calc', 'SID': '205'} {'Expr': '-0.5*u[1]+sqrt(3)/2*u[2]'}
+{'BlockType': 'Fcn', 'Name': 'ic_calc', 'SID': '206'} {'Expr': '-0.5*u[1]-sqrt(3)/2*u[2]'}
+{'BlockType': 'DiscreteIntegrator', 'Name': 'id_integrator', 'SID': '207'} {'gainval': '1', 'InitialConditionSetting': 'Auto', 'SampleTime': 'PMLSM_Ts_s', 'ICPrevOutput': 'DiscIntNeverNeededParam', 'ICPrevScaledInput': 'DiscIntNeverNeededParam'}
+{'BlockType': 'DiscreteIntegrator', 'Name': 'iq_integrator', 'SID': '208'} {'gainval': '1', 'InitialConditionSetting': 'Auto', 'SampleTime': 'PMLSM_Ts_s', 'ICPrevOutput': 'DiscIntNeverNeededParam', 'ICPrevScaledInput': 'DiscIntNeverNeededParam'}
+{'BlockType': 'Gain', 'Name': 'omega_gain', 'SID': '209'} {'Gain': '2*pi/PMLSM_tau_NN_m'}
+{'BlockType': 'Fcn', 'Name': 'theta_calc', 'SID': '231'} {'Expr': 'rem(2*pi*u[1]/PMLSM_tau_NN_m+PMLSM_theta_offset_rad,2*pi)'}
+{'BlockType': 'DiscreteIntegrator', 'Name': 'v_integrator', 'SID': '232'} {'gainval': '1', 'InitialConditionSetting': 'Auto', 'SampleTime': 'PMLSM_Ts_s', 'ICPrevOutput': 'DiscIntNeverNeededParam', 'ICPrevScaledInput': 'DiscIntNeverNeededParam'}
+{'BlockType': 'Gain', 'Name': 'v_to_mmps', 'SID': '233'} {'Gain': '1000'}
+{'BlockType': 'DiscreteIntegrator', 'Name': 'x_integrator', 'SID': '234'} {'gainval': '1', 'InitialConditionSetting': 'Auto', 'SampleTime': 'PMLSM_Ts_s', 'ICPrevOutput': 'DiscIntNeverNeededParam', 'ICPrevScaledInput': 'DiscIntNeverNeededParam'}
+{'BlockType': 'Gain', 'Name': 'x_to_mm', 'SID': '235'} {'Gain': '1000'}
+{'BlockType': 'Outport', 'Name': 'id', 'SID': '236'} {}
+{'BlockType': 'Outport', 'Name': 'iq', 'SID': '237'} {'Port': '2'}
+{'BlockType': 'Outport', 'Name': 'ia', 'SID': '238'} {'Port': '3'}
+{'BlockType': 'Outport', 'Name': 'ib', 'SID': '239'} {'Port': '4'}
+{'BlockType': 'Outport', 'Name': 'ic', 'SID': '240'} {'Port': '5'}
+{'BlockType': 'Outport', 'Name': 'x_mm', 'SID': '241'} {'Port': '6'}
+{'BlockType': 'Outport', 'Name': 'v_mmps', 'SID': '242'} {'Port': '7'}
+{'BlockType': 'Outport', 'Name': 'theta_e_actual', 'SID': '243'} {'Port': '8'}
+{'BlockType': 'Outport', 'Name': 'omega_e', 'SID': '244'} {'Port': '9'}
+WIRE 206#out:1 -> ['240#in:1']
+WIRE 205#out:1 -> ['239#in:1']
+WIRE 196#out:1 -> ['206#in:1', '205#in:1']
+WIRE 204#out:1 -> ['196#in:2']
+WIRE 203#out:1 -> ['196#in:1', '238#in:1']
+WIRE 202#out:1 -> ['232#in:1']
+WIRE 201#out:1 -> ['202#in:1']
+WIRE 194#out:1 -> ['201#in:3']
+WIRE 199#out:1 -> ['208#in:1']
+WIRE 200#out:1 -> ['199#in:1']
+WIRE 193#out:1 -> ['200#in:1']
+WIRE 197#out:1 -> ['207#in:1']
+WIRE 198#out:1 -> ['197#in:1']
+WIRE 192#out:1 -> ['198#in:1']
+WIRE 235#out:1 -> ['241#in:1']
+WIRE 233#out:1 -> ['242#in:1']
+WIRE 231#out:1 -> ['243#in:1', '195#in:3']
+WIRE 209#out:1 -> ['1450#in:1', '244#in:1']
+WIRE 207#out:1 -> ['236#in:1', '195#in:1', '198#in:2', '200#in:4']
+WIRE 208#out:1 -> ['195#in:2', '201#in:1', '200#in:2', '237#in:1', '198#in:4']
+WIRE 232#out:1 -> ['209#in:1', '234#in:1', '233#in:1', '201#in:2']
+WIRE 234#out:1 -> ['231#in:1', '235#in:1']
+WIRE 195#out:1 -> ['203#in:1', '204#in:1']
+WIRE 1449#out:1 -> ['198#in:3']
+WIRE 1451#out:1 -> ['200#in:3']
+
+SYSTEM 505
+{'BlockType': 'Inport', 'Name': 'x_ref_mm', 'SID': '508'} {}
+{'BlockType': 'Inport', 'Name': 'x_mm', 'SID': '509'} {'Port': '2'}
+{'BlockType': 'Inport', 'Name': 'v_mmps', 'SID': '510'} {'Port': '3'}
+{'BlockType': 'Inport', 'Name': 'ia', 'SID': '511'} {'Port': '4'}
+{'BlockType': 'Inport', 'Name': 'ib', 'SID': '512'} {'Port': '5'}
+{'BlockType': 'Inport', 'Name': 'ic', 'SID': '513'} {'Port': '6'}
+{'BlockType': 'Inport', 'Name': 'theta_e', 'SID': '514'} {'Port': '7'}
+{'BlockType': 'Inport', 'Name': 'omega_e', 'SID': '515'} {'Port': '8'}
+{'BlockType': 'Inport', 'Name': 'Position_Loop_EN', 'SID': '1041'} {'Port': '9'}
+{'BlockType': 'Inport', 'Name': 'Close_Loop_EN', 'SID': '1040'} {'Port': '10'}
+{'BlockType': 'Inport', 'Name': 'v_ref_cmd', 'SID': '1042'} {'Port': '11'}
+{'BlockType': 'Inport', 'Name': 'id_ref_cmd', 'SID': '1043'} {'Port': '12'}
+{'BlockType': 'Inport', 'Name': 'iq_test_mode', 'SID': '1044'} {'Port': '13'}
+{'BlockType': 'Inport', 'Name': 'iq_test_ref', 'SID': '1045'} {'Port': '14'}
+{'BlockType': 'Inport', 'Name': 'PI_Reset_EN', 'SID': '1046'} {'Port': '15'}
+{'BlockType': 'TriggerPort', 'Name': 'Control_Tick', 'SID': '767'} {'TriggerType': 'function-call', 'VariantControl': '(inherit)', 'StatesWhenEnabling': 'held', 'PortDimensions': '1'}
+{'BlockType': 'DataStoreMemory', 'Name': 'Close_Loop_EN_cmd', 'SID': '1234'} {'DataStoreName': 'Close_Loop_EN_cmd', 'WriteAfterWriteMsg': 'warning', 'InitialValue': '1', 'ShowAdditionalParam': 'off'}
+{'BlockType': 'SubSystem', 'Name': 'FOC_Algorithm', 'SID': '546'} {}
+{'BlockType': 'Constant', 'Name': 'Inactive_Alignment_Fault', 'SID': '1233'} {'Value': '0'}
+{'BlockType': 'Constant', 'Name': 'Inactive_Alignment_Fault1', 'SID': '1272'} {'Value': '0'}
+{'BlockType': 'Goto', 'Name': 'Iq_Command', 'SID': '943'} {'GotoTag': 'iq_ref'}
+{'BlockType': 'DataStoreMemory', 'Name': 'Iq_Test_Mode_cmd', 'SID': '1238'} {'DataStoreName': 'Iq_Test_Mode_cmd', 'WriteAfterWriteMsg': 'warning', 'ShowAdditionalParam': 'off'}
+{'BlockType': 'DataStoreMemory', 'Name': 'PI_Reset_EN_cmd', 'SID': '1236'} {'DataStoreName': 'PI_Reset_EN_cmd', 'WriteAfterWriteMsg': 'warning', 'ShowAdditionalParam': 'off'}
+{'BlockType': 'SubSystem', 'Name': 'Position_Loop', 'SID': '1109'} {'TreatAsAtomicUnit': 'on'}
+{'BlockType': 'From', 'Name': 'Read_Iq_Command', 'SID': '944'} {'GotoTag': 'iq_ref'}
+{'BlockType': 'From', 'Name': 'Read_id_selected', 'SID': '1266'} {'GotoTag': 'id_ref'}
+{'BlockType': 'From', 'Name': 'Read_iq_speed', 'SID': '1262'} {'GotoTag': 'iq_ref_normal'}
+{'BlockType': 'From', 'Name': 'Read_pi_reset', 'SID': '1268'} {'GotoTag': 'pi_reset'}
+{'BlockType': 'From', 'Name': 'Read_v_pos', 'SID': '1260'} {'GotoTag': 'v_pos'}
+{'BlockType': 'From', 'Name': 'Read_v_selected', 'SID': '1264'} {'GotoTag': 'v_selected'}
+{'BlockType': 'SubSystem', 'Name': 'Reference_Manager', 'SID': '991'} {}
+{'BlockType': 'Goto', 'Name': 'Route_id_selected', 'SID': '1265'} {'GotoTag': 'id_ref'}
+{'BlockType': 'Goto', 'Name': 'Route_iq_speed', 'SID': '1261'} {'GotoTag': 'iq_ref_normal'}
+{'BlockType': 'Goto', 'Name': 'Route_pi_reset', 'SID': '1267'} {'GotoTag': 'pi_reset'}
+{'BlockType': 'Goto', 'Name': 'Route_v_pos', 'SID': '1259'} {'GotoTag': 'v_pos'}
+{'BlockType': 'Goto', 'Name': 'Route_v_selected', 'SID': '1263'} {'GotoTag': 'v_selected'}
+{'BlockType': 'SubSystem', 'Name': 'Scheduler_10k_1k_100', 'SID': '740'} {'PortSchema': '{"entries":[{"content":{"sides":[{"content":{"connectorIds":["Out2"]},"type":"ConnectorPlacement.EquallySpacedRectSide","uuid":"7a2cd2ad-1b6d-4ced-b4c0-dea2e76e4441"},{"content":{"connectorIds":["Out1"],"side":"RIGHT"},"type":"ConnectorPlacement.EquallySpacedRectSide","uuid":"f7db3b94-1126-4089-83bd-8e57d20e6fd7"},{"content":{"side":"TOP"},"type":"ConnectorPlacement.EquallySpacedRectSide","uuid":"9153f6b5-22af-48be-92c0-68be43f93648"}]},"type":"ConnectorPlacement.EquallySpacedConnector","uuid":"029fb485-bddc-4cd2-9c64-7547c8dffd2b"}],"packageUris":["http://schema.mathworks.com/mf0/Connector/R2020b"],"version":"1.0"}'}
+{'BlockType': 'DataStoreWrite', 'Name': 'Set_Close_Loop_EN_cmd', 'SID': '1235'} {'Priority': '-10', 'DataStoreName': 'Close_Loop_EN_cmd', 'IndexOptions': 'Index vector (dialog)', 'Indices': '1', 'OutputSizes': '1'}
+{'BlockType': 'DataStoreWrite', 'Name': 'Set_Iq_Test_Mode_cmd', 'SID': '1239'} {'Priority': '-10', 'DataStoreName': 'Iq_Test_Mode_cmd', 'IndexOptions': 'Index vector (dialog)', 'Indices': '1', 'OutputSizes': '1'}
+{'BlockType': 'DataStoreWrite', 'Name': 'Set_PI_Reset_EN_cmd', 'SID': '1237'} {'Priority': '-10', 'DataStoreName': 'PI_Reset_EN_cmd', 'IndexOptions': 'Index vector (dialog)', 'Indices': '1', 'OutputSizes': '1'}
+{'BlockType': 'SubSystem', 'Name': 'Speed_Loop', 'SID': '1122'} {'TreatAsAtomicUnit': 'on'}
+{'BlockType': 'Outport', 'Name': 'cmp_a_counts', 'SID': '516'} {}
+{'BlockType': 'Outport', 'Name': 'cmp_b_counts', 'SID': '517'} {'Port': '2'}
+{'BlockType': 'Outport', 'Name': 'cmp_c_counts', 'SID': '518'} {'Port': '3'}
+{'BlockType': 'Outport', 'Name': 'outer_id_ref', 'SID': '1902'} {'Port': '4'}
+{'BlockType': 'Outport', 'Name': 'outer_iq_ref', 'SID': '1903'} {'Port': '5'}
+WIRE 944#out:1 -> ['546#in:6']
+WIRE 546#out:3 -> ['518#in:1']
+WIRE 546#out:2 -> ['517#in:1']
+WIRE 546#out:1 -> ['516#in:1']
+WIRE 515#out:1 -> ['546#in:5']
+WIRE 514#out:1 -> ['546#in:4']
+WIRE 513#out:1 -> ['546#in:3']
+WIRE 512#out:1 -> ['546#in:2']
+WIRE 511#out:1 -> ['546#in:1']
+WIRE 1045#out:1 -> ['991#in:8']
+WIRE 1043#out:1 -> ['991#in:6']
+WIRE 1042#out:1 -> ['991#in:5']
+WIRE 1041#out:1 -> ['991#in:3']
+WIRE 1268#out:1 -> ['546#in:8']
+WIRE 1266#out:1 -> ['546#in:7']
+WIRE 1264#out:1 -> ['1122#in:1']
+WIRE 1262#out:1 -> ['991#in:1']
+WIRE 1260#out:1 -> ['991#in:2']
+WIRE 991#out:3 -> ['1263#in:1']
+WIRE 1233#out:1 -> ['1109#in:3', '1109#in:4']
+WIRE 1122#out:1 -> ['1261#in:1']
+WIRE 1109#out:1 -> ['1259#in:1']
+WIRE 509#out:1 -> ['1109#in:2']
+WIRE 508#out:1 -> ['1109#in:1']
+WIRE 740#out:1 -> ['1122#trigger']
+WIRE 740#out:2 -> ['1109#trigger']
+WIRE 1046#out:1 -> ['1267#in:1', '1237#in:1']
+WIRE 1044#out:1 -> ['1239#in:1', '991#in:7']
+WIRE 1040#out:1 -> ['1235#in:1', '991#in:4']
+WIRE 1272#out:1 -> ['1122#in:3']
+WIRE 510#out:1 -> ['1122#in:2']
+WIRE 991#out:1 -> ['1902#in:1', '1265#in:1']
+WIRE 991#out:2 -> ['1903#in:1', '943#in:1']
+
+SYSTEM 740
+{'BlockType': 'Sum', 'Name': 'Add1', 'SID': '741'} {'IconShape': 'rectangular'}
+{'BlockType': 'Sum', 'Name': 'Add2', 'SID': '742'} {'IconShape': 'rectangular'}
+{'BlockType': 'Constant', 'Name': 'Constant1', 'SID': '744'} {}
+{'BlockType': 'Constant', 'Name': 'Constant2', 'SID': '745'} {'Value': '0'}
+{'BlockType': 'Constant', 'Name': 'Constant3', 'SID': '746'} {}
+{'BlockType': 'Constant', 'Name': 'Constant4', 'SID': '747'} {'Value': '0'}
+{'BlockType': 'Logic', 'Name': 'Logical\nOperator', 'SID': '750'} {'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'Switch', 'Name': 'pos_cnt_hold_sel', 'SID': '754'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'Switch', 'Name': 'pos_cnt_update_sel', 'SID': '755'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'UnitDelay', 'Name': 'pos_cnt_z', 'SID': '756'} {'SampleTime': '-1'}
+{'BlockType': 'Reference', 'Name': 'pos_tc', 'SID': '757'} {'SourceBlock': 'simulink/Logic and Bit\nOperations/Compare\nTo Constant', 'SourceType': 'Compare To Constant', 'relop': '>=', 'const': '10'}
+{'BlockType': 'Switch', 'Name': 'spd_cnt_next_sel', 'SID': '758'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'UnitDelay', 'Name': 'spd_cnt_z', 'SID': '759'} {'SampleTime': '-1'}
+{'BlockType': 'Reference', 'Name': 'spd_tc', 'SID': '760'} {'SourceBlock': 'simulink/Logic and Bit\nOperations/Compare\nTo Constant', 'SourceType': 'Compare To Constant', 'relop': '>=', 'const': '10'}
+{'BlockType': 'Outport', 'Name': 'speed_tick', 'SID': '762'} {}
+{'BlockType': 'Outport', 'Name': 'pos_tick', 'SID': '763'} {'Port': '2'}
+WIRE 759#out:1 -> ['741#in:1']
+WIRE 760#out:1 -> ['762#in:1', '750#in:1', '754#in:2', '758#in:2']
+WIRE 744#out:1 -> ['741#in:2']
+WIRE 745#out:1 -> ['758#in:1']
+WIRE 758#out:1 -> ['759#in:1']
+WIRE 741#out:1 -> ['758#in:3', '760#in:1']
+WIRE 756#out:1 -> ['742#in:1', '754#in:3']
+WIRE 746#out:1 -> ['742#in:2']
+WIRE 742#out:1 -> ['755#in:3', '757#in:1']
+WIRE 757#out:1 -> ['750#in:2', '755#in:2']
+WIRE 747#out:1 -> ['755#in:1']
+WIRE 755#out:1 -> ['754#in:1']
+WIRE 754#out:1 -> ['756#in:1']
+WIRE 750#out:1 -> ['763#in:1']
+
+SYSTEM 991
+{'BlockType': 'Inport', 'Name': 'iq_ref_normal', 'SID': '992'} {}
+{'BlockType': 'Inport', 'Name': 'v_ref_pos', 'SID': '993'} {'Port': '2'}
+{'BlockType': 'Inport', 'Name': 'Pos_Loop_EN', 'SID': '994'} {'Port': '3'}
+{'BlockType': 'Inport', 'Name': 'Close_Loop_EN', 'SID': '996'} {'Port': '4'}
+{'BlockType': 'Inport', 'Name': 'v_ref_cmd', 'SID': '1087'} {'Port': '5'}
+{'BlockType': 'Inport', 'Name': 'id_ref_cmd', 'SID': '1088'} {'Port': '6'}
+{'BlockType': 'Inport', 'Name': 'Iq_Test_Mode', 'SID': '1089'} {'Port': '7'}
+{'BlockType': 'Inport', 'Name': 'iq_test_ref', 'SID': '1090'} {'Port': '8'}
+{'BlockType': 'Constant', 'Name': 'Constant15', 'SID': '1004'} {'Value': '0'}
+{'BlockType': 'Saturate', 'Name': 'Saturation', 'SID': '1020'} {'UpperLimit': 'v_ref_max', 'LowerLimit': '-v_ref_max'}
+{'BlockType': 'Switch', 'Name': 'Switch', 'SID': '1021'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'Switch', 'Name': 'Switch9', 'SID': '1028'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'Switch', 'Name': 'v_ref_closed_sel', 'SID': '1029'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'SubSystem', 'Name': 'v_ref_set_slew_limiter', 'SID': '1030'} {}
+{'BlockType': 'Outport', 'Name': 'id_ref', 'SID': '1037'} {}
+{'BlockType': 'Outport', 'Name': 'iq_ref', 'SID': '1038'} {'Port': '2'}
+{'BlockType': 'Outport', 'Name': 'v_ref', 'SID': '1039'} {'Port': '3'}
+WIRE 1021#out:1 -> ['1038#in:1']
+WIRE 1028#out:1 -> ['1039#in:1']
+WIRE 996#out:1 -> ['1028#in:2']
+WIRE 1090#out:1 -> ['1021#in:1']
+WIRE 1089#out:1 -> ['1021#in:2']
+WIRE 1004#out:1 -> ['1028#in:3']
+WIRE 992#out:1 -> ['1021#in:3']
+WIRE 1088#out:1 -> ['1037#in:1']
+WIRE 1030#out:1 -> ['1020#in:1']
+WIRE 993#out:1 -> ['1029#in:1']
+WIRE 1029#out:1 -> ['1030#in:1']
+WIRE 994#out:1 -> ['1029#in:2']
+WIRE 1020#out:1 -> ['1028#in:1']
+WIRE 1087#out:1 -> ['1029#in:3']
+
+SYSTEM 1030
+{'BlockType': 'Inport', 'Name': 'v_ref_set', 'SID': '1031'} {}
+{'BlockType': 'Sum', 'Name': 'Add', 'SID': '1032'} {'IconShape': 'rectangular'}
+{'BlockType': 'Saturate', 'Name': 'Saturation', 'SID': '1033'} {'UpperLimit': 'v_ref_set_step_up', 'LowerLimit': '-v_ref_set_step_dn'}
+{'BlockType': 'Sum', 'Name': 'Subtract', 'SID': '1034'} {'IconShape': 'rectangular', 'Inputs': '+-'}
+{'BlockType': 'UnitDelay', 'Name': 'v_ref_set_lim_z', 'SID': '1035'} {'SampleTime': '-1'}
+{'BlockType': 'Outport', 'Name': 'v_ref_set_limited', 'SID': '1036'} {}
+WIRE 1035#out:1 -> ['1032#in:2', '1034#in:2']
+WIRE 1031#out:1 -> ['1034#in:1']
+WIRE 1033#out:1 -> ['1032#in:1']
+WIRE 1034#out:1 -> ['1033#in:1']
+WIRE 1032#out:1 -> ['1036#in:1', '1035#in:1']
+
+SYSTEM 1122
+{'BlockType': 'Inport', 'Name': 'v_ref', 'SID': '1123'} {}
+{'BlockType': 'Inport', 'Name': 'v_mmps', 'SID': '1124'} {'Port': '2'}
+{'BlockType': 'Inport', 'Name': 'Angle_Init_EN', 'SID': '1125'} {'Port': '3'}
+{'BlockType': 'TriggerPort', 'Name': 'Trigger', 'SID': '1128'} {'VariantControl': '(inherit)', 'StatesWhenEnabling': 'held'}
+{'BlockType': 'Gain', 'Name': ' ', 'SID': '1129'} {'Gain': 'Ki_ASR * Ts_ASR'}
+{'BlockType': 'Gain', 'Name': '  ', 'SID': '1130'} {'Gain': 'Kp_ASR'}
+{'BlockType': 'Abs', 'Name': 'Abs', 'SID': '1131'} {'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'Sum', 'Name': 'Add1', 'SID': '1133'} {'IconShape': 'rectangular', 'Inputs': '+++'}
+{'BlockType': 'Sum', 'Name': 'Add2', 'SID': '1134'} {'IconShape': 'rectangular', 'Inputs': '++-'}
+{'BlockType': 'Constant', 'Name': 'Constant1', 'SID': '1135'} {'Value': '0'}
+{'BlockType': 'Constant', 'Name': 'Constant4', 'SID': '1136'} {'Value': '0'}
+{'BlockType': 'From', 'Name': 'From', 'SID': '1137'} {'GotoTag': 'diq_ref_z'}
+{'BlockType': 'From', 'Name': 'From1', 'SID': '1138'} {'Commented': 'on', 'GotoTag': 'abs_v_mmps'}
+{'BlockType': 'From', 'Name': 'From10', 'SID': '1139'} {'GotoTag': 'speed_int_reset'}
+{'BlockType': 'From', 'Name': 'From2', 'SID': '1141'} {'GotoTag': 'x_s_next'}
+{'BlockType': 'From', 'Name': 'From3', 'SID': '1142'} {'Commented': 'on', 'GotoTag': 'abs_v_ref'}
+{'BlockType': 'From', 'Name': 'From4', 'SID': '1143'} {'Commented': 'on', 'GotoTag': 'e_v'}
+{'BlockType': 'From', 'Name': 'From5', 'SID': '1144'} {'Commented': 'on', 'GotoTag': 'v_ref'}
+{'BlockType': 'From', 'Name': 'From6', 'SID': '1145'} {'GotoTag': 'v_ref'}
+{'BlockType': 'From', 'Name': 'From8', 'SID': '1147'} {'GotoTag': 'abs_v_ref'}
+{'BlockType': 'From', 'Name': 'From9', 'SID': '1148'} {'GotoTag': 'e_v'}
+{'BlockType': 'Gain', 'Name': 'Gain', 'SID': '1149'} {'Gain': 'Kaw_s'}
+{'BlockType': 'Goto', 'Name': 'Goto', 'SID': '1150'} {'GotoTag': 'diq_ref_z'}
+{'BlockType': 'Goto', 'Name': 'Goto1', 'SID': '1151'} {'GotoTag': 'abs_v_ref'}
+{'BlockType': 'Goto', 'Name': 'Goto3', 'SID': '1153'} {'GotoTag': 'e_v'}
+{'BlockType': 'Goto', 'Name': 'Goto4', 'SID': '1154'} {'GotoTag': 'v_ref'}
+{'BlockType': 'Goto', 'Name': 'Goto6', 'SID': '1155'} {'GotoTag': 'x_s_next'}
+{'BlockType': 'Goto', 'Name': 'Goto7', 'SID': '1156'} {'GotoTag': 'speed_int_reset'}
+{'BlockType': 'Switch', 'Name': 'PI_Reset_Output', 'SID': '1164'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'From', 'Name': 'Read_PI_Hard_Reset', 'SID': '1140'} {'GotoTag': 'speed_pi_hard_reset'}
+{'BlockType': 'Goto', 'Name': 'Route_PI_Hard_Reset', 'SID': '1157'} {'GotoTag': 'speed_pi_hard_reset'}
+{'BlockType': 'Saturate', 'Name': 'Saturation', 'SID': '1158'} {'UpperLimit': 'Iq_int_limit', 'LowerLimit': '-Iq_int_limit'}
+{'BlockType': 'Saturate', 'Name': 'Saturation1', 'SID': '1159'} {'UpperLimit': 'Speed_loop_Iq_Limit', 'LowerLimit': '-Speed_loop_Iq_Limit'}
+{'BlockType': 'Sum', 'Name': 'Subtract', 'SID': '1162'} {'IconShape': 'rectangular', 'Inputs': '+-'}
+{'BlockType': 'Sum', 'Name': 'Sum', 'SID': '1163'} {'Inputs': '|+-'}
+{'BlockType': 'Switch', 'Name': 'Switch1', 'SID': '1165'} {'Criteria': 'u2 > Threshold', 'Threshold': '0.5', 'InputSameDT': 'off', 'SaturateOnIntegerOverflow': 'off'}
+{'BlockType': 'UnitDelay', 'Name': 'Unit Delay', 'SID': '1166'} {'SampleTime': '-1'}
+{'BlockType': 'SubSystem', 'Name': 'friction_compensation', 'SID': '1167'} {'Commented': 'on'}
+{'BlockType': 'SubSystem', 'Name': 'pi_reset_manager', 'SID': '1189'} {}
+{'BlockType': 'UnitDelay', 'Name': 'x_s_z', 'SID': '1228'} {'SampleTime': '-1'}
+{'BlockType': 'Outport', 'Name': 'iq_ref', 'SID': '1229'} {}
+WIRE 1163#out:1 -> ['1153#in:1', '1129#in:1', '1130#in:1']
+WIRE 1133#out:1 -> ['1162#in:1', '1159#in:1']
+WIRE 1123#out:1 -> ['1163#in:1', '1131#in:1', '1154#in:1']
+WIRE 1159#out:1 -> ['1164#in:3', '1162#in:2']
+WIRE 1141#out:1 -> ['1228#in:1']
+WIRE 1134#out:1 -> ['1158#in:1']
+WIRE 1149#out:1 -> ['1134#in:3']
+WIRE 1129#out:1 -> ['1134#in:2']
+WIRE 1162#out:1 -> ['1166#in:1']
+WIRE 1166#out:1 -> ['1150#in:1']
+WIRE 1137#out:1 -> ['1149#in:1']
+WIRE 1135#out:1 -> ['1165#in:1']
+WIRE 1164#out:1 -> ['1229#in:1']
+WIRE 1136#out:1 -> ['1164#in:1']
+WIRE 1130#out:1 -> ['1133#in:2']
+WIRE 1167#out:1 -> ['1133#in:1']
+WIRE 1228#out:1 -> ['1133#in:3', '1134#in:1']
+WIRE 1143#out:1 -> ['1167#in:4']
+WIRE 1138#out:1 -> ['1167#in:3']
+WIRE 1142#out:1 -> ['1167#in:2']
+WIRE 1131#out:1 -> ['1151#in:1']
+WIRE 1125#out:1 -> ['1189#in:1']
+WIRE 1144#out:1 -> ['1167#in:1']
+WIRE 1145#out:1 -> ['1189#in:2']
+WIRE 1147#out:1 -> ['1189#in:3']
+WIRE 1148#out:1 -> ['1189#in:4']
+WIRE 1140#out:1 -> ['1164#in:2']
+WIRE 1189#out:2 -> ['1156#in:1']
+WIRE 1189#out:1 -> ['1157#in:1']
+WIRE 1139#out:1 -> ['1165#in:2']
+WIRE 1165#out:1 -> ['1155#in:1']
+WIRE 1158#out:1 -> ['1165#in:3']
+WIRE 1124#out:1 -> ['1163#in:2']
+
+SYSTEM 1189
+{'BlockType': 'Inport', 'Name': 'Angle_Init_EN', 'SID': '1190'} {}
+{'BlockType': 'Inport', 'Name': 'v_ref', 'SID': '1192'} {'Port': '2'}
+{'BlockType': 'Inport', 'Name': 'abs_v_ref', 'SID': '1193'} {'Port': '3'}
+{'BlockType': 'Inport', 'Name': 'e_v', 'SID': '1195'} {'Port': '4'}
+{'BlockType': 'Reference', 'Name': 'Compare\nTo Constant1', 'SID': '1196'} {'SourceBlock': 'simulink/Logic and Bit\nOperations/Compare\nTo Constant', 'SourceType': 'Compare To Constant', 'relop': '<', 'const': '-v_over_eps'}
+{'BlockType': 'Reference', 'Name': 'Compare\nTo Constant2', 'SID': '1197'} {'SourceBlock': 'simulink/Logic and Bit\nOperations/Compare\nTo Constant', 'SourceType': 'Compare To Constant', 'relop': '<', 'const': 'v_ref_zero_eps'}
+{'BlockType': 'Reference', 'Name': 'Compare\nTo Constant4', 'SID': '1199'} {'SourceBlock': 'simulink/Logic and Bit\nOperations/Compare\nTo Constant', 'SourceType': 'Compare To Constant', 'relop': '>', 'const': 'v_ff_eps'}
+{'BlockType': 'DataStoreRead', 'Name': 'Constant', 'SID': '1200'} {'DataStoreName': 'PI_Reset_EN_cmd', 'IndexOptions': 'Index vector (dialog)', 'Indices': '1', 'OutputSizes': '1'}
+{'BlockType': 'DataStoreRead', 'Name': 'Constant2', 'SID': '1201'} {'DataStoreName': 'Iq_Test_Mode_cmd', 'IndexOptions': 'Index vector (dialog)', 'Indices': '1', 'OutputSizes': '1'}
+{'BlockType': 'DataStoreRead', 'Name': 'Constant3', 'SID': '1202'} {'DataStoreName': 'Close_Loop_EN_cmd', 'IndexOptions': 'Index vector (dialog)', 'Indices': '1', 'OutputSizes': '1'}
+{'BlockType': 'From', 'Name': 'From', 'SID': '1203'} {'GotoTag': 'ASR_RefZero_IntReset'}
+{'BlockType': 'From', 'Name': 'From10', 'SID': '1204'} {'GotoTag': 'ASR_Hard_Reset'}
+{'BlockType': 'From', 'Name': 'From12', 'SID': '1206'} {'GotoTag': 'ASR_Over_Reset'}
+{'BlockType': 'From', 'Name': 'From5', 'SID': '1207'} {'GotoTag': 'abs_v_ref'}
+{'BlockType': 'From', 'Name': 'From7', 'SID': '1209'} {'GotoTag': 'abs_v_ref'}
+{'BlockType': 'Goto', 'Name': 'Goto', 'SID': '1210'} {'GotoTag': 'abs_v_ref'}
+{'BlockType': 'Goto', 'Name': 'Goto2', 'SID': '1212'} {'GotoTag': 'ASR_RefZero_IntReset'}
+{'BlockType': 'Goto', 'Name': 'Goto5', 'SID': '1213'} {'GotoTag': 'ASR_Over_Reset'}
+{'BlockType': 'Goto', 'Name': 'Goto8', 'SID': '1215'} {'GotoTag': 'ASR_Hard_Reset'}
+{'BlockType': 'Logic', 'Name': 'Logical\nOperator', 'SID': '1216'} {'Operator': 'OR', 'Inputs': '3', 'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'Logic', 'Name': 'Logical\nOperator1', 'SID': '1217'} {'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'Logic', 'Name': 'Logical\nOperator2', 'SID': '1218'} {'Operator': 'NOT', 'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'Logic', 'Name': 'Logical\nOperator3', 'SID': '1219'} {'Operator': 'OR', 'Inputs': '4', 'AllPortsSameDT': 'off', 'OutDataTypeStr': 'boolean'}
+{'BlockType': 'Product', 'Name': 'Product2', 'SID': '1222'} {}
+{'BlockType': 'Signum', 'Name': 'Sign', 'SID': '1223'} {}
+{'BlockType': 'Outport', 'Name': 'pi_hard_reset', 'SID': '1224'} {}
+{'BlockType': 'Outport', 'Name': 'speed_int_reset', 'SID': '1225'} {'Port': '2'}
+WIRE 1197#out:1 -> ['1212#in:1']
+WIRE 1207#out:1 -> ['1197#in:1']
+WIRE 1209#out:1 -> ['1199#in:1']
+WIRE 1195#out:1 -> ['1222#in:2']
+WIRE 1223#out:1 -> ['1222#in:1']
+WIRE 1222#out:1 -> ['1196#in:1']
+WIRE 1196#out:1 -> ['1217#in:2']
+WIRE 1199#out:1 -> ['1217#in:1']
+WIRE 1192#out:1 -> ['1223#in:1']
+WIRE 1193#out:1 -> ['1210#in:1']
+WIRE 1217#out:1 -> ['1213#in:1']
+WIRE 1203#out:1 -> ['1216#in:3']
+WIRE 1216#out:1 -> ['1225#in:1']
+WIRE 1206#out:1 -> ['1216#in:2']
+WIRE 1204#out:1 -> ['1224#in:1', '1216#in:1']
+WIRE 1219#out:1 -> ['1215#in:1']
+WIRE 1190#out:1 -> ['1219#in:1']
+WIRE 1218#out:1 -> ['1219#in:4']
+WIRE 1201#out:1 -> ['1219#in:3']
+WIRE 1202#out:1 -> ['1218#in:1']
+WIRE 1200#out:1 -> ['1219#in:2']
+
+simulink/stateflow/chart_35.xml
+function y = theta_to_u16(theta)
+t=mod(theta,2*pi);
+n=floor(t*65536/(2*pi)+0.5);
+if n>=65536, n=0; end
+y=uint16(n);
+end
+
+
+simulink/stateflow/chart_42.xml
+function [x_ref_mm,vdc,load_N,Close_Loop_EN,Position_Loop_EN,PWM_EN,v_ref_cmd,id_ref_cmd,iq_test_mode,iq_test_ref,PI_Reset_EN] = Simple_Host(t, Host_Enable_Schedule, Host_Speed_mmps, Host_Id_A, Host_Iq_Test_Mode, Host_Iq_A, Host_PI_Reset_EN, Host_Start_s, Host_Target_mm, Udc, Host_Load_N, Host_Traj_Vmax, Host_Traj_Amax, Host_Traj_Jmax, Host_Speed_Ramp_s)
+% Smooth acceleration - constant speed - smooth deceleration.
+x_ref_mm=pmlsm_scurve_profile(t-Host_Start_s,Host_Target_mm,Host_Traj_Vmax,Host_Traj_Amax,Host_Traj_Jmax,Host_Speed_Ramp_s);
+r=min(max((t-Host_Start_s)/max(Host_Speed_Ramp_s,1e-6),0),1);
+v_ref_cmd=Host_Speed_mmps*(10*r^3-15*r^4+6*r^5);
+vdc=Udc; load_N=Host_Load_N;
+Close_Loop_EN=0; Position_Loop_EN=0; PWM_EN=0;
+for k=1:size(Host_Enable_Schedule,1)
+ if t>=Host_Enable_Schedule(k,1)
+  Close_Loop_EN=double(Host_Enable_Schedule(k,2)~=0);
+  Position_Loop_EN=double(Host_Enable_Schedule(k,3)~=0);
+  PWM_EN=double(Host_Enable_Schedule(k,4)~=0);
+ end
+end
+id_ref_cmd=Host_Id_A;
+iq_test_mode=Host_Iq_Test_Mode; iq_test_ref=Host_Iq_A;
+PI_Reset_EN=Host_PI_Reset_EN;
+end

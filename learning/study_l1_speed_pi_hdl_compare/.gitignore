@@ -1,0 +1,11 @@
+.runtime/
+*.slxc
+slprj/
+reports/checkpoint_a/fresh_*/
+reports/checkpoint_a/build_run*.txt
+reports/checkpoint_a/regression_run*.txt
+reports/checkpoint_a/audit_run.txt
+reports/checkpoint_a/runtime_gate.txt
+reports/checkpoint_a/fresh_verification*.txt
+reports/checkpoint_a/verification/all_samples.csv
+models/stage_verification/

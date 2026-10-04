@@ -1,0 +1,62 @@
+MATLAB=26.2.0.3386108 (R2026b)
+SOURCE=D:\Project\FPGA_XC7A200T\simulink模型\PMLSM_ThreeLoop_Simple.slx
+ORIGINAL_MODEL_SAVED=0
+Kp_ASR=0.018033474852681124
+Ki_ASR=1.4426779882144898
+Ts_ASR=0.001
+Ts=0.0001
+Kaw_s=0.080000000000000002
+Speed_loop_Iq_Limit=1
+Iq_int_limit=0.5
+v_ff_eps=0.5
+v_over_eps=3
+v_ref_zero_eps=0
+SID=505 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz
+  BlockType=SubSystem
+  Commented=off
+SID=785 PATH=PMLSM_ThreeLoop_Simple/Control_Tick_10kHz
+  BlockType=FunctionCallGenerator
+  SampleTime=Ts
+  Commented=off
+SID=767 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Control_Tick
+  BlockType=TriggerPort
+  SampleTime=1
+  TriggerType=function-call
+  StatesWhenEnabling=held
+  Commented=off
+SID=1122 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop
+  BlockType=SubSystem
+  Commented=off
+SID=1128 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/Trigger
+  BlockType=TriggerPort
+  SampleTime=1
+  TriggerType=rising
+  StatesWhenEnabling=held
+  Commented=off
+SID=1228 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/x_s_z
+  BlockType=UnitDelay
+  SampleTime=-1
+  InitialCondition=0
+  Commented=off
+SID=1166 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/Unit Delay
+  BlockType=UnitDelay
+  SampleTime=-1
+  InitialCondition=0
+  Commented=off
+SID=740 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Scheduler_10k_1k_100
+  BlockType=SubSystem
+  Commented=off
+SID=759 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Scheduler_10k_1k_100/spd_cnt_z
+  BlockType=UnitDelay
+  SampleTime=-1
+  InitialCondition=0
+  Commented=off
+SID=760 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Scheduler_10k_1k_100/spd_tc
+  BlockType=SubSystem
+  Commented=off
+  const=10
+  relop=>=
+SID=1167 PATH=PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/friction_compensation
+  BlockType=SubSystem
+  Commented=on
+SOURCE_LOADED_AND_PARAMETERS_AUDITED_PASS
