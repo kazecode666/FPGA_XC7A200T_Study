@@ -1,0 +1,2 @@
+# Keep actual-run evidence bytes equal to published SHA256 across checkouts.
+* -text -whitespace

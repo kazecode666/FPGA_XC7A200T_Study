@@ -1,0 +1,1 @@
+--incr --debug "off" --dll --relax --mt "2" -L "xil_defaultlib" -L "uvm" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "design" "xil_defaultlib.study_l1_system_cosim_top" "xil_defaultlib.glbl" -log "elaborate.log" --timescale "1ps/1ps" --override_timeprecision 

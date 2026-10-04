@@ -1,0 +1,79 @@
+{
+  "pass": true,
+  "scenario": "speed_deadtime",
+  "implementation": "original",
+  "oracle": "Actual frozen models/speed_pi_fixed.slx simulated fresh with real system input exports",
+  "hardware_scope": "Unselected HDL Coder baseline shadow; original floating PI is not claimed bit-exact to B1.",
+  "event_count": 1200,
+  "port_count": 14,
+  "raw_comparisons": 16800,
+  "mismatched_raw_codes": 0,
+  "mismatched_events": 0,
+  "ports": [
+    "iq_ref_A",
+    "iq_unlimited_A",
+    "integrator_A",
+    "saturation_active",
+    "integrator_next_A",
+    "previous_excess_A",
+    "excess_next_A",
+    "hard_reset",
+    "int_reset",
+    "iq_limited_A",
+    "error_mmps",
+    "P_A",
+    "KiTs_A",
+    "AW_A"
+  ],
+  "max_absolute_raw_error": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "changes_without_result": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "first_source_event_s": 0.00090000000000000008,
+  "speed_period_s": 0.001,
+  "clock_period_s": 2E-8,
+  "input_capture_to_result_cycles": 1,
+  "measured_clock_epoch_s": -1E-8,
+  "source_to_capture_s": [
+    9.9999998282029878E-9,
+    1.0000000161269895E-8
+  ],
+  "source_to_result_s": [
+    2.9999999817675871E-8,
+    3.0000000039720476E-8
+  ],
+  "observation_transport_s": [
+    9.6999999965596828E-7,
+    9.7000000010005749E-7
+  ],
+  "alignment": "Actual source-event order and measured physical clock ordinals; no fitted or arbitrary waveform shift",
+  "csv": "bit_true.csv"
+}

@@ -1,0 +1,135 @@
+MATLAB_D_GATE 26.2.0.3386108 (R2026b) 2026b PWD=D:\Project\FPGA_XC7A200T\learning\study_l1_speed_pi_hdl_compare\.runtime\d_probe_fresh_01
+LICENSE Simulink 1
+LICENSE Fixed_Point_Toolbox 1
+LICENSE EDA_Simulator_Link 1
+Simulink.ModelWorkspace
+    DataSource: 'MATLAB File'
+      FileName: 'init_PMLSM_ThreeLoop_Simple.m'
+
+FROZEN Kp_ASR 0.018033474852681124
+FROZEN Ki_ASR 1.4426779882144898
+FROZEN Ts_ASR 0.001
+FROZEN Ts 0.0001
+FROZEN Kaw_s 0.080000000000000002
+FROZEN Speed_loop_Iq_Limit 1
+FROZEN Iq_int_limit 0.5
+FROZEN v_ff_eps 0.5
+FROZEN v_over_eps 3
+FROZEN v_ref_zero_eps 0
+
+SID505 study_l1_d_probe_model/Control_Task_10kHz
+IN1 <- Read_x_ref_mm_1278 p1
+IN2 <- Read_x_mm_921 p1
+IN3 <- Read_v_mmps_922 p1
+IN4 <- Read_ia_A_493 p1
+IN5 <- Read_ib_A_495 p1
+IN6 <- Read_ic_A_497 p1
+IN7 <- Read_theta_e_rad_499 p1
+IN8 <- Read_omega_e_radps_502 p1
+IN9 <- Read_position_loop_enable_1246 p1
+IN10 <- Read_speed_loop_enable_1244 p1
+IN11 <- Read_host_v_ref_mmps_1250 p1
+IN12 <- Read_host_id_ref_A_1252 p1
+IN13 <- Read_host_iq_test_mode_1254 p1
+IN14 <- Read_host_iq_test_ref_A_1256 p1
+IN15 <- Effective_PI_Reset p1
+OUT1 -> Inverter_DeadTime p1
+OUT2 -> Inverter_DeadTime p2
+OUT3 -> Inverter_DeadTime p3
+OUT4 -> Publish_outer_id_ref_A p1
+OUT5 -> Publish_outer_iq_ref_A p1
+Children=study_l1_d_probe_model/Control_Task_10kHz | study_l1_d_probe_model/Control_Task_10kHz/x_ref_mm | study_l1_d_probe_model/Control_Task_10kHz/x_mm | study_l1_d_probe_model/Control_Task_10kHz/v_mmps | study_l1_d_probe_model/Control_Task_10kHz/ia | study_l1_d_probe_model/Control_Task_10kHz/ib | study_l1_d_probe_model/Control_Task_10kHz/ic | study_l1_d_probe_model/Control_Task_10kHz/theta_e | study_l1_d_probe_model/Control_Task_10kHz/omega_e | study_l1_d_probe_model/Control_Task_10kHz/Position_Loop_EN | study_l1_d_probe_model/Control_Task_10kHz/Close_Loop_EN | study_l1_d_probe_model/Control_Task_10kHz/v_ref_cmd | study_l1_d_probe_model/Control_Task_10kHz/id_ref_cmd | study_l1_d_probe_model/Control_Task_10kHz/iq_test_mode | study_l1_d_probe_model/Control_Task_10kHz/iq_test_ref | study_l1_d_probe_model/Control_Task_10kHz/PI_Reset_EN | study_l1_d_probe_model/Control_Task_10kHz/Control_Tick | study_l1_d_probe_model/Control_Task_10kHz/Close_Loop_EN_cmd | study_l1_d_probe_model/Control_Task_10kHz/FOC_Algorithm | study_l1_d_probe_model/Control_Task_10kHz/Inactive_Alignment_Fault | study_l1_d_probe_model/Control_Task_10kHz/Inactive_Alignment_Fault1 | study_l1_d_probe_model/Control_Task_10kHz/Iq_Command | study_l1_d_probe_model/Control_Task_10kHz/Iq_Test_Mode_cmd | study_l1_d_probe_model/Control_Task_10kHz/PI_Reset_EN_cmd | study_l1_d_probe_model/Control_Task_10kHz/Position_Loop | study_l1_d_probe_model/Control_Task_10kHz/Read_Iq_Command | study_l1_d_probe_model/Control_Task_10kHz/Read_id_selected | study_l1_d_probe_model/Control_Task_10kHz/Read_iq_speed | study_l1_d_probe_model/Control_Task_10kHz/Read_pi_reset | study_l1_d_probe_model/Control_Task_10kHz/Read_v_pos | study_l1_d_probe_model/Control_Task_10kHz/Read_v_selected | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager | study_l1_d_probe_model/Control_Task_10kHz/Route_id_selected | study_l1_d_probe_model/Control_Task_10kHz/Route_iq_speed | study_l1_d_probe_model/Control_Task_10kHz/Route_pi_reset | study_l1_d_probe_model/Control_Task_10kHz/Route_v_pos | study_l1_d_probe_model/Control_Task_10kHz/Route_v_selected | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100 | study_l1_d_probe_model/Control_Task_10kHz/Set_Close_Loop_EN_cmd | study_l1_d_probe_model/Control_Task_10kHz/Set_Iq_Test_Mode_cmd | study_l1_d_probe_model/Control_Task_10kHz/Set_PI_Reset_EN_cmd | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop | study_l1_d_probe_model/Control_Task_10kHz/cmp_a_counts | study_l1_d_probe_model/Control_Task_10kHz/cmp_b_counts | study_l1_d_probe_model/Control_Task_10kHz/cmp_c_counts | study_l1_d_probe_model/Control_Task_10kHz/outer_id_ref | study_l1_d_probe_model/Control_Task_10kHz/outer_iq_ref
+
+SID1122 study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop
+IN1 <- Read_v_selected p1
+IN2 <- v_mmps p1
+IN3 <- Inactive_Alignment_Fault1 p1
+OUT1 -> Route_iq_speed p1
+Children=study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/v_ref | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/v_mmps | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Angle_Init_EN | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Trigger | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/  | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/   | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Abs | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Add1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Add2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Constant1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Constant4 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/From | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/From10 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/From2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/From6 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/From8 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/From9 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Gain | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Goto | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Goto1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Goto3 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Goto4 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Goto6 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Goto7 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/PI_Reset_Output | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Read_PI_Hard_Reset | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Route_PI_Hard_Reset | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Saturation | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Saturation1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Subtract | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Sum | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Switch1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/Unit Delay | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/x_s_z | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/iq_ref
+
+SID1189 study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager
+IN1 <- Angle_Init_EN p1
+IN2 <- From6 p1
+IN3 <- From8 p1
+IN4 <- From9 p1
+OUT1 -> Route_PI_Hard_Reset p1
+OUT2 -> Goto7 p1
+Children=study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Angle_Init_EN | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/v_ref | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/abs_v_ref | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/e_v | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Compare
+To Constant1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Compare
+To Constant2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Compare
+To Constant4 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Constant | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Constant2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Constant3 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/From | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/From10 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/From12 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/From5 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/From7 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Goto | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Goto2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Goto5 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Goto8 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Logical
+Operator | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Logical
+Operator1 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Logical
+Operator2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Logical
+Operator3 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Product2 | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Sign | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/pi_hard_reset | study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/speed_int_reset
+
+SID991 study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager
+IN1 <- Read_iq_speed p1
+IN2 <- Read_v_pos p1
+IN3 <- Position_Loop_EN p1
+IN4 <- Close_Loop_EN p1
+IN5 <- v_ref_cmd p1
+IN6 <- id_ref_cmd p1
+IN7 <- iq_test_mode p1
+IN8 <- iq_test_ref p1
+OUT1 -> outer_id_ref p1
+OUT1 -> Route_id_selected p1
+OUT2 -> outer_iq_ref p1
+OUT2 -> Iq_Command p1
+OUT3 -> Route_v_selected p1
+Children=study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/iq_ref_normal | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/v_ref_pos | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Pos_Loop_EN | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Close_Loop_EN | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/v_ref_cmd | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/id_ref_cmd | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Iq_Test_Mode | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/iq_test_ref | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Constant15 | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Saturation | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Switch | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/Switch9 | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/v_ref_closed_sel | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/v_ref_set_slew_limiter | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/id_ref | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/iq_ref | study_l1_d_probe_model/Control_Task_10kHz/Reference_Manager/v_ref
+
+SID1453 study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter
+IN1 <- PWM_EN p1
+IN2 <- ia p1
+IN3 <- ib p1
+IN4 <- ic p1
+IN5 <- theta_e p1
+IN6 <- we p1
+IN7 <- outer_id_ref p1
+IN8 <- outer_iq_ref p1
+IN9 <- Udc p1
+IN10 <- PI_Reset p1
+OUT1 -> HDL_Backend_Variant p1
+OUT2 -> HDL_Backend_Variant p2
+OUT3 -> HDL_Backend_Variant p3
+OUT4 -> HDL_Backend_Variant p4
+OUT5 -> HDL_Backend_Variant p5
+OUT6 -> HDL_Backend_Variant p6
+OUT7 -> HDL_Backend_Variant p7
+OUT8 -> HDL_Backend_Variant p8
+OUT9 -> HDL_Backend_Variant p9
+OUT10 -> HDL_Backend_Variant p10
+OUT11 -> HDL_Backend_Variant p11
+OUT12 -> Publish_range_flags p1
+OUT13 -> Publish_id_ref p1
+OUT14 -> Publish_iq_ref p1
+Children=study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/PWM_EN | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/theta | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/id_cmd | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/iq_cmd | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Udc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/PI_Reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Enabled | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Enable_1490_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1488_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1496_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1503_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1510_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1517_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1525_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1532_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1539_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1546_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1553_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Mode_1560_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Reference_Mode_1742_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Reference_Mode_1744_2 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Reference_id_ref_1532_1 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Reference_id_ref_1751_1 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Reference_iq_ref_1539_1 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/From_Reference_iq_ref_1753_1 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Gate_Double | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Goto_Enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Goto_Mode | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Goto_Reference_Mode | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Goto_Reference_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Goto_Reference_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_pi_reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_run_enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_theta_e | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_vdc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/LiveDouble_we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Live_Run_Gate | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Mode | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_pi_reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_run_enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_theta_e | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_uq_zero_en | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_vdc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Quantize_we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_pi_reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_run_enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_theta_e | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_uq_zero_en | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_vdc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/RangeDouble_we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_pi_reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_run_enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_theta_e | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_uq_zero_en | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_vdc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Range_we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Reference_Mode | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Reference_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Reference_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Saturation_Flags | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Scripted_Run_Gate | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Scripted_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Scripted_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_pi_reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_run_enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_theta_e | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_uq_zero_en | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_vdc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Select_we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_ia | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_ib | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_ic | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_iq_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_pi_reset | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_run_enable | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_theta_e | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_uq_zero_en | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_vdc | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Smoke_we | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ThetaToU16 | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/run_enable_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ia_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ib_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/ic_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/theta_e_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/we_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/id_ref_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/iq_ref_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/vdc_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/pi_reset_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/uq_zero_en_HDL | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Saturation | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Monitor_id_ref | study_l1_d_probe_model/FPGA_HDL_Cosim/FPGA_Input_Adapter/Monitor_iq_ref
+
+SID740 study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100
+OUT1 -> Speed_Loop p4
+OUT2 -> Position_Loop p5
+Children=study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Add1 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Add2 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Constant1 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Constant2 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Constant3 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Constant4 | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/Logical
+Operator | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/pos_cnt_hold_sel | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/pos_cnt_update_sel | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/pos_cnt_z | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/pos_tc | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/spd_cnt_next_sel | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/spd_cnt_z | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/spd_tc | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/speed_tick | study_l1_d_probe_model/Control_Task_10kHz/Scheduler_10k_1k_100/pos_tick
+
+SID1200 study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Constant
+OUT1 -> Logical
+Operator3 p2
+
+SID1201 study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Constant2
+OUT1 -> Logical
+Operator3 p3
+
+SID1202 study_l1_d_probe_model/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Constant3
+OUT1 -> Logical
+Operator2 p1
+
+SID1264 study_l1_d_probe_model/Control_Task_10kHz/Read_v_selected
+OUT1 -> Speed_Loop p1
+
+SID1261 study_l1_d_probe_model/Control_Task_10kHz/Route_iq_speed
+IN1 <- Speed_Loop p1
+
+SID1272 study_l1_d_probe_model/Control_Task_10kHz/Inactive_Alignment_Fault1
+OUT1 -> Speed_Loop p3
+D_READ_ONLY_PROBE_PASS
