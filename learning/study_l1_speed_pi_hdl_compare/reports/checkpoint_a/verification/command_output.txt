@@ -1,0 +1,202 @@
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ✓ MATLAB 26.2.0.3386108 (R2026b)
+  ✓ Simulink installed and licensed
+
+MATLAB Environment
+  ✓ All 9 tool entry points on path
+  ✓ Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ✓ matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ✓ shareMATLABSession available (MATLAB-side MCP components installed)
+  ✓ MATLAB connector running (port 31517)
+
+===============================================
+Result: PASS
+
+[警告: 'speed_pi_compare_tb/B1/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为 0.0800000000745058。出现量化误差，绝对差为
+7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 23 行)]
+[警告: 'speed_pi_compare_tb/B1/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为 0.0014426782727241516。出现量化误差，绝对差
+为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 23 行)]
+[警告: 'speed_pi_compare_tb/B1/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为 0.018033474683761597。出现量化误差，绝对差为
+1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 23 行)]
+[警告: 'speed_pi_compare_tb/B2/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix24_En22 准确表示参数 0.08 的原始值。该值量化为 0.07999992370605469。出现量化误差，绝对差为
+7.629394531416533e-8，相对差为 9.53674316427067e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 23 行)]
+[警告: 'speed_pi_compare_tb/B2/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix24_En22 准确表示参数 0.00144267798821449 的原始值。该值量化为 0.0014426708221435547。出现量化误差，绝对差
+为 7.166070935217192e-9，相对差为 4.96720057681491e-06。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 23 行)]
+[警告: 'speed_pi_compare_tb/B2/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix24_En22 准确表示参数 0.018033474852681124 的原始值。该值量化为 0.018033504486083984。出现量化误差，绝对差为
+2.963340286002425e-8，相对差为 1.64324419459395e-06。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 23 行)]
+ACTUAL_TICK_SAMPLES=2580 EXPECTED=2580
+    0.0009    0.0019    0.0029    0.0039    0.0049
+
+[警告: 'speed_pi_fixed/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为
+0.0800000000745058。出现量化误差，绝对差为 7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 73 行)]
+[警告: 'speed_pi_fixed/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为
+0.0014426782727241516。出现量化误差，绝对差为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 73 行)]
+[警告: 'speed_pi_fixed/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为
+0.018033474683761597。出现量化误差，绝对差为 1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 73 行)]
+[警告: 'speed_pi_fixed_b2/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix24_En22 准确表示参数 0.08 的原始值。该值量化为
+0.07999992370605469。出现量化误差，绝对差为 7.629394531416533e-8，相对差为 9.53674316427067e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 73 行)]
+[警告: 'speed_pi_fixed_b2/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix24_En22 准确表示参数 0.00144267798821449 的原始值。该值量化为
+0.0014426708221435547。出现量化误差，绝对差为 7.166070935217192e-9，相对差为 4.96720057681491e-06。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 73 行)]
+[警告: 'speed_pi_fixed_b2/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix24_En22 准确表示参数 0.018033474852681124 的原始值。该值量化为
+0.018033504486083984。出现量化误差，绝对差为 2.963340286002425e-8，相对差为 1.64324419459395e-06。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+]
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_run_checkpoint_a (第 73 行)]
+{
+  "MATLAB": "26.2.0.3386108 (R2026b)",
+  "samples": 2580,
+  "ticks": 258,
+  "first_tick_s": 0.00090000000000000008,
+  "period_s": 0.001,
+  "float_max_errors": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "float_vs_original_pass": true,
+  "standalone_models_match_testbench": true,
+  "HDL_CODER_RUN": false,
+  "b1": {
+    "saturation_mismatches": 0,
+    "max_linear_iq_error_A": 1.5213527797704879E-5,
+    "max_linear_iq_error_LSB": 0.49851687887519347,
+    "max_integrator_error_A": 2.4238770890416816E-7,
+    "max_iq_unlimited_error_A": 2.191046446498035E-7,
+    "max_all_iq_error_A": 1.5213527797704879E-5,
+    "scalar_fi_all_signals_bit_exact": true
+  },
+  "b2": {
+    "saturation_mismatches": 0,
+    "max_linear_iq_error_A": 3.244255286907749E-5,
+    "max_linear_iq_error_LSB": 1.0630775724139312,
+    "max_integrator_error_A": 2.4681261703629609E-5,
+    "max_iq_unlimited_error_A": 2.630467453437757E-5,
+    "max_all_iq_error_A": 3.244255286907749E-5,
+    "scalar_fi_all_signals_bit_exact": true
+  }
+}
+STUDY_L1_CHECKPOINT_A_REGRESSION_PASS

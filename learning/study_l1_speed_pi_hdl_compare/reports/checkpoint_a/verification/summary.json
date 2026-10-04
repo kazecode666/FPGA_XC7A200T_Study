@@ -1,0 +1,44 @@
+{
+  "MATLAB": "26.2.0.3386108 (R2026b)",
+  "samples": 2580,
+  "ticks": 258,
+  "first_tick_s": 0.00090000000000000008,
+  "period_s": 0.001,
+  "float_max_errors": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "float_vs_original_pass": true,
+  "standalone_models_match_testbench": true,
+  "HDL_CODER_RUN": false,
+  "b1": {
+    "saturation_mismatches": 0,
+    "max_linear_iq_error_A": 1.5213527797704879E-5,
+    "max_linear_iq_error_LSB": 0.49851687887519347,
+    "max_integrator_error_A": 2.4238770890416816E-7,
+    "max_iq_unlimited_error_A": 2.191046446498035E-7,
+    "max_all_iq_error_A": 1.5213527797704879E-5,
+    "scalar_fi_all_signals_bit_exact": true
+  },
+  "b2": {
+    "saturation_mismatches": 0,
+    "max_linear_iq_error_A": 3.244255286907749E-5,
+    "max_linear_iq_error_LSB": 1.0630775724139312,
+    "max_integrator_error_A": 2.4681261703629609E-5,
+    "max_iq_unlimited_error_A": 2.630467453437757E-5,
+    "max_all_iq_error_A": 3.244255286907749E-5,
+    "scalar_fi_all_signals_bit_exact": true
+  }
+}
