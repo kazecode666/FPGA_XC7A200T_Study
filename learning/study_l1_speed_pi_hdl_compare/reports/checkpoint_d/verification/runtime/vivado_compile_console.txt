@@ -1,0 +1,126 @@
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 27-jul-2027.
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Oct  4 20:47:18 2026
+# Process ID         : 38884
+# Current directory  : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01
+# Command line       : vivado.exe -mode tcl
+# Log file           : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/vivado.log
+# Journal file       : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01\vivado.jou
+# Running On         : DependOnOMEN16
+# Platform           : Windows 11
+# Operating System   : 26300
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 16858 MB
+# Swap memory        : 22583 MB
+# Total Virtual      : 39442 MB
+# Available Virtual  : 5865 MB
+#-----------------------------------------------------------
+try {
+
+open_project hdlverifier_wizard_project/wizprj.xpr
+set_property -name {xelab.debug_level} -value {off} -objects [get_filesets sim_1]
+set_property -name {xelab.more_options} -value { --timescale 1ps/1ps --override_timeprecision } -objects [get_filesets sim_1]
+set_property -name {xelab.dll} -value {1} -objects [get_filesets sim_1]
+set_property -name {xelab.snapshot} -value {design} -objects [get_filesets sim_1]
+
+launch_simulation
+
+# The xsim.dir must be co-located with the model.
+# - save off existing xsim.dir
+if {[file exists xsim.dir] == 1} {
+    set mtime [file mtime xsim.dir]
+    set mtimestamp [clock format $mtime -format %Y%m%d_%H%M%S]
+    set xsim_savefile "xsim.dir.$mtimestamp"
+    file rename xsim.dir $xsim_savefile
+}
+# - copy up newly elaborated xsim.dir area from project to the current working directory.
+set proj_xsim_dir {hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim/xsim.dir}
+set proj_mtime [file mtime "$proj_xsim_dir/design"]
+file copy -force $proj_xsim_dir .
+file mtime xsim.dir $proj_mtime
+
+} on error { errMsg errDetails } {
+    puts "CAUGHT ERROR: $errMsg, $errDetails"
+    # Exit code 12 is arbitrary but distinct from the compilation error code (11)
+    # in case we want to differentiate error handling in the future.
+    exit 12
+}
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project'
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project/wizprj.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-5713] Board part '' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build 
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 593.984 ; gain = 268.180
+Command: launch_simulation  -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 20:47:36 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'study_l1_system_cosim_top'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/AMDDesignTools/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'study_l1_system_cosim_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj study_l1_system_cosim_top_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+"xelab --incr --debug off --dll --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot design xil_defaultlib.study_l1_system_cosim_top xil_defaultlib.glbl -log elaborate.log  --timescale 1ps/1ps --override_timeprecision "
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug off --dll --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot design xil_defaultlib.study_l1_system_cosim_top xil_defaultlib.glbl -log elaborate.log --timescale 1ps/1ps --override_timeprecision 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.mc_fxp_pkg
+Compiling package xil_defaultlib.mc_pi_fxp_pkg
+Compiling package xil_defaultlib.mc_svpwm_pkg
+Compiling module xil_defaultlib.mc_clarke
+Compiling module xil_defaultlib.mc_sincos_lut
+Compiling module xil_defaultlib.mc_park
+Compiling module xil_defaultlib.mc_current_transform
+Compiling module xil_defaultlib.mc_pi_dq_eval_default
+Compiling module xil_defaultlib.mc_isqrt_u80
+Compiling module xil_defaultlib.mc_udiv_u72_u41
+Compiling module xil_defaultlib.mc_dq_limiter
+Compiling module xil_defaultlib.mc_pi_dq_core_default
+Compiling module xil_defaultlib.mc_inv_park
+Compiling module xil_defaultlib.mc_svpwm_sector_xyz
+Compiling module xil_defaultlib.mc_sector_svpwm
+Compiling module xil_defaultlib.mc_foc_current_core
+Compiling module xil_defaultlib.mc_duty_to_cmp
+Compiling module xil_defaultlib.motor_pwm_core_default
+Compiling module xil_defaultlib.mc_foc_pwm_top
+Compiling module xil_defaultlib.mc_foc_cosim_top
+Compiling module xil_defaultlib.PI
+Compiling module xil_defaultlib.HDLCore
+Compiling module xil_defaultlib.speed_pi_sv
+Compiling module xil_defaultlib.study_l1_system_cosim_top
+Compiling module xil_defaultlib.glbl
+Built XSI simulation shared library xsim.dir/design/xsimk.dll
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 601.742 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '8' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "design -key {Behavioral:sim_1:Functional:study_l1_system_cosim_top} -tclbatch {study_l1_system_cosim_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-6] Shared library for snapshot 'design' generated:D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim/xsim.dir/design/xsimk.dll
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 601.742 ; gain = 7.758
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun Oct  4 20:47:49 2026...

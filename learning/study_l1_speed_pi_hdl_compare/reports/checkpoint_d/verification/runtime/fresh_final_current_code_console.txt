@@ -1,0 +1,50 @@
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ✓ MATLAB 26.2.0.3386108 (R2026b)
+  ✓ Simulink installed and licensed
+
+MATLAB Environment
+  ✓ All 9 tool entry points on path
+  ✓ Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ✓ matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ✓ shareMATLABSession available (MATLAB-side MCP components installed)
+  ✓ MATLAB connector running (port 31517)
+
+===============================================
+Result: PASS
+
+STUDY_L1_D_CASE_GATE_PASS speed_ideal original events=1200 physical_latency_ns=0
+D_COMMAND_EXPORT_ALREADY_VERIFIED speed_ideal original
+D_FRESH_SAVED_VERIFY_PASS speed_ideal original
+STUDY_L1_D_CASE_GATE_PASS speed_deadtime original events=1200 physical_latency_ns=0
+D_COMMAND_EXPORT_ALREADY_VERIFIED speed_deadtime original
+D_FRESH_SAVED_VERIFY_PASS speed_deadtime original
+STUDY_L1_D_CASE_GATE_PASS convergence_prefix original events=200 physical_latency_ns=0
+D_COMMAND_EXPORT_ALREADY_VERIFIED convergence_prefix original
+D_FRESH_SAVED_VERIFY_PASS convergence_prefix original
+STUDY_L1_D_CASE_GATE_PASS speed_ideal coder_baseline events=1200 physical_latency_ns=30
+D_COMMAND_EXPORT_ALREADY_VERIFIED speed_ideal coder_baseline
+D_FRESH_SAVED_VERIFY_PASS speed_ideal coder_baseline
+STUDY_L1_D_CASE_GATE_PASS speed_deadtime coder_baseline events=1200 physical_latency_ns=30
+D_COMMAND_EXPORT_ALREADY_VERIFIED speed_deadtime coder_baseline
+D_FRESH_SAVED_VERIFY_PASS speed_deadtime coder_baseline
+STUDY_L1_D_CASE_GATE_PASS convergence_prefix coder_baseline events=200 physical_latency_ns=30
+D_COMMAND_EXPORT_ALREADY_VERIFIED convergence_prefix coder_baseline
+D_FRESH_SAVED_VERIFY_PASS convergence_prefix coder_baseline
+STUDY_L1_D_CASE_GATE_PASS speed_ideal hand_sv events=1200 physical_latency_ns=30
+D_COMMAND_EXPORT_ALREADY_VERIFIED speed_ideal hand_sv
+D_FRESH_SAVED_VERIFY_PASS speed_ideal hand_sv
+STUDY_L1_D_CASE_GATE_PASS speed_deadtime hand_sv events=1200 physical_latency_ns=30
+D_COMMAND_EXPORT_ALREADY_VERIFIED speed_deadtime hand_sv
+D_FRESH_SAVED_VERIFY_PASS speed_deadtime hand_sv
+STUDY_L1_D_CASE_GATE_PASS convergence_prefix hand_sv events=200 physical_latency_ns=30
+D_COMMAND_EXPORT_ALREADY_VERIFIED convergence_prefix hand_sv
+D_FRESH_SAVED_VERIFY_PASS convergence_prefix hand_sv
+D_FRESH_ALL_NINE_SAVED_VERIFY_PASS

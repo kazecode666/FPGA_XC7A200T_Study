@@ -1,0 +1,151 @@
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ✓ MATLAB 26.2.0.3386108 (R2026b)
+  ✓ Simulink installed and licensed
+
+MATLAB Environment
+  ✓ All 9 tool entry points on path
+  ✓ Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ✓ matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ✓ shareMATLABSession available (MATLAB-side MCP components installed)
+  ✓ MATLAB connector running (port 31518)
+
+===============================================
+Result: PASS
+
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin
+Prepending following Xilinx Vivado path(s) to the system path:
+E:\AMDDesignTools\2026.1\Vivado\bin\..\lib\win64.o
+D_CASE_START speed_ideal hand_sv
+D_ACTUAL_FIRST_EDGE_NS 10 epoch_s=-1e-08
+STUDY_L1_D_CASE_GATE_PASS speed_ideal hand_sv events=1200 physical_latency_ns=30
+[警告: 'speed_pi_fixed/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为
+0.0800000000745058。出现量化误差，绝对差为 7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+[警告: 'speed_pi_fixed/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为
+0.0014426782727241516。出现量化误差，绝对差为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+[警告: 'speed_pi_fixed/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为
+0.018033474683761597。出现量化误差，绝对差为 1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+D_B1_BIT_TRUE_PASS speed_ideal hand_sv events=1200 ports=14 raw_codes=16800
+D_CASE_DONE speed_ideal hand_sv
+D_CASE_START speed_deadtime hand_sv
+D_ACTUAL_FIRST_EDGE_NS 10 epoch_s=-1e-08
+STUDY_L1_D_CASE_GATE_PASS speed_deadtime hand_sv events=1200 physical_latency_ns=30
+[警告: 'speed_pi_fixed/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为
+0.0800000000745058。出现量化误差，绝对差为 7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+[警告: 'speed_pi_fixed/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为
+0.0014426782727241516。出现量化误差，绝对差为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+[警告: 'speed_pi_fixed/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为
+0.018033474683761597。出现量化误差，绝对差为 1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+D_B1_BIT_TRUE_PASS speed_deadtime hand_sv events=1200 ports=14 raw_codes=16800
+D_CASE_DONE speed_deadtime hand_sv
+D_CASE_START convergence_prefix hand_sv
+D_ACTUAL_FIRST_EDGE_NS 10 epoch_s=-1e-08
+D_COMMAND_EXPORT_PASS convergence_prefix hand_sv accepted=2000 active=1999
+STUDY_L1_D_CASE_GATE_PASS convergence_prefix hand_sv events=200 physical_latency_ns=30
+[警告: 'speed_pi_fixed/PI/AW' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.08 的原始值。该值量化为
+0.0800000000745058。出现量化误差，绝对差为 7.450580430390374e-11，相对差为 9.31322553798797e-10。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+[警告: 'speed_pi_fixed/PI/KiTs' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.00144267798821449 的原始值。该值量化为
+0.0014426782727241516。出现量化误差，绝对差为 2.8450966170663616e-10，相对差为 1.97209400871747e-07。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+[警告: 'speed_pi_fixed/PI/P' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 ufix32_En30 准确表示参数 0.018033474852681124 的原始值。该值量化为
+0.018033474683761597。出现量化误差，绝对差为 1.689195276710631e-10，相对差为 9.36699826578065e-09。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: study_l1_d_golden (第 86 行)
+位置: study_l1_d_run (第 23 行)] 
+D_B1_BIT_TRUE_PASS convergence_prefix hand_sv events=200 ports=14 raw_codes=2800
+D_CASE_DONE convergence_prefix hand_sv
+D_SYSTEM_RUN_PASS

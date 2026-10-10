@@ -1,0 +1,53 @@
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Oct  4 20:47:18 2026
+# Process ID         : 38884
+# Current directory  : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01
+# Command line       : vivado.exe -mode tcl
+# Log file           : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01/vivado.log
+# Journal file       : D:/Project/FPGA_XC7A200T/learning/study_l1_speed_pi_hdl_compare/.runtime/d_xsi_fresh_01\vivado.jou
+# Running On         : DependOnOMEN16
+# Platform           : Windows 11
+# Operating System   : 26300
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 16858 MB
+# Swap memory        : 22583 MB
+# Total Virtual      : 39442 MB
+# Available Virtual  : 5865 MB
+#-----------------------------------------------------------
+try {
+
+open_project hdlverifier_wizard_project/wizprj.xpr
+set_property -name {xelab.debug_level} -value {off} -objects [get_filesets sim_1]
+set_property -name {xelab.more_options} -value { --timescale 1ps/1ps --override_timeprecision } -objects [get_filesets sim_1]
+set_property -name {xelab.dll} -value {1} -objects [get_filesets sim_1]
+set_property -name {xelab.snapshot} -value {design} -objects [get_filesets sim_1]
+
+launch_simulation
+
+# The xsim.dir must be co-located with the model.
+# - save off existing xsim.dir
+if {[file exists xsim.dir] == 1} {
+    set mtime [file mtime xsim.dir]
+    set mtimestamp [clock format $mtime -format %Y%m%d_%H%M%S]
+    set xsim_savefile "xsim.dir.$mtimestamp"
+    file rename xsim.dir $xsim_savefile
+}
+# - copy up newly elaborated xsim.dir area from project to the current working directory.
+set proj_xsim_dir {hdlverifier_wizard_project/wizprj.sim/sim_1/behav/xsim/xsim.dir}
+set proj_mtime [file mtime "$proj_xsim_dir/design"]
+file copy -force $proj_xsim_dir .
+file mtime xsim.dir $proj_mtime
+
+} on error { errMsg errDetails } {
+    puts "CAUGHT ERROR: $errMsg, $errDetails"
+    # Exit code 12 is arbitrary but distinct from the compilation error code (11)
+    # in case we want to differentiate error handling in the future.
+    exit 12
+}

@@ -1,0 +1,23 @@
+{
+  "source": "D:\\Project\\FPGA_XC7A200T\\learning\\study_l1_speed_pi_hdl_compare\\.runtime\\d_xsi_fresh_01",
+  "files": {
+    "hdlverifier_wizard_study_l1_system_cosim_top.slx": "b1d49677d5cd67b5ddf879950750fd712f1c9accc0d48a765b9eea8f21cecdc5",
+    "sin_qw_4096x18.mem": "b56a7dd67913da474e7fb817ae39e30f0e4524bd52f84d9bebd21bea5da1f6a1",
+    "source_manifest.txt": "c7969666fa3cdf1eb3c51fd640096a57b69c8dd862b01b61cdce256ff7dd5973",
+    "xsim.dir\\design\\Compile_Options.txt": "77f775182c032a5d8f5c60cc6c8f042ac7acd0293040b45a1a22c579cdb18b86",
+    "xsim.dir\\design\\xsim.dbg": "92db456d6daca35a1b72bc35720eb469c929cb7e4a0194dd45e5141fc4300acf",
+    "xsim.dir\\design\\xsim.mem": "36da52fb20ab02c14226d99156020c145562b683444e287c10a3565f0e1cf8f0",
+    "xsim.dir\\design\\xsim.reloc": "85bfde98e514ac7cff742c31bb622fe6b40acf68c8283ad8cfc846bd000ee70c",
+    "xsim.dir\\design\\xsim.rlx": "41800d31e31454f29182ac2ddc3da6e830c7ef7f9126c62755f69f4e2d21931e",
+    "xsim.dir\\design\\xsim.rtti": "9cde00055a914a9f8c4859a3b543f133571cd571ca6a2021025877e7cebb9d8d",
+    "xsim.dir\\design\\xsim.svtype": "f74bbca9419e708abfd18984620b8b2a65490c4e3176c1490c5f55624ecb7890",
+    "xsim.dir\\design\\xsim.type": "cf1c5a4aa3dd8007f3756f2f3d607d67751cd98e99c8f5038c3f8b9fd06aa8c8",
+    "xsim.dir\\design\\xsim.version": "226fe4d6075c39f1125f08546d92c565a6f2dcee8557921e9a04d5d825860229",
+    "xsim.dir\\design\\xsim.xdbg": "09594599b5d482762bb2ae2a8a4b34caff0af12baf410e9b86e119b742e0f013",
+    "xsim.dir\\design\\xsimk.dll": "a9d88538f1827a975fa86c312b27308a622d9f120a4ea4c1980abb69a6aced27",
+    "xsim.dir\\design\\obj\\xsim_0.win64.obj": "38800cb266fc8e546c7f24e5d8a062cbeb420d1f5311f33ae72d3f4465176e99",
+    "xsim.dir\\design\\obj\\xsim_1.win64.obj": "b59c5576a78fd66ed9482e95011139cb88294bf545a7bfb334c6b94974f5d8da",
+    "xsim.dir\\design\\obj\\xsim_2.c": "3432b5f8aef29d67822d4ec60396bfac23c7902decd4ee39553d79573570088a",
+    "xsim.dir\\design\\obj\\xsim_2.win64.obj": "f8b4a1a32a8de6c360493390b08e4cde945002e908bd25ca8f06a752f84f267c"
+  }
+}

@@ -1,0 +1,2 @@
+# Only the new D simulation carrier; existing frozen speed RTL is unaffected.
+study_l1_system_cosim_top.sv -text -whitespace
