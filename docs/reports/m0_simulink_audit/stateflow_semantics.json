@@ -1,0 +1,109 @@
+[
+  {
+    "model": "PMLSM_MIL_ControlCore_Sim",
+    "member": "simulink/stateflow/chart_131.xml",
+    "path": "PMLSM_MIL_ControlCore_Sim/Startup_And_Commands/Startup_Enable_Sequencer",
+    "logic": [
+      "eML_blk_kernel()",
+      "function [enable_cmd,fault_i,fault_u,close_loop_en,init_start,init_reset,pi_reset_en,pwm_enable] = fcn(t, init_done, MIL_Mode, MIL_Ts_s, MIL_EnableTime_s, MIL_InitDoneDelay_s, MIL_Fault_Test_Case, MIL_Fault_Start_s)\n%#codegen\npersistent init_done_timer_s\nif isempty(init_done_timer_s)\n    init_done_timer_s = 0;\nend\nenable_cmd = 0;\nfault_i = 0;\nfault_u = 0;\nclose_loop_en = 0;\ninit_start = 0;\ninit_reset = 1;\npi_reset_en = 1;\npwm_enable = 0;\nif t >= MIL_EnableTime_s\n    enable_cmd = 1;\n    init_start = 1;\n    init_reset = 0;\n    pi_reset_en = 0;\nend\nif MIL_Fault_Test_Case == 1 && t >= MIL_Fault_Start_s\n    fault_i = 1;\nelseif MIL_Fault_Test_Case == 2 && t >= MIL_Fault_Start_s\n    fault_u = 1;\nelseif MIL_Fault_Test_Case == 3 && t >= MIL_Fault_Start_s\n    enable_cmd = 0;\nend\nif enable_cmd ~= 0 && init_done ~= 0 && fault_i == 0 && fault_u == 0\n    init_done_timer_s = init_done_timer_s + MIL_Ts_s;\nelse\n    init_done_timer_s = 0;\nend\nif enable_cmd ~= 0 && MIL_Mode ~= 1 && init_done_timer_s >= MIL_InitDoneDelay_s\n    close_loop_en = 1;\nend\nif enable_cmd ~= 0 && fault_i == 0 && fault_u == 0\n    pwm_enable = 1;\nelse\n    pwm_enable = 0;\nend\nend",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMLSM_MIL_ControlCore_Sim",
+    "member": "simulink/stateflow/chart_94.xml",
+    "path": "PMLSM_MIL_ControlCore_Sim/Startup_And_Commands/Simple_Command_Profile",
+    "logic": [
+      "eML_blk_kernel()",
+      "function [iq_test_mode,iq_test_ref,v_ref_cmd_mmps,x_ref_mm,load_force,vdc,pos_loop_en,id_ref_set,x_override_enable,x_override_mm] = fcn(t, init_done, close_loop_en, MIL_Mode, MIL_Ts_s, MIL_SpeedCommand_mmps, MIL_PositiveSpeedDuration_s, MIL_ZeroSpeedDuration_s, MIL_NegativeSpeedDuration_s, MIL_IqInjection_A, MIL_IqInjectionDelay_s, MIL_IqRefRampTime_s, MIL_IqPositiveDuration_s, MIL_IqZeroDuration_s, MIL_IqNegativeDuration_s, MIL_IqCycleCount, MIL_PositionStep_mm, MIL_PositionStepDelay_s, MIL_LoadForce_N, MIL_Vdc_V, MIL_LoadStartRel_s, MIL_LoadEndRel_s)\n%#codegen\npersistent test_timer_s\nif isempty(test_timer_s)\n    test_timer_s = 0;\nend\niq_test_mode = 0;\niq_test_ref = 0;\nv_ref_cmd_mmps = 0;\nx_ref_mm = 0;\nload_force = 0;\nvdc = MIL_Vdc_V;\npos_loop_en = 0;\nid_ref_set = 0;\nx_override_enable = 0;\nx_override_mm = 0;\nif (MIL_Mode == 1 && init_done ~= 0) || (MIL_Mode == 4 && init_done ~= 0 && close_loop_en ~= 0) || (MIL_Mode ~= 1 && MIL_Mode ~= 4 && init_done ~= 0 && close_loop_en ~= 0)\n    test_timer_s = test_timer_s + MIL_Ts_s;\nelse\n    test_timer_s = 0;\nend\nif init_done ~= 0 && close_loop_en ~= 0 && ...\n        test_timer_s >= MIL_LoadStartRel_s && ...\n        test_timer_s < MIL_LoadEndRel_s\n    load_force = MIL_LoadForce_N;\nend\nswitch MIL_Mode\n    case {1, 4}\n        if init_done == 0\n            return;\n        end\n        cycle_period_s = MIL_IqPositiveDuration_s + MIL_IqZeroDuration_s + MIL_IqNegativeDuration_s + MIL_IqZeroDuration_s;\n        cycle_time_s = test_timer_s - MIL_IqInjectionDelay_s;\n        if cycle_time_s < 0 || cycle_period_s <= 0\n            return;\n        end\n        cycle_index = floor(cycle_time_s / cycle_period_s);\n        phase_s = cycle_time_s - cycle_index * cycle_period_s;\n        if cycle_index >= MIL_IqCycleCount\n            return;\n        end\n        iq_test_mode = 1;\n        ramp_s = MIL_IqRefRampTime_s;\n        pos_ramp_s = min(ramp_s, 0.5*MIL_IqPositiveDuration_s);\n        neg_ramp_s = min(ramp_s, 0.5*MIL_IqNegativeDuration_s);\n        pos_end_s = MIL_IqPositiveDuration_s;\n        neg_start_s = MIL_IqPositiveDuration_s + MIL_IqZeroDuration_s;\n        neg_end_s = neg_start_s + MIL_IqNegativeDuration_s;\n        if phase_s < pos_end_s\n            if pos_ramp_s > 0 && phase_s < pos_ramp_s\n                iq_test_ref = MIL_IqInjection_A * phase_s / pos_ramp_s;\n            elseif pos_ramp_s > 0 && phase_s > pos_end_s - pos_ramp_s\n                iq_test_ref = MIL_IqInjection_A * (pos_end_s - phase_s) / pos_ramp_s;\n            else\n                iq_test_ref = MIL_IqInjection_A;\n            end\n        elseif phase_s >= neg_start_s && phase_s < neg_end_s\n            if neg_ramp_s > 0 && phase_s < neg_start_s + neg_ramp_s\n                iq_test_ref = -MIL_IqInjection_A * (phase_s - neg_start_s) / neg_ramp_s;\n            elseif neg_ramp_s > 0 && phase_s > neg_end_s - neg_ramp_s\n                iq_test_ref = -MIL_IqInjection_A * (neg_end_s - phase_s) / neg_ramp_s;\n            else\n                iq_test_ref = -MIL_IqInjection_A;\n            end\n        end\n    case 2\n        if init_done == 0 || close_loop_en == 0\n            return;\n        end\n        t1 = MIL_PositiveSpeedDuration_s;\n        t2 = MIL_PositiveSpeedDuration_s + MIL_ZeroSpeedDuration_s;\n        t3 = MIL_PositiveSpeedDuration_s + MIL_ZeroSpeedDuration_s + MIL_NegativeSpeedDuration_s;\n        if test_timer_s < t1\n            v_ref_cmd_mmps = MIL_SpeedCommand_mmps;\n        elseif test_timer_s < t2\n            v_ref_cmd_mmps = 0;\n        elseif test_timer_s < t3\n            v_ref_cmd_mmps = -MIL_SpeedCommand_mmps;\n        else\n            v_ref_cmd_mmps = 0;\n        end\n    case 3\n        if init_done == 0 || close_loop_en == 0\n            return;\n        end\n        pos_loop_en = 1;\n        if test_timer_s >= MIL_PositionStepDelay_s\n            x_ref_mm = MIL_PositionStep_mm;\n        end\nend",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMLSM_ControlCore_Block",
+    "member": "simulink/stateflow/chart_50.xml",
+    "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Numeric_Protection/finite_check",
+    "logic": [
+      "eML_blk_kernel()",
+      "function y = fcn(u)\n%#codegen\ny = all(isfinite(u));\nend",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMLSM_ControlCore_Block",
+    "member": "simulink/stateflow/chart_57.xml",
+    "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Travel_Safety_Manager",
+    "logic": [
+      "eML_blk_kernel()",
+      "function [v_ref_safe, travel_fault_latch] = Travel_Safety_Manager( ...\n    x_mm, v_ref, X_max_soft, X_min_soft, X_max_hard, X_min_hard, travel_fault_latch_z)\n% PMLSM travel safety manager\n% 功能：\n% 1. 软限位：只限制继续向越界方向运动，不触发硬关断\n% 2. 硬限位：触发 travel_fault_latch，锁存故障\n% 3. travel_fault_latch = 1 后，v_ref_safe 强制为 0\n% 注意：\n% 当前版本没有 fault_reset 输入，硬限位故障一旦触发，\n% 只能通过 DSP 复位/重新运行程序清除。\n% 速度方向判断死区，单位 mm/s\nV_eps = 1.0;\n\n% ---------- 1. 硬限位检测 ----------\nhard_hi = (x_mm >= X_max_hard);\nhard_lo = (x_mm <= X_min_hard);\nhard_fault_raw = hard_hi || hard_lo;\n\n% ---------- 2. 外部锁存 ----------\n% 上一拍已经故障，或者当前触发硬限位，则继续保持故障\nfault_latch_now = (travel_fault_latch_z > 0.5) || hard_fault_raw;\n\n% ---------- 3. 软限位方向性限制 ----------\nright_soft = (x_mm >= X_max_soft);\nleft_soft  = (x_mm <= X_min_soft);\n\nv_pos_dir = (v_ref >  V_eps);\nv_neg_dir = (v_ref < -V_eps);\n\nright_block = right_soft && v_pos_dir;\nleft_block  = left_soft  && v_neg_dir;\n\nsoft_block = right_block || left_block;\n\n% ---------- 4. 输出安全速度 ----------\nif fault_latch_now\n    v_ref_safe = 0.0;\nelseif soft_block\n    v_ref_safe = 0.0;\nelse\n    v_ref_safe = v_ref;\nend\n\ntravel_fault_latch = double(fault_latch_now);\nend",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMLSM_ControlCore_Block",
+    "member": "simulink/stateflow/chart_71.xml",
+    "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Angle_Init",
+    "logic": [
+      "IDLE\nentry:\nAngle_Init_EN   = 0;\nInit_Done       = 0;\nid_init_ref     = 0;\nInit_State_Num  = 0;\n",
+      "RAMP_ID\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = 0;\nInit_State_Num  = 1;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref = id_init_ref + Id_Init_Step;\nif (id_init_ref > Id_Init_Target)\n    id_init_ref = Id_Init_Target;\nend",
+      "HOLD_ALIGN\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = Id_Init_Target;\nInit_State_Num  = 2;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref   = Id_Init_Target;",
+      "RAMP_DOWN_ID\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = Id_Init_Target;\nInit_State_Num  = 3;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref = id_init_ref - Id_Init_Target/Id_Release_Ramp_Ticks;\nif (id_init_ref < 0)\n    id_init_ref = 0;\nend\nTheta_Offset_auto = theta_offset_mem;",
+      "DONE\nentry:\nAngle_Init_EN   = 0;\nInit_Done       = 1;\nid_init_ref     = 0;\nInit_State_Num  = 4;\nduring:\nAngle_Init_EN = 0;\nInit_Done = 1;\nid_init_ref = 0;\nInit_State_Num = 4;\nTheta_Offset_auto = theta_offset_mem;",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[Init_Start > 0.5 && Init_Reset < 0.5 && travel_fault_latch < 0.5]",
+      "[after(Ramp_Ticks, tick)]",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[after(Hold_Ticks, tick)]\n{x_align_mm_latch = x_mm;\ntheta_offset_mem = mod(theta_align_const - 2*pi*x_align_mm_latch/Tau_e_mm, 2*pi);\nTheta_Offset_auto = theta_offset_mem;}",
+      "[after(Id_Release_Ramp_Ticks, tick)]"
+    ]
+  },
+  {
+    "model": "PMLSM_ThreeLoop_Simple",
+    "member": "simulink/stateflow/chart_35.xml",
+    "path": "PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/FPGA_Input_Adapter/ThetaToU16",
+    "logic": [
+      "eML_blk_kernel()",
+      "function y = theta_to_u16(theta)\nt=mod(theta,2*pi);\nn=floor(t*65536/(2*pi)+0.5);\nif n>=65536, n=0; end\ny=uint16(n);\nend\n",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMLSM_ThreeLoop_Simple",
+    "member": "simulink/stateflow/chart_42.xml",
+    "path": "PMLSM_ThreeLoop_Simple/Simple_Host",
+    "logic": [
+      "eML_blk_kernel()",
+      "function [x_ref_mm,vdc,load_N,Close_Loop_EN,Position_Loop_EN,PWM_EN,v_ref_cmd,id_ref_cmd,iq_test_mode,iq_test_ref,PI_Reset_EN] = Simple_Host(t, Host_Enable_Schedule, Host_Speed_mmps, Host_Id_A, Host_Iq_Test_Mode, Host_Iq_A, Host_PI_Reset_EN, Host_Start_s, Host_Target_mm, Udc, Host_Load_N, Host_Traj_Vmax, Host_Traj_Amax, Host_Traj_Jmax, Host_Speed_Ramp_s)\n% Smooth acceleration - constant speed - smooth deceleration.\nx_ref_mm=pmlsm_scurve_profile(t-Host_Start_s,Host_Target_mm,Host_Traj_Vmax,Host_Traj_Amax,Host_Traj_Jmax,Host_Speed_Ramp_s);\nr=min(max((t-Host_Start_s)/max(Host_Speed_Ramp_s,1e-6),0),1);\nv_ref_cmd=Host_Speed_mmps*(10*r^3-15*r^4+6*r^5);\nvdc=Udc; load_N=Host_Load_N;\nClose_Loop_EN=0; Position_Loop_EN=0; PWM_EN=0;\nfor k=1:size(Host_Enable_Schedule,1)\n if t>=Host_Enable_Schedule(k,1)\n  Close_Loop_EN=double(Host_Enable_Schedule(k,2)~=0);\n  Position_Loop_EN=double(Host_Enable_Schedule(k,3)~=0);\n  PWM_EN=double(Host_Enable_Schedule(k,4)~=0);\n end\nend\nid_ref_cmd=Host_Id_A;\niq_test_mode=Host_Iq_Test_Mode; iq_test_ref=Host_Iq_A;\nPI_Reset_EN=Host_PI_Reset_EN;\nend",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMSLM_Close_Loop_MBDL4",
+    "member": "simulink/stateflow/chart_46.xml",
+    "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Travel_Safety_Manager",
+    "logic": [
+      "eML_blk_kernel()",
+      "function [v_ref_safe, travel_fault_latch] = Travel_Safety_Manager( ...\n    x_mm, v_ref, X_max_soft, X_min_soft, X_max_hard, X_min_hard, travel_fault_latch_z)\n% PMLSM travel safety manager\n% 功能：\n% 1. 软限位：只限制继续向越界方向运动，不触发硬关断\n% 2. 硬限位：触发 travel_fault_latch，锁存故障\n% 3. travel_fault_latch = 1 后，v_ref_safe 强制为 0\n% 注意：\n% 当前版本没有 fault_reset 输入，硬限位故障一旦触发，\n% 只能通过 DSP 复位/重新运行程序清除。\n% 速度方向判断死区，单位 mm/s\nV_eps = 1.0;\n\n% ---------- 1. 硬限位检测 ----------\nhard_hi = (x_mm >= X_max_hard);\nhard_lo = (x_mm <= X_min_hard);\nhard_fault_raw = hard_hi || hard_lo;\n\n% ---------- 2. 外部锁存 ----------\n% 上一拍已经故障，或者当前触发硬限位，则继续保持故障\nfault_latch_now = (travel_fault_latch_z > 0.5) || hard_fault_raw;\n\n% ---------- 3. 软限位方向性限制 ----------\nright_soft = (x_mm >= X_max_soft);\nleft_soft  = (x_mm <= X_min_soft);\n\nv_pos_dir = (v_ref >  V_eps);\nv_neg_dir = (v_ref < -V_eps);\n\nright_block = right_soft && v_pos_dir;\nleft_block  = left_soft  && v_neg_dir;\n\nsoft_block = right_block || left_block;\n\n% ---------- 4. 输出安全速度 ----------\nif fault_latch_now\n    v_ref_safe = 0.0;\nelseif soft_block\n    v_ref_safe = 0.0;\nelse\n    v_ref_safe = v_ref;\nend\n\ntravel_fault_latch = double(fault_latch_now);\nend",
+      "{eML_blk_kernel();}"
+    ]
+  },
+  {
+    "model": "PMSLM_Close_Loop_MBDL4",
+    "member": "simulink/stateflow/chart_60.xml",
+    "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Angle_Init",
+    "logic": [
+      "HOLD_ALIGN\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = Id_Init_Target;\nInit_State_Num  = 2;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref   = Id_Init_Target;",
+      "IDLE\nentry:\nAngle_Init_EN   = 0;\nInit_Done       = 0;\nid_init_ref     = 0;\nInit_State_Num  = 0;\n",
+      "RAMP_ID\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = 0;\nInit_State_Num  = 1;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref = id_init_ref + Id_Init_Step;\nif (id_init_ref > Id_Init_Target)\n    id_init_ref = Id_Init_Target;\nend",
+      "DONE\nentry:\nAngle_Init_EN   = 0;\nInit_Done       = 1;\nid_init_ref     = 0;\nInit_State_Num  = 3;\nduring:\nAngle_Init_EN = 0;\nInit_Done = 1;\nid_init_ref = 0;\nInit_State_Num = 3;\nTheta_Offset_auto = theta_offset_mem;",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[after(Ramp_Ticks, tick)]",
+      "[Init_Start > 0.5 && Init_Reset < 0.5 && travel_fault_latch < 0.5]",
+      "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "[after(Hold_Ticks, tick)]\n{x_align_mm_latch = x_mm;\ntheta_offset_mem = mod(theta_align_const - 2*pi*x_align_mm_latch/Tau_e_mm, 2*pi);\nTheta_Offset_auto = theta_offset_mem;}"
+    ]
+  }
+]

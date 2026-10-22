@@ -4,6 +4,8 @@
 
 本文定义后续目标和阶段关系，不表示这些阶段已经实施，也不授权一次执行全部阶段。当前执行范围只有 [M0](../coordination/tasks/m0_simulink_model_asset_audit.md)。
 
+2026-10-22：M0 已交付 [实际审计报告](../coordination/reports/m0_simulink_model_asset_audit.md) 和 [核查表](MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)，停在 Review。建议 M1 从 `PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm` 的 PI-FOC 出发，先冻结纯 Simulink 入口和调制/运行管理边界。此为待批准建议；启动可复现性、旧 count 标度和最终边界仍为部分完成，尚未执行 M1 或生成 HDL。
+
 ## 1. 目标与非目标
 
 主要目标是学习并建立一条可复现的模型到硬件流程：以 Simulink 研究和维护电机控制算法，先得到浮点闭环参考，再建立面向硬件的定点控制器模型，由 HDL Coder 生成算法 HDL，利用 Vivado 检查资源、结构和时序，回到闭环环境验证实现影响，最终与真实控制器运行管理和板级接口集成。

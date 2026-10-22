@@ -1,0 +1,281 @@
+{
+  "libraries": {
+    "mcbeeMathTransformLib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\shared\\mcbeeblks\\mcbeeMathTransformLib.slx",
+    "mcbcontrolslib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\mcb\\mcbblocks\\mcbcontrolslib.slx",
+    "c2838xlib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\c2b\\tic2000\\blocks\\c2838xlib.slx",
+    "c2802xlib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\c2b\\tic2000\\blocks\\c2802xlib.slx",
+    "c280xlib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\c2b\\tic2000\\blocks\\c280xlib.slx",
+    "svdschedulerlib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\target\\shared\\svd\\blocks\\svdschedulerlib.slx",
+    "vivadosimlib": "D:\\Program Files\\MATLAB\\R2026b\\toolbox\\edalink\\extensions\\vivadosim\\vivadosim\\vivadosimlib.slx"
+  },
+  "simple_timeseries": {
+    "STEP7C_id_ref_ts": {
+      "time": [
+        0,
+        1.2
+      ],
+      "data": [
+        0,
+        0
+      ]
+    },
+    "STEP7C_iq_ref_ts": {
+      "time": [
+        0,
+        1.2
+      ],
+      "data": [
+        0,
+        0
+      ]
+    },
+    "STEP7C_run_gate_ts": {
+      "time": [
+        0,
+        1.2
+      ],
+      "data": [
+        1,
+        1
+      ]
+    },
+    "STEP7D_load_ts": {
+      "time": [
+        0,
+        0.8,
+        1,
+        1.2
+      ],
+      "data": [
+        0,
+        0.5,
+        0,
+        0
+      ]
+    },
+    "STEP7D_pwm_ts": {
+      "time": [
+        0,
+        1.2
+      ],
+      "data": [
+        1,
+        1
+      ]
+    },
+    "STEP7D_reset_ts": {
+      "time": [
+        0,
+        1.2
+      ],
+      "data": [
+        0,
+        0
+      ]
+    },
+    "STEP7D_speed_ts": {
+      "time": [
+        0,
+        1.2
+      ],
+      "data": [
+        0,
+        0
+      ]
+    }
+  },
+  "base_after_simple_load": {
+    "CONTROL_BACKEND": 1,
+    "FPGA_Cosim_Enable": 1,
+    "FPGA_Reference_Mode": 1,
+    "FPGA_Cosim_Ts_s": 5E-5,
+    "STEP7C_Comm_Ts_s": 1E-6,
+    "FPGA_CLK_Period_s": 2E-8,
+    "FPGA_TBPRD": 2500
+  },
+  "interactive_state_empty": true,
+  "models": [
+    {
+      "model": "PMLSM_ControlCore_Block",
+      "count_all_variants": 1285,
+      "dirty": "off",
+      "transforms": [
+        {
+          "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/Inverse Park Transform",
+          "mask_values": [
+            "D-axis",
+            "on",
+            "Two inputs",
+            "Electrical position",
+            "Radians",
+            "1024"
+          ],
+          "lookup": {
+            "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/Inverse Park Transform/Variant/mcb/sinecos/Sine-Cosine Lookup",
+            "N_points": 1024,
+            "dlgSett": []
+          }
+        },
+        {
+          "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/Park Transform",
+          "mask_values": [
+            "D-axis",
+            "on",
+            "Two inputs",
+            "Electrical position",
+            "Radians",
+            "1024"
+          ],
+          "lookup": {
+            "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/Park Transform/Variant/mcb/sinecos/Sine-Cosine Lookup",
+            "N_points": 1024,
+            "dlgSett": []
+          }
+        }
+      ]
+    },
+    {
+      "model": "PMLSM_ThreeLoop_Simple",
+      "count_all_variants": 1070,
+      "dirty": "off",
+      "transforms": [
+        {
+          "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark",
+          "mask_values": [
+            "D-axis",
+            "on",
+            "Two inputs",
+            "Electrical position",
+            "Radians",
+            "1024"
+          ],
+          "lookup": {
+            "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup",
+            "N_points": 1024,
+            "dlgSett": []
+          }
+        },
+        {
+          "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park",
+          "mask_values": [
+            "D-axis",
+            "on",
+            "Two inputs",
+            "Electrical position",
+            "Radians",
+            "1024"
+          ],
+          "lookup": {
+            "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park/Variant/mcb/sinecos/Sine-Cosine Lookup",
+            "N_points": 1024,
+            "dlgSett": []
+          }
+        }
+      ]
+    },
+    {
+      "model": "PMSLM_Close_Loop_MBDL4",
+      "count_all_variants": 736,
+      "dirty": "off",
+      "transforms": [
+        {
+          "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/Inverse Park Transform",
+          "mask_values": [
+            "D-axis",
+            "on",
+            "Two inputs",
+            "Electrical position",
+            "Radians",
+            "1024"
+          ],
+          "lookup": {
+            "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/Inverse Park Transform/Variant/mcb/sinecos/Sine-Cosine Lookup",
+            "N_points": 1024,
+            "dlgSett": []
+          }
+        },
+        {
+          "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/Park Transform",
+          "mask_values": [
+            "D-axis",
+            "on",
+            "Two inputs",
+            "Electrical position",
+            "Radians",
+            "1024"
+          ],
+          "lookup": {
+            "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/Park Transform/Variant/mcb/sinecos/Sine-Cosine Lookup",
+            "N_points": 1024,
+            "dlgSett": []
+          }
+        }
+      ]
+    }
+  ],
+  "code_analyzer": {
+    "m0_readonly_model_audit": [
+      {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 27,
+        "column": [
+          16,
+          16
+        ]
+      },
+      {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 31,
+        "column": [
+          12,
+          12
+        ]
+      },
+      {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 53,
+        "column": [
+          16,
+          16
+        ]
+      },
+      {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 55,
+        "column": [
+          20,
+          20
+        ]
+      },
+      {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 95,
+        "column": [
+          12,
+          12
+        ]
+      },
+      {
+        "id": "MSNU",
+        "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+        "fix": 1,
+        "line": 122,
+        "column": [
+          73,
+          83
+        ]
+      }
+    ],
+    "m0_focus_queries": []
+  }
+}

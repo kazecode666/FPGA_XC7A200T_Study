@@ -32,7 +32,7 @@
 
 ## 现在做什么
 
-**当前只推进 M0：梳理三个模型的功能差异、实际参数来源、已有硬件资料和中间工程依赖，补齐缺项，明确下一步 Simulink FOC 整理范围。**
+**M0 已于 2026-10-22 提交实际审计结果，当前停在 Review。** 见 [M0 整合报告](coordination/reports/m0_simulink_model_asset_audit.md) 和 [更新核查表](docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)。四个源模型已只读加载/查询，8份缺失说明/兼容入口已补齐；本地 Simple 启动可复现性、调制标度和 M1 边界仍为部分完成/待裁决，没有闭环运行或实现验收。
 
 这轮不改控制算法、不重整定 PI、不创建新的完整控制器、不重新实现手写 FOC、不生成 bitstream、不操作硬件，也不为了整理文档完整重跑 Step 6、Step 7 或 StudyL1。
 
@@ -41,7 +41,7 @@
 ## 已有成果与资料
 
 - 仓库已有上述三个主模型、`PMLSM_ControlCore_Block.slx`、初始化脚本和最小 HDL co-sim 模型；文件存在不等于本地依赖完整或模型已经重新验证。
-- 根目录已有 BX72、ACM9238、MBDL4、转接板及 DSP 核心板/底板资料；详见核查表。接口参数以既有资料和实际连接为依据，不在此重新猜测。
+- 远端根目录已有 BX72、ACM9238、MBDL4、转接板及 DSP 核心板/底板资料；本地用户已放在 `硬件说明/`，对应关系见核查表和 M0 清单。接口参数以既有资料和实际连接为依据。
 - `PWM_Controller/`、`PWM_Breathe/`、`Motor_PWM/`、`FOC_*/`、`motor_control_ip/`、`learning/` 和历史报告保留，不搬迁、不删除。
 - 本次文档核查基线：`main@319ee0103c4f4b42752fad49014ead2cfbefceea`，包含已合并 PR #41（StudyL1 Checkpoint D）。这不是新主线模型已完成的声明。
 

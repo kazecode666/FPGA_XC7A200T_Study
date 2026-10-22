@@ -1,0 +1,37 @@
+{
+  "original_tracked_paths": 34,
+  "original_untracked_roots": 54,
+  "user_binary_patch_unchanged": true,
+  "all_original_untracked_paths_exist": true,
+  "source_snapshots": [
+    {
+      "path": "simulink模型/init_PMLSM_ThreeLoop_Simple.m",
+      "byte_unchanged": true
+    },
+    {
+      "path": "simulink模型/PMLSM_ControlCore_Block.slx",
+      "byte_unchanged": true
+    },
+    {
+      "path": "simulink模型/PMLSM_MIL_ControlCore_Sim.slx",
+      "byte_unchanged": true
+    },
+    {
+      "path": "simulink模型/PMLSM_ThreeLoop_Simple.slx",
+      "byte_unchanged": true
+    },
+    {
+      "path": "simulink模型/PMSLM_Close_Loop_MBDL4.slx",
+      "byte_unchanged": true
+    },
+    {
+      "path": "simulink模型/PMSLM_Init_Params_MBDL4.m",
+      "byte_unchanged": true
+    }
+  ],
+  "model_save_executed": false,
+  "update_executed": false,
+  "simulation_executed": false,
+  "build_executed": false,
+  "hardware_executed": false
+}
