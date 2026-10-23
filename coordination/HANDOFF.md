@@ -1,6 +1,6 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-23。** PR44 已合并，M0 审计交付已接受；用户明确另存纯 Simulink PI-FOC 浮点基线，并使用外部 `.m` 初始化。当前交接从 M0 转到 M1A 设计；旧报告中的历史暂停和“部分完成”不表示要重做 M0，也不表示 M1A 已通过。
+**当前更新：2026-10-23。** PR44 已合并，M0 审计交付已接受；用户明确另存纯 Simulink PI-FOC 浮点基线，并使用外部 `.m` 初始化。PR45 设计现已合并，当前交接转到 M1A Codex 实施计划；旧报告中的历史暂停和“部分完成”不表示要重做 M0，也不表示 M1A 已通过。
 
 ## 当前决定
 
@@ -10,7 +10,7 @@
 
 ## 当前阶段：M1A 独立纯 Simulink 浮点基线
 
-阅读 [M1A 设计与验收范围](specs/m1a_pure_simulink_float_baseline_design.md)。该文档是本次 Review 对象，尚无新模型/脚本或运行结果。设计审阅后由 Codex 在原本地主项目实施，交付独立开放 PR；不因本文更新直接跨入 HDL 生成或上板。
+阅读已合并的 [M1A 设计](specs/m1a_pure_simulink_float_baseline_design.md)，以及 [Codex 实施任务](tasks/m1a_pure_simulink_float_baseline.md)、[分步执行计划](../docs/superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md)。当前 Review 对象为**实施计划**，尚无新模型/脚本或运行结果；计划合并后由 Codex 在原本地主项目逐检查点实施，交付独立开放 PR。不因文档更新直接跨入 HDL 生成或上板。
 
 新交付目标：`simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` 与 `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m`。算法来源为 Simple 的 `Control_Task_10kHz/FOC_Algorithm`；保留必要外环、轨迹、使能/PI复位、限幅和唯一自由运动 plant。
 
@@ -18,7 +18,7 @@
 
 先做来源/参数/纯浮点入口及迁移对照；对齐渐降、故障恢复和行程管理放到后续 M1B 单独处理，真实测速滤波和板级采集不混入本轮。新模型不是完整实机安全控制器。
 
-M1A 的具体数值、比较范围、所需结果和停止条件以设计文档为准。实施只修改新增模型及其配套文件，不重整定 PI、不改原 SLX/RTL，不完整重跑历史阶段，不生成 HDL/C/bitstream、不操作硬件。
+M1A 的数值与验收合同以已合并设计为准；实施拆解、脚本名称、检查命令及每步停止条件以新任务和计划为准。实施只修改新增模型及其配套文件，不重整定 PI、不改原 SLX/RTL，不完整重跑历史阶段，不生成 HDL/C/bitstream、不操作硬件。
 
 ## 已有基线与未决项归属
 
