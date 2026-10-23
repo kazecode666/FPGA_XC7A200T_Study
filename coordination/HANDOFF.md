@@ -1,48 +1,46 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前主线更新：2026-10-21。** 用户明确结束 StudyL1，回到 Simulink 主导的电机控制开发。本文件取代旧交接中的当前阶段指示；旧全文原样保存在 [HANDOFF_LEGACY_20261021.md](HANDOFF_LEGACY_20261021.md)，历史验收结论不作改写。
+**当前更新：2026-10-23。** PR44 已合并，M0 审计交付已接受；用户明确另存纯 Simulink PI-FOC 浮点基线，并使用外部 `.m` 初始化。当前交接从 M0 转到 M1A 设计；旧报告中的历史暂停和“部分完成”不表示要重做 M0，也不表示 M1A 已通过。
 
 ## 当前决定
 
-正式算法路线是：纯 Simulink 浮点基线 → 面向 HDL 的定点控制器模型 → HDL Coder 生成 HDL → RTL 验证 / Vivado 实现 / 闭环联合仿真 → 完整控制器与板级集成 → 另行批准的实机验证。
+正式算法路线：纯 Simulink 浮点基线 → 独立定点控制器实现模型 → HDL Coder → RTL/Vivado/闭环验证 → 完整控制器及板级接口 → 另行批准的实机验证。
 
-已有手写 PWM、FOC 和电流环 RTL 是学习与验证资产，不再默认作为正式控制器必须继续扩展的底座。必要接口仍可采用现成 IP 或少量手写 RTL，但须明确理由和验证边界；不能以此把电流环主线重新变成手写 SV。
+旧手写 PWM、FOC、电流环 RTL 和 StudyL1 保留为学习与验证资产，不作为正式实现必须继续扩展的底座。原 Simple、完整 MIL、ControlCore、DSP 模型均保留，不原地改写。
 
-不废弃现有 Simple 的修正与回归成果，不原样复制旧完整 MIL / DSP 顶层作为 HDL 生成对象。先审计功能和数据来源，再确定共享的控制器边界。
+## 当前阶段：M1A 独立纯 Simulink 浮点基线
 
-## Codex 当前任务：M0
+阅读 [M1A 设计与验收范围](specs/m1a_pure_simulink_float_baseline_design.md)。该文档是本次 Review 对象，尚无新模型/脚本或运行结果。设计审阅后由 Codex 在原本地主项目实施，交付独立开放 PR；不因本文更新直接跨入 HDL 生成或上板。
 
-2026-10-22 实查交付：[M0 报告](reports/m0_simulink_model_asset_audit.md)、[已核查差异表](../docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)、[机器证据](../docs/reports/m0_simulink_audit/README.md)。执行起点为更新的 `main@361c2c6`，保留原目录全部本地修改。四模型加载/查询后 Dirty=off，未更新图、仿真、生成或保存。8个资料缺项已单独同步；调制尺度、Simple新进程启动基线与M1边界仍为部分完成/待Review。后文原初查说明描述任务下达时的状态；当前状态以本段和报告为准。不自动进入M1。
+新交付目标：`simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` 与 `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m`。算法来源为 Simple 的 `Control_Task_10kHz/FOC_Algorithm`；保留必要外环、轨迹、使能/PI复位、限幅和唯一自由运动 plant。
 
-执行 [M0 模型差异与资料核查](tasks/m0_simulink_model_asset_audit.md)。先读 [主线路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md) 和 [初步核查表](../docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)。
+外部 `.m` 加载 MATLAB 基础工作区；新模型不依赖旧 MAT、交互 prepare、XSI 和 Model Workspace 隐藏副本。不用仅设置 backend0 来冒充独立纯 Simulink 模型。统一物理参数、上管理想 command duty、控制周期、PWM 更新延迟和平均死区责任。
 
-当前允许：只读核查实际 SLX 和参数来源；非破坏性补齐相关模型/依赖/硬件说明/中间工程资料；更新差异表和证据；提交下一阶段范围建议；创建开放 PR。
+先做来源/参数/纯浮点入口及迁移对照；对齐渐降、故障恢复和行程管理放到后续 M1B 单独处理，真实测速滤波和板级采集不混入本轮。新模型不是完整实机安全控制器。
 
-当前不允许：功能性修改控制模型或 RTL、重整定 PI、直接开始 FOC 定点化或代码生成、完整重跑旧阶段、生成 bitstream、烧写、上电控制电机、自动合并或自行进入 M1。
+M1A 的具体数值、比较范围、所需结果和停止条件以设计文档为准。实施只修改新增模型及其配套文件，不重整定 PI、不改原 SLX/RTL，不完整重跑历史阶段，不生成 HDL/C/bitstream、不操作硬件。
 
-接口已经由用户提供过，优先从既有仓库、任务、硬件文件和原始本地目录恢复，不重新泛问用户的 ADC/编码器型号与接线。确实找不到的阻塞项须给出查找范围和具体缺失信息。
+## 已有基线与未决项归属
 
-## 基线与尚未完成的工作
+PR44 合并提交：`2e10c2dc576648165f541ad5b1530ef90c1e3791`。M0 证据见 [实查报告](reports/m0_simulink_model_asset_audit.md)、[差异表](../docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md) 和 [证据索引](../docs/reports/m0_simulink_audit/README.md)。四模型已做加载/查询/参数审计；本地 Simple 与远端存在已记录差异，不能把其未提交 SLX/MAT 与 Git 版本混称同一源。
 
-2026-10-21 远端初查基线为 `main@319ee0103c4f4b42752fad49014ead2cfbefceea`；2026-10-22 本地 M0 实查从包含 PR #43 的 `main@361c2c6` 开始。StudyL1 按用户确认结束；其各 Checkpoint README 中的历史暂停指令不再是当前任务。
+本地 Simple 独立启动、参数遮蔽和调制尺度由 M1A 用真实模型测试解决；M0 的工具加载不替代这项验收。故障恢复协议在 M1B 处理；真实 ADC/编码器/线缆映射等板级事项仍留后，不阻塞物理单位浮点基线。
 
-ChatGPT 在 2026-10-21 只做远端初查。Codex 已在 2026-10-22 补实际 SLX 加载/连接、参数覆盖、资料与工程依赖证据，`MODEL_DIFFERENCE_AND_ASSET_AUDIT.md` 已更新为实查表；动态运行就绪与 M1 接口冻结仍待 Review。
-
-Codex 已记录本地 HEAD、未提交改动、实际模型版本及依赖，并区分“已找到 / 已读取 / 已解析”与本轮未执行的运行验证。不能把上传成功说成仿真通过，也不能把旧学习 RTL 的通过说成新生成控制器已通过。
+接口已经给过，优先从已有材料恢复，不泛问用户重填清单。缺少的具体信息须写明已查来源和影响范围。
 
 ## 工作约定
 
 - 实际工程核查与实现仅在 `D:/Project/FPGA_XC7A200T`，不新建 linked worktree、额外 clone 或云端实施副本。GitHub 文档分支不替代本地工程。
-- `D:/Project/PMSLM_Simulation` 是原模型来源，默认只读；相关文件可以按任务要求补入仓库，但不改写外部源项目。
-- 保留用户 tracked/untracked 内容、硬件资料、旧 worktree、全部 PWM/FOC 学习工程和既有结果。
-- 不使用 `reset --hard`、`clean -fd`、强制切分支、自动 stash、整体覆盖或自动清理；存在冲突先保留并报告。
-- 不使用文件哈希作为功能验收；使用 Git 状态/差异、模型路径、真实工具输出和可复现实验。Git 提交号用于版本定位。
-- 不全局自动布局、不批量删除端口、不为了消除工具警告而静默改控制行为。
-- 不新建产品级基础设施。已有未受影响的证据可复用；新增或修改的部分才补相应验证。
-- 实施结果停在开放 PR，不自动合并，不自行开始下一阶段，不操作硬件。
+- 外部 `D:/Project/PMSLM_Simulation` 只读；不回写源模型。
+- 保留用户 tracked/untracked 内容、未保存 MATLAB 模型、硬件资料移动、旧 worktree、PWM/FOC 工程及已有结果。
+- 不使用 `reset --hard`、`clean -fd`、强制切分支、自动 stash、整体覆盖或自动清理。冲突先保留并报告。
+- 版本用 Git 提交和源差异定位；不以文件哈希代替功能验收。运行证据必须来自真实 MATLAB 工具输出。
+- 新副本只做必要局部布局；不全局自动布局，不以消除警告为理由静默改变行为。
+- 不建设产品级测试基础设施；复用未受影响的历史证据，只补本阶段必要验证。
+- 实施结束停在开放 PR，不自动合并、不自行进入 M1B/M2、不操作硬件。
 
-## 交付与下一步
+## 文档与实施交接
 
-M0 交付模型功能差异、参数解析结果、资料/依赖清单、缺项处理记录和一份可 Review 的 M1 范围建议。详细验收和停止条件见任务书。
+用户合并本次设计文档后，以更新 main 非破坏性同步并准备实施；如设计未合并，不擅自合并或强制切换用户工作区。新模型与 `.m`、必要辅助文件、验证脚本和报告需一起交付，不得只有本地模型或缺依赖的远端说明。
 
-优先在用户合并本次文档 PR 后，从更新的 main 非破坏性同步；若文档尚未合并，只在用户明确指定后以该文档分支为基线。不要擅自合并、强制同步或清理工作区。
+历史全文见 [HANDOFF_LEGACY_20261021.md](HANDOFF_LEGACY_20261021.md)。[M0任务](tasks/m0_simulink_model_asset_audit.md)保留为已完成审计的历史任务，不要求因本阶段更新而重跑。

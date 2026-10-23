@@ -2,17 +2,19 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-21。** StudyL1 学习已结束，后续不再要求每个算法都维护“纯 Simulink、HDL Coder、手写 SV”三套实现。已有手写 PWM、FOC、电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。
+**路线更新：2026-10-23。** StudyL1 学习已结束；PR44 的 M0 模型审计已合并。用户明确下一步另存纯 Simulink PI-FOC 浮点基线，统一电机、调制和时基，参数使用外部 `.m` 加载工作区。当前提交的是 M1A 设计，不是已经生成新模型或通过仿真的声明。
+
+已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
 ## 当前入口
 
 | 内容 | 入口 |
 |---|---|
-| 当前目标、阶段边界与后续路线 | [Simulink 主线路线图](docs/SIMULINK_MAINLINE_ROADMAP.md) |
-| 完整 MIL / Simple / DSP 的初步差异、已有资料与待核查项 | [模型与资料核查表](docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md) |
-| Codex 当前任务：模型审计、资料补齐和下一阶段建议 | [M0 执行任务](coordination/tasks/m0_simulink_model_asset_audit.md) |
+| 当前阶段：新纯 Simulink 浮点模型及外部参数入口 | [M1A 设计与验收范围](coordination/specs/m1a_pure_simulink_float_baseline_design.md) |
+| 项目目标与阶段关系 | [Simulink 主线路线图](docs/SIMULINK_MAINLINE_ROADMAP.md) |
+| 完整 MIL / Simple / DSP 的实际差异和已有资料 | [模型与资料核查表](docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)、[M0 报告](coordination/reports/m0_simulink_model_asset_audit.md) |
 | 当前交接与工作区保护约定 | [HANDOFF](coordination/HANDOFF.md) |
-| 现有 Simple + 手写 RTL 联合仿真的操作方法 | [模型中文指南](docs/PMLSM_MODEL_GUIDE_ZH.md)，属于既有验证路径，不代表新 HDL Coder 主线已经完成 |
+| 旧 Simple + 手写 RTL 联合仿真的操作方法 | [模型中文指南](docs/PMLSM_MODEL_GUIDE_ZH.md)，仅适用既有验证路径 |
 
 ## 项目目标
 
@@ -20,35 +22,37 @@
 
 浮点参考与定点实现可以分开，但不长期维护两套互相漂移的电机、工况和控制需求。参数、采样周期、使能/复位及误差口径必须可追溯。
 
-## 三类模型的分工
+## 模型分工
 
-| 模型 | 当前定位 |
+| 模型 | 定位 |
 |---|---|
-| `simulink模型/PMLSM_ThreeLoop_Simple.slx` | 保留已修正、已验证的核心控制与联合仿真成果；继续作为快速调试和回归基础，不直接当作完整实机控制器 |
-| `simulink模型/PMLSM_MIL_ControlCore_Sim.slx` | 完整系统仿真、启动/命令/反馈/日志结构的参考；其中 `PMLSM_ControlCore_Block.slx` 也须一起审计 |
-| `simulink模型/PMSLM_Close_Loop_MBDL4.slx` | DSP 实机运行逻辑、参数、保护及外设映射的参考；不是可直接转换成 FPGA 顶层的模型 |
+| `simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` | M1A 拟新增的纯 Simulink 浮点基线；本设计 PR 尚未创建 |
+| `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m` | M1A 拟新增的外部参数/默认场景入口，加载 MATLAB 基础工作区；不依赖旧 MAT 和隐藏 Model Workspace 参数 |
+| `simulink模型/PMLSM_ThreeLoop_Simple.slx` | 保留已修正、已验证的核心控制与旧联合仿真成果；作为新副本来源和迁移对照，不直接当作完整实机控制器 |
+| `simulink模型/PMLSM_MIL_ControlCore_Sim.slx` | 完整系统仿真、启动/命令/反馈/日志的参考；其 `PMLSM_ControlCore_Block.slx` 一并保留 |
+| `simulink模型/PMSLM_Close_Loop_MBDL4.slx` | DSP 实机运行逻辑、参数、保护及外设语义参考；不直接转换成 FPGA 顶层 |
 
-不预先认定旧大模型比 Simple 更正确，也不从 Simple 删除功能较多就推断每项保护都不存在。具体迁移取舍由 M0 的实际模型核查决定。
+不覆盖原模型，不把三份旧模型强行改成一份。后续统一的是新主线的算法、物理量和接口责任，不是抹去历史差异。
 
 ## 现在做什么
 
-**M0 已于 2026-10-22 提交实际审计结果，当前停在 Review。** 见 [M0 整合报告](coordination/reports/m0_simulink_model_asset_audit.md) 和 [更新核查表](docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)。四个源模型已只读加载/查询，8份缺失说明/兼容入口已补齐；本地 Simple 启动可复现性、调制标度和 M1 边界仍为部分完成/待裁决，没有闭环运行或实现验收。
+**M0 已由 PR44 合并至 `2e10c2d`；当前进入 M1A 设计。** 以 Simple 的 `Control_Task_10kHz/FOC_Algorithm` 为来源，另存一个不依赖 backend 切换、XSI 或交互准备的纯 Simulink 模型。保留现有 PI-FOC、外环及自由运动 plant，明确归一化上管 duty、统一控制周期与参数来源，完成迁移对照。
 
-这轮不改控制算法、不重整定 PI、不创建新的完整控制器、不重新实现手写 FOC、不生成 bitstream、不操作硬件，也不为了整理文档完整重跑 Step 6、Step 7 或 StudyL1。
+M1A 不与对齐/故障恢复等运行管理重构混做，不进行定点化、HDL/C 生成、Vivado 构建或硬件操作，也不全量重跑 Step6/7/StudyL1。新模型创建及运行结果由后续实现 PR 交付；本次只更新设计和阶段说明。
 
-已知资料先从仓库和用户原始本地主项目查找；不要求用户重新讲一遍已经提供的接口。只有查找后仍缺失、且阻碍当前工作的具体信息，才集中报告。
+M0 中启动依赖、调制标度和参数遮蔽问题由 M1A 处理；真实采集、线缆和板级适配仍留后。已有接口先查仓库与原始资料，不要求用户重复填写。
 
 ## 已有成果与资料
 
-- 仓库已有上述三个主模型、`PMLSM_ControlCore_Block.slx`、初始化脚本和最小 HDL co-sim 模型；文件存在不等于本地依赖完整或模型已经重新验证。
-- 远端根目录已有 BX72、ACM9238、MBDL4、转接板及 DSP 核心板/底板资料；本地用户已放在 `硬件说明/`，对应关系见核查表和 M0 清单。接口参数以既有资料和实际连接为依据。
+- 三个旧主模型、ControlCore、相关初始化脚本、最小 HDL co-sim 模型，以及 M0 补齐的 8 份说明/兼容入口已在仓库；文件存在不等于动态或实机验证通过。
+- 远端根目录已有 BX72、ACM9238、MBDL4、转接板及 DSP 核心板/底板资料；本地用户已放在 `硬件说明/`，对应关系见 M0 清单。
 - `PWM_Controller/`、`PWM_Breathe/`、`Motor_PWM/`、`FOC_*/`、`motor_control_ip/`、`learning/` 和历史报告保留，不搬迁、不删除。
-- 本次文档核查基线：`main@319ee0103c4f4b42752fad49014ead2cfbefceea`，包含已合并 PR #41（StudyL1 Checkpoint D）。这不是新主线模型已完成的声明。
+- M1A 文档基线：`main@2e10c2dc576648165f541ad5b1530ef90c1e3791`。本地 Simple 仍可能有未提交变化，必须按 M0 证据核对，不能强制覆盖。
 
-历史环境记录包括 Vivado 2026.1、MATLAB R2026b、BX72 / `xc7a200tfbg484-2`；Codex 核查当前实际安装和工程配置即可，不因文档整理重装工具链。
+历史环境记录包括 Vivado 2026.1、MATLAB R2026b、BX72 / `xc7a200tfbg484-2`。纯浮点新模型不因已有这些工具就必须调用 HDL/Vivado。
 
 ## 协作与历史说明
 
-ChatGPT 维护架构、任务说明和 Review；Codex 在 `D:/Project/FPGA_XC7A200T` 完成实际 MATLAB/Vivado 核查、资料同步与后续经批准的实现。保留用户本地修改，不新建额外 clone/worktree，不强制清理，不自动合并 PR。
+ChatGPT 维护架构、设计、任务交接和 Review；Codex 在 `D:/Project/FPGA_XC7A200T` 完成实际模型创建及 MATLAB 验证。保留用户本地修改，不新建额外 clone/worktree，不强制清理，不自动合并 PR。
 
-[旧交接记录](coordination/HANDOFF_LEGACY_20261021.md)原样保留。旧阶段的任务书、验收数字和“尚未进入下一步”等表述只描述当时状态，不覆盖本次主线调整。历史 PWM 实验入口仍为 `PWM_Controller/PWM_Controller.xpr` 和 `PWM_Breathe/PWM_Breathe.xpr`；需要复现实验时读取对应历史任务与报告。
+[旧交接记录](coordination/HANDOFF_LEGACY_20261021.md)原样保留。旧任务的暂停或验收数字只描述当时状态，不覆盖当前范围。历史 PWM 实验入口仍为 `PWM_Controller/PWM_Controller.xpr` 和 `PWM_Breathe/PWM_Breathe.xpr`；复现时读取对应历史任务与报告。
