@@ -1,0 +1,12 @@
+{
+  "frozen_before_closedloop": true,
+  "date": "2026-10-23",
+  "migration_max_abs": {"current_A": 1e-9, "voltage_V": 1e-8, "duty": 1e-10, "speed_mmps": 1e-7, "position_mm": 1e-8, "PI_AW_state": 1e-8},
+  "migration_rmse": "same per-signal threshold as max_abs",
+  "events": "identical event count, mode/reset flags, and tick timestamps to within 1e-12 s",
+  "math": {"zero_duty_abs": 1e-12, "counts_duty_abs": 1e-12, "voltage_reconstruction_abs_V": 0.002},
+  "math_voltage_reason": "Source uses rounded 0.866 and 1.7321 coefficients; preserve these, compare against independent exact Clarke reconstruction across linear range.",
+  "convergence_max_abs": {"current_A": 0.005, "voltage_V": 0.05, "speed_mmps": 0.05, "position_mm": 0.005},
+  "repeat_max_abs": 1e-12,
+  "prohibition": "Do not enlarge any threshold after observing results. Failed physical or non-equivalent semantics require evidence and Review."
+}

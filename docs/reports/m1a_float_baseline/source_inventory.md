@@ -39,3 +39,7 @@ MATLAB 正式版 `26.2.0.3386108 (R2026b)`，实际路径 `D:/Program Files/MATL
 
 工具偏离：`model_edit(...,'incremental')` 的后台布局监听器递归进入 MCB 库；尝试 `LayoutStateManager.setEnabled(false)` 后仍复现，报 `Attempting to override parameters ... inside a library link`。
 两次尝试均在保存前终止本轮自有进程，保留日志。最终以原生 MATLAB 按 SID 编辑新副本并检查端口连接；没有调用全局布局，没有改工具配置或厂商库。
+
+初始化检查点：新 Model Workspace 为空，InitFcn 仅调用只读 `m1a_require_float_init`；四项工况时间序列显式生成并保持，旧 MAT/prepare 回调移除。
+两个独立批处理 PID 45492 / 45496 的默认、重复、负位置、负载、默认恢复五组 logsout 全部逐样本相同，见 `init_acceptance.json`。
+位置观察 25 ms，包含首个 9.9 ms 位置事件；负位置场景末值 -0.0028630039612365485 mm。短默认/负载观察 2 ms。此检查不替代后续完整闭环迁移验收。
