@@ -1,0 +1,42 @@
+﻿name,source_block,output_port,unit,sampling,decimation,recommended_group
+duty_u_cmd,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz,1,ratio,100 us,1,执行量
+duty_v_cmd,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz,2,ratio,100 us,1,执行量
+duty_w_cmd,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz,3,ratio,100 us,1,执行量
+x_d,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/x_d_z,1,V,100 us,1,执行量
+x_q,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/x_q_z,1,V,100 us,1,执行量
+vd_cmd,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,1,V,100 us,1,执行量
+vq_cmd,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,2,V,100 us,1,执行量
+du_d_z,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Unit Delay,1,V,100 us,1,执行量
+du_q_z,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Unit Delay1,1,V,100 us,1,执行量
+id_ref,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Reference_Manager,1,Apeak,100 us,1,电流/状态
+iq_ref,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Reference_Manager,2,Apeak,100 us,1,电流/状态
+v_ref,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Reference_Manager,3,mm/s,100 us,1,速度
+speed_tick,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Scheduler_10k_1k_100,1,bool/count,100 us,1,执行量
+position_tick,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Scheduler_10k_1k_100,2,bool/count,100 us,1,执行量
+position_counter,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Scheduler_10k_1k_100/pos_cnt_z,1,bool/count,100 us,1,执行量
+speed_counter,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Scheduler_10k_1k_100/spd_cnt_z,1,bool/count,100 us,1,执行量
+speed_memory,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Speed_Loop/Unit Delay,1,Apeak,100 us,1,电流/状态
+x_speed,PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/Speed_Loop/x_s_z,1,Apeak,100 us,1,电流/状态
+effective_reset,PMLSM_PI_FOC_Float_Baseline/Effective_PI_Reset,1,bool/count,1 us,1,执行量
+vd_applied,PMLSM_PI_FOC_Float_Baseline/Inverter_DeadTime,1,V,100 us,1,执行量
+vq_applied,PMLSM_PI_FOC_Float_Baseline/Inverter_DeadTime,2,V,100 us,1,执行量
+duty_u_applied,PMLSM_PI_FOC_Float_Baseline/Inverter_DeadTime/PWM_Update_HalfTs,1,ratio,50 us,1,执行量
+duty_v_applied,PMLSM_PI_FOC_Float_Baseline/Inverter_DeadTime/PWM_Update_HalfTs,2,ratio,50 us,1,执行量
+duty_w_applied,PMLSM_PI_FOC_Float_Baseline/Inverter_DeadTime/PWM_Update_HalfTs,3,ratio,50 us,1,执行量
+id,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,1,Apeak,1 us,1,电流/状态
+iq,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,2,Apeak,1 us,1,电流/状态
+ia,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,3,Apeak,1 us,1,电流/状态
+ib,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,4,Apeak,1 us,1,电流/状态
+ic,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,5,Apeak,1 us,1,电流/状态
+x_mm,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,6,mm,1 us,1,位置
+v_mmps,PMLSM_PI_FOC_Float_Baseline/PMLSM_Plant_Model,7,mm/s,1 us,1,速度
+x_ref_mm,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,1,mm,1 us,1,位置
+Close_Loop_EN,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,4,bool/count,1 us,1,执行量
+Position_Loop_EN,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,5,bool/count,1 us,1,执行量
+PWM_EN,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,6,bool/count,1 us,1,执行量
+v_ref_cmd,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,7,mm/s,1 us,1,速度
+id_ref_cmd,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,8,Apeak,1 us,1,电流/状态
+iq_test_mode,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,9,bool/count,1 us,1,执行量
+iq_test_ref,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,10,Apeak,1 us,1,电流/状态
+PI_Reset_EN,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,11,bool/count,1 us,1,执行量
+target_mm,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Target_mm,1,mm,100 us,1,位置

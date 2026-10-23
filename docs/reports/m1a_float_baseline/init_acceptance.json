@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "process_ids": [
+    45492,
+    45496
+  ],
+  "fresh_logs_equal": true,
+  "negative_guard": true,
+  "base_resolution": true,
+  "external_position_and_load_scripts_effective": true,
+  "defaults_restored": true,
+  "position_observation_s": 0.025,
+  "other_observation_s": 0.002
+}

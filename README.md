@@ -2,7 +2,7 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-23。** StudyL1 学习已结束；PR44 的 M0 模型审计已合并。用户明确下一步另存纯 Simulink PI-FOC 浮点基线，统一电机、调制和时基，参数使用外部 `.m` 加载工作区。PR45 已合并并批准 M1A 设计；当前整理 Codex 实施计划。新模型尚未创建，也没有新的仿真验收结果。
+**路线更新：2026-10-23。** PR46 计划已按检查点实施：新增独立纯 Simulink PI-FOC 浮点基线，外部 `.m` 加载 Base Workspace，统一电机、归一化 duty 和控制时基。数学/时序、九个源 backend0 迁移场景及步长检查已在 R2026b 实测通过；当前完成交付复核，停在开放实现 PR 等待 Review。
 
 已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
@@ -10,6 +10,7 @@
 
 | 内容 | 入口 |
 |---|---|
+| 直接运行新浮点基线 | [中文运行指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)、[实施报告](coordination/reports/m1a_pure_simulink_float_baseline.md)、[结果索引](docs/reports/m1a_float_baseline/README.md) |
 | 当前阶段：纯 Simulink 浮点模型及外部参数入口 | [M1A 设计](coordination/specs/m1a_pure_simulink_float_baseline_design.md)、[Codex 实施任务](coordination/tasks/m1a_pure_simulink_float_baseline.md)、[逐项计划](docs/superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md) |
 | 项目目标与阶段关系 | [Simulink 主线路线图](docs/SIMULINK_MAINLINE_ROADMAP.md) |
 | 完整 MIL / Simple / DSP 的实际差异和已有资料 | [模型与资料核查表](docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)、[M0 报告](coordination/reports/m0_simulink_model_asset_audit.md) |
@@ -26,8 +27,8 @@
 
 | 模型 | 定位 |
 |---|---|
-| `simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` | M1A 实施拟新增的纯 Simulink 浮点基线；尚未在当前文档 PR 中创建 |
-| `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m` | M1A 拟新增的外部参数/默认场景入口，加载 MATLAB 基础工作区；不依赖旧 MAT 和隐藏 Model Workspace 参数 |
+| `simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` | M1A 独立纯 Simulink 浮点基线；已完成限定场景仿真验证 |
+| `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m` | 外部参数/默认场景入口，显式加载 Base Workspace；不依赖旧 MAT 和隐藏 Model Workspace 参数 |
 | `simulink模型/PMLSM_ThreeLoop_Simple.slx` | 保留已修正、已验证的核心控制与旧联合仿真成果；作为新副本来源和迁移对照，不直接当作完整实机控制器 |
 | `simulink模型/PMLSM_MIL_ControlCore_Sim.slx` | 完整系统仿真、启动/命令/反馈/日志的参考；其 `PMLSM_ControlCore_Block.slx` 一并保留 |
 | `simulink模型/PMSLM_Close_Loop_MBDL4.slx` | DSP 实机运行逻辑、参数、保护及外设语义参考；不直接转换成 FPGA 顶层 |
@@ -36,9 +37,9 @@
 
 ## 现在做什么
 
-**M0 已由 PR44 合并；PR45 设计已合并。当前进入 M1A 实施计划交接，等待计划 Review。** 以 Simple 的 `Control_Task_10kHz/FOC_Algorithm` 为来源，另存一个不依赖 backend 切换、XSI 或交互准备的纯 Simulink 模型。保留现有 PI-FOC、外环及自由运动 plant，明确归一化上管 duty、统一控制周期与参数来源，完成迁移对照。
+**M1A 实现等待 Review。** 新模型以 Simple 的 `Control_Task_10kHz/FOC_Algorithm` 为来源，保留 PI-FOC、外环及自由运动 plant，使用归一化上管 duty 和明确的外部参数。按运行指南复现、审阅实现报告；不自动进入 M1B/M2。
 
-M1A 不与对齐/故障恢复等运行管理重构混做，不进行定点化、HDL/C 生成、Vivado 构建或硬件操作，也不全量重跑 Step6/7/StudyL1。新模型创建及运行结果由 Codex 的后续实现 PR 交付；本次只更新实施计划和阶段交接。
+M1A 没有混入对齐/故障恢复等运行管理重构，没有定点化、HDL/C 生成、Vivado 构建或硬件操作，也未全量重跑 Step6/7/StudyL1。旧模型及用户未提交版本保留，后续工作另行批准。
 
 M0 中启动依赖、调制标度和参数遮蔽问题由 M1A 处理；真实采集、线缆和板级适配仍留后。已有接口先查仓库与原始资料，不要求用户重复填写。
 
@@ -56,3 +57,6 @@ M0 中启动依赖、调制标度和参数遮蔽问题由 M1A 处理；真实采
 ChatGPT 维护架构、设计、任务交接和 Review；Codex 在 `D:/Project/FPGA_XC7A200T` 完成实际模型创建及 MATLAB 验证。保留用户本地修改，不新建额外 clone/worktree，不强制清理，不自动合并 PR。
 
 [旧交接记录](coordination/HANDOFF_LEGACY_20261021.md)原样保留。旧任务的暂停或验收数字只描述当时状态，不覆盖当前范围。历史 PWM 实验入口仍为 `PWM_Controller/PWM_Controller.xpr` 和 `PWM_Breathe/PWM_Breathe.xpr`；复现时读取对应历史任务与报告。
+
+
+PR47 操作修订：Simple_Host统一指令、中文初始化、轨迹预览、保存的具名日志。[手动操作指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md) · [修订报告](coordination/reports/pr47_host_interface_revision.md)

@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "process_ids": [
+    43908,
+    45864
+  ],
+  "stop_s": 1.2,
+  "signal_count": 11,
+  "max_repeat_error": 0,
+  "x_final_mm": 0.98496768636059617,
+  "position_error_mm": 0.015032313639403827,
+  "old_mat_present": false,
+  "legacy_variables_present": false,
+  "source_files": [
+    "PMLSM_PI_FOC_Float_Baseline.slx",
+    "init_PMLSM_PI_FOC_Float_Baseline.m",
+    "m1a_require_float_init.m",
+    "design_PMLSM_three_loop.m",
+    "pmlsm_scurve_profile.m"
+  ],
+  "other_repository_paths_excluded": true,
+  "helper_resolution_checked": true
+}

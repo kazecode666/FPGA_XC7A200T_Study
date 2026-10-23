@@ -1,0 +1,66 @@
+{
+  "modes": [
+    {
+      "mode": 1,
+      "stop_s": 1.2,
+      "final_x_mm": 0.98496768636059617
+    },
+    {
+      "mode": 2,
+      "stop_s": 0.099999999999999992,
+      "final_x_mm": 0.24906855181852586
+    },
+    {
+      "mode": 3,
+      "stop_s": 0.03,
+      "final_x_mm": 2.1413211192500485
+    }
+  ],
+  "saved_names": [
+    "duty_u_cmd",
+    "duty_v_cmd",
+    "duty_w_cmd",
+    "x_d",
+    "x_q",
+    "vd_cmd",
+    "vq_cmd",
+    "du_d_z",
+    "du_q_z",
+    "id_ref",
+    "iq_ref",
+    "v_ref",
+    "position_tick",
+    "speed_tick",
+    "position_counter",
+    "speed_counter",
+    "speed_memory",
+    "x_speed",
+    "effective_reset",
+    "vd_applied",
+    "vq_applied",
+    "duty_u_applied",
+    "duty_v_applied",
+    "duty_w_applied",
+    "ia",
+    "ib",
+    "ic",
+    "id",
+    "iq",
+    "v_mmps",
+    "x_mm",
+    "Close_Loop_EN",
+    "PI_Reset_EN",
+    "PWM_EN",
+    "Position_Loop_EN",
+    "id_ref_cmd",
+    "iq_test_mode",
+    "iq_test_ref",
+    "v_ref_cmd",
+    "x_ref_mm",
+    "target_mm"
+  ],
+  "pass": true,
+  "preview_max_error": 0,
+  "replay_pwm_reset": true,
+  "long_stop_s": 1.3
+}
