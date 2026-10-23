@@ -53,3 +53,16 @@ SDI API实际确认本次Run 2506有50路具名记录：41路正式logsout及9�
 
 未完成的UI证据项：未用鼠标点击Dashboard；原生SDI快照调用返回但没有生成图片，提交的是实际SDI API名称的MATLAB表格图。模型/Host/Monitor原生图和实际轨迹图均已生成并检查，最终更新与端口连接检查通过。上述UI证据限制不扩大为完整桌面交互验证。
 另以临时初始化文本将相电阻改为2.5 ohm，正常入口及只读检查接受随设计函数得到的Ki_ACR=12500，随后显式恢复默认11850；证明已解除固定PI数字锁而未改变默认值。
+
+
+### 后续：旁置S曲线和严格同层局部标签
+
+以用户随后保存的最新SLX为起点（快照.runtime/pr47_local_curve/user_start.slx），该文件的Goto已是local，保留其修改。严格同父层匹配测试仍发现Monitor内11个From依赖跨层标签。现改为Monitor的11个显式Inport，顶层局部From紧靠端口；全模型Goto强制local，From/Goto均方括号Tag显示。跨层只走输入输出端口。
+
+在输入面板右侧新增大尺寸Dashboard Scope S_Curve_Reference_Actual，绑定真实Simple_Host输出1（规划x_ref_mm）及plant输出6（实际x_mm）。默认TimeSpan=auto；Run后直接显示。原Scope仍保留作可选放大查看。没有重新实现轨迹公式。
+
+实际接入时确认Dashboard Scope的Binding需要SignalSpecification的cell数组，TimeSpan不接受工作区表达式，LegendPosition区分大小写，最终采用合法默认图例位置Top。均在保存前修正并update检查。
+
+验收：scripts/m1a_verify_local_routing.m检查全部局部路由、同层唯一匹配、11个Monitor显式输入、显示绑定，再运行1.2s默认场景，与已接受默认运行的12路实际信号逐样本精确比较。结果见local_curve_acceptance.json，最终画布见local_curve_top.png。仅改新模型显示/观测边界；旧模型及控制数学不改。
+
+本轮最终结果：66个local Goto、95个同层唯一匹配From、Monitor11输入，默认1.2s的12路信号逐样本max_abs_error=0。新验收脚本支持传入修订前MAT参考路径；默认使用本机保留的default_run.mat，大体积MAT未提交，因此该数值对照需本机参考数据，正常模型Run和布局检查不依赖它。顶层导出图已目视检查，曲线实际可见，新增区域无重叠。

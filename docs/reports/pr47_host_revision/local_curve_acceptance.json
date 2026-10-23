@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "local_goto_count": 66,
+  "same_level_from_count": 95,
+  "monitor_explicit_inputs": 11,
+  "dashboard_actual_sources": [
+    "Simple_Host:1 x_ref_mm",
+    "PMLSM_Plant_Model:6 x_mm"
+  ],
+  "compared_signals": 12,
+  "max_abs_error": 0,
+  "stop_s": 1.2
+}

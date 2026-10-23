@@ -90,3 +90,10 @@ figure; plot(s.Time,s.Data); xlabel('s'); ylabel('Apeak');
 Motor_Control_Monitor保留真实信号的具名Scope入口，不参与计算；已移除旧19列向量及motor_control_monitor输出，用户不需要记列号。FPGA counts/事务/故障零值占位全部移除，真实归一化duty仍保留。
 
 [轨迹结果](reports/pr47_host_revision/trajectory.png) · [修订验收报告](../coordination/reports/pr47_host_interface_revision.md)。旧M1A迁移数据属于原交付检查点，操作入口以本页及新报告为准。
+
+
+## 面板旁的S曲线与局部连线（后续修订）
+
+九个命令输入框右侧的 **S_Curve_Reference_Actual** 是内嵌 Dashboard Scope。Run后直接在模型画布上看规划位置S曲线与实际位置，不必双击Scope打开窗口；横轴自动显示仿真时间。它绑定真实Host位置输出和plant反馈，不另算一条显示曲线。未运行时可继续使用可选preview_PMLSM_reference预览整个规划。
+
+所有Goto均为local，所有From必须在**同一个父系统**找到唯一局部Goto；没有global/scoped标签或Goto Tag Visibility块。跨子系统通过输入/输出端口。Motor_Control_Monitor的11个具名输入在顶层可见，左侧局部From紧靠输入，内部通过Inport短线接对应Scope。
