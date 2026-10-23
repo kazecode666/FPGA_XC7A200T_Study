@@ -1,0 +1,58 @@
+[
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_MIL_Model_Notes.md",
+    "target": "simulink模型/PMLSM_MIL_Model_Notes.md",
+    "bytes": 11851,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_MIL_Test_Flow.md",
+    "target": "simulink模型/PMLSM_MIL_Test_Flow.md",
+    "bytes": 4824,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_Hardware_Interface_Map.md",
+    "target": "simulink模型/PMLSM_Hardware_Interface_Map.md",
+    "bytes": 7051,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_ePWM_Polarity_Check.md",
+    "target": "simulink模型/PMLSM_ePWM_Polarity_Check.md",
+    "bytes": 1923,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\init_PMLSM_MIL_params.m",
+    "target": "simulink模型/init_PMLSM_MIL_params.m",
+    "bytes": 211,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_Current_PI_Discrete_Form.md",
+    "target": "simulink模型/PMLSM_Current_PI_Discrete_Form.md",
+    "bytes": 3460,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_Angle_Init_Id_Release_Ramp_Plan.md",
+    "target": "simulink模型/PMLSM_Angle_Init_Id_Release_Ramp_Plan.md",
+    "bytes": 2808,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  },
+  {
+    "source": "D:\\Project\\PMSLM_Simulation\\PMLSM_Sensor_Model_Check.md",
+    "target": "simulink模型/PMLSM_Sensor_Model_Check.md",
+    "bytes": 1614,
+    "byte_equal": true,
+    "reason": "Referenced MIL dependency or functional semantics documentation; source preserved verbatim"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "remote_path": "28335BPLUS迁移至28388D注意事项.txt",
+    "local_path": "硬件说明/28335BPLUS迁移至28388D注意事项.txt",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "CRLF/LF normalized comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "28388BGA核心板.pdf",
+    "local_path": "硬件说明/28388BGA核心板.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "28388至尊底板V1.1.pdf",
+    "local_path": "硬件说明/28388至尊底板V1.1.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "ACM9238-SCH.pdf",
+    "local_path": "硬件说明/ACM9238-SCH-ADC模块.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "BX72-251215.pdf",
+    "local_path": "硬件说明/BX72-251215.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "BX72_test.zip",
+    "local_path": "硬件说明/BX72_test.zip",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "BX72_装配图.pdf",
+    "local_path": "硬件说明/BX72_装配图.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "BX72用户测试说明.txt",
+    "local_path": "硬件说明/BX72用户测试说明.txt",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "CRLF/LF normalized comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "BX72管脚分配表V2.1.xlsx",
+    "local_path": "硬件说明/BX72管脚分配表V2.1.xlsx",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "all nonempty workbook cell coordinates and values",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "MDBL4转接板.pdf",
+    "local_path": "硬件说明/MDBL4转接板.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "YXPHM-MBDL4驱动板原理图.pdf",
+    "local_path": "硬件说明/YXPHM-MBDL4驱动板原理图.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  },
+  {
+    "remote_path": "YXPHM-MDBL4电机驱动板硬件说明书.pdf",
+    "local_path": "硬件说明/YXPHM-MDBL4电机驱动板硬件说明书.pdf",
+    "remote_present": true,
+    "local_present": true,
+    "equal_under_method": true,
+    "method": "byte comparison",
+    "action": "preserve user relocation; no duplicate upload or staged deletion"
+  }
+]

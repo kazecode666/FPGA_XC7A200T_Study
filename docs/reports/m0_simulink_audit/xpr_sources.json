@@ -1,0 +1,898 @@
+[
+  {
+    "project": "FOC_Current/FOC_Current.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_clarke.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_clarke.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_foc_current_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_foc_current_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "resolved": "motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/foc_current_clock.xdc",
+        "resolved": "FOC_Current/FOC_Current.srcs/constrs_1/new/foc_current_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_foc_current_core_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_foc_current_core_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c4/foc_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c4/foc_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c4/manifest.json",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c4/manifest.json",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/mc_foc_current_core_tb_behav.wcfg",
+        "resolved": "FOC_Current/mc_foc_current_core_tb_behav.wcfg",
+        "exists": true,
+        "tracked": false
+      }
+    ]
+  },
+  {
+    "project": "FOC_Gates/FOC_Gates.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_clarke.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_clarke.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/rtl/mc_duty_to_cmp.sv",
+        "resolved": "motor_control_ip/integration/rtl/mc_duty_to_cmp.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_foc_current_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_foc_current_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/rtl/mc_foc_pwm_top.sv",
+        "resolved": "motor_control_ip/integration/rtl/mc_foc_pwm_top.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/pwm/rtl/mc_pwm_deadtime_leg.sv",
+        "resolved": "motor_control_ip/pwm/rtl/mc_pwm_deadtime_leg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/pwm/rtl/motor_pwm_core.sv",
+        "resolved": "motor_control_ip/pwm/rtl/motor_pwm_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/rtl/mc_foc_gate_top.sv",
+        "resolved": "motor_control_ip/integration/rtl/mc_foc_gate_top.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "resolved": "motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/foc_gates_clock.xdc",
+        "resolved": "FOC_Gates/FOC_Gates.srcs/constrs_1/new/foc_gates_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/tb/mc_foc_gate_top_tb.sv",
+        "resolved": "motor_control_ip/integration/tb/mc_foc_gate_top_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/tb/vectors/step6d_pwm_vectors.txt",
+        "resolved": "motor_control_ip/integration/tb/vectors/step6d_pwm_vectors.txt",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "FOC_PI/FOC_PI.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/foc_pi_clock.xdc",
+        "resolved": "FOC_PI/FOC_PI.srcs/constrs_1/new/foc_pi_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_pi_dq_core_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_pi_fxp_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_pi_fxp_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_isqrt_u80_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_isqrt_u80_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_udiv_u72_u41_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_udiv_u72_u41_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_pi_dq_eval_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_pi_dq_eval_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_dq_limiter_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_dq_limiter_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/round_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/round_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/range_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/range_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/sqrt_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/sqrt_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/divider_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/divider_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/evaluator_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/evaluator_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/limiter_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/limiter_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/golden_core_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/golden_core_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/seeded_core_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/seeded_core_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c2/error_core_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c2/error_core_vectors.txt",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "FOC_PWM/FOC_PWM.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_clarke.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_clarke.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_dq_limiter.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/rtl/mc_duty_to_cmp.sv",
+        "resolved": "motor_control_ip/integration/rtl/mc_duty_to_cmp.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_foc_current_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_foc_current_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_isqrt_u80.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_pi_dq_eval.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/pwm/rtl/motor_pwm_core.sv",
+        "resolved": "motor_control_ip/pwm/rtl/motor_pwm_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/rtl/mc_foc_pwm_top.sv",
+        "resolved": "motor_control_ip/integration/rtl/mc_foc_pwm_top.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "resolved": "motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/foc_pwm_clock.xdc",
+        "resolved": "FOC_PWM/FOC_PWM.srcs/constrs_1/new/foc_pwm_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv",
+        "resolved": "motor_control_ip/integration/tb/mc_foc_pwm_top_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/integration/tb/vectors/step6d_pwm_vectors.txt",
+        "resolved": "motor_control_ip/integration/tb/vectors/step6d_pwm_vectors.txt",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "FOC_SVPWM/FOC_SVPWM.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_svpwm_sector_xyz.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_udiv_u72_u41.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sector_svpwm.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/FOC_SVPWM.srcs/constrs_1/new/foc_svpwm_clock.xdc",
+        "resolved": "FOC_SVPWM/FOC_SVPWM.srcs/constrs_1/new/foc_svpwm_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_sector_svpwm_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_sector_svpwm_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_svpwm_pkg_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_svpwm_pkg_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_svpwm_sector_xyz_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_svpwm_sector_xyz_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c3/manifest.json",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c3/manifest.json",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c3/sector_xyz_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c3/sector_xyz_vectors.txt",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/vectors/step6c3/svpwm_vectors.txt",
+        "resolved": "motor_control_ip/foc/tb/vectors/step6c3/svpwm_vectors.txt",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "FOC_Transforms/FOC_Transforms.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_fxp_pkg.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_clarke.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_clarke.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_sincos_lut.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_current_transform.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "resolved": "motor_control_ip/foc/rtl/mc_inv_park.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "resolved": "motor_control_ip/foc/rom/sin_qw_4096x18.mem",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/foc_transforms_clock.xdc",
+        "resolved": "FOC_Transforms/FOC_Transforms.srcs/constrs_1/new/foc_transforms_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_current_transform_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_current_transform_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_clarke_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_clarke_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_sincos_lut_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_sincos_lut_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/foc/tb/mc_park_tb.sv",
+        "resolved": "motor_control_ip/foc/tb/mc_park_tb.sv",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "Motor_PWM/Motor_PWM.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../motor_control_ip/pwm/rtl/motor_pwm_core.sv",
+        "resolved": "motor_control_ip/pwm/rtl/motor_pwm_core.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/motor_pwm_clock.xdc",
+        "resolved": "Motor_PWM/Motor_PWM.srcs/constrs_1/new/motor_pwm_clock.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../motor_control_ip/pwm/tb/motor_pwm_core_tb.sv",
+        "resolved": "motor_control_ip/pwm/tb/motor_pwm_core_tb.sv",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "PWM_Breathe/PWM_Breathe.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../PWM_Controller/PWM_Controller.srcs/sources_1/new/pwm_control.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sources_1/new/pwm_control.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/rtl/pwm_breathe_top.sv",
+        "resolved": "PWM_Breathe/rtl/pwm_breathe_top.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../PWM_Controller/PWM_Controller.srcs/sources_1/new/pwm_demo_top.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sources_1/new/pwm_demo_top.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/tb/pwm_breathe_top_tb.sv",
+        "resolved": "PWM_Breathe/tb/pwm_breathe_top_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_demo_top_tb.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_demo_top_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_controller_tb.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_controller_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/constraints/bx72_step5b.xdc",
+        "resolved": "PWM_Breathe/constraints/bx72_step5b.xdc",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "PWM_Controller/PWM_Controller.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PSRCDIR/sources_1/new/pwm_control.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sources_1/new/pwm_control.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/sources_1/new/pwm_demo_top.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sources_1/new/pwm_demo_top.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/pwm_timing.xdc",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/constrs_1/new/pwm_timing.xdc",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/sim_1/new/pwm_demo_top_tb.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_demo_top_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/sim_1/new/pwm_controller_tb.sv",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/sim_1/new/pwm_controller_tb.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/new/bx72_step5a.xdc",
+        "resolved": "PWM_Controller/PWM_Controller.srcs/constrs_1/new/bx72_step5a.xdc",
+        "exists": true,
+        "tracked": true
+      }
+    ]
+  },
+  {
+    "project": "Study_L1_Speed_PI/Study_L1_Speed_PI.xpr",
+    "part": [
+      "xc7a200tfbg484-2"
+    ],
+    "files": [
+      {
+        "reference": "$PPRDIR/../learning/study_l1_speed_pi_hdl_compare/generated_hdl/baseline/PI.sv",
+        "resolved": "learning/study_l1_speed_pi_hdl_compare/generated_hdl/baseline/PI.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PPRDIR/../learning/study_l1_speed_pi_hdl_compare/generated_hdl/baseline/HDLCore.sv",
+        "resolved": "learning/study_l1_speed_pi_hdl_compare/generated_hdl/baseline/HDLCore.sv",
+        "exists": true,
+        "tracked": true
+      },
+      {
+        "reference": "$PSRCDIR/constrs_1/imports/scripts/study_l1_50mhz.xdc",
+        "resolved": "Study_L1_Speed_PI/Study_L1_Speed_PI.srcs/constrs_1/imports/scripts/study_l1_50mhz.xdc",
+        "exists": true,
+        "tracked": false
+      },
+      {
+        "reference": "$PSRCDIR/sim_1/imports/scripts/study_l1_generated_tb.sv",
+        "resolved": "Study_L1_Speed_PI/Study_L1_Speed_PI.srcs/sim_1/imports/scripts/study_l1_generated_tb.sv",
+        "exists": true,
+        "tracked": false
+      },
+      {
+        "reference": "$PPRDIR/study_l1_generated_tb_behav.wcfg",
+        "resolved": "Study_L1_Speed_PI/study_l1_generated_tb_behav.wcfg",
+        "exists": true,
+        "tracked": false
+      }
+    ]
+  }
+]

@@ -12,6 +12,8 @@
 
 ## Codex 当前任务：M0
 
+2026-10-22 实查交付：[M0 报告](reports/m0_simulink_model_asset_audit.md)、[已核查差异表](../docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)、[机器证据](../docs/reports/m0_simulink_audit/README.md)。执行起点为更新的 `main@361c2c6`，保留原目录全部本地修改。四模型加载/查询后 Dirty=off，未更新图、仿真、生成或保存。8个资料缺项已单独同步；调制尺度、Simple新进程启动基线与M1边界仍为部分完成/待Review。后文原初查说明描述任务下达时的状态；当前状态以本段和报告为准。不自动进入M1。
+
 执行 [M0 模型差异与资料核查](tasks/m0_simulink_model_asset_audit.md)。先读 [主线路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md) 和 [初步核查表](../docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)。
 
 当前允许：只读核查实际 SLX 和参数来源；非破坏性补齐相关模型/依赖/硬件说明/中间工程资料；更新差异表和证据；提交下一阶段范围建议；创建开放 PR。
@@ -22,11 +24,11 @@
 
 ## 基线与尚未完成的工作
 
-远端核查基线为 `main@319ee0103c4f4b42752fad49014ead2cfbefceea`，已包含 PR #41。StudyL1 按用户确认结束；其各 Checkpoint README 中的历史暂停指令不再是当前任务。
+2026-10-21 远端初查基线为 `main@319ee0103c4f4b42752fad49014ead2cfbefceea`；2026-10-22 本地 M0 实查从包含 PR #43 的 `main@361c2c6` 开始。StudyL1 按用户确认结束；其各 Checkpoint README 中的历史暂停指令不再是当前任务。
 
-ChatGPT 本轮只核对远端文件清单、已有说明和部分脚本文本，未运行 MATLAB/Vivado，未逐块复核三个 SLX。`MODEL_DIFFERENCE_AND_ASSET_AUDIT.md` 是带证据等级的初查，不是 M0 完成报告。
+ChatGPT 在 2026-10-21 只做远端初查。Codex 已在 2026-10-22 补实际 SLX 加载/连接、参数覆盖、资料与工程依赖证据，`MODEL_DIFFERENCE_AND_ASSET_AUDIT.md` 已更新为实查表；动态运行就绪与 M1 接口冻结仍待 Review。
 
-Codex 需核对本地 HEAD、未提交改动、实际模型版本及依赖，再报告“已找到 / 已读取 / 已解析或运行”的不同状态。不能把上传成功说成仿真通过，也不能把旧学习 RTL 的通过说成新生成控制器已通过。
+Codex 已记录本地 HEAD、未提交改动、实际模型版本及依赖，并区分“已找到 / 已读取 / 已解析”与本轮未执行的运行验证。不能把上传成功说成仿真通过，也不能把旧学习 RTL 的通过说成新生成控制器已通过。
 
 ## 工作约定
 

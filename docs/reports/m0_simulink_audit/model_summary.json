@@ -1,0 +1,505 @@
+[
+  {
+    "model": "PMLSM_MIL_ControlCore_Sim",
+    "archive_blocks": 579,
+    "query_blocks": 579,
+    "loaded": true,
+    "dirty_after_load": "off",
+    "dirty_after_query": "off",
+    "config": {
+      "FileName": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\PMLSM_MIL_ControlCore_Sim.slx",
+      "InitFcn": "init_PMLSM_control_params; init_PMLSM_plant_params; init_PMLSM_mil_test_params;",
+      "PreLoadFcn": "",
+      "PostLoadFcn": "",
+      "StartFcn": "",
+      "StopFcn": "",
+      "SolverType": "Fixed-step",
+      "Solver": "FixedStepDiscrete",
+      "FixedStep": "MIL_Ts_s",
+      "StartTime": "0.0",
+      "StopTime": "MIL_StopTime_s",
+      "SystemTargetFile": "grt.tlc",
+      "HardwareBoard": "None",
+      "DataDictionary": "",
+      "ModelVersion": "6.145"
+    },
+    "workspace_source": "Model File",
+    "callbacks": [
+      {
+        "member": "simulink/systems/system_1.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/systems/system_1.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/blockdiagram.xml",
+        "name": "InitFcn",
+        "code": "init_PMLSM_control_params; init_PMLSM_plant_params; init_PMLSM_mil_test_params;"
+      },
+      {
+        "member": "simulink/configSet0.xml",
+        "name": "GenerateAllocFcn",
+        "code": "off"
+      }
+    ],
+    "library_links": [],
+    "error": ""
+  },
+  {
+    "model": "PMLSM_ControlCore_Block",
+    "archive_blocks": 1310,
+    "query_blocks": 1285,
+    "loaded": true,
+    "dirty_after_load": "off",
+    "dirty_after_query": "off",
+    "config": {
+      "FileName": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\PMLSM_ControlCore_Block.slx",
+      "InitFcn": "",
+      "PreLoadFcn": "",
+      "PostLoadFcn": "",
+      "StartFcn": "",
+      "StopFcn": "",
+      "SolverType": "Fixed-step",
+      "Solver": "FixedStepDiscrete",
+      "FixedStep": "1e-4",
+      "StartTime": "0.0",
+      "StopTime": "1",
+      "SystemTargetFile": "grt.tlc",
+      "HardwareBoard": "None",
+      "DataDictionary": "",
+      "ModelVersion": "6.251"
+    },
+    "workspace_source": "Model File",
+    "callbacks": [
+      {
+        "member": "simulink/systems/system_1430.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/systems/system_1.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/systems/system_1.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/configSet0.xml",
+        "name": "GenerateAllocFcn",
+        "code": "off"
+      }
+    ],
+    "library_links": [
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Caculate_measurement/IIR Filter/IIR Filter",
+        "reference": "mcbpcciirfilterlib/IIR Filter",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/External_Fault_Latch/fault_i_active",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/External_Fault_Latch/fault_u_active",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/DPICC_Incremental_Core/angle_init_inactive",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/DPICC_Incremental_Core/close_loop_active",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/DPICC_Incremental_Core/mode_is_dpicc",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/DPICC_Incremental_Core/mode_is_half_comp",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Enable/angle_inactive",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Enable/close_loop",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Enable/fault_inactive",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Enable/init_done",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Enable/mode_is_5",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Numeric_Protection/ud_saturated",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Numeric_Protection/uq_saturated",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Observer/D_hat_d_saturated",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/DPCC_Current_Controller/PICDO_DPICC_Core/PICDO_Observer/D_hat_q_saturated",
+        "reference": "hdlsllib/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/Inverse Park Transform",
+        "reference": "mcbeeMathTransformLib/Park to Clarke\nAngle Transform",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/FOC_Algorithm/Park Transform",
+        "reference": "mcbeeMathTransformLib/Clarke to Park\nAngle Transform",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Scheduler_10k_1k_100/UART_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Scheduler_10k_1k_100/pos_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Scheduler_10k_1k_100/spd_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant1",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant2",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant3",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant4",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      }
+    ],
+    "error": ""
+  },
+  {
+    "model": "PMLSM_ThreeLoop_Simple",
+    "archive_blocks": 1095,
+    "query_blocks": 1031,
+    "loaded": true,
+    "dirty_after_load": "off",
+    "dirty_after_query": "off",
+    "config": {
+      "FileName": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\PMLSM_ThreeLoop_Simple.slx",
+      "InitFcn": "reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));\npmlsm_interactive_cosim_init(bdroot);",
+      "PreLoadFcn": "init_PMLSM_fpga_cosim_params;",
+      "PostLoadFcn": "",
+      "StartFcn": "",
+      "StopFcn": "",
+      "SolverType": "Fixed-step",
+      "Solver": "FixedStepDiscrete",
+      "FixedStep": "9.9999999999999995e-07",
+      "StartTime": "0.0",
+      "StopTime": "1.2",
+      "SystemTargetFile": "grt.tlc",
+      "HardwareBoard": "None",
+      "DataDictionary": "",
+      "ModelVersion": "2.119"
+    },
+    "workspace_source": "MATLAB File",
+    "callbacks": [
+      {
+        "member": "simulink/systems/system_1453.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/systems/system_root.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/blockDiagram.json",
+        "name": "InitFcn",
+        "code": "reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));\npmlsm_interactive_cosim_init(bdroot);"
+      },
+      {
+        "member": "simulink/blockDiagram.json",
+        "name": "PreLoadFcn",
+        "code": "init_PMLSM_fpga_cosim_params;"
+      }
+    ],
+    "library_links": [
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/InversePark",
+        "reference": "mcbeeMathTransformLib/Park to Clarke\nAngle Transform",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/FOC_Algorithm/Park",
+        "reference": "mcbeeMathTransformLib/Clarke to Park\nAngle Transform",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Scheduler_10k_1k_100/pos_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Scheduler_10k_1k_100/spd_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Compare\nTo Constant1",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Compare\nTo Constant2",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/Control_Task_10kHz/Speed_Loop/pi_reset_manager/Compare\nTo Constant4",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMLSM_ThreeLoop_Simple/FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation",
+        "reference": "vivadosimlib/HDL Cosimulation",
+        "status": "resolved"
+      }
+    ],
+    "error": ""
+  },
+  {
+    "model": "PMSLM_Close_Loop_MBDL4",
+    "archive_blocks": 736,
+    "query_blocks": 736,
+    "loaded": true,
+    "dirty_after_load": "off",
+    "dirty_after_query": "off",
+    "config": {
+      "FileName": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\PMSLM_Close_Loop_MBDL4.slx",
+      "InitFcn": "",
+      "PreLoadFcn": "",
+      "PostLoadFcn": "",
+      "StartFcn": "",
+      "StopFcn": "",
+      "SolverType": "Fixed-step",
+      "Solver": "FixedStepDiscrete",
+      "FixedStep": "Ts",
+      "StartTime": "0.0",
+      "StopTime": "Inf",
+      "SystemTargetFile": "ert.tlc",
+      "HardwareBoard": "TI F2838x",
+      "DataDictionary": "",
+      "ModelVersion": "6.82"
+    },
+    "workspace_source": "Model File",
+    "callbacks": [
+      {
+        "member": "simulink/systems/system_340.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/systems/system_340.xml",
+        "name": "ErrorFcn",
+        "code": "Stateflow.Translate.translate"
+      },
+      {
+        "member": "simulink/configSet0.xml",
+        "name": "GenerateAllocFcn",
+        "code": "off"
+      }
+    ],
+    "library_links": [
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/ADC//QEP/ADCA_Current",
+        "reference": "c2802xlib/ADC",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/ADC//QEP/ADCB_Current",
+        "reference": "c2802xlib/ADC",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/ADC//QEP/ADCC_Current",
+        "reference": "c2802xlib/ADC",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/ADC//QEP/eQEP",
+        "reference": "c280xlib/eQEP",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Caculate_measurement/IIR Filter/IIR Filter",
+        "reference": "mcbpcciirfilterlib/IIR Filter",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/GPIO30_PWM_OE",
+        "reference": "c2838xlib/Digital Output",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/GPIO62_RELCON",
+        "reference": "c2838xlib/Digital Output",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/GPIO63_ENCON",
+        "reference": "c2838xlib/Digital Output",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/GPIO66_F_Reset",
+        "reference": "c2838xlib/Digital Output",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/GPIO67_ERRI",
+        "reference": "c2838xlib/Digital Input",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/GPIO68_ERRU",
+        "reference": "c2838xlib/Digital Input",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Controller_Driver_IO_Manager/System_Fault_Active",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/Inverse Park Transform",
+        "reference": "mcbeeMathTransformLib/Park to Clarke\nAngle Transform",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/Park Transform",
+        "reference": "mcbeeMathTransformLib/Clarke to Park\nAngle Transform",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/ePWM1",
+        "reference": "c2802xlib/ePWM",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/ePWM2",
+        "reference": "c2802xlib/ePWM",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/FOC_Algorithm/ePWM3",
+        "reference": "c2802xlib/ePWM",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Scheduler_10k_1k_100/UART_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Scheduler_10k_1k_100/pos_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Scheduler_10k_1k_100/spd_tc",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Travel_Fault_Active",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Triggered_Speed_loop/friction_compensation/Compare\nTo Constant1",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Triggered_Speed_loop/friction_compensation/Compare\nTo Constant2",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant1",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant2",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant3",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/FOC_3Close_Loop_Control/Triggered_Speed_loop/pi_reset_manager/Compare\nTo Constant4",
+        "reference": "simulink/Logic and Bit\nOperations/Compare\nTo Constant",
+        "status": "resolved"
+      },
+      {
+        "path": "PMSLM_Close_Loop_MBDL4/HWI_ADC_INT",
+        "reference": "svdschedulerlib/Hardware Interrupt v2",
+        "status": "resolved"
+      }
+    ],
+    "error": ""
+  }
+]

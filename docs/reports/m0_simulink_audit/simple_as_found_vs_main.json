@@ -1,0 +1,170 @@
+{
+  "local_block_count": 1095,
+  "main_block_count": 1091,
+  "added": [
+    "Step7D_Interactive_load",
+    "Step7D_Interactive_pwm",
+    "Step7D_Interactive_reset",
+    "Step7D_Interactive_speed"
+  ],
+  "removed": [],
+  "parameters": [
+    {
+      "path": "FPGA_HDL_Cosim/HDL_Backend_Variant/FPGA_Enabled/HDL_Cosimulation",
+      "local": {
+        "UserDataPersistent": "on",
+        "UserData": "",
+        "SourceBlock": "vivadosimlib/HDL Cosimulation",
+        "SourceType": "Simulink and Vivado Simulator Cosimulation",
+        "RTWMemSecFuncInitTerm": "Inherit from model",
+        "RTWMemSecFuncExecute": "Inherit from model",
+        "RTWMemSecDataConstants": "Inherit from model",
+        "RTWMemSecDataInternal": "Inherit from model",
+        "RTWMemSecDataParameters": "Inherit from model",
+        "PortPaths": "/mc_foc_cosim_top/run_enable;/mc_foc_cosim_top/ia;/mc_foc_cosim_top/ib;/mc_foc_cosim_top/ic;/mc_foc_cosim_top/theta_e;/mc_foc_cosim_top/we;/mc_foc_cosim_top/id_ref;/mc_foc_cosim_top/iq_ref;/mc_foc_cosim_top/vdc;/mc_foc_cosim_top/pi_reset;/mc_foc_cosim_top/uq_zero_en;/mc_foc_cosim_top/cmp_u_active;/mc_foc_cosim_top/cmp_v_active;/mc_foc_cosim_top/cmp_w_active;/mc_foc_cosim_top/accepted_sample_id;/mc_foc_cosim_top/active_command_id;/mc_foc_cosim_top/active_valid;/mc_foc_cosim_top/needs_reset;/mc_foc_cosim_top/fault_code;",
+        "PortModes": "[1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2]",
+        "PortTimes": "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9.9999999999999995e-07,9.9999999999999995e-07,9.9999999999999995e-07,9.9999999999999995e-07,9.9999999999999995e-07,9.9999999999999995e-07,9.9999999999999995e-07,9.9999999999999995e-07]",
+        "PortSigns": "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]",
+        "PortFracLengths": "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+        "PortWordLengths": "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,12,12,12,32,32,1,1,3]",
+        "PortHDLWordSizes": "[1,24,24,24,16,32,25,25,25,1,1,12,12,12,32,32,1,1,3]",
+        "CommLocal": "on",
+        "CommSharedMemory": "off",
+        "CommPortNumber": "0",
+        "CommShowInfo": "on",
+        "ClockPaths": "/mc_foc_cosim_top/clk;/mc_foc_cosim_top/reset_n;",
+        "ClockModes": "[2 4]",
+        "ClockTimes": "[2e-8 2e-7]",
+        "TclPreSimCommand": "puts \"Running Simulink Cosimulation block.\"",
+        "TclPostSimCommand": "puts \"done\"",
+        "TimingMode": "s",
+        "TimingScaleFactor": "1",
+        "idxCellArray": "{'UNUSED_VAR'}",
+        "CosimBypass": "Full Simulation",
+        "AllowDirectFeedthrough": "on",
+        "ProductName": "EDA Simulator Link VS",
+        "RunAutoTimescale": "off",
+        "HdlClocks": "/mc_foc_cosim_top/clk 20 ns;",
+        "PreRunTime": "0",
+        "PreRunTimeUnit": "ns"
+      },
+      "main": {
+        "UserDataPersistent": "on",
+        "UserData": "",
+        "SourceBlock": "vivadosimlib/HDL Cosimulation",
+        "SourceType": "Simulink and Vivado Simulator Cosimulation",
+        "RTWMemSecFuncInitTerm": "Inherit from model",
+        "RTWMemSecFuncExecute": "Inherit from model",
+        "RTWMemSecDataConstants": "Inherit from model",
+        "RTWMemSecDataInternal": "Inherit from model",
+        "RTWMemSecDataParameters": "Inherit from model",
+        "PortPaths": "/mc_foc_cosim_top/run_enable;/mc_foc_cosim_top/ia;/mc_foc_cosim_top/ib;/mc_foc_cosim_top/ic;/mc_foc_cosim_top/theta_e;/mc_foc_cosim_top/we;/mc_foc_cosim_top/id_ref;/mc_foc_cosim_top/iq_ref;/mc_foc_cosim_top/vdc;/mc_foc_cosim_top/pi_reset;/mc_foc_cosim_top/uq_zero_en;/mc_foc_cosim_top/cmp_u_active;/mc_foc_cosim_top/cmp_v_active;/mc_foc_cosim_top/cmp_w_active;/mc_foc_cosim_top/accepted_sample_id;/mc_foc_cosim_top/active_command_id;/mc_foc_cosim_top/active_valid;/mc_foc_cosim_top/needs_reset;/mc_foc_cosim_top/fault_code;",
+        "PortModes": "[1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2]",
+        "PortTimes": "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1e-06,1e-06,1e-06,1e-06,1e-06,1e-06,1e-06,1e-06]",
+        "PortSigns": "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]",
+        "PortFracLengths": "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+        "PortWordLengths": "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,12,12,12,32,32,1,1,3]",
+        "PortHDLWordSizes": "[1,24,24,24,16,32,25,25,25,1,1,12,12,12,32,32,1,1,3]",
+        "CommLocal": "on",
+        "CommSharedMemory": "off",
+        "CommPortNumber": "0",
+        "CommShowInfo": "on",
+        "ClockPaths": "/mc_foc_cosim_top/clk;/mc_foc_cosim_top/reset_n;",
+        "ClockModes": "[2 4]",
+        "ClockTimes": "[2e-8 2e-7]",
+        "TclPreSimCommand": "puts \"Running Simulink Cosimulation block.\"",
+        "TclPostSimCommand": "puts \"done\"",
+        "TimingMode": "s",
+        "TimingScaleFactor": "1",
+        "idxCellArray": "{'UNUSED_VAR'}",
+        "CosimBypass": "Full Simulation",
+        "AllowDirectFeedthrough": "on",
+        "ProductName": "EDA Simulator Link VS",
+        "RunAutoTimescale": "off",
+        "HdlClocks": "/mc_foc_cosim_top/clk 20 ns;",
+        "PreRunTime": "0",
+        "PreRunTimeUnit": "ns"
+      }
+    }
+  ],
+  "local_callbacks": [
+    {
+      "member": "simulink/systems/system_1453.xml",
+      "name": "ErrorFcn",
+      "code": "Stateflow.Translate.translate"
+    },
+    {
+      "member": "simulink/systems/system_root.xml",
+      "name": "ErrorFcn",
+      "code": "Stateflow.Translate.translate"
+    },
+    {
+      "member": "simulink/blockDiagram.json",
+      "name": "InitFcn",
+      "code": "reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));\npmlsm_interactive_cosim_init(bdroot);"
+    },
+    {
+      "member": "simulink/blockDiagram.json",
+      "name": "PreLoadFcn",
+      "code": "init_PMLSM_fpga_cosim_params;"
+    }
+  ],
+  "main_callbacks": [
+    {
+      "member": "simulink/systems/system_1453.xml",
+      "name": "ErrorFcn",
+      "code": "Stateflow.Translate.translate"
+    },
+    {
+      "member": "simulink/systems/system_root.xml",
+      "name": "ErrorFcn",
+      "code": "Stateflow.Translate.translate"
+    },
+    {
+      "member": "simulink/blockDiagram.json",
+      "name": "InitFcn",
+      "code": "reload(get_param('PMLSM_ThreeLoop_Simple','ModelWorkspace'));"
+    },
+    {
+      "member": "simulink/blockDiagram.json",
+      "name": "PreLoadFcn",
+      "code": "init_PMLSM_fpga_cosim_params;"
+    }
+  ],
+  "added_connections": [
+    [
+      "Step7D_Interactive_load#out:1",
+      "Publish_load_N#in:1"
+    ],
+    [
+      "Step7D_Interactive_pwm#out:1",
+      "Publish_PWM_EN#in:1"
+    ],
+    [
+      "Step7D_Interactive_reset#out:1",
+      "Publish_PI_Reset#in:1"
+    ],
+    [
+      "Step7D_Interactive_speed#out:1",
+      "Publish_host_v_ref_mmps#in:1"
+    ]
+  ],
+  "removed_connections": [
+    [
+      "Simple_Host#out:11",
+      "Publish_PI_Reset#in:1"
+    ],
+    [
+      "Simple_Host#out:3",
+      "Publish_load_N#in:1"
+    ],
+    [
+      "Simple_Host#out:6",
+      "Publish_PWM_EN#in:1"
+    ],
+    [
+      "Simple_Host#out:7",
+      "Publish_host_v_ref_mmps#in:1"
+    ]
+  ]
+}
