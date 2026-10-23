@@ -44,3 +44,6 @@ PR44 合并提交：`2e10c2dc576648165f541ad5b1530ef90c1e3791`。M0 证据见 [�
 用户合并本次设计文档后，以更新 main 非破坏性同步并准备实施；如设计未合并，不擅自合并或强制切换用户工作区。新模型与 `.m`、必要辅助文件、验证脚本和报告需一起交付，不得只有本地模型或缺依赖的远端说明。
 
 历史全文见 [HANDOFF_LEGACY_20261021.md](HANDOFF_LEGACY_20261021.md)。[M0任务](tasks/m0_simulink_model_asset_audit.md)保留为已完成审计的历史任务，不要求因本阶段更新而重跑。
+
+
+PR47 操作修订：Simple_Host统一指令、中文初始化、轨迹预览、保存的具名日志。[手动操作指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md) · [修订报告](reports/pr47_host_interface_revision.md)

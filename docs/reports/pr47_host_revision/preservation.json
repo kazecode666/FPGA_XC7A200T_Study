@@ -1,0 +1,7 @@
+{
+  "original_preexisting_patches_preserved": 28,
+  "authorized_new_model_snapshot": ".runtime/pr47_revision/user_start.slx",
+  "other_initial_patches_changed": [],
+  "additional_unrelated_config_change_excluded_from_commit": ".codex/config.toml",
+  "no_batch_deletion": true
+}

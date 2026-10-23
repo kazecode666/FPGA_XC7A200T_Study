@@ -1,74 +1,92 @@
-# 纯 Simulink PI-FOC 浮点基线
+# M1A 浮点模型手动操作
 
-使用 MATLAB/Simulink R2026b 和 Motor Control Blockset。正式入口为新模型 `PMLSM_PI_FOC_Float_Baseline`；原 Simple、MIL、ControlCore、DSP 模型保留。
+本模型用于纯 Simulink PI-FOC 研究。日常只运行一次初始化，不需要先跑验收脚本。
 
 ## 打开并运行
 
 在新 MATLAB 窗口执行：
 
 ```matlab
-addpath('D:/Project/FPGA_XC7A200T/simulink模型');
-init_PMLSM_PI_FOC_Float_Baseline;
-open_system('PMLSM_PI_FOC_Float_Baseline');
-out = sim('PMLSM_PI_FOC_Float_Baseline');
+cd('D:/Project/FPGA_XC7A200T/simulink模型')
+init_PMLSM_PI_FOC_Float_Baseline
+open_system('PMLSM_PI_FOC_Float_Baseline')
 ```
 
-也可以初始化并打开后点击 Run。默认是 1 mm 位置给定，0.05 s 开始 S 曲线，仿真 1.2 s，零外负载、1 us 平均死区。查看 `out.logsout` 中的 `x_mm`、`v_mmps`、`id`、`iq` 等记录；原有 Motor_Control_Monitor 仍保留。旧 FPGA 专用监视通道固定为零，不表示硬件结果。
-
-未显式初始化时会提示 `init_PMLSM_PI_FOC_Float_Baseline`。模型 InitFcn 只检查参数，不加载脚本或重新覆盖工况。Model Workspace 为空，实际参数来自 Base Workspace。
-
-## 修改工况与参数
-
-正式默认值集中在 [初始化脚本](../simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m)。编辑该文本后重新执行脚本，再运行模型。重复执行会恢复该脚本的所有默认值；请在初始化之后设置本次临时工况。
-
-负位置工况：
+在模型工具栏点 **Run**。**Pause** 暂停推进时间，**Continue** 继续，**Stop** 结束本次仿真。等效命令：
 
 ```matlab
-init_PMLSM_PI_FOC_Float_Baseline;
-Host_Target_mm = -1;
-out = sim('PMLSM_PI_FOC_Float_Baseline');
+out=sim('PMLSM_PI_FOC_Float_Baseline');
 ```
 
-独立负载阶跃（0.8 s 加 0.5 N，1.0 s 撤除）：
+默认目标1 mm，停止时间1.2 s；StopTime保存为表达式`M1A_StopTime_s`。停止后可设置`M1A_StopTime_s=2`再Run。这里是仿真秒，计算墙钟时间可能不同；需要慢速观察可在工具栏启用Simulation Pacing。已用API验证start/pause/continue/stop和绑定目标参数的暂停调节；未用鼠标点击Dashboard自动化。
+
+## 四个运行所需 m 文件
+
+| 文件 | 职责 |
+|---|---|
+| init_PMLSM_PI_FOC_Float_Baseline.m | 唯一手动初始化；默认命令、电机、PI、时基及场景 |
+| m1a_require_float_init.m | InitFcn自动只读检查，用户无需手动运行 |
+| design_PMLSM_three_loop.m | 初始化调用的原三环增益计算，公式未改 |
+| pmlsm_scurve_profile.m | Host采用的原S曲线函数 |
+
+`preview_PMLSM_reference.m`为可选预览；`scripts/m1a_*.m`是开发测试。重新初始化会恢复默认命令，运行中不要执行完整初始化。脚本先使旧成功标识失效，成功后才重新设置。改物理参数或设计参数后应修改init并重跑；正常入口不再锁死固定Kp/Ki数字。
+
+## 模式与命令
+
+Simple_Host是唯一控制命令出口。顶层编辑控件绑定其内部Constant引用的Base变量；默认手动`Host_Replay_EN=0`。**模式、目标、轨迹参数在停止后设置**，不支持运动中无扰切环或目标重规划。修改普通Base变量不代表运行中参数必定已更新。
+
+| 模式 | Host_Position_Loop_EN | Host_Close_Loop_EN | Host_Iq_Test_Mode | 给定 |
+|---|---:|---:|---:|---|
+| 三闭环（默认） | 1 | 1 | 0 | Host_Target_mm，经轨迹得到x_ref_mm |
+| 速度+电流 | 0 | 1 | 0 | Host_Speed_mmps，直接速度命令 |
+| 独立电流 | 0 | 0 | 1 | Host_Id_A、Host_Iq_A（Apeak） |
+
+矛盾的组合在启动前拒绝。示例均在停止后执行，然后Run：
 
 ```matlab
-init_PMLSM_PI_FOC_Float_Baseline;
-M1A_Load_ts = M1A_LoadStep_ts;
-out = sim('PMLSM_PI_FOC_Float_Baseline');
+% 三闭环负目标
+Host_Position_Loop_EN=1; Host_Close_Loop_EN=1; Host_Iq_Test_Mode=0;
+Host_Target_mm=-1;
+% 或速度+电流模式
+Host_Position_Loop_EN=0; Host_Close_Loop_EN=1; Host_Iq_Test_Mode=0;
+Host_Speed_mmps=10;
+% 或独立电流模式
+Host_Position_Loop_EN=0; Host_Close_Loop_EN=0; Host_Iq_Test_Mode=1;
+Host_Id_A=0; Host_Iq_A=0.2;
 ```
 
-速度工况：
+运行使能`Host_PWM_EN=1`，复位请求`Host_PI_Reset_EN=0`。可暂停后用对应顶层编辑控件调节PWM/复位，再Continue；它们绑定唯一有效命令。PWM=0禁止平均逆变器电压，但仿真和机械运动仍继续；**Stop结束整个仿真**。有效电流PI复位为请求OR PWM禁止。请求不是“清除所有故障”按钮；速度积分和AW延迟沿用原保持/更新语义，见修订报告。
+
+自动回放只在`Host_Replay_EN=1`时使用`M1A_Speed_ts / M1A_PWM_ts / M1A_Reset_ts`，由Host内部明确选择再输出，不旁路Host。它们末值保持，不依赖停止时间。原`Host_Enable_Schedule`只为历史源模型对照保留，新Host模式以表中三个开关为准。
+
+## 轨迹及仿真环境
+
+停止后执行`preview=preview_PMLSM_reference;`，它读取现有Base参数，调用同一个标量S曲线函数，显示整段规划参考；不运行电机、不重新初始化。`Host_Start_s`是开始时间，`Host_Traj_Vmax/Amax/Jmax`为轨迹限制，`Host_Speed_Ramp_s`是最小轨迹加减速时间。速度模式使用直接速度给定；规划速度与Reference_Manager实际选中的`v_ref`不是同一信号。
+
+顶层`Trajectory_Reference_Actual` Scope叠加实际`x_ref_mm`与`x_mm`，目标是`target_mm`，不要把目标水平线当成规划曲线。
+
+负载和母线是**仿真环境边界**，不是实机上位机命令。母线使用`Udc`；唯一有效负载是顶层`Simulation_Load_N`读取`M1A_Load_ts`。例如停止后：
 
 ```matlab
-init_PMLSM_PI_FOC_Float_Baseline;
-Host_Enable_Schedule = [0 1 0 1]; % time / speed-enable / position-enable / host-PWM
-M1A_Speed_ts = timeseries([10;10],[0;M1A_StopTime_s]); % mm/s
-out = sim('PMLSM_PI_FOC_Float_Baseline');
+M1A_Load_ts=timeseries([0;0.5;0],[0;0.8;1.0]); % N，末值保持
+M1A_StopTime_s=1.3;
 ```
 
-电流工况保留自由机械运动：设置 `Host_Enable_Schedule=[0 0 0 1]`、`Host_Iq_Test_Mode=1`、`Host_Iq_A=0.2`（或负值），然后仿真。
+`Host_Load_N`是初始化默认负载，修改后需重新构造M1A_Load_ts。默认48 V、零负载、电流/PWM100 us、速度1 ms、位置10 ms、plant1 us，保留一次50 us更新和一次1 us平均死区；未重新整定PI。
 
-实际负载、速度、PWM 使能及额外 PI 复位分别由 `M1A_Load_ts`、`M1A_Speed_ts`、`M1A_PWM_ts`、`M1A_Reset_ts` 输入，均零阶保持。这些输入替代来源中已闲置的 Host 同类输出；修改 `Host_Speed_mmps/Host_Load_N/Host_PI_Reset_EN` 不会改变这三路实际输入。关闭 `M1A_PWM_ts` 会禁止平均电压，并通过原有 OR 逻辑复位电流 PI。
+## 查看具名记录
 
-理想逆变器对照：同时设置 `PMLSM_deadtime_s=0; PMLSM_deadtime_ratio=0;`。默认恢复可再次执行初始化脚本。
+正常Run自动保存`out.logsout`并写入SDI，无需验收脚本重命名日志，不清空用户旧SDI运行。
 
-## 单位、时基与调制
-
-内部机械量 m、m/s；外环/显示 mm、mm/s。电流 Apeak、电压 V、电角度 rad、电角速度 rad/s。相电阻 2.37 ohm，Ld=Lq=1.745 mH，磁链 0.141 Wb，质量 0.91 kg，推力系数 31.4/sqrt(2) N/Apeak，完整电气空间周期 0.06 m，母线默认 48 V。
-
-电流/PWM 100 us，速度 1 ms，位置 10 ms，plant 1 us；持续使能时首次速度/位置事件为 0.9/9.9 ms。`duty_u_cmd/v_cmd/w_cmd` 是死区和应用更新之前的上管高电平比例，零矢量为各 0.5。只有一次 50 us 更新延迟和一次平均死区。
-
-步长核对时同时修改 `Ts_Plant` 和别名 `PMLSM_Ts_s`，例如都设为 `0.5e-6`；控制周期、PWM 更新和平均死区保持不变。
-
-## 复现验证
-
-在独立批处理进程运行，避免影响桌面上其他模型和工作区：
-
-```powershell
-& 'D:\Program Files\MATLAB\R2026b\bin\matlab.exe' -batch "addpath('D:/Project/FPGA_XC7A200T/scripts'); m1a_verify_float_baseline('all')"
-& 'D:\Program Files\MATLAB\R2026b\bin\matlab.exe' -batch "addpath('D:/Project/FPGA_XC7A200T/scripts'); m1a_fresh_float_baseline"
+```matlab
+getElementNames(out.logsout)
+Simulink.sdi.view
+s=out.logsout.getElement('iq_ref').Values;
+figure; plot(s.Time,s.Data); xlabel('s'); ylabel('Apeak');
 ```
 
-`all` 包含结构、初始化/变量生效、实际 Clarke/Park/反 Park、调制/PI/时序、九个源 backend0 迁移场景和一个步长对照。`m1a_fresh_float_baseline` 把新 SLX、初始化、只读检查函数及两个计算函数复制到新的隔离目录，排除其他仓库搜索路径并逐项检查辅助函数解析位置，再运行完整默认工况；可用两个独立进程复核重复性。新模型运行不需要旧 MAT、XSI、prepare 或 CONTROL_BACKEND；迁移验证的源侧按原来源加载，只在内存配置后仿真并不保存。
+推荐SDI分组：位置`target_mm/x_ref_mm/x_mm`；速度`v_ref/v_mmps`；电流`id_ref/id/iq_ref/iq`；执行量`vd_cmd/vq_cmd/vd_applied/vq_applied`、三相`duty_*_cmd/duty_*_applied`和使能。`iq_test_ref`只是测试入口，三闭环应比较选中的`iq_ref`与`iq`。日志详细来源及采样见[信号表](reports/pr47_host_revision/signals.csv)。
 
-[结果索引](reports/m1a_float_baseline/README.md)与[实施报告](../coordination/reports/m1a_pure_simulink_float_baseline.md)说明实际结果、阈值和未验收范围。M1A 没有生成 HDL/C，没有运行 Vivado 或操作硬件；启动保护/恢复属于后续 M1B，定点 HDL 属于 M2。
+Motor_Control_Monitor保留真实信号的具名Scope入口，不参与计算；已移除旧19列向量及motor_control_monitor输出，用户不需要记列号。FPGA counts/事务/故障零值占位全部移除，真实归一化duty仍保留。
+
+[轨迹结果](reports/pr47_host_revision/trajectory.png) · [修订验收报告](../coordination/reports/pr47_host_interface_revision.md)。旧M1A迁移数据属于原交付检查点，操作入口以本页及新报告为准。

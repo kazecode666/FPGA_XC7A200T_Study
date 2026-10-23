@@ -27,7 +27,7 @@ MATLAB 正式版 `26.2.0.3386108 (R2026b)`，实际路径 `D:/Program Files/MATL
 连接器指向缺失的 `R2026b_Prerelease`，因此使用已安装的本地 `model_read/model_edit/model_check` 函数批处理，不改连接器配置。
 `library.settingsLookup` 返回 found=false / gatePass=true，使用标准 Simulink 块和源模型已有厂商库。
 
-## 当前进度
+## 历史检查点进度
 
 - `m1a_verify_float_baseline('structure')` 首次运行预期失败：`M1A_MODEL_MISSING`，batch 退出 1。
 - 已从本地来源另存新 SLX，清空新副本的旧 PreLoadFcn / InitFcn；原 SLX 未保存。
@@ -49,3 +49,6 @@ MATLAB 正式版 `26.2.0.3386108 (R2026b)`，实际路径 `D:/Program Files/MATL
 PI/限幅块复制测试的输出、积分状态与独立逐拍 old-state/AW/reset 方程误差均为 0。源 limiter 延迟记忆没有被统一清零。
 实际首次速度 tick=0.00090000000000000008 s、位置 tick=0.0099 s；command 在 0 s 改变、applied 在 50 us 改变，关闭 PWM 后平均 vd/vq 为零。见 `pi_timing_acceptance.json`。
 组合入口实际输出 `M1A_MATH_PASS`（job_10.log）。完整源/新闭环迁移和步长收敛仍待执行。
+
+
+上述“待执行”属于原始历史检查点。数学/迁移/收敛已于原M1A交付完成，见[最终实施报告](../../../coordination/reports/m1a_pure_simulink_float_baseline.md)。上位机操作入口随后按[PR47修订报告](../../../coordination/reports/pr47_host_interface_revision.md)更新。

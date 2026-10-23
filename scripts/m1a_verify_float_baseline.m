@@ -55,9 +55,9 @@ if strcmp(stage,'init')
     assert(isequaln(first.logsout,second.logsout), ...
         'M1A:REPEAT','Repeated initialization/simulation differed.');
     initText=fileread(fullfile(root,'simulink模型','init_PMLSM_PI_FOC_Float_Baseline.m'));
-    token='Host_Start_s=0.05; Host_Target_mm=1;';
+    token='Host_Target_mm=1;';
     assert(contains(initText,token));
-    sceneText=strrep(initText,token,'Host_Start_s=-1; Host_Target_mm=-1;');
+    sceneText=strrep(strrep(initText,token,'Host_Target_mm=-1;'),'Host_Start_s=0.05;','Host_Start_s=-1;');
     sceneFile=fullfile(processFolder,'negative_position_init.m');
     fid=fopen(sceneFile,'w','n','UTF-8'); fprintf(fid,'%s',sceneText); fclose(fid);
     evalin('base',sprintf('run(''%s'');',strrep(sceneFile,'\','/')));
@@ -72,7 +72,7 @@ if strcmp(stage,'init')
     save(fullfile(processFolder,'negative_position_diagnostic.mat'),'negative','reference','position');
     assert(all(reference==-1) && position(end)<0,'M1A:SCENE_NOT_APPLIED', ...
         'Negative reference scene was not applied or position moved in the wrong direction.');
-    token='M1A_Load_ts=timeseries([0;0],[0;M1A_StopTime_s]);';
+    token='M1A_Load_ts=timeseries([Host_Load_N;Host_Load_N],[0;M1A_StopTime_s]);';
     assert(contains(initText,token));
     sceneText=strrep(initText,token,'M1A_Load_ts=timeseries([0.5;0.5],[0;M1A_StopTime_s]);');
     sceneFile=fullfile(processFolder,'load_init.m');

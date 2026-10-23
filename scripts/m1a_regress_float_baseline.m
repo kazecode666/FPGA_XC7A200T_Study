@@ -73,6 +73,9 @@ else
     m='PMLSM_PI_FOC_Float_Baseline';load_system(fullfile(root,'simulink模型',[m '.slx']));
     names=fieldnames(host);
     for k=1:numel(names),assignin('base',names{k},host.(names{k}));end
+    assignin('base','Host_Close_Loop_EN',double(~strcmp(c.kind,'current')));
+    assignin('base','Host_Position_Loop_EN',double(strcmp(c.kind,'position')));
+    assignin('base','Host_Replay_EN',1);
     assignin('base','Ts_Plant',plantStep);assignin('base','PMLSM_Ts_s',plantStep);
     assignin('base','PMLSM_deadtime_s',c.deadtime);
     assignin('base','PMLSM_deadtime_ratio',c.deadtime/1e-4);

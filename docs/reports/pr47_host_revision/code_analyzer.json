@@ -1,0 +1,20 @@
+{
+  "files": [
+    "simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m",
+    "simulink模型/m1a_require_float_init.m",
+    "simulink模型/preview_PMLSM_reference.m",
+    "scripts/m1a_verify_host_revision.m",
+    "scripts/m1a_verify_float_baseline.m",
+    "scripts/m1a_check_pi_timing.m",
+    "scripts/m1a_regress_float_baseline.m"
+  ],
+  "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

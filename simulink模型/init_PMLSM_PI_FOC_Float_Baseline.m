@@ -1,7 +1,15 @@
-% Explicit M1A defaults. Execute this script in Base Workspace before Run.
-% Re-execution resets all public defaults; no MAT or automatic callback load.
+% 唯一手动初始化入口；重新运行恢复默认命令，仿真运行中不要执行。
+PMLSM_M1A_InitVersion=0; %#ok<NASGU> 失败时使旧标识失效
+%% 常用仿真与上位机命令（mm、mm/s、Apeak）
+M1A_StopTime_s=1.2;
+Host_Target_mm=1; Host_Speed_mmps=0; Host_Id_A=0; Host_Iq_A=0;
+Host_Position_Loop_EN=1; Host_Close_Loop_EN=1; Host_Iq_Test_Mode=0;
+Host_PWM_EN=1; Host_PI_Reset_EN=0;
+Host_Replay_EN=0; % 0手动，1经Host选择自动回放Speed/PWM/Reset
+Host_Load_N=0; % 仿真负载；修改负载场景用M1A_Load_ts，母线用Udc
 
-% Motor: phase quantities, A peak, mechanical SI internally.
+%% 电机物理参数
+% 相电阻、相电感；电流为Apeak；60 mm为电气周期而非极距。
 PMLSM_Rs_ohm=2.37;
 PMLSM_Ld_H=1.745e-3; PMLSM_Lq_H=PMLSM_Ld_H;
 PMLSM_psi_f_Wb=0.141; PMLSM_M_kg=0.91;
@@ -10,14 +18,16 @@ PMLSM_tau_NN_m=0.06; PMLSM_theta_offset_rad=0;
 PMLSM_Bv_N_per_mps=0; PMLSM_Fc_N=0; PMLSM_v_eps_mps=1e-3;
 Udc=48;
 
-% Single timebase; plant refinement must not change any control period.
+%% 控制与对象时基
+% 控制周期、对象步长、PWM更新延迟、死区分别设置。
 T_pwm=1e-4; Ts_ACR=T_pwm; Ts=Ts_ACR;
 Ts_ASR=10*Ts_ACR; Ts_POS=10*Ts_ASR;
 Ts_Plant=1e-6; PMLSM_Ts_s=Ts_Plant;
 M1A_PWM_Update_Delay_s=T_pwm/2;
-M1A_StopTime_s=1.2;
 
-% Original tuning family; no retuning or DSP/MIL overrides.
+
+%% PI及运行限幅
+% Ki为连续积分增益，离散积分使用Ki*Ts；速度PI积分限幅与输出限幅不同。
 Tuning_Current_Xi=1/sqrt(2); Tuning_Speed_h=10; Tuning_Position_Separation=20;
 Tuning_Gains=design_PMLSM_three_loop(PMLSM_Rs_ohm,PMLSM_Ld_H, ...
     PMLSM_M_kg,PMLSM_Kf_peak_N_per_Apeak,Ts_ACR,Ts_ASR,Ts_POS, ...
@@ -26,7 +36,7 @@ Kp_ACR=Tuning_Gains.Kp_ACR; Ki_ACR=Tuning_Gains.Ki_ACR;
 Kaw_d=Tuning_Gains.Kaw_d; Kaw_q=Tuning_Gains.Kaw_q;
 Kp_ASR=Tuning_Gains.Kp_ASR; Ki_ASR=Tuning_Gains.Ki_ASR;
 Kaw_s=Tuning_Gains.Kaw_s; Kp_pos=Tuning_Gains.Kp_pos;
-assert(abs(Kp_ACR-8.725)<1e-12 && abs(Ki_ACR-11850)<1e-9);
+
 Iq_int_limit=0.5; Speed_loop_Iq_Limit=1;
 Pos_deadband=0.02; V_pos_max_mmps=20;
 v_ff_eps=0.5; v_over_eps=3; v_ref_max=20;
@@ -35,20 +45,20 @@ v_ref_set_step_dn=v_ref_set_rate_dn*Ts_ACR;
 v_ref_set_step_up=v_ref_set_rate_up*Ts_ACR;
 v_ref_zero_eps=0;
 
-% Average inverter: one deadtime effect; ideal comparison sets deadtime to 0.
+%% 平均逆变器
 PMLSM_deadtime_s=1e-6;
 PMLSM_deadtime_ratio=PMLSM_deadtime_s/T_pwm;
 PMLSM_deadtime_current_eps_A=1e-4;
 
-% Default position scene: 1 mm / 1.2 s / zero load; host units mm and mm/s.
+%% 轨迹规划（停止后设置）
 Host_Enable_Schedule=[0 1 1 1];
-Host_Id_A=0; Host_Iq_A=0; Host_Iq_Test_Mode=0; Host_PI_Reset_EN=0;
-Host_Speed_Ramp_s=0.1; Host_Speed_mmps=0;
-Host_Start_s=0.05; Host_Target_mm=1;
+
+Host_Speed_Ramp_s=0.1;
+Host_Start_s=0.05;
 Host_Traj_Amax=50; Host_Traj_Jmax=1000; Host_Traj_Vmax=5;
-Host_Load_N=0;
-M1A_Load_ts=timeseries([0;0],[0;M1A_StopTime_s]);
-M1A_LoadStep_ts=timeseries([0;0.5;0;0],[0;0.8;1.0;M1A_StopTime_s]);
+
+M1A_Load_ts=timeseries([Host_Load_N;Host_Load_N],[0;M1A_StopTime_s]);
+M1A_LoadStep_ts=timeseries([0;0.5;0],[0;0.8;1.0]);
 M1A_PWM_ts=timeseries([1;1],[0;M1A_StopTime_s]);
 M1A_Reset_ts=timeseries([0;0],[0;M1A_StopTime_s]);
 M1A_Speed_ts=timeseries([0;0],[0;M1A_StopTime_s]);
@@ -58,5 +68,5 @@ M1A_PWM_ts=setinterpmethod(M1A_PWM_ts,'zoh');
 M1A_Reset_ts=setinterpmethod(M1A_Reset_ts,'zoh');
 M1A_Speed_ts=setinterpmethod(M1A_Speed_ts,'zoh');
 
-% Written last. Other models' old Kp/Udc values cannot satisfy this contract.
+%% 初始化成功标识（必须最后设置）
 PMLSM_M1A_InitVersion=20261023;

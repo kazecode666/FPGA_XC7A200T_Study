@@ -57,3 +57,6 @@ M0 中启动依赖、调制标度和参数遮蔽问题由 M1A 处理；真实采
 ChatGPT 维护架构、设计、任务交接和 Review；Codex 在 `D:/Project/FPGA_XC7A200T` 完成实际模型创建及 MATLAB 验证。保留用户本地修改，不新建额外 clone/worktree，不强制清理，不自动合并 PR。
 
 [旧交接记录](coordination/HANDOFF_LEGACY_20261021.md)原样保留。旧任务的暂停或验收数字只描述当时状态，不覆盖当前范围。历史 PWM 实验入口仍为 `PWM_Controller/PWM_Controller.xpr` 和 `PWM_Breathe/PWM_Breathe.xpr`；复现时读取对应历史任务与报告。
+
+
+PR47 操作修订：Simple_Host统一指令、中文初始化、轨迹预览、保存的具名日志。[手动操作指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md) · [修订报告](coordination/reports/pr47_host_interface_revision.md)

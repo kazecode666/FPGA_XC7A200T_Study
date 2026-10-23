@@ -82,7 +82,7 @@ position=ticks.logsout.getElement('position_tick').Values;
 speedTimes=speed.Time(logical(speed.Data)); positionTimes=position.Time(logical(position.Data));
 assert(abs(speedTimes(1)-0.0009)<1e-12 && abs(positionTimes(1)-0.0099)<1e-12, ...
     'M1A:FIRST_TICK','Unexpected first speed/position event.');
-evalin('base','Host_Enable_Schedule=[0 0 0 1]; Host_Iq_Test_Mode=1; Host_Iq_A=0.2;');
+evalin('base','Host_Position_Loop_EN=0; Host_Close_Loop_EN=0; Host_Replay_EN=1; Host_Enable_Schedule=[0 0 0 1]; Host_Iq_Test_Mode=1; Host_Iq_A=0.2;');
 evalin('base','M1A_PWM_ts=timeseries([1;0;0],[0;0.005;1.2]);');
 update=sim(input);
 command=update.logsout.getElement('cmd_v').Values;
