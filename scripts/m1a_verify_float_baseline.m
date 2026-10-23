@@ -92,7 +92,9 @@ if strcmp(stage,'init')
     return
 end
 if strcmp(stage,'math')
+    transforms=m1a_check_transforms(model);
     result=m1a_check_modulation(model);
+    result.details.transforms=transforms;
     states=m1a_check_pi_timing(model);
     result.details.pi_timing=states.details;
     fprintf('M1A_MATH_PASS\n');

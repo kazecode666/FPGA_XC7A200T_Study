@@ -1,8 +1,8 @@
 {
   "pass": true,
   "process_ids": [
-    41788,
-    45584
+    43908,
+    45864
   ],
   "stop_s": 1.2,
   "signal_count": 11,
@@ -17,5 +17,7 @@
     "m1a_require_float_init.m",
     "design_PMLSM_three_loop.m",
     "pmlsm_scurve_profile.m"
-  ]
+  ],
+  "other_repository_paths_excluded": true,
+  "helper_resolution_checked": true
 }

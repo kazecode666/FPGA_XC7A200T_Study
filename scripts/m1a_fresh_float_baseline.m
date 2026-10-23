@@ -10,11 +10,23 @@ files={'PMLSM_PI_FOC_Float_Baseline.slx','init_PMLSM_PI_FOC_Float_Baseline.m', .
     'm1a_require_float_init.m','design_PMLSM_three_loop.m','pmlsm_scurve_profile.m'};
 for k=1:numel(files),copyfile(fullfile(root,'simulink模型',files{k}),fullfile(folder,files{k}));end
 assert(isempty(dir(fullfile(folder,'*.mat'))));
-oldpwd=pwd;cd(folder);addpath(folder,'-begin');
-cleanup=onCleanup(@()finish(oldpwd));
+oldpwd=pwd;oldPath=path;
+cleanup=onCleanup(@()finish(oldpwd,oldPath));
+% Keep the fresh model from resolving any other file in this checkout.
+parts=strsplit(path,pathsep);project=lower(strrep(root,'\','/'));
+for k=1:numel(parts)
+    candidate=lower(strrep(parts{k},'\','/'));
+    if strcmp(candidate,project)||startsWith(candidate,[project '/']),rmpath(parts{k});end
+end
+cd(folder);addpath(folder,'-begin');
 Simulink.fileGenControl('set','CacheFolder',fullfile(folder,'cache'), ...
     'CodeGenFolder',fullfile(folder,'codegen'),'createDir',true);
 assert(strcmp(which('init_PMLSM_PI_FOC_Float_Baseline'),fullfile(folder,files{2})));
+for k=3:numel(files)
+    [~,name]=fileparts(files{k});
+    assert(strcmp(which(name),fullfile(folder,files{k})), ...
+        'M1A:DEPENDENCY_RESOLUTION','Helper resolved outside isolated folder: %s',name);
+end
 evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');
 for name={'CONTROL_BACKEND','FPGA_Cosim_Enable','CPU_Clock','PMLSM_pwm_period_counts'}
     assert(~evalin('base',sprintf('exist(''%s'',''var'')==1',name{1})), ...
@@ -47,13 +59,15 @@ end
 assert(abs(signals.x.data(end)-1)<0.02,'M1A:DEFAULT_RESPONSE','Default 1 mm position scene did not settle near target.');
 result=struct('pass',true,'process_id',matlabProcessID,'version',version, ...
     'source_files',{files},'stop_s',signals.x.time(end),'x_final_mm',signals.x.data(end), ...
-    'old_mat_present',false,'legacy_variables_present',false);
+    'old_mat_present',false,'legacy_variables_present',false, ...
+    'other_repository_paths_excluded',true,'helper_resolution_checked',true);
 save(fullfile(folder,'fresh_result.mat'),'result','signals');
 fid=fopen(fullfile(folder,'fresh_result.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);
 fprintf('M1A_FRESH_PASS pid=%d stop=%.17g x_final_mm=%.17g\n', ...
     result.process_id,result.stop_s,result.x_final_mm);
 end
-function finish(oldpwd)
+function finish(oldpwd,oldPath)
 if bdIsLoaded('PMLSM_PI_FOC_Float_Baseline'),close_system('PMLSM_PI_FOC_Float_Baseline',0);end
 cd(oldpwd);
+path(oldPath);
 end

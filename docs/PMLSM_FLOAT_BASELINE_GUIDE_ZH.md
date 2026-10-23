@@ -69,6 +69,6 @@ out = sim('PMLSM_PI_FOC_Float_Baseline');
 & 'D:\Program Files\MATLAB\R2026b\bin\matlab.exe' -batch "addpath('D:/Project/FPGA_XC7A200T/scripts'); m1a_fresh_float_baseline"
 ```
 
-`all` 包含结构、初始化/变量生效、实际调制/PI/时序、九个源 backend0 迁移场景和一个步长对照。`m1a_fresh_float_baseline` 把新 SLX、初始化、只读检查函数及两个计算函数复制到新的隔离目录，运行完整默认工况；可用两个独立进程复核重复性。新模型运行不需要旧 MAT、XSI、prepare 或 CONTROL_BACKEND；迁移验证的源侧按原来源加载，只在内存配置后仿真并不保存。
+`all` 包含结构、初始化/变量生效、实际 Clarke/Park/反 Park、调制/PI/时序、九个源 backend0 迁移场景和一个步长对照。`m1a_fresh_float_baseline` 把新 SLX、初始化、只读检查函数及两个计算函数复制到新的隔离目录，排除其他仓库搜索路径并逐项检查辅助函数解析位置，再运行完整默认工况；可用两个独立进程复核重复性。新模型运行不需要旧 MAT、XSI、prepare 或 CONTROL_BACKEND；迁移验证的源侧按原来源加载，只在内存配置后仿真并不保存。
 
 [结果索引](reports/m1a_float_baseline/README.md)与[实施报告](../coordination/reports/m1a_pure_simulink_float_baseline.md)说明实际结果、阈值和未验收范围。M1A 没有生成 HDL/C，没有运行 Vivado 或操作硬件；启动保护/恢复属于后续 M1B，定点 HDL 属于 M2。

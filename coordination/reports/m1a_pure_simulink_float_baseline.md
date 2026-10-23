@@ -25,11 +25,12 @@
 | 参数/工况生效 | 外部文本副本的负位置、独立负载实际改变响应，默认恢复后复现；Model Workspace 无遮蔽 |
 | 初始化双进程 | PID45492/45496 的五组 logsout 全部逐样本相同，见 init_acceptance.json；属于归一化前的参数组织检查 |
 | 实际 SVPWM 块 | 115 点，覆盖零矢量、六扇区、边界两侧和线性限幅附近；max duty 对照误差 1.11e-16，独立 alpha/beta 重构 max 0.000727477 V |
+| 实际变换块 | 32 点，含平衡电流、公共分量及各象限/周期边界角度；Clarke 误差 0，Park max 6.86e-6 A，往返 max 1.583e-5 A，低于首次探针前设定的 1e-4 A 门槛 |
 | 实际 PI/限幅块 | old-state/AW/复位的输出与积分状态误差均 0，延迟记忆按原合同保留 |
 | 实测时序 | 首速度/位置 tick 0.9/9.9 ms，command 首变 0 s、applied 首变 50 us；PWM 关闭后平均 vd/vq 为零 |
 | 源 backend0 迁移 | 正负电流、正负速度、正负 1 mm 位置、理想、负载阶跃、stop/reset 九场景，24 路/场景，全部通过 |
 | 步长 | 正电流自由运动工况 1 us vs 0.5 us，控制 tick/模式事件一致，24 路指标通过 |
-| 最终独立 fresh | 最终副本 PID41788/45584，只含新 SLX 与四个必要 .m；无旧 MAT/legacy 变量，完整 1.2 s 默认工况的 11 路记录逐样本一致 |
+| 最终独立 fresh | 最终副本 PID43908/45864，只含新 SLX 与四个必要 .m，排除其他仓库路径并检查辅助函数位置；无旧 MAT/legacy 变量，完整 1.2 s 默认工况的 11 路记录逐样本一致 |
 
 默认最终位置 0.9849676863605962 mm，给定 1 mm，误差 0.0150323 mm，符合来源 0.02 mm 位置死区；不声称无静差。最终线段检查清理了 21 段删除旧分支后留下的悬空线，清理前后全部有效输入连接完全相同；随后组合入口与两次 fresh 又通过。见 fresh_acceptance.json / connectivity_acceptance.json。
 
@@ -43,10 +44,12 @@
 
 ## 执行入口与交付边界
 
-最终实际命令为 `matlab -batch "addpath('D:/Project/FPGA_XC7A200T/scripts'); m1a_verify_float_baseline('all')"`，输出 M1A_ALL_PASS（job_20.log）；两次新进程 `m1a_fresh_float_baseline` 输出 M1A_FRESH_PASS，配对输出 M1A_FRESH_PAIR_PASS。早期数学 harness 的保持参数、位置观察窗口和 fresh 输出时间字段问题均作为测试修复记录，没有改变 PI、物理语义或放宽阈值。Code Analyzer 结果另存 code_analyzer.json；PID 记录改用 R2026b 支持的 matlabProcessID，并在本机验证与旧 API 数值一致。
+最终实际命令为 `matlab -batch "addpath('D:/Project/FPGA_XC7A200T/scripts'); m1a_verify_float_baseline('all')"`，输出 M1A_ALL_PASS（含追加变换检查的 job_25.log）；两次新进程 `m1a_fresh_float_baseline` 输出 M1A_FRESH_PASS，配对输出 M1A_FRESH_PAIR_PASS（job_27.log）。早期数学 harness 的保持参数、位置观察窗口和 fresh 输出时间字段问题均作为测试修复记录，没有改变 PI、物理语义或放宽阈值。八个 MATLAB 文件 Code Analyzer 均 0 条诊断，结果另存 code_analyzer.json；PID 记录改用 R2026b 支持的 matlabProcessID，并在本机验证与旧 API 数值一致。
 
 直接运行与复现命令见[中文指南](../../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)。全量运行日志、模型副本和完整 MAT 不入库，精简索引/指标入库。
 
-最终保护检查：原 34 项 tracked 修改对应的 Git binary patch 逐字节不变，原 666 项 untracked 路径仍存在，七份受保护源快照逐字节一致；最终 SLX 与 PID41788/45584 的隔离副本逐字节相同。七个新增 MATLAB 文件 Code Analyzer 均 0 条诊断；变更范围 `git diff --check` 通过。阶段提交 c943b1b（结构）、c58fa1e（初始化）、e9a5f24（调制/时序）；最终交付另提交限定验证和文档。
+保护检查：原 34 项 tracked 修改对应的 Git binary patch 逐字节不变，原 666 项 untracked 路径仍存在，七份受保护源快照逐字节一致；最终 SLX 与隔离副本逐字节相同。Code Analyzer 与变更范围 `git diff --check` 结果入库。阶段提交 c943b1b（结构）、c58fa1e（初始化）、e9a5f24（调制/时序）、ed7e8f8（迁移/交付）；Review 补充独立变换点与更严格的 fresh 路径隔离。
+
+独立只读审查未发现模型回归，指出数学入口缺少独立变换点，以及原 fresh 测试没有排除其他仓库搜索路径。已补充实际块的解析式/往返测试、将其纳入 math/all，且 fresh 测试显式移除其他仓库路径并检查四个辅助 .m 的解析位置。保留原有限工况和全部既有阈值，不扩展到审查明确留给 M1B/HDL/实机的范围。
 
 本阶段没有定点化、HDL/C 生成、Vivado 构建、bitstream、硬件或实机验证；没有重跑历史全套 Step6/7/StudyL1。原有完整运行管理、真实反馈滤波、行程/故障恢复尚未验收。完成交付后停在开放实现 PR，等待 Review；不自动合并或进入 M1B/M2。
