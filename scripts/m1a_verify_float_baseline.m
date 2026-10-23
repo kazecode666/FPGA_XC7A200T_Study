@@ -79,6 +79,9 @@ if strcmp(stage,'init')
 end
 if strcmp(stage,'math')
     result=m1a_check_modulation(model);
+    states=m1a_check_pi_timing(model);
+    result.details.pi_timing=states.details;
+    fprintf('M1A_MATH_PASS\n');
     return
 end
 assert(strcmp(stage,'structure'),'M1A:STAGE_PENDING', ...

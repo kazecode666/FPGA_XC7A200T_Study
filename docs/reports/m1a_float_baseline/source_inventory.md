@@ -43,3 +43,9 @@ MATLAB 正式版 `26.2.0.3386108 (R2026b)`，实际路径 `D:/Program Files/MATL
 初始化检查点：新 Model Workspace 为空，InitFcn 仅调用只读 `m1a_require_float_init`；四项工况时间序列显式生成并保持，旧 MAT/prepare 回调移除。
 两个独立批处理 PID 45492 / 45496 的默认、重复、负位置、负载、默认恢复五组 logsout 全部逐样本相同，见 `init_acceptance.json`。
 位置观察 25 ms，包含首个 9.9 ms 位置事件；负位置场景末值 -0.0028630039612365485 mm。短默认/负载观察 2 ms。此检查不替代后续完整闭环迁移验收。
+
+调制/数学检查点：原扇区时间计算保留，仅将三路时间比例转换为 `1-2*t/T_pwm`；移除 legacy counts 转换子系统，将半周期延迟初值改为 0.5。新主链与初始化不再使用 CPU_Clock / period_counts。
+115 个实际新/源 SVPWM block 向量（零矢量、六扇区及切换两侧、接近线性限幅）结果见 `modulation_vectors.csv`。max duty error=1.1102230246251565e-16，max physical voltage error=0.00072747733648981239 V。
+PI/限幅块复制测试的输出、积分状态与独立逐拍 old-state/AW/reset 方程误差均为 0。源 limiter 延迟记忆没有被统一清零。
+实际首次速度 tick=0.00090000000000000008 s、位置 tick=0.0099 s；command 在 0 s 改变、applied 在 50 us 改变，关闭 PWM 后平均 vd/vq 为零。见 `pi_timing_acceptance.json`。
+组合入口实际输出 `M1A_MATH_PASS`（job_10.log）。完整源/新闭环迁移和步长收敛仍待执行。

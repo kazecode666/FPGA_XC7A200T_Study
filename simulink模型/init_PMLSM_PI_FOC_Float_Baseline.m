@@ -39,8 +39,6 @@ v_ref_zero_eps=0;
 PMLSM_deadtime_s=1e-6;
 PMLSM_deadtime_ratio=PMLSM_deadtime_s/T_pwm;
 PMLSM_deadtime_current_eps_A=1e-4;
-% Temporary legacy-count compatibility until the normalization checkpoint.
-CPU_Clock=200e6; PMLSM_pwm_period_counts=CPU_Clock*T_pwm/2;
 
 % Default position scene: 1 mm / 1.2 s / zero load; host units mm and mm/s.
 Host_Enable_Schedule=[0 1 1 1];
