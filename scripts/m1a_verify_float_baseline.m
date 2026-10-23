@@ -4,14 +4,28 @@ arguments
     stage (1,:) char {mustBeMember(stage,{'structure','init','math','closedloop','all'})}
 end
 root = fileparts(fileparts(mfilename('fullpath')));
+if strcmp(stage,'all')
+    stages={'structure','init','math','closedloop'};details=struct;
+    for k=1:numel(stages)
+        details.(stages{k})=m1a_verify_float_baseline(stages{k});
+        assert(details.(stages{k}).pass,'M1A:STAGE_FAILED','Stage failed: %s',stages{k});
+    end
+    result=struct('pass',true,'details',details);
+    fprintf('M1A_ALL_PASS\n');
+    return
+end
 model = 'PMLSM_PI_FOC_Float_Baseline';
 file = fullfile(root,'simulink模型',[model '.slx']);
 assert(isfile(file),'M1A:MODEL_MISSING','M1A_MODEL_MISSING: %s',file);
 addpath(fullfile(root,'simulink模型'));
 runtime=fullfile(root,'.runtime','m1a_20261023');
-processFolder=fullfile(runtime,sprintf('process_%d',feature('getpid')));
+processFolder=fullfile(runtime,sprintf('process_%d',matlabProcessID));
 Simulink.fileGenControl('set','CacheFolder',fullfile(processFolder,'cache'), ...
     'CodeGenFolder',fullfile(processFolder,'codegen'),'createDir',true);
+if strcmp(stage,'closedloop')
+    result=m1a_regress_float_baseline;
+    return
+end
 assert(~bdIsLoaded(model),'M1A:FRESH_PROCESS','Run in a fresh MATLAB process.');
 load_system(file);
 cleanup = onCleanup(@() close_system(model,0));
@@ -72,9 +86,9 @@ if strcmp(stage,'init')
     assert(isequaln(first.logsout,restored.logsout),'M1A:DEFAULT_NOT_RESTORED','Defaults did not reproduce.');
     result=struct('pass',true,'details',struct('stage',stage,'short_run_s',0.002, ...
         'negative_guard',true,'base_resolution',true,'same_process_repeat',true, ...
-        'process_id',feature('getpid'),'scene_response',true));
+        'process_id',matlabProcessID,'scene_response',true));
     save(fullfile(processFolder,'init_short_runs.mat'),'first','second','negative','loaded','restored','result');
-    fprintf('M1A_INIT_PASS repeat/resolution/external_scenes/default_restore process=%d\n',feature('getpid'));
+    fprintf('M1A_INIT_PASS repeat/resolution/external_scenes/default_restore process=%d\n',matlabProcessID);
     return
 end
 if strcmp(stage,'math')
@@ -101,7 +115,7 @@ required = {'PMLSM_Plant_Model','Inverter_DeadTime','FOC_Algorithm', ...
     'Motor_Control_Monitor'};
 for k=1:numel(required)
     hits = find_system(model,'LookUnderMasks','all','FollowLinks','off','Name',required{k});
-    assert(numel(hits)==1,'M1A:STRUCTURE','Expected one %s.',required{k});
+    assert(isscalar(hits),'M1A:STRUCTURE','Expected one %s.',required{k});
 end
 assert(strcmp(get_param(model,'Dirty'),'off'),'M1A:DIRTY','Read-only check dirtied model.');
 result = struct('pass',true,'details',struct('stage',stage,'blocks',numel(blocks)));

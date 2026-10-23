@@ -48,7 +48,7 @@ fprintf('M1A_MODULATION_VECTOR_PASS\n');
 end
 
 function output=run_svpwm(sourcePath,points,old)
-h=sprintf('M1A_Modulation_%d_%d',feature('getpid'),old);
+h=sprintf('M1A_Modulation_%d_%d',matlabProcessID,old);
 assert(~bdIsLoaded(h)); new_system(h);
 cleanup=onCleanup(@()close_system(h,0));
 add_block(sourcePath,[h '/SVPWM'],'Position',[160 40 300 160]);

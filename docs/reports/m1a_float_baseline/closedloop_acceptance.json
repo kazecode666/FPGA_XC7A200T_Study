@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "details": {
+    "scenes": [
+      {
+        "name": "current_pos",
+        "kind": "current",
+        "sign": 1,
+        "stop": 0.03,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "current_neg",
+        "kind": "current",
+        "sign": -1,
+        "stop": 0.03,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "speed_pos",
+        "kind": "speed",
+        "sign": 1,
+        "stop": 0.25,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "speed_neg",
+        "kind": "speed",
+        "sign": -1,
+        "stop": 0.25,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "position_pos",
+        "kind": "position",
+        "sign": 1,
+        "stop": 1.2,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "position_neg",
+        "kind": "position",
+        "sign": -1,
+        "stop": 1.2,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "position_ideal",
+        "kind": "position",
+        "sign": 1,
+        "stop": 1.2,
+        "deadtime": 0,
+        "loadstep": false,
+        "stopreset": false
+      },
+      {
+        "name": "position_load",
+        "kind": "position",
+        "sign": 1,
+        "stop": 1.2,
+        "deadtime": 1E-6,
+        "loadstep": true,
+        "stopreset": false
+      },
+      {
+        "name": "stop_reset",
+        "kind": "current",
+        "sign": 1,
+        "stop": 0.03,
+        "deadtime": 1E-6,
+        "loadstep": false,
+        "stopreset": true
+      }
+    ],
+    "rows": 240,
+    "source_backend": 0,
+    "original_saved": false,
+    "runtime": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m1a_20261023\\regression_32264"
+  }
+}

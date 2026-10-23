@@ -3,7 +3,7 @@ function result=m1a_check_pi_timing(model)
 root=fileparts(fileparts(mfilename('fullpath')));
 evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');
 byid=@(sid)Simulink.ID.getFullName(sprintf('%s:%d',model,sid));
-h=sprintf('M1A_PI_%d',feature('getpid')); new_system(h);
+h=sprintf('M1A_PI_%d',matlabProcessID); new_system(h);
 cleanup=onCleanup(@()close_system(h,0));
 add_block(byid(566),[h '/Id']); add_block(byid(591),[h '/Iq']);
 add_block(byid(698),[h '/Limiter']);

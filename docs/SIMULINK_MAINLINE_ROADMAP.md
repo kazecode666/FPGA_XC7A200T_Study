@@ -2,7 +2,7 @@
 
 更新：2026-10-23。PR44 的 M0 审计已合并至 `main@2e10c2d`；用户确认另存纯 Simulink PI-FOC 浮点模型、统一电机/调制/控制时基、外部 `.m` 加载工作区。
 
-**PR45 的 [M1A 设计](../coordination/specs/m1a_pure_simulink_float_baseline_design.md)已合并，当前阶段为 [M1A 实施任务](../coordination/tasks/m1a_pure_simulink_float_baseline.md)及[分步计划](superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md) Review。** 本次没有创建新模型或执行仿真。M1 拆成独立浮点基线与运行管理两个检查点，避免同时改变过多行为。旧 M0 报告保留其当时状态，不重复执行已经接受的审计。
+**PR46 计划已实施，当前阶段为 M1A 实现 Review。** 新模型、外部参数与限定数学/闭环验收见[实施报告](../coordination/reports/m1a_pure_simulink_float_baseline.md)和[运行指南](PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)。M1B 运行管理和 M2 定点 HDL 不自动开始。旧 M0 报告保留其当时状态。
 
 ## 1. 目标与非目标
 
@@ -16,8 +16,8 @@
 
 | 对象 | 职责 |
 |---|---|
-| 新 `PMLSM_PI_FOC_Float_Baseline.slx`（待实现） | 纯 Simulink 主线入口；唯一自由运动 plant、共享参数/场景、PI-FOC及必要外环；不依赖旧 backend/XSI |
-| 新 `init_PMLSM_PI_FOC_Float_Baseline.m`（待实现） | 可读的默认参数/场景来源，加载 MATLAB 基础工作区；不另藏 Model Workspace/MAT 参数副本 |
+| 新 `PMLSM_PI_FOC_Float_Baseline.slx` | 已实现的纯 Simulink 主线入口；唯一自由运动 plant、共享参数/场景、PI-FOC及必要外环；不依赖旧 backend/XSI |
+| 新 `init_PMLSM_PI_FOC_Float_Baseline.m` | 已实现的默认参数/场景来源，显式加载 Base Workspace；无 Model Workspace/MAT 参数副本 |
 | 旧 Simple | 算法修正、外环及 plant 来源与迁移对照；原文件保留 |
 | 完整 MIL + ControlCore | 系统功能、启动、测量、保护和研究算法参照；原文件保留 |
 | DSP 实机模型 | 已有运行管理和外设语义参考；TI 外设不能当作 FPGA 已实现接口 |
@@ -30,7 +30,7 @@
 | 阶段 | 工作 | 退出条件 |
 |---|---|---|
 | M0：已合并 | 三模型功能/参数审计、硬件/工程资料与缺项补齐 | PR44 已接受；动态与板级事项未冒充完成 |
-| **M1A：当前实施准备** | 另存纯浮点模型，外部 `.m` 初始化，统一电机/调制/控制时基，移除旧 co-sim 依赖 | 新模型与参数入口入库，新进程真实运行、物理调制核对、源/新迁移对照和必要步长检查 |
+| **M1A：实现待 Review** | 已另存独立浮点模型并完成限定 R2026b 数学/闭环验证 | 实施报告、实际指标与 fresh 证据供 Review；开放 PR 后停止 |
 | M1B：运行管理 | 在稳定浮点基线之上分步恢复启动/对齐、使能、故障锁存/恢复和适用的行程行为 | 各行为边界与代表性正常/异常场景通过，不与 M1A 一次混改 |
 | M2：定点实现模型 | 独立控制器的位宽、范围、舍入/饱和、状态与采样语义，HDL 支持检查 | 数据类型表、浮点/定点误差及边界测试 |
 | M3：生成与 RTL 功能验证 | HDL Coder 生成，与相应实现参考比较 | 状态/复位/使能/有效数据与延迟映射正确，可复现生成 |
