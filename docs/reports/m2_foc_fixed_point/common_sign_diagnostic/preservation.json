@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "canonical_entry_files_byte_identical": 34,
+  "pre_existing_dirty_patch_sections_unchanged": 31,
+  "temporary_phase_scopes_changed": 3,
+  "original_block_parameters_unchanged": true,
+  "temporary_root_only_SID_watermark_changed": true,
+  "fixed_DUT_bytes_identical": true,
+  "temporary_archive_parts_changed": [
+    "simulink/systems/system_814.xml",
+    "simulink/systems/system_829.xml",
+    "simulink/systems/system_844.xml",
+    "simulink/systems/system_root.xml",
+    "simulink/graphicalInterface.json",
+    "metadata/coreProperties.xml",
+    "simulink/blockDiagram.json"
+  ],
+  "production_SLX_modified": false
+}

@@ -1,0 +1,66 @@
+{
+  "new_evidence": [
+    {
+      "local_file": ".runtime\\pr51_common_sign_20261024\\recorded_float_signs.mat",
+      "bytes": 20628507,
+      "sha256": "fbdc7a997f41be864cbfe07217298de05ccf7930ef9698b2238e14a6e8bca81d"
+    },
+    {
+      "local_file": ".runtime\\pr51_common_sign_20261024\\common_float.mat",
+      "bytes": 110061419,
+      "sha256": "c0c9bcbf476c07e99a52862f6e01cc2d9ae129cc3bc0c54bb64e75607a2b17e1"
+    },
+    {
+      "local_file": ".runtime\\pr51_common_sign_20261024\\common_fixed.mat",
+      "bytes": 110184611,
+      "sha256": "ff6d52f69970b5360b253ca5501ff53af4f6dfc6ccb57d149658640d484e0ddd"
+    },
+    {
+      "local_file": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp5737adfa_7a56_4783_bfdc_0ceadc28f3f5\\PMLSM_PI_FOC_Float_Baseline.slx",
+      "bytes": 617530,
+      "sha256": "790a3161794ab465b48ee9cafa0818c8d941aa033d6c0277cd47da12696f1881"
+    },
+    {
+      "local_file": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp5737adfa_7a56_4783_bfdc_0ceadc28f3f5\\PMLSM_FOC_FixedPoint.slx",
+      "bytes": 177388,
+      "sha256": "be5e04bf659e5294c6270d36059ae4a9e0fefc5f0448079e67681aa8f1addcf7"
+    }
+  ],
+  "original_sign_recording_sha256": "be4fc1e061005acc6e49e7cff28f298b16f448b0dcfca7b3bb9a209852b17bed",
+  "source_files_at_entry": {
+    "simulink模型\\design_PMLSM_three_loop.m": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2",
+    "simulink模型\\FPGA_Simulink_Model_Guide.md": "b0ff9d9f333ec87934c177430d600f4a4a17e35dca7411a218296110fa528f65",
+    "simulink模型\\init_PMLSM_control_params.m": "a84b8c67e9ce895a73b629cd3d492fd8e0c1c789e4cb12c04edc5a80b5035cf2",
+    "simulink模型\\init_PMLSM_fpga_cosim_params.m": "aefec725554b24125bb877785990c91c2a208b1611554cc597685991b82e0004",
+    "simulink模型\\init_PMLSM_MIL_params.m": "dfbea5526295968739435d4416688e2bf1a508ad8d0c7e69369a817122876e8b",
+    "simulink模型\\init_PMLSM_mil_test_params.m": "1c3ea10cb4d6802ffb13077a9682eddee9bbcdce72cdc8389fc13b698d2daf3b",
+    "simulink模型\\init_PMLSM_PI_FOC_Float_Baseline.m": "5ab7a40613a672b6805ec15dd9ef394fa1aaa0958ec1b9a3ecbbdf1e0a00a016",
+    "simulink模型\\init_PMLSM_plant_params.m": "221cfab8d98666619dde293d349a63de050a5c29e0779512bf60a5efa6e08684",
+    "simulink模型\\init_PMLSM_step7c_params.m": "da19187c7d70e5fd2583d8e3b56a1f60626189c930a65b34571843df73fb2126",
+    "simulink模型\\init_PMLSM_ThreeLoop_Simple.m": "104d9a3521a9d6d36150502cdb3e9feb09c368f6f7ce0ea1cc8f10a4df4136a0",
+    "simulink模型\\init_PMLSM_ThreeLoop_Simple.mat": "76fb6700779ece8543adb0ab835a6cb2b35baf88ff92dd6051196cacabc27dc2",
+    "simulink模型\\m1a_require_float_init.m": "15cbf8a0bad430eafcff1ce900947589112ecadf137a595a4446a385e1c35fcf",
+    "simulink模型\\PMLSM_Angle_Init_Id_Release_Ramp_Plan.md": "dd70ca2a6a00c298ad69fbba3ab2777631d0c8673ea305a17a23d3b29a2964d3",
+    "simulink模型\\PMLSM_ControlCore_Block.slx": "8361b53e2e8bc26d876152be130f9a55bb1c37de265cad84c8e34810abeadbba",
+    "simulink模型\\PMLSM_Current_PI_Discrete_Form.md": "da648958733b3717740af6042e121c5c7bc676f6ab4394ae99463cb3399acf38",
+    "simulink模型\\PMLSM_ePWM_Polarity_Check.md": "3af6a736b3267a0f92fc53591c56924a4ea7d3db1f52cf09ab277d49d1d4b23c",
+    "simulink模型\\PMLSM_FOC_FixedPoint.slx": "be5e04bf659e5294c6270d36059ae4a9e0fefc5f0448079e67681aa8f1addcf7",
+    "simulink模型\\pmlsm_foc_fixed_config.m": "27008b96a8ea04f68619c39426bc74218b1a96f5059a4959b9e4ca46288aebe1",
+    "simulink模型\\PMLSM_Hardware_Interface_Map.md": "c3082987642c34a8fada4bbb4ff1effe447e73c3e87a3751cfe5760193933050",
+    "simulink模型\\PMLSM_HDL_Cosim_Minimal.slx": "ad1f3a2cce59a988869e50b2b512b09c56ef38ac1600ae3f2a3b67a799b8c028",
+    "simulink模型\\PMLSM_MIL_ControlCore_Sim.slx": "ffd0a57e1dd91b085c4532567295de0da133cf08f507a68736313567424304e4",
+    "simulink模型\\PMLSM_MIL_Model_Notes.md": "d8c7217dab6ccbfbd1b3f45c51a4ad81d587b0253c9045b54533e128b9f7a254",
+    "simulink模型\\PMLSM_MIL_Test_Flow.md": "c5824aa1a9ccf01e65e1c413a80430d5e6c20e6d2c64f6133c2e4ac740911b24",
+    "simulink模型\\PMLSM_PI_FOC_Float_Baseline.slx": "b27a9083897d932b021d91613799a226748a0be6fc0f50bf4a5cae62aec229dd",
+    "simulink模型\\PMLSM_PI_FOC_Float_Baseline.slx.original": "4cc08c6c7f1e751a42e8f8e30a6e064715788aa4fac5bd0ba6cee374ebaf61ee",
+    "simulink模型\\PMLSM_PI_FOC_Float_Baseline.slxc": "616248c291fc7cb342d06950ca4747cd5dca66edabb7f78bf4d1dc859799a92e",
+    "simulink模型\\pmlsm_point_move_step.m": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b",
+    "simulink模型\\pmlsm_scurve_profile.m": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b",
+    "simulink模型\\PMLSM_Sensor_Model_Check.md": "9a6499c61aaee2fe5d84520f58c24bb60815e9be3a61e38f05b3a9d8b4b14e48",
+    "simulink模型\\PMLSM_ThreeLoop_Simple.slx": "5b7497a3a739f7823db45ffc0665a21a7264a44bd5c5450e9e66f096026f32aa",
+    "simulink模型\\PMLSM_ThreeLoop_Simple.slxc": "e87b1f746c579adbed065d01e7e69077cafeeec5f0b2c015c1dfd6ac94ba39c6",
+    "simulink模型\\PMSLM_Close_Loop_MBDL4.slx": "3d4312114a7cb548e7d1ce4aca34be27ca46c173cb04d10689e5c3aa72ea9f07",
+    "simulink模型\\PMSLM_Init_Params_MBDL4.m": "5a64ee0af4cba7dea6cb950653b1f12acddc317f0c73363cfefa5c1ff127d605",
+    "simulink模型\\preview_PMLSM_reference.m": "89d233eda2aac43b4b0f621e127b43d4dac323da8a2ad513e0fda9b1bb65f79e"
+  }
+}

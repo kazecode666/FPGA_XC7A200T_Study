@@ -1,0 +1,9 @@
+function result=m2_test_foc_types
+root=fileparts(fileparts(mfilename('fullpath')));folder=fullfile(root,'docs/reports/m2_foc_fixed_point');addpath(fullfile(root,'simulink模型'),'-end');evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');p=evalin('base','struct(''Rs'',PMLSM_Rs_ohm,''Ld'',PMLSM_Ld_H,''Lq'',PMLSM_Lq_H,''psi'',PMLSM_psi_f_Wb,''Kp_ACR'',Kp_ACR,''Ki_ACR'',Ki_ACR,''Kaw_d'',Kaw_d,''Kaw_q'',Kaw_q,''Ts_ACR'',Ts_ACR,''Udc'',Udc)');cfg=pmlsm_foc_fixed_config(p);assignin('base','FOC_Fixed_Config',cfg);
+rows=cell(0,8);names=fieldnames(cfg.Types);for k=1:numel(names),T=cfg.Types.(names{k});if ~isnumerictype(T),continue;end;s=double(T.SignednessBool);wl=double(T.WordLength);fl=double(T.FractionLength);lo=-s*2^(wl-fl-s);hi=2^(wl-fl-s)-2^-fl;rows(end+1,:)={names{k},s,wl,fl,2^-fl,lo,hi,'Convergent/Saturate; numerical saturation forbidden in envelope'};end %#ok<AGROW>
+writetable(cell2table(rows,'VariableNames',{'quantity','signed','word_length','fraction_length','LSB','minimum','maximum','rounding_overflow'}),fullfile(folder,'types.csv'));
+rows=cell(0,4);names=fieldnames(cfg.Coefficients);for k=1:numel(names),v=cfg.Coefficients.(names{k});rows(end+1,:)={names{k},v.original,v.quantized,v.error};end %#ok<AGROW>
+writetable(cell2table(rows,'VariableNames',{'name','original','quantized','error'}),fullfile(folder,'coefficients.csv'));
+for v=[0 .5 1],assert(double(fi(v,cfg.Types.Duty,cfg.Fimath))==v);end
+assert(abs(cfg.Coefficients.KiTs.error)<1e-10&&cfg.Coefficients.Epsilon.quantized>0);result=struct('pass',true,'version',version,'config_version',cfg.Version,'input_parameters',p,'ranges',cfg.Ranges,'epsilon',cfg.Coefficients.Epsilon,'duty_endpoints_exact',true);fid=fopen(fullfile(folder,'types_acceptance.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);disp('M2_TYPES_PASS');
+end

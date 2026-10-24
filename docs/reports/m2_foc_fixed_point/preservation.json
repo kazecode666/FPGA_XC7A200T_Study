@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "source_files": [
+    {
+      "file": "simulink模型/PMLSM_PI_FOC_Float_Baseline.slx",
+      "must_remain_identical": false,
+      "byte_identical": false,
+      "entry_sha256": "8b9597454fbdbb8391d9e8964966df0da12fb9b5b6fce978113906b343614275",
+      "current_sha256": "f53a8356a9591b410a3734404b5d4d6afaa2f7e360531c7154a44be996291fb4"
+    },
+    {
+      "file": "simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m",
+      "must_remain_identical": false,
+      "byte_identical": false,
+      "entry_sha256": "745539b19ea6b04bd4254655b30bbf7a709f2003baf9932287b911afa0ad8c29",
+      "current_sha256": "5ab7a40613a672b6805ec15dd9ef394fa1aaa0958ec1b9a3ecbbdf1e0a00a016"
+    },
+    {
+      "file": "simulink模型/m1a_require_float_init.m",
+      "must_remain_identical": false,
+      "byte_identical": false,
+      "entry_sha256": "c625955562a3a0ef60277d46fa1ae9f449853998462221e8c3fdd5540e8e9bc6",
+      "current_sha256": "15cbf8a0bad430eafcff1ce900947589112ecadf137a595a4446a385e1c35fcf"
+    },
+    {
+      "file": "simulink模型/pmlsm_point_move_step.m",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b",
+      "current_sha256": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b"
+    },
+    {
+      "file": "simulink模型/preview_PMLSM_reference.m",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "89d233eda2aac43b4b0f621e127b43d4dac323da8a2ad513e0fda9b1bb65f79e",
+      "current_sha256": "89d233eda2aac43b4b0f621e127b43d4dac323da8a2ad513e0fda9b1bb65f79e"
+    },
+    {
+      "file": "simulink模型/pmlsm_scurve_profile.m",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b",
+      "current_sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b"
+    },
+    {
+      "file": "simulink模型/design_PMLSM_three_loop.m",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2",
+      "current_sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2"
+    },
+    {
+      "file": "simulink模型/PMLSM_ThreeLoop_Simple.slx",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "5b7497a3a739f7823db45ffc0665a21a7264a44bd5c5450e9e66f096026f32aa",
+      "current_sha256": "5b7497a3a739f7823db45ffc0665a21a7264a44bd5c5450e9e66f096026f32aa"
+    },
+    {
+      "file": "simulink模型/init_PMLSM_ThreeLoop_Simple.m",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "104d9a3521a9d6d36150502cdb3e9feb09c368f6f7ce0ea1cc8f10a4df4136a0",
+      "current_sha256": "104d9a3521a9d6d36150502cdb3e9feb09c368f6f7ce0ea1cc8f10a4df4136a0"
+    },
+    {
+      "file": "simulink模型/PMLSM_MIL_ControlCore_Sim.slx",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "ffd0a57e1dd91b085c4532567295de0da133cf08f507a68736313567424304e4",
+      "current_sha256": "ffd0a57e1dd91b085c4532567295de0da133cf08f507a68736313567424304e4"
+    },
+    {
+      "file": "simulink模型/PMLSM_ControlCore_Block.slx",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "8361b53e2e8bc26d876152be130f9a55bb1c37de265cad84c8e34810abeadbba",
+      "current_sha256": "8361b53e2e8bc26d876152be130f9a55bb1c37de265cad84c8e34810abeadbba"
+    },
+    {
+      "file": "simulink模型/PMSLM_Close_Loop_MBDL4.slx",
+      "must_remain_identical": true,
+      "byte_identical": true,
+      "entry_sha256": "3d4312114a7cb548e7d1ce4aca34be27ca46c173cb04d10689e5c3aa72ea9f07",
+      "current_sha256": "3d4312114a7cb548e7d1ce4aca34be27ca46c173cb04d10689e5c3aa72ea9f07"
+    }
+  ],
+  "original_subsystems_identical": 32,
+  "original_foc_system_546_identical": true,
+  "unrelated_dirty_patch_sections_identical": 29,
+  "original_stateflow_archive_parts_identical": 4,
+  "new_archive_parts": 5,
+  "old_models_modified_by_M2": false,
+  "layout_note": "R2026b grid snapped39 existing block positions by1-2px; restored only serialized Position fields from local entry snapshot after native API also snapped. Reopen/update validated; no original math or wiring restored from remote."
+}

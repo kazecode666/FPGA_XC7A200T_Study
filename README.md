@@ -2,7 +2,9 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-24。** PR49 已合并至 `aa46c71`，M1B 连续点位、原 MIL 可选对齐及 FOC 只读准备已接受。下一轮为 [M2：独立 FOC 定点实现与共享闭环验证](coordination/tasks/m2_foc_fixed_point_implementation.md)。当前只提交任务书；尚未创建定点模型、运行 M2 验收或生成 HDL。
+**路线更新：2026-10-24。** 按已合并 PR50 交付 M2 独立 FOC 定点 SLX、共享 float/fixed 闭环、类型配置及本机证据。单元和11类共享场景通过，**连续点位数值预算未通过，作为开放实现PR的Review阻塞项保留**。[操作指南](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md) · [整合验收](coordination/reports/m2_foc_fixed_point_implementation.md)。原浮点默认、三环参数、连续点位、原对齐和默认死区保留；未生成 HDL/C 或运行 Vivado。
+
+后续用户授权的[共同死区符号诊断](docs/reports/m2_foc_fixed_point/common_sign_diagnostic/README.md)使该场景iq/速度峰值与RMSE差下降超过99.99%，命令/Ready仍一致；已明确提出只针对冻结场景的受限例外`M2-E-REPEAT-001`，等待PR51 Review。原严格FAIL、预算和正常测试退出保持，不等于完整M2严格通过，诊断不进入生产模型。
 
 已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
@@ -10,7 +12,7 @@
 
 | 内容 | 入口 |
 |---|---|
-| Codex 下一轮完整任务 | [M2：独立 FOC 定点实现与共享闭环验证](coordination/tasks/m2_foc_fixed_point_implementation.md) |
+| M2 当前实现和证据 | [任务书](coordination/tasks/m2_foc_fixed_point_implementation.md)、[设计](docs/FOC_FIXED_POINT_DESIGN.md)、[操作](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)、[结果索引](docs/reports/m2_foc_fixed_point/README.md) |
 | M1B 已接受的任务与结果 | [M1B任务](coordination/tasks/m1b_repeat_moves_and_alignment.md)、[整合验收](coordination/reports/m1b_repeat_moves_and_alignment.md)、[FOC准备报告](docs/FOC_FIXED_POINT_READINESS.md) |
 | 直接运行已合并浮点基线 | [中文运行指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)、[M1A实施报告](coordination/reports/m1a_pure_simulink_float_baseline.md)、[PR47操作修订](coordination/reports/pr47_host_interface_revision.md) |
 | 已完成 M1A 的设计和计划 | [M1A设计](coordination/specs/m1a_pure_simulink_float_baseline_design.md)、[历史任务](coordination/tasks/m1a_pure_simulink_float_baseline.md)、[逐项计划](docs/superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md) |
@@ -31,7 +33,7 @@
 |---|---|
 | `simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` | 已接受浮点参考与共享闭环环境；M2只增加必要的float/fixed实现选择，不重建Host/对齐/外环/plant |
 | `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m` | 唯一人工初始化入口，显式加载Base Workspace，简洁中文分段；类型配置由它调用 |
-| `simulink模型/PMLSM_FOC_FixedPoint.slx` | M2拟新增独立FOC_DUT，当前尚未创建；只包含电流FOC算术与状态 |
+| `simulink模型/PMLSM_FOC_FixedPoint.slx` | 实际根层 FOC_DUT；完整固定类型电流FOC，由共享环境 Normal Model Reference 唯一引用 |
 | `simulink模型/PMLSM_ThreeLoop_Simple.slx` | 原算法修正、外环及plant来源和迁移对照；原文件保留 |
 | `simulink模型/PMLSM_MIL_ControlCore_Sim.slx` | 原系统级仿真和对齐来源；其 `PMLSM_ControlCore_Block.slx` 一并只读保留 |
 | `simulink模型/PMSLM_Close_Loop_MBDL4.slx` | DSP运行与外设语义参考；用于核对原对齐，不直接转换成FPGA顶层 |
@@ -42,7 +44,7 @@
 
 **M1A/M1B已接受，基础参数继续固定。** M2按一个任务包连续完成：来源与接口冻结、独立浮点适配及零分母处理、范围/类型设计、定点单元与状态验证、共享闭环比较、兼容性与操作交付。不是再做一轮纯文档审计，也不直接把整个三闭环模型改成定点。
 
-M1B准备已识别 `DutInsideTrigger`、浮点扇区控制和SVPWM未选中分支0/0。新实现必须处理这些问题；原参考不为匹配定点而改算法。第9母线端口、`FOC_Impl_Select`及量化预算属于M2新设计，不声称PR49原本已有。
+M2 独立 DUT 消除了触发父层限制，扇区用 uint8，候选除法在运算前保护分母；实际内部编译端口均为 fixed/integer/boolean。第9母线端口、`FOC_Impl_Select` 及量化预算属于 M2 新设计。原浮点候选支路已知 0/0 保留，其合法输出没有为匹配定点而改写。
 
 连续点位和原对齐保持现状，不新增运动中重规划、热切环或启动协议。默认电机、PI、控制周期、一次PWM更新和未补偿平均死区保持；PWM关闭后仿真/机械体继续，PI复位不是全故障清除。完整保护、实际测量滤波、死区补偿及JMAG/Maxwell留后。
 

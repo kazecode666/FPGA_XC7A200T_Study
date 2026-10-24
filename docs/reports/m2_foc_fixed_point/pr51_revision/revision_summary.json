@@ -1,0 +1,13 @@
+{
+  "review_id": 5637860337,
+  "P3_fixed_and_fault_injection_pass": true,
+  "P2_requested_localization_checkpoint_complete": true,
+  "P2_original_closed_loop_budget_pass": false,
+  "same_input_replay_DUT_budget_pass": true,
+  "window_logging_residual": 0,
+  "local_sources_preserved": true,
+  "new_type_or_operator_candidates": 0,
+  "production_slx_changed": false,
+  "merged": false,
+  "HDL_or_Vivado_started": false
+}

@@ -1,0 +1,72 @@
+{
+  "PR50_merged": "1cab599931722bf9b5cc63299126b7bc47f1c9b7",
+  "PR50_comments": 0,
+  "sources": [
+    {
+      "path": "simulink\u6a21\u578b/PMLSM_PI_FOC_Float_Baseline.slx",
+      "differs_from_PR49": false,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/init_PMLSM_PI_FOC_Float_Baseline.m",
+      "differs_from_PR49": true,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/m1a_require_float_init.m",
+      "differs_from_PR49": true,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/pmlsm_point_move_step.m",
+      "differs_from_PR49": true,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/preview_PMLSM_reference.m",
+      "differs_from_PR49": true,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/pmlsm_scurve_profile.m",
+      "differs_from_PR49": false,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/design_PMLSM_three_loop.m",
+      "differs_from_PR49": false,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/PMLSM_ThreeLoop_Simple.slx",
+      "differs_from_PR49": true,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/init_PMLSM_ThreeLoop_Simple.m",
+      "differs_from_PR49": true,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/PMLSM_MIL_ControlCore_Sim.slx",
+      "differs_from_PR49": false,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/PMLSM_ControlCore_Block.slx",
+      "differs_from_PR49": false,
+      "preserved_entry_snapshot": true
+    },
+    {
+      "path": "simulink\u6a21\u578b/PMSLM_Close_Loop_MBDL4.slx",
+      "differs_from_PR49": false,
+      "preserved_entry_snapshot": true
+    }
+  ],
+  "licenses": {
+    "FixedPointDesigner": true,
+    "HDLCoder": true
+  },
+  "version": "R2026b26.2.0.3386108",
+  "missing_implementation_test": "EXPECTED_RED M2:FIXED_MODEL_MISSING"
+}

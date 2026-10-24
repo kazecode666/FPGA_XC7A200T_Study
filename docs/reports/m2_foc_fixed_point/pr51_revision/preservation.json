@@ -1,0 +1,179 @@
+{
+  "pass": true,
+  "files": [
+    {
+      "file": "simulink模型\\design_PMLSM_three_loop.m",
+      "sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\FPGA_Simulink_Model_Guide.md",
+      "sha256": "b0ff9d9f333ec87934c177430d600f4a4a17e35dca7411a218296110fa528f65",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_control_params.m",
+      "sha256": "a84b8c67e9ce895a73b629cd3d492fd8e0c1c789e4cb12c04edc5a80b5035cf2",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_fpga_cosim_params.m",
+      "sha256": "aefec725554b24125bb877785990c91c2a208b1611554cc597685991b82e0004",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_MIL_params.m",
+      "sha256": "dfbea5526295968739435d4416688e2bf1a508ad8d0c7e69369a817122876e8b",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_mil_test_params.m",
+      "sha256": "1c3ea10cb4d6802ffb13077a9682eddee9bbcdce72cdc8389fc13b698d2daf3b",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_PI_FOC_Float_Baseline.m",
+      "sha256": "5ab7a40613a672b6805ec15dd9ef394fa1aaa0958ec1b9a3ecbbdf1e0a00a016",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_plant_params.m",
+      "sha256": "221cfab8d98666619dde293d349a63de050a5c29e0779512bf60a5efa6e08684",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_step7c_params.m",
+      "sha256": "da19187c7d70e5fd2583d8e3b56a1f60626189c930a65b34571843df73fb2126",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_ThreeLoop_Simple.m",
+      "sha256": "104d9a3521a9d6d36150502cdb3e9feb09c368f6f7ce0ea1cc8f10a4df4136a0",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\init_PMLSM_ThreeLoop_Simple.mat",
+      "sha256": "76fb6700779ece8543adb0ab835a6cb2b35baf88ff92dd6051196cacabc27dc2",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\m1a_require_float_init.m",
+      "sha256": "15cbf8a0bad430eafcff1ce900947589112ecadf137a595a4446a385e1c35fcf",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_Angle_Init_Id_Release_Ramp_Plan.md",
+      "sha256": "dd70ca2a6a00c298ad69fbba3ab2777631d0c8673ea305a17a23d3b29a2964d3",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_ControlCore_Block.slx",
+      "sha256": "8361b53e2e8bc26d876152be130f9a55bb1c37de265cad84c8e34810abeadbba",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_Current_PI_Discrete_Form.md",
+      "sha256": "da648958733b3717740af6042e121c5c7bc676f6ab4394ae99463cb3399acf38",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_ePWM_Polarity_Check.md",
+      "sha256": "3af6a736b3267a0f92fc53591c56924a4ea7d3db1f52cf09ab277d49d1d4b23c",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_FOC_FixedPoint.slx",
+      "sha256": "be5e04bf659e5294c6270d36059ae4a9e0fefc5f0448079e67681aa8f1addcf7",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\pmlsm_foc_fixed_config.m",
+      "sha256": "27008b96a8ea04f68619c39426bc74218b1a96f5059a4959b9e4ca46288aebe1",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_Hardware_Interface_Map.md",
+      "sha256": "c3082987642c34a8fada4bbb4ff1effe447e73c3e87a3751cfe5760193933050",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_HDL_Cosim_Minimal.slx",
+      "sha256": "ad1f3a2cce59a988869e50b2b512b09c56ef38ac1600ae3f2a3b67a799b8c028",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_MIL_ControlCore_Sim.slx",
+      "sha256": "ffd0a57e1dd91b085c4532567295de0da133cf08f507a68736313567424304e4",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_MIL_Model_Notes.md",
+      "sha256": "d8c7217dab6ccbfbd1b3f45c51a4ad81d587b0253c9045b54533e128b9f7a254",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_MIL_Test_Flow.md",
+      "sha256": "c5824aa1a9ccf01e65e1c413a80430d5e6c20e6d2c64f6133c2e4ac740911b24",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_PI_FOC_Float_Baseline.slx",
+      "sha256": "b27a9083897d932b021d91613799a226748a0be6fc0f50bf4a5cae62aec229dd",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_PI_FOC_Float_Baseline.slx.original",
+      "sha256": "4cc08c6c7f1e751a42e8f8e30a6e064715788aa4fac5bd0ba6cee374ebaf61ee",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_PI_FOC_Float_Baseline.slxc",
+      "sha256": "616248c291fc7cb342d06950ca4747cd5dca66edabb7f78bf4d1dc859799a92e",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\pmlsm_point_move_step.m",
+      "sha256": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\pmlsm_scurve_profile.m",
+      "sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_Sensor_Model_Check.md",
+      "sha256": "9a6499c61aaee2fe5d84520f58c24bb60815e9be3a61e38f05b3a9d8b4b14e48",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_ThreeLoop_Simple.slx",
+      "sha256": "5b7497a3a739f7823db45ffc0665a21a7264a44bd5c5450e9e66f096026f32aa",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMLSM_ThreeLoop_Simple.slxc",
+      "sha256": "e87b1f746c579adbed065d01e7e69077cafeeec5f0b2c015c1dfd6ac94ba39c6",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMSLM_Close_Loop_MBDL4.slx",
+      "sha256": "3d4312114a7cb548e7d1ce4aca34be27ca46c173cb04d10689e5c3aa72ea9f07",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\PMSLM_Init_Params_MBDL4.m",
+      "sha256": "5a64ee0af4cba7dea6cb950653b1f12acddc317f0c73363cfefa5c1ff127d605",
+      "byte_identical_to_local_entry": true
+    },
+    {
+      "file": "simulink模型\\preview_PMLSM_reference.m",
+      "sha256": "89d233eda2aac43b4b0f621e127b43d4dac323da8a2ad513e0fda9b1bb65f79e",
+      "byte_identical_to_local_entry": true
+    }
+  ],
+  "local_entry_files_unchanged": 34,
+  "pre_existing_dirty_patch_sections_unchanged": 31,
+  "production_slx_changed_by_revision": false,
+  "files_deleted": 0
+}

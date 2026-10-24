@@ -44,6 +44,9 @@ assert(v.Host_Ready_Ticks==5 && v.M1B_Physical_Log_Decimation>=1 && v.M1B_Physic
     'M1B:CONFIG','到位判据固定5个位置事件，日志抽取必须为正整数。');
 assert(v.Ramp_Ticks>0 && v.Hold_Ticks>0 && v.Id_Release_Ramp_Ticks>0 && v.Ramp_Ticks==round(v.Ramp_Ticks) && v.Hold_Ticks==round(v.Hold_Ticks) && v.Id_Release_Ramp_Ticks==round(v.Id_Release_Ramp_Ticks) && v.Id_Init_Target>0 && abs(v.Id_Init_Step-v.Id_Init_Target/v.Ramp_Ticks)<1e-12 && abs(v.Tau_e_mm-1000*v.PMLSM_tau_NN_m)<1e-12, ...
     'M1B:ALIGNMENT_CONFIG','对齐拍数、上升步长和电气周期不一致。');
+assert(evalin('base','exist(''FOC_Impl_Select'',''var'')==1 && ismember(FOC_Impl_Select,[0 1]) && exist(''FOC_Fixed_Config'',''var'')==1'),'M2:INITIALIZATION_REQUIRED','请执行唯一init并停止后选择FOC_Impl_Select=0或1。');
+cfg=evalin('base','FOC_Fixed_Config');assert(cfg.Version==20261024&&cfg.Parameters.Kp_ACR==v.Kp_ACR&&cfg.Parameters.Ki_ACR==v.Ki_ACR&&cfg.Parameters.Kaw_d==v.Kaw_d&&cfg.Parameters.Kaw_q==v.Kaw_q&&cfg.Parameters.Rs==v.PMLSM_Rs_ohm&&cfg.Parameters.Ld==v.PMLSM_Ld_H&&cfg.Parameters.Lq==v.PMLSM_Lq_H&&cfg.Parameters.psi==v.PMLSM_psi_f_Wb&&cfg.Parameters.Ts_ACR==v.Ts_ACR&&cfg.Parameters.Udc==v.Udc,'M2:STALE_CONFIGURATION','派生配置已失效，请停止后重新初始化。');
+if evalin('base','FOC_Impl_Select==1'),assert(v.Udc>=cfg.Ranges.Vdc_min_V&&v.Udc<=cfg.Ranges.Vdc_max_V,'M2:BUS_ENVELOPE','定点首版仅验证12到60V母线。');end
 workspace=get_param(model,'ModelWorkspace');
 assert(isempty(whos(workspace)),'M1A:WORKSPACE_SHADOW','Model Workspace must be empty.');
 end

@@ -1,0 +1,8 @@
+function result=m2_test_foc_bus
+root=fileparts(fileparts(mfilename('fullpath')));folder=fullfile(root,'docs/reports/m2_foc_fixed_point');[modelFolder,modelCleanup]=m2_test_model_files; m2_test_foc_types;m='PMLSM_FOC_FixedPoint';load_system(fullfile(modelFolder,[m '.slx']));set_param(m,'IntegerOverflowMsg','error','IntegerSaturationMsg','error','ParameterOverflowMsg','error','FixptConstOverflowMsg','error');ref=m2_make_source_reference(modelFolder);sourceCleanup=onCleanup(@()close_system(ref,0));u=m2_foc_vectors;u=u(1:6000,:);rows=cell(0,6);
+for bus=[12 24 60]
+ assignin('base','Udc',bus);u(:,9)=bus;a=m2_run_foc_sequence(ref,u,false);b=m2_run_foc_sequence(m,u,true);for n={'duty_u','duty_v','duty_w','vd','vq'},x=a.logsout.get(n{1}).Values;y=b.logsout.get(n{1}).Values;delta=double(x.Data(:))-double(y.Data(:));maxLimit=.01;rmsLimit=.002;if startsWith(n{1},'duty'),maxLimit=1e-4;rmsLimit=2e-5;end;err=max(abs(delta));rmse=sqrt(mean(delta.^2));ok=err<=maxLimit&&rmse<=rmsLimit;assert(ok,'M2:BUS_BUDGET','%gV %s',bus,n{1});rows(end+1,:)={bus,n{1},err,rmse,ok,0};end %#ok<AGROW>
+ names=getElementNames(b.logsout);for k=1:numel(names),v=b.logsout.get(names{k}).Values;assert(all(isfinite(double(v.Data(:)))));end;fprintf('M2_BUS_PASS %g\n',bus);
+end
+assignin('base','Udc',48);writetable(cell2table(rows,'VariableNames',{'Vdc_V','signal','max_abs','rmse','pass','numeric_overflow_saturation'}),fullfile(folder,'bus_metrics.csv'));result=struct('pass',true,'Vdc_V',[12 24 60],'samples_per_bus',size(u,1),'diagnostics','wrap/saturate:error','all_branches_finite',true);fid=fopen(fullfile(folder,'bus_acceptance.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);disp('M2_BUS_ALL_PASS');
+end

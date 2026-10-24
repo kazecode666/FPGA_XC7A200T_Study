@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 52196,
+  "DUT": "PMLSM_FOC_FixedPoint/FOC_DUT",
+  "DataTypeOverride": "Off",
+  "errors": 0,
+  "warnings": 0,
+  "messages": 7,
+  "floating_numeric_ports": 0,
+  "compiled_port_rows": 1118,
+  "local_from_routes": 168,
+  "algorithm_added_delay_s": 0,
+  "sample_s": 0.0001,
+  "HDL_target_language": "VHDL",
+  "synthesis_tool": "",
+  "target_frequency_setting": 0,
+  "HDL_C_generated": false,
+  "Vivado_run": false,
+  "hardware_clock_or_resource_claim": false
+}

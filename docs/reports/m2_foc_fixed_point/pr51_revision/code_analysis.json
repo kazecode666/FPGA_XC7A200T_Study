@@ -1,0 +1,195 @@
+[
+  {
+    "file": "m2_test_foc_interface.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 304,
+          "fixable": true,
+          "line": 4,
+          "severity": "warning",
+          "start_column": 293
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 100,
+          "fixable": true,
+          "line": 5,
+          "severity": "info",
+          "start_column": 90
+        },
+        {
+          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
+          "end_column": 318,
+          "fixable": false,
+          "line": 13,
+          "severity": "info",
+          "start_column": 315
+        }
+      ]
+    }
+  },
+  {
+    "file": "m2_test_foc_interface_cleanup.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 85,
+          "fixable": true,
+          "line": 9,
+          "severity": "info",
+          "start_column": 75
+        },
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 25,
+          "fixable": true,
+          "line": 24,
+          "severity": "warning",
+          "start_column": 14
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 59,
+          "fixable": true,
+          "line": 24,
+          "severity": "info",
+          "start_column": 49
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 63,
+          "fixable": true,
+          "line": 26,
+          "severity": "info",
+          "start_column": 53
+        }
+      ]
+    }
+  },
+  {
+    "file": "m2_run_shared_case.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 143,
+          "fixable": true,
+          "line": 6,
+          "severity": "warning",
+          "start_column": 132
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 177,
+          "fixable": true,
+          "line": 6,
+          "severity": "info",
+          "start_column": 167
+        },
+        {
+          "description": "此关键字可能未与其在第 35 行上的匹配 END 对齐。",
+          "end_column": 3,
+          "fixable": false,
+          "line": 33,
+          "severity": "info",
+          "start_column": 2
+        },
+        {
+          "description": "不必要的额外分号。",
+          "end_column": 355,
+          "fixable": true,
+          "line": 43,
+          "severity": "info",
+          "start_column": 355
+        }
+      ]
+    }
+  },
+  {
+    "file": "m2_log_review_observations.m",
+    "result": {
+      "code_issues": []
+    }
+  },
+  {
+    "file": "m2_pr51_revision.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "要提高性能，请使用 'isscalar' 而不是长度比较。",
+          "end_column": 32,
+          "fixable": true,
+          "line": 47,
+          "severity": "info",
+          "start_column": 12
+        },
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 29,
+          "fixable": true,
+          "line": 64,
+          "severity": "warning",
+          "start_column": 18
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 63,
+          "fixable": true,
+          "line": 64,
+          "severity": "info",
+          "start_column": 53
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 68,
+          "fixable": true,
+          "line": 68,
+          "severity": "info",
+          "start_column": 58
+        }
+      ]
+    }
+  },
+  {
+    "file": "m2_pr51_analyze.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 48,
+          "fixable": true,
+          "line": 121,
+          "severity": "info",
+          "start_column": 38
+        },
+        {
+          "description": "要提高性能，请使用 'isscalar' 而不是长度比较。",
+          "end_column": 23,
+          "fixable": true,
+          "line": 202,
+          "severity": "info",
+          "start_column": 8
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 45,
+          "fixable": true,
+          "line": 219,
+          "severity": "info",
+          "start_column": 35
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 44,
+          "fixable": true,
+          "line": 259,
+          "severity": "info",
+          "start_column": 34
+        }
+      ]
+    }
+  }
+]

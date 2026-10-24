@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "default_source_is_canonical": true,
+  "default_three_phase_signs_endogenous": true,
+  "unmarked_override_rejected": true,
+  "actual_paths": {
+    "PMLSM_FOC_FixedPoint": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp9d599ea6_9667_44d3_a314_820483a8c379\\PMLSM_FOC_FixedPoint.slx",
+    "PMLSM_PI_FOC_Float_Baseline": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp9d599ea6_9667_44d3_a314_820483a8c379\\PMLSM_PI_FOC_Float_Baseline.slx"
+  },
+  "model_windows_opened": false
+}

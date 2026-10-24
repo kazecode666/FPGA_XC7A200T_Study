@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "Vdc_V": [
+    12,
+    24,
+    60
+  ],
+  "samples_per_bus": 6000,
+  "diagnostics": "wrap/saturate:error",
+  "all_branches_finite": true
+}

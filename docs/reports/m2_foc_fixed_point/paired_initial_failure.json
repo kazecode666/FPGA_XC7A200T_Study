@@ -1,0 +1,13 @@
+{
+  "pass": false,
+  "classification": "test schedule did not meet precondition: both controllers already Ready with margin",
+  "initial_same_command_times_s": [0.12, 1.0, 2.0, 3.2],
+  "float_and_fixed_accepted_count": 2,
+  "float_and_fixed_rejected_count": 3,
+  "float_and_fixed_accepted_targets_mm": [0.1, -0.1],
+  "same_accept_reject_order": true,
+  "reason": "original uncompensated ripple leaves existing arrival window; both not Ready at1.0 and3.2",
+  "raw_evidence": ".runtime/m2_20261024/paired_initial_rejected.mat",
+  "log": ".runtime/m2_20261024/E_F_serial.log",
+  "action": "preserve failed schedule; original-float-only pilot freezes new command table before both independent replays; do not change PI, deadband, numeric budgets or align timestamps"
+}
