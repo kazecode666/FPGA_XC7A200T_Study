@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "first_disallowed_zero_cycle": 0,
+  "signals": [
+    {
+      "name": "den_limiter",
+      "observed_points": 7.675276E+6,
+      "last_cycle": 7.675275E+6,
+      "zero_count": 0,
+      "first_zero_cycle": [],
+      "last_zero_cycle": [],
+      "first_zero_phase": [],
+      "last_zero_phase": [],
+      "invalid_zero_count": 0
+    },
+    {
+      "name": "den_bus_reciprocal",
+      "observed_points": 7.675276E+6,
+      "last_cycle": 7.675275E+6,
+      "zero_count": 0,
+      "first_zero_cycle": [],
+      "last_zero_cycle": [],
+      "first_zero_phase": [],
+      "last_zero_phase": [],
+      "invalid_zero_count": 0
+    },
+    {
+      "name": "den_t1",
+      "observed_points": 7.675276E+6,
+      "last_cycle": 7.675275E+6,
+      "zero_count": 0,
+      "first_zero_cycle": [],
+      "last_zero_cycle": [],
+      "first_zero_phase": [],
+      "last_zero_phase": [],
+      "invalid_zero_count": 0
+    },
+    {
+      "name": "den_t2",
+      "observed_points": 7.675276E+6,
+      "last_cycle": 7.675275E+6,
+      "zero_count": 0,
+      "first_zero_cycle": [],
+      "last_zero_cycle": [],
+      "first_zero_phase": [],
+      "last_zero_phase": [],
+      "invalid_zero_count": 0
+    }
+  ],
+  "output_valid_phase_cycles": 274,
+  "first_invalid_zero": [],
+  "scope": "All logged cycles, including startup and held terminal frame; every denominator must be nonzero."
+}

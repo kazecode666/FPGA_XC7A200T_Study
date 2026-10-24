@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "directed_probe_reset",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_real_reset_run_001",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_real_reset_run_001\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_real_reset_run_001\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_real_reset_run_001\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_real_reset_run_001\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": 19,
+  "observed_checks": 380605,
+  "counted_scoreboard": true,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_real_reset_stage_001\\manifest.json",
+  "manifest_sha256": "60b13c169f28190eef8babba7db5ce64fb4aa47e93ab1ebde2c6f944b579f774",
+  "verification_kind": "independent_counted_scoreboard"
+}

@@ -1,0 +1,150 @@
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ✓ MATLAB 26.2.0.3386108 (R2026b)
+  ✓ Simulink installed and licensed
+
+MATLAB Environment
+  ✓ All 9 tool entry points on path
+  ✓ Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ✓ matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ✓ shareMATLABSession available (MATLAB-side MCP components installed)
+  ✓ MATLAB connector running (port 31517)
+
+===============================================
+Result: PASS
+
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32
+准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示
+参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 使用不带 'Variants' 参量的 find_system 会在搜索中跳过非活动的 Variant Subsystem 模块。此行为将在以后的版本中更改，以查看可变子系统的所有选择项。要查找仿真或代码生成中的活动模块，请编译模型，并使用内置变体
+过滤器和 'MatchFilter' 选项。要查找所有模块，请使用具有 'MatchFilter' 选项的 '@Simulink.match.allVariants' 过滤器。] 
+[> 位置：m3_measure_pwm_phase (第 5 行)
+位置: m3_preflight (第 43 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+警告: 'PMLSM_PI_FOC_Float_Baseline/Alignment_Task_10kHz' 的'输出端口 2' 没有可用的数据；请检查此模块是否被注释掉或为不变量。要确保此信号可用，请考虑标记此信号以进行记录。
+M3_PREFLIGHT_PASS
+M3_STAGE preflight PASS D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03
+M3_STAGE generate PASS D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03
+M3_STAGE model PASS D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03
+M3_STAGE rtl PASS D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03
+M3_STAGE synth FAIL D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_repro_stage (第 7 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32
+准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_repro_stage (第 7 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_repro_stage (第 7 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示
+参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_repro_stage (第 7 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 使用不带 'Variants' 参量的 find_system 会在搜索中跳过非活动的 Variant Subsystem 模块。此行为将在以后的版本中更改，以查看可变子系统的所有选择项。要查找仿真或代码生成中的活动模块，请编译模型，并使用内置变体
+过滤器和 'MatchFilter' 选项。要查找所有模块，请使用具有 'MatchFilter' 选项的 '@Simulink.match.allVariants' 过滤器。] 
+[> 位置：m3_measure_pwm_phase (第 5 行)
+位置: m3_preflight (第 43 行)
+位置: m3_repro_stage (第 7 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+警告: 'PMLSM_PI_FOC_Float_Baseline/Alignment_Task_10kHz' 的'输出端口 2' 没有可用的数据；请检查此模块是否被注释掉或为不变量。要确保此信号可用，请考虑标记此信号以进行记录。
+M3_PREFLIGHT_PASS
+M3_REPEAT_IDENTITY_PASS 31
+M3_TOOL_PASS mode=rtl case=repeat_generated_smoke result=D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03\tp40df5867_e657_4963_92d7_2118cc57a687_repeat_smoke\result.json
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03\tpd8d81b45_c7ca_4bdd_ab62_8cb85ab7e788_release files=31
+M3_TOOL_PASS mode=rtl case=relocated_generated_smoke result=D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03\tp511de696_45b5_42b9_b964_f3e5c8606c7b_relocated_smoke\result.json
+M3_STAGE repro PASS D:\Project\FPGA_XC7A200T\.runtime\m3_pid_red03
+{错误使用 assert
+Repeated build must be in a distinct process.
+
+出错 test_m3_all_repro_process (第 34 行)
+assert(first.matlab_process_id~=second.matlab_process_id&&second.matlab_process_id~=matlabProcessID, ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

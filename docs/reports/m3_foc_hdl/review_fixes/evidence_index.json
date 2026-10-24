@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "important_findings_fixed": 2,
+  "minor_findings": 0,
+  "regression_gates": {
+    "manifest": 5,
+    "runner": 6,
+    "pwm_contract": 5,
+    "real_all_process": 1,
+    "child_failure": 1
+  },
+  "whole_gate_suite": "18/18",
+  "unchanged_FOC_long_suite": "reused verified same 31 raw files, source8 and configuration39; not rerun",
+  "evidence": [
+    {
+      "path": "pwm_guard_result.json",
+      "source": ".runtime\\m3_20261024_001\\pwm_guard_GREEN_result.json",
+      "sha256": "01a39522b4dbf110da48cd64ab0e13fc055c566d855d7cfddb6b43d72264092a"
+    },
+    {
+      "path": "all_process_result.json",
+      "source": ".runtime\\m3_green_process04\\process_test_result.json",
+      "sha256": "66fc11f975bca0034be5db96f76cc5f99d86a38a471fbc51b7e4fc6fea02fe0f"
+    },
+    {
+      "path": "repeat_process_result.json",
+      "source": ".runtime\\m3_green_process04\\repeat\\repeat_process_result.json",
+      "sha256": "a5ee5a430123fe9e1ad4dcb8ff86a612cf061842b0d0657a2ce8dbaf98a8dd61"
+    },
+    {
+      "path": "first_build_descriptor.json",
+      "source": ".runtime\\m3_green_process04\\final_build.json",
+      "sha256": "ce432119ba4a1313cd7b799d740ae9b008603cb028937f0d741aa0a03b14278b"
+    },
+    {
+      "path": "repeat_build_descriptor.json",
+      "source": ".runtime\\m3_green_process04\\repeat\\final_build.json",
+      "sha256": "56aecf6b4081ec562d5347c8407ada7e88f74089d8b5dd9970d3bf98938d33f6"
+    },
+    {
+      "path": "automatic_preflight_result.json",
+      "source": ".runtime\\m3_green_process04\\preflight_result.json",
+      "sha256": "2f8edab9b3e869b9333604afaf8be90e4827f68711a2944f7f51987875a5cd3b"
+    },
+    {
+      "path": "child_failure_result.json",
+      "source": ".runtime\\m3_child_failure05\\child_failure_test_result.json",
+      "sha256": "32e0564d1ae926e080951fd4bc1311e43f4b3ae84a0dcdc1a80c59bde33af2cf"
+    },
+    {
+      "path": "pwm_guard_RED.log",
+      "source": ".runtime\\m3_20261024_001\\pwm_guard_RED.log",
+      "sha256": "bd54a020ef645e48206e2d876d199030b0080b3f31b667d8a65da699352b747e"
+    },
+    {
+      "path": "all_PID_RED.log",
+      "source": ".runtime\\m3_20261024_001\\all_PID_RED.log",
+      "sha256": "e9b78daccfc844341266574887492b575ee2e3b834249b8334848d6ee72d8849"
+    },
+    {
+      "path": "review_fix_GREEN.log",
+      "source": ".runtime\\m3_20261024_001\\review_fix_GREEN.log",
+      "sha256": "cfd170e59bbff76d8afd2819424f22017bdea1e4cc1273d4e3573a18ff76a9a6"
+    }
+  ]
+}

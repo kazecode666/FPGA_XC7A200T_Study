@@ -1,0 +1,60 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Oct 24 23:26:32 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/ooc_001/synth/utilization_hierarchical.rpt
+| Design       : FOC_DUT
+| Device       : xc7a200tfbg484-2
+| Speed File   : -2
+| Design State : Synthesized
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------+------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|          Instance          |         Module         | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++----------------------------+------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| FOC_DUT                    |                  (top) |      69673 |      66408 |       0 | 3265 | 73840 |      0 |      0 |        439 |
+|   (FOC_DUT)                |                  (top) |        144 |        144 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   u_Clark                  |                  Clark |        589 |        589 |       0 |    0 |     0 |      0 |      0 |         16 |
+|   u_Id                     |                     Id |       1372 |       1372 |       0 |    0 |    64 |      0 |      0 |         44 |
+|   u_InversePark            |            InversePark |       3714 |       3234 |       0 |  480 |   322 |      0 |      0 |         48 |
+|   u_Iq                     |                     Iq |       1455 |       1455 |       0 |    0 |    64 |      0 |      0 |         44 |
+|   u_Park                   |                   Park |       3214 |       3214 |       0 |    0 |     0 |      0 |      0 |         48 |
+|   u_SVPWMG                 |                 SVPWMG |      37324 |      35633 |       0 | 1691 | 45529 |      0 |      0 |        163 |
+|     u_XYZ_Calculate        |          XYZ_Calculate |       7094 |       6831 |       0 |  263 |  7333 |      0 |      0 |         79 |
+|       (u_XYZ_Calculate)    |          XYZ_Calculate |       2055 |       1893 |       0 |  162 |   265 |      0 |      0 |         79 |
+|       u_reciprocal         |             reciprocal |       5039 |       4938 |       0 |  101 |  7068 |      0 |      0 |          0 |
+|     u_Duty_Calculate       |         Duty_Calculate |       1509 |       1497 |       0 |   12 |   118 |      0 |      0 |         36 |
+|       (u_Duty_Calculate)   |         Duty_Calculate |        891 |        879 |       0 |   12 |   118 |      0 |      0 |         36 |
+|       u_Fcn                |                    Fcn |        228 |        228 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       u_Fcn1               |                   Fcn1 |        195 |        195 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       u_Fcn2               |                   Fcn2 |        195 |        195 |       0 |    0 |     0 |      0 |      0 |          0 |
+|     u_Sector_Caculate      |        Sector_Caculate |        791 |        791 |       0 |    0 |     0 |      0 |      0 |         16 |
+|       (u_Sector_Caculate)  |        Sector_Caculate |         65 |         65 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       u_B1                 |                     B1 |        300 |        300 |       0 |    0 |     0 |      0 |      0 |          8 |
+|       u_B2                 |                     B2 |        426 |        426 |       0 |    0 |     0 |      0 |      0 |          8 |
+|     u_T1T2_Calculate       |         T1T2_Calculate |      27930 |      26514 |       0 | 1416 | 38078 |      0 |      0 |         32 |
+|       (u_T1T2_Calculate)   |         T1T2_Calculate |       1966 |       1198 |       0 |  768 |   494 |      0 |      0 |          0 |
+|       u_Fcn                |              Fcn_block |        176 |        176 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       u_Fcn1               |             Fcn1_block |      12894 |      12570 |       0 |  324 | 18792 |      0 |      0 |         16 |
+|         (u_Fcn1)           |             Fcn1_block |        449 |        449 |       0 |    0 |   165 |      0 |      0 |         16 |
+|         u_Defined_Quotient |       Defined_Quotient |      12445 |      12121 |       0 |  324 | 18627 |      0 |      0 |          0 |
+|       u_Fcn2               |             Fcn2_block |      12894 |      12570 |       0 |  324 | 18792 |      0 |      0 |         16 |
+|         (u_Fcn2)           |             Fcn2_block |        449 |        449 |       0 |    0 |   165 |      0 |      0 |         16 |
+|         u_Defined_Quotient | Defined_Quotient_block |      12445 |      12121 |       0 |  324 | 18627 |      0 |      0 |          0 |
+|   u_dq_voltage_limiter     |     dq_voltage_limiter |      21851 |      20757 |       0 | 1094 | 27846 |      0 |      0 |         76 |
+|     (u_dq_voltage_limiter) |     dq_voltage_limiter |       2813 |       2043 |       0 |  770 |   995 |      0 |      0 |         76 |
+|     u_Divide               |                 Divide |      12524 |      12200 |       0 |  324 | 18635 |      0 |      0 |          0 |
+|     u_Sqrt                 |                   Sqrt |       6514 |       6514 |       0 |    0 |  8216 |      0 |      0 |          0 |
++----------------------------+------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+
+

@@ -1,0 +1,12 @@
+{
+  "stage": "synth",
+  "status": "BLOCKED",
+  "run_dir": "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001",
+  "evidence": [],
+  "failures": [
+    {
+      "identifier": "M3:GENERATED_ARTIFACT_MISSING",
+      "message": "Missing final generated manifest; no tool success or evidence may be inferred."
+    }
+  ]
+}

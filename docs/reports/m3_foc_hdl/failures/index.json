@@ -1,0 +1,26 @@
+[
+  {
+    "file": "B2_aborted.json",
+    "source": ".runtime\\m3_20261024_001\\generate_002_aborted.json"
+  },
+  {
+    "file": "C1_aborted.json",
+    "source": ".runtime\\m3_20261024_001\\model_001_aborted.json"
+  },
+  {
+    "file": "C1_original_probe_failure.json",
+    "source": ".runtime\\m3_20261024_001\\tpa75297c6_a61e_4f2a_b74e_71efe2e1e95e_model\\directed_probe\\case_result.json"
+  },
+  {
+    "file": "C2_tail_zero_probe_failure.json",
+    "source": ".runtime\\m3_20261024_001\\tp7d61ebcf_7e28_43f2_bb77_60bc87b6139a_model\\directed_probe\\case_result.json"
+  },
+  {
+    "file": "negative_aggregator_failure.json",
+    "source": ".runtime\\m3_20261024_001\\negative_aggregator_001.json"
+  },
+  {
+    "file": "B1_tpc097fa1c_88a8_4d59_a4b8_5c351764e819_generate_failure.json",
+    "source": ".runtime\\m3_20261024_001\\tpc097fa1c_88a8_4d59_a4b8_5c351764e819_generate_failure.json"
+  }
+]

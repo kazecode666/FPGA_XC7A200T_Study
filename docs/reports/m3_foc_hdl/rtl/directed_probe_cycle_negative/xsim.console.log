@@ -1,0 +1,23 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sat Oct 24 23:43:23 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/m3_snapshot/xsim_script.tcl
+# xsim {m3_snapshot} -testplusarg frames=17 -testplusarg case_name=directed_probe -testplusarg mode=cycle_negative -testplusarg negative_sample=1 -testplusarg vectors=D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/directed_probe_cycle_negative_bbb22d927f_run/work/vectors/directed_probe.mem -testplusarg result=D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/directed_probe_cycle_negative_bbb22d927f_run/scoreboard.json -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+M3_EARLY_SAMPLE sample=1 phase=273 expected=068b75f4/39748a14/08aa033c observed=1ffffffa/1ffffffa/1ffffffa
+M3_ERROR case=directed_probe mode=cycle_negative physical=5275 active=5273 epoch=0 one-clock-early output rejected sample=1 expected=068b75f4/39748a14/08aa033c observed=1ffffffa/1ffffffa/1ffffffa
+M3_RESULT case=directed_probe mode=cycle_negative status=FAIL expected=17 observed=17 bit=1 state=0 xz=0 protocol=0 deadline=0
+M3_RTL_FAIL frames=17 checks=340186 bit_mismatch=1 protocol_errors=0 deadline_errors=0
+Fatal: M3 independent scoreboard rejected this run
+Time: 1700051 ns  Iteration: 0  Process: /m3_foc_scoreboard/write_result  Scope: m3_foc_scoreboard.write_result  File: D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/directed_probe_cycle_negative_bbb22d927f_run/work/testbench/m3_foc_scoreboard.sv Line: 321
+$finish called at time : 1700051 ns
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Oct 24 23:43:30 2026...
+

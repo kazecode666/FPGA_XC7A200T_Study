@@ -1,0 +1,550 @@
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ✓ MATLAB 26.2.0.3386108 (R2026b)
+  ✓ Simulink installed and licensed
+
+MATLAB Environment
+  ✓ All 9 tool entry points on path
+  ✓ Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ✓ matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ✓ shareMATLABSession available (MATLAB-side MCP components installed)
+  ✓ MATLAB connector running (port 31517)
+
+===============================================
+Result: PASS
+
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32
+准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示
+参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：m3_preflight (第 16 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 使用不带 'Variants' 参量的 find_system 会在搜索中跳过非活动的 Variant Subsystem 模块。此行为将在以后的版本中更改，以查看可变子系统的所有选择项。要查找仿真或代码生成中的活动模块，请编译模型，并使用内置变体
+过滤器和 'MatchFilter' 选项。要查找所有模块，请使用具有 'MatchFilter' 选项的 '@Simulink.match.allVariants' 过滤器。] 
+[> 位置：m3_measure_pwm_phase (第 5 行)
+位置: m3_preflight (第 43 行)
+位置: m3_foc_hdl (第 35 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+警告: 'PMLSM_PI_FOC_Float_Baseline/Alignment_Task_10kHz' 的'输出端口 2' 没有可用的数据；请检查此模块是否被注释掉或为不变量。要确保此信号可用，请考虑标记此信号以进行记录。
+M3_PREFLIGHT_PASS
+M3_STAGE preflight PASS D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04
+### 开始编译模型 'PMLSM_FOC_FixedPoint'...
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initCheckhdl
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: m3_generate_stage (第 19 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32
+准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initCheckhdl
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: m3_generate_stage (第 19 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initCheckhdl
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: m3_generate_stage (第 19 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示
+参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initCheckhdl
+位置: slhdlcoder.HDLCoder/checkhdl
+位置: privcheckhdl
+位置: checkhdl (第 85 行)
+位置: m3_generate_stage (第 19 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+### 正在对模型 'PMLSM_FOC_FixedPoint' 运行 HDL 检查。
+### 'PMLSM_FOC_FixedPoint' 的 HDL 检查已完成，出现 0 个错误、0 个警告和 7 条消息。
+### 开始编译模型 'PMLSM_FOC_FixedPoint'...
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initMakehdl
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: m3_generate_stage (第 23 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32
+准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initMakehdl
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: m3_generate_stage (第 23 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据类型 sfix40_En41 准确表示参数
+0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initMakehdl
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: m3_generate_stage (第 23 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示
+参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为 1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/initMakehdl
+位置: slhdlcoder.HDLCoder/compileModelAndCreatePIR
+位置: slhdlcoder.HDLCoder/makehdl
+位置: privmakehdl
+位置: makehdl (第 66 行)
+位置: m3_generate_stage (第 23 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+### 正在处理模型 <a href="matlab:open_system('PMLSM_FOC_FixedPoint')">PMLSM_FOC_FixedPoint</a>
+### 正在生成 <a href="matlab:open_system('PMLSM_FOC_FixedPoint/FOC_DUT')">PMLSM_FOC_FixedPoint/FOC_DUT</a> 的 HDL 代码
+### 将模型 <a href="matlab:configset.showParameterGroup('PMLSM_FOC_FixedPoint', { 'HDL Code Generation' } )">PMLSM_FOC_FixedPoint</a> 的配置集用于 HDL 代码生成参数。
+### 正在对模型 'PMLSM_FOC_FixedPoint' 运行 HDL 检查。
+### 正在处理模型 'PMLSM_FOC_FixedPoint'...
+### 时钟频率流水线已应用于连接到 DUT 的输出端口的信号。因此，DUT 输出端口值以时钟频率更新。以下端口的相位按规定的时钟周期数偏移。
+### 输出端口 1 的相位: 274 个时钟周期。
+### 输出端口 2 的相位: 274 个时钟周期。
+### 输出端口 3 的相位: 274 个时钟周期。
+### 正在处理... GenerateModel
+### 开始模型生成 'gm_PMLSM_FOC_FixedPoint'...
+### 正在生成 DUT 以体现优化相关的更改(IO、面积、流水线)...
+### 模型生成完毕。
+### 生成的模型保存在 <a href="matlab:open_system('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\gm_PMLSM_FOC_FixedPoint.slx')">D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\gm_PMLSM_FOC_FixedPoint.slx</a>
+### 通过运行以下脚本可以诊断时钟频率流水线障碍: <a href="matlab:run('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining')">D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining.m</a>
+### 要清除突出显示，请点击以下 MATLAB 脚本: <a href="matlab:run('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\clearhighlighting.m')">D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\clearhighlighting.m</a>
+### 正在生成新的验证模型: '<a href="matlab:open_system('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\gm_PMLSM_FOC_FixedPoint_vnl')">gm_PMLSM_FOC_FixedPoint_vnl</a>'。
+### 验证模型生成完毕。
+### 开始为 'PMLSM_FOC_FixedPoint' 生成 SystemVerilog 代码。
+### HDL 代码生成期间删除了未使用的逻辑。要突出显示删除的逻辑，请点击以下 MATLAB 脚本: D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\highlightRemovedDeadBlocks.m
+### 要清除突出显示，请点击以下 MATLAB 脚本: D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\clearHighlightingRemovedDeadBlocks.m
+### 消息: 该设计需要比基本速率(0.0001)快 5000 倍的时钟。
+### 开始为 'FOC_DUT_tc' 生成 SystemVerilog 代码。
+### 将 FOC_DUT_tc 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT_tc.sv 处理。
+### 'FOC_DUT_tc' 的代码生成已完成。
+### 正在处理... Traceability
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Clark 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Clark.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Id 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Id.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/InversePark 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\InversePark.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Iq 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Iq.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Park 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Park.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate/Fcn 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate/Fcn1 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn1.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate/Fcn2 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn2.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Duty_Calculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/B0 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\B0.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/B1 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\B1.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/B2 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\B2.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/N 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\N.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Sector_Caculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn1/Defined_Quotient 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Defined_Quotient.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn1 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn1_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn2/Defined_Quotient 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Defined_Quotient_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn2 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn2_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\T1T2_Calculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ Calculate/reciprocal 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\reciprocal.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ Calculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\XYZ_Calculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\SVPWMG.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Sqrt 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Sqrt.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Divide 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Divide.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\dq_voltage_limiter.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT.sv 处理。
+### 正在生成包文件 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT_pkg.sv。
+### 'PMLSM_FOC_FixedPoint' 的代码生成已完成。
+### 正在生成代码生成报告 <a href="matlab:hdlcoder.report.openReportV2Dialog('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint', 'D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\html\index.html')">index.html</a> 的 HTML 文件
+### 正在创建 HDL 代码生成检查报告 <a href="matlab:hdlcoder.report.openDdgViaHyperlink('PMLSM_FOC_FixedPoint', 'D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint', 'FOC_DUT_report.html')">FOC_DUT_report.html</a>
+### 'PMLSM_FOC_FixedPoint' 的 HDL 检查已完成，出现 0 个错误、4 个警告和 8 条消息。
+### HDL 代码生成完成。
+M3_MAKEHDL_COMPLETED D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl
+### 开始编译模型 'PMLSM_FOC_FixedPoint'...
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用
+运行时数据类型 sfix40_En41 准确表示参数 0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对
+差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/makehdltb>initMakehdlTB
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998
+乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为
+1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/makehdltb>initMakehdlTB
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据
+类型 sfix40_En41 准确表示参数 0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为
+3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/makehdltb>initMakehdlTB
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出
+现: 无法使用运行时数据类型 sfix40_En32 准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为
+1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/inithdlmake
+位置: slhdlcoder.HDLCoder/makehdltb>initMakehdlTB
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: HDL Coder 参数 'SimulationTool' 在从代码生成到测试平台生成之间已从 'Mentor Graphics ModelSim' 更改为 'Xilinx Vivado Simulator'。将重新生成 HDL
+代码。] 
+[> 位置：slhdlcoder.HDLCoder/checkInvariantTBParams>emitInvTBWarning
+位置: slhdlcoder.HDLCoder/checkInvariantTBParams
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+### 开始生成测试平台。
+### 正在生成 'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 测试平台。
+[警告: 生成 HDL 代码 - 测试平台生成需要成功运行 HDL 代码生成。] 
+[> 位置：slhdlcoder.HDLCoder/makehdltb>redoMakehdlIfNeeded
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+### 正在处理模型 <a href="matlab:open_system('PMLSM_FOC_FixedPoint')">PMLSM_FOC_FixedPoint</a>
+### 正在生成 <a href="matlab:open_system('PMLSM_FOC_FixedPoint/FOC_DUT')">PMLSM_FOC_FixedPoint/FOC_DUT</a> 的 HDL 代码
+### 将模型 <a href="matlab:configset.showParameterGroup('PMLSM_FOC_FixedPoint', { 'HDL Code Generation' } )">PMLSM_FOC_FixedPoint</a> 的配置集用于 HDL 代码生成参数。
+### 正在对模型 'PMLSM_FOC_FixedPoint' 运行 HDL 检查。
+### 正在处理模型 'PMLSM_FOC_FixedPoint'...
+### 时钟频率流水线已应用于连接到 DUT 的输出端口的信号。因此，DUT 输出端口值以时钟频率更新。以下端口的相位按规定的时钟周期数偏移。
+### 输出端口 1 的相位: 274 个时钟周期。
+### 输出端口 2 的相位: 274 个时钟周期。
+### 输出端口 3 的相位: 274 个时钟周期。
+### 正在处理... GenerateModel
+### 开始模型生成 'gm_PMLSM_FOC_FixedPoint'...
+### 正在生成 DUT 以体现优化相关的更改(IO、面积、流水线)...
+### 模型生成完毕。
+### 生成的模型保存在 <a href="matlab:open_system('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\gm_PMLSM_FOC_FixedPoint.slx')">D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\gm_PMLSM_FOC_FixedPoint.slx</a>
+### 通过运行以下脚本可以诊断时钟频率流水线障碍: <a href="matlab:run('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining')">D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining.m</a>
+### 要清除突出显示，请点击以下 MATLAB 脚本: <a href="matlab:run('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\clearhighlighting.m')">D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\clearhighlighting.m</a>
+### 正在生成新的验证模型: '<a href="matlab:open_system('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\gm_PMLSM_FOC_FixedPoint_vnl')">gm_PMLSM_FOC_FixedPoint_vnl</a>'。
+### 验证模型生成完毕。
+### 开始为 'PMLSM_FOC_FixedPoint' 生成 SystemVerilog 代码。
+### HDL 代码生成期间删除了未使用的逻辑。要突出显示删除的逻辑，请点击以下 MATLAB 脚本: D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\highlightRemovedDeadBlocks.m
+### 要清除突出显示，请点击以下 MATLAB 脚本: D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\clearHighlightingRemovedDeadBlocks.m
+### 消息: 该设计需要比基本速率(0.0001)快 5000 倍的时钟。
+### 开始为 'FOC_DUT_tc' 生成 SystemVerilog 代码。
+### 将 FOC_DUT_tc 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT_tc.sv 处理。
+### 'FOC_DUT_tc' 的代码生成已完成。
+### 正在处理... Traceability
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Clark 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Clark.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Id 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Id.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/InversePark 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\InversePark.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Iq 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Iq.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/Park 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Park.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate/Fcn 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate/Fcn1 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn1.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate/Fcn2 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn2.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty Calculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Duty_Calculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/B0 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\B0.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/B1 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\B1.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/B2 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\B2.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate/N 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\N.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector Caculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Sector_Caculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn1/Defined_Quotient 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Defined_Quotient.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn1 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn1_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn2/Defined_Quotient 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Defined_Quotient_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate/Fcn2 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Fcn2_block.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2 Calculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\T1T2_Calculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ Calculate/reciprocal 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\reciprocal.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ Calculate 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\XYZ_Calculate.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\SVPWMG.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Sqrt 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Sqrt.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Divide 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\Divide.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\dq_voltage_limiter.sv 处理。
+### 将 PMLSM_FOC_FixedPoint/FOC_DUT 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT.sv 处理。
+### 正在生成包文件 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT_pkg.sv。
+### 'PMLSM_FOC_FixedPoint' 的代码生成已完成。
+### 正在生成代码生成报告 <a href="matlab:hdlcoder.report.openReportV2Dialog('D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint', 'D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\html\index.html')">index.html</a> 的 HTML 文件
+### 正在创建 HDL 代码生成检查报告 <a href="matlab:hdlcoder.report.openDdgViaHyperlink('PMLSM_FOC_FixedPoint', 'D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint', 'FOC_DUT_report.html')">FOC_DUT_report.html</a>
+### 'PMLSM_FOC_FixedPoint' 的 HDL 检查已完成，出现 0 个错误、4 个警告和 8 条消息。
+### HDL 代码生成完成。
+### 开始编译模型 'PMLSM_FOC_FixedPoint'...
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用
+运行时数据类型 sfix40_En41 准确表示参数 0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对
+差为 3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/connectToModel
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/InversePark/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998
+乘。第一次出现: 无法使用运行时数据类型 sfix40_En32 准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为
+1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/connectToModel
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/WrapUp/convert_pu' 的 'Gain' 发生参数精度损失。 无法使用运行时数据
+类型 sfix40_En41 准确表示参数 0.15915494309189535 的原始值。该值量化为 0.15915494309183487。出现量化误差，绝对差为 6.04793992664554e-14，相对差为
+3.8000327285804e-13。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/connectToModel
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 'PMLSM_FOC_FixedPoint/FOC_DUT/Park/Variant/mcb/sinecos/Sine-Cosine Lookup/sine_table_values' 的 'Value' 发生参数精度损失 998 乘。第一次出
+现: 无法使用运行时数据类型 sfix40_En32 准确表示参数 0.00785390088871133 的原始值。该值量化为 0.007853900780901313。出现量化误差，绝对差为
+1.0781001785753475e-10，相对差为 1.37269389294807e-08。
+Suggested Actions:
+    • 要控制发出警告或错误的精度损失水平，请调整诊断阈值设置。 - Open
+    • 要在参数量化顾问中查看详细信息，请点击 "打开" 按钮。 - Open
+    •  - Suppress
+] 
+[> 位置：slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLCoder/connectToModel
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+### 开始编译模型 'gm_PMLSM_FOC_FixedPoint'...
+[警告: 模块 'gm_PMLSM_FOC_FixedPoint/FOC_DUT/FOC_DUT/InversePark/Variant/mcb/sinecos' 的封装参数 'CopyAngleInput' 的值 ''Radians'' 无效。] 
+[> 位置：mcbpccmath.internal.SinCosMaskCb>updateCopyVar (第 422 行)
+位置: mcbpccmath.internal.SinCosMaskCb (第 17 行)
+位置: slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLTestbench/makehdltb
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+[警告: 模块 'gm_PMLSM_FOC_FixedPoint/FOC_DUT/FOC_DUT/Park/Variant/mcb/sinecos' 的封装参数 'CopyAngleInput' 的值 ''Radians'' 无效。] 
+[> 位置：mcbpccmath.internal.SinCosMaskCb>updateCopyVar (第 422 行)
+位置: mcbpccmath.internal.SinCosMaskCb (第 17 行)
+位置: slhdlcoder.SimulinkConnection/initModel
+位置: slhdlcoder.HDLTestbench/makehdltb
+位置: slhdlcoder.HDLCoder/makehdltb
+位置: privmakehdltb
+位置: makehdltb (第 78 行)
+位置: m3_generate_stage (第 40 行)
+位置: m3_foc_hdl (第 44 行)
+位置: m3_foc_hdl (第 25 行)
+位置: test_m3_all_repro_process (第 22 行)] 
+### 开始仿真模型 'gm_PMLSM_FOC_FixedPoint'...
+.
+### 正在收集数据...
+### 正在生成测试平台数据文件: D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\PI_Reset_EN.dat。
+### 将 FOC_DUT_tb 作为 D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint\FOC_DUT_tb.sv 处理。
+### HDL 测试平台生成完毕。
+ 
+### 正在创建 HDL 代码生成检查报告 <a href="matlab:hdlcoder.report.openDdgViaHyperlink('PMLSM_FOC_FixedPoint', 'D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc2710467_789e_438d_9787_f1524bb96b83_generate\rtl\PMLSM_FOC_FixedPoint', 'FOC_DUT_tb_report.html')">FOC_DUT_tb_report.html</a>
+### 'PMLSM_FOC_FixedPoint' 的 HDL 测试平台生成已完成，出现 0 个错误、1 个警告和 0 条消息。
+M3_MANIFEST_LOCKED D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\manifest.json design=29 tb=1 data=1
+M3_GENERATION_AND_TB_COMPLETE
+M3_STAGE generate PASS D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04
+M3_STAGE model PASS D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04
+M3_STAGE rtl PASS D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04
+M3_STAGE synth FAIL D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04
+M3_REPEAT_PROCESS PASS caller=20404 first=20404 repeat=42416 exit=0
+M3_REPEAT_IDENTITY_PASS 31
+M3_TOOL_PASS mode=rtl case=repeat_generated_smoke result=D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tp895cdb2a_b45c_4f67_b29a_ad83de68714f_repeat_smoke\result.json
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tpc52c4b90_72b6_4ef2_a73d_0ba0f332485e_release files=31
+M3_TOOL_PASS mode=rtl case=relocated_generated_smoke result=D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04\tp1f709d9a_b93e_4f0c_80ec_3881db0c5691_relocated_smoke\result.json
+M3_STAGE repro PASS D:\Project\FPGA_XC7A200T\.runtime\m3_green_process04
+M3_REPEAT_PROCESS FAIL caller=20404 first=20404 repeat=41988 exit=1

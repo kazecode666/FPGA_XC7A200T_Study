@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "scope": "D independent original fixed reference stored bits to unmodified B3 RTL; source-to-gm is separately reported by C",
+  "status": "PASS",
+  "all_expected_outcomes_verified": true,
+  "source_design_manifest_sha256": "cfd8b1d7639275f273ed683c83344b02678ada8e8130b805a1ac42b6eda09098",
+  "shared_design_files": [
+    {
+      "file": "FOC_DUT_pkg.sv",
+      "sha256": "18ff4e703bc3016cab05756a1a0a80c250a18263e915f391b6ceab371826e19e"
+    },
+    {
+      "file": "B0.sv",
+      "sha256": "67143d0018d8a11d08906b6e720eeb3608a6bcc8a128d4093c406273c445bba9"
+    },
+    {
+      "file": "B1.sv",
+      "sha256": "ee5ec5734655b1d0c380646914814eb5a15d8adb06603d873b3d8c55665f2739"
+    },
+    {
+      "file": "B2.sv",
+      "sha256": "c70fe0e26398463a3a14651eb3acb3460362246cfe5a226264d251024bfb3108"
+    },
+    {
+      "file": "Clark.sv",
+      "sha256": "b3135db49fba8643284d36eeeb3b7464170251de12e3b981e110619d14d55156"
+    },
+    {
+      "file": "Defined_Quotient.sv",
+      "sha256": "c3e39493acf5af94f2be30ffb0275e9beee6ddac0322703dda6ee4cdb038cadf"
+    },
+    {
+      "file": "Defined_Quotient_block.sv",
+      "sha256": "04217ab491c951b6f4289d41f462a7704edf3ec4b49b0df0bdd49d3e30c16c77"
+    },
+    {
+      "file": "Divide.sv",
+      "sha256": "d377e97ef39804b7d7217d0974377597058ea48c31572fbca498855f9d48e323"
+    },
+    {
+      "file": "Fcn.sv",
+      "sha256": "7ee7b928116e45c5b1e96cf2f0ead245549172fdbf4333ef87c33deff7dfe873"
+    },
+    {
+      "file": "Fcn1.sv",
+      "sha256": "6720995c20cf2dcc3daf08035c6350d510cc686a2244d5c638583173579861d4"
+    },
+    {
+      "file": "Fcn2.sv",
+      "sha256": "c8a1166e9c1dec5667208bf79b1c3ae97cba6d8751588a6b319ecb186cf5a5ab"
+    },
+    {
+      "file": "Duty_Calculate.sv",
+      "sha256": "4e63ba6fb4e6f203e53b1be88bc1a7cf93ff981810b6d8521f36036e61c45570"
+    },
+    {
+      "file": "Sqrt.sv",
+      "sha256": "5df5c4e81b410fde2718dfd30234362d1bfd0139ebfcf6637cdaacd1cfc17ace"
+    },
+    {
+      "file": "dq_voltage_limiter.sv",
+      "sha256": "0d68aa50b4f5877b717845b302bcc794cf379e798841eed63ebc40496f2c7025"
+    },
+    {
+      "file": "FOC_DUT_tc.sv",
+      "sha256": "c05d0fc8b41536344ffe4aa78575d13c118f6f74e1c5ed74e9d874d4564f28a5"
+    },
+    {
+      "file": "Id.sv",
+      "sha256": "539dc417fc136ff3584bcc81a01ee00777b7087f5f290fc8da89d00d02656b68"
+    },
+    {
+      "file": "InversePark.sv",
+      "sha256": "a4f1ad8ef9ca6c87b6f94ac7060c1eb108e0f4a41bb70604d2c9e933ffb0a048"
+    },
+    {
+      "file": "Iq.sv",
+      "sha256": "12f1165099ff011a070f8df8fbe0210cdb645dfb40b2fb7ecddca059d9a03c69"
+    },
+    {
+      "file": "Park.sv",
+      "sha256": "b8fe1252ee3ffdb9a863f70b7f46581546a559b8d6dc9307c66d56041181a342"
+    },
+    {
+      "file": "N.sv",
+      "sha256": "f9508d4bb35bbfca5e63f382b2ed52fd3cf7b02ad928619b0ca1bb4ff6c41bf2"
+    },
+    {
+      "file": "Sector_Caculate.sv",
+      "sha256": "655180f171c711103225c73081511844a7bf8bce92043773d5b3c8d9c622fc8d"
+    },
+    {
+      "file": "Fcn1_block.sv",
+      "sha256": "5767e131a111222ecfeb630bb0abd3c54a527d7c02fb0eb74fe746d0594653b5"
+    },
+    {
+      "file": "Fcn2_block.sv",
+      "sha256": "48fa0f21b6b0b6e9765733320e3ec7db8841277ae66f1d59e48d7e592c3b2fe4"
+    },
+    {
+      "file": "Fcn_block.sv",
+      "sha256": "7549c749a3ee270b802e10b4364cba5da41f92477dc0ed64c0d495dd28e20c55"
+    },
+    {
+      "file": "T1T2_Calculate.sv",
+      "sha256": "69bb1bf9f6e179c9aebe3c275398a26c870841a7200b12e3b75f6127c12240f4"
+    },
+    {
+      "file": "reciprocal.sv",
+      "sha256": "1446a316000912ef4c9efd6aea4c7ad0bb9cd5779bba7d000f73976182439d58"
+    },
+    {
+      "file": "XYZ_Calculate.sv",
+      "sha256": "ef925b43c4a6c90e5e6b06e749a34023a21c96ab4e269e77af546d1be6d33f77"
+    },
+    {
+      "file": "SVPWMG.sv",
+      "sha256": "ef04b7c8042bb019449a5827bd34f7d6db875de55ba57dd0c15ac7fd254dd7be"
+    },
+    {
+      "file": "FOC_DUT.sv",
+      "sha256": "2581a29349de3e4798ece7663900171cbef7040a3d13c5889f6756e9707b0271"
+    }
+  ],
+  "clock_period_ns": 20,
+  "frame_clocks": 5000,
+  "output_phase": 274,
+  "old_state_pre_edge_phase": 5000,
+  "validity_source": "fixed external checker event contract; DUT ce_out is fast clock enable, not frame-valid",
+  "cycle_origin": "physical cycle fields use the checker tick counter, with its reset ticks included",
+  "native_exit_note": "Vivado xsim 2026.1 may return zero after SystemVerilog $fatal; the two negative tests preserve native code 0 and strict wrapper code 2 and are accepted only because the wrapper rejects and the actual scoreboard records exactly one duty mismatch with no state/XZ/protocol/deadline errors",
+  "cases": [
+    {
+      "case": "directed_probe_normal",
+      "expected_outcome": "pass",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "PASS",
+      "raw_runner_status": "PASS",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": null,
+      "expected_frames": 17,
+      "observed_frames": 17,
+      "checks": 340183,
+      "state_values": 132,
+      "state_commit_checks": 340000,
+      "errors": {
+        "bit_mismatch": 0,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 0,
+      "first_output_cycle": 276,
+      "last_output_cycle": 80276,
+      "accepted_clocks": 85000,
+      "pi_commits": 17,
+      "aw_commits": 17,
+      "ce_disabled_cycles": 0,
+      "cancelled_frames": 0,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 274,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": "00:00:08",
+      "source_run": ".runtime/m3_20261024_001/scoreboard_real_probe_run_001",
+      "source_golden_sha256": "d4c2d607c5d43a06b57809f4324a0087c7119f0290255417c968e8033888c556",
+      "staging_manifest_sha256": "a6bb5d579849902adce83223a40ca132555b99fdef53a92b9f22408a2f539bb5",
+      "files": [
+        {
+          "path": "directed_probe_normal/scoreboard.json",
+          "sha256": "2ba9ea12b570116eb270a78beea29e52704a35c84f04b455c816ef60ba9e6239"
+        },
+        {
+          "path": "directed_probe_normal/result.json",
+          "sha256": "b002746177c73709770b4547c9270d57b7609ec488ee65770a432fc79860e695"
+        },
+        {
+          "path": "directed_probe_normal/xsim.console.log",
+          "sha256": "a73416bafaae32d0d6b6163cbad9a9bc7f9be8bbf507eff969c35d0e73b65e2a"
+        }
+      ]
+    },
+    {
+      "case": "directed_probe_ce",
+      "expected_outcome": "pass",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "PASS",
+      "raw_runner_status": "PASS",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": null,
+      "expected_frames": 17,
+      "observed_frames": 17,
+      "checks": 340183,
+      "state_values": 132,
+      "state_commit_checks": 340000,
+      "errors": {
+        "bit_mismatch": 0,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 0,
+      "first_output_cycle": 283,
+      "last_output_cycle": 80297,
+      "accepted_clocks": 85000,
+      "pi_commits": 17,
+      "aw_commits": 17,
+      "ce_disabled_cycles": 21,
+      "cancelled_frames": 0,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 285,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": "00:00:06",
+      "source_run": ".runtime/m3_20261024_001/scoreboard_real_ce_run_001",
+      "source_golden_sha256": "d4c2d607c5d43a06b57809f4324a0087c7119f0290255417c968e8033888c556",
+      "staging_manifest_sha256": "a1a0bd66b780aa17354ad7ad7cd512b938cb9f84afe8b53873d8dca0ed5a93b3",
+      "files": [
+        {
+          "path": "directed_probe_ce/scoreboard.json",
+          "sha256": "5b3a050f323d0ad528909d580392f1ea15fa61a0584746630a74268e3205f54b"
+        },
+        {
+          "path": "directed_probe_ce/result.json",
+          "sha256": "dfa8f4f00bf0d66b852b2f3026322944dc79d81545fef9e58f8d9c5d77b8e0b3"
+        },
+        {
+          "path": "directed_probe_ce/xsim.console.log",
+          "sha256": "2381968dea754a7d3ddf2214f3054dbfba47c8dd9ba9593ec466887233ad8b36"
+        }
+      ]
+    },
+    {
+      "case": "directed_probe_reset",
+      "expected_outcome": "pass",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "PASS",
+      "raw_runner_status": "PASS",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": null,
+      "expected_frames": 19,
+      "observed_frames": 19,
+      "checks": 380605,
+      "state_values": 148,
+      "state_commit_checks": 380400,
+      "errors": {
+        "bit_mismatch": 0,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 0,
+      "first_output_cycle": 276,
+      "last_output_cycle": 90378,
+      "accepted_clocks": 95100,
+      "pi_commits": 19,
+      "aw_commits": 20,
+      "ce_disabled_cycles": 0,
+      "cancelled_frames": 1,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 274,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": "00:00:06",
+      "source_run": ".runtime/m3_20261024_001/scoreboard_real_reset_run_001",
+      "source_golden_sha256": "d4c2d607c5d43a06b57809f4324a0087c7119f0290255417c968e8033888c556",
+      "staging_manifest_sha256": "60b13c169f28190eef8babba7db5ce64fb4aa47e93ab1ebde2c6f944b579f774",
+      "files": [
+        {
+          "path": "directed_probe_reset/scoreboard.json",
+          "sha256": "2bb8ebcf02630d1cabdf19bdab940c997709b597d54fb5dcd7a0b10221a97c04"
+        },
+        {
+          "path": "directed_probe_reset/result.json",
+          "sha256": "7d48232dd29bdae03a6772b56e4e7bbafc0e655aa3735bfde9a1ad2d83c8df2e"
+        },
+        {
+          "path": "directed_probe_reset/xsim.console.log",
+          "sha256": "b687aaad64a01de13dd1536c9b35e74a0c2180a6974eb09eb58039979075b058"
+        }
+      ]
+    },
+    {
+      "case": "boundary_random_1024",
+      "expected_outcome": "pass",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "PASS",
+      "raw_runner_status": "PASS",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": null,
+      "expected_frames": 1024,
+      "observed_frames": 1024,
+      "checks": 20491260,
+      "state_values": 8188,
+      "state_commit_checks": 20480000,
+      "errors": {
+        "bit_mismatch": 0,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 0,
+      "first_output_cycle": 276,
+      "last_output_cycle": 5115276,
+      "accepted_clocks": 5120000,
+      "pi_commits": 1024,
+      "aw_commits": 1024,
+      "ce_disabled_cycles": 0,
+      "cancelled_frames": 0,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 274,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": "00:06:27",
+      "source_run": ".runtime/m3_20261024_001/scoreboard_boundary_random_run_001",
+      "source_golden_sha256": "177a45c656f39b0f787b1004e2c58ba4e980c27afdf610addeab409035cb7cec",
+      "staging_manifest_sha256": "1537eee3e8f689b14704194733e566d50ee4a9b7604c84aa0ec959d472c75e78",
+      "files": [
+        {
+          "path": "boundary_random_1024/scoreboard.json",
+          "sha256": "a31f367fe7ae9a44a26aa68a8d9bc3dcca713649ac5fae8753b60eaac49b8747"
+        },
+        {
+          "path": "boundary_random_1024/result.json",
+          "sha256": "a271095996defe04dccf560b1b3a394df55052fd70d1c115151171117601879e"
+        },
+        {
+          "path": "boundary_random_1024/xsim.console.log",
+          "sha256": "ec27c0262d37e391474b727cb7057bcf7e358717335e53c1b1aa0e23e07f01bf"
+        }
+      ]
+    },
+    {
+      "case": "actual_prefix_1536",
+      "expected_outcome": "pass",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "PASS",
+      "raw_runner_status": "PASS",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": null,
+      "expected_frames": 1536,
+      "observed_frames": 1536,
+      "checks": 30736892,
+      "state_values": 12284,
+      "state_commit_checks": 30720000,
+      "errors": {
+        "bit_mismatch": 0,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 0,
+      "first_output_cycle": 276,
+      "last_output_cycle": 7675276,
+      "accepted_clocks": 7680000,
+      "pi_commits": 1536,
+      "aw_commits": 1536,
+      "ce_disabled_cycles": 0,
+      "cancelled_frames": 0,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 274,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": "00:12:17",
+      "source_run": ".runtime/m3_20261024_001/scoreboard_actual_prefix_run_001",
+      "source_golden_sha256": "ba03dd6807598b9524a145b99b9071b07aad1b81d32f266858aa75598c574373",
+      "staging_manifest_sha256": "0b5da6a2af501af4be7d7b16184f029233dc93155499ad41dea346e148b0a214",
+      "files": [
+        {
+          "path": "actual_prefix_1536/scoreboard.json",
+          "sha256": "6f462d8b7acea2a09556ec12c80b5c3166d039c3df25ea285f37f1f926c8be2f"
+        },
+        {
+          "path": "actual_prefix_1536/result.json",
+          "sha256": "b7367473c41a5eeaea0e11852ccc31af60802187d2e3f9cffad90f28798e6738"
+        },
+        {
+          "path": "actual_prefix_1536/xsim.console.log",
+          "sha256": "ee31c58d019d7b00ea544982f06c66f8df0bb963b778ffdc68851b28a8aafa5d"
+        }
+      ]
+    },
+    {
+      "case": "directed_probe_bit_negative",
+      "expected_outcome": "intentional_rejection",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "FAIL",
+      "raw_runner_status": "FAIL",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": 2,
+      "expected_frames": 17,
+      "observed_frames": 17,
+      "checks": 340183,
+      "state_values": 132,
+      "state_commit_checks": 340000,
+      "errors": {
+        "bit_mismatch": 1,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 0,
+      "first_output_cycle": 276,
+      "last_output_cycle": 80276,
+      "accepted_clocks": 85000,
+      "pi_commits": 17,
+      "aw_commits": 17,
+      "ce_disabled_cycles": 0,
+      "cancelled_frames": 0,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 274,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": null,
+      "source_run": ".runtime/m3_20261024_001/directed_probe_bit_negative_bf33ff2b76_run",
+      "source_golden_sha256": "d4c2d607c5d43a06b57809f4324a0087c7119f0290255417c968e8033888c556",
+      "staging_manifest_sha256": "30a972a32994e114d3c7b486bccdffede8adabc9a65550f4016d6ff07f025988",
+      "files": [
+        {
+          "path": "directed_probe_bit_negative/scoreboard.json",
+          "sha256": "a7b06b370788985e6fbbf7e6aafbe15d418e4cdf599625d1eafb79dd944b9d6c"
+        },
+        {
+          "path": "directed_probe_bit_negative/result.json",
+          "sha256": "94f23012dbc776088261ce61e9c95da3a86ae8e095e361212851bbbb40915dcc"
+        },
+        {
+          "path": "directed_probe_bit_negative/xsim.console.log",
+          "sha256": "8ac2e4feda8db98c0f88b95a573c0adc6f5093a7c98af8c743c6d67f7456f4d1"
+        },
+        {
+          "path": "directed_probe_bit_negative/wrapper_exit.json",
+          "sha256": "95b8fce7b04a6eadb7b7929c5e8ceeaec5e5fb68deaa31f571fea1cc51cd0b52"
+        }
+      ]
+    },
+    {
+      "case": "directed_probe_cycle_negative",
+      "expected_outcome": "intentional_rejection",
+      "expected_outcome_verified": true,
+      "raw_scoreboard_status": "FAIL",
+      "raw_runner_status": "FAIL",
+      "native_xsim_exit_code": 0,
+      "strict_wrapper_exit_code": 2,
+      "expected_frames": 17,
+      "observed_frames": 17,
+      "checks": 340186,
+      "state_values": 132,
+      "state_commit_checks": 340000,
+      "errors": {
+        "bit_mismatch": 1,
+        "state_mismatch": 0,
+        "xz_count": 0,
+        "protocol_errors": 0,
+        "deadline_errors": 0
+      },
+      "early_mismatch": 1,
+      "first_output_cycle": 276,
+      "last_output_cycle": 80276,
+      "accepted_clocks": 85000,
+      "pi_commits": 17,
+      "aw_commits": 17,
+      "ce_disabled_cycles": 0,
+      "cancelled_frames": 0,
+      "output_phase": 274,
+      "max_wall_latency_clocks": 274,
+      "deadline_clocks": 2500,
+      "xsim_elapsed": null,
+      "source_run": ".runtime/m3_20261024_001/directed_probe_cycle_negative_bbb22d927f_run",
+      "source_golden_sha256": "d4c2d607c5d43a06b57809f4324a0087c7119f0290255417c968e8033888c556",
+      "staging_manifest_sha256": "682ef3f03652b980d0391ea98669f907f9581ce58a59267c96d33ea749830bd5",
+      "files": [
+        {
+          "path": "directed_probe_cycle_negative/scoreboard.json",
+          "sha256": "7ad4f8355c068d8b45bd2222ecbbeaa2f7995d407f49b3518988b40571c5f02b"
+        },
+        {
+          "path": "directed_probe_cycle_negative/result.json",
+          "sha256": "f95fe3b61d4758f4af6cd6f76206052ebb15627ae294281e7a7e7a65248e554b"
+        },
+        {
+          "path": "directed_probe_cycle_negative/xsim.console.log",
+          "sha256": "b3247fadf3b59eb6551a3ec1134bc28548622c925e9a4b1da898829aa9f7fc8f"
+        },
+        {
+          "path": "directed_probe_cycle_negative/wrapper_exit.json",
+          "sha256": "95b8fce7b04a6eadb7b7929c5e8ceeaec5e5fb68deaa31f571fea1cc51cd0b52"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "stage": "preflight",
+  "status": "PASS",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_green_process04",
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 20404,
+  "HDL_Coder_license": 1,
+  "bit_positive_words": 3,
+  "bit_flip_negative_rejected": true,
+  "wide_low_bit_negative_rejected": true,
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_green_process04\\tp49e8f276_eeb2_45ad_b197_c8224ee605a3_preflight\\source_ports.csv",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_green_process04\\tp49e8f276_eeb2_45ad_b197_c8224ee605a3_preflight\\source_states.csv"
+  ],
+  "failures": [],
+  "pwm": {
+    "status": "PASS",
+    "phases": 3,
+    "zoh_pairs": 33,
+    "applied_pairs": 30,
+    "measured_periods_per_phase_s": [
+      [
+        0.0001,
+        0.0001,
+        5.0000000000000023E-5
+      ],
+      [
+        0.0001,
+        0.0001,
+        5.0000000000000023E-5
+      ],
+      [
+        0.0001,
+        0.0001,
+        5.0000000000000023E-5
+      ]
+    ],
+    "control_period_s": 0.0001,
+    "ZOH_period_s": 0.0001,
+    "delay_period_s": 5.0000000000000023E-5,
+    "measured_application_offset_s": 5.0000000000000016E-5,
+    "application_deadline_cycles": 2500,
+    "first_mismatch": [],
+    "time_tolerance_s": 1E-12,
+    "duty_comparison": "exact logged values",
+    "raw": "pwm_phase_raw.mat",
+    "csv": "pwm_phase_events.csv",
+    "control_generator_priority": "100"
+  }
+}
