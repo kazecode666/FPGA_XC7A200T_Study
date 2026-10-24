@@ -1,0 +1,334 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct 25 02:56:33 2026
+| Host         : DependOnOMEN16 running 64-bit major release  (build 9200)
+| Command      : report_timing -of_objects [get_timing_paths -delay_type max -from [get_cells -hier -quiet -filter {NAME =~ *u_SVPWMG* && IS_SEQUENTIAL == 1}] -max_paths 20 -nworst 1] -path_type full_clock_expanded -input_pins -nets -file D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/r1_paths_02/sector_xyz_setup.rpt
+| Design       : FOC_DUT
+| Device       : 7a200t-fbg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -14.241ns  (required time - arrival time)
+  Source:                 u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__11/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by m3_core_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient/dividend_in_reg_reg[63]/D
+                            (rising edge-triggered cell FDRE clocked by m3_core_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             m3_core_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (m3_core_clk rise@20.000ns - m3_core_clk rise@0.000ns)
+  Data Path Delay:        34.196ns  (logic 25.501ns (74.574%)  route 8.695ns (25.426%))
+  Logic Levels:           72  (CARRY4=49 DSP48E1=7 LUT1=2 LUT2=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 20.748 - 20.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock m3_core_clk rise edge)
+                                                      0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=77216, unset)        0.787     0.787    u_SVPWMG/u_XYZ_Calculate/clk
+                         DSP48E1                                      r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__11/CLK
+  -------------------------------------------------------------------    -------------------
+                         DSP48E1 (Prop_dsp48e1_CLK_PCOUT[47])
+                                                      3.380     4.167 r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__11/PCOUT[47]
+                         net (fo=1, unplaced)         0.055     4.222    u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__11_n_106
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__12/PCIN[47]
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_PCOUT[47])
+                                                      1.438     5.660 r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__12/PCOUT[47]
+                         net (fo=1, unplaced)         0.000     5.660    u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__12_n_106
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__13/PCIN[47]
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_PCOUT[47])
+                                                      1.438     7.098 r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__13/PCOUT[47]
+                         net (fo=1, unplaced)         0.000     7.098    u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__13_n_106
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__14/PCIN[47]
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[18])
+                                                      1.271     8.369 r  u_SVPWMG/u_XYZ_Calculate/Product1_mul_temp__14/P[18]
+                         net (fo=3, unplaced)         0.646     9.015    u_SVPWMG/u_XYZ_Calculate/p_3_in[52]
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_6/I1
+                         LUT3 (Prop_lut3_I1_O)        0.127     9.142 r  u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_6/O
+                         net (fo=2, unplaced)         0.396     9.538    u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_6_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_10/I3
+                         LUT4 (Prop_lut4_I3_O)        0.286     9.824 r  u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_10/O
+                         net (fo=1, unplaced)         0.000     9.824    u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_10_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_2/S[0]
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.423    10.247 r  u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.247    u_SVPWMG/u_XYZ_Calculate/X[19]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[23]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.347 r  u_SVPWMG/u_XYZ_Calculate/X[23]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.347    u_SVPWMG/u_XYZ_Calculate/X[23]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[27]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.447 r  u_SVPWMG/u_XYZ_Calculate/X[27]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.447    u_SVPWMG/u_XYZ_Calculate/X[27]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[31]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.547 r  u_SVPWMG/u_XYZ_Calculate/X[31]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.547    u_SVPWMG/u_XYZ_Calculate/X[31]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[35]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.647 r  u_SVPWMG/u_XYZ_Calculate/X[35]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.647    u_SVPWMG/u_XYZ_Calculate/X[35]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[39]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.747 r  u_SVPWMG/u_XYZ_Calculate/X[39]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.747    u_SVPWMG/u_XYZ_Calculate/X[39]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[43]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.847 r  u_SVPWMG/u_XYZ_Calculate/X[43]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.847    u_SVPWMG/u_XYZ_Calculate/X[43]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[47]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    10.947 r  u_SVPWMG/u_XYZ_Calculate/X[47]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.947    u_SVPWMG/u_XYZ_Calculate/X[47]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[51]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    11.047 r  u_SVPWMG/u_XYZ_Calculate/X[51]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    11.047    u_SVPWMG/u_XYZ_Calculate/X[51]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[55]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    11.147 r  u_SVPWMG/u_XYZ_Calculate/X[55]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    11.147    u_SVPWMG/u_XYZ_Calculate/X[55]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[59]_INST_0_i_2/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    11.247 r  u_SVPWMG/u_XYZ_Calculate/X[59]_INST_0_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    11.247    u_SVPWMG/u_XYZ_Calculate/X[59]_INST_0_i_2_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_16/CI
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    11.461 r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_16/O[2]
+                         net (fo=2, unplaced)         0.595    12.056    u_SVPWMG/u_XYZ_Calculate/p_1_in__1[59]
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_84/I0
+                         LUT3 (Prop_lut3_I0_O)        0.244    12.300 r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_84/O
+                         net (fo=1, unplaced)         0.000    12.300    u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_84_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_80/S[3]
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.314    12.614 r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_80/CO[3]
+                         net (fo=1, unplaced)         0.000    12.614    u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_80_n_0
+                                                                      r  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_74/CI
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.150    12.764 f  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_74/CO[1]
+                         net (fo=1, unplaced)         0.472    13.236    u_SVPWMG/u_XYZ_Calculate/X364_in
+                                                                      f  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_25/I0
+                         LUT5 (Prop_lut5_I0_O)        0.277    13.513 f  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_25/O
+                         net (fo=1, unplaced)         0.347    13.860    u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_25_n_0
+                                                                      f  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_6/I5
+                         LUT6 (Prop_lut6_I5_O)        0.105    13.965 f  u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_6/O
+                         net (fo=64, unplaced)        0.435    14.400    u_SVPWMG/u_XYZ_Calculate/X[63]_INST_0_i_6_n_0
+                                                                      f  u_SVPWMG/u_XYZ_Calculate/X[1]_INST_0/I4
+                         LUT6 (Prop_lut6_I4_O)        0.105    14.505 f  u_SVPWMG/u_XYZ_Calculate/X[1]_INST_0/O
+                         net (fo=4, unplaced)         0.371    14.876    u_SVPWMG/u_T1T2_Calculate/X[1]
+                                                                      f  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1169/I0
+                         LUT1 (Prop_lut1_I0_O)        0.105    14.981 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1169/O
+                         net (fo=1, unplaced)         0.000    14.981    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1169_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1112/S[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    15.425 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1112/CO[3]
+                         net (fo=1, unplaced)         0.008    15.433    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1112_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1111/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    15.533 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1111/CO[3]
+                         net (fo=1, unplaced)         0.000    15.533    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1111_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1110/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    15.633 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1110/CO[3]
+                         net (fo=1, unplaced)         0.000    15.633    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1110_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1058/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    15.733 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1058/CO[3]
+                         net (fo=1, unplaced)         0.000    15.733    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1058_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1057/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    15.833 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1057/CO[3]
+                         net (fo=1, unplaced)         0.000    15.833    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1057_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1056/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    15.933 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1056/CO[3]
+                         net (fo=1, unplaced)         0.000    15.933    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1056_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1007/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.033 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1007/CO[3]
+                         net (fo=1, unplaced)         0.000    16.033    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1007_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1006/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.133 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1006/CO[3]
+                         net (fo=1, unplaced)         0.000    16.133    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1006_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1005/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.233 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1005/CO[3]
+                         net (fo=1, unplaced)         0.000    16.233    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_1005_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_973/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.333 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_973/CO[3]
+                         net (fo=1, unplaced)         0.000    16.333    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_973_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_972/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.433 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_972/CO[3]
+                         net (fo=1, unplaced)         0.000    16.433    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_972_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_971/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.533 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_971/CO[3]
+                         net (fo=1, unplaced)         0.000    16.533    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_971_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_941/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.633 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_941/CO[3]
+                         net (fo=1, unplaced)         0.000    16.633    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_941_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_849/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.733 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_849/CO[3]
+                         net (fo=1, unplaced)         0.000    16.733    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_849_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_687/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    16.833 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_687/CO[3]
+                         net (fo=1, unplaced)         0.000    16.833    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_687_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_390/CI
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277    17.110 f  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_390/O[3]
+                         net (fo=129, unplaced)       0.625    17.735    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_390_n_4
+                                                                      f  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_685/I0
+                         LUT1 (Prop_lut1_I0_O)        0.250    17.985 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_685/O
+                         net (fo=1, unplaced)         0.000    17.985    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_685_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_389/S[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.409    18.394 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_389/CO[1]
+                         net (fo=128, unplaced)       0.346    18.740    u_SVPWMG/u_T1T2_Calculate/Gain_out1314_in
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_644/I2
+                         LUT6 (Prop_lut6_I2_O)        0.277    19.017 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_644/O
+                         net (fo=1, unplaced)         0.582    19.599    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_644_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_353/I0
+                         LUT6 (Prop_lut6_I0_O)        0.105    19.704 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_353/O
+                         net (fo=1, unplaced)         0.000    19.704    u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_353_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_112/I1
+                         MUXF7 (Prop_muxf7_I1_O)      0.206    19.910 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn1_i_112/O
+                         net (fo=8, unplaced)         0.646    20.555    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Vector[1][16]
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__11/A[16]
+                         DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
+                                                      3.542    24.097 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__11/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    24.152    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__11_n_106
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__12/PCIN[47]
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_PCOUT[47])
+                                                      1.438    25.590 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__12/PCOUT[47]
+                         net (fo=1, unplaced)         0.000    25.590    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__12_n_106
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__13/PCIN[47]
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_PCOUT[47])
+                                                      1.438    27.028 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__13/PCOUT[47]
+                         net (fo=1, unplaced)         0.000    27.028    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__13_n_106
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__14/PCIN[47]
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.271    28.299 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/Numerator_mul_temp__14/P[0]
+                         net (fo=2, unplaced)         0.646    28.945    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/p_3_in[34]
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_485/I0
+                         LUT2 (Prop_lut2_I0_O)        0.105    29.050 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_485/O
+                         net (fo=1, unplaced)         0.000    29.050    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_485_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_421/S[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.444    29.494 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_421/CO[3]
+                         net (fo=1, unplaced)         0.008    29.502    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_421_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_201/CI
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.214    29.716 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_201/O[2]
+                         net (fo=8, unplaced)         0.387    30.103    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_201_n_5
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_487/I4
+                         LUT6 (Prop_lut6_I4_O)        0.244    30.347 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_487/O
+                         net (fo=1, unplaced)         0.938    31.285    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_487_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_426/I1
+                         LUT6 (Prop_lut6_I1_O)        0.105    31.390 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_426/O
+                         net (fo=1, unplaced)         0.347    31.737    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_426_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_202/I1
+                         LUT4 (Prop_lut4_I1_O)        0.105    31.842 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_202/O
+                         net (fo=1, unplaced)         0.000    31.842    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_202_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_149/S[0]
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.423    32.265 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_149/CO[3]
+                         net (fo=1, unplaced)         0.008    32.273    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_149_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_148/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.373 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_148/CO[3]
+                         net (fo=1, unplaced)         0.000    32.373    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_148_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_147/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.473 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_147/CO[3]
+                         net (fo=1, unplaced)         0.000    32.473    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_147_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_146/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.573 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_146/CO[3]
+                         net (fo=1, unplaced)         0.000    32.573    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_146_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_145/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.673 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_145/CO[3]
+                         net (fo=1, unplaced)         0.000    32.673    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_145_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_144/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.773 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_144/CO[3]
+                         net (fo=1, unplaced)         0.000    32.773    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_144_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_143/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.873 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_143/CO[3]
+                         net (fo=1, unplaced)         0.000    32.873    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_143_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_142/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    32.973 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_142/CO[3]
+                         net (fo=1, unplaced)         0.000    32.973    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_142_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_141/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.073 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_141/CO[3]
+                         net (fo=1, unplaced)         0.000    33.073    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_141_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_140/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.173 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_140/CO[3]
+                         net (fo=1, unplaced)         0.000    33.173    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_140_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_139/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.273 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_139/CO[3]
+                         net (fo=1, unplaced)         0.000    33.273    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_139_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_138/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.373 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_138/CO[3]
+                         net (fo=1, unplaced)         0.000    33.373    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_138_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_137/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.473 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_137/CO[3]
+                         net (fo=1, unplaced)         0.000    33.473    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_137_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_136/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.573 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_136/CO[3]
+                         net (fo=1, unplaced)         0.000    33.573    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_136_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_135/CI
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.100    33.673 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_135/CO[3]
+                         net (fo=1, unplaced)         0.000    33.673    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_135_n_0
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_132/CI
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.277    33.950 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_132/O[3]
+                         net (fo=1, unplaced)         0.783    34.733    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_132_n_4
+                                                                      r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_1/I3
+                         LUT6 (Prop_lut6_I3_O)        0.250    34.983 r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient_i_1/O
+                         net (fo=1, unplaced)         0.000    34.983    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient/dividend_in[63]
+                         FDRE                                         r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient/dividend_in_reg_reg[63]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock m3_core_clk rise edge)
+                                                     20.000    20.000 r  <hidden>
+                                                      0.000    20.000 r  clk
+                         net (fo=77216, unset)        0.748    20.748    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient/clk
+                         FDRE                                         r  u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient/dividend_in_reg_reg[63]/C
+                         clock pessimism              0.000    20.748    <hidden>
+                         clock uncertainty           -0.035    20.712    <hidden>
+                         FDRE (Setup_fdre_C_D)        0.029    20.741    u_SVPWMG/u_T1T2_Calculate/u_Fcn2/u_Defined_Quotient/dividend_in_reg_reg[63]
+  -------------------------------------------------------------------
+                         required time                         20.741    <hidden>
+                         arrival time                         -34.983    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -14.241    <hidden>
+

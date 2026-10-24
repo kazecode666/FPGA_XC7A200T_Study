@@ -1,0 +1,9 @@
+chain,source_sid,generated_evidence,width,data_period_ns,clock_period_ns,before,after,reset_ce,nature
+limiter output scale,184,dq_voltage_limiter.sv,64,100000,20,Divide matching_delay register,none before inversePark,global synchronous high and fast CE,Divide internal pipeline then combinational multiply
+inversePark voltage multiply-add,51,InversePark.sv:1218,64x40,100000,20,sinecos reduced_reg164 matching only,none before XYZ,global synchronous high and fast CE,165 matching registers are not voltage arithmetic pipelines
+XYZ projection and scaling,154,XYZ_Calculate.sv,64,100000,20,inherited upstream registers,reciprocal internal registers only,global synchronous high and fast CE,projection/product combinational DSP MREG PREG0
+sector compare/select,119,Sector_Caculate.sv,64,100000,20,no explicit local arithmetic pipeline,T1T2 Divide dividend input,fast CE on downstream divider,combinational compare and branch
+T1T2 numerator before division,134,T1T2_Calculate.sv,72,100000,20,upstream arithmetic chain,Defined_Quotient dividend_in_reg,global synchronous high and fast CE,register at iterative divider entrance
+PI d old and commit,23,Id.sv,64,100000,20,x_d_z_out1,phase5000 commit,PI_Reset_EN distinct global reset,algorithm old state not hardware pipeline
+PI q old and commit,52,Iq.sv,64,100000,20,x_q_z_out1,phase5000 commit,PI_Reset_EN distinct global reset,algorithm old state not hardware pipeline
+AW feedback,184,dq_voltage_limiter.sv,64,100000,20,previous frame UnitDelay,phase1 with current-frame bypass mux,global synchronous high and TC fast CE,feedback must preserve phase5000 consumption
