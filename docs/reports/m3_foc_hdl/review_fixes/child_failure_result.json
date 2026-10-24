@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "failing_child_rejected": true,
+  "child": {
+    "status": "FAIL",
+    "caller_pid": 20404,
+    "first_generation_pid": 20404,
+    "repeat_pid": 41988,
+    "child_exit_code": 1,
+    "logfile": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_child_failure05\\repeat\\matlab_repeat.log"
+  }
+}

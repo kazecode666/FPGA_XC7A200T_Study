@@ -73,4 +73,6 @@ pwsh -NoProfile -File scripts/m3_run_xsim.ps1 -Manifest generated/m3_foc/manifes
 
 只做 `synth_design -mode out_of_context`，实际数据端口保持变量。输出 utilization、时钟、内部时序和未约束分类；不执行 place/route/bitstream。当前 WNS 为负，脚本必须 FAIL，即使 Vivado 原生综合进程正常退出。外部 I/O、上层时钟偏斜、配置电压及最终布线均未签核。
 
-重复构建由 `repro` 在独立输出中重新生成并逐文件比较原始 SHA256，不忽略功能 token、常量或数据差异；再运行重复包和另一发布目录的实际编译/展开/smoke。M2 的受限闭环例外不适用于任何 M3 位差、状态错位或时序失败。停在开放实现 PR 等待 Review，后续流水线候选必须重新验证，不自动进入 M4。
+重复构建由 `repro` 强制启动新 MATLAB `-batch` 子进程，核对首次生成/调用者/重复生成 PID，再逐文件比较原始 SHA256；不忽略功能 token、常量或数据差异。子进程失败则F失败。使用短的 `repeat/` 子目录避免Windows Stateflow缓存260字符限制；目录已存在或旧构建缺首次PID时明确拒绝，使用新runDir重建，不补写PID。重复包和另一发布目录实际编译/展开/smoke均须执行。
+
+PWM前检会自动检查三相实际100us/50us事件周期、33个同拍command/ZOH值及30个applied(t+50us)配对；任何相位/数值/数量变化都使A失败。M2 的受限闭环例外不适用于任何 M3 位差、状态错位或时序失败。停在开放实现 PR 等待 Review，后续流水线候选必须重新验证，不自动进入 M4。

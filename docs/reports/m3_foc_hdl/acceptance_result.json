@@ -160,5 +160,19 @@
     "mat_files_archived": false,
     "issues": [],
     "identity_index": "final_evidence_index.json"
+  },
+  "final_review_fixes": {
+    "status": "PASS",
+    "important_fixed": 2,
+    "minor_deferred": 0,
+    "gate_suite": "18/18",
+    "first_generation_pid": 20404,
+    "repeat_pid": 42416,
+    "failing_child_pid": 41988,
+    "failing_child_exit_code": 1,
+    "automatic_PWM_zoh_pairs": 33,
+    "automatic_PWM_applied_pairs": 30,
+    "orchestration_C_D_E_are_stubs_not_FOC_evidence": true,
+    "evidence": "review_fixes/evidence_index.json"
   }
 }

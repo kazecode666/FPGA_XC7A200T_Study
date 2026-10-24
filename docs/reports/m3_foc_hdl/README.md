@@ -12,6 +12,7 @@
 | F重复与迁移 | [结果](repro/repro_result.json)、[31文件精确比较](repro/repeat_identity.json) |
 | 实际端口/提交/预算 | [合同](../../FOC_HDL_TIMING_CONTRACT.md)、[ports](hdl_ports.csv)、[state](state_mapping.csv)、[cycles](cycle_contract.json) |
 | 工具正/负门禁 | [fixture汇总](tool_tests_report.json)；fixture不冒充FOC验证 |
+| 最终审查2项修订 | [18/18门禁、真实PID及负例](review_fixes/evidence_index.json) |
 | 小证据总SHA索引 | [final_evidence_index.json](final_evidence_index.json) |
 
 完整SLX派生模型、源快照、大MAT、DCP和缓存留在 `.runtime/m3_20261024_001/`；不纳入发布包。实际原样SV、普通TB和数据见 [generated/m3_foc](../../../generated/m3_foc/manifest.json)，独立位串fixture在 [verification/m3_foc/vectors](../../../verification/m3_foc/vectors/)。

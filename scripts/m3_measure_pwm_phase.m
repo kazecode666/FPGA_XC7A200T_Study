@@ -24,10 +24,10 @@ for k=1:numel(names)
     v=out.logsout.get(names{k}).Values;
     for j=1:numel(v.Time),rows(end+1,:)={names{k},v.Time(j),v.Data(j)};end %#ok<AGROW>
 end
-writetable(cell2table(rows,'VariableNames',{'signal','time_s','duty'}), ...
-    fullfile(cfg.run_dir,'pwm_phase_events.csv'));
-result=struct('status','MEASURED','raw','pwm_phase_raw.mat','csv','pwm_phase_events.csv', ...
-    'phases',3,'control_period_s',1e-4,'ZOH_period_s',1e-4,'delay_period_s',5e-5, ...
-    'control_generator_priority',get_param(Simulink.ID.getFullName([m ':785']),'Priority'));
+events=cell2table(rows,'VariableNames',{'signal','time_s','duty'});
+writetable(events,fullfile(cfg.run_dir,'pwm_phase_events.csv'));
+result=m3_pwm_phase_contract(events,cfg.clock_period_s);
+result.raw='pwm_phase_raw.mat';result.csv='pwm_phase_events.csv';
+result.control_generator_priority=get_param(Simulink.ID.getFullName([m ':785']),'Priority');
 close_system(m,0);
 end

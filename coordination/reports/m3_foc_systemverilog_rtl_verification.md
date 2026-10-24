@@ -61,6 +61,8 @@ D另有CE暂停17帧及计算中global reset重启19帧正例。CE暂停21个物
 
 ## 交接
 
+最终一次独立整分支审查提出2项Important，均在一次修订中完成RED→GREEN：自动PWM合同判定，以及 `all` 的新进程重复生成。PWM当前33/30配对和四类故障共5门禁通过；旧同PID行为39528→39528被测试拒绝，修订后的真实首次/重复生成PID为20404→42416，配置/8源/31文件相同、两次smoke通过。真实失败子进程41988退出1，父F正确拒绝。编排测试仅C/D/E为显式替身，不能冒充FOC验收；原完整C/D/E结果以同文件SHA复用。工具回归5+6、PWM5、真实进程编排1、失败子进程1，共18/18。[审查修订证据](../../docs/reports/m3_foc_hdl/review_fixes/evidence_index.json)。没有延期Minor、没有第二次审查。
+
 操作见[中文指南](../../docs/PMLSM_FOC_HDL_GUIDE_ZH.md)，小证据见[索引](../../docs/reports/m3_foc_hdl/README.md)。执行原任务A—F，复用未变更M2历史结果；M2-E-REPEAT-001、原严格FAIL和非零退出保持，不适用于M3。
 
 本轮开放实现PR等待Review，不自动合并。唯一M3验收阻塞为原宽度构建20ns综合时序失败；实际物理deadline、上层I/O/时钟、布局布线、完整RTL电机闭环与硬件均未签核。后续不得仅凭理想xsim和资源可容纳进入硬件阶段。

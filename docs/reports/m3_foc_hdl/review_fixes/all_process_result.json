@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "first_generation_pid": 20404,
+  "repeat_generation_pid": 42416,
+  "caller_pid": 20404,
+  "real_first_repeat_generation_and_smokes": true,
+  "C_D_E_are_explicit_orchestration_stubs_not_FOC_evidence": true
+}
