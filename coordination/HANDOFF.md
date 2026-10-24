@@ -1,49 +1,52 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-23。** PR46 计划已实施；独立浮点模型与显式 Base Workspace 初始化已建立。R2026b 数学/时序、九场景源迁移、步长检查已通过；当前完成最终交付复核，停在开放实现 PR 等待 Review，不进入 M1B/M2。
+**当前更新：2026-10-24。** PR47 已合并，M1A浮点基线及上位机/具名观测交付已接受。当前提交的是下一任务书，不是下一阶段已实现。文档起点：`main@67cecb0f8fe4f4907cf5896bab4e9003fe0a0c85`。
 
-## 当前决定
+## 当前执行入口
 
-正式算法路线：纯 Simulink 浮点基线 → 独立定点控制器实现模型 → HDL Coder → RTL/Vivado/闭环验证 → 完整控制器及板级接口 → 另行批准的实机验证。
+读取 [M1B：连续点位指令、原对齐迁移与FOC准备](tasks/m1b_repeat_moves_and_alignment.md)。本文件和任务书合并后，或用户明确指定该任务分支后，由本机Codex连续完成A—E，不在正常检查点反复请求许可。最终交一个开放实现PR等待Review，不自动合并或开始M2。
 
-旧手写 PWM、FOC、电流环 RTL 和 StudyL1 保留为学习与验证资产，不作为正式实现必须继续扩展的底座。原 Simple、完整 MIL、ControlCore、DSP 模型均保留，不原地改写。
+本轮按用户最后澄清的范围，不执行此前讨论过的大范围运行管理重构：
 
-## 当前阶段：M1A 独立纯 Simulink 浮点基线
+- **做：** 同一次仿真到位后继续下发目标，先实测现状，再补最小分段S曲线；原MIL Angle_Init迁移且默认旁路；正常Run、UI、具名日志和必要回归；FOC定点/HDL只读准备。
+- **不做：** 运动中重规划、热切闭环模式、完整故障锁存/驱动板恢复、死区补偿、实际采集/速度滤波、JMAG/Maxwell替换、定点实现、HDL/C生成、Vivado或硬件操作。
+- 正常运动用三闭环；其他模式保留作停止后选择的调试。PWM禁止后机械/仿真继续是现有正常行为，不清零位置速度；PI复位不等同于清所有故障。
 
-当前 Review 对象为 [M1A 实施报告](reports/m1a_pure_simulink_float_baseline.md)、新 SLX/初始化/验证脚本及[精简证据](../docs/reports/m1a_float_baseline/README.md)。直接运行见[中文指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)。已合并的[设计](specs/m1a_pure_simulink_float_baseline_design.md)、[任务](tasks/m1a_pure_simulink_float_baseline.md)和[计划](../docs/superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md)保留为验收合同。不因仿真通过直接跨入 HDL 生成或上板。
+## 实施关系
 
-新交付：`simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` 与 `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m`，以及只读 InitFcn 检查函数。算法来源为 Simple 的 `Control_Task_10kHz/FOC_Algorithm`；保留必要外环、轨迹、使能/PI复位、限幅和唯一自由运动 plant。
+以用户最新本地 `PMLSM_PI_FOC_Float_Baseline.slx` 为增量修改对象，PR47为历史对照；不要用远端旧SLX覆盖本地清理、布局或面板。
 
-外部 `.m` 加载 MATLAB 基础工作区；新模型不依赖旧 MAT、交互 prepare、XSI 和 Model Workspace 隐藏副本。不用仅设置 backend0 来冒充独立纯 Simulink 模型。统一物理参数、上管理想 command duty、控制周期、PWM 更新延迟和平均死区责任。
+连续点位先检查现有命令是否真的收到，以及新目标是否误用旧计时。正式行为为绝对位置目标、显式提交、到位后接收、每段独立起点/计时；忙时明确拒绝，不新增运动中重规划或命令队列。详细握手、Ready和默认首段行为见任务。
 
-先做来源/参数/纯浮点入口及迁移对照；对齐渐降、故障恢复和行程管理放到后续 M1B 单独处理，真实测速滤波和板级采集不混入本轮。新模型不是完整实机安全控制器。
+对齐主来源为 `PMLSM_ControlCore_Block/PMLSM_ControlCore/Angle_Init`，来自原完整MIL；DSP对应路径只作对照。保留实际MIL已有电流渐降、偏置公式、采样和外围选择器，不写另一套算法、不新增未知偏置发生器。原文档的状态号方案与实际图可能不同，以实际源SLX和M0导出核对。
 
-M1A 的数值与验收合同以已合并设计为准；实施拆解、脚本名称、检查命令及每步停止条件以新任务和计划为准。实施只修改新增模型及其配套文件，不重整定 PI、不改原 SLX/RTL，不完整重跑历史阶段，不生成 HDL/C/bitstream、不操作硬件。
+原三环增益、物理参数、100us电流/PWM、1ms速度、10ms位置、1us plant、一次50us更新及1us平均死区保持。对齐默认关闭时，原默认运行应保持；对齐启用后的首个点位不能复用过期全局时间。
 
-## 已有基线与未决项归属
+## 文件与证据
 
-PR44 合并提交：`2e10c2dc576648165f541ad5b1530ef90c1e3791`。M0 证据见 [实查报告](reports/m0_simulink_model_asset_audit.md)、[差异表](../docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md) 和 [证据索引](../docs/reports/m0_simulink_audit/README.md)。四模型已做加载/查询/参数审计；本地 Simple 与远端存在已记录差异，不能把其未提交 SLX/MAT 与 Git 版本混称同一源。
+外部 `init_PMLSM_PI_FOC_Float_Baseline.m` 仍为唯一人工初始化入口，Base Workspace为参数来源，中文注释保持简短。`m1a_require_float_init.m`只检查，用户不手动执行。原轨迹和整定函数复用。
 
-新独立模型已由 M1A 处理参数遮蔽、归一化调制和启动依赖；原 Simple 的历史交互入口保留作来源对照。验收不扩展到完整故障恢复协议（M1B）或真实 ADC/编码器/线缆映射等板级事项。
+Codex交付实际新浮点SLX的增量、必要脚本、更新操作指南、`coordination/reports/m1b_repeat_moves_and_alignment.md`、精简结果索引及 `docs/FOC_FIXED_POINT_READINESS.md`。这些报告/脚本目前是拟交付文件，不是已存在的验收证据。
 
-接口已经给过，优先从已有材料恢复，不泛问用户重填清单。缺少的具体信息须写明已查来源和影响范围。
+连续点位需一次Run中真实临时命令证据，不能以多个sim或预设阶跃代替。对齐需源/新chart逐拍对照及实际闭环，不能仅因DONE就判物理对齐成功。正常直接Run应有保存的具名日志。未自动点击UI或未能读取本地参考的项，按事实列限制。
 
-## 工作约定
+FOC准备只导出接口、模块、参数、范围及当前版本支持情况，不生成代码、不改浮点DUT。观察到的min/max不能当作全部设计范围，不能提前套旧RTL的24bit或2500标度。
 
-- 实际工程核查与实现仅在 `D:/Project/FPGA_XC7A200T`，不新建 linked worktree、额外 clone 或云端实施副本。GitHub 文档分支不替代本地工程。
-- 外部 `D:/Project/PMSLM_Simulation` 只读；不回写源模型。
-- 保留用户 tracked/untracked 内容、未保存 MATLAB 模型、硬件资料移动、旧 worktree、PWM/FOC 工程及已有结果。
-- 不使用 `reset --hard`、`clean -fd`、强制切分支、自动 stash、整体覆盖或自动清理。冲突先保留并报告。
-- 版本用 Git 提交和源差异定位；不以文件哈希代替功能验收。运行证据必须来自真实 MATLAB 工具输出。
-- 新副本只做必要局部布局；不全局自动布局，不以消除警告为理由静默改变行为。
-- 不建设产品级测试基础设施；复用未受影响的历史证据，只补本阶段必要验证。
-- 实施结束停在开放 PR，不自动合并、不自行进入 M1B/M2、不操作硬件。
+## 工作区保护
 
-## 文档与实施交接
+- 实际工程仅 `D:/Project/FPGA_XC7A200T`；`D:/Project/PMSLM_Simulation`只读。无额外clone/worktree、云端实现副本。
+- 保留tracked/untracked、未保存MATLAB窗口、硬件资料移动、旧模型、RTL、历史结果。先记录状态与原文件快照，不自动清理或stash。
+- 禁止reset --hard、clean -fd、强制切分支、整体覆盖。冲突保留现场，只暂停受影响子任务并报告。
+- 旧Simple/MIL/ControlCore/DSP及其初始化只读；迁移仅复制必要内容到新主线，不能调用旧全局初始化覆盖新PI或清用户工作区。
+- local From/Goto同层唯一匹配，跨层显式端口；局部布局，不全局自动布局，不加回伪FPGA监视。
+- 版本用Git和内容差异定位，实际功能用工具输出/轨迹验证，不用文件哈希冒充功能验收。
+- 每个检查点小步提交，正常完成后继续后续检查；真实语义冲突或失败留下证据，不调PI/放宽阈值掩盖。
+- 不全量重跑Step6/7/StudyL1，不建设产品级基础设施，不自动合并、不操作硬件。
 
-用户合并本次设计文档后，以更新 main 非破坏性同步并准备实施；如设计未合并，不擅自合并或强制切换用户工作区。新模型与 `.m`、必要辅助文件、验证脚本和报告需一起交付，不得只有本地模型或缺依赖的远端说明。
+## 已有基线
 
-历史全文见 [HANDOFF_LEGACY_20261021.md](HANDOFF_LEGACY_20261021.md)。[M0任务](tasks/m0_simulink_model_asset_audit.md)保留为已完成审计的历史任务，不要求因本阶段更新而重跑。
+[M1A报告](reports/m1a_pure_simulink_float_baseline.md)、[PR47操作修订](reports/pr47_host_interface_revision.md)、[当前运行指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)和[M0审计](reports/m0_simulink_model_asset_audit.md)保持历史证据作用。连续点位和本轮对齐功能不能引用这些旧结果冒充已通过。
 
+[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)已同步本轮范围；旧M1B“完整运行管理”不再是当前执行要求。已知接口继续从仓库与原资料查找，不要求用户重新描述。
 
-PR47 操作修订：Simple_Host统一指令、中文初始化、轨迹预览、保存的具名日志。[手动操作指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md) · [修订报告](reports/pr47_host_interface_revision.md)
+[旧交接全文](HANDOFF_LEGACY_20261021.md)及[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)保留，不重写旧验收结论。
