@@ -1,6 +1,7 @@
 function proof=m3_repeat_process(cfg,repeatDir)
 % 新进程是验收条件；batch调用本身不能代替进程身份检查。
 first=jsondecode(fileread(fullfile(cfg.run_dir,'final_build.json')));
+if isfield(cfg,'candidate'),copyfile(fullfile(cfg.run_dir,'candidate.json'),fullfile(repeatDir,'candidate.json'));end
 assert(isfield(first,'matlab_process_id'),'M3:FIRST_PROCESS_UNKNOWN','Rebuild in a fresh run directory to record first generation PID.');
 caller=matlabProcessID;firstPID=first.matlab_process_id;
 launch=fullfile(repeatDir,'m3_repeat_launch.m');fid=fopen(launch,'w');

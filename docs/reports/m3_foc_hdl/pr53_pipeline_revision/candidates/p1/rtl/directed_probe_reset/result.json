@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "directed_probe_reset_8237310db4",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_reset_8237310db4_run",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_reset_8237310db4_run\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_reset_8237310db4_run\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_reset_8237310db4_run\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_reset_8237310db4_run\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": 19,
+  "observed_checks": 380605,
+  "counted_scoreboard": true,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_reset_8237310db4_stage\\manifest.json",
+  "manifest_sha256": "8ef231ea400a530941349e0b1b8d6ee5769441e1af975a566d4faaba3f644bc1",
+  "verification_kind": "independent_counted_scoreboard"
+}

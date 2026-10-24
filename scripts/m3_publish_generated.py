@@ -43,6 +43,12 @@ def publish(file, destination):
         shutil.copyfile(p, dest)
         assert sha(dest) == digest
     m['root_dir'] = '.'
+    if 'candidate_contract' in m:
+        contract=Path(m['candidate_contract']['path'])
+        if not contract.is_absolute():contract=Path(__file__).resolve().parents[1]/contract
+        assert sha(contract)==m['candidate_contract']['sha256'],'Candidate contract hash mismatch'
+        shutil.copyfile(contract,target/'candidate_contract.json')
+        m['candidate_contract']['path']='candidate_contract.json'
     m['publication'] = {'source_manifest_sha256': sha(Path(file)),
                         'raw_files_unchanged': True,
                         'dependency_scope': 'all design/testbench/data files; provenance absolute paths are informational'}
@@ -65,6 +71,16 @@ def compare(a, b, output):
     sb = {Path(x['path']).name: x['sha256'] for x in mb['build_identity']['source_files']}
     if sa != sb:
         mismatches.append('frozen_source_files')
+    if ma.get('candidate_id')!=mb.get('candidate_id'):
+        mismatches.append('candidate_id')
+    if 'candidate_id' in ma:
+        def contract(m):
+            p=Path(m['candidate_contract']['path'])
+            if not p.is_absolute():p=Path(__file__).resolve().parents[1]/p
+            assert sha(p)==m['candidate_contract']['sha256'],'Candidate contract hash mismatch'
+            c=read(p)
+            return {key:c[key] for key in ('candidate_id','configuration_sha256','output_phase_cycles','frame_cycles','state_events','state_mapping')}
+        if contract(ma)!=contract(mb):mismatches.append('candidate_schedule_or_state_contract')
     result = {'status': 'FAIL' if mismatches else 'PASS',
               'first_manifest_sha256': sha(Path(a)), 'repeat_manifest_sha256': sha(Path(b)),
               'files_compared': len(aa), 'comparison': 'exact raw bytes SHA256; no token/path/time exclusions',

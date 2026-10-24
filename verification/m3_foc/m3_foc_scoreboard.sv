@@ -3,10 +3,10 @@
 // Independent file-driven checker for unmodified HDL Coder FOC_DUT.
 // ce_out is a fast clock enable, NOT a control-frame valid signal.
 // The checker owns a fixed accepted-clock schedule: 5000 clocks/frame,
-// duty observation after clock 274, old state before clock 5000.
+// duty phase comes from the manifest-bound generated schedule; baseline274.
 module m3_foc_scoreboard;
   localparam integer FRAME_CLOCKS = 5000;
-  localparam integer OUTPUT_PHASE = 274;
+  integer OUTPUT_PHASE = 274;
   localparam integer DEADLINE_CLOCKS = 2500;
   localparam integer RECORD_BITS = 657;
   localparam integer MAX_FRAMES = 8192;
@@ -342,6 +342,8 @@ module m3_foc_scoreboard;
     if (!$value$plusargs("case_name=%s", case_name)) case_name = "unnamed";
     if (!$value$plusargs("mode=%s", mode)) mode = "normal";
     if (!$value$plusargs("negative_sample=%d", negative_sample)) negative_sample = 0;
+    if (!$value$plusargs("output_phase=%d", OUTPUT_PHASE)) OUTPUT_PHASE = 274;
+    if (OUTPUT_PHASE < 1 || OUTPUT_PHASE + 2 > DEADLINE_CLOCKS) $fatal(1,"M3_INVALID_PHASE");
     if (!(mode == "normal" || mode == "ce" || mode == "reset" ||
           mode == "bit_negative" || mode == "cycle_negative"))
       $fatal(1, "Unknown mode %s", mode);

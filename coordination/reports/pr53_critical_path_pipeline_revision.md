@@ -19,3 +19,15 @@ R1 实测原 DCP `fa572493...`，其 OOC manifest 与 B3 `cfd8b1d...` 相同。�
 官方方法依据：[Clock-rate FOC示例](https://www.mathworks.com/help/hdlcoder/ug/clockratepipelining.html)、[Distributed pipelining](https://www.mathworks.com/help/hdlcoder/ug/distributed-pipelining.html)。本机示例模型不在默认路径，未执行示例初始化。旧手写六扇区只借鉴寄存分段；没有替换六扇区算法、查表、位宽或输出极性。
 
 当前仍 NOT_ACCEPTED，R2—R4待实测。原−58.833ns、274拍和首轮全部生成/失败报告保留。
+
+## R2 已取得的候选证据
+
+| 候选 | 修改假设 | 数值/短RTL | OOC/结论 |
+|---|---|---|---|
+| p1 | 限幅、反Park、XYZ、Sector、T1T2局部分配寄存级，PI子区域暂不分布 | 17帧119值+68下一态0位差，原生validation；normal/CE/global reset/1bit/真实292拍提前负例全部门禁PASS | 293拍；70216 LUT/78938 FF/439 DSP；WNS−71.348、TNS−21229.736、447失败端点，WHS+0.135；拒绝 |
+| p2 | 针对p1迁移的Park/PI→sqrt路径增加预算；尝试锁定5个算法状态的分配边界 | makehdl以`hdlcoder:engine:pathbalancing`拒绝；无法吸收反馈环额外10000延迟周期 | 未生成完成SV/TB；数值、RTL、OOC明确NOT_RUN；拒绝 |
+| p3 | 保留p2的Park/Clark/PI局部分段，恢复原AllowDelayDistribution继承规则 | 正在生成 | 尚无结论 |
+
+p1最差路径从TC的phase_1，经Park输入选择/角度计算、PI，到限幅sqrt输入；数据91.166ns。说明后级链的分段并不自动解决前级，且新增快时钟路径暴露原先无板级输入约束的组合段。本轮仍不虚构I/O delay。生成SV可见反Park104位乘积后、64位加减后分别有寄存器，布局/数学位宽未改；原宽乘法/舍入/饱和仍须满足每拍20ns。
+
+候选/配置/合同绑定的负例先失败后修复，包含真实stager拒绝候选ID、旧274拍及缺失AW映射；MATLAB验证入口拒绝同ID属性漂移。候选合同由生成的三相延迟报告冻结，非从golden扫描相位。p1的实际状态消费/提交仍由每拍checker与源下一态共同验证，未删除检查项。

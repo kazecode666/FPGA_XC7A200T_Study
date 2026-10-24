@@ -7,6 +7,14 @@ descriptor=fullfile(cfg.run_dir,'final_build.json');
 m3_require_batch_models(cfg);
 assert(isfile(descriptor),'M3:FINAL_BUILD_REQUIRED','Missing final post-testbench build descriptor.');
 build=jsondecode(fileread(descriptor));
+candidateContract=[];
+if isfield(cfg,'candidate')
+    manifest=jsondecode(fileread(fullfile(cfg.run_dir,'manifest.json')));
+    contractFile=manifest.candidate_contract.path;
+    if isempty(regexp(contractFile,'^(?:[A-Za-z]:|[/\\])','once')),contractFile=fullfile(cfg.root,contractFile);end
+    assert(strcmp(m3_sha256(contractFile),manifest.candidate_contract.sha256),'M3:CANDIDATE_CONTRACT');
+    candidateContract=jsondecode(fileread(contractFile));
+end
 work=[tempname(cfg.run_dir) '_model'];mkdir(work);
 modelFolder=fullfile(work,'models');mkdir(modelFolder);
 sourceFiles=dir(cfg.source_dir);
@@ -39,6 +47,12 @@ for n=owned
 end
 % 固定相位来自最终生成报告。禁止搜索“最佳平移”消除数值/反馈错误。
 latency=274;
+if isfield(cfg,'candidate')
+    contract=candidateContract;m=manifest;
+    assert(strcmp(contract.candidate_id,cfg.candidate.candidate_id),'M3:CANDIDATE_ID');
+    assert(contract.output_phase_cycles==m.candidate_contract.output_phase_cycles,'M3:CANDIDATE_PHASE');
+    latency=contract.output_phase_cycles;
+end
 writejson(fullfile(work,'comparison_contract.json'),struct('build',build,'output_phase_cycles',latency, ...
     'temporary_model_diagnostics',diagnostics, ...
     'denominator_policy','Every logged denominator must be nonzero, including startup and the held terminal frame. No startup or per-frame exception.', ...

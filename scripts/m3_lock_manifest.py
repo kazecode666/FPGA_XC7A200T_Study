@@ -163,6 +163,10 @@ def lock(args):
                                  'model_folder': str(model), 'work_dir': str(work)},
               'scope': 'final generated files after makehdltb; identity lock is not functional verification'}
     output.parent.mkdir(parents=True, exist_ok=True)
+    readback=readjson(config)
+    if 'candidate_id' in readback:
+        result['candidate_id']=readback['candidate_id']
+        result['candidate_settings']=readback['candidate_settings']
     with output.open('x', encoding='utf8', newline='\n') as handle:
         json.dump(result, handle, ensure_ascii=False, indent=2); handle.write('\n')
     print('M3_MANIFEST_LOCKED', output, 'design=' + str(len(design)), 'tb=' + str(len(benches)), 'data=' + str(len(data)))

@@ -104,6 +104,19 @@ def file_entry(root: Path, path: Path) -> dict[str, str]:
 def stage(args: argparse.Namespace) -> dict:
     manifest_path = args.manifest.resolve()
     source = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
+    phase=274
+    if 'candidate_id' in source:
+        from m3_candidate_contract import validate
+        entry=source['candidate_contract'];file=Path(entry['path'])
+        if not file.is_absolute():
+            repo=Path(__file__).resolve().parents[1]
+            file=(repo/file) if str(file).startswith('.runtime') else (manifest_path.parent/file)
+        if sha256(file)!=entry['sha256']:raise ValueError('candidate contract hash mismatch')
+        contract=json.loads(file.read_text(encoding='utf8'))
+        validate(contract,{'candidate_id':source['candidate_id'],
+                          'configuration_sha256':source['build_identity']['configuration_sha256'],
+                          'output_phase_cycles':entry['output_phase_cycles']})
+        phase=contract['output_phase_cycles']
     source_root_value = source.get("root_dir", ".")
     source_root = Path(source_root_value)
     if not source_root.is_absolute():
@@ -217,7 +230,7 @@ def stage(args: argparse.Namespace) -> dict:
             "expected_frames": expected_frames,
             "expected_checks": expected_checks,
             "timeout_seconds": args.timeout_seconds,
-            "plusargs": [f"frames={frames}", f"case_name={args.case}", f"mode={args.mode}", f"negative_sample={negative_sample}"],
+            "plusargs": [f"frames={frames}", f"case_name={args.case}", f"mode={args.mode}", f"negative_sample={negative_sample}",f"output_phase={phase}"],
             "plusarg_files": {"vectors": memory.relative_to(stage_root).as_posix()},
             "plusarg_outputs": {"result": "scoreboard.json"},
         },
@@ -229,7 +242,7 @@ def stage(args: argparse.Namespace) -> dict:
             "record_bits": RECORD_BITS,
             "fields": [{"name": name, "bits": width} for name, width in FIELDS],
             "frame_clocks": 5000,
-            "output_post_edge_phase": 274,
+            "output_post_edge_phase": phase,
             "old_state_pre_edge_phase": 5000,
             "deadline_clocks": 2500,
             "expected_negative": args.mode in ("bit_negative", "cycle_negative"),

@@ -31,4 +31,9 @@ cfg.tb={ ...
     'ClockHighTime',10;'ClockLowTime',10;'ForceClock','on'; ...
     'ForceClockEnable','on';'ForceReset','on'; ...
     'HoldInputDataBetweenSamples','on';'UseFileIOInTestBench','on'};
+candidateFile=fullfile(runDir,'candidate.json');
+if isfile(candidateFile)
+    cfg.candidate=jsondecode(fileread(candidateFile));
+    assert(ismember(cfg.candidate.candidate_id,{'p1','p2','p3'}),'M3:CANDIDATE_ID','Unknown bounded candidate.');
+end
 end

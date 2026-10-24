@@ -5,6 +5,17 @@ assert(strcmp(m.dut_top,'FOC_DUT')&&strcmp(m.part,cfg.part)&&m.clock_period_ns==
 file=m.build_identity.configuration_readback;
 assert(strcmp(m3_sha256(file),m.build_identity.configuration_sha256),'M3:CONFIG_HASH');
 readback=jsondecode(fileread(file));
+if isfield(cfg,'candidate')
+    assert(isfield(m,'candidate_id')&&strcmp(m.candidate_id,cfg.candidate.candidate_id),'M3:CANDIDATE_ID','Candidate differs from locked manifest.');
+    assert(isequal(jsonencode(readback.candidate_settings),jsonencode(m.candidate_settings)),'M3:CANDIDATE_CONFIG','Readback differs from manifest.');
+    wanted=cfg.candidate.settings;actual=readback.candidate_settings;
+    assert(numel(wanted)==numel(actual),'M3:CANDIDATE_CONFIG','Candidate property count changed.');
+    for j=1:numel(wanted)
+        assert(wanted(j).SID==actual(j).SID&&strcmp(wanted(j).property,actual(j).property)&& ...
+            strcmp(string(wanted(j).value),string(actual(j).requested)),'M3:CANDIDATE_CONFIG','Candidate requested properties changed.');
+    end
+    assert(strcmp(m3_sha256(m.candidate_contract.path),m.candidate_contract.sha256),'M3:CANDIDATE_CONTRACT','Candidate contract changed.');
+end
 for k=1:size(cfg.hdl,1)
     key=cfg.hdl{k,1};assert(isfield(readback,key),'M3:CONFIG_DRIFT','Missing generated config %s.',key);
     wanted=normalize(cfg.hdl{k,2});actual=normalize(readback.(key));

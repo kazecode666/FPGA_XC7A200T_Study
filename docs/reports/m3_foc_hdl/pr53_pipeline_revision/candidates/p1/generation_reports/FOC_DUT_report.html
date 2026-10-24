@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="https://www.mathworks.com/help/schema/MathWorksDocPage">
+<head>
+<title>'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 检查报告</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type="text/javascript" src="..\js\jquery-1.7.1.js"></script>
+<script type="text/javascript" src="..\js\docscripts.js"></script>
+        
+        <link href="..\css\ice_960.css" rel="stylesheet" type="text/css">
+        <link href="..\css\HDLsite5.css" rel="stylesheet" type="text/css">
+        <link href="..\css\ice_doc_center.css" rel="stylesheet" type="text/css">
+        <link href="..\css\ice_doc_center_installed.css" rel="stylesheet" type="text/css">
+        <link href="..\css\ice_doc_center_print.css" rel="stylesheet" type="text/css" media="print">
+        <script type="text/javascript">
+            if (navigator.appName != "ICEbrowser") {
+            var cssStyleSheets = $("link").filter(function(){
+            var href = $(this).attr('href');
+            return href.indexOf("ice_doc_center_print.css") == -1});
+            var hrefElements = $.map(cssStyleSheets, function(elem) {
+            var href = $(elem).attr('href');
+            var hrefArray = href.split("/");
+            hrefArray[hrefArray.length - 1] = hrefArray[hrefArray.length - 1].replace("ice_", "");
+            return {
+            href: hrefArray.join("/"),
+            media: $(elem).attr('media')
+            };
+            });
+            cssStyleSheets.remove();
+            for (var i = 0; i < hrefElements.length; i++) {
+            if ($.browser.msie && $.browser.version <= 8) {
+            document.createStyleSheet(hrefElements[i].href);
+            } else {
+            var link = $('<link rel="stylesheet" href=' + hrefElements[i].href + ' type="text/css" />');
+            if (hrefElements[i].media) {
+            link.attr('media', hrefElements[i].media);
+            }
+            $('head').append(link);
+            }
+            }
+            }
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div class="container_192">
+<div class="grid_192">
+ <div class="page_container"><div class="content_frame">
+<h1>'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 代码生成检查报告
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'open_system(\'PMLSM_FOC_FixedPoint/FOC_DUT\');'})" >打开模型 'PMLSM_FOC_FixedPoint/FOC_DUT'</a><BR>
+生成时间: 2026-10-25 03:02:34</h1>
+<H2>'PMLSM_FOC_FixedPoint' 的 HDL 检查已完成，出现 0 个错误、4 个警告和 8 条消息。</H2><BR>
+<H3>下表描述报告了错误、警告或消息的模块。</H3><BR>
+<TABLE style="border: 2px solid; border-collapse: collapse;">
+<TR><TD style="border: 2px solid; border-collapse: collapse;"> <B>Simulink 模块和资源</B> </TD><TD style="border: 2px solid; border-collapse: collapse;"> <B>级别</B> </TD><TD style="border: 2px solid; border-collapse: collapse;"> <B>描述</B> </TD></TR><TR><TD style="border: 2px solid; border-collapse: collapse;">
+<div alt="hdlcoder:validate:AnnotationTextI18N">PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用</div>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Warning</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<div alt="hdlcoder:validate:AnnotationTextI18N">PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和</div>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Warning</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<div alt="hdlcoder:validate:AnnotationTextI18N">PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项</div>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Warning</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:engine:MultirateMultiTasking" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');open_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]))'})" >PMLSM_FOC_FixedPoint</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Warning</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>多速率模型应将 "多任务数据传输" 和 "单任务数据传输" 选项设置为 "错误"。您可以在 "建模 -> 模型设置 -> 诊断 -> 采样时间" 中设置这些选项。如果不使用这些设置，生成的模型和验证可能无法更新(Ctrl+D)，您可能无法生成 HDL 测试平台，并且在确认和验证期间您的预期结果可能会有差异。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:validate:ShiftAddDefaultDivRecip" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');hilite_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116 47 70 79 67 95 68 85 84 47 83 86 80 87 77 71 47 84 49 84 50 10 67 97 108 99 117 108 97 116 101 47 70 99 110 49 47 68 101 102 105 110 101 100 95 81 117 111 116 105 101 110 116]))'})" >PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2
+Calculate/Fcn1/Defined_Quotient</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>为 Defined_Quotient 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:validate:ShiftAddDefaultDivRecip" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');hilite_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116 47 70 79 67 95 68 85 84 47 83 86 80 87 77 71 47 84 49 84 50 10 67 97 108 99 117 108 97 116 101 47 70 99 110 50 47 68 101 102 105 110 101 100 95 81 117 111 116 105 101 110 116]))'})" >PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2
+Calculate/Fcn2/Defined_Quotient</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>为 Defined_Quotient 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:validate:ShiftAddDefaultDivRecip" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');hilite_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116 47 70 79 67 95 68 85 84 47 83 86 80 87 77 71 47 88 89 90 10 67 97 108 99 117 108 97 116 101 47 77 97 116 104 10 70 117 110 99 116 105 111 110]))'})" >PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ
+Calculate/Math
+Function</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>为 Math</div><div>Function 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:validate:ShiftAddDefaultDivRecip" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');hilite_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116 47 70 79 67 95 68 85 84 47 100 113 95 118 111 108 116 97 103 101 95 108 105 109 105 116 101 114 47 68 105 118 105 100 101]))'})" >PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Divide</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>为 Divide 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:engine:AbstractMdlGenPerf" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');open_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]))'})" >PMLSM_FOC_FixedPoint</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>'GeneratedModel' 参数设置为 'on'。要缩短代码生成时间，请禁用模型生成。禁用此选项时，代码生成将生成抽象模型，而不是详细的生成模型。</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:hdldisp:GeneratingCRPHiliteScript" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'run(\'D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\\rtl\\PMLSM_FOC_FixedPoint\\highlightClockRatePipelining\')'})" >D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p1\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining.m</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>通过运行以下脚本可以诊断时钟频率流水线障碍:</div> <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'run(\'D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\\rtl\\PMLSM_FOC_FixedPoint\\highlightClockRatePipelining\')'})" >D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p1\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining.m</a></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:hdldisp:GeneratingDistributedPipeliningBarriersHiliteScript" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'run(\'D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\\rtl\\PMLSM_FOC_FixedPoint\\highlightDistributedPipeliningBarriers\')'})" >D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p1\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\rtl\PMLSM_FOC_FixedPoint\highlightDistributedPipeliningBarriers.m</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>要突出显示阻碍分布式流水线的模块，请点击以下 MATLAB 脚本:</div> <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'run(\'D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\\rtl\\PMLSM_FOC_FixedPoint\\highlightDistributedPipeliningBarriers\')'})" >D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p1\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\rtl\PMLSM_FOC_FixedPoint\highlightDistributedPipeliningBarriers.m</a></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:hdldisp:GeneratingDCEHighlightingScript" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');open_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]))'})" >PMLSM_FOC_FixedPoint</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>HDL 代码生成期间删除了未使用的逻辑。要突出显示删除的逻辑，请点击以下 MATLAB 脚本: D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p1\tp655debd4_ef03_42cd_8497_580bf505a04a_generate\rtl\PMLSM_FOC_FixedPoint\highlightRemovedDeadBlocks.m</div></TD>
+</TR>
+<TR><TD style="border: 2px solid; border-collapse: collapse;">
+<a alt="hdlcoder:hdldisp:OversampleMessage" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'hilite(get_param(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]),\'object\'),\'none\');open_system(char([80 77 76 83 77 95 70 79 67 95 70 105 120 101 100 80 111 105 110 116]))'})" >PMLSM_FOC_FixedPoint</a>
+</TD>
+<TD style="border: 2px solid; border-collapse: collapse">Message</TD>
+<TD style="border: 2px solid; border-collapse: collapse"><div>消息: 该设计需要比基本速率(0.0001)快 5000 倍的时钟。</div></TD>
+</TR>
+</TABLE>
+<BR><BR> </div></div></div></div>
+                    <div class="grid_192">
+                        <div class="footer_container">
+                            <div class="footer">
+                                <ul class="footernav">
+                                    <li class="footernav_trademarks"><a href="../docs/acknowledgments.html">Acknowledgments</a></li>
+                                    <li class="footernav_trademarks"><a href="../docs/trademarks.txt">Trademarks</a></li>
+                                    <li class="footernav_patents"><a href="../docs/patents.txt">Patents</a></li>
+                                    <li class="footernav_help"><a href="../docs/license.txt">Terms of Use</a></li>
+                                </ul>
+                                <div class="copyright">&copy; 1994-2026 The MathWorks, Inc.</div>
+                            </div>
+                        </div>
+                    </div>
+
+        <script type="text/javascript">
+
+$(document).ready( setTimeout( function () {
+                   $(".expandAllLink").trigger('click');
+            }, 50 ) );
+
+        </script>
+        
+<script>function postParentWindowMessage(message) {window.parent.postMessage(message, "*");}
+document.addEventListener('click', function () {postParentWindowMessage({message: 'iframeClick'});});</script>
+</body>
+</html>

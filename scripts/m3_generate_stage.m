@@ -15,6 +15,10 @@ readback=struct;
 for k=1:size(cfg.hdl,1)
     hdlset_param(m,cfg.hdl{k,1},cfg.hdl{k,2});readback.(cfg.hdl{k,1})=hdlget_param(m,cfg.hdl{k,1});
 end
+if isfield(cfg,'candidate')
+    readback.candidate_id=cfg.candidate.candidate_id;
+    readback.candidate_settings=m3_apply_candidate(cfg);
+end
 writejson(fullfile(work,'hdl_config_readback.json'),readback);
 checks=checkhdl(cfg.dut);writejson(fullfile(work,'checkhdl.json'),checks);
 assert(~any(strcmpi({checks.level},'Error')),'M3:SV_CHECKHDL','SystemVerilog compatibility errors; retain evidence.');
@@ -48,6 +52,11 @@ command=sprintf('python "%s" --build "%s" --output "%s"',locker, ...
     fullfile(cfg.run_dir,'final_build.json'),fullfile(cfg.run_dir,'manifest.json'));
 [code,console]=system(command);fprintf('%s',console);
 assert(code==0,'M3:MANIFEST_LOCK','Post-TB manifest lock failed; preserve generated files.');
+if isfield(cfg,'candidate')
+    freezer=fullfile(cfg.root,'scripts','m3_freeze_candidate_contract.py');
+    [code,console]=system(sprintf('python "%s" "%s"',freezer,cfg.run_dir));fprintf('%s',console);
+    assert(code==0,'M3:CANDIDATE_CONTRACT','Generated schedule contract freeze failed.');
+end
 disp('M3_GENERATION_AND_TB_COMPLETE');
 end
 function restore(cfg,oldpwd,oldpath,oldgen)
