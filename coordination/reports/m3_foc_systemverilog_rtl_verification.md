@@ -68,3 +68,5 @@ D另有CE暂停17帧及计算中global reset重启19帧正例。CE暂停21个物
 本轮开放实现PR等待Review，不自动合并。唯一M3验收阻塞为原宽度构建20ns综合时序失败；实际物理deadline、上层I/O/时钟、布局布线、完整RTL电机闭环与硬件均未签核。后续不得仅凭理想xsim和资源可容纳进入硬件阶段。
 
 原始已修正失败小记录见[failures](../../docs/reports/m3_foc_hdl/failures/index.json)。Git以本轮限定属性保留原始SV/CSV/报告换行和厂商尾空格；手写脚本仍做完整whitespace检查。发布包另从Git blob恢复后执行smoke，确保检出不会改变已验收字节。
+
+开放实现PR：[PR53](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53)，等待Review，未合并；M3的20ns时序阻塞仍保留。

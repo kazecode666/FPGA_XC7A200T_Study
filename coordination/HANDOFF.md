@@ -63,3 +63,5 @@ M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC
 [路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)当前为M3开放实现Review，20ns综合时序阻塞。M3结束后停在开放实现PR，M4完整布局布线和带真实时序的电机联合仿真另行任务。旧“先完成整套运行管理再定点化”范围不恢复，硬件接口先查已有资料，不要求用户重复说明。
 
 [旧交接](HANDOFF_LEGACY_20261021.md)、[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)、[M1B任务](tasks/m1b_repeat_moves_and_alignment.md)原样作为历史保留。
+
+开放实现PR：[PR53](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53)，等待Review，未合并；M3的20ns时序阻塞仍保留。
