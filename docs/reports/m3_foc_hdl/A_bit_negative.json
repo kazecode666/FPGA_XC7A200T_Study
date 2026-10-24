@@ -1,0 +1,8 @@
+{
+  "source_short_samples": 17,
+  "actual_duty_expected_hex": "1ffffffa",
+  "LSB_flipped_hex": "1ffffffb",
+  "observed_comparator_rejected": true,
+  "original_log": ".runtime\\m3_20261024_001\\A_short.log",
+  "raw_fi_export": "hex(fi),32/64/72bit string comparison; no numeric double conversion"
+}

@@ -1,0 +1,13 @@
+direction,index,name,compiled_type,sample_time,declared_type
+Inport,1,ia,sfix32_En24,[0.0001 0],FOC_Fixed_Config.Types.Current
+Inport,2,ib,sfix32_En24,[0.0001 0],FOC_Fixed_Config.Types.Current
+Inport,3,ic,sfix32_En24,[0.0001 0],FOC_Fixed_Config.Types.Current
+Inport,4,theta_e,sfix40_En32,[0.0001 0],FOC_Fixed_Config.Types.Angle
+Inport,5,omega_e,sfix40_En24,[0.0001 0],FOC_Fixed_Config.Types.Omega
+Inport,6,iq_ref,sfix32_En24,[0.0001 0],FOC_Fixed_Config.Types.Current
+Inport,7,id_ref,sfix32_En24,[0.0001 0],FOC_Fixed_Config.Types.Current
+Inport,8,PI_Reset_EN,boolean,[0.0001 0],boolean
+Inport,9,Vdc_V,ufix32_En24,[0.0001 0],FOC_Fixed_Config.Types.Bus
+Outport,1,duty_u_cmd,ufix32_En30,[0.0001 0],FOC_Fixed_Config.Types.Duty
+Outport,2,duty_v_cmd,ufix32_En30,[0.0001 0],FOC_Fixed_Config.Types.Duty
+Outport,3,duty_w_cmd,ufix32_En30,[0.0001 0],FOC_Fixed_Config.Types.Duty

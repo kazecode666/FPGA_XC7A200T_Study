@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "source_files": [
+    {
+      "name": "design_PMLSM_three_loop.m",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\design_PMLSM_three_loop.m",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\design_PMLSM_three_loop.m",
+      "sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2"
+    },
+    {
+      "name": "init_PMLSM_PI_FOC_Float_Baseline.m",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\init_PMLSM_PI_FOC_Float_Baseline.m",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\init_PMLSM_PI_FOC_Float_Baseline.m",
+      "sha256": "5ab7a40613a672b6805ec15dd9ef394fa1aaa0958ec1b9a3ecbbdf1e0a00a016"
+    },
+    {
+      "name": "m1a_require_float_init.m",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\m1a_require_float_init.m",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\m1a_require_float_init.m",
+      "sha256": "15cbf8a0bad430eafcff1ce900947589112ecadf137a595a4446a385e1c35fcf"
+    },
+    {
+      "name": "PMLSM_FOC_FixedPoint.slx",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\PMLSM_FOC_FixedPoint.slx",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\PMLSM_FOC_FixedPoint.slx",
+      "sha256": "be5e04bf659e5294c6270d36059ae4a9e0fefc5f0448079e67681aa8f1addcf7"
+    },
+    {
+      "name": "pmlsm_foc_fixed_config.m",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\pmlsm_foc_fixed_config.m",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\pmlsm_foc_fixed_config.m",
+      "sha256": "27008b96a8ea04f68619c39426bc74218b1a96f5059a4959b9e4ca46288aebe1"
+    },
+    {
+      "name": "PMLSM_PI_FOC_Float_Baseline.slx",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\PMLSM_PI_FOC_Float_Baseline.slx",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\PMLSM_PI_FOC_Float_Baseline.slx",
+      "sha256": "b27a9083897d932b021d91613799a226748a0be6fc0f50bf4a5cae62aec229dd"
+    },
+    {
+      "name": "pmlsm_point_move_step.m",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\pmlsm_point_move_step.m",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\pmlsm_point_move_step.m",
+      "sha256": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b"
+    },
+    {
+      "name": "pmlsm_scurve_profile.m",
+      "canonical": "D:\\Project\\FPGA_XC7A200T\\simulink模型\\pmlsm_scurve_profile.m",
+      "snapshot": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source\\pmlsm_scurve_profile.m",
+      "sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b"
+    }
+  ],
+  "canonical_entry_files_unchanged": 34,
+  "user_dirty_patch_sections_unchanged": 31,
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001",
+  "base_commit": "476c5a36148ad0c54010240e4da25e37436ec600"
+}
