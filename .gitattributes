@@ -1,0 +1,5 @@
+# M3 identities cover raw bytes, including original HDL/CSV line endings.
+/generated/m3_foc/** -text
+/verification/m3_foc/** -text
+/docs/reports/m3_foc_hdl/** -text
+/scripts/m3* -text

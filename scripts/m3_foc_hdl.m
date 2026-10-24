@@ -5,9 +5,14 @@ arguments
     runDir (1,:) char = ''
 end
 root=fileparts(fileparts(mfilename('fullpath')));
-if isempty(runDir),runDir=tempname(fullfile(root,'.runtime'));mkdir(runDir);end
+if isempty(runDir),[~,token]=fileparts(tempname);runDir=fullfile(root,'.runtime',['m3_' token]);mkdir(runDir);end
+helper=fullfile(root,'scripts','m3_artifact_identity.py');
+[code,console]=system(sprintf('python "%s" run_path --path "%s" --root "%s"',helper,runDir,root));
+assert(code==0,'M3:RUN_DIRECTORY','Use a distinct directory inside this checkout .runtime.');
+resolved=jsondecode(console);runDir=resolved.path;
 if ~isfolder(runDir),mkdir(runDir);end
 cfg=m3_foc_codegen_config(root,runDir);
+if any(strcmp(stage,{'all','preflight','generate','model','repro'})),m3_require_batch_models(cfg);end
 if ~isfolder(cfg.source_dir)
     mkdir(cfg.source_dir);source=fullfile(root,'simulink模型');
     files={'PMLSM_PI_FOC_Float_Baseline.slx','PMLSM_FOC_FixedPoint.slx','init_PMLSM_PI_FOC_Float_Baseline.m', ...
@@ -33,6 +38,7 @@ try
             'message','Missing final generated manifest; no tool success or evidence may be inferred.')};
         writejson(fullfile(runDir,[stage '_missing_artifact.json']),result);
     else
+        if any(strcmp(stage,{'model','rtl','synth','repro'})),m3_validate_build(cfg);end
         implementation=['m3_' stage '_stage'];
         assert(exist(implementation,'file')==2,'M3:STAGE_NOT_IMPLEMENTED','Missing %s.',implementation);
         result=feval(implementation,cfg);

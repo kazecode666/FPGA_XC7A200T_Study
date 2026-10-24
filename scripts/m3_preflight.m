@@ -1,6 +1,7 @@
 function result=m3_preflight(cfg)
 % 在独立batch会话执行，不改变用户交互Base Workspace。
 assert(isfolder(cfg.source_dir),'M3:SOURCE_SNAPSHOT_MISSING','Freeze local source first.');
+m3_require_batch_models(cfg);
 folder=[tempname(cfg.run_dir) '_preflight'];mkdir(folder);
 files=dir(cfg.source_dir);for k=1:numel(files),if ~files(k).isdir,copyfile(fullfile(cfg.source_dir,files(k).name),fullfile(folder,files(k).name));end;end
 oldpwd=pwd;oldpath=path;oldgen=Simulink.fileGenControl('getConfig');

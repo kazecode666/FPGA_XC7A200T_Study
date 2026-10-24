@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "bit_mismatch_count": 0,
+  "value_mismatch_count": 0,
+  "first_mismatch": [],
+  "signals": [
+    "duty_u_cmd",
+    "duty_v_cmd",
+    "duty_w_cmd",
+    "x_d_old",
+    "x_q_old",
+    "aw_d_old",
+    "aw_q_old"
+  ],
+  "values_compared": 119,
+  "output_phase_cycles": 274,
+  "state_event_cycles": [
+    0,
+    5000,
+    10000,
+    15000,
+    20000,
+    25000,
+    30000,
+    35000,
+    40000,
+    45000,
+    50000,
+    55000,
+    60000,
+    65000,
+    70000,
+    75000,
+    80000
+  ]
+}
