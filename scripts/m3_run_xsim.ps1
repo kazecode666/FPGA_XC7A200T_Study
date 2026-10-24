@@ -124,7 +124,31 @@ try {
         $elab=@('-debug','typical',[string]$m.tb_top,'-s','m3_snapshot')
         foreach ($lib in @($m.elab_libraries)) { if ($null -ne $lib) { if ([string]$lib -notmatch '^[A-Za-z_][A-Za-z0-9_]*$') { throw 'Invalid simulator library' }; $elab+=@('-L',[string]$lib) } }
         [void](Tool 'xelab' $elab $working $seconds)
-        $output=Tool 'xsim' @('m3_snapshot','-runall') $working $seconds
+        $simArgs=@('m3_snapshot','-runall')
+        $plusKeys=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+        foreach ($arg in @($m.simulation.plusargs)) {
+            if ($null -eq $arg) { continue }
+            $value=([string]$arg).TrimStart('+')
+            if ($value -notmatch '^([A-Za-z_][A-Za-z0-9_]*)=(.*)$') { throw 'plusargs must be key=value strings' }
+            if (-not $plusKeys.Add($Matches[1])) { throw 'Duplicate simulation plusarg key' }
+            [void](Safe-Argument $value); $simArgs+=@('-testplusarg',$value)
+        }
+        if ($m.simulation.plusarg_files) { foreach ($property in $m.simulation.plusarg_files.PSObject.Properties) {
+            if ($property.Name -notmatch '^[A-Za-z_][A-Za-z0-9_]*$' -or -not $plusKeys.Add($property.Name)) { throw 'Invalid/duplicate input-file plusarg key' }
+            $inputPath=if ([IO.Path]::IsPathRooted([string]$property.Value)) { [IO.Path]::GetFullPath([string]$property.Value) } else { [IO.Path]::GetFullPath((Join-Path $sourceRoot ([string]$property.Value))) }
+            $record=@($staged.Values | Where-Object { $_.source.Equals($inputPath,[StringComparison]::OrdinalIgnoreCase) })
+            if ($record.Count -ne 1 -or $record[0].kind -ne 'data_files') { throw 'Input-file plusarg must reference a declared SHA256-validated data file' }
+            # xsim forwards these through Tcl: forward slashes preserve Windows paths.
+            $simArgs+=@('-testplusarg',($property.Name+'='+$record[0].path.Replace('\','/')))
+        } }
+        if ($m.simulation.plusarg_outputs) { foreach ($property in $m.simulation.plusarg_outputs.PSObject.Properties) {
+            if ($property.Name -notmatch '^[A-Za-z_][A-Za-z0-9_]*$' -or -not $plusKeys.Add($property.Name)) { throw 'Invalid/duplicate output-file plusarg key' }
+            $outputPath=if ([IO.Path]::IsPathRooted([string]$property.Value)) { [IO.Path]::GetFullPath([string]$property.Value) } else { [IO.Path]::GetFullPath((Join-Path $RunDir ([string]$property.Value))) }
+            if (-not (Within $outputPath $RunDir) -or $outputPath.Equals((Join-Path $RunDir 'result.json'),[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $outputPath)) { throw 'Output-file plusarg must be a new nonreserved path inside RunDir' }
+            New-Item -ItemType Directory -Path (Split-Path -Parent $outputPath) -Force | Out-Null
+            $simArgs+=@('-testplusarg',($property.Name+'='+$outputPath.Replace('\','/')))
+        } }
+        $output=Tool 'xsim' $simArgs $working $seconds
         if ($m.simulation.failure_regex -and $output -match [string]$m.simulation.failure_regex) { throw 'Simulation failure pattern matched' }
         if ($m.simulation.kind -eq 'generated_ordinary') {
             if (-not $m.simulation.success_regex) { throw 'Ordinary generated TB requires an explicit observed success_regex' }
