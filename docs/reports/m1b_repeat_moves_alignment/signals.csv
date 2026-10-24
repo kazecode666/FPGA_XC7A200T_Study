@@ -64,4 +64,5 @@ rejected_count,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,21,double,off,2
 segment_id,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,22,double,off,2,9.9999999999989e-05,12001
 command_received_s,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,23,double,off,2,9.9999999999989e-05,12001
 move_interrupted,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,24,double,off,2,9.9999999999989e-05,12001
+trajectory_config,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Core,25,double,off,2,9.9999999999989e-05,12001
 target_mm,PMLSM_PI_FOC_Float_Baseline/Simple_Host/Host_Target_mm,1,double,off,2,9.9999999999989e-05,12001

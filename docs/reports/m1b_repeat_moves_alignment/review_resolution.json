@@ -1,0 +1,13 @@
+{
+  "review_head": "5cc8981ba23fe1b3b79a06bcc507bc8befceafe5",
+  "critical_findings": 0,
+  "important_findings": 1,
+  "finding": "P2 saved segment preview used current Base trajectory parameters",
+  "resolution": "Host logs actual trajectory_config; historical segment reads configuration at its start; live preview reads Host snapshot; legacy missing config errors explicitly",
+  "red_log": ".runtime/m1b_20261024/review_preview_red.log",
+  "green_log": ".runtime/m1b_20261024/review_stable_source_green.log",
+  "fresh_log": ".runtime/m1b_20261024/review_fresh_green.log",
+  "green": true,
+  "controller_math_changed": false,
+  "additional_full_review_claimed": false
+}

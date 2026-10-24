@@ -65,9 +65,9 @@ Ready沿用实际.02 mm窗+1e-9浮点比较容差，在原位置事件上连续5
 
 [中文指南](../../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)包含一次init/Run、Ready→草稿→切换发送、绝对10→20→5、三模式停止后选择、PWM/Stop差异、可选对齐Start/Reset和中断限制。运行/暂停预览读取当前锁存段；停止默认预览新首段，显式segment读取out最后一段；都复用原轨迹且不init。
 
-- 正常保存模型直接Run：66个唯一日志名，原41个全保留；id_ref/iq_ref改为最终选择后真实FOC参考，选择前另用before_alignment名字记录。theta_true/control与控制Park电流独立。
+- 正常保存模型直接Run：67个唯一日志名，原41个全保留；id_ref/iq_ref改为最终选择后真实FOC参考，选择前另用before_alignment名字记录。theta_true/control与控制Park电流独立。
 - [信号表](../../docs/reports/m1b_repeat_moves_alignment/signals.csv)按实际日志时间导出：speed_memory/x_speed为1 ms；Host/命令/状态100 µs全采；物理曲线默认1 µs×100抽取=100 µs。未改plant步长。
-- 97个Goto均local，139个From同父层唯一匹配，活动输入/输出无悬空；内嵌图仍绑定真实Host:1/plant:6，11路Motor_Control_Monitor保留。只整理新增对齐、选择器和显示区域，原FOC/PI/plant内部不全局重排。
+- 102个Goto均local，144个From同父层唯一匹配，活动输入/输出无悬空；内嵌图仍绑定真实Host:1/plant:6，11路Motor_Control_Monitor保留。只整理新增对齐、选择器和显示区域，原FOC/PI/plant内部不全局重排。
 - 修订前标准参考12路在共同时间戳上最大误差0；原9类电流/速度/位置正负、理想死区、负载、PWM/PI复位及plant步长检查共240指标全部通过，使用原M1A容差。新结果写独立目录，没有覆盖旧M1A报告。
 - 独立MATLAB进程只复制六个必需文件运行，无旧MAT/旧模型/FPGA变量依赖，1.2 s末位置仍.9849676863605962 mm。实际点位段中PWM关闭另验中断、非Ready及应用电压零。
 
@@ -87,10 +87,11 @@ Ready沿用实际.02 mm窗+1e-9浮点比较容差，在原位置事件上连续5
 2. 源物理初次观测误把Model Reference输出8/9/10当id/iq/角度，实际是duty，结果无效。重读实际Outport编号3/4/5后独立重跑取得上述源物理结果；错误原始MAT/JSON留runtime，不作物理失败结论。
 3. 迁移编译中遇Signal IC冲突、混合double/boolean逻辑及函数调用分支的输入依赖：保留原Signal初值继承，逻辑输入允许混合类型，改明确顺序的独立同相initiator；实际时序和逐拍测试验证。
 4. 旧回归PWM观测沿用100倍抽取，而新增逻辑输出本已100 µs，导致时间轴不等。仅适配新路径日志抽取为1，原控制/容差不动，9场景240指标通过。
-5. 发现复制源chart的一路Angle_Init_EN自带日志，与包装输出重名；取消复制图内部该一路日志，保留明确包装输出，正常66路唯一性重跑通过。
+5. 发现复制源chart的一路Angle_Init_EN自带日志，与包装输出重名；取消复制图内部该一路日志，保留明确包装输出，该项修复时66路唯一性重跑通过，复审新增配置观测后共67路。
 6. 第一次FOC全面观测误标记库内部动作端口，无法仿真；改为对非链接数值路径和库边界观测，保留库内部只读清单。之后0/0为真实观察风险，保留NaN计数而不将其隐去或改0。
 7. 一次MATLAB MCP在默认比较已写出通过CSV后返回界面刷新错误；后续独立接口进程重跑默认12路差0。CLI退出时出现调参模型dirty无法自动关闭的提示，没有保存测试调参到源SLX。测试屏蔽对齐状态日志时Dashboard有无数据警告，仅该开发测试观测被关闭；正常保存模型记录完整。
 8. 一次联合测试在观察Ready后又等待20 ms才发重复目标，实际到位窗已失效，模型正确拒绝，但测试误假定Ready持续保持而失败。原始数据保留aligned_repeat_ready_transient.mat；修正测试为提交前再次等待Ready，并按日志中的接收时Ready断言ACK或未Ready拒绝，不移动控制事件/放宽位置窗。指南已说明Ready可随实际窗口变化。
-9. 没有computer use/鼠标点击、未知非零偏置物理识别、运动中重规划/热切环、完整故障管理、定点实现或HDL生成验收。
+9. 最终独立只读复审未发现Critical，提出1项P2：历史segment预览混用当前Base的轨迹限制。针对性测试先实际失败（Saved segment changed after reinit），随后Host输出并记录trajectory_config，预览读取历史段实际配置，运行中读取同一Host快照。重新init后位置/速度/时间轴不变且与旧日志匹配；接口/运行中预览和六文件fresh重新通过。只加观测，控制与对齐数学未改。新增Host观测线用5对同层local标签整理；[Host布局](../../docs/reports/m1b_repeat_moves_alignment/host_layout.png)。一次与纯显示标签保存并行的测试出现磁盘源更改提示，随后在源稳定后重跑接口验收。
+10. 没有computer use/鼠标点击、未知非零偏置物理识别、运动中重规划/热切环、完整故障管理、定点实现或HDL生成验收。
 
 完整原始MAT、不可覆盖参考、测试日志/失败现场在 `.runtime/m1b_20261024`（不提交大体积数据）；可审查小表/JSON/图像在结果目录。脚本命令、范围及返回结果见[索引](../../docs/reports/m1b_repeat_moves_alignment/README.md)。提交一个开放实现PR等待Review，不自动合并或进入M2。

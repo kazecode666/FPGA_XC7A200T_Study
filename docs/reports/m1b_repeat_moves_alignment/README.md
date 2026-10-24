@@ -14,9 +14,9 @@
 | source_mil_physical_corrected.json | 独立源MIL物理参照；初次错误端口观测已作废 |
 | default_equivalence.csv | 生产改动前参考 vs 当前默认标准场景，12路最大差0 |
 | legacy_regression/closedloop_metrics.csv | 原M1A冻结阈值，9场景及plant步长，共240指标通过 |
-| interface_acceptance.json / signals.csv | 保存模型直接Run：66名唯一、原41名保留；local路由/活动端口、实际采样/绑定、PWM段中断 |
+| interface_acceptance.json / signals.csv | 保存模型直接Run：67名唯一、原41名保留；local路由/活动端口、实际采样/绑定、PWM段中断 |
 | fresh_acceptance.json | 六文件独立运行，无旧MAT/旧模型/FPGA参数依赖 |
-| model_layout.png / control_layout.png | MATLAB导出当前布局，新增区域整理，真实内嵌曲线绑定保留 |
+| model_layout.png / control_layout.png / host_layout.png | MATLAB导出当前布局，新增区域整理，真实内嵌曲线绑定保留 |
 | foc_blocks.csv / foc_parameters.csv / foc_compiled_interface.json / foc_core_preservation.json | 实际FOC模块/库/参数/状态与编译类型；无显式Vdc/enable端口 |
 | foc_observed_ranges.csv / foc_scene_ranges.csv | 170数值端口的标准场景范围+代表性live/对齐范围；NaN/Inf另计，不当设计上限 |
 | foc_audit.json | checkhdl返回值检查：1错误/11警告/3消息，DUT层次未兼容；无HDL生成 |
@@ -32,9 +32,9 @@ addpath('D:/Project/FPGA_XC7A200T/simulink模型')
 m1b_verify_point_commands('regression') % D_regression2.log：9场景240指标
 m1b_verify_point_commands('live')       % D_events_corrected.log，running实际绑定提交
 m1b_verify_alignment_reuse             % chart+标称闭环+aligned-live
-m1b_verify_final_interface             % D_interface_final.log
+m1b_verify_final_interface             % review_stable_source_green.log
 % 新进程单独运行以下两项：
-m1a_fresh_float_baseline               % D_fresh.log，六文件隔离
+m1a_fresh_float_baseline               % review_fresh_green.log，六文件隔离
 m1b_foc_readiness_audit                % E_audit_final.log，临时副本；检查完成不是HDL PASS
 ```
 

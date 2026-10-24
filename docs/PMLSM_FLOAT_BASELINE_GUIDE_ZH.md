@@ -68,7 +68,7 @@ preview=preview_PMLSM_reference;           % 停止时默认首段；运行/暂�
 last=preview_PMLSM_reference('segment');   % 停止后读out.logsout的最后锁存段
 ```
 
-两种方式均调用原 `pmlsm_scurve_profile`，包含实际段起点、绝对时间与规划速度，不初始化、不运行电机。运行中的预览只读Host显示用状态；停止后的segment模式要求out来自本模型。若在完成后重新init，默认预览代表新的首段；旧out的segment仍是旧仿真，名称已明确区分。
+两种方式均调用原 `pmlsm_scurve_profile`，包含实际段起点、绝对时间与规划速度，不初始化、不运行电机。运行中的预览只读Host显示用状态；停止后的segment模式要求out来自本模型。若在完成后重新init，默认预览代表新的首段；旧out的segment仍是旧仿真，使用该次Host保存的trajectory_config，不借用重新init后的参数。旧out若缺少该配置会明确报错，不猜测历史参数。
 
 所有Goto均为同父层local、方括号显示；跨子系统只有显式端口。仅整理新增区域，FOC/PI及plant内部布局保留。
 
@@ -93,7 +93,7 @@ s=out.logsout.get('iq_ref').Values;
 figure;plot(s.Time,s.Data);xlabel('s');ylabel('Apeak');
 ```
 
-原41路具名记录保留；`id_ref/iq_ref`为对齐/故障选择之后真正送FOC的参考，新增 `*_ref_before_alignment`记录选择前值。`id_controller/iq_controller`为控制角下Park结果，`id/iq`为plant真实坐标；角度日志区分 `theta_control_rad/theta_true_rad`。新增段起点/时间、接受计数、拒绝计数、Ready/Busy/中断及原对齐6路记录。`speed_memory/x_speed`实测记录周期是1 ms，不能写成100 µs。完整[信号表](reports/m1b_repeat_moves_alignment/signals.csv)给出来源、抽取及实际时间戳。
+原41路具名记录保留；`id_ref/iq_ref`为对齐/故障选择之后真正送FOC的参考，新增 `*_ref_before_alignment`记录选择前值。`id_controller/iq_controller`为控制角下Park结果，`id/iq`为plant真实坐标；角度日志区分 `theta_control_rad/theta_true_rad`。新增trajectory_config保存Vmax/Amax/Jmax/minRamp/Ts_ACR的实际运行快照；新增段起点/时间、接受计数、拒绝计数、Ready/Busy/中断及原对齐6路记录。`speed_memory/x_speed`实测记录周期是1 ms，不能写成100 µs。完整[信号表](reports/m1b_repeat_moves_alignment/signals.csv)给出来源、抽取及实际时间戳。
 
 API运行中提交、暂停/继续及保存绑定的验收与鼠标点击分开报告；没有自动鼠标点击。布局图是MATLAB模型导出，具名CSV是API导出，均不冒充SDI侧栏截图。
 
