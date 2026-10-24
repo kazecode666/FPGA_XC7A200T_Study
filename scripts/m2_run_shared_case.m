@@ -1,7 +1,8 @@
-function [out,metadata]=m2_run_shared_case(scene,implementation,plan,trialConfig)
+function [out,metadata]=m2_run_shared_case(scene,implementation,plan,trialConfig,observation)
 % 同一主模型、同一场景；仅内存观测，不保存模型。
 if nargin<3,plan=struct;end
 if nargin<4,trialConfig=[];end
+if nargin<5,observation=struct;end
 root=fileparts(fileparts(mfilename('fullpath')));addpath(fullfile(root,'simulink模型'));m='PMLSM_PI_FOC_Float_Baseline';[modelFolder,modelCleanup]=m2_test_model_files; %#ok<NASGU>
 evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');m2_bind_test_models(modelFolder);load_system(fullfile(modelFolder,[m '.slx']));
 in=Simulink.SimulationInput(m);stop=1.2;target=1;speed=0;pos=1;closed=1;test=0;iq=0;id=0;align=0;start=0;auto=1;dead=1e-6;
@@ -23,7 +24,7 @@ if ~isempty(trialConfig),assert(implementation==1);in=in.setVariable('FOC_Fixed_
 blocks=find_system(m,'LookUnderMasks','all','FollowLinks','off','Type','Block');for k=1:numel(blocks),p=get_param(blocks{k},'PortHandles');for q=p.Outport,if strcmp(get_param(q,'DataLogging'),'on'),set_param(q,'DataLogging','off');end;end;end
 f=Simulink.ID.getFullName([m ':546']);boundary=f;
 if contains(f,'/FOC_Implementation/'),boundary=get_param(f,'Parent');if implementation==1,boundary=[get_param(boundary,'Parent') '/Fixed'];end;end
-b=find_system(boundary,'SearchDepth',1,'BlockType','Inport');for k=1:numel(b),if str2double(get_param(b{k},'Port'))<=8,logport(b{k},1,['in_' get_param(b{k},'Name')],1);end;end
+b=find_system(boundary,'SearchDepth',1,'BlockType','Inport');for k=1:numel(b),if str2double(get_param(b{k},'Port'))<=9,logport(b{k},1,['in_' get_param(b{k},'Name')],1);end;end
 if implementation==1
  load_system(fullfile(modelFolder,'PMLSM_FOC_FixedPoint.slx'));f='PMLSM_FOC_FixedPoint/FOC_DUT';fb=find_system('PMLSM_FOC_FixedPoint','LookUnderMasks','all','FollowLinks','off','Type','Block');for k=1:numel(fb),p=get_param(fb{k},'PortHandles');for q=p.Outport,set_param(q,'DataLogging','off');end;end
 end
@@ -35,6 +36,10 @@ for k=1:numel(sid),d=1;if sid(k)==191,d=100;end
  logport(path,port(k),names{k},d);
 end
 core=[m '/Simple_Host/Host_Core'];for jj=[12 13 14 15 16 17 18 19 20 21 22 23 24],labels={'target_accepted_mm','move_busy','in_position','command_status','segment_start_mm','segment_start_s','trajectory_done','move_ready','accepted_count','rejected_count','segment_id','command_received_s','move_interrupted'};logport(core,jj,labels{jj-11},1);end
+if isfield(observation,'mode')
+ m2_log_review_observations(m,f,observation.mode);
+ if isfield(observation,'intervals'),in=in.setModelParameter('LoggingIntervals',observation.intervals);end
+end
 out=sim(in);metadata=struct('scene',scene,'implementation',implementation,'stop_s',stop,'version',version,'process',matlabProcessID,'sample_s',1e-4,'Udc',48,'source_saved',false,'test_model_folder',modelFolder,'trial_config_applied',~isempty(trialConfig));close_system(m,0);if bdIsLoaded('PMLSM_FOC_FixedPoint'),close_system('PMLSM_FOC_FixedPoint',0);end;
 end
 function logport(b,i,name,d)

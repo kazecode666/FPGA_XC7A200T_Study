@@ -1,0 +1,11 @@
+{
+  "pass_for_frozen_DUT_output_budgets": true,
+  "samples": 40001,
+  "start_s": 0,
+  "stop_s": 4,
+  "zero_initial_PI_and_AW": true,
+  "all_nine_inputs_actual_logged": true,
+  "original_replay_vs_actual_Float_max": 0,
+  "closed_loop_acceptance_pass": false,
+  "closed_loop_sign_causality_fully_proven": false
+}

@@ -1,0 +1,11 @@
+{
+  "windows": 3,
+  "actual_logged_states": true,
+  "time_shift_s": 0,
+  "whole_simulation_start_s": 0,
+  "full_simulation_stop_s": 4,
+  "plant_sample_s": 1E-6,
+  "FOC_sample_s": 0.0001,
+  "PWM_update_sample_s": 5E-5,
+  "window_logging_vs_full_run_max": 0
+}

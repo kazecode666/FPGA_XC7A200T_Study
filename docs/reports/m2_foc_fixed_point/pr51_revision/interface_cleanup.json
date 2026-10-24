@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "injected_identifier": "M2:INJECTED_INTERFACE_FAILURE",
+  "reference_closed_after_exception": true,
+  "same_process_name_reused": true,
+  "following_reference_simulated_samples": 5,
+  "unsaved_sentinel_preserved": true,
+  "closed_all_models": false,
+  "process": 29096
+}

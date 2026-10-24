@@ -1,0 +1,34 @@
+{
+  "first_branch_s": 0.132679,
+  "centers_s": [
+    0.132679,
+    2.3657999999999997,
+    2.3402
+  ],
+  "window_labels": [
+    "first_branch",
+    "peak_iq",
+    "peak_v_mmps"
+  ],
+  "intervals_s": [
+    [
+      0.131679,
+      0.133679
+    ],
+    [
+      2.3648,
+      2.3667999999999996
+    ],
+    [
+      2.3392,
+      2.3411999999999997
+    ]
+  ],
+  "window_halfwidth_s": 0.001,
+  "original_failure_reproduced_max": 0,
+  "same_command_and_ready_samples": true,
+  "candidate_count_this_checkpoint": 0,
+  "acceptance_pass": false,
+  "curves_shifted": false,
+  "budget_relaxed": false
+}

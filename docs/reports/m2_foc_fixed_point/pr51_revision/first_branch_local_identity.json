@@ -1,0 +1,18 @@
+{
+  "time_s": 0.132679,
+  "phase": "B",
+  "threshold_A": 0.0001,
+  "Vdc_V": 48,
+  "i_float_A": 0.0001000114731266986,
+  "i_fixed_A": 9.9995964554281113E-5,
+  "actual_sign_float": 1,
+  "actual_sign_fixed": 0,
+  "delta_d_float": 0.0099999999999999985,
+  "delta_d_fixed": 0,
+  "last_PWM_update_float_s": 0.13265000000000002,
+  "last_PWM_update_fixed_s": 0.13265000000000002,
+  "applied_duty_difference": -6.7575467443958814E-9,
+  "pole_voltage_difference_V": 0.4799996756377567,
+  "pole_equation_residual_V": 4.9960036108132044E-16,
+  "scope": "local unsaturated branch identity only; not full closed-loop attribution"
+}
