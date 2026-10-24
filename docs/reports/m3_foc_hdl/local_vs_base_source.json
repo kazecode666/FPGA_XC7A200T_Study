@@ -1,0 +1,71 @@
+[
+  {
+    "file": "simulink模型/design_PMLSM_three_loop.m",
+    "same_bytes_as_pr52_base": true,
+    "local_sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2",
+    "base_sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2",
+    "same_lf_normalized_text": true
+  },
+  {
+    "file": "simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m",
+    "same_bytes_as_pr52_base": false,
+    "local_sha256": "5ab7a40613a672b6805ec15dd9ef394fa1aaa0958ec1b9a3ecbbdf1e0a00a016",
+    "base_sha256": "d2c8313c94cbc3c177aca7496fb85a80a41f033ad2274d3e818e7622ad9e66d2",
+    "same_lf_normalized_text": true
+  },
+  {
+    "file": "simulink模型/m1a_require_float_init.m",
+    "same_bytes_as_pr52_base": false,
+    "local_sha256": "15cbf8a0bad430eafcff1ce900947589112ecadf137a595a4446a385e1c35fcf",
+    "base_sha256": "0d5610e8737c25e07aa34e76503fd46f7e94071e2164724eeb33c48f3c91eba9",
+    "same_lf_normalized_text": true
+  },
+  {
+    "file": "simulink模型/pmlsm_foc_fixed_config.m",
+    "same_bytes_as_pr52_base": false,
+    "local_sha256": "27008b96a8ea04f68619c39426bc74218b1a96f5059a4959b9e4ca46288aebe1",
+    "base_sha256": "ad3201a44f42c74a0c4fc59ff9229b6c9225736d420e351ab86f18a9863086ae",
+    "same_lf_normalized_text": true
+  },
+  {
+    "file": "simulink模型/PMLSM_FOC_FixedPoint.slx",
+    "same_bytes_as_pr52_base": false,
+    "local_sha256": "be5e04bf659e5294c6270d36059ae4a9e0fefc5f0448079e67681aa8f1addcf7",
+    "base_sha256": "6f08cccd11a12b279e76bef27586a6787a0d1ef0de9e52943b200128c87df1b7",
+    "changed_archive_members": [],
+    "same_expanded_members": true
+  },
+  {
+    "file": "simulink模型/PMLSM_PI_FOC_Float_Baseline.slx",
+    "same_bytes_as_pr52_base": false,
+    "local_sha256": "b27a9083897d932b021d91613799a226748a0be6fc0f50bf4a5cae62aec229dd",
+    "base_sha256": "f53a8356a9591b410a3734404b5d4d6afaa2f7e360531c7154a44be996291fb4",
+    "changed_archive_members": [
+      "metadata/coreProperties.xml",
+      "simulink/blockDiagram.json",
+      "simulink/systems/system_191.xml",
+      "simulink/systems/system_1993.xml",
+      "simulink/systems/system_2110.xml",
+      "simulink/systems/system_2184.xml",
+      "simulink/systems/system_2328.xml",
+      "simulink/systems/system_505.xml",
+      "simulink/systems/system_546.xml",
+      "simulink/systems/system_root.xml"
+    ],
+    "same_expanded_members": false
+  },
+  {
+    "file": "simulink模型/pmlsm_point_move_step.m",
+    "same_bytes_as_pr52_base": false,
+    "local_sha256": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b",
+    "base_sha256": "5597af6b91464211b1eb0007422d237257b3741e7eac3753834b92dad256e156",
+    "same_lf_normalized_text": true
+  },
+  {
+    "file": "simulink模型/pmlsm_scurve_profile.m",
+    "same_bytes_as_pr52_base": true,
+    "local_sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b",
+    "base_sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b",
+    "same_lf_normalized_text": true
+  }
+]

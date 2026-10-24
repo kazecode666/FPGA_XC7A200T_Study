@@ -1,0 +1,51 @@
+[
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用",
+    "type": "block",
+    "message": "模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+  },
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和",
+    "type": "block",
+    "message": "模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+  },
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项",
+    "type": "block",
+    "message": "模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+  },
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2\nCalculate/Fcn1/Defined_Quotient",
+    "type": "block",
+    "message": "为 Defined_Quotient 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:ShiftAddDefaultDivRecip"
+  },
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2\nCalculate/Fcn2/Defined_Quotient",
+    "type": "block",
+    "message": "为 Defined_Quotient 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:ShiftAddDefaultDivRecip"
+  },
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ\nCalculate/Math\nFunction",
+    "type": "block",
+    "message": "为 Math\nFunction 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:ShiftAddDefaultDivRecip"
+  },
+  {
+    "path": "PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Divide",
+    "type": "block",
+    "message": "为 Divide 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。",
+    "level": "Message",
+    "MessageID": "hdlcoder:validate:ShiftAddDefaultDivRecip"
+  }
+]

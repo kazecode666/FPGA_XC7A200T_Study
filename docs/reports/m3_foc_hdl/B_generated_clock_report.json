@@ -1,0 +1,95 @@
+{
+  "PhaseCycles": [
+    274,
+    274,
+    274
+  ],
+  "clock_report": {
+    "modelBaseRate": 2e-08,
+    "dutBaseRate": 2e-08,
+    "overSampleRequest": 5000,
+    "clockData": {
+      "name": "ce_out",
+      "sampleTime": 2e-08,
+      "ratio": 1,
+      "domain": -1
+    },
+    "inData": [
+      {
+        "signalName": "ia",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "ib",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "ic",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "theta_e",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "omega_e",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "iq_ref",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "id_ref",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "PI_Reset_EN",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      },
+      {
+        "signalName": "Vdc_V",
+        "clockingName": "(no clock)",
+        "sampleTime": 0.0001,
+        "domain": -1
+      }
+    ],
+    "outData": [
+      {
+        "signalName": "duty_u_cmd",
+        "clockingName": "ce_out",
+        "sampleTime": 2e-08,
+        "domain": -1
+      },
+      {
+        "signalName": "duty_v_cmd",
+        "clockingName": "ce_out",
+        "sampleTime": 2e-08,
+        "domain": -1
+      },
+      {
+        "signalName": "duty_w_cmd",
+        "clockingName": "ce_out",
+        "sampleTime": 2e-08,
+        "domain": -1
+      }
+    ],
+    "clockEnableData": []
+  }
+}
