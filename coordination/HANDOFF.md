@@ -1,6 +1,6 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-24。** PR48任务已在 `codex/m1b-repeat-moves-alignment` 增量执行A—E，起点 `main@9b63e9a`。实际SLX/脚本、[整合验收](reports/m1b_repeat_moves_and_alignment.md)和[FOC只读准备](../docs/FOC_FIXED_POINT_READINESS.md)随开放实现PR等待Review；不自动合并或启动M2。
+**当前更新：2026-10-24。** PR48任务已在 `codex/m1b-repeat-moves-alignment` 增量执行A—E，起点 `main@9b63e9a`。实际SLX/脚本、[整合验收](reports/m1b_repeat_moves_and_alignment.md)和[FOC只读准备](../docs/FOC_FIXED_POINT_READINESS.md)随[PR49](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/49)等待Review；不自动合并或启动M2。
 
 ## 当前执行入口
 

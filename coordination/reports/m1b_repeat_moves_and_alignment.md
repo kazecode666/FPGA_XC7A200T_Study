@@ -1,5 +1,7 @@
 # M1B连续点位、原对齐与只读FOC准备验收
 
+实现PR：[PR49](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/49)，open、非draft、未合并。
+
 2026-10-24，原checkout `D:/Project/FPGA_XC7A200T`，分支 `codex/m1b-repeat-moves-alignment`。起点为已合并[PR48](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/48)，`main@9b63e9ae1e17901b663f3cf82290363fa1bfdbaf`；PR48只有任务/交接文档，未发现追加评论。依据[任务书](../tasks/m1b_repeat_moves_and_alignment.md)连续执行A—E。本报告区分模型行为、源图等价、标称物理验证、UI/API及HDL准备结果。
 
 ## 来源和本地改动保护

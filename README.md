@@ -2,7 +2,7 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-24。** 已按PR48任务在原浮点主线完成M1B增量：同一次Run连续绝对点位、原MIL可选对齐、操作/日志回归及FOC只读准备。实际SLX、脚本和[验收报告](coordination/reports/m1b_repeat_moves_and_alignment.md)随开放实现PR等待Review；未自动合并或进入M2。
+**路线更新：2026-10-24。** 已按PR48任务在原浮点主线完成M1B增量：同一次Run连续绝对点位、原MIL可选对齐、操作/日志回归及FOC只读准备。实际SLX、脚本和[验收报告](coordination/reports/m1b_repeat_moves_and_alignment.md)随[PR49](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/49)等待Review；未自动合并或进入M2。
 
 已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
