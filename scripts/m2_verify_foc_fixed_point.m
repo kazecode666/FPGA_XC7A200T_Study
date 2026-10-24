@@ -14,6 +14,8 @@ if strcmp(stage,'source')
  result=struct('version',version,'process',matlabProcessID,'pass',true,'scenes',rows,'source_immutable',true);
 elseif strcmp(stage,'all')
  result=struct;for name={'interface','types','unit','closedloop','hdlcheck','fresh'},result.(name{1})=m2_verify_foc_fixed_point(name{1});end;return
+elseif strcmp(stage,'interface')
+ result=m2_test_foc_interface;return
 else
  assert(isfile(fullfile(root,'simulink模型/PMLSM_FOC_FixedPoint.slx')),'M2:FIXED_MODEL_MISSING','尚无独立FOC实现源。');error('M2:STAGE_PENDING','阶段%s尚待实现。',stage);
 end

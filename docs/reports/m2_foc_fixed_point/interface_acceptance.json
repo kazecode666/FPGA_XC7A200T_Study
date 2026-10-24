@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "rows": 108,
+  "trigger_parent_error_removed": true,
+  "double_checks": [
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT",
+      "type": "model",
+      "message": "来自相同原子子系统的 HDL 代码只能在优化配置参数 '默认参数行为' 设置为 '内联' 时复用。",
+      "level": "Warning",
+      "MessageID": "hdlcoder:engine:ReuseRequiresInvariantConstants"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用",
+      "type": "block",
+      "message": "模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+      "level": "Message",
+      "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和",
+      "type": "block",
+      "message": "模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+      "level": "Message",
+      "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项",
+      "type": "block",
+      "message": "模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+      "level": "Message",
+      "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty\nCalculate/Multiport\nSwitch",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty\nCalculate/Multiport\nSwitch1",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Duty\nCalculate/Multiport\nSwitch2",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector\nCaculate/Switch",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector\nCaculate/Switch1",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/Sector\nCaculate/Switch2",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2\nCalculate/Multiport\nSwitch",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2\nCalculate/Multiport\nSwitch1",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2\nCalculate/Switch",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2\nCalculate/Switch1",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    }
+  ],
+  "version": "26.2.0.3386108 (R2026b)"
+}
