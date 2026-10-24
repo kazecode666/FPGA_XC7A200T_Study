@@ -1,0 +1,28 @@
+{
+  "frozen_before_fixed_implementation": true,
+  "structural_max": {
+    "duty": 1e-12,
+    "voltage_state_V": 1e-10,
+    "events": "exact"
+  },
+  "unit": {
+    "duty_max": 0.0001,
+    "duty_rmse": 2e-05,
+    "voltage_max_V": 0.01,
+    "voltage_rmse_V": 0.002
+  },
+  "closedloop": {
+    "current_max_A": 0.005,
+    "current_rmse_A": 0.001,
+    "position_max_mm": 0.005,
+    "position_rmse_mm": 0.001,
+    "speed_max_mmps": 0.1,
+    "speed_rmse_mmps": 0.02
+  },
+  "deadband_mm": 0.02,
+  "float_margin_mm": 1e-09,
+  "unexpected_overflow_or_saturation": 0,
+  "undefined_candidate_values": 0,
+  "input_event_times": "same; no shifting",
+  "scope": "engineering verification budgets, not hardware limits"
+}
