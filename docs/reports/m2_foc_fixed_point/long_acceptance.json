@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "duration_s": 60,
+  "samples": 600001,
+  "error_input_A": 5.9604644775390625E-8,
+  "fixed_step_V": 7.0631358539685607E-8,
+  "final_integral_V": 0.042378815123811364,
+  "recursion_max_V": 0,
+  "unexpected_numeric_overflow_or_saturation": 0,
+  "diagnostics": "wrap/saturation/constant-overflow:error",
+  "zero_initial_state": true,
+  "unlimited_duration_claim": false
+}

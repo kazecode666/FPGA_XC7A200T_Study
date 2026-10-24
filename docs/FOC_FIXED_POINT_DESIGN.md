@@ -32,4 +32,12 @@
 
 ## 后续实际实现映射和结果
 
-D—F完成后补入实际编译类型、算子映射、状态/量化/闭环/兼容性结果；本节不预写通过。没有HDL/C生成或Vivado授权。
+完整定点通路保留原Gain/Sum/Product、PI和5个UnitDelay；原向量Fcn分解为显式Demux/Gain/Sum，圆限幅保留Sqrt/Divide/MinMax。新增三路显式DTC只编码无符号command duty；不是只将浮点输出量化。Clarke、Park、dq PI/前馈、圆限幅/AW、反Park和SVPWM的活动编译端口全为fixed/integer/boolean，DataTypeOverride=Off。
+
+Park/InversePark继续用同一Motor Control Blockset库的固定类型实现、同一1024配置和原rad包角/插值，不改成另一套三角算法。库内部类型由输入Angle类型派生，实际逐端口见compiled_types.csv；其内部Simplest/indexing Floor沿用库语义，不以未使用的自定义Trig/Phase类型冒充实际采用。外围缩位Convergent，唯SqrtBitset经实际checkhdl证实不支持Convergent，改为Floor、量子2^-40 V，单列工具适配；不加周期延迟。
+
+12000拍种子20261024有界向量：三相duty总max差2.883e-7，限幅电压max差7.159e-6 V；入口量化与已量化输入的内部误差分别列unit_metrics.csv。扇区差0，PI递推最大残差一个Work LSB=9.095e-13 V，前拍AW残差0。12/24/60 V各6000拍通过；60 s/600001拍、1个电流LSB误差积分到.042378815 V，递推差0，未发生意外溢出/饱和。全分支有限，负例在量化前明确拒绝。不是仅短波形证明无限时长。
+
+共享模型使用官方convertToVariantSubsystem形成停止后Float/Fixed选择；原FOC仍为内层8输入参考，新定点经Normal Model Reference唯一引用。引用模型须FixedStep=auto、SampleTimeConstraint=STIndependent且所有输入继承；调用者的100us function-call决定更新，同拍算法没有新增UnitDelay。独立向量测试仅显式给100us仿真调度，不改数据类型。原已量化系数KiTs仍来自当前100us参数；这不是任意周期可运行声明。
+
+没有HDL/C生成或Vivado授权。最终兼容性、共享闭环与局部布局另见整合报告；M2同拍数值完成不证明FPGA单时钟周期可完成。

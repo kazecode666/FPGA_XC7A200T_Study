@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "version": "26.2.0.3386108 (R2026b)",
+  "samples": 12000,
+  "seed": 2.0261024E+7,
+  "floating_numeric_ports": 0,
+  "DataTypeOverride": "Off",
+  "wrap_and_saturation_diagnostic": "error",
+  "unexpected_numeric_overflow_or_saturation": 0,
+  "all_logged_branches_finite": true,
+  "same_timestamp": true,
+  "state_recursion_max_V": [
+    [
+      9.0949470177292824E-13,
+      0
+    ],
+    [
+      9.0949470177292824E-13,
+      0
+    ]
+  ],
+  "sector_differences": 0,
+  "negative_inputs_rejected": [
+    "nonfinite",
+    "bus_zero",
+    "current_overrange"
+  ]
+}
