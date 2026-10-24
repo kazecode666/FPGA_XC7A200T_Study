@@ -39,9 +39,78 @@ if strcmp(stage,'baseline')
  fid=fopen(fullfile(folder,'baseline_behavior.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);
  fprintf('M1B_BASELINE_CAPTURED repeat_supported=%d\n',result.complete_repeat_moves_supported);return
 end
-error('M1B:POINT_COMMANDS_PENDING','当前模型尚无已验收的提交/分段合同，保留此RED证据。');
+if strcmp(stage,'all')
+ result=struct('regression',m1b_verify_point_commands('regression'),'live',m1b_verify_point_commands('live'));return
+elseif strcmp(stage,'live')
+ result=run_point_live(root,false);
+elseif strcmp(stage,'regression')
+ result=test_point_helper;
+else
+ error('M1B:STAGE','未知阶段');
+end
+fid=fopen(fullfile(folder,['point_' stage '.json']),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);
+fprintf('M1B_POINT_%s_PASS\n',upper(stage));
 end
 function decimate(m,value)
 b=find_system(m,'LookUnderMasks','all','FollowLinks','off','Type','Block');
 for k=1:numel(b),p=get_param(b{k},'PortHandles');for q=p.Outport,if strcmp(get_param(q,'DataLogging'),'on'),set_param(q,'DataLoggingDecimateData','on','DataLoggingDecimation',num2str(value));end;end;end
+end
+
+function result=run_point_live(root,alignment)
+m='PMLSM_PI_FOC_Float_Baseline';evalin('base','init_PMLSM_PI_FOC_Float_Baseline;Host_Target_mm=0.1;M1A_StopTime_s=20;Host_Traj_Vmax=5;Host_Traj_Amax=50;');
+if alignment,evalin('base','Alignment_Enable=1;Init_Start=1;Host_AutoStart_EN=0;');end
+if ~bdIsLoaded(m),open_system(fullfile(root,'simulink模型',[m '.slx']));end
+set_param(m,'EnablePacing','on','PacingRate','0.5');set_param(m,'SimulationCommand','start');startWall=tic;events=struct([]);bit=0;
+if alignment,targets=[.1 -.1];else,targets=[.2 -.1 -.09];end
+for k=1:numel(targets)
+ wait_ready(m,1,startWall);assert(strcmp(get_param(m,'SimulationStatus'),'running'));
+ t0=get_param(m,'SimulationTime');set_param([m '/Simple_Host/Host_Target_mm'],'Value',num2str(targets(k),17));bit=1-bit;set_param([m '/Simple_Host/Host_Move_Request'],'Value',num2str(bit));
+ event=struct('target_mm',targets(k),'submit_sim_s',t0,'running',true,'request_bit',bit);if k==1,events=event;else,events(k)=event;end
+ wait_ready(m,0,startWall);wait_ready(m,1,startWall);
+ fprintf('M1B_LIVE_TARGET_DONE %.6g at %.9g\n',targets(k),get_param(m,'SimulationTime'));
+end
+finishTime=get_param(m,'SimulationTime');assert(finishTime>events(end).submit_sim_s);set_param(m,'SimulationCommand','stop');
+out=evalin('base','out');folder=fullfile(root,'.runtime','m1b_20261024');if alignment,name='aligned_live';else,name='point_live';end;save(fullfile(folder,[name '.mat']),'out','events','finishTime','-v7.3');
+accepted=out.logsout.get('accepted_count').Values;expected=numel(targets)+double(~alignment);assert(max(accepted.Data)==expected);
+latencies=zeros(size(events));acceptedTimes=[];
+for k=1:numel(events)
+ v=out.logsout.get('target_accepted_mm').Values;j=find(v.Time>=events(k).submit_sim_s & abs(v.Data-targets(k))<1e-10,1);assert(~isempty(j));latencies(k)=v.Time(j)-events(k).submit_sim_s;acceptedTimes(k)=v.Time(j);assert(latencies(k)>=-1e-9&&latencies(k)<=2e-4);events(k).accepted_sim_s=v.Time(j);
+end
+for n={'x_mm','x_ref_mm','segment_start_mm','segment_start_s','target_accepted_mm','move_ready'},v=out.logsout.get(n{1}).Values;assert(all(isfinite(v.Data(:))));end
+% Formula check uses exactly logged segment time, not global simulation time.
+xr=out.logsout.get('x_ref_mm').Values;ss=out.logsout.get('segment_start_mm').Values;tt=out.logsout.get('segment_start_s').Values;ta=out.logsout.get('target_accepted_mm').Values;
+assert(isequal(xr.Time,ss.Time)&&isequal(xr.Time,tt.Time)&&isequal(xr.Time,ta.Time));maximum=0;
+for j=1:10:numel(xr.Time),expected=ss.Data(j)+pmlsm_scurve_profile(xr.Time(j)-tt.Data(j),ta.Data(j)-ss.Data(j),5,50,1000,.1);maximum=max(maximum,abs(xr.Data(j)-expected));end
+assert(maximum<1e-10);
+result=struct('pass',true,'single_start_count',1,'events',events,'accepted_times',acceptedTimes,'max_latency_s',max(latencies),'max_formula_error_mm',maximum,'finish_sim_s',finishTime,'UI_mouse_clicked',false,'ready_observer','saved Host display-only DataStore at100us');
+set_param([m '/Simple_Host/Host_Target_mm'],'Value','Host_Target_mm');set_param([m '/Simple_Host/Host_Move_Request'],'Value','Host_Move_Request');set_param(m,'EnablePacing','off');
+end
+function wait_ready(m,wanted,startWall)
+path=[m '/Simple_Host/Move_Ready_Live_State'];
+while toc(startWall)<180
+ drawnow;pause(.01);assert(strcmp(get_param(m,'SimulationStatus'),'running'),'M1B:LIVE_STOPPED','等待Ready时仿真提前停止。');
+ r=get_param(path,'RuntimeObject');value=double(r.Dwork(1).Data);if value==wanted,return;end
+end
+error('M1B:LIVE_TIMEOUT','Ready等待超过有限180s，未宣称通过。');
+end
+
+function result=test_point_helper
+cfg=[1e-4 .01 .05 5 50 1000 .1 .02 5 1];s=zeros(1,22);x=0;req=0;target=.1;events=[];phase=0;busySent=false;
+for k=0:40000
+ t=k*cfg(1);
+ if t>=.12 && ~busySent,target=10;req=1;busySent=true;end
+ if s(21)==1 && phase<5
+  values=[.2 .2 NaN -.1 -.09];target=values(phase+1);req=1-req;phase=phase+1;
+ end
+ before=s;[s,ref,o]=pmlsm_point_move_step(s,t,x,target,req,1,1,0,0,1,cfg);x=ref;
+ if s(11)>before(11),assert(abs(ref-before(4))<1e-12);events(end+1,:)=[t s(4) s(3) s(5) s(11)];end
+ if busySent&&phase==0,expected=pmlsm_scurve_profile(t-.05,.1,5,50,1000,.1);assert(abs(ref-expected)<1e-12);end
+end
+assert(phase==5 && s(11)==4 && s(12)==2 && abs(ref+.09)<1e-12);
+assert(size(events,1)==4);assert(s(21)==1);assert(s(10)==2);
+% Repeated request bit does not resubmit; invalid draft never reaches reference.
+assert(all(isfinite(events(:))));
+[xx,v,~,~,~]=pmlsm_scurve_profile(.1,.2,5,50,1000,.1);assert(isfinite(xx)&&isfinite(v)); %#ok<ASGLU>
+result=struct('pass',true,'accepted',s(11),'rejected',s(12),'repeat_ack',true,'busy_consumed',true,'invalid_consumed',true,'absolute_end_mm',ref,'events',events);
+fid=fopen('D:/Project/FPGA_XC7A200T/docs/reports/m1b_repeat_moves_alignment/helper_acceptance.json','w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);disp('M1B_HELPER_PASS');
 end
