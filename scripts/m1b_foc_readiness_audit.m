@@ -13,9 +13,9 @@ for k=1:numel(blocks)
  p=get_param(b,'PortHandles');if strcmp(b,f)||~any(strcmp(direct,b))||any(strcmp(type,{'Goto','From','If','ActionPort','TriggerPort'})),continue;end
  for j=1:numel(p.Outport),if get_param(p.Outport(j),'Line')==-1,continue;end;name=sprintf('audit_%d_%d',k,j);set_param(p.Outport(j),'DataLogging','on','DataLoggingNameMode','Custom','DataLoggingName',name,'DataLoggingDecimateData','off');defs(end+1,:)={name,b,j};end %#ok<AGROW>
 end
-writetable(cell2table(inventory,'VariableNames',{'path','sid','type','library','link_status','parameters'}),fullfile(folder,'foc_blocks.csv'));
+writetable(cell2table(inventory,'VariableNames',{'path','sid','type','library','link_status','parameters'}),fullfile(folder,'foc_blocks.csv'),'QuoteStrings',true);
 vars=Simulink.findVars(m,'SearchReferencedModels','off');rows=cell(0,3);for k=1:numel(vars),users=vars(k).Users;if any(startsWith(users,[f '/'])),try,v=evalin('base',vars(k).Name);if isnumeric(v),rows(end+1,:)={vars(k).Name,mat2str(v,17),strrep(strjoin(users,' | '),newline,' ')};end;catch,end;end;end %#ok<AGROW>
-writetable(cell2table(rows,'VariableNames',{'name','value','users'}),fullfile(folder,'foc_parameters.csv'));
+writetable(cell2table(rows,'VariableNames',{'name','value','users'}),fullfile(folder,'foc_parameters.csv'),'QuoteStrings',true);
 % Documented output form performs compatibility checks without HDL/report generation.
 result=struct('version',version,'process',matlabProcessID,'source_saved',false,'HDL_generated',false,'C_generated',false,'DUT',f,'checkhdl_ran',false,'toolboxes',ver);
 try,checks=checkhdl(f);result.checkhdl_ran=true;result.checkhdl=checks;catch err,result.checkhdl_error=struct('identifier',err.identifier,'message',err.message);end
