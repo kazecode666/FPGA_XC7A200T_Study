@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "files": 34,
+  "source_manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+  "published_manifest_sha256": "c514f3b932b2b546921863105a2e3f790b69b0b3ed0f6016672d877a4d9dbbb9",
+  "current_identity": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/current_publication_identity.json",
+  "final_smoke": "PASS; current and staged Git blob packets independently executed",
+  "publication_checks": {
+    "current_packet": "PASS;17frames/340183checks;34rawbytes/config/8sources equal",
+    "staged_git_blob_packet": "PASS;17frames/340183checks;34rawbytes/config/8sources equal",
+    "source_protection": "PASS; all originally tracked file bytes checked, user models unchanged",
+    "scope": "supplementary packaging checks; full numeric/RTL/OOC results remain independent actual runs"
+  }
+}

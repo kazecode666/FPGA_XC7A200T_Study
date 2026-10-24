@@ -1,0 +1,18 @@
+{
+  "stage": "rtl",
+  "status": "FAIL",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3",
+  "evidence": [],
+  "failures": [
+    {
+      "name": "directed_probe",
+      "mode": "normal",
+      "message": "state_mismatch=27"
+    }
+  ],
+  "manifest_sha256": "0508f74df6b9450753d0b3369870efa6859a23f0edc74bb1a35cef2af42c2b8d",
+  "model_status": "NOT_RUN",
+  "cases": [],
+  "complete_suites": false,
+  "stopped_after_first_failure": true
+}

@@ -1,114 +1,95 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "stage": "acceptance",
-  "run_id": "m3_20261024_001",
-  "status": "FAIL",
-  "accepted": false,
-  "acceptance": "NOT_ACCEPTED",
-  "overall": "FAIL",
-  "reason": "E first unchanged-width OOC completed and fits device, but 20 ns setup estimation fails with WNS -58.833 ns; no acceptance exception applied.",
+  "status": "PASS",
+  "overall": "PASS",
+  "accepted": true,
+  "acceptance": "TECHNICAL_M3_CORE_GATES_PASS_PENDING_PR_REVIEW",
+  "review_status": "WAITING_REVIEW",
+  "candidate_id": "p3",
+  "run_id": "pr53_20261025/p3q",
+  "source_manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+  "published_manifest_sha256": "c514f3b932b2b546921863105a2e3f790b69b0b3ed0f6016672d877a4d9dbbb9",
+  "published_manifest": "generated/m3_foc/manifest.json",
+  "revision_checkpoints": {
+    "R1": {
+      "status": "PASS",
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/critical_path_map.csv"
+    },
+    "R2": {
+      "status": "PASS",
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidate_results.csv"
+    },
+    "R3": {
+      "status": "PASS",
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/model_result.json"
+    },
+    "R4": {
+      "status": "PASS",
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/repro_result.json"
+    }
+  },
   "checkpoints": {
     "A": {
       "status": "PASS",
-      "evidence": "preflight_result.json"
+      "evidence": "docs/reports/m3_foc_hdl/preflight_result.json",
+      "scope": "unchanged source algorithm and original device/time contract; latest source snapshot and revised events in this revision"
     },
     "B": {
       "status": "PASS",
-      "evidence": [
-        "B_generation_result.json",
-        "B_generated_manifest.json",
-        "B_ordinary_xsim_result.json"
-      ]
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/build_manifest.json"
     },
     "C": {
       "status": "PASS",
-      "evidence": "model/model_result.json"
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/model_result.json"
     },
     "D": {
       "status": "PASS",
-      "evidence": "rtl/rtl_result.json"
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/rtl_result.json"
     },
     "E": {
-      "status": "FAIL",
-      "evidence": [
-        "ooc/synth_stage_result.json",
-        "ooc/ooc_result.json"
-      ]
+      "status": "PASS",
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/ooc/ooc_result.json"
     },
     "F": {
       "status": "PASS",
-      "evidence": "repro/repro_result.json"
+      "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/repro_result.json"
     }
   },
-  "source_manifest_sha256": "cfd8b1d7639275f273ed683c83344b02678ada8e8130b805a1ac42b6eda09098",
   "functional_equivalence": {
     "status": "PASS",
-    "scope": "Accepted fixed source to generated model and independent RTL stored-bit/state comparison; ideal-clock digital simulation only.",
-    "model_main_stored_bit_words_compared": 18039,
-    "model_main_bit_mismatch_count": 0,
-    "model_cases": [
-      {
-        "name": "directed_probe",
-        "status": "PASS",
-        "frames": 17,
-        "main_stored_bit_words": 119,
-        "main_bit_mismatch_count": 0,
-        "generated_validation_status": "PASS",
-        "generated_validation_scope": "directed_probe_actual_run"
-      },
-      {
-        "name": "boundary_random",
-        "status": "PASS",
-        "frames": 1024,
-        "main_stored_bit_words": 7168,
-        "main_bit_mismatch_count": 0,
-        "generated_validation_status": "NOT_RUN",
-        "generated_validation_scope": "covered_by_directed_probe"
-      },
-      {
-        "name": "actual_prefix",
-        "status": "PASS",
-        "frames": 1536,
-        "main_stored_bit_words": 10752,
-        "main_bit_mismatch_count": 0,
-        "generated_validation_status": "NOT_RUN",
-        "generated_validation_scope": "covered_by_directed_probe"
-      }
+    "source_gm_frames": [
+      17,
+      1024,
+      1536
     ],
-    "directed_next_state_words_compared": 68,
-    "directed_next_state_commits_compared": 17,
-    "generated_validation_frames": 17,
-    "rtl_positive_cases": 5,
-    "rtl_positive_valid_frames": 2613,
-    "rtl_positive_checks": 52289123,
+    "stored_bit_words_compared": 18039,
+    "next_state_words_compared": 68,
+    "bit_mismatch_count": 0,
+    "native_validation_frames": 17,
+    "long_native_validation": "NOT_RUN; independent exact source/gm comparison performed",
+    "positive_rtl_frames": 2613,
+    "positive_rtl_checks": 52289123,
     "expected_negative_cases_rejected": 2,
-    "negative_tool_failures_are_expected": true
-  },
-  "ideal_clock_cycle_contract": {
-    "status": "PASS",
-    "assumed_clock_period_ns": 20,
-    "frame_clocks": 5000,
-    "core_output_phase_clocks": 274,
-    "core_output_latency_us_at_assumed_clock": 5.48,
-    "reserved_external_output_commit_clocks": 1,
-    "external_output_commit_register_implemented": false,
-    "normal_submit_cycle_under_reserved_budget": 275,
-    "apply_boundary_clocks": 2500,
-    "normal_remaining_margin_clocks": 2225,
-    "normal_remaining_margin_us_at_assumed_clock": 44.5,
-    "ce_pause_is_additional_diagnostic_not_normal_deadline_proof": true,
-    "scope": "Measured digital event order and cycle counts at ideal 20 ns. This does not demonstrate that the device can meet 20 ns."
+    "negative_cycle": 313,
+    "normal_output_phase": 314,
+    "state_xz_protocol_deadline_errors": 0,
+    "all_four_denominator_zero_counts": 0,
+    "IntegerOverflowMsg": "error; no startup exception"
   },
   "physical_20ns_core_estimate": {
-    "status": "FAIL",
-    "synthesis_completed": true,
+    "stage": "core_ooc_synthesis",
+    "completed": true,
     "resources_ok": true,
-    "timing_ok": false,
-    "worst_setup_slack_ns": -58.833,
-    "worst_hold_slack_ns": 0.144,
+    "timing_ok": true,
+    "part": "xc7a200tfbg484-2",
+    "clock_period_ns": 20,
+    "manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+    "top": "FOC_DUT",
+    "clock_port": "clk",
     "used": {
-      "LUT": 69673,
-      "FF": 73840,
+      "LUT": 70983,
+      "FF": 83278,
       "DSP": 439,
       "BRAM36_equivalent": 0
     },
@@ -118,61 +99,67 @@
       "DSP": 740,
       "BRAM36_equivalent": 365
     },
-    "clock_implementation_signed_off": false,
-    "clock_distribution_delay_and_skew_estimated": false,
+    "worst_setup_slack_ns": 5.317,
+    "worst_hold_slack_ns": 0.135,
+    "no_clock_checks": 0,
+    "unconstrained_internal_endpoints": 0,
+    "combinational_loops": 0,
+    "latch_loops": 0,
+    "latches": 0,
+    "blackboxes": 0,
+    "hierarchical_cells": 176961,
     "external_input_output_timing_signed_off": false,
-    "routed_timing_signed_off": false,
-    "final_fmax_proven": false
+    "place_route_or_bitstream_run": false,
+    "diagnostic": "1"
   },
-  "reproducibility": {
+  "ideal_clock_cycle_contract": {
+    "frame_clocks": 5000,
+    "output_phase": 314,
+    "reserved_output_commit_clocks": 1,
+    "minimum_margin_clocks": 1,
+    "submit_cycle": 315,
+    "apply_boundary_clocks": 2500,
+    "remaining_margin_clocks": 2185,
+    "external_output_commit_register_implemented": false,
+    "external_common_input_capture_implemented": false,
+    "native_frame_valid": false,
+    "pi_old_consumed_pre_edge": 5000,
+    "pi_and_aw_commit_next_frame_post_edge": 1
+  },
+  "repeat": {
     "status": "PASS",
-    "raw_generated_files_compared": 31,
-    "comparison": "exact raw bytes SHA256; no token/path/time exclusions",
+    "raw_files_compared": 34,
     "configuration_equal": true,
-    "frozen_sources_equal": true,
-    "frozen_source_files": 8,
-    "repeat_smoke_status": "PASS",
-    "relocated_smoke_status": "PASS",
-    "ordinary_smoke_is_counted_independent_scoreboard": false
+    "eight_frozen_sources_equal": true,
+    "first_generation_pid": 38664,
+    "caller_pid": 16396,
+    "repeat_pid": 37928,
+    "child_exit_code": 0
   },
   "baseline": {
-    "types": "unchanged accepted Work64/40 and DivideWide72/40",
-    "generated_algorithm_manually_edited": false,
-    "new_pipeline_candidate_sweep_run": false,
-    "acceptance_threshold_relaxed": false
+    "status": "FAIL",
+    "manifest_sha256": "cfd8b1d7639275f273ed683c83344b02678ada8e8130b805a1ac42b6eda09098",
+    "output_phase": 274,
+    "wns_ns": -58.833,
+    "original_raw_reports": "docs/reports/m3_foc_hdl/ooc/",
+    "documents": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/baseline_B3_current_documents/"
   },
-  "not_run": {
-    "full_place_and_route": true,
-    "rtl_motor_joint_simulation": true,
-    "bitstream": true,
-    "hardware_operation": true
-  },
-  "blockers": [
-    {
-      "checkpoint": "E",
-      "kind": "negative_setup_slack",
-      "worst_setup_slack_ns": -58.833,
-      "disposition": "Retain first baseline evidence and submit open implementation PR for Review; any new implementation candidate requires new affected C/D/F gates."
-    }
+  "scope": "M3 standalone core exact numerical/state/RTL and pre-route OOC estimate only; PR53 remains open for Review",
+  "not_verified": [
+    "external IO timing",
+    "place/route timing",
+    "implemented capture/valid/output adapter",
+    "RTL motor cosimulation",
+    "M4",
+    "bitstream",
+    "hardware"
   ],
-  "archive_only_step": {
-    "new_model_or_tool_verification_executed": false,
-    "mat_files_archived": false,
-    "issues": [],
-    "identity_index": "final_evidence_index.json"
-  },
-  "final_review_fixes": {
-    "status": "PASS",
-    "important_fixed": 2,
-    "minor_deferred": 0,
-    "gate_suite": "18/18",
-    "first_generation_pid": 20404,
-    "repeat_pid": 42416,
-    "failing_child_pid": 41988,
-    "failing_child_exit_code": 1,
-    "automatic_PWM_zoh_pairs": 33,
-    "automatic_PWM_applied_pairs": 30,
-    "orchestration_C_D_E_are_stubs_not_FOC_evidence": true,
-    "evidence": "review_fixes/evidence_index.json"
+  "no_acceptance_exception": true,
+  "user_source_and_layout_preserved": true,
+  "publication_checks": {
+    "current_packet": "PASS;17frames/340183checks;34rawbytes/config/8sources equal",
+    "staged_git_blob_packet": "PASS;17frames/340183checks;34rawbytes/config/8sources equal",
+    "source_protection": "PASS; all originally tracked file bytes checked, user models unchanged",
+    "scope": "supplementary packaging checks; full numeric/RTL/OOC results remain independent actual runs"
   }
 }

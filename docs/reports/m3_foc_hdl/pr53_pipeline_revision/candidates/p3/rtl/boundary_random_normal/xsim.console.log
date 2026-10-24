@@ -1,0 +1,21 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 04:24:55 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/m3_snapshot/xsim_script.tcl
+# xsim {m3_snapshot} -testplusarg frames=1024 -testplusarg case_name=boundary_random -testplusarg mode=normal -testplusarg negative_sample=0 -testplusarg output_phase=314 -testplusarg vectors=D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q/boundary_random_normal_e7c5af6c34_run/work/vectors/boundary_random.mem -testplusarg result=D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q/boundary_random_normal_e7c5af6c34_run/scoreboard.json -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+M3_RESULT case=boundary_random mode=normal status=PASS expected=1024 observed=1024 bit=0 state=0 xz=0 protocol=0 deadline=0
+M3_RTL_PASS frames=1024 checks=20491260 bit_mismatch=0 protocol_errors=0 deadline_errors=0
+$finish called at time : 102400051 ns : File "D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q/boundary_random_normal_e7c5af6c34_run/work/testbench/m3_foc_scoreboard.sv" Line 340
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:10:10 . Memory (MB): peak = 246.273 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 130052 KB (Peak: 130052 KB), Simulation CPU Usage: 605343 ms
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 04:35:07 2026...
+

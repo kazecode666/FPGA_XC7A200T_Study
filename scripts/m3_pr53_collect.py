@@ -99,6 +99,9 @@ def main():
             row['ooc_manifest_sha256']=o['manifest_sha256']
             row.update(LUT=o['used']['LUT'],FF=o['used']['FF'],DSP=o['used']['DSP'],BRAM=o['used']['BRAM36_equivalent'])
             row['decision']='PENDING full verification' if o['timing_ok'] and o['resources_ok'] else 'REJECT timing'
+            if o['timing_ok'] and o['resources_ok'] and row['bit_validation']=='full PASS' and row['rtl_validation']=='full PASS' and (run/'repro_result.json').is_file() and read(run/'repro_result.json')['status']=='PASS':
+                row['decision']='KEEP full C/D/E/F PASS'
+                row['deadline']='314 core +1 output budget +1 margin <=2500; external IO/routed timing NOT_PROVEN'
             for file in synth.iterdir():
                 if file.suffix in ['.rpt','.json','.xdc']:copy(file,dest/'ooc'/file.name)
             copy(run/'ooc_001/result.json',dest/'ooc/wrapper_result.json')

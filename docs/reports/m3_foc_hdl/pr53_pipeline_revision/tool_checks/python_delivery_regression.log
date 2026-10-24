@@ -1,0 +1,11 @@
+test_identity_phase_and_state_fail_closed (test_m3_candidate_contract.CandidateContract.test_identity_phase_and_state_fail_closed) ... ok
+test_real_stager_rejects_stale_candidate_phase_and_mapping (test_m3_candidate_contract.CandidateContract.test_real_stager_rejects_stale_candidate_phase_and_mapping) ... ok
+test_compare_and_republish_a_portable_candidate (test_m3_candidate_publication.PortableCandidate.test_compare_and_republish_a_portable_candidate) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.332s
+
+OK
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\pr53_portable_5qw0uan6\first files=3
+M3_REPEAT_IDENTITY_PASS 3
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\pr53_portable_5qw0uan6\second files=3

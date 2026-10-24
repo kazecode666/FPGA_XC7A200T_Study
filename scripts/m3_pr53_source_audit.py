@@ -17,6 +17,7 @@ else:
  allowed.update(['.gitattributes','verification/m3_foc/m3_foc_scoreboard.sv','docs/FOC_HDL_TIMING_CONTRACT.md','docs/PMLSM_FOC_HDL_GUIDE_ZH.md',
    'coordination/HANDOFF.md','coordination/reports/m3_foc_systemverilog_rtl_verification.md',
    'coordination/tasks/pr53_critical_path_pipeline_revision.md','docs/reports/m3_foc_hdl/acceptance_result.json'])
+ allowed.update(['README.md','docs/reports/m3_foc_hdl/cycle_contract.json','docs/reports/m3_foc_hdl/state_mapping.csv','docs/reports/m3_foc_hdl/README.md'])
  unexpected=[n for n in changed if n not in allowed and not n.startswith('generated/m3_foc/')]
  assert not unexpected,'Unrelated tracked bytes changed: '+repr(unexpected)
  (out/'source_protection.json').write_text(json.dumps({'pass':True,'tracked_files_checked':len(old),

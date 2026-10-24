@@ -1,0 +1,8 @@
+{
+  "candidate_id": "p3",
+  "hardware_candidate_count_unchanged": true,
+  "raw_artifacts_and_configuration_equal": true,
+  "original_manifest_sha256": "0508f74df6b9450753d0b3369870efa6859a23f0edc74bb1a35cef2af42c2b8d",
+  "qualified_manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+  "reason": "Qualify the generated rd_3 fast register D-input and next-frame phase1 commit; no source or generated hardware changes"
+}

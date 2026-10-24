@@ -1,0 +1,8 @@
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\pr53_portable_z2ohe87t\first files=3
+M3_REPEAT_IDENTITY_PASS 3
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\pr53_portable_z2ohe87t\second files=3
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.915s
+
+OK

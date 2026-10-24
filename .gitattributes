@@ -5,5 +5,7 @@
 /docs/reports/m3_foc_hdl/** -text whitespace=cr-at-eol
 /docs/reports/m3_foc_hdl/**/*.rpt whitespace=-trailing-space,-blank-at-eof,cr-at-eol
 /docs/reports/m3_foc_hdl/**/*.log whitespace=-trailing-space,-blank-at-eof,cr-at-eol
+/docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/**/generation_reports/*.html whitespace=-trailing-space,-blank-at-eof,cr-at-eol
+/docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/**/ooc/ooc_result.json whitespace=-blank-at-eof,cr-at-eol
 /docs/reports/m3_foc_hdl/ooc/ooc_result.json whitespace=-blank-at-eof,cr-at-eol
 /scripts/m3* -text whitespace=cr-at-eol

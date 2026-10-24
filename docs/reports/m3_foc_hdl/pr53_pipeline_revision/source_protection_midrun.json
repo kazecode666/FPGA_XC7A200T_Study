@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "tracked_files_checked": 2019,
+  "authorized_changed_files": [
+    ".gitattributes",
+    "coordination/tasks/pr53_critical_path_pipeline_revision.md",
+    "scripts/m3_build_scoreboard.py",
+    "scripts/m3_foc_codegen_config.m",
+    "scripts/m3_generate_stage.m",
+    "scripts/m3_lock_manifest.py",
+    "scripts/m3_model_stage.m",
+    "scripts/m3_publish_generated.py",
+    "scripts/m3_repeat_process.m",
+    "scripts/m3_validate_build.m",
+    "scripts/m3_verify_rtl.py",
+    "verification/m3_foc/m3_foc_scoreboard.sv"
+  ],
+  "unexpected_changes": []
+}

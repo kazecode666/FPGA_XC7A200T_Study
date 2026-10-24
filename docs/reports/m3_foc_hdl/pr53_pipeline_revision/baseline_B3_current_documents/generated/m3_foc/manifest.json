@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "root_dir": ".",
+  "dut_top": "FOC_DUT",
+  "tb_top": "FOC_DUT_tb",
+  "clock_port": "clk",
+  "part": "xc7a200tfbg484-2",
+  "clock_period_ns": 20,
+  "runtime_subdir": ".",
+  "design_files": [
+    {
+      "path": "FOC_DUT_pkg.sv",
+      "sha256": "18ff4e703bc3016cab05756a1a0a80c250a18263e915f391b6ceab371826e19e"
+    },
+    {
+      "path": "B0.sv",
+      "sha256": "67143d0018d8a11d08906b6e720eeb3608a6bcc8a128d4093c406273c445bba9"
+    },
+    {
+      "path": "B1.sv",
+      "sha256": "ee5ec5734655b1d0c380646914814eb5a15d8adb06603d873b3d8c55665f2739"
+    },
+    {
+      "path": "B2.sv",
+      "sha256": "c70fe0e26398463a3a14651eb3acb3460362246cfe5a226264d251024bfb3108"
+    },
+    {
+      "path": "Clark.sv",
+      "sha256": "b3135db49fba8643284d36eeeb3b7464170251de12e3b981e110619d14d55156"
+    },
+    {
+      "path": "Defined_Quotient.sv",
+      "sha256": "c3e39493acf5af94f2be30ffb0275e9beee6ddac0322703dda6ee4cdb038cadf"
+    },
+    {
+      "path": "Defined_Quotient_block.sv",
+      "sha256": "04217ab491c951b6f4289d41f462a7704edf3ec4b49b0df0bdd49d3e30c16c77"
+    },
+    {
+      "path": "Divide.sv",
+      "sha256": "d377e97ef39804b7d7217d0974377597058ea48c31572fbca498855f9d48e323"
+    },
+    {
+      "path": "Fcn.sv",
+      "sha256": "7ee7b928116e45c5b1e96cf2f0ead245549172fdbf4333ef87c33deff7dfe873"
+    },
+    {
+      "path": "Fcn1.sv",
+      "sha256": "6720995c20cf2dcc3daf08035c6350d510cc686a2244d5c638583173579861d4"
+    },
+    {
+      "path": "Fcn2.sv",
+      "sha256": "c8a1166e9c1dec5667208bf79b1c3ae97cba6d8751588a6b319ecb186cf5a5ab"
+    },
+    {
+      "path": "Duty_Calculate.sv",
+      "sha256": "4e63ba6fb4e6f203e53b1be88bc1a7cf93ff981810b6d8521f36036e61c45570"
+    },
+    {
+      "path": "Sqrt.sv",
+      "sha256": "5df5c4e81b410fde2718dfd30234362d1bfd0139ebfcf6637cdaacd1cfc17ace"
+    },
+    {
+      "path": "dq_voltage_limiter.sv",
+      "sha256": "0d68aa50b4f5877b717845b302bcc794cf379e798841eed63ebc40496f2c7025"
+    },
+    {
+      "path": "FOC_DUT_tc.sv",
+      "sha256": "c05d0fc8b41536344ffe4aa78575d13c118f6f74e1c5ed74e9d874d4564f28a5"
+    },
+    {
+      "path": "Id.sv",
+      "sha256": "539dc417fc136ff3584bcc81a01ee00777b7087f5f290fc8da89d00d02656b68"
+    },
+    {
+      "path": "InversePark.sv",
+      "sha256": "a4f1ad8ef9ca6c87b6f94ac7060c1eb108e0f4a41bb70604d2c9e933ffb0a048"
+    },
+    {
+      "path": "Iq.sv",
+      "sha256": "12f1165099ff011a070f8df8fbe0210cdb645dfb40b2fb7ecddca059d9a03c69"
+    },
+    {
+      "path": "Park.sv",
+      "sha256": "b8fe1252ee3ffdb9a863f70b7f46581546a559b8d6dc9307c66d56041181a342"
+    },
+    {
+      "path": "N.sv",
+      "sha256": "f9508d4bb35bbfca5e63f382b2ed52fd3cf7b02ad928619b0ca1bb4ff6c41bf2"
+    },
+    {
+      "path": "Sector_Caculate.sv",
+      "sha256": "655180f171c711103225c73081511844a7bf8bce92043773d5b3c8d9c622fc8d"
+    },
+    {
+      "path": "Fcn1_block.sv",
+      "sha256": "5767e131a111222ecfeb630bb0abd3c54a527d7c02fb0eb74fe746d0594653b5"
+    },
+    {
+      "path": "Fcn2_block.sv",
+      "sha256": "48fa0f21b6b0b6e9765733320e3ec7db8841277ae66f1d59e48d7e592c3b2fe4"
+    },
+    {
+      "path": "Fcn_block.sv",
+      "sha256": "7549c749a3ee270b802e10b4364cba5da41f92477dc0ed64c0d495dd28e20c55"
+    },
+    {
+      "path": "T1T2_Calculate.sv",
+      "sha256": "69bb1bf9f6e179c9aebe3c275398a26c870841a7200b12e3b75f6127c12240f4"
+    },
+    {
+      "path": "reciprocal.sv",
+      "sha256": "1446a316000912ef4c9efd6aea4c7ad0bb9cd5779bba7d000f73976182439d58"
+    },
+    {
+      "path": "XYZ_Calculate.sv",
+      "sha256": "ef925b43c4a6c90e5e6b06e749a34023a21c96ab4e269e77af546d1be6d33f77"
+    },
+    {
+      "path": "SVPWMG.sv",
+      "sha256": "ef04b7c8042bb019449a5827bd34f7d6db875de55ba57dd0c15ac7fd254dd7be"
+    },
+    {
+      "path": "FOC_DUT.sv",
+      "sha256": "2581a29349de3e4798ece7663900171cbef7040a3d13c5889f6756e9707b0271"
+    }
+  ],
+  "testbench_files": [
+    {
+      "path": "FOC_DUT_tb.sv",
+      "sha256": "f5e6a9239e2c192b429f1102331c689aab9cb61faf2a3a4b993ec060e368a0c9"
+    }
+  ],
+  "compile_order": [
+    "FOC_DUT_pkg.sv",
+    "B0.sv",
+    "B1.sv",
+    "B2.sv",
+    "Clark.sv",
+    "Defined_Quotient.sv",
+    "Defined_Quotient_block.sv",
+    "Divide.sv",
+    "Fcn.sv",
+    "Fcn1.sv",
+    "Fcn2.sv",
+    "Duty_Calculate.sv",
+    "Sqrt.sv",
+    "dq_voltage_limiter.sv",
+    "FOC_DUT_tc.sv",
+    "Id.sv",
+    "InversePark.sv",
+    "Iq.sv",
+    "Park.sv",
+    "N.sv",
+    "Sector_Caculate.sv",
+    "Fcn1_block.sv",
+    "Fcn2_block.sv",
+    "Fcn_block.sv",
+    "T1T2_Calculate.sv",
+    "reciprocal.sv",
+    "XYZ_Calculate.sv",
+    "SVPWMG.sv",
+    "FOC_DUT.sv",
+    "FOC_DUT_tb.sv"
+  ],
+  "data_files": [
+    {
+      "path": "PI_Reset_EN.dat",
+      "sha256": "bdd22d14d91fa5347947653c58db685cc8ffa0a610b231a8139ed73c21fec97d"
+    }
+  ],
+  "include_dirs": [],
+  "simulation": {
+    "kind": "generated_ordinary",
+    "success_regex": "\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*TEST\\ COMPLETED\\ \\(PASSED\\)\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*",
+    "failure_regex": "(?im)(?:TEST\\s+(?:COMPLETED\\s*)?\\(?FAILED|TEST\\s+FAILURE|^ERROR:|^Error:|^Fatal:|M3_RTL_FAIL)",
+    "expected_frames": null,
+    "expected_checks": null,
+    "timeout_seconds": 600
+  },
+  "build_identity": {
+    "descriptor": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\final_build.json",
+    "descriptor_sha256": "be62566a26bc87c45863f527660d6237672e90bd8a4c6e2d96af2fb76d12c737",
+    "completion": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\\generate_result.json",
+    "completion_sha256": "c20b5c7da661ebf7e85bb856bd6986c44caf32895de803106350d4c95f6b80d7",
+    "configuration_readback": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\\hdl_config_readback.json",
+    "configuration_sha256": "50969c124d6a2ae48d2a51e95241dd4155ca793bfe428624db1ada8e7e0a694d",
+    "source_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\source",
+    "source_files": [
+      {
+        "path": "PMLSM_PI_FOC_Float_Baseline.slx",
+        "sha256": "b27a9083897d932b021d91613799a226748a0be6fc0f50bf4a5cae62aec229dd"
+      },
+      {
+        "path": "PMLSM_FOC_FixedPoint.slx",
+        "sha256": "be5e04bf659e5294c6270d36059ae4a9e0fefc5f0448079e67681aa8f1addcf7"
+      },
+      {
+        "path": "init_PMLSM_PI_FOC_Float_Baseline.m",
+        "sha256": "5ab7a40613a672b6805ec15dd9ef394fa1aaa0958ec1b9a3ecbbdf1e0a00a016"
+      },
+      {
+        "path": "m1a_require_float_init.m",
+        "sha256": "15cbf8a0bad430eafcff1ce900947589112ecadf137a595a4446a385e1c35fcf"
+      },
+      {
+        "path": "pmlsm_foc_fixed_config.m",
+        "sha256": "27008b96a8ea04f68619c39426bc74218b1a96f5059a4959b9e4ca46288aebe1"
+      },
+      {
+        "path": "design_PMLSM_three_loop.m",
+        "sha256": "884e199a13e0fa8cf1bf2551c9b29060eeb1d016af0a9fa17c7ab4d7da38aaa2"
+      },
+      {
+        "path": "pmlsm_scurve_profile.m",
+        "sha256": "bf1dfeda99037e990980d125176b4bdd5723a1606f6066597d81b2330a0bc79b"
+      },
+      {
+        "path": "pmlsm_point_move_step.m",
+        "sha256": "dbfc0fac3e2e79298f7c7b71a0f52ded12616d460bacece8f1611eb70d0a8b9b"
+      }
+    ],
+    "model_folder": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\\model",
+    "work_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate"
+  },
+  "scope": "final generated files after makehdltb; identity lock is not functional verification",
+  "publication": {
+    "source_manifest_sha256": "cfd8b1d7639275f273ed683c83344b02678ada8e8130b805a1ac42b6eda09098",
+    "raw_files_unchanged": true,
+    "dependency_scope": "all design/testbench/data files; provenance absolute paths are informational"
+  }
+}

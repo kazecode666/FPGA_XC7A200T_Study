@@ -3,7 +3,10 @@
 
 module Fcn2
           import FOC_DUT_pkg::* ;
-          (  input vector_of_signed_logic_64 Vector[0:2],
+          (  input logic clk,
+             input logic reset,
+             input logic enb,
+             input vector_of_signed_logic_64 Vector[0:2],
              output logic signed [63:0] Value);
 
 
@@ -13,7 +16,9 @@ module Fcn2
   logic signed [64:0] Combination_stage2_add_cast_1;
   logic signed [64:0] Combination_stage2_add_temp;
   logic signed [63:0] Combination_op_stage1;
+  logic signed [63:0] Combination_op_stage1_1;
   logic signed [63:0] T1;
+  logic signed [63:0] T1_1;
   logic signed [64:0] Combination_stage3_add_cast;
   logic signed [64:0] Combination_stage3_add_cast_1;
   logic signed [64:0] Combination_stage3_add_temp;
@@ -33,9 +38,33 @@ module Fcn2
               ((Combination_stage2_add_temp[64] == 1'b1) && (Combination_stage2_add_temp[63] != 1'b1) ? 64'sh8000000000000000 :
               $signed(Combination_stage2_add_temp[63:0])));
 
+  always_ff @(posedge clk)
+    begin : rd_0_process
+      if (reset == 1'b1) begin
+        Combination_op_stage1_1 <= 64'sh0000000000000000;
+      end
+      else begin
+        if (enb) begin
+          Combination_op_stage1_1 <= Combination_op_stage1;
+        end
+      end
+    end
+
   assign T1 = Vector[0];
-  assign Combination_stage3_add_cast = {Combination_op_stage1[63], Combination_op_stage1};
-  assign Combination_stage3_add_cast_1 = {T1[63], T1};
+  always_ff @(posedge clk)
+    begin : rd_1_process
+      if (reset == 1'b1) begin
+        T1_1 <= 64'sh0000000000000000;
+      end
+      else begin
+        if (enb) begin
+          T1_1 <= T1;
+        end
+      end
+    end
+
+  assign Combination_stage3_add_cast = {Combination_op_stage1_1[63], Combination_op_stage1_1};
+  assign Combination_stage3_add_cast_1 = {T1_1[63], T1_1};
   assign Combination_stage3_add_temp = Combination_stage3_add_cast + Combination_stage3_add_cast_1;
   assign Combination_out1 = ((Combination_stage3_add_temp[64] == 1'b0) && (Combination_stage3_add_temp[63] != 1'b0) ? 64'sh7FFFFFFFFFFFFFFF :
               ((Combination_stage3_add_temp[64] == 1'b1) && (Combination_stage3_add_temp[63] != 1'b1) ? 64'sh8000000000000000 :

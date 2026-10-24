@@ -1,0 +1,22 @@
+{
+  "stage": "repro",
+  "status": "PASS",
+  "run_dir": "D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\repeat\\repeat_identity.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp89a0bfd8_410b_41ee_a13d_08860a2239fa_repeat_smoke\\result.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp3fcf9e3c_edf3_48d6_b286_b823376238b1_relocated_smoke\\result.json"
+  ],
+  "failures": [],
+  "repeat_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\repeat",
+  "release_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tpc7adce85_75c2_40c3_af6a_b305e9a08169_release",
+  "process_identity": {
+    "status": "PASS",
+    "caller_pid": 16396,
+    "first_generation_pid": 38664,
+    "repeat_pid": 37928,
+    "child_exit_code": 0,
+    "logfile": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\repeat\\matlab_repeat.log"
+  },
+  "raw_file_comparison": "exact SHA256 including ordinary TB and data; no exclusions"
+}

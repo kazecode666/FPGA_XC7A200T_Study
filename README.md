@@ -2,7 +2,7 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-25。** M3 已生成实际 SystemVerilog，完成原定点→gm、1024帧边界及1536帧真实前缀的严格 xsim、状态/复位/CE 和重复构建。**M3 未接受：20ns OOC 综合时序 FAIL，WNS −58.833ns；容量满足。** [实际结果](coordination/reports/m3_foc_systemverilog_rtl_verification.md)、[中文指南](docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[发布清单](generated/m3_foc/manifest.json)。M2 按 PR51 的受限例外接受仍保持。
+**路线更新：2026-10-25。** PR53 R1—R4技术门禁完成：原定点→gm18039值及68下一态0位差；严格RTL2613有效帧/52289123检查；**20ns核心OOC WNS+5.317ns/WHS+0.135ns，容量满足，独立重复34原始文件相同。** 当前发布p3，输出314拍；PR53开放等待Review。外部I/O、外围适配、布线后时序和硬件未签核，不进入M4。[实际结果](coordination/reports/pr53_critical_path_pipeline_revision.md)、[中文指南](docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[发布清单](generated/m3_foc/manifest.json)。首轮−58.833ns失败和M2按PR51的受限例外原样保留。
 
 `M2-E-REPEAT-001` 只接受原冻结连续点位场景的三项浮点/定点闭环比较偏差。[原严格FAIL、预算及正常测试失败退出](docs/reports/m2_foc_fixed_point/common_sign_diagnostic/acceptance_exception.json)仍保留，不称“全部M2严格通过”。共同死区符号仅是临时诊断，不进入正式模型；该例外不适用于 M3 原定点→生成模型→RTL 的数值或时序错误。
 
@@ -12,7 +12,7 @@
 
 | 内容 | 入口 |
 |---|---|
-| **M3 实现与真实阻塞** | [整合报告](coordination/reports/m3_foc_systemverilog_rtl_verification.md)、[机器结论](docs/reports/m3_foc_hdl/acceptance_result.json)、[复验指南](docs/PMLSM_FOC_HDL_GUIDE_ZH.md) |
+| **M3 当前实现与待Review结果** | [整合报告](coordination/reports/m3_foc_systemverilog_rtl_verification.md)、[机器结论](docs/reports/m3_foc_hdl/acceptance_result.json)、[复验指南](docs/PMLSM_FOC_HDL_GUIDE_ZH.md) |
 | M3 任务依据 | [SystemVerilog生成、双层验证与核心OOC综合预检](coordination/tasks/m3_foc_systemverilog_rtl_verification.md) |
 | M2 已接受实现和证据 | [任务书](coordination/tasks/m2_foc_fixed_point_implementation.md)、[设计](docs/FOC_FIXED_POINT_DESIGN.md)、[操作](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)、[结果索引](docs/reports/m2_foc_fixed_point/README.md) |
 | M1B 已接受的任务与结果 | [M1B任务](coordination/tasks/m1b_repeat_moves_and_alignment.md)、[整合验收](coordination/reports/m1b_repeat_moves_and_alignment.md)、[FOC准备报告](docs/FOC_FIXED_POINT_READINESS.md) |

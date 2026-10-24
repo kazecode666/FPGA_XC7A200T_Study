@@ -25,7 +25,10 @@ module SVPWMG
   logic signed [63:0] Duty_Calculate_Duty_W;
 
 
-  Sector_Caculate u_Sector_Caculate (.Ualpha(Valpha),
+  Sector_Caculate u_Sector_Caculate (.clk(clk),
+                                     .reset(reset),
+                                     .enb(enb),
+                                     .Ualpha(Valpha),
                                      .Ubeta(Vbeta),
                                      .N_1(Sector_Caculate_N)
                                      );

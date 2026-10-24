@@ -1,8 +1,8 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-25，PR53 Review后的续办。** 用户已确认：先定位实际关键路径及寄存器边界，再做有限的局部快时钟流水线修订。正式入口改为 [PR53关键路径与流水线修订](tasks/pr53_critical_path_pipeline_revision.md)。在 `codex/m3-foc-systemverilog` 原分支继续，不另开纯计划PR；正常检查点连续执行，最终仍更新PR53等待Review，不自动合并或进入M4。
+**当前更新：2026-10-25，PR53 R1—R4已完成，等待Review。** 用户已确认：先定位实际关键路径及寄存器边界，再做有限的局部快时钟流水线修订。正式入口改为 [PR53关键路径与流水线修订](tasks/pr53_critical_path_pipeline_revision.md)。在 `codex/m3-foc-systemverilog` 原分支继续，不另开纯计划PR；正常检查点连续执行，最终仍更新PR53等待Review，不自动合并或进入M4。
 
-**当前实现状态未改变：** M3 A/B/C/D/F 已有真实PASS证据：实际SV、完整原定点→gm位/状态、xsim、复位/CE、重复生成及迁移smoke。**E综合完成、容量满足但20ns时序FAIL，WNS−58.833ns；M3未接受。** [整合结果](reports/m3_foc_systemverilog_rtl_verification.md)、[操作指南](../docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[机器结论](../docs/reports/m3_foc_hdl/acceptance_result.json)。新增任务不是修复结果，不能提前更新为PASS；M2的PR51受限例外不适用于M3。
+**当前技术状态：M3核心门禁PASS，PR53开放等待Review。** p3完整17/1024/1536帧source→gm18039值及68下一态0位差；RTL2613有效帧/52289123检查，负例真拒绝；同manifest20ns核心OOC WNS+5.317ns/WHS+0.135ns、TNS/THS0，70983LUT/83278FF/439DSP/0BRAM；34原始文件独立重复相同。新输出314拍，PI/AW观察提交下一帧1、旧态消费pre5000不变。[本轮报告](reports/pr53_critical_path_pipeline_revision.md)、[操作指南](../docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[机器结论](../docs/reports/m3_foc_hdl/acceptance_result.json)。首轮−58.833ns/274拍及所有失败证据保留历史，不再冒充当前状态。外围capture/valid/输出提交、外部I/O及布线后时序未签核；不进入M4。
 
 ## 当前执行入口
 
@@ -42,9 +42,9 @@
 
 ## 文件、操作与证据
 
-M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；实际文件及逐项状态已交付，E物理时序阻塞保留。
+M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；实际文件及逐项状态已交付，当前E核心OOC通过，外部I/O和布线后时序仍未验证。
 
-本轮新增精简证据放在 `docs/reports/m3_foc_hdl/pr53_pipeline_revision/`，续办报告为 `coordination/reports/pr53_critical_path_pipeline_revision.md`。只有最终保留候选通过后更新当前发布包；首轮失败构建、原manifest和旧274拍记录保留为历史。尚未通过时仍写NOT_ACCEPTED。
+本轮新增精简证据放在 `docs/reports/m3_foc_hdl/pr53_pipeline_revision/`，续办报告为 `coordination/reports/pr53_critical_path_pipeline_revision.md`。最终p3已通过并更新当前发布包；首轮失败构建、原manifest和旧274拍记录原样保留为历史。新来源或配置变更必须重新验证，不能继承本次PASS。
 
 正常用户仍只手动执行 `init_PMLSM_PI_FOC_Float_Baseline.m`，必要类型自动派生；InitFcn仅检查，中文注释简短。生成/测试是独立开发入口，不要求正常Run先执行一串helper。
 
@@ -68,4 +68,4 @@ M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC
 
 [旧交接](HANDOFF_LEGACY_20261021.md)、[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)、[M1B任务](tasks/m1b_repeat_moves_and_alignment.md)原样作为历史保留。
 
-开放实现PR：[PR53](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53)，未合并；用户已授权按新增R1—R4任务继续，完成后再次Review。M3的20ns时序阻塞仍保留，不把任务授权等同于验收放行。
+开放实现PR：[PR53](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53)，未合并；用户已授权按新增R1—R4任务继续，完成后再次Review。本轮核心20ns预检阻塞已解除，Review尚未完成；不把技术门禁PASS等同于自动合并或硬件放行。

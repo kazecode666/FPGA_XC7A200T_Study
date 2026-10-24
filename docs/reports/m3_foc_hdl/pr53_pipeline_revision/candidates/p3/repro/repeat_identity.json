@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "first_manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+  "repeat_manifest_sha256": "84b48d9834325eb3d0543729ee92aa56e1a7a0cf93dc46c7cb7c393fb877c616",
+  "files_compared": 34,
+  "comparison": "exact raw bytes SHA256; no token/path/time exclusions",
+  "configuration_equal": true,
+  "frozen_sources_equal": true,
+  "mismatches": []
+}

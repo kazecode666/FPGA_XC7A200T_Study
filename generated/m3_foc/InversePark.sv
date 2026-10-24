@@ -5,8 +5,9 @@ module InversePark
           import FOC_DUT_pkg::* ;
           (  input logic clk,
              input logic reset,
-             input logic enb_1_5000_0,
              input logic enb,
+             input logic enb_1_5000_1,
+             input logic enb_1_5000_0,
              input logic signed [63:0] A,
              input logic signed [63:0] B,
              input logic signed [39:0] C,
@@ -16,55 +17,75 @@ module InversePark
 
   logic [15:0] Offset_out1;
   logic switch_compare_1;
-  logic signed [79:0] convert_pu_mul_temp;
-  logic signed [39:0] convert_pu_out1;
+  logic signed [79:0] convert_pu_out1;
+  logic signed [39:0] convert_pu_out1_1;
   logic Compare_To_Zero_out1;
   logic [15:0] Data_Type_Conversion_out1;
   logic If_out1;
+  logic If_out1_1;
   logic If_out2;
+  logic If_out2_1;
+  logic If_out2_2;
   logic signed [15:0] Convert_uint16_out1;
   logic signed [39:0] Convert_back_out1;
   logic signed [39:0] Sum_out1;
   logic signed [39:0] Sum_out1_bypass;
   logic signed [39:0] Sum_out1_last_value;
+  logic signed [39:0] If_Action_Subsystem1_Out1;
+  logic If_out1_2;
+  logic signed [39:0] If_Action_Subsystem1_Out1_1;
   logic signed [15:0] Convert_uint16_out1_1;
   logic signed [39:0] Convert_back_out1_1;
   logic signed [39:0] Sum_out1_1;
   logic signed [39:0] Sum_out1_bypass_1;
   logic signed [39:0] Sum_out1_last_value_1;
+  logic signed [39:0] If_Action_Subsystem_Out1;
+  logic signed [39:0] If_Action_Subsystem_Out1_1;
   logic signed [39:0] Merge_out1;
+  logic signed [39:0] Merge_out1_1;
+  logic signed [39:0] Merge_delay_bypass_reg;
+  logic signed [39:0] Merge_out1_2;
   logic signed [39:0] Merge_out1_prev;
+  logic signed [39:0] Merge_out1_prev_1;
   logic signed [39:0] Merge_out1_next_2;
-  logic signed [79:0] indexing_mul_temp;
-  logic signed [39:0] indexing_out1;
+  logic signed [39:0] WrapUp_Out1;
+  logic signed [79:0] indexing_out1;
+  logic signed [39:0] indexing_out1_1;
+  logic signed [39:0] indexing_out1_2;
   logic [15:0] Get_Integer_out1;
   vector_of_signed_logic_16 offset_out1_1 [0:3];
   logic [31:0] Sum_u;
   vector_of_unsigned_logic_32 Sum_3 [0:3];
   vector_of_unsigned_logic_32 Sum_out1_2 [0:3];
+  vector_of_unsigned_logic_32 Sum_out1_3 [0:3];
   logic [31:0] Sum_out1_2_1;
   vector_of_signed_logic_40 sine_table_values_out1 [0:1001];
   logic signed [31:0] Lookup_idx;
   logic [32:0] Lookup_add_temp;
   logic [32:0] Lookup_1;
   logic signed [39:0] Lookup_out1_2;
-  logic [31:0] Sum_out1_3;
+  logic [31:0] Sum_out1_3_1;
   logic signed [31:0] Lookup_idx_1;
   logic [32:0] Lookup_add_temp_1;
   logic [32:0] Lookup_3;
   logic signed [39:0] Lookup_out1_3;
   logic signed [39:0] Sum5_out1;
+  logic signed [39:0] Sum5_out1_1;
+  logic signed [39:0] indexing_out1_3;
   logic signed [39:0] Data_Type_Conversion1_out1;
+  logic signed [39:0] Data_Type_Conversion1_out1_1;
   logic signed [39:0] Sum2_sub_temp;
   logic signed [39:0] Sum2_out1;
-  logic signed [79:0] Product1_mul_temp;
-  logic signed [39:0] Product1_out1;
+  logic signed [39:0] In2;
+  logic signed [79:0] Product1_out1;
+  logic signed [39:0] Product1_out1_1;
+  logic signed [39:0] Product1_out1_2;
+  vector_of_signed_logic_40 rd_6_reg [0:1];
+  logic signed [39:0] In1_3;
   logic signed [39:0] Sum6_out1;
-  logic signed [39:0] sinecos_cos;
-  vector_of_signed_logic_40 reduced_reg [0:164];
-  logic signed [39:0] sinecos_cos_1;
-  logic signed [103:0] dcos_mul_temp;
-  logic signed [63:0] dcos_out1;
+  vector_of_signed_logic_40 rd_0_reg [0:182];
+  logic signed [39:0] cos;
+  logic signed [103:0] dcos_out1;
   logic [31:0] Sum_out1_0;
   logic signed [31:0] Lookup_idx_2;
   logic [32:0] Lookup_add_temp_2;
@@ -76,20 +97,30 @@ module InversePark
   logic [32:0] Lookup_7;
   logic signed [39:0] Lookup_out1_1;
   logic signed [39:0] Sum3_out1;
-  logic signed [79:0] Product_mul_temp;
-  logic signed [39:0] Product_out1;
+  logic signed [39:0] Sum3_out1_1;
+  logic signed [79:0] Product_out1;
+  logic signed [39:0] Product_out1_1;
+  logic signed [39:0] Product_out1_2;
+  vector_of_signed_logic_40 rd_3_reg [0:1];
+  logic signed [39:0] In1_1;
   logic signed [39:0] Sum4_out1;
-  logic signed [39:0] sinecos_sin;
-  vector_of_signed_logic_40 reduced_reg_1 [0:164];
-  logic signed [39:0] sinecos_sin_1;
-  logic signed [103:0] qsin_mul_temp;
-  logic signed [63:0] qsin_out1;
+  vector_of_signed_logic_40 rd_1_reg [0:182];
+  logic signed [39:0] sin;
+  logic signed [103:0] qsin_out1;
+  logic signed [103:0] dcos_out1_1;
+  logic signed [63:0] dcos_out1_2;
+  logic signed [103:0] qsin_out1_1;
+  logic signed [63:0] qsin_out1_2;
   logic signed [63:0] sum_alpha_out1;
-  logic signed [103:0] qcos_mul_temp;
-  logic signed [63:0] qcos_out1;
-  logic signed [103:0] dsin_mul_temp;
-  logic signed [63:0] dsin_out1;
+  logic signed [63:0] A_1;
+  logic signed [103:0] qcos_out1;
+  logic signed [103:0] dsin_out1;
+  logic signed [103:0] qcos_out1_1;
+  logic signed [63:0] qcos_out1_2;
+  logic signed [103:0] dsin_out1_1;
+  logic signed [63:0] dsin_out1_2;
   logic signed [63:0] sum_beta_out1;
+  logic signed [63:0] B_1;
   vector_of_signed_logic_64 D_axis_aligned_out1 [0:1];
   logic signed [64:0] Unary_Minus_cast;
   logic signed [64:0] Unary_Minus_cast_1;
@@ -101,15 +132,32 @@ module InversePark
   assign Offset_out1 = 16'b0000000000000000;
   assign switch_compare_1 = Offset_out1 > 16'b0000000000000001;
 
-  assign convert_pu_mul_temp = 40'sh517CC1B727 * C;
-  assign convert_pu_out1 = {convert_pu_mul_temp[79], convert_pu_mul_temp[79:41]};
-  assign Compare_To_Zero_out1 = convert_pu_out1 < 40'sh0000000000;
+  assign convert_pu_out1 = 40'sh517CC1B727 * C;
+  assign convert_pu_out1_1 = {convert_pu_out1[79], convert_pu_out1[79:41]};
+
+  assign Compare_To_Zero_out1 = convert_pu_out1_1 < 40'sh0000000000;
   assign Data_Type_Conversion_out1 = {15'b0, Compare_To_Zero_out1};
   assign If_out1 = Data_Type_Conversion_out1 > 16'b0000000000000000;
+  assign If_out1_1 = If_out1;
+
   assign If_out2 =  ~ If_out1;
-  assign Convert_uint16_out1 = {{8{convert_pu_out1[39]}}, convert_pu_out1[39:32]};
+  assign If_out2_1 = If_out2;
+
+  always_ff @(posedge clk)
+    begin : rd_2_process
+      if (reset == 1'b1) begin
+        If_out2_2 <= 1'b0;
+      end
+      else begin
+        if (enb) begin
+          If_out2_2 <= If_out2_1;
+        end
+      end
+    end
+
+  assign Convert_uint16_out1 = {{8{convert_pu_out1_1[39]}}, convert_pu_out1_1[39:32]};
   assign Convert_back_out1 = {Convert_uint16_out1[7:0], 32'b00000000000000000000000000000000};
-  assign Sum_out1 = convert_pu_out1 - Convert_back_out1;
+  assign Sum_out1 = convert_pu_out1_1 - Convert_back_out1;
   always_ff @(posedge clk)
     begin : Out1_bypass_process
       if (reset == 1'b1) begin
@@ -124,9 +172,35 @@ module InversePark
 
   assign Sum_out1_bypass = (If_out2 == 1'b0 ? Sum_out1_last_value :
               Sum_out1);
-  assign Convert_uint16_out1_1 = {{8{convert_pu_out1[39]}}, convert_pu_out1[39:32]};
+  assign If_Action_Subsystem1_Out1 = Sum_out1_bypass;
+
+  always_ff @(posedge clk)
+    begin : rd_3_process
+      if (reset == 1'b1) begin
+        If_out1_2 <= 1'b0;
+      end
+      else begin
+        if (enb) begin
+          If_out1_2 <= If_out1_1;
+        end
+      end
+    end
+
+  always_ff @(posedge clk)
+    begin : rd_1_process
+      if (reset == 1'b1) begin
+        If_Action_Subsystem1_Out1_1 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          If_Action_Subsystem1_Out1_1 <= If_Action_Subsystem1_Out1;
+        end
+      end
+    end
+
+  assign Convert_uint16_out1_1 = {{8{convert_pu_out1_1[39]}}, convert_pu_out1_1[39:32]};
   assign Convert_back_out1_1 = {Convert_uint16_out1_1[7:0], 32'b00000000000000000000000000000000};
-  assign Sum_out1_1 = convert_pu_out1 - Convert_back_out1_1;
+  assign Sum_out1_1 = convert_pu_out1_1 - Convert_back_out1_1;
   always_ff @(posedge clk)
     begin : Out1_bypass_1_process
       if (reset == 1'b1) begin
@@ -141,24 +215,93 @@ module InversePark
 
   assign Sum_out1_bypass_1 = (If_out1 == 1'b0 ? Sum_out1_last_value_1 :
               Sum_out1_1);
+  assign If_Action_Subsystem_Out1 = Sum_out1_bypass_1;
+
   always_ff @(posedge clk)
-    begin : Merge_delay_process
+    begin : rd_0_process
       if (reset == 1'b1) begin
-        Merge_out1_prev <= 40'sh0000000000;
+        If_Action_Subsystem_Out1_1 <= 40'sh0000000000;
       end
       else begin
-        if (enb_1_5000_0) begin
-          Merge_out1_prev <= Merge_out1;
+        if (enb) begin
+          If_Action_Subsystem_Out1_1 <= If_Action_Subsystem_Out1;
         end
       end
     end
-  assign Merge_out1_next_2 = (If_out2 == 1'b0 ? Merge_out1_prev :
-              Sum_out1_bypass);
-  assign Merge_out1 = (If_out1 == 1'b0 ? Merge_out1_next_2 :
-              Sum_out1_bypass_1);
-  assign indexing_mul_temp = 40'sh6400000000 * Merge_out1;
-  assign indexing_out1 = indexing_mul_temp[71:32];
-  assign Get_Integer_out1 = {{5{indexing_out1[39]}}, indexing_out1[39:29]};
+
+  always_ff @(posedge clk)
+    begin : crp_out_delay_process
+      if (reset == 1'b1) begin
+        Merge_out1_1 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          Merge_out1_1 <= Merge_out1;
+        end
+      end
+    end
+
+  always_ff @(posedge clk)
+    begin : Merge_delay_bypass_process
+      if (reset == 1'b1) begin
+        Merge_delay_bypass_reg <= 40'sh0000000000;
+      end
+      else begin
+        if (enb_1_5000_1) begin
+          Merge_delay_bypass_reg <= Merge_out1_1;
+        end
+      end
+    end
+
+  assign Merge_out1_2 = (enb_1_5000_1 == 1'b1 ? Merge_out1_1 :
+              Merge_delay_bypass_reg);
+
+  assign Merge_out1_prev = Merge_out1_2;
+
+  always_ff @(posedge clk)
+    begin : rd_4_process
+      if (reset == 1'b1) begin
+        Merge_out1_prev_1 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          Merge_out1_prev_1 <= Merge_out1_prev;
+        end
+      end
+    end
+
+  assign Merge_out1_next_2 = (If_out2_2 == 1'b0 ? Merge_out1_prev_1 :
+              If_Action_Subsystem1_Out1_1);
+  assign Merge_out1 = (If_out1_2 == 1'b0 ? Merge_out1_next_2 :
+              If_Action_Subsystem_Out1_1);
+  always_ff @(posedge clk)
+    begin : rd_0_1_process
+      if (reset == 1'b1) begin
+        WrapUp_Out1 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          WrapUp_Out1 <= Merge_out1;
+        end
+      end
+    end
+
+  assign indexing_out1 = 40'sh6400000000 * WrapUp_Out1;
+  assign indexing_out1_1 = indexing_out1[71:32];
+
+  always_ff @(posedge clk)
+    begin : rd_1_1_process
+      if (reset == 1'b1) begin
+        indexing_out1_2 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          indexing_out1_2 <= indexing_out1_1;
+        end
+      end
+    end
+
+  assign Get_Integer_out1 = {{5{indexing_out1_2[39]}}, indexing_out1_2[39:29]};
   assign offset_out1_1[0] = 16'sb0000000000000001;
   assign offset_out1_1[1] = 16'sb0000000000000000;
   assign offset_out1_1[2] = 16'sb0000000011001001;
@@ -172,7 +315,19 @@ module InversePark
       assign Sum_out1_2[t_0] = Sum_u + Sum_3[t_0];
     end
   endgenerate
-  assign Sum_out1_2_1 = Sum_out1_2[2];
+  always_ff @(posedge clk)
+    begin : rd_2_1_process
+      if (reset == 1'b1) begin
+        Sum_out1_3 <= '{default :32'b00000000000000000000000000000000};
+      end
+      else begin
+        if (enb) begin
+          Sum_out1_3 <= Sum_out1_2;
+        end
+      end
+    end
+
+  assign Sum_out1_2_1 = Sum_out1_3[2];
 
   assign sine_table_values_out1[0] = 40'sh0000000000;
   assign sine_table_values_out1[1] = 40'sh000202B697;
@@ -1183,41 +1338,114 @@ module InversePark
   assign Lookup_out1_2 = (Lookup_idx <= 32'sd1002 ? sine_table_values_out1[Lookup_idx - 32'sd1] :
               sine_table_values_out1[1001]);
 
-  assign Sum_out1_3 = Sum_out1_2[3];
+  assign Sum_out1_3_1 = Sum_out1_3[3];
 
-  assign Lookup_3 = {1'b0, Sum_out1_3};
+  assign Lookup_3 = {1'b0, Sum_out1_3_1};
   assign Lookup_add_temp_1 = Lookup_3 + 33'h000000001;
   assign Lookup_idx_1 = (Lookup_add_temp_1[32:31] != 2'b00 ? 32'sb01111111111111111111111111111111 :
               $signed(Lookup_add_temp_1[31:0]));
   assign Lookup_out1_3 = (Lookup_idx_1 <= 32'sd1002 ? sine_table_values_out1[Lookup_idx_1 - 32'sd1] :
               sine_table_values_out1[1001]);
   assign Sum5_out1 = Lookup_out1_2 - Lookup_out1_3;
-  assign Data_Type_Conversion1_out1 = $signed({Get_Integer_out1[10:0], 29'b00000000000000000000000000000});
-  assign Sum2_sub_temp = indexing_out1 - Data_Type_Conversion1_out1;
-  assign Sum2_out1 = {Sum2_sub_temp[36:0], 3'b000};
-  assign Product1_mul_temp = Sum5_out1 * Sum2_out1;
-  assign Product1_out1 = Product1_mul_temp[71:32];
-  assign Sum6_out1 = Product1_out1 + Lookup_out1_3;
-  assign sinecos_cos = Sum6_out1;
-
   always_ff @(posedge clk)
-    begin : reduced_process
+    begin : rd_4_1_process
       if (reset == 1'b1) begin
-        reduced_reg <= '{default :40'sh0000000000};
+        Sum5_out1_1 <= 40'sh0000000000;
       end
       else begin
         if (enb) begin
-          reduced_reg[0] <= sinecos_cos;
-          reduced_reg[32'sd1:32'sd164] <= reduced_reg[32'sd0:32'sd163];
+          Sum5_out1_1 <= Sum5_out1;
         end
       end
     end
 
-  assign sinecos_cos_1 = reduced_reg[164];
+  always_ff @(posedge clk)
+    begin : rd_3_1_process
+      if (reset == 1'b1) begin
+        indexing_out1_3 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          indexing_out1_3 <= indexing_out1_2;
+        end
+      end
+    end
 
-  assign dcos_mul_temp = A * sinecos_cos_1;
-  assign dcos_out1 = dcos_mul_temp[95:32];
-  assign Sum_out1_0 = Sum_out1_2[0];
+  assign Data_Type_Conversion1_out1 = $signed({Get_Integer_out1[10:0], 29'b00000000000000000000000000000});
+  always_ff @(posedge clk)
+    begin : rd_4_2_process
+      if (reset == 1'b1) begin
+        Data_Type_Conversion1_out1_1 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          Data_Type_Conversion1_out1_1 <= Data_Type_Conversion1_out1;
+        end
+      end
+    end
+
+  assign Sum2_sub_temp = indexing_out1_3 - Data_Type_Conversion1_out1_1;
+  assign Sum2_out1 = {Sum2_sub_temp[36:0], 3'b000};
+  always_ff @(posedge clk)
+    begin : rd_1_2_process
+      if (reset == 1'b1) begin
+        In2 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          In2 <= Sum2_out1;
+        end
+      end
+    end
+
+  assign Product1_out1 = Sum5_out1_1 * In2;
+  assign Product1_out1_1 = Product1_out1[71:32];
+
+  always_ff @(posedge clk)
+    begin : rd_5_process
+      if (reset == 1'b1) begin
+        Product1_out1_2 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          Product1_out1_2 <= Product1_out1_1;
+        end
+      end
+    end
+
+  always_ff @(posedge clk)
+    begin : rd_6_process
+      if (reset == 1'b1) begin
+        rd_6_reg <= '{default :40'sh0000000000};
+      end
+      else begin
+        if (enb) begin
+          rd_6_reg[0] <= Lookup_out1_3;
+          rd_6_reg[1] <= rd_6_reg[0];
+        end
+      end
+    end
+
+  assign In1_3 = rd_6_reg[1];
+
+  assign Sum6_out1 = Product1_out1_2 + In1_3;
+  always_ff @(posedge clk)
+    begin : rd_0_2_process
+      if (reset == 1'b1) begin
+        rd_0_reg <= '{default :40'sh0000000000};
+      end
+      else begin
+        if (enb) begin
+          rd_0_reg[0] <= Sum6_out1;
+          rd_0_reg[32'sd1:32'sd182] <= rd_0_reg[32'sd0:32'sd181];
+        end
+      end
+    end
+
+  assign cos = rd_0_reg[182];
+
+  assign dcos_out1 = A * cos;
+  assign Sum_out1_0 = Sum_out1_3[0];
 
   assign Lookup_5 = {1'b0, Sum_out1_0};
   assign Lookup_add_temp_2 = Lookup_5 + 33'h000000001;
@@ -1225,7 +1453,7 @@ module InversePark
               $signed(Lookup_add_temp_2[31:0]));
   assign Lookup_out1_0 = (Lookup_idx_2 <= 32'sd1002 ? sine_table_values_out1[Lookup_idx_2 - 32'sd1] :
               sine_table_values_out1[1001]);
-  assign Sum_out1_1_1 = Sum_out1_2[1];
+  assign Sum_out1_1_1 = Sum_out1_3[1];
 
   assign Lookup_7 = {1'b0, Sum_out1_1_1};
   assign Lookup_add_temp_3 = Lookup_7 + 33'h000000001;
@@ -1235,40 +1463,155 @@ module InversePark
               sine_table_values_out1[1001]);
 
   assign Sum3_out1 = Lookup_out1_0 - Lookup_out1_1;
-  assign Product_mul_temp = Sum3_out1 * Sum2_out1;
-  assign Product_out1 = Product_mul_temp[71:32];
-  assign Sum4_out1 = Product_out1 + Lookup_out1_1;
-  assign sinecos_sin = Sum4_out1;
-
   always_ff @(posedge clk)
-    begin : reduced_1_process
+    begin : rd_0_3_process
       if (reset == 1'b1) begin
-        reduced_reg_1 <= '{default :40'sh0000000000};
+        Sum3_out1_1 <= 40'sh0000000000;
       end
       else begin
         if (enb) begin
-          reduced_reg_1[0] <= sinecos_sin;
-          reduced_reg_1[32'sd1:32'sd164] <= reduced_reg_1[32'sd0:32'sd163];
+          Sum3_out1_1 <= Sum3_out1;
         end
       end
     end
 
-  assign sinecos_sin_1 = reduced_reg_1[164];
+  assign Product_out1 = Sum3_out1_1 * In2;
+  assign Product_out1_1 = Product_out1[71:32];
 
-  assign qsin_mul_temp = B * sinecos_sin_1;
-  assign qsin_out1 = qsin_mul_temp[95:32];
-  assign sum_alpha_out1 = dcos_out1 - qsin_out1;
-  assign qcos_mul_temp = B * sinecos_cos_1;
-  assign qcos_out1 = qcos_mul_temp[95:32];
-  assign dsin_mul_temp = A * sinecos_sin_1;
-  assign dsin_out1 = dsin_mul_temp[95:32];
-  assign sum_beta_out1 = qcos_out1 + dsin_out1;
-  assign D_axis_aligned_out1[0] = sum_alpha_out1;
-  assign D_axis_aligned_out1[1] = sum_beta_out1;
-  assign Unary_Minus_cast = {sum_alpha_out1[63], sum_alpha_out1};
+  always_ff @(posedge clk)
+    begin : rd_2_2_process
+      if (reset == 1'b1) begin
+        Product_out1_2 <= 40'sh0000000000;
+      end
+      else begin
+        if (enb) begin
+          Product_out1_2 <= Product_out1_1;
+        end
+      end
+    end
+
+  always_ff @(posedge clk)
+    begin : rd_3_2_process
+      if (reset == 1'b1) begin
+        rd_3_reg <= '{default :40'sh0000000000};
+      end
+      else begin
+        if (enb) begin
+          rd_3_reg[0] <= Lookup_out1_1;
+          rd_3_reg[1] <= rd_3_reg[0];
+        end
+      end
+    end
+
+  assign In1_1 = rd_3_reg[1];
+
+  assign Sum4_out1 = Product_out1_2 + In1_1;
+  always_ff @(posedge clk)
+    begin : rd_1_3_process
+      if (reset == 1'b1) begin
+        rd_1_reg <= '{default :40'sh0000000000};
+      end
+      else begin
+        if (enb) begin
+          rd_1_reg[0] <= Sum4_out1;
+          rd_1_reg[32'sd1:32'sd182] <= rd_1_reg[32'sd0:32'sd181];
+        end
+      end
+    end
+
+  assign sin = rd_1_reg[182];
+
+  assign qsin_out1 = B * sin;
+  always_ff @(posedge clk)
+    begin : rd_2_3_process
+      if (reset == 1'b1) begin
+        dcos_out1_1 <= 104'sh00000000000000000000000000;
+      end
+      else begin
+        if (enb) begin
+          dcos_out1_1 <= dcos_out1;
+        end
+      end
+    end
+
+  assign dcos_out1_2 = dcos_out1_1[95:32];
+
+  always_ff @(posedge clk)
+    begin : rd_3_3_process
+      if (reset == 1'b1) begin
+        qsin_out1_1 <= 104'sh00000000000000000000000000;
+      end
+      else begin
+        if (enb) begin
+          qsin_out1_1 <= qsin_out1;
+        end
+      end
+    end
+
+  assign qsin_out1_2 = qsin_out1_1[95:32];
+
+  assign sum_alpha_out1 = dcos_out1_2 - qsin_out1_2;
+  always_ff @(posedge clk)
+    begin : delayMatch_process
+      if (reset == 1'b1) begin
+        A_1 <= 64'sh0000000000000000;
+      end
+      else begin
+        if (enb) begin
+          A_1 <= sum_alpha_out1;
+        end
+      end
+    end
+
+  assign qcos_out1 = B * cos;
+  assign dsin_out1 = A * sin;
+  always_ff @(posedge clk)
+    begin : rd_4_3_process
+      if (reset == 1'b1) begin
+        qcos_out1_1 <= 104'sh00000000000000000000000000;
+      end
+      else begin
+        if (enb) begin
+          qcos_out1_1 <= qcos_out1;
+        end
+      end
+    end
+
+  assign qcos_out1_2 = qcos_out1_1[95:32];
+
+  always_ff @(posedge clk)
+    begin : rd_5_1_process
+      if (reset == 1'b1) begin
+        dsin_out1_1 <= 104'sh00000000000000000000000000;
+      end
+      else begin
+        if (enb) begin
+          dsin_out1_1 <= dsin_out1;
+        end
+      end
+    end
+
+  assign dsin_out1_2 = dsin_out1_1[95:32];
+
+  assign sum_beta_out1 = qcos_out1_2 + dsin_out1_2;
+  always_ff @(posedge clk)
+    begin : delayMatch1_process
+      if (reset == 1'b1) begin
+        B_1 <= 64'sh0000000000000000;
+      end
+      else begin
+        if (enb) begin
+          B_1 <= sum_beta_out1;
+        end
+      end
+    end
+
+  assign D_axis_aligned_out1[0] = A_1;
+  assign D_axis_aligned_out1[1] = B_1;
+  assign Unary_Minus_cast = {A_1[63], A_1};
   assign Unary_Minus_cast_1 =  - (Unary_Minus_cast);
   assign Unary_Minus_out1 = Unary_Minus_cast_1[63:0];
-  assign Q_axis_aligned_out1[0] = sum_beta_out1;
+  assign Q_axis_aligned_out1[0] = B_1;
   assign Q_axis_aligned_out1[1] = Unary_Minus_out1;
   assign Switch_out1 = (switch_compare_1 == 1'b0 ? D_axis_aligned_out1 :
               Q_axis_aligned_out1);

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "bit_mismatch_count": 0,
+  "value_mismatch_count": 0,
+  "first_mismatch": [],
+  "signals": [
+    "x_d_next",
+    "x_q_next",
+    "aw_d_next",
+    "aw_q_next"
+  ],
+  "values_compared": 68,
+  "commits_compared": 17,
+  "mapping": "source next(n) at n*100us equals gm mapped old(n+1) at (n+1)*100us, including final commit"
+}

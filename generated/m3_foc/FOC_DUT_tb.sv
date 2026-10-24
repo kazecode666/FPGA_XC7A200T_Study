@@ -77,16 +77,28 @@ module FOC_DUT_tb;
   logic duty_u_cmd_enb;
   logic duty_u_cmd_lastAddr;
   logic check1_done;
-  logic [31:0] duty_u_cmd_expected_1;
+  logic [18:0] duty_u_cmd_addr_delay_1;
+  logic signed [31:0] fp_duty_u_cmd_expected;
+  logic [31:0] duty_u_cmd_expected;
+  logic signed [31:0] status_duty_u_cmd_expected;
   logic [31:0] duty_u_cmd_ref_hold;
+  logic [31:0] duty_u_cmd_refTmp;
   logic [31:0] duty_u_cmd_ref;
   logic duty_u_cmd_testFailure;
-  logic [31:0] duty_v_cmd_expected_1;
+  logic [18:0] duty_v_cmd_addr_delay_1;
+  logic signed [31:0] fp_duty_v_cmd_expected;
+  logic [31:0] duty_v_cmd_expected;
+  logic signed [31:0] status_duty_v_cmd_expected;
   logic [31:0] duty_v_cmd_ref_hold;
+  logic [31:0] duty_v_cmd_refTmp;
   logic [31:0] duty_v_cmd_ref;
   logic duty_v_cmd_testFailure;
-  logic [31:0] duty_w_cmd_expected_1;
+  logic [18:0] duty_w_cmd_addr_delay_1;
+  logic signed [31:0] fp_duty_w_cmd_expected;
+  logic [31:0] duty_w_cmd_expected;
+  logic signed [31:0] status_duty_w_cmd_expected;
   logic [31:0] duty_w_cmd_ref_hold;
+  logic [31:0] duty_w_cmd_refTmp;
   logic [31:0] duty_w_cmd_ref;
   logic duty_w_cmd_testFailure;
   logic testFailure;
@@ -506,7 +518,26 @@ module FOC_DUT_tb;
 
   assign snkDone = check3_done & (check1_done & check2_done);
 
-     assign duty_u_cmd_expected_1 = 32'b00011111111111111111111111111010;
+  assign #1 duty_u_cmd_addr_delay_1 = duty_u_cmd_addr;
+
+     initial
+    begin : duty_u_cmd_expected_fileread
+      fp_duty_u_cmd_expected = $fopen("duty_u_cmd_expected.dat", "r");
+      status_duty_u_cmd_expected = $rewind(fp_duty_u_cmd_expected);
+    end
+
+  always @(duty_u_cmd_addr_delay_1,  tb_enb_delay)
+    begin
+      if (tb_enb_delay == 0) begin
+        duty_u_cmd_expected <= 32'bx;
+        if (snkDone == 1) begin
+          $fclose(fp_duty_u_cmd_expected);
+        end
+      end
+      else  begin
+        status_duty_u_cmd_expected = $fscanf(fp_duty_u_cmd_expected, "%h", duty_u_cmd_expected);
+      end
+    end
 
      always @(posedge clk)
     begin : DataHold_duty_u_cmd_ref
@@ -515,13 +546,15 @@ module FOC_DUT_tb;
       end
       else begin
         if (ce_out) begin
-          duty_u_cmd_ref_hold <= duty_u_cmd_expected_1;
+          duty_u_cmd_ref_hold <= duty_u_cmd_expected;
         end
       end
     end
 
-     assign duty_u_cmd_ref = (ce_out == 1'b0 ? duty_u_cmd_ref_hold :
-              32'b00011111111111111111111111111010);
+  assign duty_u_cmd_refTmp = duty_u_cmd_expected;
+
+  assign duty_u_cmd_ref = (ce_out == 1'b0 ? duty_u_cmd_ref_hold :
+              duty_u_cmd_refTmp);
 
   always @(posedge clk)
     begin : duty_u_cmd_checker
@@ -536,7 +569,26 @@ module FOC_DUT_tb;
       end
     end
 
-     assign duty_v_cmd_expected_1 = 32'b00011111111111111111111111111010;
+  assign #1 duty_v_cmd_addr_delay_1 = duty_u_cmd_addr;
+
+     initial
+    begin : duty_v_cmd_expected_fileread
+      fp_duty_v_cmd_expected = $fopen("duty_v_cmd_expected.dat", "r");
+      status_duty_v_cmd_expected = $rewind(fp_duty_v_cmd_expected);
+    end
+
+  always @(duty_v_cmd_addr_delay_1,  tb_enb_delay)
+    begin
+      if (tb_enb_delay == 0) begin
+        duty_v_cmd_expected <= 32'bx;
+        if (snkDone == 1) begin
+          $fclose(fp_duty_v_cmd_expected);
+        end
+      end
+      else  begin
+        status_duty_v_cmd_expected = $fscanf(fp_duty_v_cmd_expected, "%h", duty_v_cmd_expected);
+      end
+    end
 
      always @(posedge clk)
     begin : DataHold_duty_v_cmd_ref
@@ -545,13 +597,15 @@ module FOC_DUT_tb;
       end
       else begin
         if (ce_out) begin
-          duty_v_cmd_ref_hold <= duty_v_cmd_expected_1;
+          duty_v_cmd_ref_hold <= duty_v_cmd_expected;
         end
       end
     end
 
-     assign duty_v_cmd_ref = (ce_out == 1'b0 ? duty_v_cmd_ref_hold :
-              32'b00011111111111111111111111111010);
+  assign duty_v_cmd_refTmp = duty_v_cmd_expected;
+
+  assign duty_v_cmd_ref = (ce_out == 1'b0 ? duty_v_cmd_ref_hold :
+              duty_v_cmd_refTmp);
 
   always @(posedge clk)
     begin : duty_v_cmd_checker
@@ -566,7 +620,26 @@ module FOC_DUT_tb;
       end
     end
 
-     assign duty_w_cmd_expected_1 = 32'b00011111111111111111111111111010;
+  assign #1 duty_w_cmd_addr_delay_1 = duty_u_cmd_addr;
+
+     initial
+    begin : duty_w_cmd_expected_fileread
+      fp_duty_w_cmd_expected = $fopen("duty_w_cmd_expected.dat", "r");
+      status_duty_w_cmd_expected = $rewind(fp_duty_w_cmd_expected);
+    end
+
+  always @(duty_w_cmd_addr_delay_1,  tb_enb_delay)
+    begin
+      if (tb_enb_delay == 0) begin
+        duty_w_cmd_expected <= 32'bx;
+        if (snkDone == 1) begin
+          $fclose(fp_duty_w_cmd_expected);
+        end
+      end
+      else  begin
+        status_duty_w_cmd_expected = $fscanf(fp_duty_w_cmd_expected, "%h", duty_w_cmd_expected);
+      end
+    end
 
      always @(posedge clk)
     begin : DataHold_duty_w_cmd_ref
@@ -575,13 +648,15 @@ module FOC_DUT_tb;
       end
       else begin
         if (ce_out) begin
-          duty_w_cmd_ref_hold <= duty_w_cmd_expected_1;
+          duty_w_cmd_ref_hold <= duty_w_cmd_expected;
         end
       end
     end
 
-     assign duty_w_cmd_ref = (ce_out == 1'b0 ? duty_w_cmd_ref_hold :
-              32'b00011111111111111111111111111010);
+  assign duty_w_cmd_refTmp = duty_w_cmd_expected;
+
+  assign duty_w_cmd_ref = (ce_out == 1'b0 ? duty_w_cmd_ref_hold :
+              duty_w_cmd_refTmp);
 
   always @(posedge clk)
     begin : duty_w_cmd_checker
