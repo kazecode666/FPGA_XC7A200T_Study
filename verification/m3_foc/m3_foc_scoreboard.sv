@@ -141,11 +141,18 @@ module m3_foc_scoreboard;
       pre_xq = dut.u_Iq.x_q_z_out1;
       pre_awd = dut.u_dq_voltage_limiter.Unit_Delay_bypass_reg;
       pre_awq = dut.u_dq_voltage_limiter.Unit_Delay1_bypass_reg;
+`ifdef M3_PI_COMMIT_NEXT_FRAME
+      // Qualified one-fast-register boundary after the original state bypass.
+      next_xd = dut.u_Id.x_d_z_out1_1;
+      next_xq = dut.u_Iq.x_q_z_out1_1;
+      pre_pi_enable = oracle_phase1 & ce_value;
+`else
       next_xd = dut.u_Id.Reset_Integral_out1;
       next_xq = dut.u_Iq.Reset_Integral_out1;
+      pre_pi_enable = oracle_phase0 & ce_value;
+`endif
       next_awd = dut.u_dq_voltage_limiter.Subtract_out1_1;
       next_awq = dut.u_dq_voltage_limiter.Subtract1_out1_1;
-      pre_pi_enable = oracle_phase0 & ce_value;
       pre_aw_enable = oracle_phase1 & ce_value;
 
       if (compare_data && !rst_value && ce_value && frame_phase == FRAME_CLOCKS) begin
@@ -217,12 +224,18 @@ module m3_foc_scoreboard;
         if (frame_phase == 1 && row > 0) begin
           compare_state("aw_d_commit@next-frame-phase1", dut.u_dq_voltage_limiter.Unit_Delay_bypass_reg, awd);
           compare_state("aw_q_commit@next-frame-phase1", dut.u_dq_voltage_limiter.Unit_Delay1_bypass_reg, awq);
+`ifdef M3_PI_COMMIT_NEXT_FRAME
+          compare_state("x_d_commit@next-frame-phase1=source-old", dut.u_Id.x_d_z_out1, xd);
+          compare_state("x_q_commit@next-frame-phase1=source-old", dut.u_Iq.x_q_z_out1, xq);
+`endif
         end
         if (frame_phase == FRAME_CLOCKS && row + 1 < frames) begin
           unpack_record(row + 1, next_sid, na, nb, nc, nt, nw, niq,
                         nid, npr, nvdc, neu, nev, new_, nxd, nxq, nawd, nawq);
+`ifndef M3_PI_COMMIT_NEXT_FRAME
           compare_state("x_d_commit=next-source-old", dut.u_Id.x_d_z_out1, nxd);
           compare_state("x_q_commit=next-source-old", dut.u_Iq.x_q_z_out1, nxq);
+`endif
         end
         if (mode == "cycle_negative" && row == negative_sample && frame_phase == OUTPUT_PHASE - 1) begin
           // A real one-clock-early observation of changed data, not a

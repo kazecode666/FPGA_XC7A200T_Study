@@ -24,6 +24,16 @@ def freeze(run):
                         'aw_d_old':'dq_voltage_limiter_du_d_z','aw_q_old':'dq_voltage_limiter_du_q_z'},
        'schedule_evidence':str(report),'schedule_sha256':sha(report),
        'state_mapping_status':'provisional from preserved algorithm state; must pass directed event checks'}
+    rtl=Path(m['root_dir']);signatures=[]
+    for module,axis in [('Id','d'),('Iq','q')]:
+        sv=(rtl/(module+'.sv')).read_text()
+        signatures.append(bool(re.search(r'x_'+axis+r'_z_out1\s*<=\s*x_'+axis+r'_z_out1_1\s*;',sv)))
+    if any(signatures):
+        if not all(signatures):raise ValueError('asymmetric PI state retiming requires a new qualified mapping')
+        c['state_events']['pi_commit']=1
+        c['pi_next_signals']={'d':'u_Id.x_d_z_out1_1','q':'u_Iq.x_q_z_out1_1'}
+        c['pi_commit_evidence']='one fast register after the original bypass; D-input and next-frame phase1 must be verified against source old state; pre5000 consuming event unchanged'
+        c['pi_sv_sha256']={n:sha(rtl/(n+'.sv')) for n in ['Id','Iq']}
     validate(c,{'candidate_id':m['candidate_id'],'configuration_sha256':m['build_identity']['configuration_sha256']})
     target=run/'candidate_contract.json'
     with target.open('x',encoding='utf8') as f:json.dump(c,f,indent=2)

@@ -14,6 +14,15 @@ def read(p):
     return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 
 
+def contract_path(manifest, data):
+    p=Path(data['candidate_contract']['path'])
+    if not p.is_absolute():
+        base=Path(__file__).resolve().parents[1] if p.parts[0]=='.runtime' else Path(manifest).resolve().parent
+        p=base/p
+    assert sha(p)==data['candidate_contract']['sha256'],'Candidate contract hash mismatch'
+    return p
+
+
 def artifacts(file):
     m = read(file)
     root = Path(m.get('root_dir', '.'))
@@ -44,9 +53,7 @@ def publish(file, destination):
         assert sha(dest) == digest
     m['root_dir'] = '.'
     if 'candidate_contract' in m:
-        contract=Path(m['candidate_contract']['path'])
-        if not contract.is_absolute():contract=Path(__file__).resolve().parents[1]/contract
-        assert sha(contract)==m['candidate_contract']['sha256'],'Candidate contract hash mismatch'
+        contract=contract_path(file,m)
         shutil.copyfile(contract,target/'candidate_contract.json')
         m['candidate_contract']['path']='candidate_contract.json'
     m['publication'] = {'source_manifest_sha256': sha(Path(file)),
@@ -74,13 +81,13 @@ def compare(a, b, output):
     if ma.get('candidate_id')!=mb.get('candidate_id'):
         mismatches.append('candidate_id')
     if 'candidate_id' in ma:
-        def contract(m):
-            p=Path(m['candidate_contract']['path'])
-            if not p.is_absolute():p=Path(__file__).resolve().parents[1]/p
-            assert sha(p)==m['candidate_contract']['sha256'],'Candidate contract hash mismatch'
+        def contract(file,m):
+            p=contract_path(file,m)
             c=read(p)
-            return {key:c[key] for key in ('candidate_id','configuration_sha256','output_phase_cycles','frame_cycles','state_events','state_mapping')}
-        if contract(ma)!=contract(mb):mismatches.append('candidate_schedule_or_state_contract')
+            values={key:c[key] for key in ('candidate_id','configuration_sha256','output_phase_cycles','frame_cycles','state_events','state_mapping')}
+            values['pi_next_signals']=c.get('pi_next_signals')
+            return values
+        if contract(a,ma)!=contract(b,mb):mismatches.append('candidate_schedule_or_state_contract')
     result = {'status': 'FAIL' if mismatches else 'PASS',
               'first_manifest_sha256': sha(Path(a)), 'repeat_manifest_sha256': sha(Path(b)),
               'files_compared': len(aa), 'comparison': 'exact raw bytes SHA256; no token/path/time exclusions',

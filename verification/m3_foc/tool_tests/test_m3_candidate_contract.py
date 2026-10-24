@@ -6,6 +6,8 @@ import hashlib,json,subprocess,tempfile
 
 ROOT=Path(__file__).resolve().parents[3]
 SPEC=importlib.util.spec_from_file_location('contract',ROOT/'scripts/m3_candidate_contract.py')
+MAPPING={'x_d_old':'u_Id.x_d_z_out1','x_q_old':'u_Iq.x_q_z_out1',
+         'aw_d_old':'dq_voltage_limiter_du_d_z','aw_q_old':'dq_voltage_limiter_du_q_z'}
 
 class CandidateContract(unittest.TestCase):
     def test_real_stager_rejects_stale_candidate_phase_and_mapping(self):
@@ -14,7 +16,7 @@ class CandidateContract(unittest.TestCase):
         baseline=json.loads((ROOT/'generated/m3_foc/manifest.json').read_text())
         contract={'candidate_id':'p1','configuration_sha256':baseline['build_identity']['configuration_sha256'],
           'output_phase_cycles':293,'frame_cycles':5000,'state_events':{'pi_consume':5000,'pi_commit':5000,'aw_commit':1},
-          'state_mapping':dict.fromkeys(['x_d_old','x_q_old','aw_d_old','aw_q_old'],'mapped'),
+          'state_mapping':MAPPING,
           'schedule_evidence':'test only scheduling fixture'}
         for name in ['candidate','phase','mapping']:
             c=copy.deepcopy(contract);m=copy.deepcopy(baseline);m['candidate_id']='p1'
@@ -38,11 +40,16 @@ class CandidateContract(unittest.TestCase):
         identity={'candidate_id':'p1','configuration_sha256':'a'*64}
         good={**identity,'output_phase_cycles':310,'frame_cycles':5000,
               'state_events':{'pi_consume':5000,'pi_commit':5000,'aw_commit':1},
-              'state_mapping':dict.fromkeys(['x_d_old','x_q_old','aw_d_old','aw_q_old'],'mapped'),
+              'state_mapping':MAPPING,
               'schedule_evidence':'generated scheduling report'}
         self.assertEqual(module.validate(good,identity)['output_phase_cycles'],310)
+        piped=copy.deepcopy(good);piped['state_events']['pi_commit']=1
+        piped['pi_next_signals']={'d':'u_Id.x_d_z_out1_1','q':'u_Iq.x_q_z_out1_1'}
+        piped['pi_commit_evidence']='one fast register after bypass; checked against generated SV and original sample events'
+        self.assertEqual(module.validate(piped,identity)['state_events']['pi_commit'],1)
         for key,value in [('candidate_id','baseline'),('configuration_sha256','b'*64),
-                          ('output_phase_cycles',274),('state_events',{}),('state_mapping',{})]:
+                          ('output_phase_cycles',274),('state_events',{}),('state_mapping',{}),
+                          ('state_mapping',{**MAPPING,'aw_q_old':'u_Id.x_d_z_out1'})]:
             bad=copy.deepcopy(good);bad[key]=value
             expected={**identity,'output_phase_cycles':310}
             with self.subTest(key=key),self.assertRaises(ValueError):module.validate(bad,expected)

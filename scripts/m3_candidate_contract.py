@@ -13,10 +13,16 @@ def validate(contract, identity):
     if 'output_phase_cycles' in identity and phase!=identity['output_phase_cycles']:
         raise ValueError('candidate output schedule mismatch')
     events=contract.get('state_events',{})
-    if events!={'pi_consume':5000,'pi_commit':5000,'aw_commit':1}:
+    allowed=[{'pi_consume':5000,'pi_commit':5000,'aw_commit':1},{'pi_consume':5000,'pi_commit':1,'aw_commit':1}]
+    if events not in allowed:
         raise ValueError('missing or changed state mapping requires explicit requalification')
-    if set(contract.get('state_mapping',{}))!={'x_d_old','x_q_old','aw_d_old','aw_q_old'}:
-        raise ValueError('missing explicit state signal mapping')
+    if events['pi_commit']==1:
+        if contract.get('pi_next_signals')!={'d':'u_Id.x_d_z_out1_1','q':'u_Iq.x_q_z_out1_1'} or not contract.get('pi_commit_evidence'):
+            raise ValueError('next-frame PI commit requires explicit generated D-input qualification')
+    supported={'x_d_old':'u_Id.x_d_z_out1','x_q_old':'u_Iq.x_q_z_out1',
+               'aw_d_old':'dq_voltage_limiter_du_d_z','aw_q_old':'dq_voltage_limiter_du_q_z'}
+    if contract.get('state_mapping')!=supported:
+        raise ValueError('missing or unqualified state signal mapping')
     if contract.get('frame_cycles')!=5000 or not contract.get('schedule_evidence'):
         raise ValueError('missing generated schedule or frame contract')
     return contract

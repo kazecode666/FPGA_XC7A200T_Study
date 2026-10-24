@@ -7,13 +7,15 @@
   "synthesis_staged_files_verified": 30,
   "source_snapshot": "first generation; current local model differs in layout only",
   "baseline_ooc_manifest_matches": true,
-  "paths": 200,
+  "paths": 240,
   "classes": [
     "limiter",
     "inverse_park",
     "sector_xyz",
     "pi_d",
-    "pi_q"
+    "pi_q",
+    "pi_feedback",
+    "aw_feedback"
   ],
   "raw_reports": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\r1_paths_02"
 }

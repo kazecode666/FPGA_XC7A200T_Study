@@ -105,6 +105,7 @@ def stage(args: argparse.Namespace) -> dict:
     manifest_path = args.manifest.resolve()
     source = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     phase=274
+    pi_next_frame=False
     if 'candidate_id' in source:
         from m3_candidate_contract import validate
         entry=source['candidate_contract'];file=Path(entry['path'])
@@ -117,6 +118,7 @@ def stage(args: argparse.Namespace) -> dict:
                           'configuration_sha256':source['build_identity']['configuration_sha256'],
                           'output_phase_cycles':entry['output_phase_cycles']})
         phase=contract['output_phase_cycles']
+        pi_next_frame=contract['state_events']['pi_commit']==1
     source_root_value = source.get("root_dir", ".")
     source_root = Path(source_root_value)
     if not source_root.is_absolute():
@@ -223,6 +225,7 @@ def stage(args: argparse.Namespace) -> dict:
         "clock_port": "clk",
         "part": source.get("part", "xc7a200tfbg484-2"),
         "clock_period_ns": 20,
+        "defines": ["M3_PI_COMMIT_NEXT_FRAME"] if pi_next_frame else [],
         "design_files": staged["design_files"],
         "testbench_files": [file_entry(stage_root, scoreboard)],
         "data_files": staged["data_files"],
@@ -244,6 +247,7 @@ def stage(args: argparse.Namespace) -> dict:
             "frame_clocks": 5000,
             "output_post_edge_phase": phase,
             "old_state_pre_edge_phase": 5000,
+            "pi_commit_post_edge_phase":1 if pi_next_frame else 5000,
             "deadline_clocks": 2500,
             "expected_negative": args.mode in ("bit_negative", "cycle_negative"),
             "negative_sample": negative_sample,

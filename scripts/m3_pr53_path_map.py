@@ -28,16 +28,32 @@ maps={
  'pi_d':('23','Id.sv','x_d_z_out1'),
  'pi_q':('52','Iq.sv','x_q_z_out1')}
 rows=list(csv.DictReader((raw/'paths.csv').open()))
+for folder,label in [('r1_feedback','pi_feedback'),('r1_aw_data','aw_feedback')]:
+    extra=root/'.runtime/pr53_20261025'/folder
+    if (extra/'paths.csv').is_file():
+        values=list(csv.DictReader((extra/'paths.csv').open()))
+        for r in values:r['group']=label
+        rows.extend(values)
+        text=(extra/'feedback_setup.rpt').read_text()
+        pieces=re.split(r'(?=Slack \()',text)
+        (out/(label+'_representative.rpt')).write_text(pieces[0]+pieces[1],encoding='utf8')
 for r in rows:
     group=r['group'] if r['group']!='worst' else 'limiter'
-    sid,sv,token=maps[group];source=root/'generated/m3_foc'/sv
+    if group in maps:sid,sv,token=maps[group]
+    elif group=='pi_feedback':sid,sv,token='generated_TC','FOC_DUT_tc.sv','phase_1'
+    else:sid,sv,token='184','dq_voltage_limiter.sv','Subtract_out1_1'
+    source=root/'generated/m3_foc'/sv
     lines=source.read_text().splitlines() if source.is_file() else []
     at=next((i for i,l in enumerate(lines,1) if token in l),'unresolved')
     end='unresolved'
     if '/u_Sqrt/' in r['endpoint']:end=blocks['184']+'/Sqrt'
     if '/u_Fcn1/u_Defined_Quotient/' in r['endpoint']:end=blocks['134']+'/Fcn1/Defined_Quotient'
     if '/u_Fcn2/u_Defined_Quotient/' in r['endpoint']:end=blocks['134']+'/Fcn2/Defined_Quotient'
-    r.update(model_start=blocks[sid],model_start_SID=sid,model_end=end,
+    if '/x_d_z_out1_reg' in r['endpoint']:end=blocks['47']
+    if '/x_q_z_out1_reg' in r['endpoint']:end=blocks['78']
+    if '/Unit_Delay_bypass_reg' in r['endpoint']:end=blocks['213']
+    if '/Unit_Delay1_bypass_reg' in r['endpoint']:end=blocks['214']
+    r.update(model_start=blocks.get(sid,'HDL Coder generated timing controller; no source block SID'),model_start_SID=sid,model_end=end,
              generated_sv=sv+':'+str(at),evidence=group+'_setup.rpt',mapping_scope='enclosing source block; exact synthesized bit uses DCP name')
 with (out/'critical_path_map.csv').open('w',newline='',encoding='utf8') as f:
     w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
@@ -60,6 +76,6 @@ identity={'baseline_manifest_sha256':sha(baseline/'manifest.json'),'DCP_sha256':
           'raw_payload_files_verified':len(payload),'configuration_sha_verified':True,'frozen_source_files_verified':8,'synthesis_staged_files_verified':len(staged),
           'source_snapshot':'first generation; current local model differs in layout only',
           'baseline_ooc_manifest_matches':json.loads((baseline/'ooc_001/synth/ooc_result.json').read_text())['manifest_sha256']==sha(baseline/'manifest.json'),
-          'paths':len(rows),'classes':list(maps),'raw_reports':str(raw)}
+          'paths':len(rows),'classes':list(maps)+['pi_feedback','aw_feedback'],'raw_reports':str(raw)}
 (out/'baseline_identity.json').write_text(json.dumps(identity,indent=2),encoding='utf8')
 print(json.dumps(identity))

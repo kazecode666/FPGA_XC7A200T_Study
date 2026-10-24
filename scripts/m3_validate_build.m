@@ -1,6 +1,7 @@
 function result=m3_validate_build(cfg)
 % 已有run只能消费同源、同数值配置/生成配置的最终清单。
 manifest=fullfile(cfg.run_dir,'manifest.json');m=jsondecode(fileread(manifest));
+assert(isfield(cfg,'candidate')==isfield(m,'candidate_id'),'M3:CANDIDATE_ID','Candidate configuration file is missing or unexpected for this manifest.');
 assert(strcmp(m.dut_top,'FOC_DUT')&&strcmp(m.part,cfg.part)&&m.clock_period_ns==cfg.clock_period_ns,'M3:BUILD_CONTRACT');
 file=m.build_identity.configuration_readback;
 assert(strcmp(m3_sha256(file),m.build_identity.configuration_sha256),'M3:CONFIG_HASH');

@@ -20,7 +20,10 @@ set feedback [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *u_
 if {[llength $argv] == 3 && [lindex $argv 2] eq "aw"} {
     set feedback [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *u_dq_voltage_limiter*Unit_Delay*}]
 }
-if {[llength $feedback]} {lappend groups feedback [get_timing_paths -delay_type max -to $feedback -max_paths 20 -nworst 1]}
+if {[llength $feedback]} {
+    set sinks [get_pins -of_objects $feedback -filter {REF_PIN_NAME == D}]
+    lappend groups feedback [get_timing_paths -delay_type max -to $sinks -max_paths 20 -nworst 1]
+}
 foreach {label paths} $groups {
     set rank 0
     foreach p $paths {

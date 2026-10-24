@@ -28,11 +28,11 @@ def main():
     base=ROOT/'docs/reports/m3_foc_hdl/ooc'
     o=read(base/'ooc_result.json');t=timing(base/'timing_summary.rpt')
     rows.append({'candidate_id':'baseline_B3','configuration_sha256':read(RUN.parent/'m3_20261024_001/manifest.json')['build_identity']['configuration_sha256'],
-      'manifest_sha256':o['manifest_sha256'],'reason':'immutable original-width failure','output_phase':274,'state_events':'PI5000 AW1',
+      'manifest_sha256':o['manifest_sha256'],'ooc_manifest_sha256':o['manifest_sha256'],'reason':'immutable original-width failure','output_phase':274,'state_events':'PI5000 AW1',
       'bit_validation':'original full PASS','rtl_validation':'original full PASS','generation':'PASS',**t,
       'LUT':o['used']['LUT'],'FF':o['used']['FF'],'DSP':o['used']['DSP'],'BRAM':0,'deadline':'ideal budget only; physical NOT_PROVEN','decision':'REJECT timing'})
     for id in ['p1','p2','p3']:
-        run=RUN/id
+        run=RUN/('p3q' if id=='p3' and (RUN/'p3q').is_dir() else id)
         if not run.is_dir():continue
         if not (run/'manifest.json').is_file() and not list(run.glob('*_generate_failure.json')):
             continue  # Never freeze files still being rewritten by makehdltb.
@@ -42,13 +42,16 @@ def main():
         failures=list(run.glob('*_generate_failure.json'))
         for file in failures:copy(file,dest/file.name)
         works=list(run.glob('*_generate'))
+        if not works and (run/'final_build.json').is_file():works=[Path(read(run/'final_build.json')['work_dir'])]
         if works:
             work=max(works,key=lambda p:p.stat().st_mtime_ns)
             copy(work/'hdl_config_readback.json',dest/'hdl_config_readback.json')
             copy(work/'model/PMLSM_FOC_FixedPoint.slx',dest/'model/PMLSM_FOC_FixedPoint.slx')
+            for n in ['gm_PMLSM_FOC_FixedPoint.slx','gm_PMLSM_FOC_FixedPoint_vnl.slx']:
+                copy(work/'rtl/PMLSM_FOC_FixedPoint'/n,dest/'generated_models'/n)
             for file in ['PMLSM_FOC_FixedPoint_distributed_pipelining.html','PMLSM_FOC_FixedPoint_delay_balancing.html','FOC_DUT_report.html']:
                 copy(work/'rtl/PMLSM_FOC_FixedPoint/html/pages'/file,dest/'generation_reports'/file)
-        row={'candidate_id':id,'configuration_sha256':'NOT_RUN','manifest_sha256':'NOT_RUN',
+        row={'candidate_id':id,'configuration_sha256':'NOT_RUN','manifest_sha256':'NOT_RUN','ooc_manifest_sha256':'NOT_RUN',
           'reason':read(run/'candidate.json')['hypothesis'],'output_phase':'NOT_RUN','state_events':'NOT_RUN',
           'bit_validation':'NOT_RUN','rtl_validation':'NOT_RUN','generation':'FAIL' if failures else 'IN_PROGRESS',
           'wns_ns':'NOT_RUN','tns_ns':'NOT_RUN','setup_fail_endpoints':'NOT_RUN','whs_ns':'NOT_RUN','ths_ns':'NOT_RUN',
@@ -77,8 +80,23 @@ def main():
                     for n in ['result.json','scoreboard.json','wrapper_exit.json','xsim.console.log']:
                         copy(folder/n,dest/'rtl'/label/n)
         synth=run/'ooc_001/synth'
+        if id=='p3' and run.name=='p3q':
+            original=RUN/'p3'
+            a=read(original/'manifest.json');b=read(run/'manifest.json')
+            assert a['design_files']==b['design_files'] and a['build_identity']==b['build_identity'],'Different hardware cannot reuse diagnostic FAIL'
+            copy(run/'state_qualification.json',dest/'state_qualification.json')
+            copy(original/'manifest.json',dest/'initial_state_mapping_failure/manifest.json')
+            copy(original/'candidate_contract.json',dest/'initial_state_mapping_failure/candidate_contract.json')
+            copy(original/'rtl_probe_result.json',dest/'initial_state_mapping_failure/rtl_probe_result.json')
+            for folder in original.glob('*_run'):
+                if (folder/'scoreboard.json').is_file():
+                    for n in ['result.json','scoreboard.json','wrapper_exit.json','xsim.console.log']:
+                        copy(folder/n,dest/'initial_state_mapping_failure'/folder.name/n)
+            for n in ['ooc_result.json','timing_summary.rpt','utilization.rpt']:
+                copy(original/'ooc_001/synth'/n,dest/'initial_state_mapping_failure/ooc'/n)
         if (synth/'ooc_result.json').is_file():
             o=read(synth/'ooc_result.json');row.update(timing(synth/'timing_summary.rpt'))
+            row['ooc_manifest_sha256']=o['manifest_sha256']
             row.update(LUT=o['used']['LUT'],FF=o['used']['FF'],DSP=o['used']['DSP'],BRAM=o['used']['BRAM36_equivalent'])
             row['decision']='PENDING full verification' if o['timing_ok'] and o['resources_ok'] else 'REJECT timing'
             for file in synth.iterdir():
