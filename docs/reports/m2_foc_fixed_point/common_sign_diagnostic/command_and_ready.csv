@@ -1,0 +1,7 @@
+signal,original_pair_max,common_pair_max,Float_self_vs_original_max
+target_accepted_mm,0,0,0
+segment_start_s,0,0,0
+accepted_count,0,0,0
+rejected_count,0,0,0
+command_status,0,0,0
+move_ready,0,0,0

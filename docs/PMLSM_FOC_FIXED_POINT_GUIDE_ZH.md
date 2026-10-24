@@ -49,3 +49,5 @@ plot(iq.Time,double(iq.Data)); grid on; xlabel('s'); ylabel('Apeak');
 本轮只执行 checkhdl，未生成 HDL/C、未运行 Vivado。100 µs 是控制调用周期；M3 还需验证除法/开方/LUT的硬件流水线、真实延迟及 PWM 生效时限。详见[整合验收](../coordination/reports/m2_foc_fixed_point_implementation.md)。
 
 PR51 评论修订的[定位与重放证据](reports/m2_foc_fixed_point/pr51_revision/README.md)另附1µs死区小窗口、100µs实际FOC输入/状态、50µs应用占空比及完整前缀同输入重放。该重放通过DUT预算，原连续点位闭环预算仍失败；不改变日常操作、PI、死区、原对齐或类型。测试异常清理已作故障注入验证，仅关闭测试创建的源参考，不关闭用户模型。
+
+后续[共同死区符号诊断](reports/m2_foc_fixed_point/common_sign_diagnostic/README.md)只存在于临时副本，正常模型仍根据自身电流判定死区符号。诊断支持为冻结连续点位场景提出明确的受限验收例外，待PR51 Review；不放宽原预算、不改变正常`closedloop/all`失败结果。该例外不保证永久保持在到位窗内或实机定位精度，也不启动M3。

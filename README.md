@@ -4,6 +4,8 @@
 
 **路线更新：2026-10-24。** 按已合并 PR50 交付 M2 独立 FOC 定点 SLX、共享 float/fixed 闭环、类型配置及本机证据。单元和11类共享场景通过，**连续点位数值预算未通过，作为开放实现PR的Review阻塞项保留**。[操作指南](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md) · [整合验收](coordination/reports/m2_foc_fixed_point_implementation.md)。原浮点默认、三环参数、连续点位、原对齐和默认死区保留；未生成 HDL/C 或运行 Vivado。
 
+后续用户授权的[共同死区符号诊断](docs/reports/m2_foc_fixed_point/common_sign_diagnostic/README.md)使该场景iq/速度峰值与RMSE差下降超过99.99%，命令/Ready仍一致；已明确提出只针对冻结场景的受限例外`M2-E-REPEAT-001`，等待PR51 Review。原严格FAIL、预算和正常测试退出保持，不等于完整M2严格通过，诊断不进入生产模型。
+
 已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
 ## 当前入口

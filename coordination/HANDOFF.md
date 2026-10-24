@@ -2,6 +2,8 @@
 
 **当前更新：2026-10-24。** 按已合并 PR50，在原 checkout 交付 M2 实际定点 SLX、配置、共享闭环和兼容性证据。连续点位的电流/速度差超冻结预算，为开放实现PR的Review阻塞项；没有宣称M2全部通过。入口：[M2整合验收](reports/m2_foc_fixed_point_implementation.md)、[操作指南](../docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)、[结果索引](../docs/reports/m2_foc_fixed_point/README.md)。未生成 HDL/C，未执行 Vivado，不自动合并或开始 M3。
 
+最新用户授权的[同录制符号诊断与受限例外](../docs/reports/m2_foc_fixed_point/common_sign_diagnostic/README.md)已完成：Float自回放逐值一致，共用符号后iq/速度峰值和RMSE差下降超过99.99%，命令/Ready仍一致。技术判断支持仅该冻结场景的`M2-E-REPEAT-001`，待PR51 Review确认；原严格FAIL及正常测试出口不改。不要再盲目加宽、调PI、改死区或移动命令，也不能把临时诊断模板作为生产模型。保持/短窗限制明确记录，不保证永久到位或实机精度。
+
 ## 当前执行入口
 
 先读 [M2整合验收](reports/m2_foc_fixed_point_implementation.md)及[设计](../docs/FOC_FIXED_POINT_DESIGN.md)，按 Review 仅补受影响验证。完整合同仍见[M2任务书](tasks/m2_foc_fixed_point_implementation.md)；开放实现 PR 等待 Review，不自动合并或开始 M3。

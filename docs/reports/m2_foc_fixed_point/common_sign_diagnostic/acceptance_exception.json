@@ -1,0 +1,47 @@
+{
+  "exception_id": "M2-E-REPEAT-001",
+  "technical_decision": "supports_limited_exception_for_review",
+  "review_status": "pending_PR51_review",
+  "original_strict_acceptance": "FAIL",
+  "full_M2_strict_pass": false,
+  "original_thresholds_changed": false,
+  "normal_test_exit_codes_changed": false,
+  "scope": {
+    "source_implementation_commit": "890871744e726dafef5b9d3b41370c75776beafe",
+    "case": "only the frozen 0..4s paired repeat-move case",
+    "command_plan": "../paired_command_plan.json",
+    "accepted_targets_mm": [0.1, 0.2, -0.1, -0.09],
+    "busy_rejections": 1,
+    "Vdc_V": 48,
+    "deadtime_s": 0.000001,
+    "alignment": "original bypass, unchanged",
+    "parameters_and_types": "original PI and adopted Current32/24 configuration, unchanged; local source hashes retained",
+    "purpose": "bounded simulation evidence for fixed-point migration, not general motion performance"
+  },
+  "explicitly_exempted_original_comparisons": [
+    {"signal": "iq", "metric": "max_abs_A", "measured": 0.00639943163127064, "original_budget": 0.005},
+    {"signal": "v_mmps", "metric": "max_abs_mmps", "measured": 0.188900207070857, "original_budget": 0.1},
+    {"signal": "v_mmps", "metric": "rmse_mmps", "measured": 0.0201413712143034, "original_budget": 0.02}
+  ],
+  "required_evidence": {
+    "Float_self_replay_13_signal_max": 0,
+    "same_recorded_sign_samples_per_phase": 4000001,
+    "Float_and_Fixed_consumed_sign_mismatches": [0, 0, 0],
+    "same_accepted_rejected_status_and_ready_samples": true,
+    "iq_peak_reduction_fraction": 0.999985953306354,
+    "speed_peak_reduction_fraction": 0.99999043863167,
+    "speed_rmse_reduction_fraction": 0.999973961171474,
+    "same_input_DUT_replay_original_D_budget_pass": true,
+    "original_id_and_position_samplewise_budgets_pass": true,
+    "original_four_move_arrivals_within_unchanged_ready_window": true,
+    "actual_reference_tracking_and_holding_statistics_disclosed": true
+  },
+  "limitations": [
+    "Counterfactual common-sign replay is a causal diagnostic, not the production controller.",
+    "Original float/fixed samplewise failures and short-window tracking differences remain visible.",
+    "Profile-done holding windows include convergence; first three moves do not stay within 0.02mm throughout in either implementation.",
+    "No claim of unique attribution for every internal event, general input range, changed sequence, or hardware behavior.",
+    "Any changed types, PI, deadtime law, sample times, plant, command sequence or initial conditions needs a new review."
+  ],
+  "does_not_authorize_merge_or_M3": true
+}

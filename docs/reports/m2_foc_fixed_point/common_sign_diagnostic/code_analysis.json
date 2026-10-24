@@ -1,0 +1,105 @@
+[
+  {
+    "file": "m2_test_model_files.m",
+    "result": {
+      "code_issues": []
+    }
+  },
+  {
+    "file": "m2_run_shared_case.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 119,
+          "fixable": true,
+          "line": 7,
+          "severity": "warning",
+          "start_column": 108
+        },
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 204,
+          "fixable": true,
+          "line": 7,
+          "severity": "warning",
+          "start_column": 193
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 241,
+          "fixable": true,
+          "line": 7,
+          "severity": "info",
+          "start_column": 231
+        },
+        {
+          "description": "此关键字可能未与其在第 36 行上的匹配 END 对齐。",
+          "end_column": 3,
+          "fixable": false,
+          "line": 34,
+          "severity": "info",
+          "start_column": 2
+        },
+        {
+          "description": "不必要的额外分号。",
+          "end_column": 422,
+          "fixable": true,
+          "line": 47,
+          "severity": "info",
+          "start_column": 422
+        }
+      ]
+    }
+  },
+  {
+    "file": "m2_configure_common_signs.m",
+    "result": {
+      "code_issues": []
+    }
+  },
+  {
+    "file": "m2_common_sign_diagnostic.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 100,
+          "fixable": true,
+          "line": 103,
+          "severity": "info",
+          "start_column": 90
+        }
+      ]
+    }
+  },
+  {
+    "file": "m2_common_sign_motion_evidence.m",
+    "result": {
+      "code_issues": []
+    }
+  },
+  {
+    "file": "m2_check_common_sign_default.m",
+    "result": {
+      "code_issues": [
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 15,
+          "fixable": true,
+          "line": 5,
+          "severity": "warning",
+          "start_column": 9
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 49,
+          "fixable": true,
+          "line": 5,
+          "severity": "info",
+          "start_column": 39
+        }
+      ]
+    }
+  }
+]

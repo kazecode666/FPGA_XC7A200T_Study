@@ -3,7 +3,8 @@ function [out,metadata]=m2_run_shared_case(scene,implementation,plan,trialConfig
 if nargin<3,plan=struct;end
 if nargin<4,trialConfig=[];end
 if nargin<5,observation=struct;end
-root=fileparts(fileparts(mfilename('fullpath')));addpath(fullfile(root,'simulink模型'));m='PMLSM_PI_FOC_Float_Baseline';[modelFolder,modelCleanup]=m2_test_model_files; %#ok<NASGU>
+root=fileparts(fileparts(mfilename('fullpath')));addpath(fullfile(root,'simulink模型'));m='PMLSM_PI_FOC_Float_Baseline';
+if isfield(observation,'model_source_folder'),assert(isfield(observation,'common_sign_tape'));[modelFolder,modelCleanup]=m2_test_model_files(observation.model_source_folder);else,[modelFolder,modelCleanup]=m2_test_model_files;end %#ok<NASGU>
 evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');m2_bind_test_models(modelFolder);load_system(fullfile(modelFolder,[m '.slx']));
 in=Simulink.SimulationInput(m);stop=1.2;target=1;speed=0;pos=1;closed=1;test=0;iq=0;id=0;align=0;start=0;auto=1;dead=1e-6;
 if strcmp(scene,'daily'),stop=5;target=10;else,in=in.setVariable('Host_Traj_Vmax',5).setVariable('Host_Traj_Amax',50);end
@@ -40,7 +41,10 @@ if isfield(observation,'mode')
  m2_log_review_observations(m,f,observation.mode);
  if isfield(observation,'intervals'),in=in.setModelParameter('LoggingIntervals',observation.intervals);end
 end
-out=sim(in);metadata=struct('scene',scene,'implementation',implementation,'stop_s',stop,'version',version,'process',matlabProcessID,'sample_s',1e-4,'Udc',48,'source_saved',false,'test_model_folder',modelFolder,'trial_config_applied',~isempty(trialConfig));close_system(m,0);if bdIsLoaded('PMLSM_FOC_FixedPoint'),close_system('PMLSM_FOC_FixedPoint',0);end;
+if isfield(observation,'common_sign_tape')
+ in=m2_configure_common_signs(in,m,observation.common_sign_tape);
+end
+out=sim(in);metadata=struct('scene',scene,'implementation',implementation,'stop_s',stop,'version',version,'process',matlabProcessID,'sample_s',1e-4,'Udc',48,'source_saved',false,'test_model_folder',modelFolder,'trial_config_applied',~isempty(trialConfig),'common_sign_intervention',isfield(observation,'common_sign_tape'));close_system(m,0);if bdIsLoaded('PMLSM_FOC_FixedPoint'),close_system('PMLSM_FOC_FixedPoint',0);end;
 end
 function logport(b,i,name,d)
 p=get_param(b,'PortHandles');set_param(p.Outport(i),'DataLogging','on','DataLoggingNameMode','Custom','DataLoggingName',name,'DataLoggingDecimateData','on','DataLoggingDecimation',num2str(d));

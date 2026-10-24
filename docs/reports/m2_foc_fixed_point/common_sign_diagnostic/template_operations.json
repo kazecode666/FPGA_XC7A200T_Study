@@ -1,0 +1,114 @@
+{
+  "diagnostic_copies_only": true,
+  "tool": "model_edit",
+  "edits": [
+    {
+      "scope": "blk_814",
+      "layout_mode": "incremental",
+      "operations": [
+        {
+          "op": "disconnect",
+          "target": "blk_826.y1 -> blk_822.u1"
+        },
+        {
+          "op": "add_block",
+          "type": "FromWorkspace",
+          "name": "Recorded_Deadtime_Sign",
+          "ref": "recorded",
+          "params": {
+            "VariableName": "M2_Common_Sign_a",
+            "SampleTime": "PMLSM_Ts_s",
+            "Interpolate": "off",
+            "OutputAfterFinalValue": "Holding final value"
+          }
+        },
+        {
+          "op": "connect",
+          "target": "#recorded.y1 -> blk_822.u1"
+        },
+        {
+          "op": "add_block",
+          "type": "Terminator",
+          "name": "Computed_Sign_Unused",
+          "ref": "unused"
+        },
+        {
+          "op": "connect",
+          "target": "blk_826.y1 -> #unused.u1"
+        }
+      ]
+    },
+    {
+      "scope": "blk_829",
+      "layout_mode": "incremental",
+      "operations": [
+        {
+          "op": "disconnect",
+          "target": "blk_841.y1 -> blk_837.u1"
+        },
+        {
+          "op": "add_block",
+          "type": "FromWorkspace",
+          "name": "Recorded_Deadtime_Sign",
+          "ref": "recorded",
+          "params": {
+            "VariableName": "M2_Common_Sign_b",
+            "SampleTime": "PMLSM_Ts_s",
+            "Interpolate": "off",
+            "OutputAfterFinalValue": "Holding final value"
+          }
+        },
+        {
+          "op": "connect",
+          "target": "#recorded.y1 -> blk_837.u1"
+        },
+        {
+          "op": "add_block",
+          "type": "Terminator",
+          "name": "Computed_Sign_Unused",
+          "ref": "unused"
+        },
+        {
+          "op": "connect",
+          "target": "blk_841.y1 -> #unused.u1"
+        }
+      ]
+    },
+    {
+      "scope": "blk_844",
+      "layout_mode": "incremental",
+      "operations": [
+        {
+          "op": "disconnect",
+          "target": "blk_856.y1 -> blk_852.u1"
+        },
+        {
+          "op": "add_block",
+          "type": "FromWorkspace",
+          "name": "Recorded_Deadtime_Sign",
+          "ref": "recorded",
+          "params": {
+            "VariableName": "M2_Common_Sign_c",
+            "SampleTime": "PMLSM_Ts_s",
+            "Interpolate": "off",
+            "OutputAfterFinalValue": "Holding final value"
+          }
+        },
+        {
+          "op": "connect",
+          "target": "#recorded.y1 -> blk_852.u1"
+        },
+        {
+          "op": "add_block",
+          "type": "Terminator",
+          "name": "Computed_Sign_Unused",
+          "ref": "unused"
+        },
+        {
+          "op": "connect",
+          "target": "blk_856.y1 -> #unused.u1"
+        }
+      ]
+    }
+  ]
+}

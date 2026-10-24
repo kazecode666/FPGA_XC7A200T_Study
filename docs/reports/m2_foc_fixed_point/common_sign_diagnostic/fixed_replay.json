@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "used_sign_mismatches": [
+    0,
+    0,
+    0
+  ],
+  "samples_per_phase": 4.000001E+6,
+  "same_native_ticks": true,
+  "source": "same recorded Float tape for both implementations",
+  "diagnostic_only": true,
+  "metadata": {
+    "scene": "repeat",
+    "implementation": 1,
+    "stop_s": 4,
+    "version": "26.2.0.3386108 (R2026b)",
+    "process": 21972,
+    "sample_s": 0.0001,
+    "Udc": 48,
+    "source_saved": false,
+    "test_model_folder": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp51f6d2dc_5fe3_47fd_b788_c269aa526649",
+    "trial_config_applied": false,
+    "common_sign_intervention": true
+  }
+}
