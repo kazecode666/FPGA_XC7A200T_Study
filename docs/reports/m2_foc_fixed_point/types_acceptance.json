@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "version": "26.2.0.3386108 (R2026b)",
+  "config_version": 2.0261024E+7,
+  "input_parameters": {
+    "Rs": 2.37,
+    "Ld": 0.001745,
+    "Lq": 0.001745,
+    "psi": 0.141,
+    "Kp_ACR": 8.7250000000000014,
+    "Ki_ACR": 11850.000000000004,
+    "Kaw_d": 0.1358166189111748,
+    "Kaw_q": 0.1358166189111748,
+    "Ts_ACR": 0.0001,
+    "Udc": 48
+  },
+  "ranges": {
+    "phase_current_A": 2,
+    "reference_A": 2,
+    "theta_abs_rad": 25.132741228718345,
+    "omega_abs_radps": 100,
+    "Vdc_min_V": 12,
+    "Vdc_max_V": 60,
+    "verified_duration_s": 60,
+    "state_initial_V": 0,
+    "scope": "engineering verification envelope, not motor/drive ratings",
+    "park_axis_bound_A": 3.5276684147527879,
+    "error_bound_A": 5.5276684147527879,
+    "feedforward_bound_V": 14.71557813837436,
+    "integrator_bound_V": 142.35030651205031,
+    "raw_voltage_bound_V": 205.29479156914275,
+    "square_sum_bound_V2": 84291.902890835525
+  },
+  "epsilon": {
+    "original": 1E-6,
+    "quantized": 1.0000003385357559E-6,
+    "error": 3.3853575591797833E-13
+  },
+  "duty_endpoints_exact": true
+}

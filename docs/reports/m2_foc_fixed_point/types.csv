@@ -1,0 +1,13 @@
+quantity,signed,word_length,fraction_length,LSB,minimum,maximum,rounding_overflow
+Current,1,32,24,5.96046447753906e-08,-128,127.999999940395,Convergent/Saturate; numerical saturation forbidden in envelope
+Angle,1,40,32,2.3283064365387e-10,-128,127.999999999767,Convergent/Saturate; numerical saturation forbidden in envelope
+Omega,1,40,24,5.96046447753906e-08,-32768,32767.9999999404,Convergent/Saturate; numerical saturation forbidden in envelope
+Bus,0,32,24,5.96046447753906e-08,-0,255.999999940395,Convergent/Saturate; numerical saturation forbidden in envelope
+Work,1,64,40,9.09494701772928e-13,-8388608,8388608,Convergent/Saturate; numerical saturation forbidden in envelope
+Square,0,64,36,1.45519152283669e-11,-0,268435456,Convergent/Saturate; numerical saturation forbidden in envelope
+DivideWide,0,72,40,9.09494701772928e-13,-0,4294967296,Convergent/Saturate; numerical saturation forbidden in envelope
+Duty,0,32,30,9.31322574615479e-10,-0,3.99999999906868,Convergent/Saturate; numerical saturation forbidden in envelope
+Coefficient,1,64,40,9.09494701772928e-13,-8388608,8388608,Convergent/Saturate; numerical saturation forbidden in envelope
+Time,1,64,40,9.09494701772928e-13,-8388608,8388608,Convergent/Saturate; numerical saturation forbidden in envelope
+Phase,0,32,32,2.3283064365387e-10,-0,0.999999999767169,Convergent/Saturate; numerical saturation forbidden in envelope
+Trig,1,34,30,9.31322574615479e-10,-8,7.99999999906868,Convergent/Saturate; numerical saturation forbidden in envelope
