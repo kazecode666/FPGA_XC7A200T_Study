@@ -1,0 +1,79 @@
+{
+  "chart_pass": true,
+  "source_sid": "128",
+  "cases": [
+    {
+      "case": "normal",
+      "samples": 70001,
+      "max_error": 0,
+      "state_time_exact": true,
+      "done_seen": true
+    },
+    {
+      "case": "no_start",
+      "samples": 70001,
+      "max_error": 0,
+      "state_time_exact": true,
+      "done_seen": false
+    },
+    {
+      "case": "reset",
+      "samples": 70001,
+      "max_error": 0,
+      "state_time_exact": true,
+      "done_seen": true
+    },
+    {
+      "case": "fault",
+      "samples": 70001,
+      "max_error": 0,
+      "state_time_exact": true,
+      "done_seen": true
+    },
+    {
+      "case": "reset_after_done",
+      "samples": 70001,
+      "max_error": 0,
+      "state_time_exact": true,
+      "done_seen": true
+    }
+  ],
+  "parameters": {
+    "Ramp_Ticks": 10000,
+    "Hold_Ticks": 30000,
+    "Release_Ticks": 2000,
+    "Id_Target_A": 0.5
+  },
+  "UI_mouse_clicked": false,
+  "DSP_states": [
+    "HOLD_ALIGN",
+    "IDLE",
+    "RAMP_ID",
+    "DONE"
+  ],
+  "integration": {
+    "states_seen": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "transition_times_s": [
+      0.0001,
+      1.0001,
+      4.0001,
+      4.2001
+    ],
+    "holding_id_error_A": 0,
+    "holding_abs_iq_A": 0,
+    "max_periodic_angle_error_rad": 0,
+    "physical_pass": true,
+    "source_scene": "MIL nominal zero position/true angle; source static-current branch also explicitly freezes zero",
+    "nonzero_unknown_offset_proven": false
+  },
+  "chart_run": "C_full_chart.log",
+  "integration_run": "C.log",
+  "source_physical_reference": "source_mil_physical_corrected.json",
+  "reset_offset_semantics": "Reset invalidates Init_Done but retains the old offset value exactly as source"
+}

@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "single_start_count": 1,
+  "events": [
+    {
+      "target_mm": 0.1,
+      "submit_sim_s": 4.2542029999999995,
+      "running": true,
+      "request_bit": 0,
+      "accepted_sim_s": 4.2543000000000006
+    },
+    {
+      "target_mm": -0.1,
+      "submit_sim_s": 4.9274249999999995,
+      "running": true,
+      "request_bit": 1,
+      "accepted_sim_s": 4.9275
+    }
+  ],
+  "accepted_times": [
+    4.2543000000000006,
+    4.9275
+  ],
+  "max_latency_s": 9.7000000001123965E-5,
+  "max_formula_error_mm": 0,
+  "finish_sim_s": 5.712374,
+  "UI_mouse_clicked": false,
+  "ready_observer": "saved Host display-only DataStore at100us"
+}

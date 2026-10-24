@@ -69,6 +69,20 @@ M1A_PWM_ts=setinterpmethod(M1A_PWM_ts,'zoh');
 M1A_Reset_ts=setinterpmethod(M1A_Reset_ts,'zoh');
 M1A_Speed_ts=setinterpmethod(M1A_Speed_ts,'zoh');
 
+%% 原MIL启动对齐（默认旁路，开启需停止后设置）
+Alignment_Enable=0; Init_Start=0; Init_Reset=0;
+Simulation_Travel_Fault=0; % 仅仿真注入，不代表真实行程检测
+Ramp_Ticks=10000; Hold_Ticks=30000; Id_Release_Ramp_Ticks=2000;
+Id_Init_Target=0.5; Id_Init_Step=Id_Init_Target/Ramp_Ticks;
+theta_align_const=0; Tau_e_mm=PMLSM_tau_NN_m*1000; Theta_Offset_Fine=0;
+
+% 保留原chart的显式Signal解析及0初值，仅提供其必要接口对象。
+Alignment_Signal_Names={'Init_Done','Init_State_Num','id_init_ref','Angle_Init_EN','Theta_Offset_auto','x_align_mm_latch'};
+for Alignment_Index=1:numel(Alignment_Signal_Names)
+ Alignment_Signal=Simulink.Signal; Alignment_Signal.DataType='double'; Alignment_Signal.InitialValue='0';
+ assignin('base',Alignment_Signal_Names{Alignment_Index},Alignment_Signal);
+end
+
 %% 连续交互日志（物理曲线按100us；命令事件不抽取）
 M1B_Physical_Log_Decimation=100;
 
