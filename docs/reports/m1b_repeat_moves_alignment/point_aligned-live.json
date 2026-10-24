@@ -1,0 +1,47 @@
+{
+  "pass": true,
+  "single_start_count": 1,
+  "process": 31576,
+  "events": [
+    {
+      "target_mm": 0.1,
+      "submit_sim_s": 4.2512539999999994,
+      "running": true,
+      "request_bit": 0,
+      "accepted_sim_s": 4.2513000000000005,
+      "segment_start_mm": 0,
+      "segment_start_s": 4.2513000000000005,
+      "trajectory_done_s": 4.4514000000000005,
+      "ready_s": 4.9699,
+      "error_at_ready_mm": 0.019858121919142241
+    },
+    {
+      "target_mm": -0.1,
+      "submit_sim_s": 4.97526,
+      "running": true,
+      "request_bit": 1,
+      "accepted_sim_s": 4.9753,
+      "segment_start_mm": 0.1,
+      "segment_start_s": 4.9753,
+      "trajectory_done_s": 5.1852,
+      "ready_s": 5.6999,
+      "error_at_ready_mm": 0.019517253732381987
+    }
+  ],
+  "accepted_times": [
+    4.2513000000000005,
+    4.9753
+  ],
+  "max_latency_s": 4.6000000001100716E-5,
+  "max_formula_error_mm": 0,
+  "finish_sim_s": 5.923057,
+  "UI_mouse_clicked": false,
+  "draft_edit_only_ignored": true,
+  "busy_or_alignment_consumed": true,
+  "repeat_ack": true,
+  "repeat_at_event_status": 5,
+  "repeat_at_event_ready": 1,
+  "NaN_rejected": true,
+  "pause_continue": true,
+  "ready_observer": "saved Host display-only DataStore at100us"
+}

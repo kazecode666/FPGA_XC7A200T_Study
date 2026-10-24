@@ -1,7 +1,7 @@
 function result=m1b_verify_point_commands(stage)
 % M1B独立验收；baseline只采集一次，all不会覆盖修订前证据。
 arguments
- stage (1,:) char {mustBeMember(stage,{'baseline','regression','live','all'})}
+ stage (1,:) char {mustBeMember(stage,{'baseline','regression','live','aligned-live','all'})}
 end
 root=fileparts(fileparts(mfilename('fullpath')));runtime=fullfile(root,'.runtime','m1b_20261024');folder=fullfile(root,'docs','reports','m1b_repeat_moves_alignment');
 addpath(fullfile(root,'simulink模型'));m='PMLSM_PI_FOC_Float_Baseline';
@@ -43,8 +43,10 @@ if strcmp(stage,'all')
  result=struct('regression',m1b_verify_point_commands('regression'),'live',m1b_verify_point_commands('live'));return
 elseif strcmp(stage,'live')
  result=run_point_live(root,false);
+elseif strcmp(stage,'aligned-live')
+ result=run_point_live(root,true);
 elseif strcmp(stage,'regression')
- result=test_point_helper;
+ result=test_point_helper;result.legacy=m1a_regress_float_baseline(fullfile(folder,'legacy_regression'));
 else
  error('M1B:STAGE','未知阶段');
 end
@@ -61,20 +63,30 @@ m='PMLSM_PI_FOC_Float_Baseline';evalin('base','init_PMLSM_PI_FOC_Float_Baseline;
 if alignment,evalin('base','Alignment_Enable=1;Init_Start=1;Host_AutoStart_EN=0;');end
 if ~bdIsLoaded(m),open_system(fullfile(root,'simulink模型',[m '.slx']));end
 set_param(m,'EnablePacing','on','PacingRate','0.5');set_param(m,'SimulationCommand','start');startWall=tic;events=struct([]);bit=0;
+% Busy/alignment request is consumed through the same physical Host submit inlet.
+while get_param(m,'SimulationTime')<.12 && toc(startWall)<120,drawnow;pause(.01);end
+set_param([m '/Simple_Host/Host_Target_mm'],'Value','10');bit=1;set_param([m '/Simple_Host/Host_Move_Request'],'Value','1');
 if alignment,targets=[.1 -.1];else,targets=[.2 -.1 -.09];end
 for k=1:numel(targets)
  wait_ready(m,1,startWall);assert(strcmp(get_param(m,'SimulationStatus'),'running'));
- t0=get_param(m,'SimulationTime');set_param([m '/Simple_Host/Host_Target_mm'],'Value',num2str(targets(k),17));bit=1-bit;set_param([m '/Simple_Host/Host_Move_Request'],'Value',num2str(bit));
+ set_param([m '/Simple_Host/Host_Target_mm'],'Value',num2str(targets(k),17));bit=1-bit;t0=get_param(m,'SimulationTime');set_param([m '/Simple_Host/Host_Move_Request'],'Value',num2str(bit));
  event=struct('target_mm',targets(k),'submit_sim_s',t0,'running',true,'request_bit',bit);if k==1,events=event;else,events(k)=event;end
  wait_ready(m,0,startWall);wait_ready(m,1,startWall);
  fprintf('M1B_LIVE_TARGET_DONE %.6g at %.9g\n',targets(k),get_param(m,'SimulationTime'));
 end
+% Draft edit alone does not submit. Repeat is ACK; nonfinite target is rejected.
+set_param([m '/Simple_Host/Host_Target_mm'],'Value','99');advance(m,.02,startWall);
+wait_ready(m,1,startWall);set_param([m '/Simple_Host/Host_Target_mm'],'Value',num2str(targets(end),17));bit=1-bit;repeatTime=get_param(m,'SimulationTime');set_param([m '/Simple_Host/Host_Move_Request'],'Value',num2str(bit));advance(m,.02,startWall);
+set_param([m '/Simple_Host/Host_Target_mm'],'Value','NaN');bit=1-bit;set_param([m '/Simple_Host/Host_Move_Request'],'Value',num2str(bit));advance(m,.02,startWall);
+set_param(m,'SimulationCommand','pause');while ~strcmp(get_param(m,'SimulationStatus'),'paused')&&toc(startWall)<600,drawnow;pause(.01);end;assert(strcmp(get_param(m,'SimulationStatus'),'paused'));pausedTime=get_param(m,'SimulationTime');pause(.05);assert(get_param(m,'SimulationTime')==pausedTime);set_param(m,'SimulationCommand','continue');advance(m,.02,startWall);
 finishTime=get_param(m,'SimulationTime');assert(finishTime>events(end).submit_sim_s);set_param(m,'SimulationCommand','stop');
 out=evalin('base','out');folder=fullfile(root,'.runtime','m1b_20261024');if alignment,name='aligned_live';else,name='point_live';end;save(fullfile(folder,[name '.mat']),'out','events','finishTime','-v7.3');
-accepted=out.logsout.get('accepted_count').Values;expected=numel(targets)+double(~alignment);assert(max(accepted.Data)==expected);
+accepted=out.logsout.get('accepted_count').Values;expected=numel(targets)+double(~alignment);assert(max(accepted.Data)==expected);rejected=out.logsout.get('rejected_count').Values;status=out.logsout.get('command_status').Values;rd=out.logsout.get('move_ready').Values;jr=find(status.Time>=repeatTime & (status.Data==5|status.Data==3),1);assert(~isempty(jr));repeatStatus=status.Data(jr);assert((repeatStatus==5&&rd.Data(jr)==1)||(repeatStatus==3&&rd.Data(jr)==0));assert(max(rejected.Data)==2+double(repeatStatus==3));assert(any(status.Data==4));ta=out.logsout.get('target_accepted_mm').Values;assert(~any(ta.Data==10)&&~any(ta.Data==99));
 latencies=zeros(size(events));acceptedTimes=[];
 for k=1:numel(events)
- v=out.logsout.get('target_accepted_mm').Values;j=find(v.Time>=events(k).submit_sim_s & abs(v.Data-targets(k))<1e-10,1);assert(~isempty(j));latencies(k)=v.Time(j)-events(k).submit_sim_s;acceptedTimes(k)=v.Time(j);assert(latencies(k)>=-1e-9&&latencies(k)<=2e-4);events(k).accepted_sim_s=v.Time(j);
+ v=out.logsout.get('target_accepted_mm').Values;j=find(v.Time>=events(k).submit_sim_s & abs(v.Data-targets(k))<1e-10,1);assert(~isempty(j));latencies(k)=v.Time(j)-events(k).submit_sim_s;acceptedTimes(k)=v.Time(j);assert(latencies(k)>=-1e-9&&latencies(k)<=1e-4+1e-9);events(k).accepted_sim_s=v.Time(j);
+ ss=out.logsout.get('segment_start_mm').Values;st=out.logsout.get('segment_start_s').Values;rd=out.logsout.get('move_ready').Values;dn=out.logsout.get('trajectory_done').Values;pos=out.logsout.get('x_mm').Values;
+ events(k).segment_start_mm=ss.Data(j);events(k).segment_start_s=st.Data(j);jdone=find(dn.Time>=v.Time(j)&dn.Data==1,1);jready=find(rd.Time>=v.Time(j)&rd.Data==1,1);assert(~isempty(jdone)&&~isempty(jready));events(k).trajectory_done_s=dn.Time(jdone);events(k).ready_s=rd.Time(jready);events(k).error_at_ready_mm=abs(interp1(pos.Time,pos.Data,rd.Time(jready))-targets(k));assert(events(k).error_at_ready_mm<=.02+1e-9);
 end
 for n={'x_mm','x_ref_mm','segment_start_mm','segment_start_s','target_accepted_mm','move_ready'},v=out.logsout.get(n{1}).Values;assert(all(isfinite(v.Data(:))));end
 % Formula check uses exactly logged segment time, not global simulation time.
@@ -82,16 +94,20 @@ xr=out.logsout.get('x_ref_mm').Values;ss=out.logsout.get('segment_start_mm').Val
 assert(isequal(xr.Time,ss.Time)&&isequal(xr.Time,tt.Time)&&isequal(xr.Time,ta.Time));maximum=0;
 for j=1:10:numel(xr.Time),expected=ss.Data(j)+pmlsm_scurve_profile(xr.Time(j)-tt.Data(j),ta.Data(j)-ss.Data(j),5,50,1000,.1);maximum=max(maximum,abs(xr.Data(j)-expected));end
 assert(maximum<1e-10);
-result=struct('pass',true,'single_start_count',1,'events',events,'accepted_times',acceptedTimes,'max_latency_s',max(latencies),'max_formula_error_mm',maximum,'finish_sim_s',finishTime,'UI_mouse_clicked',false,'ready_observer','saved Host display-only DataStore at100us');
+result=struct('pass',true,'single_start_count',1,'process',matlabProcessID,'events',events,'accepted_times',acceptedTimes,'max_latency_s',max(latencies),'max_formula_error_mm',maximum,'finish_sim_s',finishTime,'UI_mouse_clicked',false,'draft_edit_only_ignored',true,'busy_or_alignment_consumed',true,'repeat_ack',repeatStatus==5,'repeat_at_event_status',repeatStatus,'repeat_at_event_ready',rd.Data(jr),'NaN_rejected',true,'pause_continue',true,'ready_observer','saved Host display-only DataStore at100us');
+csvName='commands.csv';if alignment,csvName='aligned_commands.csv';end;writetable(struct2table(events),fullfile(root,'docs/reports/m1b_repeat_moves_alignment',csvName));
 set_param([m '/Simple_Host/Host_Target_mm'],'Value','Host_Target_mm');set_param([m '/Simple_Host/Host_Move_Request'],'Value','Host_Move_Request');set_param(m,'EnablePacing','off');
+end
+function advance(m,delta,startWall)
+t=get_param(m,'SimulationTime');while get_param(m,'SimulationTime')<t+delta&&toc(startWall)<600,drawnow;pause(.01);assert(strcmp(get_param(m,'SimulationStatus'),'running'));end
 end
 function wait_ready(m,wanted,startWall)
 path=[m '/Simple_Host/Move_Ready_Live_State'];
-while toc(startWall)<180
+while toc(startWall)<600
  drawnow;pause(.01);assert(strcmp(get_param(m,'SimulationStatus'),'running'),'M1B:LIVE_STOPPED','等待Ready时仿真提前停止。');
  r=get_param(path,'RuntimeObject');value=double(r.Dwork(1).Data);if value==wanted,return;end
 end
-error('M1B:LIVE_TIMEOUT','Ready等待超过有限180s，未宣称通过。');
+error('M1B:LIVE_TIMEOUT','Ready等待超过有限600s，未宣称通过。');
 end
 
 function result=test_point_helper
@@ -111,6 +127,7 @@ assert(size(events,1)==4);assert(s(21)==1);assert(s(10)==2);
 % Repeated request bit does not resubmit; invalid draft never reaches reference.
 assert(all(isfinite(events(:))));
 [xx,v,~,~,~]=pmlsm_scurve_profile(.1,.2,5,50,1000,.1);assert(isfinite(xx)&&isfinite(v)); %#ok<ASGLU>
-result=struct('pass',true,'accepted',s(11),'rejected',s(12),'repeat_ack',true,'busy_consumed',true,'invalid_consumed',true,'absolute_end_mm',ref,'events',events);
+limits=[];for displacement=[.1 .2 -.3 .01],dt=1e-4;[~,~,T]=pmlsm_scurve_profile(0,displacement,5,50,1000,.1);tv=(0:dt:T+dt)';vel=zeros(size(tv));for j=1:numel(tv),[~,vel(j)]=pmlsm_scurve_profile(tv(j),displacement,5,50,1000,.1);end;acc=diff(vel)/dt;jerk=diff(acc)/dt;mv=max(abs(vel));ma=max(abs(acc));mj=max(abs(jerk));assert(mv<=5+1e-8&&ma<=50+1e-3&&mj<=1000+.1);limits(end+1,:)=[displacement mv ma mj];end
+result=struct('limits',limits,'pass',true,'accepted',s(11),'rejected',s(12),'repeat_ack',true,'busy_consumed',true,'invalid_consumed',true,'absolute_end_mm',ref,'events',events);
 fid=fopen('D:/Project/FPGA_XC7A200T/docs/reports/m1b_repeat_moves_alignment/helper_acceptance.json','w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);disp('M1B_HELPER_PASS');
 end

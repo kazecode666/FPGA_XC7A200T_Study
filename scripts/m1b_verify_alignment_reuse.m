@@ -28,6 +28,7 @@ result.integration=struct('states_seen',unique(v.Data)','transition_times_s',tra
 save(fullfile(root,'.runtime/m1b_20261024/alignment_nominal.mat'),'out','-v7.3');
 assert(result.integration.physical_pass,'M1B:ALIGNMENT_PHYSICAL','名义物理工况不满足已冻结判据，不能只依据DONE宣称成功。');
 fid=fopen(fullfile(folder,'alignment_acceptance.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);fprintf('M1B_ALIGNMENT_PASS\n');
+result.post_alignment_moves=m1b_verify_point_commands('aligned-live');
 end
 function data=chart_case(path,kind,index,which)
 name=sprintf('M1B_Chart_%d_%d_%d',matlabProcessID,index,which);new_system(name);cleanup=onCleanup(@()close_system(name,0));set_param(name,'SolverType','Fixed-step','Solver','FixedStepDiscrete','FixedStep','0.0001','StopTime','7','ReturnWorkspaceOutputs','on');

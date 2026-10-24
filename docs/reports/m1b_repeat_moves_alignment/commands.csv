@@ -1,0 +1,4 @@
+target_mm,submit_sim_s,running,request_bit,accepted_sim_s,segment_start_mm,segment_start_s,trajectory_done_s,ready_s,error_at_ready_mm
+0.2,0.721384,1,0,0.7214,0.1,0.7214,0.9215,1.4599,0.0192335090781924
+-0.1,1.622567,1,1,1.6226,0.2,1.6226,1.8628,2.2799,0.0198021831282953
+-0.09,2.439952,1,0,2.44,-0.1,2.44,2.64,2.6899,0.00551210046498278
