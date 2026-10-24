@@ -2,9 +2,9 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-24。** 按已合并 PR50 交付 M2 独立 FOC 定点 SLX、共享 float/fixed 闭环、类型配置及本机证据。单元和11类共享场景通过，**连续点位数值预算未通过，作为开放实现PR的Review阻塞项保留**。[操作指南](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md) · [整合验收](coordination/reports/m2_foc_fixed_point_implementation.md)。原浮点默认、三环参数、连续点位、原对齐和默认死区保留；未生成 HDL/C 或运行 Vivado。
+**路线更新：2026-10-24。** PR51 已合并至 `aead404fce2c5a9142ffe08d96b03075603cefd5`，M2 按[Review](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/51#pullrequestreview-5638508505)以**带受限例外接受**收尾。当前交接为 [M3：FOC SystemVerilog 生成、时序合同与 RTL 验证](coordination/tasks/m3_foc_systemverilog_rtl_verification.md)；本次仅提交任务和阶段说明，尚未生成 HDL、运行 xsim 或综合。
 
-后续用户授权的[共同死区符号诊断](docs/reports/m2_foc_fixed_point/common_sign_diagnostic/README.md)使该场景iq/速度峰值与RMSE差下降超过99.99%，命令/Ready仍一致；已明确提出只针对冻结场景的受限例外`M2-E-REPEAT-001`，等待PR51 Review。原严格FAIL、预算和正常测试退出保持，不等于完整M2严格通过，诊断不进入生产模型。
+`M2-E-REPEAT-001` 只接受原冻结连续点位场景的三项浮点/定点闭环比较偏差。[原严格FAIL、预算及正常测试失败退出](docs/reports/m2_foc_fixed_point/common_sign_diagnostic/acceptance_exception.json)仍保留，不称“全部M2严格通过”。共同死区符号仅是临时诊断，不进入正式模型；该例外不适用于 M3 原定点→生成模型→RTL 的数值或时序错误。
 
 已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
@@ -12,9 +12,10 @@
 
 | 内容 | 入口 |
 |---|---|
-| M2 当前实现和证据 | [任务书](coordination/tasks/m2_foc_fixed_point_implementation.md)、[设计](docs/FOC_FIXED_POINT_DESIGN.md)、[操作](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)、[结果索引](docs/reports/m2_foc_fixed_point/README.md) |
+| **M3 当前任务** | [SystemVerilog生成、双层验证与核心OOC综合预检](coordination/tasks/m3_foc_systemverilog_rtl_verification.md) |
+| M2 已接受实现和证据 | [任务书](coordination/tasks/m2_foc_fixed_point_implementation.md)、[设计](docs/FOC_FIXED_POINT_DESIGN.md)、[操作](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)、[结果索引](docs/reports/m2_foc_fixed_point/README.md) |
 | M1B 已接受的任务与结果 | [M1B任务](coordination/tasks/m1b_repeat_moves_and_alignment.md)、[整合验收](coordination/reports/m1b_repeat_moves_and_alignment.md)、[FOC准备报告](docs/FOC_FIXED_POINT_READINESS.md) |
-| 直接运行已合并浮点基线 | [中文运行指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)、[M1A实施报告](coordination/reports/m1a_pure_simulink_float_baseline.md)、[PR47操作修订](coordination/reports/pr47_host_interface_revision.md) |
+| 正常运行共享模型 | [浮点中文指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)、[浮点/定点选择指南](docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)；历史报告中的待Review文字保留当时状态，当前状态以本页和HANDOFF为准 |
 | 已完成 M1A 的设计和计划 | [M1A设计](coordination/specs/m1a_pure_simulink_float_baseline_design.md)、[历史任务](coordination/tasks/m1a_pure_simulink_float_baseline.md)、[逐项计划](docs/superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md) |
 | 项目目标与阶段关系 | [Simulink 主线路线图](docs/SIMULINK_MAINLINE_ROADMAP.md) |
 | 完整 MIL / Simple / DSP 的实际差异和资料 | [模型与资料核查表](docs/MODEL_DIFFERENCE_AND_ASSET_AUDIT.md)、[M0报告](coordination/reports/m0_simulink_model_asset_audit.md) |
@@ -31,36 +32,38 @@
 
 | 模型 | 定位 |
 |---|---|
-| `simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` | 已接受浮点参考与共享闭环环境；M2只增加必要的float/fixed实现选择，不重建Host/对齐/外环/plant |
-| `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m` | 唯一人工初始化入口，显式加载Base Workspace，简洁中文分段；类型配置由它调用 |
-| `simulink模型/PMLSM_FOC_FixedPoint.slx` | 实际根层 FOC_DUT；完整固定类型电流FOC，由共享环境 Normal Model Reference 唯一引用 |
-| `simulink模型/PMLSM_ThreeLoop_Simple.slx` | 原算法修正、外环及plant来源和迁移对照；原文件保留 |
+| `simulink模型/PMLSM_PI_FOC_Float_Baseline.slx` | 已接受浮点参考与共享闭环环境；停止后选择float/fixed，M3不重建Host/对齐/外环/plant |
+| `simulink模型/init_PMLSM_PI_FOC_Float_Baseline.m` | 唯一日常初始化入口，Base Workspace参数/命令及自动类型配置；不自动生成或综合 |
+| `simulink模型/PMLSM_FOC_FixedPoint.slx/FOC_DUT` | 唯一正式定点算法源，M3从受控副本生成，不手改生成SV作为另一套算法 |
+| `simulink模型/PMLSM_ThreeLoop_Simple.slx` | 原算法修正、外环和plant来源及历史迁移对照，只读保留 |
 | `simulink模型/PMLSM_MIL_ControlCore_Sim.slx` | 原系统级仿真和对齐来源；其 `PMLSM_ControlCore_Block.slx` 一并只读保留 |
-| `simulink模型/PMSLM_Close_Loop_MBDL4.slx` | DSP运行与外设语义参考；用于核对原对齐，不直接转换成FPGA顶层 |
+| `simulink模型/PMSLM_Close_Loop_MBDL4.slx` | DSP运行与外设语义参考，不直接转换成FPGA顶层 |
 
-不覆盖原模型，不把三份旧模型强行改成一份。统一的是新主线的算法、物理量和接口责任，不是抹去历史差异。
+不覆盖原模型，不把三份旧模型强行改成一份。统一的是新主线的算法、物理量和接口责任，不是抹去历史差异。gm_/validation是可再生成的派生产物，不是第三套长期维护算法。
 
 ## 现在做什么
 
-**M1A/M1B已接受，基础参数继续固定。** M2按一个任务包连续完成：来源与接口冻结、独立浮点适配及零分母处理、范围/类型设计、定点单元与状态验证、共享闭环比较、兼容性与操作交付。不是再做一轮纯文档审计，也不直接把整个三闭环模型改成定点。
+M3连续执行六个检查点：固定来源与时序合同；生成实际SystemVerilog/测试数据/生成模型；证明原定点与生成模型一致；xsim逐位与协议自检；同份RTL的核心OOC综合预检；重复构建、指南及实现PR交付。
 
-M2 独立 DUT 消除了触发父层限制，扇区用 uint8，候选除法在运算前保护分母；实际内部编译端口均为 fixed/integer/boolean。第9母线端口、`FOC_Impl_Select` 及量化预算属于 M2 新设计。原浮点候选支路已知 0/0 保留，其合法输出没有为匹配定点而改写。
+首轮目标沿用 `xc7a200tfbg484-2`、50 MHz/20 ns、100 us一帧，即5000硬件时钟。实际器件/工具与PWM应用相位由Codex核对；不能把100 us当FPGA时钟、把全局CE误当采样脉冲，或只看吞吐而漏掉输出deadline。先保留M2宽度取得真实资源成本，不盲目缩位、加宽或调PI。
 
-连续点位和原对齐保持现状，不新增运动中重规划、热切环或启动协议。默认电机、PI、控制周期、一次PWM更新和未补偿平均死区保持；PWM关闭后仿真/机械体继续，PI复位不是全故障清除。完整保护、实际测量滤波、死区补偿及JMAG/Maxwell留后。
+M3允许必要的生成配置与保持数值语义的流水线适配，要求定点源→gm→RTL分层验证；同一构建manifest用于仿真和综合。核心综合不是布线后时序签核，完整RTL电机联合仿真、实现时序、门极/板级接口、bitstream和上板留后。
 
-M2以实际固定类型SLX、类型表、数值/闭环/溢出证据与独立checkhdl结果为交付。checkhdl通过不等于已生成HDL或满足资源/时序；本轮不调用HDL/C生成、Vivado或硬件。完成提交一个开放实现PR，等待Review后再进入M3。
+连续点位、原对齐、默认电机/PI、一次PWM更新和未补偿平均死区保持；PWM关闭后仿真/机械体继续，PI复位不是全故障清除或HDL全局复位。运动中重规划、热切模式、完整保护、实际反馈滤波、死区补偿及JMAG/Maxwell不在本轮。
+
+任务合并或用户明确指定后由本机Codex实施，最终一个开放实现PR等待Review；不自动合并或进入M4。未执行/失败事项如实列出，不把已有M2证据当成M3已运行。
 
 ## 已有成果与资料
 
 - 旧主模型、ControlCore、初始化、最小HDL co-sim及M0补齐资料已在仓库；文件存在不等于实机验证通过。
 - 远端根目录已有BX72、ACM9238、MBDL4、转接板及DSP板卡资料；用户本地已放在 `硬件说明/`，对应关系见M0清单。
 - `PWM_Controller/`、`PWM_Breathe/`、`Motor_PWM/`、`FOC_*/`、`motor_control_ip/`、`learning/`和历史报告保留，不搬迁、不删除。
-- 当前文档起点为 `main@aa46c711e2120563fe90611805348b343a568f0a`。本地SLX可能有后续用户改动，实施必须先查，不强制覆盖。
+- 当前任务起点为 `main@aead404`；本地SLX可能有后续用户改动，先核对，不强制覆盖。
 
-历史环境记录包括Vivado 2026.1、MATLAB R2026b、BX72 / `xc7a200tfbg484-2`。只核对本机当前实际环境，不因文档整理重装工具链。
+历史环境记录包括Vivado 2026.1、MATLAB R2026b、BX72 / `xc7a200tfbg484-2`。只核对本机实际环境，不因文档整理重装工具链。
 
 ## 协作与历史说明
 
-ChatGPT维护架构、任务和Review；Codex在 `D:/Project/FPGA_XC7A200T` 实施和验证。保留本地修改，不新建额外clone/worktree，不强制清理，不自动合并。已有接口先查资料，不要求用户重复填写。
+ChatGPT维护架构、任务和Review；Codex在 `D:/Project/FPGA_XC7A200T` 实施和验证。保留本地修改、未保存模型及局部布局，不新建额外clone/worktree、不强制清理、不使用computer use、不自动合并。已有接口先查资料，不要求用户重复填写。
 
 [旧交接记录](coordination/HANDOFF_LEGACY_20261021.md)原样保留。旧任务的暂停、范围和验收数字只描述当时状态；本轮以最新任务书为准。历史PWM实验入口仍为 `PWM_Controller/PWM_Controller.xpr` 和 `PWM_Breathe/PWM_Breathe.xpr`。
