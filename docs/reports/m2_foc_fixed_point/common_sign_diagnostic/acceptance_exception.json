@@ -1,7 +1,15 @@
 {
   "exception_id": "M2-E-REPEAT-001",
-  "technical_decision": "supports_limited_exception_for_review",
-  "review_status": "pending_PR51_review",
+  "technical_decision": "accepted_with_limited_exception",
+  "review_status": "accepted_PR51_review",
+  "acceptance_record": {
+    "review_id": 5638508505,
+    "review_url": "https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/51#pullrequestreview-5638508505",
+    "reviewed_commit": "6eb4de2104b57ac584e47f461518fbf4a20a362d",
+    "merged_pr": 51,
+    "merge_commit": "aead404fce2c5a9142ffe08d96b03075603cefd5",
+    "record_only": "Review acceptance and merge metadata; original scope, thresholds, measurements and strict test exits unchanged. M3 requires its separate approved task."
+  },
   "original_strict_acceptance": "FAIL",
   "full_M2_strict_pass": false,
   "original_thresholds_changed": false,
