@@ -1,10 +1,10 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-24。** PR49 已合并至 `main@aa46c711e2120563fe90611805348b343a568f0a`。M1B连续点位、原MIL对齐迁移和FOC只读准备已接受。下一任务为M2独立FOC定点实现；当前仅提交任务书，没有创建定点SLX、执行M2测试或生成HDL。
+**当前更新：2026-10-24。** 按已合并 PR50，在原 checkout 交付 M2 实际定点 SLX、配置、共享闭环和兼容性证据。连续点位的电流/速度差超冻结预算，为开放实现PR的Review阻塞项；没有宣称M2全部通过。入口：[M2整合验收](reports/m2_foc_fixed_point_implementation.md)、[操作指南](../docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)、[结果索引](../docs/reports/m2_foc_fixed_point/README.md)。未生成 HDL/C，未执行 Vivado，不自动合并或开始 M3。
 
 ## 当前执行入口
 
-读取 [M2完整任务书](tasks/m2_foc_fixed_point_implementation.md)，再读 [FOC准备报告](../docs/FOC_FIXED_POINT_READINESS.md)和 [M1B验收](reports/m1b_repeat_moves_and_alignment.md)。任务合并或用户明确指定执行后，本机Codex可连续执行A—F，正常检查点不逐项求确认；最终交一个开放实现PR，等待Review，不自动合并或开始M3。
+先读 [M2整合验收](reports/m2_foc_fixed_point_implementation.md)及[设计](../docs/FOC_FIXED_POINT_DESIGN.md)，按 Review 仅补受影响验证。完整合同仍见[M2任务书](tasks/m2_foc_fixed_point_implementation.md)；开放实现 PR 等待 Review，不自动合并或开始 M3。
 
 - **做：** 独立FOC抽取/浮点适配、零分母等数值边界处理、首版范围和定点类型、实际定点FOC、共享闭环误差验证、独立固定类型checkhdl、用户操作与整合交付。
 - **保持：** Host连续点位、原对齐、外环、plant、平均逆变器、默认PI/死区/时基和具名观测。只做必要实现选择及边界转换，不复制第二套电机环境。
@@ -12,7 +12,7 @@
 
 ## M2实现关系
 
-原 `PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm` 保留参考。拟新增 `PMLSM_FOC_FixedPoint.slx/FOC_DUT` 位于独立根层，不再处于触发/function-call父层；在共享主模型中通过单一实现源引用接入。`FOC_Impl_Select=0`为原浮点默认，1为固定类型，停止后切换，不是运行中控制模式切换。
+原 FOC 完整保留在 `Control_Task_10kHz/FOC_Implementation/Float/FOC_Algorithm`（原 SID546 不变）。新增 `PMLSM_FOC_FixedPoint.slx/FOC_DUT` 位于独立根层，经 `FOC_Implementation/Fixed/FOC_Model` Normal Model Reference 唯一引用。`FOC_Impl_Select=0`为原浮点默认，1为固定类型，停止后切换，不是运行中控制模式切换。
 
 新实现保留前8个输入顺序并新增第9个Vdc_V端口，三相输出仍是更新/死区前command duty。本轮每次100us调用代表同拍有效样本，不增加握手/ADC/全局enable协议。PWM禁止仍在外层；PI_Reset_EN保留原输出和积分语义，不能清掉所有AW记忆，更不是HDL上电reset。
 
@@ -49,8 +49,8 @@ checkhdl目标为新独立固定DUT 0 Error、警告逐条说明；这不证明H
 
 ## 历史与后续
 
-[M1A报告](reports/m1a_pure_simulink_float_baseline.md)、[PR47操作修订](reports/pr47_host_interface_revision.md)、[M1B报告](reports/m1b_repeat_moves_and_alignment.md)、[运行指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)及[M0审计](reports/m0_simulink_model_asset_audit.md)保留其验收范围。M1B只读准备不等于M2实现；本次新任务也不能写成已完成。
+[M1A报告](reports/m1a_pure_simulink_float_baseline.md)、[PR47操作修订](reports/pr47_host_interface_revision.md)、[M1B报告](reports/m1b_repeat_moves_and_alignment.md)、[运行指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)及[M0审计](reports/m0_simulink_model_asset_audit.md)保留历史范围。M2 的失败、受限范围和未测项以新整合验收为准，不能回写成 M1B 已验证未知非零偏置。
 
-[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)同步为M2实施计划。原“先完成整套运行管理再定点化”的范围不恢复，实际接口继续先查仓库，不要求用户重复提供。
+[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)同步为M2实现待Review。原“先完成整套运行管理再定点化”的范围不恢复，实际接口继续先查仓库，不要求用户重复提供。
 
 [旧交接](HANDOFF_LEGACY_20261021.md)、[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)、[M1B任务](tasks/m1b_repeat_moves_and_alignment.md)保留历史，不重写旧验收结论。

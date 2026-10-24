@@ -74,7 +74,7 @@ last=preview_PMLSM_reference('segment');   % 停止后读out.logsout的最后锁
 
 ## 运行依赖、负载及记录
 
-正常Run共六个文件：SLX、init、`m1a_require_float_init.m`、`design_PMLSM_three_loop.m`、`pmlsm_scurve_profile.m`、无隐藏状态的 `pmlsm_point_move_step.m`。preview可选，验收脚本和旧MAT均不是正常Run前提。
+M2后正常Run共八个文件：原SLX、独立`PMLSM_FOC_FixedPoint.slx`、init、`m1a_require_float_init.m`、`pmlsm_foc_fixed_config.m`、`design_PMLSM_three_loop.m`、`pmlsm_scurve_profile.m`、无隐藏状态的 `pmlsm_point_move_step.m`。浮点仍默认`FOC_Impl_Select=0`，停止后切换定点及类型/日志说明见[M2操作指南](PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)。preview可选，验收脚本和旧MAT均不是正常Run前提。
 
 母线 `Udc=48 V`，负载为顶层 `Simulation_Load_N` 读取 `M1A_Load_ts`。例如停止后设置：
 
