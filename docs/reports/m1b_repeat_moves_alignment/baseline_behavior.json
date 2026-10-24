@@ -1,0 +1,45 @@
+{
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 37976,
+  "default_x_mm": 0.98496768636059617,
+  "parameters": {
+    "Kp_ACR": 8.7250000000000014,
+    "Ki_ACR": 11850.000000000004,
+    "Kaw_d": 0.1358166189111748,
+    "Kp_ASR": 0.018033474852681124,
+    "Ki_ASR": 1.4426779882144898,
+    "Kaw_s": 0.08,
+    "Kp_pos": 22,
+    "deadtime": 1E-6,
+    "Ts": 0.0001
+  },
+  "old_live": [
+    {
+      "requested_mm": 0.4,
+      "call_time_s": 0.801866,
+      "received_time_s": 0.8019,
+      "prior_position_mm": 0.18332323193444738,
+      "prior_target_error_mm": 0.016676768065552627,
+      "reference_before_mm": 0.2,
+      "reference_after_mm": 0.4,
+      "old_global_elapsed_s": 0.7518999999999999,
+      "new_target_duration_s": 0.26436043043334589,
+      "old_clock_past_new_duration": true,
+      "correct_new_segment": false
+    },
+    {
+      "requested_mm": 10,
+      "call_time_s": 0.80026999999999993,
+      "received_time_s": 0.8002999999999999,
+      "prior_position_mm": 0.18290008442180722,
+      "prior_target_error_mm": 0.017099915578192793,
+      "reference_before_mm": 0.2,
+      "reference_after_mm": 3.28275,
+      "old_global_elapsed_s": 0.75029999999999986,
+      "new_target_duration_s": 2.1875,
+      "old_clock_past_new_duration": false,
+      "correct_new_segment": false
+    }
+  ],
+  "complete_repeat_moves_supported": false
+}

@@ -1,0 +1,13 @@
+{
+  "frozen_before_changes": true,
+  "default_equivalence_max_abs": 1e-12,
+  "trajectory_formula_mm": 1e-10,
+  "chart_float_max_abs": 1e-12,
+  "chart_state_time": "exact",
+  "ready_position_window": "Pos_deadband+1e-9mm",
+  "ready_position_ticks": 5,
+  "command_sample_s": 0.0001,
+  "replan_while_busy": false,
+  "PI_retune": false,
+  "deadtime_compensation": false
+}
