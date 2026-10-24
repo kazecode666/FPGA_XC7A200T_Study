@@ -1,10 +1,11 @@
 % 唯一手动初始化入口；重新运行恢复默认命令，仿真运行中不要执行。
 PMLSM_M1A_InitVersion=0; %#ok<NASGU> 失败时使旧标识失效
 %% 常用仿真与上位机命令（mm、mm/s、Apeak）
-M1A_StopTime_s=1.2;
-Host_Target_mm=1; Host_Speed_mmps=0; Host_Id_A=0; Host_Iq_A=0;
+M1A_StopTime_s= 5;
+Host_Target_mm= 10; Host_Speed_mmps=0; Host_Id_A=0; Host_Iq_A=0;
 Host_Position_Loop_EN=1; Host_Close_Loop_EN=1; Host_Iq_Test_Mode=0;
 Host_PWM_EN=1; Host_PI_Reset_EN=0;
+Host_Move_Request=0; Host_AutoStart_EN=1; Host_Ready_Ticks=5;
 Host_Replay_EN=0; % 0手动，1经Host选择自动回放Speed/PWM/Reset
 Host_Load_N=0; % 仿真负载；修改负载场景用M1A_Load_ts，母线用Udc
 
@@ -55,7 +56,7 @@ Host_Enable_Schedule=[0 1 1 1];
 
 Host_Speed_Ramp_s=0.1;
 Host_Start_s=0.05;
-Host_Traj_Amax=50; Host_Traj_Jmax=1000; Host_Traj_Vmax=5;
+Host_Traj_Amax=100; Host_Traj_Jmax=1000; Host_Traj_Vmax=10;
 
 M1A_Load_ts=timeseries([Host_Load_N;Host_Load_N],[0;M1A_StopTime_s]);
 M1A_LoadStep_ts=timeseries([0;0.5;0],[0;0.8;1.0]);
@@ -67,6 +68,23 @@ M1A_LoadStep_ts=setinterpmethod(M1A_LoadStep_ts,'zoh');
 M1A_PWM_ts=setinterpmethod(M1A_PWM_ts,'zoh');
 M1A_Reset_ts=setinterpmethod(M1A_Reset_ts,'zoh');
 M1A_Speed_ts=setinterpmethod(M1A_Speed_ts,'zoh');
+
+%% 原MIL启动对齐（默认旁路，开启需停止后设置）
+Alignment_Enable=0; Init_Start=0; Init_Reset=0;
+Simulation_Travel_Fault=0; % 仅仿真注入，不代表真实行程检测
+Ramp_Ticks=10000; Hold_Ticks=30000; Id_Release_Ramp_Ticks=2000;
+Id_Init_Target=0.5; Id_Init_Step=Id_Init_Target/Ramp_Ticks;
+theta_align_const=0; Tau_e_mm=PMLSM_tau_NN_m*1000; Theta_Offset_Fine=0;
+
+% 保留原chart的显式Signal解析及0初值，仅提供其必要接口对象。
+Alignment_Signal_Names={'Init_Done','Init_State_Num','id_init_ref','Angle_Init_EN','Theta_Offset_auto','x_align_mm_latch'};
+for Alignment_Index=1:numel(Alignment_Signal_Names)
+ Alignment_Signal=Simulink.Signal; Alignment_Signal.DataType='double'; Alignment_Signal.InitialValue='0';
+ assignin('base',Alignment_Signal_Names{Alignment_Index},Alignment_Signal);
+end
+
+%% 连续交互日志（物理曲线按100us；命令事件不抽取）
+M1B_Physical_Log_Decimation=100;
 
 %% 初始化成功标识（必须最后设置）
 PMLSM_M1A_InitVersion=20261023;

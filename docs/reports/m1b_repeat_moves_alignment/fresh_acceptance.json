@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "process_id": 38736,
+  "version": "26.2.0.3386108 (R2026b)",
+  "source_files": [
+    "PMLSM_PI_FOC_Float_Baseline.slx",
+    "init_PMLSM_PI_FOC_Float_Baseline.m",
+    "m1a_require_float_init.m",
+    "design_PMLSM_three_loop.m",
+    "pmlsm_scurve_profile.m",
+    "pmlsm_point_move_step.m"
+  ],
+  "stop_s": 1.2,
+  "x_final_mm": 0.98496768636059617,
+  "old_mat_present": false,
+  "legacy_variables_present": false,
+  "other_repository_paths_excluded": true,
+  "helper_resolution_checked": true
+}

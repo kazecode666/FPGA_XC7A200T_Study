@@ -1,0 +1,71 @@
+{
+  "protected_sources": [
+    {
+      "path": "simulink模型/PMLSM_MIL_ControlCore_Sim.slx",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/PMLSM_ControlCore_Block.slx",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/PMSLM_Close_Loop_MBDL4.slx",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/pmlsm_scurve_profile.m",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/design_PMLSM_three_loop.m",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/PMLSM_ThreeLoop_Simple.slx",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/init_PMLSM_ThreeLoop_Simple.m",
+      "byte_identical_to_entry": true
+    },
+    {
+      "path": "simulink模型/init_PMLSM_ThreeLoop_Simple.mat",
+      "byte_identical_to_entry": true
+    }
+  ],
+  "unrelated_entry_diff_chunks_preserved": 29,
+  "unrelated_paths": [
+    "a/.codex/config.toml b/.codex/config.toml",
+    "\"a/28335BPLUS\\350\\277\\201\\347\\247\\273\\350\\207\\26328388D\\346\\263\\250\\346\\204\\217\\344\\272\\213\\351\\241\\271.txt\" \"b/28335BPLUS\\350\\277\\201\\347\\247\\273\\350\\207\\26328388D\\346\\263\\250\\346\\204\\217\\344\\272\\213\\351\\241\\271.txt\"",
+    "\"a/28388BGA\\346\\240\\270\\345\\277\\203\\346\\235\\277.pdf\" \"b/28388BGA\\346\\240\\270\\345\\277\\203\\346\\235\\277.pdf\"",
+    "\"a/28388\\350\\207\\263\\345\\260\\212\\345\\272\\225\\346\\235\\277V1.1.pdf\" \"b/28388\\350\\207\\263\\345\\260\\212\\345\\272\\225\\346\\235\\277V1.1.pdf\"",
+    "a/ACM9238-SCH.pdf b/ACM9238-SCH.pdf",
+    "a/BX72-251215.pdf b/BX72-251215.pdf",
+    "a/BX72_test.zip b/BX72_test.zip",
+    "\"a/BX72_\\350\\243\\205\\351\\205\\215\\345\\233\\276.pdf\" \"b/BX72_\\350\\243\\205\\351\\205\\215\\345\\233\\276.pdf\"",
+    "\"a/BX72\\347\\224\\250\\346\\210\\267\\346\\265\\213\\350\\257\\225\\350\\257\\264\\346\\230\\216.txt\" \"b/BX72\\347\\224\\250\\346\\210\\267\\346\\265\\213\\350\\257\\225\\350\\257\\264\\346\\230\\216.txt\"",
+    "\"a/BX72\\347\\256\\241\\350\\204\\232\\345\\210\\206\\351\\205\\215\\350\\241\\250V2.1.xlsx\" \"b/BX72\\347\\256\\241\\350\\204\\232\\345\\210\\206\\351\\205\\215\\350\\241\\250V2.1.xlsx\"",
+    "a/FOC_Current/FOC_Current.xpr b/FOC_Current/FOC_Current.xpr",
+    "a/FOC_Transforms/FOC_Transforms.xpr b/FOC_Transforms/FOC_Transforms.xpr",
+    "\"a/MDBL4\\350\\275\\254\\346\\216\\245\\346\\235\\277.pdf\" \"b/MDBL4\\350\\275\\254\\346\\216\\245\\346\\235\\277.pdf\"",
+    "a/PWM_Breathe/PWM_Breathe.xpr b/PWM_Breathe/PWM_Breathe.xpr",
+    "a/PWM_Controller/PWM_Controller.xpr b/PWM_Controller/PWM_Controller.xpr",
+    "\"a/YXPHM-MBDL4\\351\\251\\261\\345\\212\\250\\346\\235\\277\\345\\216\\237\\347\\220\\206\\345\\233\\276.pdf\" \"b/YXPHM-MBDL4\\351\\251\\261\\345\\212\\250\\346\\235\\277\\345\\216\\237\\347\\220\\206\\345\\233\\276.pdf\"",
+    "\"a/YXPHM-MDBL4\\347\\224\\265\\346\\234\\272\\351\\251\\261\\345\\212\\250\\346\\235\\277\\347\\241\\254\\344\\273\\266\\350\\257\\264\\346\\230\\216\\344\\271\\246.pdf\" \"b/YXPHM-MDBL4\\347\\224\\265\\346\\234\\272\\351\\251\\261\\345\\212\\250\\346\\235\\277\\347\\241\\254\\344\\273\\266\\350\\257\\264\\346\\230\\216\\344\\271\\246.pdf\"",
+    "a/docs/reports/step7c/dynamic_comparison.png b/docs/reports/step7c/dynamic_comparison.png",
+    "a/docs/reports/step7c/foc_wrapper_xsim.txt b/docs/reports/step7c/foc_wrapper_xsim.txt",
+    "a/docs/reports/step7c/step6d_profile0.txt b/docs/reports/step7c/step6d_profile0.txt",
+    "a/docs/reports/step7c/step6e_regression.txt b/docs/reports/step7c/step6e_regression.txt",
+    "a/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_compare_tb.slx b/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_compare_tb.slx",
+    "a/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_fixed.slx b/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_fixed.slx",
+    "a/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_fixed_b2.slx b/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_fixed_b2.slx",
+    "a/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_float.slx b/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_float.slx",
+    "a/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_hdl.slx b/learning/study_l1_speed_pi_hdl_compare/models/speed_pi_hdl.slx",
+    "\"a/simulink\\346\\250\\241\\345\\236\\213/PMLSM_HDL_Cosim_Minimal.slx\" \"b/simulink\\346\\250\\241\\345\\236\\213/PMLSM_HDL_Cosim_Minimal.slx\"",
+    "\"a/simulink\\346\\250\\241\\345\\236\\213/PMLSM_ThreeLoop_Simple.slx\" \"b/simulink\\346\\250\\241\\345\\236\\213/PMLSM_ThreeLoop_Simple.slx\"",
+    "\"a/simulink\\346\\250\\241\\345\\236\\213/init_PMLSM_ThreeLoop_Simple.m\" \"b/simulink\\346\\250\\241\\345\\236\\213/init_PMLSM_ThreeLoop_Simple.m\""
+  ],
+  "batch_deletions_performed": false,
+  "source_models_saved": false,
+  "original_untracked_entries_still_present": 1084
+}

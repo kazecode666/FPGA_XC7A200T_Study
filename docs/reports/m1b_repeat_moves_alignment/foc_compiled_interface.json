@@ -1,0 +1,32 @@
+{
+  "compiled_sample_times": [
+    "[Inf 0]",
+    "[-1 -1]"
+  ],
+  "types": {
+    "Inport": [
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "boolean"
+    ],
+    "Outport": [
+      "double",
+      "double",
+      "double"
+    ],
+    "Enable": [],
+    "Trigger": [],
+    "State": [],
+    "LConn": [],
+    "RConn": [],
+    "Ifaction": [],
+    "Reset": [],
+    "Event": []
+  },
+  "execution": "inherited function-call; observed arithmetic period100us"
+}

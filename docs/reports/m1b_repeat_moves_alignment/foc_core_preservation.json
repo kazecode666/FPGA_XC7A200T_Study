@@ -1,0 +1,64 @@
+{
+  "source": "entry snapshot before M1B",
+  "ignored_port_metadata": [
+    "DataLogging",
+    "DataLoggingDecimateData",
+    "DataLoggingDecimation",
+    "DataLoggingName",
+    "DataLoggingNameMode",
+    "PropagatedSignals"
+  ],
+  "parts": [
+    {
+      "part": "simulink/systems/system_546.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": false
+    },
+    {
+      "part": "simulink/systems/system_698.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_618.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_674.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_654.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_639.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_621.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_591.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    },
+    {
+      "part": "simulink/systems/system_566.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": false
+    },
+    {
+      "part": "simulink/systems/system_553.xml",
+      "algorithm_parameters_wiring_and_layout_equal": true,
+      "bytes_equal": true
+    }
+  ],
+  "pass": true
+}

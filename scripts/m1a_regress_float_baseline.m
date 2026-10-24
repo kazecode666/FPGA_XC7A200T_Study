@@ -1,8 +1,9 @@
-function result=m1a_regress_float_baseline
+function result=m1a_regress_float_baseline(outputFolder)
 % Finite source backend0 migration and plant-step convergence checks.
 root=fileparts(fileparts(mfilename('fullpath')));
 folder=fullfile(root,'docs','reports','m1a_float_baseline');
 contract=jsondecode(fileread(fullfile(folder,'acceptance_config.json')));
+if nargin>0,folder=outputFolder;if ~isfolder(folder),mkdir(folder);end;end
 runtime=fullfile(root,'.runtime','m1a_20261023',sprintf('regression_%d',matlabProcessID));
 if ~isfolder(runtime),mkdir(runtime);end
 scenes=struct('name',{},'kind',{},'sign',{},'stop',{},'deadtime',{},'loadstep',{},'stopreset',{});
@@ -47,7 +48,7 @@ c=struct('name',name,'kind',kind,'sign',direction,'stop',stop, ...
 end
 
 function result=run_case(root,c,source,plantStep)
-evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');
+evalin('base','init_PMLSM_PI_FOC_Float_Baseline;Host_Traj_Vmax=5;Host_Traj_Amax=50;');
 names=evalin('base','who(''Host_*'')');host=struct;
 for k=1:numel(names),host.(names{k})=evalin('base',names{k});end
 host.Host_Target_mm=c.sign; speed=0;
@@ -109,7 +110,7 @@ for k=1:size(defs,1)
     sid=defs{k,1};if source&&sid==866,sid=1613;end
     b=Simulink.ID.getFullName(sprintf('%s:%d',m,sid));p=get_param(b,'PortHandles');port=p.Outport(defs{k,2});
     decimation=1;
-    if sid==191||any(sid==[1248 1277]),decimation=round(1e-4/plantStep);end
+    if sid==191||(source&&any(sid==[1248 1277])),decimation=round(1e-4/plantStep);end
     set_param(port,'DataLogging','on','DataLoggingNameMode','Custom','DataLoggingName',defs{k,3}, ...
         'DataLoggingDecimateData','on','DataLoggingDecimation',num2str(decimation));
 end

@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "id_hold_error_A": 0.017573780216521007,
+  "iq_hold_abs_A": 0,
+  "periodic_angle_error_rad": 0,
+  "static_current_source_default": 1,
+  "source_control_mode": 2,
+  "source_only_process": 28480,
+  "new_float_model_loaded": false
+}

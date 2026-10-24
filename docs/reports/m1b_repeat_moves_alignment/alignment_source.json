@@ -1,0 +1,194 @@
+{
+  "source": "PMLSM_ControlCore_Block/PMLSM_ControlCore/Angle_Init",
+  "sid": "128",
+  "chart_update": "INHERITED",
+  "sample_time": "-1",
+  "states": [
+    {
+      "name": "IDLE",
+      "label": "IDLE\nentry:\nAngle_Init_EN   = 0;\nInit_Done       = 0;\nid_init_ref     = 0;\nInit_State_Num  = 0;\n"
+    },
+    {
+      "name": "RAMP_ID",
+      "label": "RAMP_ID\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = 0;\nInit_State_Num  = 1;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref = id_init_ref + Id_Init_Step;\nif (id_init_ref > Id_Init_Target)\n    id_init_ref = Id_Init_Target;\nend"
+    },
+    {
+      "name": "HOLD_ALIGN",
+      "label": "HOLD_ALIGN\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = Id_Init_Target;\nInit_State_Num  = 2;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref   = Id_Init_Target;"
+    },
+    {
+      "name": "RAMP_DOWN_ID",
+      "label": "RAMP_DOWN_ID\nentry:\nAngle_Init_EN   = 1;\nInit_Done       = 0;\nid_init_ref     = Id_Init_Target;\nInit_State_Num  = 3;\nduring:\nAngle_Init_EN = 1;\nInit_Done     = 0;\nid_init_ref = id_init_ref - Id_Init_Target/Id_Release_Ramp_Ticks;\nif (id_init_ref < 0)\n    id_init_ref = 0;\nend\nTheta_Offset_auto = theta_offset_mem;"
+    },
+    {
+      "name": "DONE",
+      "label": "DONE\nentry:\nAngle_Init_EN   = 0;\nInit_Done       = 1;\nid_init_ref     = 0;\nInit_State_Num  = 4;\nduring:\nAngle_Init_EN = 0;\nInit_Done = 1;\nid_init_ref = 0;\nInit_State_Num = 4;\nTheta_Offset_auto = theta_offset_mem;"
+    }
+  ],
+  "transitions": [
+    {
+      "label": "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "priority": 1,
+      "source": "HOLD_ALIGN",
+      "destination": "IDLE"
+    },
+    {
+      "label": "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "priority": 1,
+      "source": "RAMP_ID",
+      "destination": "IDLE"
+    },
+    {
+      "label": "",
+      "priority": 1,
+      "source": "default",
+      "destination": "IDLE"
+    },
+    {
+      "label": "[Init_Start > 0.5 && Init_Reset < 0.5 && travel_fault_latch < 0.5]",
+      "priority": 1,
+      "source": "IDLE",
+      "destination": "RAMP_ID"
+    },
+    {
+      "label": "[after(Ramp_Ticks, tick)]",
+      "priority": 2,
+      "source": "RAMP_ID",
+      "destination": "HOLD_ALIGN"
+    },
+    {
+      "label": "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "priority": 2,
+      "source": "RAMP_DOWN_ID",
+      "destination": "IDLE"
+    },
+    {
+      "label": "[Init_Reset > 0.5 || travel_fault_latch > 0.5]",
+      "priority": 1,
+      "source": "DONE",
+      "destination": "IDLE"
+    },
+    {
+      "label": "[after(Hold_Ticks, tick)]\n{x_align_mm_latch = x_mm;\ntheta_offset_mem = mod(theta_align_const - 2*pi*x_align_mm_latch/Tau_e_mm, 2*pi);\nTheta_Offset_auto = theta_offset_mem;}",
+      "priority": 2,
+      "source": "HOLD_ALIGN",
+      "destination": "RAMP_DOWN_ID"
+    },
+    {
+      "label": "[after(Id_Release_Ramp_Ticks, tick)]",
+      "priority": 1,
+      "source": "RAMP_DOWN_ID",
+      "destination": "DONE"
+    }
+  ],
+  "data": [
+    {
+      "name": "Init_Start",
+      "scope": "Input",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Init_Reset",
+      "scope": "Input",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "travel_fault_latch",
+      "scope": "Input",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Init_Done",
+      "scope": "Output",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Init_State_Num",
+      "scope": "Output",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "theta_align_const",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Tau_e_mm",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Id_Init_Target",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Ramp_Ticks",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Hold_Ticks",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Id_Init_Step",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "id_init_ref",
+      "scope": "Output",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Angle_Init_EN",
+      "scope": "Output",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "x_mm",
+      "scope": "Input",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "Theta_Offset_auto",
+      "scope": "Output",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "x_align_mm_latch",
+      "scope": "Output",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    },
+    {
+      "name": "theta_offset_mem",
+      "scope": "Local",
+      "datatype": "Inherit: From definition in chart",
+      "initial": ""
+    },
+    {
+      "name": "Id_Release_Ramp_Ticks",
+      "scope": "Parameter",
+      "datatype": "Inherit: Same as Simulink",
+      "initial": ""
+    }
+  ]
+}

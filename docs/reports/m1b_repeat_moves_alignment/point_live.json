@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "single_start_count": 1,
+  "process": 31576,
+  "events": [
+    {
+      "target_mm": 0.2,
+      "submit_sim_s": 0.72138399999999991,
+      "running": true,
+      "request_bit": 0,
+      "accepted_sim_s": 0.7214,
+      "segment_start_mm": 0.1,
+      "segment_start_s": 0.7214,
+      "trajectory_done_s": 0.9215000000000001,
+      "ready_s": 1.4599,
+      "error_at_ready_mm": 0.019233509078192351
+    },
+    {
+      "target_mm": -0.1,
+      "submit_sim_s": 1.6225669999999999,
+      "running": true,
+      "request_bit": 1,
+      "accepted_sim_s": 1.6226,
+      "segment_start_mm": 0.2,
+      "segment_start_s": 1.6226,
+      "trajectory_done_s": 1.8628,
+      "ready_s": 2.2799,
+      "error_at_ready_mm": 0.01980218312829525
+    },
+    {
+      "target_mm": -0.09,
+      "submit_sim_s": 2.439952,
+      "running": true,
+      "request_bit": 0,
+      "accepted_sim_s": 2.44,
+      "segment_start_mm": -0.1,
+      "segment_start_s": 2.44,
+      "trajectory_done_s": 2.64,
+      "ready_s": 2.6899,
+      "error_at_ready_mm": 0.00551210046498278
+    }
+  ],
+  "accepted_times": [
+    0.7214,
+    1.6226,
+    2.44
+  ],
+  "max_latency_s": 4.8000000000048004E-5,
+  "max_formula_error_mm": 0,
+  "finish_sim_s": 2.7842659999999997,
+  "UI_mouse_clicked": false,
+  "draft_edit_only_ignored": true,
+  "busy_or_alignment_consumed": true,
+  "repeat_ack": true,
+  "repeat_at_event_status": 5,
+  "repeat_at_event_ready": 1,
+  "NaN_rejected": true,
+  "pause_continue": true,
+  "ready_observer": "saved Host display-only DataStore at100us"
+}

@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 51984,
+  "unique_saved_names": 67,
+  "legacy_names_retained": 41,
+  "same_parent_local_goto": 102,
+  "same_parent_from": 144,
+  "unconnected_active_ports": 0,
+  "connected_event_control_ports": 5,
+  "default_max_error": 0,
+  "preview_default_and_saved_segment": true,
+  "saved_preview_stable_after_reinit": true,
+  "runtime_preview_actual_configuration": true,
+  "PWM_point_interrupt": true,
+  "UI_mouse_clicked": false
+}
