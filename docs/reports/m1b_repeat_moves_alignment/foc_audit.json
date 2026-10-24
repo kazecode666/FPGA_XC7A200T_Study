@@ -1,0 +1,234 @@
+{
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 48292,
+  "source_saved": false,
+  "HDL_generated": false,
+  "C_generated": false,
+  "DUT": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm",
+  "checkhdl_ran": true,
+  "toolboxes": [
+    {
+      "Name": "C2000 Microcontroller Blockset",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Embedded Coder",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Fixed-Point Designer",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "HDL Coder",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "HDL Verifier",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "MATLAB",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "MATLAB Coder",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "MATLAB Compiler",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "MATLAB MCP Server Toolbox",
+      "Version": "0.4.0",
+      "Release": "(R2026a)",
+      "Date": "27-Aug-2026"
+    },
+    {
+      "Name": "Motor Control Blockset",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "STM32 Microcontroller Blockset",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simscape",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simscape Electrical",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simscape Multibody",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simulink",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simulink Coder",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simulink Compiler",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "Simulink Variant Manager",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    },
+    {
+      "Name": "SoC Blockset",
+      "Version": "26.2",
+      "Release": "(R2026b)",
+      "Date": "22-May-2026"
+    }
+  ],
+  "checkhdl": [
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm",
+      "type": "model",
+      "message": "来自相同原子子系统的 HDL 代码只能在优化配置参数 '默认参数行为' 设置为 '内联' 时复用。",
+      "level": "Warning",
+      "MessageID": "hdlcoder:engine:ReuseRequiresInvariantConstants"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm",
+      "type": "model",
+      "message": "Top design unit selected for HDL code generation must not reside within a triggered subsystem.",
+      "level": "Error",
+      "MessageID": "hdlcoder:validate:DutInsideTrigger"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/起到使能时初始化一下的作用",
+      "type": "block",
+      "message": "模型 'PMLSM_PI_FOC_Float_Baseline' 中的注解 'PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/起到使能时初始化一下的作用' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+      "level": "Message",
+      "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/解耦项",
+      "type": "block",
+      "message": "模型 'PMLSM_PI_FOC_Float_Baseline' 中的注解 'PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/解耦项' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+      "level": "Message",
+      "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/积分抗饱和",
+      "type": "block",
+      "message": "模型 'PMLSM_PI_FOC_Float_Baseline' 中的注解 'PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/积分抗饱和' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。",
+      "level": "Message",
+      "MessageID": "hdlcoder:validate:AnnotationTextI18N"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty\nCalculate/Multiport\nSwitch",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty\nCalculate/Multiport\nSwitch1",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty\nCalculate/Multiport\nSwitch2",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector\nCaculate/Switch",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector\nCaculate/Switch1",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector\nCaculate/Switch2",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2\nCalculate/Multiport\nSwitch",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2\nCalculate/Multiport\nSwitch1",
+      "type": "block",
+      "message": "Multiport Switch 模块的控制输入为浮点类型。这将在原生浮点模式中引入额外的逻辑和延迟。如果控制信号仅保留整数值，请考虑为控制端口提供定点、整数或布尔类型的值以提高效率，从而避免隐式数据类型转换。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:ControlPortIsFlPtType"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2\nCalculate/Switch",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    },
+    {
+      "path": "PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2\nCalculate/Switch1",
+      "type": "block",
+      "message": "所选的基于浮点类型的切换条件不是最佳选择，并且可能会引入额外的延迟。请选择 'u2 ~= 0' 准则，以在原生浮点代码生成时获得最有效的结果。",
+      "level": "Warning",
+      "MessageID": "hdlcommon:nativefloatingpoint:InefficientSwitchCriteria"
+    }
+  ],
+  "observation_scene": "1mm/1.2s V5 A50; live/reverse and nominal alignment separately",
+  "instrumented_ports": 170
+}

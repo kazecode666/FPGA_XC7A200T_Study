@@ -1,10 +1,10 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-24。** PR47 已合并，M1A浮点基线及上位机/具名观测交付已接受。当前提交的是下一任务书，不是下一阶段已实现。文档起点：`main@67cecb0f8fe4f4907cf5896bab4e9003fe0a0c85`。
+**当前更新：2026-10-24。** PR48任务已在 `codex/m1b-repeat-moves-alignment` 增量执行A—E，起点 `main@9b63e9a`。实际SLX/脚本、[整合验收](reports/m1b_repeat_moves_and_alignment.md)和[FOC只读准备](../docs/FOC_FIXED_POINT_READINESS.md)随开放实现PR等待Review；不自动合并或启动M2。
 
 ## 当前执行入口
 
-读取 [M1B：连续点位指令、原对齐迁移与FOC准备](tasks/m1b_repeat_moves_and_alignment.md)。本文件和任务书合并后，或用户明确指定该任务分支后，由本机Codex连续完成A—E，不在正常检查点反复请求许可。最终交一个开放实现PR等待Review，不自动合并或开始M2。
+先读[实际验收](reports/m1b_repeat_moves_and_alignment.md)和[操作指南](../docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)，再对照 [M1B任务书](tasks/m1b_repeat_moves_and_alignment.md)。本文件和任务书合并后，或用户明确指定该任务分支后，由本机Codex连续完成A—E，不在正常检查点反复请求许可。最终交一个开放实现PR等待Review，不自动合并或开始M2。
 
 本轮按用户最后澄清的范围，不执行此前讨论过的大范围运行管理重构：
 
@@ -26,7 +26,7 @@
 
 外部 `init_PMLSM_PI_FOC_Float_Baseline.m` 仍为唯一人工初始化入口，Base Workspace为参数来源，中文注释保持简短。`m1a_require_float_init.m`只检查，用户不手动执行。原轨迹和整定函数复用。
 
-Codex交付实际新浮点SLX的增量、必要脚本、更新操作指南、`coordination/reports/m1b_repeat_moves_and_alignment.md`、精简结果索引及 `docs/FOC_FIXED_POINT_READINESS.md`。这些报告/脚本目前是拟交付文件，不是已存在的验收证据。
+Codex交付实际新浮点SLX的增量、必要脚本、更新操作指南、`coordination/reports/m1b_repeat_moves_and_alignment.md`、精简结果索引及 `docs/FOC_FIXED_POINT_READINESS.md`。这些文件已随实现提供；具体通过项、工具失败与未测范围以整合报告为准。
 
 连续点位需一次Run中真实临时命令证据，不能以多个sim或预设阶跃代替。对齐需源/新chart逐拍对照及实际闭环，不能仅因DONE就判物理对齐成功。正常直接Run应有保存的具名日志。未自动点击UI或未能读取本地参考的项，按事实列限制。
 

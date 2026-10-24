@@ -1,0 +1,171 @@
+path,port,logged_type,observed_min,observed_max,logged_period_s,samples,NaN_count,Inf_count
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/ia,1,double,-0.000177629716388503,0.000224446659137245,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/ib,1,double,-0.00686720864548064,0.00659152666618557,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/ic,1,double,-0.00652109386952371,0.00682646759674522,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/theta_e,1,double,0,0.103214275262194,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/omega_e,1,double,-0.0295943211114563,0.508236067352661,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/iq_ref,1,double,-0.00978580400636521,0.0086155229123044,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/id_ref,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/PI_Reset_EN,1,logical,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark,1,double,-0.000177629716388503,0.000224446659137245,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark,2,double,-0.00790604766464468,0.00757057499607317,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/ia,1,double,-0.000177629716388503,0.000224446659137245,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/ib,1,double,-0.00686720864548064,0.00659152666618557,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/ic,1,double,-0.00652109386952371,0.00682646759674522,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/Add,1,double,-0.000266444574582755,0.000336669988705867,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/Add1,1,double,-0.0136936762422259,0.0131126205357093,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/Gain,1,double,-0.00343360432274032,0.00329576333309279,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/Gain1,1,double,-0.00326054693476186,0.00341323379837261,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/Gain2,1,double,-0.000177629716388503,0.000224446659137245,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Clark/Gain3,1,double,-0.00790604766464468,0.00757057499607317,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id,1,double,-0.0103680124769566,0.0884197653561118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/id_ref,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/id,1,double,-0.000796618358744031,0.000786795517696294,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/iq,1,double,-0.00786829290871658,0.0075380848717947,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/we,1,double,-0.0295943211114563,0.508236067352661,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/du_d_z,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/PI_Reset_EN,1,logical,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/ ,1,double,-0.000932352688470109,0.000943992755111677,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/  ,1,double,-0.00686479089190017,0.00695049518004167,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Add1,1,double,-0.0103679439169068,0.088419484977432,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Add2,1,double,-0.00994377729276219,0.0882212290883198,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Constant1,1,double,0.001745,0.001745,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Gain,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Product,1,double,-1.37301711257104e-05,1.31539581012818e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Product1,1,double,-6.63865890659355e-06,1.52551939363121e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Reset_Integral,1,double,-0.00994377729276219,0.0882212290883198,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Reset_Output,1,double,-0.0103680124769566,0.0884197653561118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Reset_Zero,1,double,0,0,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Sum,1,double,-0.000786795517696294,0.000796618358744031,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/Sum1,1,double,-0.0103680124769566,0.0884197653561118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Id/x_d_z,1,double,-0.00994377729276219,0.0882212290883198,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/InversePark,1,double,-0.0680785536058915,0.143553910049674,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/InversePark,2,double,-0.576441782515408,0.626482766839301,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq,1,double,-0.581851463233997,0.626392817182351,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Iq_ref,1,double,-0.00978580400636521,0.0086155229123044,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/id,1,double,-0.000796618358744031,0.000786795517696294,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/iq,1,double,-0.00786829290871658,0.0075380848717947,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/we,1,double,-0.0295943211114563,0.508236067352661,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/du_q_z,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/PI_Reset_EN,1,logical,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/ ,1,double,-0.011076332723785,0.00991554408050668,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/  ,1,double,-0.0815535890422144,0.0730068540948698,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Add,1,double,0.140998609900964,0.141001372958178,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Add1,1,double,-0.586573420293232,0.580746826785957,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Add2,1,double,-0.576169883641692,0.570180981163968,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Constant,1,double,0.141,0.141,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Gain,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Ld,1,double,0.001745,0.001745,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Product,1,double,-1.39009903600833e-06,1.37295817838003e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Product1,1,double,-0.00417279963168776,0.0716612982502555,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Reset_Integral,1,double,-0.576169883641692,0.570180981163968,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Reset_Output,1,double,-0.581851463233997,0.626392817182351,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Reset_Zero,1,double,0,0,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Sum,1,double,-0.00934711622260337,0.00836754774726302,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/Sum1,1,double,-0.581851463233997,0.626392817182351,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Iq/x_q_z,1,double,-0.576169883641692,0.570180981163968,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Park,1,double,-0.000796618358744031,0.000786795517696294,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/Park,2,double,-0.00786829290871658,0.0075380848717947,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG,1,double,0.497872545199816,0.504486059689052,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG,2,double,0.489600029507118,0.511302793251726,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG,3,double,0.488697206748274,0.510399970492882,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG,4,double,1,6,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Valpha,1,double,-0.0680785536058915,0.143553910049674,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Vbeta,1,double,-0.576441782515408,0.626482766839301,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate,1,double,0.497872545199816,0.504486059689052,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate,2,double,0.489600029507118,0.511302793251726,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate,3,double,0.488697206748274,0.510399970492882,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/N,1,double,1,6,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/T1,1,double,0,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/T2,1,double,-0,1.43890227123954e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Constant,1,double,0.0001,0.0001,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Fcn,1,double,2.44348603374137e-05,2.5e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Fcn1,1,double,2.47756970155474e-05,2.51063727400092e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Fcn2,1,double,2.5e-05,2.55651396625863e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Gain,1,double,-0.502127454800184,-0.495513940310948,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Gain1,1,double,-0.510399970492882,-0.488697206748274,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Gain1_UpperDuty,1,double,0.489600029507118,0.511302793251726,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Gain2,1,double,-0.511302793251726,-0.489600029507118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Gain2_UpperDuty,1,double,0.488697206748274,0.510399970492882,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Gain_UpperDuty,1,double,0.497872545199816,0.504486059689052,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Multiport Switch,1,double,2.47756970155474e-05,2.51063727400092e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Multiport Switch1,1,double,2.44348603374137e-05,2.55199985246441e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Multiport Switch2,1,double,2.44800014753559e-05,2.55651396625863e-05,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Duty Calculate/Mux,1,double,0,0.0001,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate,1,double,1,6,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Ualpha,1,double,-0.0680785536058915,0.143553910049674,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Ubeta,1,double,-0.576441782515408,0.626482766839301,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/B0,1,double,-0.576441782515408,0.626482766839301,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/B1,1,double,-0.34171514317739,0.398764842635116,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/B2,1,double,-0.310139876570661,0.239697561344193,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Constant,1,double,1,1,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Constant1,1,double,0,0,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Mux,1,double,-0.576441782515408,0.626482766839301,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Mux1,1,double,0,1,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/N,1,double,1,6,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Switch,1,double,0,1,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Switch1,1,double,0,1,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Sector Caculate/Switch2,1,double,0,1,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate,1,double,0,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate,2,double,-0,1.43890227123954e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/N,1,double,1,6,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/X,1,double,-2.08011419061445e-06,2.26068916758824e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Y,1,double,-8.6489910379866e-07,1.11908745242334e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Z,1,double,-1.43890227123954e-06,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Constant,1,double,0.0001,0.0001,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Fcn,1,double,9.77394413496549e-05,0.0001,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Fcn1,1,double,6.1733523416045e-08,9.92700441090862e-05,9.9999999999989e-05,12001,1199,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Fcn2,1,double,7.29955890913774e-07,9.9938266476584e-05,9.9999999999989e-05,12001,1199,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Gain,1,double,-2.26068916758824e-06,2.08011419061445e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Gain1,1,double,-1.11908745242334e-06,8.6489910379866e-07,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Gain2,1,double,-1.233034621306e-06,1.43890227123954e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Multiport Switch,1,double,0,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Multiport Switch1,1,double,-0,1.43890227123954e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Mux,1,double,0,0.0001,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Switch,1,double,0,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/T1T2 Calculate/Switch1,1,double,-0,1.43890227123954e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/Udc,1,double,48,48,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate,1,double,-2.08011419061445e-06,2.26068916758824e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate,2,double,-8.6489910379866e-07,1.11908745242334e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate,3,double,-1.43890227123954e-06,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Ualpha,1,double,-0.0680785536058915,0.143553910049674,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Ubeta,1,double,-0.576441782515408,0.626482766839301,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Udc,1,double,48,48,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Add,1,double,-0.415151569823357,0.537161977163202,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Add1,1,double,-0.69067309019498,0.59185661822688,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Constant1,1,double,0.0001,0.0001,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Gain,1,double,-0.102117830408837,0.215330865074511,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Gain1,1,double,-0.998454811494937,1.08513080044235,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Gain2,1,double,-0.499198583658343,0.542534076082835,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Math Function,1,double,0.0208333333333333,0.0208333333333333,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Product,1,double,2.08333333333333e-06,2.08333333333333e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Product1,1,double,-2.08011419061445e-06,2.26068916758824e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Product2,1,double,-1.43890227123954e-06,1.233034621306e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/SVPWMG/XYZ Calculate/Product3,1,double,-8.6489910379866e-07,1.11908745242334e-06,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,1,double,-0.0103680124769566,0.0884197653561118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,2,double,-0.581851463233997,0.626392817182351,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,3,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,4,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter,5,logical,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/ud_raw,1,double,-0.0103680124769566,0.0884197653561118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/uq_raw,1,double,-0.581851463233997,0.626392817182351,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Add,1,double,0,0.392542901982121,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Constant1,1,double,27.712812921102,27.712812921102,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Constant2,1,double,1e-06,1e-06,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Constant3,1,double,1,1,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Constant6,1,double,0.999,0.999,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Divide,1,double,39.8087794233499,24941531.6289918,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Gain,1,double,24.9415316289918,24.9415316289918,NaN,1,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Math Function,1,double,0,0.00781805490562987,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Math Function1,1,double,0,0.392367961417642,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/MinMax,1,double,1,1,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Product,1,double,-0.0103680124769566,0.0884197653561118,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Product1,1,double,-0.581851463233997,0.626392817182351,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Relational Operator,1,logical,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Sqrt,1,double,0,0.626532442880751,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Subtract,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Subtract1,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Sum,1,double,1e-06,0.626533442880751,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Unit Delay,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Unit Delay1,1,double,0,0,9.9999999999989e-05,12001,0,0
+PMLSM_PI_FOC_Float_Baseline/Control_Task_10kHz/FOC_Algorithm/dq_voltage_limiter/Unit Delay2,1,logical,0,0,9.9999999999989e-05,12001,0,0

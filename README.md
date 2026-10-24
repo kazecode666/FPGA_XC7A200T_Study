@@ -2,7 +2,7 @@
 
 本仓库从 FPGA / SystemVerilog / PWM 学习，转向**以 Simulink 为主要算法源、以 HDL Coder 生成控制算法 HDL、以 Vivado 完成硬件实现与验证**的电机控制开发路线。
 
-**路线更新：2026-10-24。** PR47 已合并到 `67cecb0`，M1A 纯 Simulink 浮点基线及操作入口已接受。下一任务为连续点位指令、原 MIL 对齐迁移及 FOC 定点化准备；当前提交任务书，尚无该任务的实现或运行结果。
+**路线更新：2026-10-24。** 已按PR48任务在原浮点主线完成M1B增量：同一次Run连续绝对点位、原MIL可选对齐、操作/日志回归及FOC只读准备。实际SLX、脚本和[验收报告](coordination/reports/m1b_repeat_moves_and_alignment.md)随开放实现PR等待Review；未自动合并或进入M2。
 
 已有手写 PWM、FOC 和电流环 RTL 保留为学习成果、时序理解和回归参考，**不是正式控制器必须沿用的生产代码底座**。后续不再要求每个算法维护“纯 Simulink、HDL Coder、手写 SV”三套实现。
 
@@ -10,7 +10,7 @@
 
 | 内容 | 入口 |
 |---|---|
-| Codex 下一轮完整任务 | [M1B：连续点位、原对齐迁移与 FOC 准备](coordination/tasks/m1b_repeat_moves_and_alignment.md) |
+| M1B任务与验收依据 | [M1B：连续点位、原对齐迁移与 FOC 准备](coordination/tasks/m1b_repeat_moves_and_alignment.md) |
 | 直接运行已合并浮点基线 | [中文运行指南](docs/PMLSM_FLOAT_BASELINE_GUIDE_ZH.md)、[M1A实施报告](coordination/reports/m1a_pure_simulink_float_baseline.md)、[PR47操作修订](coordination/reports/pr47_host_interface_revision.md) |
 | 已完成 M1A 的设计和计划 | [M1A设计](coordination/specs/m1a_pure_simulink_float_baseline_design.md)、[历史任务](coordination/tasks/m1a_pure_simulink_float_baseline.md)、[逐项计划](docs/superpowers/plans/2026-10-23-m1a-pi-foc-float-baseline.md) |
 | 项目目标与阶段关系 | [Simulink 主线路线图](docs/SIMULINK_MAINLINE_ROADMAP.md) |
@@ -38,7 +38,7 @@
 
 ## 现在做什么
 
-**M1A 已由 PR47 合并，三闭环基础参数作为当前浮点参考固定。** 下一轮按 [M1B任务书](coordination/tasks/m1b_repeat_moves_and_alignment.md) 连续完成五个检查点：复现当前到位后发目标的行为；最小连续点位/S曲线段封装；原MIL对齐迁移；直接Run、日志与受影响回归；FOC接口/范围/HDL支持只读准备。
+**M1A已由PR47合并，基础参数继续固定。** M1B实施与验证见[整合报告](coordination/reports/m1b_repeat_moves_and_alignment.md)、[精简结果](docs/reports/m1b_repeat_moves_alignment/README.md)和[FOC准备报告](docs/FOC_FIXED_POINT_READINESS.md)。HDL检查因当前触发层次未兼容；未知非零偏置和鼠标操作未冒充通过。
 
 本轮指“到位后再发目标”，**不做运动中轨迹重规划、不做运行中切换闭环模式**。正常三闭环，其他模式仅作停止后选择的调试入口。对齐采用原MIL的Angle_Init及必要选择器，默认旁路；不另外设计对齐算法或未知偏置发生器。
 
