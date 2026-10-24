@@ -1,0 +1,165 @@
+{
+  "name": "directed_probe",
+  "status": "FAIL",
+  "samples": 17,
+  "folder": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp7d61ebcf_7e28_43f2_bb77_60bc87b6139a_model\\directed_probe",
+  "source_gm": {
+    "status": "PASS",
+    "bit_mismatch_count": 0,
+    "first_mismatch": [],
+    "signals": [
+      "duty_u_cmd",
+      "duty_v_cmd",
+      "duty_w_cmd",
+      "x_d_old",
+      "x_q_old",
+      "aw_d_old",
+      "aw_q_old"
+    ],
+    "values_compared": 119,
+    "output_phase_cycles": 274,
+    "state_event_cycles": [
+      0,
+      5000,
+      10000,
+      15000,
+      20000,
+      25000,
+      30000,
+      35000,
+      40000,
+      45000,
+      50000,
+      55000,
+      60000,
+      65000,
+      70000,
+      75000,
+      80000
+    ]
+  },
+  "validation": {
+    "status": "FAIL",
+    "finite_stop_s": 0.0017000000000000001,
+    "denominators": {
+      "status": "FAIL",
+      "first_disallowed_zero_cycle": 274,
+      "signals": [
+        {
+          "name": "den_limiter",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        },
+        {
+          "name": "den_bus_reciprocal",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 1,
+          "first_zero_cycle": 85000,
+          "last_zero_cycle": 85000,
+          "first_zero_phase": 0,
+          "last_zero_phase": 0,
+          "invalid_zero_count": 1
+        },
+        {
+          "name": "den_t1",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        },
+        {
+          "name": "den_t2",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        }
+      ],
+      "first_invalid_zero": {
+        "signal": "den_bus_reciprocal",
+        "cycle": 85000,
+        "sample_id": 17,
+        "phase_cycles": 0,
+        "time_s": 0.0017000000000000001,
+        "hex": "00000000"
+      },
+      "scope": "All logged cycles; only absolute initialization interval 0..273 is invalid."
+    },
+    "scope": "unmodified generated validation assertions; only temporary diagnostic setting changed; independent bit oracle reported separately"
+  },
+  "failures": [],
+  "denominators": {
+    "status": "FAIL",
+    "first_disallowed_zero_cycle": 274,
+    "signals": [
+      {
+        "name": "den_limiter",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      },
+      {
+        "name": "den_bus_reciprocal",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 1,
+        "first_zero_cycle": 85000,
+        "last_zero_cycle": 85000,
+        "first_zero_phase": 0,
+        "last_zero_phase": 0,
+        "invalid_zero_count": 1
+      },
+      {
+        "name": "den_t1",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      },
+      {
+        "name": "den_t2",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      }
+    ],
+    "first_invalid_zero": {
+      "signal": "den_bus_reciprocal",
+      "cycle": 85000,
+      "sample_id": 17,
+      "phase_cycles": 0,
+      "time_s": 0.0017000000000000001,
+      "hex": "00000000"
+    },
+    "scope": "All logged cycles; only absolute initialization interval 0..273 is invalid."
+  }
+}

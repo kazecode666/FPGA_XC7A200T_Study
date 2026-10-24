@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "published_package_smoke",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\published_smoke_001",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\published_smoke_001\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\published_smoke_001\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\published_smoke_001\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\published_smoke_001\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": null,
+  "observed_checks": null,
+  "counted_scoreboard": false,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\generated\\m3_foc\\manifest.json",
+  "manifest_sha256": "ce97c5abaeb56d31994e79d55527a99324b639d8a5fde7530c4104a0648b8160",
+  "verification_kind": "generated_ordinary_marker_only"
+}

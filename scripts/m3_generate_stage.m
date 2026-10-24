@@ -1,6 +1,7 @@
 function result=m3_generate_stage(cfg)
 % 独立batch内仅配置冻结来源的工作副本；不改正式模型或生成SV。
 assert(isfile(fullfile(cfg.run_dir,'preflight_result.json')),'M3:PRECONDITION','Preflight required.');
+m3_require_batch_models(cfg);
 work=[tempname(cfg.run_dir) '_generate'];mkdir(work);modelFolder=fullfile(work,'model');mkdir(modelFolder);
 files=dir(cfg.source_dir);for k=1:numel(files),if ~files(k).isdir,copyfile(fullfile(cfg.source_dir,files(k).name),fullfile(modelFolder,files(k).name));end;end
 oldpwd=pwd;oldpath=path;oldgen=Simulink.fileGenControl('getConfig');
@@ -20,7 +21,8 @@ assert(~any(strcmpi({checks.level},'Error')),'M3:SV_CHECKHDL','SystemVerilog com
 rtl=fullfile(work,'rtl');mkdir(rtl);
 save_system(m,fullfile(modelFolder,[m '.slx']));
 makehdl(cfg.dut,'TargetDirectory',rtl);
-afterMakehdl=struct('work_dir',work,'model_folder',modelFolder,'rtl_dir',rtl);
+afterMakehdl=struct('work_dir',work,'model_folder',modelFolder,'rtl_dir',rtl, ...
+    'matlab_process_id',matlabProcessID,'matlab_version',version);
 writejson(fullfile(work,'makehdl_build.json'),afterMakehdl);
 fprintf('M3_MAKEHDL_COMPLETED %s\n',rtl);
 % TB is generated from actual fixed stimuli, without DPI/C acceleration.

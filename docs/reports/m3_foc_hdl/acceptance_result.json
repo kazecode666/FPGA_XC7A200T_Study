@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "stage": "acceptance",
+  "run_id": "m3_20261024_001",
+  "status": "FAIL",
+  "accepted": false,
+  "acceptance": "NOT_ACCEPTED",
+  "overall": "FAIL",
+  "reason": "E first unchanged-width OOC completed and fits device, but 20 ns setup estimation fails with WNS -58.833 ns; no acceptance exception applied.",
+  "checkpoints": {
+    "A": {
+      "status": "PASS",
+      "evidence": "preflight_result.json"
+    },
+    "B": {
+      "status": "PASS",
+      "evidence": [
+        "B_generation_result.json",
+        "B_generated_manifest.json",
+        "B_ordinary_xsim_result.json"
+      ]
+    },
+    "C": {
+      "status": "PASS",
+      "evidence": "model/model_result.json"
+    },
+    "D": {
+      "status": "PASS",
+      "evidence": "rtl/rtl_result.json"
+    },
+    "E": {
+      "status": "FAIL",
+      "evidence": [
+        "ooc/synth_stage_result.json",
+        "ooc/ooc_result.json"
+      ]
+    },
+    "F": {
+      "status": "PASS",
+      "evidence": "repro/repro_result.json"
+    }
+  },
+  "source_manifest_sha256": "cfd8b1d7639275f273ed683c83344b02678ada8e8130b805a1ac42b6eda09098",
+  "functional_equivalence": {
+    "status": "PASS",
+    "scope": "Accepted fixed source to generated model and independent RTL stored-bit/state comparison; ideal-clock digital simulation only.",
+    "model_main_stored_bit_words_compared": 18039,
+    "model_main_bit_mismatch_count": 0,
+    "model_cases": [
+      {
+        "name": "directed_probe",
+        "status": "PASS",
+        "frames": 17,
+        "main_stored_bit_words": 119,
+        "main_bit_mismatch_count": 0,
+        "generated_validation_status": "PASS",
+        "generated_validation_scope": "directed_probe_actual_run"
+      },
+      {
+        "name": "boundary_random",
+        "status": "PASS",
+        "frames": 1024,
+        "main_stored_bit_words": 7168,
+        "main_bit_mismatch_count": 0,
+        "generated_validation_status": "NOT_RUN",
+        "generated_validation_scope": "covered_by_directed_probe"
+      },
+      {
+        "name": "actual_prefix",
+        "status": "PASS",
+        "frames": 1536,
+        "main_stored_bit_words": 10752,
+        "main_bit_mismatch_count": 0,
+        "generated_validation_status": "NOT_RUN",
+        "generated_validation_scope": "covered_by_directed_probe"
+      }
+    ],
+    "directed_next_state_words_compared": 68,
+    "directed_next_state_commits_compared": 17,
+    "generated_validation_frames": 17,
+    "rtl_positive_cases": 5,
+    "rtl_positive_valid_frames": 2613,
+    "rtl_positive_checks": 52289123,
+    "expected_negative_cases_rejected": 2,
+    "negative_tool_failures_are_expected": true
+  },
+  "ideal_clock_cycle_contract": {
+    "status": "PASS",
+    "assumed_clock_period_ns": 20,
+    "frame_clocks": 5000,
+    "core_output_phase_clocks": 274,
+    "core_output_latency_us_at_assumed_clock": 5.48,
+    "reserved_external_output_commit_clocks": 1,
+    "external_output_commit_register_implemented": false,
+    "normal_submit_cycle_under_reserved_budget": 275,
+    "apply_boundary_clocks": 2500,
+    "normal_remaining_margin_clocks": 2225,
+    "normal_remaining_margin_us_at_assumed_clock": 44.5,
+    "ce_pause_is_additional_diagnostic_not_normal_deadline_proof": true,
+    "scope": "Measured digital event order and cycle counts at ideal 20 ns. This does not demonstrate that the device can meet 20 ns."
+  },
+  "physical_20ns_core_estimate": {
+    "status": "FAIL",
+    "synthesis_completed": true,
+    "resources_ok": true,
+    "timing_ok": false,
+    "worst_setup_slack_ns": -58.833,
+    "worst_hold_slack_ns": 0.144,
+    "used": {
+      "LUT": 69673,
+      "FF": 73840,
+      "DSP": 439,
+      "BRAM36_equivalent": 0
+    },
+    "capacity": {
+      "LUT": 134600,
+      "FF": 269200,
+      "DSP": 740,
+      "BRAM36_equivalent": 365
+    },
+    "clock_implementation_signed_off": false,
+    "clock_distribution_delay_and_skew_estimated": false,
+    "external_input_output_timing_signed_off": false,
+    "routed_timing_signed_off": false,
+    "final_fmax_proven": false
+  },
+  "reproducibility": {
+    "status": "PASS",
+    "raw_generated_files_compared": 31,
+    "comparison": "exact raw bytes SHA256; no token/path/time exclusions",
+    "configuration_equal": true,
+    "frozen_sources_equal": true,
+    "frozen_source_files": 8,
+    "repeat_smoke_status": "PASS",
+    "relocated_smoke_status": "PASS",
+    "ordinary_smoke_is_counted_independent_scoreboard": false
+  },
+  "baseline": {
+    "types": "unchanged accepted Work64/40 and DivideWide72/40",
+    "generated_algorithm_manually_edited": false,
+    "new_pipeline_candidate_sweep_run": false,
+    "acceptance_threshold_relaxed": false
+  },
+  "not_run": {
+    "full_place_and_route": true,
+    "rtl_motor_joint_simulation": true,
+    "bitstream": true,
+    "hardware_operation": true
+  },
+  "blockers": [
+    {
+      "checkpoint": "E",
+      "kind": "negative_setup_slack",
+      "worst_setup_slack_ns": -58.833,
+      "disposition": "Retain first baseline evidence and submit open implementation PR for Review; any new implementation candidate requires new affected C/D/F gates."
+    }
+  ],
+  "archive_only_step": {
+    "new_model_or_tool_verification_executed": false,
+    "mat_files_archived": false,
+    "issues": [],
+    "identity_index": "final_evidence_index.json"
+  }
+}

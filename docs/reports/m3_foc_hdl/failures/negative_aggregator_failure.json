@@ -1,0 +1,6 @@
+{
+  "attempt": "negative_aggregator_001",
+  "status": "FAIL_THEN_FIXED",
+  "cause": "Aggregator incorrectly required native xsim exit!=0. Real Vivado2026.1 xsim exit0 after scoreboard Fatal; strict PowerShell runner already returned nonzero and recorded FAIL.",
+  "fix": "Require newly captured strict runner nonzero + exact real mismatch, keep native tool exit0 in evidence; do not manufacture pass or change DUT."
+}

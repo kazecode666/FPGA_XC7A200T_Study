@@ -1,0 +1,60 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/FOC_DUT_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/B0.sv" into library work
+INFO: [VRFC 10-311] analyzing module B0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/B1.sv" into library work
+INFO: [VRFC 10-311] analyzing module B1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/B2.sv" into library work
+INFO: [VRFC 10-311] analyzing module B2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Clark.sv" into library work
+INFO: [VRFC 10-311] analyzing module Clark
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Defined_Quotient.sv" into library work
+INFO: [VRFC 10-311] analyzing module Defined_Quotient
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Defined_Quotient_block.sv" into library work
+INFO: [VRFC 10-311] analyzing module Defined_Quotient_block
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Divide.sv" into library work
+INFO: [VRFC 10-311] analyzing module Divide
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Fcn.sv" into library work
+INFO: [VRFC 10-311] analyzing module Fcn
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Fcn1.sv" into library work
+INFO: [VRFC 10-311] analyzing module Fcn1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Fcn2.sv" into library work
+INFO: [VRFC 10-311] analyzing module Fcn2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Duty_Calculate.sv" into library work
+INFO: [VRFC 10-311] analyzing module Duty_Calculate
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Sqrt.sv" into library work
+INFO: [VRFC 10-311] analyzing module Sqrt
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/dq_voltage_limiter.sv" into library work
+INFO: [VRFC 10-311] analyzing module dq_voltage_limiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/FOC_DUT_tc.sv" into library work
+INFO: [VRFC 10-311] analyzing module FOC_DUT_tc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Id.sv" into library work
+INFO: [VRFC 10-311] analyzing module Id
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/InversePark.sv" into library work
+INFO: [VRFC 10-311] analyzing module InversePark
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Iq.sv" into library work
+INFO: [VRFC 10-311] analyzing module Iq
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Park.sv" into library work
+INFO: [VRFC 10-311] analyzing module Park
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/N.sv" into library work
+INFO: [VRFC 10-311] analyzing module N
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Sector_Caculate.sv" into library work
+INFO: [VRFC 10-311] analyzing module Sector_Caculate
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Fcn1_block.sv" into library work
+INFO: [VRFC 10-311] analyzing module Fcn1_block
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Fcn2_block.sv" into library work
+INFO: [VRFC 10-311] analyzing module Fcn2_block
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/Fcn_block.sv" into library work
+INFO: [VRFC 10-311] analyzing module Fcn_block
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/T1T2_Calculate.sv" into library work
+INFO: [VRFC 10-311] analyzing module T1T2_Calculate
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/reciprocal.sv" into library work
+INFO: [VRFC 10-311] analyzing module reciprocal
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/XYZ_Calculate.sv" into library work
+INFO: [VRFC 10-311] analyzing module XYZ_Calculate
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/SVPWMG.sv" into library work
+INFO: [VRFC 10-311] analyzing module SVPWMG
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/FOC_DUT.sv" into library work
+INFO: [VRFC 10-311] analyzing module FOC_DUT
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke/work/FOC_DUT_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module FOC_DUT_tb
+

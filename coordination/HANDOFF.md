@@ -1,6 +1,6 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-24。** PR51 已合并，基线 `aead404fce2c5a9142ffe08d96b03075603cefd5`。M2 以[Review 5638508505](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/51#pullrequestreview-5638508505)确认的 **M2-E-REPEAT-001 受限例外**接受，不是全部原严格门槛通过。当前交接转为用户已确认范围的 M3 任务书；本文更新没有生成 HDL、运行 xsim/综合或启动本机 Codex。
+**当前更新：2026-10-25。** M3 A/B/C/D/F 已有真实PASS证据：实际SV、完整原定点→gm位/状态、xsim、复位/CE、重复生成及迁移smoke。**E综合完成、容量满足但20ns时序FAIL，WNS−58.833ns；M3未接受。** [整合结果](reports/m3_foc_systemverilog_rtl_verification.md)、[操作指南](../docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[机器结论](../docs/reports/m3_foc_hdl/acceptance_result.json)。停在开放实现PR等待Review，不合并、不进入M4。M2的PR51受限例外不适用于M3。
 
 ## 当前执行入口
 
@@ -40,7 +40,7 @@
 
 ## 文件、操作与证据
 
-M3主入口计划为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；本交接不代表这些文件已经创建。
+M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；实际文件及逐项状态已交付，E物理时序阻塞保留。
 
 正常用户仍只手动执行 `init_PMLSM_PI_FOC_Float_Baseline.m`，必要类型自动派生；InitFcn仅检查，中文注释简短。生成/测试是独立开发入口，不要求正常Run先执行一串helper。
 
@@ -60,6 +60,6 @@ M3主入口计划为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim
 
 [M1A报告](reports/m1a_pure_simulink_float_baseline.md)、[PR47修订](reports/pr47_host_interface_revision.md)、[M1B报告](reports/m1b_repeat_moves_and_alignment.md)、[M0审计](reports/m0_simulink_model_asset_audit.md)和[M2任务](tasks/m2_foc_fixed_point_implementation.md)保留历史范围；不回写成已完成实机标定或所有性能优化。
 
-[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)以M3实施准备为当前阶段。M3结束后停在开放实现PR，M4完整布局布线和带真实时序的电机联合仿真另行任务。旧“先完成整套运行管理再定点化”范围不恢复，硬件接口先查已有资料，不要求用户重复说明。
+[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)当前为M3开放实现Review，20ns综合时序阻塞。M3结束后停在开放实现PR，M4完整布局布线和带真实时序的电机联合仿真另行任务。旧“先完成整套运行管理再定点化”范围不恢复，硬件接口先查已有资料，不要求用户重复说明。
 
 [旧交接](HANDOFF_LEGACY_20261021.md)、[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)、[M1B任务](tasks/m1b_repeat_moves_and_alignment.md)原样作为历史保留。
