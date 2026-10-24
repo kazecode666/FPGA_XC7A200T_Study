@@ -1,0 +1,20 @@
+{
+  "stage": "synth",
+  "status": "FAIL",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\ooc_001\\result.json"
+  ],
+  "failures": [
+    "OOC completed/resource/timing checks not all satisfied"
+  ],
+  "wrapper_exit_code": [],
+  "vivado_native_exit_code": 0,
+  "consumed_existing_hash_matched_evidence": true,
+  "rtl_verification_status": "PASS",
+  "diagnostic_if_function_not_pass": false,
+  "synthesis_completed": true,
+  "resources_ok": true,
+  "timing_ok": false,
+  "scope": "core OOC synthesis estimate; external IO and routed timing unsigned"
+}
