@@ -1,40 +1,40 @@
 {
   "pass": true,
   "single_start_count": 1,
-  "process": 33580,
+  "process": 52196,
   "events": [
     {
       "target_mm": 0.2,
-      "submit_sim_s": 0.72031099999999992,
+      "submit_sim_s": 0.72101399999999993,
       "running": true,
       "request_bit": 0,
-      "accepted_sim_s": 0.7204,
+      "accepted_sim_s": 0.72110000000000007,
       "segment_start_mm": 0.1,
-      "segment_start_s": 0.7204,
-      "trajectory_done_s": 0.9205000000000001,
+      "segment_start_s": 0.72110000000000007,
+      "trajectory_done_s": 0.9212,
       "ready_s": 1.4599,
-      "error_at_ready_mm": 0.019310220399212874
+      "error_at_ready_mm": 0.019293573685415705
     },
     {
       "target_mm": -0.1,
-      "submit_sim_s": 1.4615879999999999,
+      "submit_sim_s": 1.46182,
       "running": true,
       "request_bit": 1,
-      "accepted_sim_s": 1.4616,
+      "accepted_sim_s": 1.4619,
       "segment_start_mm": 0.2,
-      "segment_start_s": 1.4616,
-      "trajectory_done_s": 1.7018,
-      "ready_s": 2.1699,
-      "error_at_ready_mm": 0.019384676372317111
+      "segment_start_s": 1.4619,
+      "trajectory_done_s": 1.7021000000000002,
+      "ready_s": 2.1199,
+      "error_at_ready_mm": 0.019934985450379833
     }
   ],
   "accepted_times": [
-    0.7204,
-    1.4616
+    0.72110000000000007,
+    1.4619
   ],
-  "max_latency_s": 8.9000000000116763E-5,
+  "max_latency_s": 8.6000000000141519E-5,
   "max_formula_error_mm": 0,
-  "finish_sim_s": 2.3926339999999997,
+  "finish_sim_s": 2.3426,
   "UI_mouse_clicked": false,
   "draft_edit_only_ignored": true,
   "busy_or_alignment_consumed": true,

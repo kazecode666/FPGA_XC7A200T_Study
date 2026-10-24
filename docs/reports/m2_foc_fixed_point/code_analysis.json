@@ -13,27 +13,6 @@
       "code_issues": []
     },
     {
-      "file": "scripts/m2_run_shared_case.m",
-      "code_issues": [
-        {
-          "description": "此关键字可能未与其在第 32 行上的匹配 END 对齐。",
-          "end_column": 3,
-          "fixable": false,
-          "line": 30,
-          "severity": "info",
-          "start_column": 2
-        },
-        {
-          "description": "不必要的额外分号。",
-          "end_column": 278,
-          "fixable": true,
-          "line": 36,
-          "severity": "info",
-          "start_column": 278
-        }
-      ]
-    },
-    {
       "file": "scripts/m2_test_foc_types.m",
       "code_issues": []
     },
@@ -52,55 +31,6 @@
     {
       "file": "simulink模型/m1a_require_float_init.m",
       "code_issues": []
-    },
-    {
-      "file": "scripts/m2_test_model_files.m",
-      "code_issues": []
-    },
-    {
-      "file": "scripts/m2_test_foc_moves.m",
-      "code_issues": [
-        {
-          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
-          "end_column": 283,
-          "fixable": false,
-          "line": 11,
-          "severity": "info",
-          "start_column": 280
-        },
-        {
-          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
-          "end_column": 25,
-          "fixable": true,
-          "line": 18,
-          "severity": "warning",
-          "start_column": 14
-        },
-        {
-          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
-          "end_column": 25,
-          "fixable": true,
-          "line": 28,
-          "severity": "warning",
-          "start_column": 14
-        },
-        {
-          "description": "赋给变量的值可能未使用。",
-          "end_column": 128,
-          "fixable": false,
-          "line": 31,
-          "severity": "warning",
-          "start_column": 126
-        },
-        {
-          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
-          "end_column": 199,
-          "fixable": false,
-          "line": 53,
-          "severity": "info",
-          "start_column": 187
-        }
-      ]
     },
     {
       "file": "scripts/m2_test_foc_fresh.m",
@@ -203,41 +133,55 @@
       ]
     },
     {
-      "file": "scripts/m2_verify_foc_fixed_point.m",
+      "file": "scripts/m2_connect_shared_implementation.m",
+      "code_issues": []
+    },
+    {
+      "file": "scripts/m2_apply_fixed_types.m",
       "code_issues": [
         {
-          "description": "不必要的额外逗号。",
-          "end_column": 108,
+          "description": "不必要的额外分号。",
+          "end_column": 109,
           "fixable": true,
-          "line": 18,
+          "line": 32,
           "severity": "info",
-          "start_column": 108
-        },
-        {
-          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
-          "end_column": 252,
-          "fixable": false,
-          "line": 18,
-          "severity": "info",
-          "start_column": 245
-        },
-        {
-          "description": "不必要的额外逗号。",
-          "end_column": 74,
-          "fixable": true,
-          "line": 22,
-          "severity": "info",
-          "start_column": 74
-        },
-        {
-          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
-          "end_column": 284,
-          "fixable": false,
-          "line": 22,
-          "severity": "info",
-          "start_column": 277
+          "start_column": 109
         }
       ]
+    },
+    {
+      "file": "scripts/m2_test_foc_closedloop.m",
+      "code_issues": []
+    },
+    {
+      "file": "scripts/m2_bind_test_models.m",
+      "code_issues": [
+        {
+          "description": "此关键字可能未与其在第 6 行上的匹配 END 对齐。",
+          "end_column": 16,
+          "fixable": false,
+          "line": 3,
+          "severity": "info",
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "file": "scripts/m2_test_foc_isolation.m",
+      "code_issues": [
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 194,
+          "fixable": true,
+          "line": 3,
+          "severity": "warning",
+          "start_column": 188
+        }
+      ]
+    },
+    {
+      "file": "scripts/m2_test_model_files.m",
+      "code_issues": []
     },
     {
       "file": "scripts/m2_check_foc_compatibility.m",
@@ -277,25 +221,123 @@
       ]
     },
     {
-      "file": "scripts/m2_connect_shared_implementation.m",
-      "code_issues": []
-    },
-    {
-      "file": "scripts/m2_apply_fixed_types.m",
+      "file": "scripts/m2_test_foc_moves.m",
       "code_issues": [
         {
-          "description": "不必要的额外分号。",
-          "end_column": 109,
-          "fixable": true,
-          "line": 32,
+          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
+          "end_column": 283,
+          "fixable": false,
+          "line": 11,
           "severity": "info",
-          "start_column": 109
+          "start_column": 280
+        },
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 25,
+          "fixable": true,
+          "line": 18,
+          "severity": "warning",
+          "start_column": 14
+        },
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 25,
+          "fixable": true,
+          "line": 28,
+          "severity": "warning",
+          "start_column": 14
+        },
+        {
+          "description": "赋给变量的值可能未使用。",
+          "end_column": 128,
+          "fixable": false,
+          "line": 31,
+          "severity": "warning",
+          "start_column": 126
+        },
+        {
+          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
+          "end_column": 199,
+          "fixable": false,
+          "line": 53,
+          "severity": "info",
+          "start_column": 187
         }
       ]
     },
     {
-      "file": "scripts/m2_test_foc_closedloop.m",
-      "code_issues": []
+      "file": "scripts/m2_run_shared_case.m",
+      "code_issues": [
+        {
+          "description": "赋给变量的值可能未使用。请考虑改用 ~ 替换该变量。",
+          "end_column": 143,
+          "fixable": true,
+          "line": 5,
+          "severity": "warning",
+          "start_column": 132
+        },
+        {
+          "description": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "end_column": 177,
+          "fixable": true,
+          "line": 5,
+          "severity": "info",
+          "start_column": 167
+        },
+        {
+          "description": "此关键字可能未与其在第 34 行上的匹配 END 对齐。",
+          "end_column": 3,
+          "fixable": false,
+          "line": 32,
+          "severity": "info",
+          "start_column": 2
+        },
+        {
+          "description": "不必要的额外分号。",
+          "end_column": 355,
+          "fixable": true,
+          "line": 38,
+          "severity": "info",
+          "start_column": 355
+        }
+      ]
+    },
+    {
+      "file": "scripts/m2_verify_foc_fixed_point.m",
+      "code_issues": [
+        {
+          "description": "不必要的额外逗号。",
+          "end_column": 108,
+          "fixable": true,
+          "line": 18,
+          "severity": "info",
+          "start_column": 108
+        },
+        {
+          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
+          "end_column": 252,
+          "fixable": false,
+          "line": 18,
+          "severity": "info",
+          "start_column": 245
+        },
+        {
+          "description": "不必要的额外逗号。",
+          "end_column": 74,
+          "fixable": true,
+          "line": 22,
+          "severity": "info",
+          "start_column": 74
+        },
+        {
+          "description": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。",
+          "end_column": 284,
+          "fixable": false,
+          "line": 22,
+          "severity": "info",
+          "start_column": 277
+        }
+      ]
     }
   ],
   "errors": 0

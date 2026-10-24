@@ -1,0 +1,12 @@
+{
+  "canonical_main": "D:/Project/FPGA_XC7A200T/simulink模型/PMLSM_PI_FOC_Float_Baseline.slx",
+  "MCP_process": 14572,
+  "main_dirty": false,
+  "temporary_test_blocks_in_main": 0,
+  "implementation_default": 0,
+  "existing_initialization_script_editor_preserved": true,
+  "independent_validation_processes_running": 0,
+  "temporary_variant_probe_saved_before_close": ".runtime/m2_20261024/M2_Variant_Probe.slx",
+  "computer_use_used": false,
+  "MCP_model_diagram_windows_retained": 1
+}

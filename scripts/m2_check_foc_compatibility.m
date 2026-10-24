@@ -1,7 +1,7 @@
 function result=m2_check_foc_compatibility
 % 仅兼容性检查和活动编译类型；不生成HDL/C代码。
 root=fileparts(fileparts(mfilename('fullpath')));folder=fullfile(root,'docs/reports/m2_foc_fixed_point');addpath(fullfile(root,'simulink模型'));
-[modelFolder,modelCleanup]=m2_test_model_files;evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');m='PMLSM_FOC_FixedPoint';load_system(fullfile(modelFolder,[m '.slx']));assert(strcmp(get_param(m,'DataTypeOverride'),'Off'));
+[modelFolder,modelCleanup]=m2_test_model_files;evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');m2_bind_test_models(modelFolder);m='PMLSM_FOC_FixedPoint';load_system(fullfile(modelFolder,[m '.slx']));assert(strcmp(get_param(m,'DataTypeOverride'),'Off'));
 checks=checkhdl([m '/FOC_DUT']);writejson(fullfile(folder,'hdl_checks.json'),checks);
 errors=sum(strcmpi({checks.level},'Error'));warnings=sum(strcmpi({checks.level},'Warning'));messages=sum(strcmpi({checks.level},'Message'));
 feval(m,[],[],[],'compile');finish=onCleanup(@()feval(m,[],[],[],'term'));blocks=find_system([m '/FOC_DUT'],'LookUnderMasks','all','FollowLinks','on','MatchFilter',@Simulink.match.activeVariants,'Type','Block');rows=cell(0,4);

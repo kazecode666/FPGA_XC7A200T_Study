@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "cwd_was_canonical_model_folder": true,
+  "actual_loaded_paths": {
+    "PMLSM_FOC_FixedPoint": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp4aafb380_0a29_430f_a65e_f830058da4fe\\PMLSM_FOC_FixedPoint.slx",
+    "PMLSM_PI_FOC_Float_Baseline": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp4aafb380_0a29_430f_a65e_f830058da4fe\\PMLSM_PI_FOC_Float_Baseline.slx"
+  },
+  "cwd_restored": true,
+  "model_windows_opened": false
+}

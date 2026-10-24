@@ -3,7 +3,7 @@ function [out,metadata]=m2_run_shared_case(scene,implementation,plan,trialConfig
 if nargin<3,plan=struct;end
 if nargin<4,trialConfig=[];end
 root=fileparts(fileparts(mfilename('fullpath')));addpath(fullfile(root,'simulink模型'));m='PMLSM_PI_FOC_Float_Baseline';[modelFolder,modelCleanup]=m2_test_model_files; %#ok<NASGU>
-evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');load_system(fullfile(modelFolder,[m '.slx']));
+evalin('base','init_PMLSM_PI_FOC_Float_Baseline;');m2_bind_test_models(modelFolder);load_system(fullfile(modelFolder,[m '.slx']));
 in=Simulink.SimulationInput(m);stop=1.2;target=1;speed=0;pos=1;closed=1;test=0;iq=0;id=0;align=0;start=0;auto=1;dead=1e-6;
 if strcmp(scene,'daily'),stop=5;target=10;else,in=in.setVariable('Host_Traj_Vmax',5).setVariable('Host_Traj_Amax',50);end
 if startsWith(scene,'current'),stop=.05;pos=0;closed=0;test=1;iq=.2;if endsWith(scene,'neg'),iq=-iq;end;end

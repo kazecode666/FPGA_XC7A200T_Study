@@ -27,7 +27,7 @@ elseif strcmp(stage,'types')
 elseif strcmp(stage,'interface')
  result=m2_test_foc_interface;return
 elseif strcmp(stage,'hdlcheck')
- result=m2_check_foc_compatibility;return
+ result=struct('isolation',m2_test_foc_isolation,'compatibility',m2_check_foc_compatibility);return
 end
 fid=fopen(fullfile(folder,[stage '_acceptance.json']),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);fprintf('M2_%s_PASS\n',upper(stage));
 end

@@ -1,7 +1,7 @@
 {
   "pass": true,
   "version": "26.2.0.3386108 (R2026b)",
-  "process": 48680,
+  "process": 52196,
   "DUT": "PMLSM_FOC_FixedPoint/FOC_DUT",
   "DataTypeOverride": "Off",
   "errors": 0,

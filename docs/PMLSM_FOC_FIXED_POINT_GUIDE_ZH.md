@@ -13,6 +13,8 @@ open_system('PMLSM_PI_FOC_Float_Baseline');
 
 然后正常点 Run。初始化保留 10 mm、5 s、V10/A100 的日常默认。停止后设置 `FOC_Impl_Select=0` 再 Run 即可比较浮点。实现选择在编译时生效，运行中不支持热切；在线发送新位置时不要重新执行初始化。
 
+正式主模型路径为 `D:/Project/FPGA_XC7A200T/simulink模型/PMLSM_PI_FOC_Float_Baseline.slx`。可用 `get_param('PMLSM_PI_FOC_Float_Baseline','FileName')` 核对当前内存模型的完整路径；同名窗口不代表同一内存副本。开发验收在后台加载独立`.runtime`副本并记录来源校验和，不显示第二个同名图窗。保留已有脚本编辑器不影响这项路径检查。
+
 依赖共八个文件，均在 `simulink模型`：主 SLX、`PMLSM_FOC_FixedPoint.slx`、上述 init、`m1a_require_float_init.m`、`pmlsm_foc_fixed_config.m`、`design_PMLSM_three_loop.m`、`pmlsm_scurve_profile.m`、`pmlsm_point_move_step.m`。不依赖旧 MAT、XSI 或开发验收数据。已在独立目录/新 MATLAB 进程逐一运行两种实现。
 
 ## 指令、轨迹和对齐

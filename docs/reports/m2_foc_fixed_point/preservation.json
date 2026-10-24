@@ -89,6 +89,7 @@
   "original_subsystems_identical": 32,
   "original_foc_system_546_identical": true,
   "unrelated_dirty_patch_sections_identical": 29,
+  "original_stateflow_archive_parts_identical": 4,
   "new_archive_parts": 5,
   "old_models_modified_by_M2": false,
   "layout_note": "R2026b grid snapped39 existing block positions by1-2px; restored only serialized Position fields from local entry snapshot after native API also snapped. Reopen/update validated; no original math or wiring restored from remote."

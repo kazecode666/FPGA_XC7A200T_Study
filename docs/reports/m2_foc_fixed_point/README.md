@@ -18,6 +18,7 @@
 | E/F 正常交付依赖 | [八文件独立目录，两实现直接Run](fresh_acceptance.json) |
 | F 兼容性 | [实际checkhdl摘要](hdlcheck_acceptance.json)、[全部7条Message](hdl_checks.json)、[同父层local映射](local_routing.csv) |
 | F 文件及静态检查 | [本地快照/dirty保护](preservation.json)、[MATLAB代码分析](code_analysis.json) |
+| F 实际副本绑定 | [正式目录启动的路径回归](isolation_acceptance.json)、[最终主图窗状态](final_session.json) |
 
 11场景共享曲线均使用原始时间轴，分别展示位置、电流、速度增量和真实选择的参考/复位：
 
@@ -29,4 +30,4 @@ late20%是固定统计窗，短场景不一定已稳态。跟随表明确标记�
 
 布局已检查：[根层](fixed_root_layout.png)、[完整DUT](fixed_dut_layout.png)、[适配层](fixed_adapter_layout.png)、[圆限幅/AW](limiter_layout.png)、[SVPWM](svpwm_layout.png)、[共享控制层](shared_control_layout.png)。只整理新增实现和必要接线，不递归排版原浮点、Host、外环或原对齐。
 
-验收脚本在独立进程中后台加载，在`.runtime`唯一目录创建与正式SLX逐字节相同的副本、写入provenance后运行，避免临时观测/自动保存影响正式模型；代码和参数仍从同一配置源派生，不维护第二套算法。普通用户仍只执行一个init、打开原工程主模型并Run。
+验收脚本在独立进程中后台加载，在`.runtime`唯一目录创建八个正常依赖的逐字节副本、写入文件校验和/provenance后运行。主/引用SLX均按绝对路径绑定并断言实际FileName，临时工作目录和路径在结束后恢复，避免临时观测/自动保存影响正式模型；参数仍从同一配置源派生，不维护第二套算法。普通用户仍只执行一个init、打开原工程主模型并Run。

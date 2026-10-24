@@ -32,6 +32,8 @@ def main():
         new_systems = set(new.namelist()) - set(old.namelist())
         # The same FOC block SID546 was moved inside a Float choice, not rebuilt.
         assert old.read('simulink/systems/system_546.xml') == new.read('simulink/systems/system_546.xml')
+        stateflow = [n for n in old.namelist() if 'stateflow' in n.lower()]
+        assert all(n in new.namelist() and old.read(n) == new.read(n) for n in stateflow), 'Original Stateflow changed'
     def sections(text):
         return {part.split('\n', 1)[0]: part.rstrip('\n') for part in re.split(r'(?=^diff --git )', text, flags=re.M) if part.startswith('diff --git ')}
     before = sections((runtime / 'user_before.patch').read_text(encoding='utf-8-sig').replace('\r\n', '\n'))
@@ -41,6 +43,7 @@ def main():
     assert not mismatches, f'Unrelated dirty patch changed: {mismatches}'
     result = {'pass': True, 'source_files': rows, 'original_subsystems_identical': len(preserved),
               'original_foc_system_546_identical': True, 'unrelated_dirty_patch_sections_identical': len(unrelated),
+              'original_stateflow_archive_parts_identical': len(stateflow),
               'new_archive_parts': len(new_systems), 'old_models_modified_by_M2': False,
               'layout_note': 'R2026b grid snapped39 existing block positions by1-2px; restored only serialized Position fields from local entry snapshot after native API also snapped. Reopen/update validated; no original math or wiring restored from remote.'}
     output = root / 'docs/reports/m2_foc_fixed_point/preservation.json'

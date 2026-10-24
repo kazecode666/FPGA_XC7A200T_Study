@@ -27,7 +27,7 @@ end
 function result=run_fixed_live(root)
 [modelFolder,modelCleanup]=m2_test_model_files;m='PMLSM_PI_FOC_Float_Baseline';evalin('base','init_PMLSM_PI_FOC_Float_Baseline;Host_Target_mm=0.1;M1A_StopTime_s=20;Host_Traj_Vmax=5;Host_Traj_Amax=50;');
 assignin('base','FOC_Impl_Select',1);
-if ~bdIsLoaded(m),load_system(fullfile(modelFolder,[m '.slx']));end
+m2_bind_test_models(modelFolder);
 set_param(m,'EnablePacing','on','PacingRate','0.5');set_param(m,'SimulationCommand','start');startWall=tic;events=struct([]);bit=0;
 % Busy request is consumed through the same physical Host submit inlet.
 while get_param(m,'SimulationTime')<.12 && toc(startWall)<120,drawnow;pause(.01);end
