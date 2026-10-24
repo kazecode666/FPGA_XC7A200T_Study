@@ -1,0 +1,36 @@
+{
+  "pass": false,
+  "same_command_times_s": [
+    0.12,
+    0.9102,
+    1.8623,
+    2.7112000000000003
+  ],
+  "accepted_targets_mm": [
+    0.1,
+    0.2,
+    -0.1,
+    -0.09
+  ],
+  "busy_rejection_count": 1,
+  "ready_times_float_s": [
+    0.7199,
+    0.8799,
+    1.6699000000000002,
+    1.8299,
+    2.5199000000000003,
+    2.6799,
+    2.9599
+  ],
+  "ready_times_fixed_s": [
+    0.7199,
+    0.8799,
+    1.6699000000000002,
+    1.8299,
+    2.5199000000000003,
+    2.6799,
+    2.9599
+  ],
+  "same_command_events": true,
+  "automatic_sequence_is_live_evidence": false
+}

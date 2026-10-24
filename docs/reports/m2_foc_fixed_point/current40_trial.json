@@ -1,0 +1,15 @@
+{
+  "adopted": false,
+  "production_current_type": "sfix32_En24",
+  "trial_current_type": "sfix40_En32",
+  "only_type_change": "Current; all other types, PI, deadtime, numeric budgets and frozen command times unchanged",
+  "trial_accepted_targets_mm": [0.1, -0.1],
+  "trial_accepted_count": 2,
+  "trial_rejected_count": 3,
+  "failure": "changed Ready at .9102 and2.7112; no longer meets common accepted-event precondition",
+  "metrics_against_float_with_different_accepted_trajectory_are_not_quantization_budget_evidence": true,
+  "raw_evidence": ".runtime/m2_20261024/paired_current40_trial.mat",
+  "log": ".runtime/m2_20261024/E_current40_isolated.log",
+  "canonical_models_unchanged_after_trial": true,
+  "decision": "retain original declared32/24 type and original failed paired budget; hand off non-smooth scenario to Review without tuning PI/deadtime or moving commands"
+}

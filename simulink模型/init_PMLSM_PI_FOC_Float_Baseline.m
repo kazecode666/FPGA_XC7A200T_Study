@@ -86,5 +86,12 @@ end
 %% 连续交互日志（物理曲线按100us；命令事件不抽取）
 M1B_Physical_Log_Decimation=100;
 
+%% FOC实现（停止后选择，默认浮点参考）
+FOC_Impl_Select=0;
+FOC_Fixed_Parameters=struct('Rs',PMLSM_Rs_ohm,'Ld',PMLSM_Ld_H,'Lq',PMLSM_Lq_H, ...
+ 'psi',PMLSM_psi_f_Wb,'Kp_ACR',Kp_ACR,'Ki_ACR',Ki_ACR, ...
+ 'Kaw_d',Kaw_d,'Kaw_q',Kaw_q,'Ts_ACR',Ts_ACR,'Udc',Udc);
+FOC_Fixed_Config=pmlsm_foc_fixed_config(FOC_Fixed_Parameters);
+
 %% 初始化成功标识（必须最后设置）
 PMLSM_M1A_InitVersion=20261023;

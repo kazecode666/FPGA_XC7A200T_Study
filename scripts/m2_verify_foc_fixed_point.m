@@ -13,13 +13,21 @@ if strcmp(stage,'source')
  end
  result=struct('version',version,'process',matlabProcessID,'pass',true,'scenes',rows,'source_immutable',true);
 elseif strcmp(stage,'all')
- result=struct;for name={'interface','types','unit','closedloop','hdlcheck','fresh'},result.(name{1})=m2_verify_foc_fixed_point(name{1});end;return
+ assert(numel(dir(fullfile(runtime,'source_*.mat')))==11,'M2:SOURCE_EVIDENCE_MISSING','all需要本次修改前原始参考；普通Run/fresh不需要。');
+ % Fresh must be first: it deliberately rejects an initialized workspace.
+ result=struct;failures=cell(0,1);for name={'fresh','interface','types','unit','closedloop','hdlcheck'},try,result.(name{1})=m2_verify_foc_fixed_point(name{1});catch e,entry=struct('stage',name{1},'identifier',e.identifier,'message',e.message);failures{end+1}=entry;end;end;result.failures=failures;result.pass=isempty(failures);fid=fopen(fullfile(folder,'all_acceptance.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);assert(result.pass,'M2:VALIDATION_FAILED','存在失败阶段；独立阶段已继续，见all_acceptance.json。');return
+elseif strcmp(stage,'unit')
+ result=struct('unit',m2_test_foc_unit,'bus',m2_test_foc_bus,'long',m2_test_foc_long);return
+elseif strcmp(stage,'closedloop')
+ result=struct;failures=cell(0,1);for name={'scenes','paired','live'},try,if strcmp(name{1},'scenes'),result.scenes=m2_test_foc_closedloop;else,result.(name{1})=m2_test_foc_moves(name{1});end;catch e,entry=struct('stage',name{1},'identifier',e.identifier,'message',e.message);failures{end+1}=entry;end;end;m2_summarize_foc_results;result.failures=failures;result.pass=isempty(failures);fid=fopen(fullfile(folder,'closedloop_suite.json'),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);assert(result.pass,'M2:CLOSEDLOOP_SUITE','闭环存在失败；独立检查已继续，见closedloop_suite.json。');return
+elseif strcmp(stage,'fresh')
+ result=m2_test_foc_fresh;return
 elseif strcmp(stage,'types')
  result=m2_test_foc_types;return
 elseif strcmp(stage,'interface')
  result=m2_test_foc_interface;return
-else
- assert(isfile(fullfile(root,'simulink模型/PMLSM_FOC_FixedPoint.slx')),'M2:FIXED_MODEL_MISSING','尚无独立FOC实现源。');error('M2:STAGE_PENDING','阶段%s尚待实现。',stage);
+elseif strcmp(stage,'hdlcheck')
+ result=m2_check_foc_compatibility;return
 end
 fid=fopen(fullfile(folder,[stage '_acceptance.json']),'w');fprintf(fid,'%s',jsonencode(result,PrettyPrint=true));fclose(fid);fprintf('M2_%s_PASS\n',upper(stage));
 end

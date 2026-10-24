@@ -1,0 +1,9 @@
+{
+  "scenes": 11,
+  "input_envelope_pass": true,
+  "unit_algorithm_limited_samples": 3593,
+  "numeric_representation_overflow_or_saturation": 0,
+  "steady_window": "last20percent; includes normal uncompensated ripple",
+  "profile_reference": "derived using unchanged original pmlsm_scurve_profile; separately validated against logged live x_ref",
+  "no_time_shift": true
+}

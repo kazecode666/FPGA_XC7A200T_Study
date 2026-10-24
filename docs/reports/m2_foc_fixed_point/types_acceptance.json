@@ -27,9 +27,9 @@
     "park_axis_bound_A": 3.5276684147527879,
     "error_bound_A": 5.5276684147527879,
     "feedforward_bound_V": 14.71557813837436,
-    "integrator_bound_V": 142.35030651205031,
-    "raw_voltage_bound_V": 205.29479156914275,
-    "square_sum_bound_V2": 84291.902890835525
+    "integrator_bound_V": 164.72233744265768,
+    "raw_voltage_bound_V": 227.66682249975011,
+    "square_sum_bound_V2": 103664.36413426544
   },
   "epsilon": {
     "original": 1E-6,

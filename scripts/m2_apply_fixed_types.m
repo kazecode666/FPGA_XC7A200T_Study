@@ -1,6 +1,6 @@
 function m2_apply_fixed_types
 % 开发转换：保留可视化块/原PI记忆；仅替换不支持fixed的向量Fcn。
-root=fileparts(fileparts(mfilename('fullpath')));m='PMLSM_FOC_FixedPoint';d=[m '/FOC_DUT'];assert(bdIsLoaded(m));assert(evalin('base','exist(''FOC_Fixed_Config'',''var'')==1'));
+m='PMLSM_FOC_FixedPoint';d=[m '/FOC_DUT'];assert(bdIsLoaded(m));assert(evalin('base','exist(''FOC_Fixed_Config'',''var'')==1'));
 b=find_system(d,'LookUnderMasks','all','FollowLinks','off','BlockType','Fcn');for k=1:numel(b),expand_fcn(b{k});end
 blocks=find_system(m,'LookUnderMasks','all','FollowLinks','off','Type','Block');
 for k=1:numel(blocks)

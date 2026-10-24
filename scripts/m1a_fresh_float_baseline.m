@@ -1,5 +1,5 @@
 function result=m1a_fresh_float_baseline
-% Invoke ONLY in a fresh -batch process. Runs a six-file isolated closure; standard scene is explicit.
+% Invoke ONLY in a fresh -batch process. Runs an eight-file isolated closure; standard scene is explicit.
 root=fileparts(fileparts(mfilename('fullpath')));
 assert(~evalin('base','exist(''PMLSM_M1A_InitVersion'',''var'')==1'), ...
     'M1A:FRESH_REQUIRED','Use a fresh MATLAB -batch process.');
@@ -7,7 +7,7 @@ folder=fullfile(root,'.runtime','m1a_20261023',sprintf('fresh_closure_%d',matlab
 assert(~isfolder(folder),'M1A:OUTPUT_EXISTS','Do not overwrite an earlier fresh run.');
 mkdir(folder);
 files={'PMLSM_PI_FOC_Float_Baseline.slx','init_PMLSM_PI_FOC_Float_Baseline.m', ...
-    'm1a_require_float_init.m','design_PMLSM_three_loop.m','pmlsm_scurve_profile.m','pmlsm_point_move_step.m'};
+    'm1a_require_float_init.m','design_PMLSM_three_loop.m','pmlsm_scurve_profile.m','pmlsm_point_move_step.m','pmlsm_foc_fixed_config.m','PMLSM_FOC_FixedPoint.slx'};
 for k=1:numel(files),copyfile(fullfile(root,'simulink模型',files{k}),fullfile(folder,files{k}));end
 assert(isempty(dir(fullfile(folder,'*.mat'))));
 oldpwd=pwd;oldPath=path;

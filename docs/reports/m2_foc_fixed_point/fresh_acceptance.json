@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 18572,
+  "files": [
+    "PMLSM_PI_FOC_Float_Baseline.slx",
+    "PMLSM_FOC_FixedPoint.slx",
+    "init_PMLSM_PI_FOC_Float_Baseline.m",
+    "m1a_require_float_init.m",
+    "pmlsm_foc_fixed_config.m",
+    "design_PMLSM_three_loop.m",
+    "pmlsm_scurve_profile.m",
+    "pmlsm_point_move_step.m"
+  ],
+  "implementations": [
+    {
+      "implementation": 0,
+      "named_logs": 67,
+      "final_x_mm": 0.98496768636059617,
+      "stop_s": 1.2,
+      "no_old_mat": true
+    },
+    {
+      "implementation": 1,
+      "named_logs": 67,
+      "final_x_mm": 0.984975666475653,
+      "stop_s": 1.2,
+      "no_old_mat": true
+    }
+  ],
+  "repository_paths_excluded": true,
+  "legacy_mat_required": false
+}

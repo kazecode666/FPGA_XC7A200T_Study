@@ -1,0 +1,12 @@
+Fixed:
+status: healthy
+validation_scope: root
+checks_run:
+  - unconnected_ports
+  - unconnected_lines
+Main:
+status: healthy
+validation_scope: root
+checks_run:
+  - unconnected_ports
+  - unconnected_lines
