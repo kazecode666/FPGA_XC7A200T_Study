@@ -1,71 +1,65 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-25，PR53 R1—R4已完成，等待Review。** 用户已确认：先定位实际关键路径及寄存器边界，再做有限的局部快时钟流水线修订。正式入口改为 [PR53关键路径与流水线修订](tasks/pr53_critical_path_pipeline_revision.md)。在 `codex/m3-foc-systemverilog` 原分支继续，不另开纯计划PR；正常检查点连续执行，最终仍更新PR53等待Review，不自动合并或进入M4。
+**当前更新：2026-10-25。PR53已Review接受并合并到 `4470e357cb91778072036475baa667c839dc12c6`。下一轮为完整三闭环HDL集成，不再先交付只含电流环的联合仿真。**
 
-**当前技术状态：M3核心门禁PASS，PR53开放等待Review。** p3完整17/1024/1536帧source→gm18039值及68下一态0位差；RTL2613有效帧/52289123检查，负例真拒绝；同manifest20ns核心OOC WNS+5.317ns/WHS+0.135ns、TNS/THS0，70983LUT/83278FF/439DSP/0BRAM；34原始文件独立重复相同。新输出314拍，PI/AW观察提交下一帧1、旧态消费pre5000不变。[本轮报告](reports/pr53_critical_path_pipeline_revision.md)、[操作指南](../docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[机器结论](../docs/reports/m3_foc_hdl/acceptance_result.json)。首轮−58.833ns/274拍及所有失败证据保留历史，不再冒充当前状态。外围capture/valid/输出提交、外部I/O及布线后时序未签核；不进入M4。
+正式入口：[M4完整三闭环HDL控制核、时序适配与电机联合仿真](tasks/m4_full_three_loop_hdl_cosim.md)。这是待执行任务；本次仅更新任务/交接/路线图，没有修改SLX、生成RTL、运行MATLAB/Vivado或启动Codex。任务合并或用户明确指定执行后，在原工程连续完成A—F，最后一个开放实现PR等待Review，不自动合并或上板。
 
-## 当前执行入口
+## 1. 本轮交付范围
 
-优先读取 [PR53续办任务](tasks/pr53_critical_path_pipeline_revision.md)，再读 [M3原合同](tasks/m3_foc_systemverilog_rtl_verification.md)及 [PR53 Review](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53#pullrequestreview-5639187930)。原A—F已完成事项作为基线，不从头重复；本轮顺序是R1路径/寄存器映射→R2最多3个有依据的局部候选→R3最终候选严格复验→R4重复构建及交付。
+- **一起做：** 现有位置P、速度PI、Reference_Manager、原MIL对齐及角度/电流选择、三环调度、FOC、命令快照、PWM实际许可及最小故障锁存/清除、输入保持与结果定时应用；实际生成整核SystemVerilog，接回共享plant/平均逆变器，并做完整模块级place/route。
+- **继续外置：** 上位机界面、现有连续点位/S曲线参考生成、SDI/日志、plant及平均逆变器。三环和对齐实际在HDL中执行，不允许外部再跑一次位置/速度环。此版不宣称板内自主轨迹规划。
+- **不展开：** 新位置积分、重新整定、运动中重规划、模式热切、未知偏置新算法、全控制器标幺化/CORDIC替换、FOC普遍缩位、死区补偿、预测控制、真实采集/测速滤波、驱动板协议、AXI/ARM软件、六路门极PWM/硬件死区、bitstream及硬件。
 
-- **做：** 同构建DCP的关键路径和模型映射；参考旧手写SVPWM的分段经验及MathWorks FOC流水线示例；脚本化应用局部HDL属性，实际生成、比较、xsim及OOC。新输出相位按候选重测，不把274拍写成永久目标。
-- **保持：** 六扇区SVPWM、当前FOC类型和数值语义、50MHz/20ns、100us/5000拍、50us应用边界；外部初始化、Host连续点位、原对齐、外环、plant、平均逆变器、默认PI/死区和具名观测。
-- **不做：** 直接改Min/Max调制、全链标幺化、CORDIC替换、缩位、降频或换器件；这些仅作为失败后有证据的后续选项。重整定/死区补偿/运动中重规划/热切环/对齐改造/完整故障管理/采集滤波/JMAG/Maxwell不展开。完整place/route、RTL电机闭环、bitstream、门极/板级接口和硬件留M4以后，不由Workflow自动执行。
+单FPGA当前先做确定性PL控制核；PC仍可承担界面和参考源。后续MPSoC 5EV可将轨迹、通信和任务管理放PS，三环保持PL，无需为有ARM而重写已验证内核。快速输出禁止不能依赖上位机或慢速外环；真实硬件保护还须结合驱动板，不由本轮仿真替代。
 
-## M2接受与例外的准确含义
+## 2. 必须复用的成果
 
-原浮点FOC仍在 `Control_Task_10kHz/FOC_Implementation/Float/FOC_Algorithm`；新 `PMLSM_FOC_FixedPoint.slx/FOC_DUT` 经 Fixed/FOC_Model 唯一引用。`FOC_Impl_Select=0/1` 在停止后选择，不是运行中模式切换。
+**FOC：** PR53 p3保留原数学/位宽，原定点→gm→RTL位/状态通过；20ns核心OOC WNS+5.317ns/WHS+0.135ns，70983LUT/83278FF/439DSP/0BRAM，输出314拍。[报告](reports/pr53_critical_path_pipeline_revision.md)、[时序合同](../docs/FOC_HDL_TIMING_CONTRACT.md)、[机器记录](../docs/reports/m3_foc_hdl/acceptance_result.json)。这些只证明裸核心，未place/route；新整核须重测相位和容量，不能直接继承314拍或OOC结果。旧−58.833ns/274拍及失败候选保留为历史。
 
-[M2例外](../docs/reports/m2_foc_fixed_point/common_sign_diagnostic/acceptance_exception.json)只处理冻结0–4s连续点位的iq最大差、速度最大差/RMSE。原严格FAIL、原预算和M2 `closedloop/all`非零出口保持，不能通过改测试让全绿，也不让已接受的预期FAIL无限阻止M3启动。
+**速度PI：** 复用 [Study-L1 C](../learning/study_l1_speed_pi_hdl_compare/CHECKPOINT_C.md) 与其fixed模型/Coder carrier/向量，不从零重写或重跑整个学习实验。对照当前主线增益、积分/输出限幅、旧状态、上一excess和采样复位。旧signed25/15输出与当前FOC signed32/24接口必须显式转换和量化验证。
 
-共同死区符号是临时因果诊断，不进入正式算法。类型/PI/对象/时基/序列等改变不能自动继承例外。**它不豁免原定点→gm→RTL的位差、状态错误、漏帧或截止时间问题。** M2历史报告中待Review/原阻塞表述保留历史上下文，当前接受状态以Review、例外元数据和本交接为准。
+**位置/参考：** 以最新主线SLX为准；当前配置仅Kp_pos，不把用户口语“位置PI”变成增加积分器的授权。Reference_Manager的选择、斜率限制、限幅和保持全部纳入，不简化成一个Switch。
 
-## M3实现关系
+**对齐：** 复用PR49原MIL五态、计数、渐降和选择器，默认旁路；来源/证据见 [M1B报告](reports/m1b_repeat_moves_and_alignment.md)。允许为HDL支持做定点/显式端口/调度适配，不改算法、Start协议或真实角定义。
 
-唯一算法源仍是独立定点FOC。首选脚本在最新本地源的隔离副本应用生成配置；不手改生成SV、gm或validation为新算法，不恢复手写FOC生产后端。主模型正常init/Run不调用HDL或Vivado。
+## 3. 关键集成合同
 
-9个输入保持同拍物理意义，3个输出仍是死区/应用更新前归一化command duty。新增HDL clock/global reset/CE/输出相位逐项映射，不强行增加AXI/FIFO等事务系统。global reset与PI_Reset_EN分开，原old-state PI和前拍AW必须保持。
+首版 `xc7a200tfbg484-2`、50MHz/20ns；电流100us、速度1ms、位置10ms，单时钟域内各自使能。原首tick及同拍旧/新值执行关系从最新SLX实测，不只保持平均周期。
 
-首版目标 `xc7a200tfbg484-2`、50MHz/20ns、100us/5000拍。A核对本机器件/旧约束和实际PWM更新相位；优先Clock-Rate Pipelining与明确倍率，不能把全局CE未经验证接成5000拍一个脉冲。记录输入捕获、状态提交、输出有效及PWM deadline，至少保留1拍提交裕量；不以“吞吐够”替代“及时到达应用边界”。
+旧p3要求九路输入整5000拍保持，314拍算完不代表可停止时钟或更新输入。外环新结果不能在裸核心正在计算时插入；优先统一Simulink生成顶层，模块组装备选必须证明相位与快照等价。新整核和全部适配在采样+50us应用边界前完成并至少留1拍余量，不增加一整拍控制延迟、不重复计算半周期更新。
 
-验证分为原定点→gm及gm→RTL，按真实有效帧/状态事件逐位比较；普通TB优先，DPI/C不默认开启。64/72位中间量不能经double中转后宣称逐位一致。反馈错误不能通过平移输出掩盖，真实闭环延迟留M4按事件链接入。
+拟新增 `PMLSM_ThreeLoop_FixedPoint.slx/Control_DUT` 与 `Controller_Impl_Select=0/1/2`（原参考/完整定点/完整RTL），均为待实现接口。原FOC来源通过引用/受控构建复用，不长期维护手工分叉。只允许薄SV锁存/有效/提交/禁止适配，控制数学与状态机仍从模型生成。
 
-同一manifest的RTL/ROM用于生成模型、xsim和综合。OOC只做核心综合、utilization及初步timing/check_timing；不虚构板级I/O约束、不靠false_path或5000倍multicycle遮盖路径、不把综合估算称布线后签核。当前宽类型先取得实际成本，必要等价配置候选单独记录和复验。
+故障输入当前契约为已同步信号，最小锁存/实际许可在50MHz域响应，不能等待慢速外环或50us应用点。故障仍有效时不可清除；故障消失且PWM请求关闭后独立Fault_Clear才生效，之后新使能请求和有效帧/对齐条件才放行。global reset、PI_Reset、Init_Reset、fault clear、未来driver reset职责分开。真实异步引脚、硬件保护和门极输出留板级集成。
 
-## 已接受行为，不重新开任务
+## 4. 已接受行为保持
 
-连续点位在同一次Run到位后接收新绝对目标，Busy拒绝、不排队；用户10mm/5s/V10/A100默认保持。1mm/1.2s/V5/A50是显式回归，不能覆盖日常默认。
+正常三闭环，其他闭环模式停止后选择；连续点位在同一次Run到位后接受新绝对目标，Busy拒绝不排队，轨迹仍复用原算法。10mm/5s/V10/A100日常默认保持；回归的1mm/1.2s显式设置，不覆盖默认。
 
-对齐来自原完整MIL的Angle_Init及选择器，默认旁路。Start=0→1→完成→0，DONE不因Start保持1自行重入；不修改启动/复位协议或增加未知偏置算法。未知非零偏置识别仍不作为已验收能力。
+对齐Start=0→1→完成→0，DONE不因Start保持1自行重入。原100us和10000/30000/2000拍、0.5A不缩短，偏置计算不替换。真实角与控制角分离，未知非零偏置物理识别不是既有已证能力。
 
-100us电流/PWM、1ms速度、10ms位置、1us plant、既有半周期更新/保持与单一1us平均死区不改。PWM关闭后机械/仿真继续，PI复位不是全部故障清除。真实角与控制角分离保持。
+PWM关闭后仿真/机械继续，平均逆变器按原禁止输出电压语义；不声称是真实续流/制动或硬件安全关断模型。原电机、PI、外部init、1us plant、50us应用和一次1us平均死区保持。
 
-## 文件、操作与证据
+## 5. 验证与效率
 
-M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；实际文件及逐项状态已交付，当前E核心OOC通过，外部I/O和布线后时序仍未验证。
+一轮连续做A来源合同→B完整定点→C整核生成/时序→D真实RTL电机闭环→E模块routed时序和有限场景→F可复现交付。自动短检查负责定位问题，不要求逐项交互批准/独立PR，不重新跑全部M0/StudyL1/Step6/7。
 
-本轮新增精简证据放在 `docs/reports/m3_foc_hdl/pr53_pipeline_revision/`，续办报告为 `coordination/reports/pr53_critical_path_pipeline_revision.md`。最终p3已通过并更新当前发布包；首轮失败构建、原manifest和旧274拍记录原样保留为历史。新来源或配置变更必须重新验证，不能继承本次PASS。
+新外环量化误差预算先冻结；原定点→gm→RTL有效位/状态仍零差、事件一致。保留正常点位、正反连续点位、对齐完成后运动、PWM/PI复位、故障抢占/恢复的代表集。实际RTL反馈必须驱动plant再回到控制器，离线回放不能替代闭环。
 
-正常用户仍只手动执行 `init_PMLSM_PI_FOC_Float_Baseline.m`，必要类型自动派生；InitFcn仅检查，中文注释简短。生成/测试是独立开发入口，不要求正常Run先执行一串helper。
+M2的 `M2-E-REPEAT-001` 只覆盖原冻结连续点位场景；原FAIL数值保留。新整核外环类型/反馈改变不自动继承；任何RTL错位、状态错误或deadline失败均不能豁免。因非连续模型产生差异时按第一次分叉定位，不盲目调PI或关闭死区。
 
-`.runtime/m3_<run_id>`存隔离源、gm_/validation、缓存、波形和DCP；最终受审RTL/必要数据及manifest入库。来源、配置、工具版本和结果身份一致；失败/未测分别报告，负例必须真的能检测错误。重构建使用新目录，保留旧失败，不覆盖M2历史证据。
+真实联合仿真和布线后STA是两项独立结果，必须绑定同一最终代码/参数。行为cosim不冒充门级SDF；模块routed通过不冒充板级IO/CDC/驱动安全验收。未测项明确NOT_RUN，不以工具fixture代替真实FOC结果。
 
-## 工作区保护
+## 6. 入口、交付和工作区保护
 
-- 正式工程仅 `D:/Project/FPGA_XC7A200T`；`D:/Project/PMSLM_Simulation`只读。无额外clone/worktree、云端实现工程、computer use或批量删除。
-- 保留tracked/untracked、用户未保存MATLAB窗口、硬件资料移动、旧模型/RTL和布局。先记录状态，不自动stash/reset/clean或远端覆盖。
-- 测试只后台加载由最新本地源派生的副本，断言实际FileName；cwd/path/缓存配置恢复，onCleanup只关闭本任务拥有对象，不关闭全部模型。
-- 旧Simple/MIL/ControlCore/DSP及原初始化/轨迹/整定只读；不要调用旧全局脚本覆盖新参数或清空工作区。
-- 同层local From/Goto，跨层显式端口；仅必要新增区域局部布局，不递归重排原库。
-- 每检查点小步提交；真实数值/状态/资源/时限失败保留最小复现，继续独立可做的诊断，不能放宽指标掩盖。禁止自动合并和硬件操作。
-- 不全量重跑M0、Step6/7、StudyL1、无变化的60s场景；不建设产品级基础设施。
+日常仍只手动执行 `init_PMLSM_PI_FOC_Float_Baseline.m`；必要类型自动加载，中文注释紧凑。开发入口拟为 `scripts/m4_three_loop.m`，在独立batch进程构建/测试，不加入普通init/Run。Float/Fixed不要求XSI。
 
-## 历史与后续
+交实际整核SLX、生成SV/必要数据及manifest、端口/类型/全链时序表、精简事件与误差CSV、routed报告、中文使用指南及整合报告。大MAT/DCP/波形留.runtime，避免重复提交几百万行可再生成载荷。M3历史不覆盖，旧273/5000辅助文案可顺手修正但不重跑无关项目。
 
-[M1A报告](reports/m1a_pure_simulink_float_baseline.md)、[PR47修订](reports/pr47_host_interface_revision.md)、[M1B报告](reports/m1b_repeat_moves_and_alignment.md)、[M0审计](reports/m0_simulink_model_asset_audit.md)和[M2任务](tasks/m2_foc_fixed_point_implementation.md)保留历史范围；不回写成已完成实机标定或所有性能优化。
+- 正式工程仅 `D:/Project/FPGA_XC7A200T`；`D:/Project/PMSLM_Simulation`只读；不新建clone/worktree、不computer use、不自动stash/reset/clean。
+- 保留tracked/untracked、用户未保存窗口、硬件资料移动、局部布局和旧模型。先快照，验证真实加载路径，不远端覆盖源文件。
+- 测试使用本任务拥有的隔离副本，恢复cwd/path/缓存；onCleanup只关闭自有对象，不close all。
+- 旧Simple/MIL/ControlCore/DSP和StudyL1只读来源。新正式源只作授权增量，主模型仅增整核分支和观测，不全局重排。
+- 每检查点小步提交，故障证据保留；最后一个开放实现PR等待Review，不自动合并、不部署硬件。
 
-[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)中的M3开放Review是首轮记录；当前续办优先级以本交接和PR53修订任务为准。M3结束后停在开放实现PR，M4完整布局布线和带真实时序的电机联合仿真另行任务。旧“先完成整套运行管理再定点化”范围不恢复，硬件接口先查已有资料，不要求用户重复说明。
-
-[旧交接](HANDOFF_LEGACY_20261021.md)、[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)、[M1B任务](tasks/m1b_repeat_moves_and_alignment.md)原样作为历史保留。
-
-开放实现PR：[PR53](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53)，未合并；用户已授权按新增R1—R4任务继续，完成后再次Review。本轮核心20ns预检阻塞已解除，Review尚未完成；不把技术门禁PASS等同于自动合并或硬件放行。
+历史任务见 [M3](tasks/m3_foc_systemverilog_rtl_verification.md)、[PR53修订](tasks/pr53_critical_path_pipeline_revision.md)、[M2](tasks/m2_foc_fixed_point_implementation.md)、[M1B](tasks/m1b_repeat_moves_and_alignment.md)。历史报告中“等待Review/只电流环”按当时范围理解；当前执行以本交接与M4新任务为准。
