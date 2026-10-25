@@ -1,0 +1,76 @@
+{
+  "stage": "E",
+  "baseline": "original accepted types; unchanged Work64/40 DivideWide72/40",
+  "manifest_sha256": "cfd8b1d7639275f273ed683c83344b02678ada8e8130b805a1ac42b6eda09098",
+  "synthesis_completed": true,
+  "resources_ok": true,
+  "timing_ok": false,
+  "acceptance_blocked": true,
+  "candidate_sweep_run": false,
+  "place_route_run": false,
+  "artifacts": [
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/ooc_result.json",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/ooc_result.json",
+      "bytes": 838,
+      "sha256": "49403e8c1fa342ae85776654f8ca8199002c995e383c685d3e0e7d7c47c83530",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/utilization.rpt",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/utilization.rpt",
+      "bytes": 8996,
+      "sha256": "a69e9be1abe10d41c45c80a4a2e43231571f09b643532da6d231ff5595242416",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/utilization_hierarchical.rpt",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/utilization_hierarchical.rpt",
+      "bytes": 6145,
+      "sha256": "83f5c711a59d3839e5217ce1aeb460a8c54b31e8eca624b1eca62c8633bd9ae6",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/timing_summary.rpt",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/timing_summary.rpt",
+      "bytes": 155572,
+      "sha256": "d5395fac7465d79442fda7a7a39f98edce6da8bbb73f0c22b990b830fc6f2fd2",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/check_timing.rpt",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/check_timing.rpt",
+      "bytes": 7710,
+      "sha256": "d9df293c2809ab47609f1ec69ae43294f45b922230f586edc27049159bb31379",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/clocks.rpt",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/clocks.rpt",
+      "bytes": 1551,
+      "sha256": "99da75cc67cf6f915f4b6eff109b0e4014af9e200c6c78cc713f0f7126f70d08",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/drc.rpt",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/drc.rpt",
+      "bytes": 649044,
+      "sha256": "93468c2f07c18c938703cfc83186e5ba9c4ce5112eb6dcd6b70cee2cace609b3",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/m3_core_clock.xdc",
+      "source": ".runtime/m3_20261024_001/ooc_001/synth/m3_core_clock.xdc",
+      "bytes": 65,
+      "sha256": "d7b61c63502f346efdf61a910f4c2c8b6e0be238ad10ba535a0d40c2e0db66ce",
+      "copied_without_edits": true
+    },
+    {
+      "archive": "docs/reports/m3_foc_hdl/ooc/runner_result.json",
+      "source": ".runtime/m3_20261024_001/ooc_001/result.json",
+      "bytes": 924,
+      "sha256": "075b0d0d337438521c152b970feb4a368ca5a1b40d5b9c7c5fae23e64acf4268",
+      "copied_without_edits": true
+    }
+  ]
+}

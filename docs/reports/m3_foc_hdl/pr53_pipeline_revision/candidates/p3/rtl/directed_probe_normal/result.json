@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "directed_probe_normal_864fe105a2",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\directed_probe_normal_864fe105a2_run",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\directed_probe_normal_864fe105a2_run\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\directed_probe_normal_864fe105a2_run\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\directed_probe_normal_864fe105a2_run\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\directed_probe_normal_864fe105a2_run\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": 17,
+  "observed_checks": 340183,
+  "counted_scoreboard": true,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\directed_probe_normal_864fe105a2_stage\\manifest.json",
+  "manifest_sha256": "c8b2ac809f5f8e4bfdc387b662bbd7efaac5ed6f216b52aeb520bce54c865bff",
+  "verification_kind": "independent_counted_scoreboard"
+}

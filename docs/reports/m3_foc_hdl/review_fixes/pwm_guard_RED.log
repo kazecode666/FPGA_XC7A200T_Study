@@ -1,0 +1,28 @@
+
+Simulink Agentic Toolkit - Installation Check
+===============================================
+
+Prerequisites
+  ✓ MATLAB 26.2.0.3386108 (R2026b)
+  ✓ Simulink installed and licensed
+
+MATLAB Environment
+  ✓ All 9 tool entry points on path
+  ✓ Package resolution correct (+sage, +mbd inside SATK)
+
+MCP Server
+  ✓ matlab-mcp-server.exe found: C:\Users\lww\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+
+MCP Connectivity
+  ✓ shareMATLABSession available (MATLAB-side MCP components installed)
+  ✓ MATLAB connector running (port 31517)
+
+===============================================
+Result: PASS
+
+{函数或变量 'm3_pwm_phase_contract' 无法识别。
+
+出错 test_m3_pwm_contract (第 4 行)
+good=m3_pwm_phase_contract(t,20e-9);
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

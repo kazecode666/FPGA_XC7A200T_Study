@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "candidate_id": "p3",
+  "manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+  "model_result": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\model_result_tp5798069c_bc05_4f93_b966_1e8d7b51b1cd_model.json",
+  "model_words": 18039,
+  "next_state_words": 68,
+  "positive_rtl_frames": 2613,
+  "positive_rtl_checks": 52289123,
+  "wns_ns": 5.317,
+  "whs_ns": 0.135,
+  "resources": {
+    "LUT": 70983,
+    "FF": 83278,
+    "DSP": 439,
+    "BRAM36_equivalent": 0
+  },
+  "phase": 314,
+  "normal_commit_budget": 1,
+  "minimum_margin": 1,
+  "normal_margin_after_commit": 2185,
+  "scope": "M3 standalone core numerical/RTL and pre-route OOC estimate; external IO, routed timing, adapter and M4 unproven"
+}

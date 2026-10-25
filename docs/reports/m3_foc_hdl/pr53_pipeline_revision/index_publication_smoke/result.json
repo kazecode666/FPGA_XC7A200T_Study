@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "index_publication_normal_5c900306b3",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\index_package_smoke\\index_publication_normal_5c900306b3_run",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\index_package_smoke\\index_publication_normal_5c900306b3_run\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\index_package_smoke\\index_publication_normal_5c900306b3_run\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\index_package_smoke\\index_publication_normal_5c900306b3_run\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\index_package_smoke\\index_publication_normal_5c900306b3_run\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": 17,
+  "observed_checks": 340183,
+  "counted_scoreboard": true,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\index_package_smoke\\index_publication_normal_5c900306b3_stage\\manifest.json",
+  "manifest_sha256": "31c56afd6c3dd722de32c80453673b98384152e1eed9b0d77f5e3deaa07c064b",
+  "verification_kind": "independent_counted_scoreboard"
+}

@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "relocated_generated_smoke",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp3fcf9e3c_edf3_48d6_b286_b823376238b1_relocated_smoke",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp3fcf9e3c_edf3_48d6_b286_b823376238b1_relocated_smoke\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp3fcf9e3c_edf3_48d6_b286_b823376238b1_relocated_smoke\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp3fcf9e3c_edf3_48d6_b286_b823376238b1_relocated_smoke\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tp3fcf9e3c_edf3_48d6_b286_b823376238b1_relocated_smoke\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": null,
+  "observed_checks": null,
+  "counted_scoreboard": false,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\tpc7adce85_75c2_40c3_af6a_b305e9a08169_release\\manifest.json",
+  "manifest_sha256": "c514f3b932b2b546921863105a2e3f790b69b0b3ed0f6016672d877a4d9dbbb9",
+  "verification_kind": "generated_ordinary_marker_only"
+}

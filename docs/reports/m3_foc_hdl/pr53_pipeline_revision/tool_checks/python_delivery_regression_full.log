@@ -1,0 +1,16 @@
+test_identity_phase_and_state_fail_closed (test_m3_candidate_contract.CandidateContract.test_identity_phase_and_state_fail_closed) ... ok
+test_real_stager_rejects_stale_candidate_phase_and_mapping (test_m3_candidate_contract.CandidateContract.test_real_stager_rejects_stale_candidate_phase_and_mapping) ... ok
+test_compare_and_republish_a_portable_candidate (test_m3_candidate_publication.PortableCandidate.test_compare_and_republish_a_portable_candidate) ... ok
+test_manifest_cannot_be_overwritten (test_m3_manifest.ManifestTests.test_manifest_cannot_be_overwritten) ... ok
+test_missing_frozen_source_rejected (test_m3_manifest.ManifestTests.test_missing_frozen_source_rejected) ... ok
+test_missing_read_dependency_rejected (test_m3_manifest.ManifestTests.test_missing_read_dependency_rejected) ... ok
+test_package_and_dependency_order_hashes_and_data (test_m3_manifest.ManifestTests.test_package_and_dependency_order_hashes_and_data) ... ok
+test_partial_generation_rejected (test_m3_manifest.ManifestTests.test_partial_generation_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.055s
+
+OK
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\pr53_portable_ni6cudw5\first files=3
+M3_REPEAT_IDENTITY_PASS 3
+M3_PUBLISH_PASS D:\Project\FPGA_XC7A200T\.runtime\pr53_portable_ni6cudw5\second files=3

@@ -1,0 +1,43 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 03:28:25 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/m3_snapshot/xsim_script.tcl
+# xsim {m3_snapshot} -testplusarg frames=17 -testplusarg case_name=directed_probe -testplusarg mode=normal -testplusarg negative_sample=0 -testplusarg output_phase=314 -testplusarg vectors=D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3/directed_probe_normal_5578d7f781_run/work/vectors/directed_probe.mem -testplusarg result=D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3/directed_probe_normal_5578d7f781_run/scoreboard.json -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+M3_ERROR case=directed_probe mode=normal physical=10002 active=10000 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=10002 active=10000 epoch=0 state x_d_commit=next-source-old expected=00000169abcf4700 observed=0000000000000000
+M3_ERROR case=directed_probe mode=normal physical=10002 active=10000 epoch=0 state x_q_commit=next-source-old expected=00000375cdcbc88a observed=0000000000000000
+M3_ERROR case=directed_probe mode=normal physical=10003 active=10001 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=15002 active=15000 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=15002 active=15000 epoch=0 state x_d_commit=next-source-old expected=000001af783e793b observed=00000169abcf4700
+M3_ERROR case=directed_probe mode=normal physical=15002 active=15000 epoch=0 state x_q_commit=next-source-old expected=00000242c0853679 observed=00000375cdcbc88a
+M3_ERROR case=directed_probe mode=normal physical=15003 active=15001 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=20002 active=20000 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=20002 active=20000 epoch=0 state x_d_commit=next-source-old expected=0000017e8ad84efd observed=000001af783e793b
+M3_ERROR case=directed_probe mode=normal physical=20002 active=20000 epoch=0 state x_q_commit=next-source-old expected=000003f2f1e45909 observed=00000242c0853679
+M3_ERROR case=directed_probe mode=normal physical=20003 active=20001 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=25002 active=25000 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=25002 active=25000 epoch=0 state x_d_commit=next-source-old expected=00000074226cb547 observed=0000017e8ad84efd
+M3_ERROR case=directed_probe mode=normal physical=25002 active=25000 epoch=0 state x_q_commit=next-source-old expected=00000441d73812d4 observed=000003f2f1e45909
+M3_ERROR case=directed_probe mode=normal physical=25003 active=25001 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=30002 active=30000 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_ERROR case=directed_probe mode=normal physical=30002 active=30000 epoch=0 state x_d_commit=next-source-old expected=000001319360d2b8 observed=00000074226cb547
+M3_ERROR case=directed_probe mode=normal physical=30002 active=30000 epoch=0 state x_q_commit=next-source-old expected=00000512d5b6e608 observed=00000441d73812d4
+M3_ERROR case=directed_probe mode=normal physical=30003 active=30001 epoch=0 PI registers changed outside their fixed commit, or committed wrong next signal
+M3_RESULT case=directed_probe mode=normal status=FAIL expected=17 observed=17 bit=0 state=27 xz=0 protocol=31 deadline=0
+M3_RTL_FAIL frames=17 checks=340183 bit_mismatch=27 protocol_errors=31 deadline_errors=0
+Fatal: M3 independent scoreboard rejected this run
+Time: 1700051 ns  Iteration: 0  Process: /m3_foc_scoreboard/write_result  Scope: m3_foc_scoreboard.write_result  File: D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3/directed_probe_normal_5578d7f781_run/work/testbench/m3_foc_scoreboard.sv Line: 321
+$finish called at time : 1700051 ns
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:12 . Memory (MB): peak = 245.797 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 31952 KB (Peak: 31952 KB), Simulation CPU Usage: 11983 ms
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 03:28:39 2026...
+

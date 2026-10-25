@@ -1,14 +1,16 @@
 # ChatGPT ↔ Codex Project Handoff
 
-**当前更新：2026-10-24。** PR51 已合并，基线 `aead404fce2c5a9142ffe08d96b03075603cefd5`。M2 以[Review 5638508505](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/51#pullrequestreview-5638508505)确认的 **M2-E-REPEAT-001 受限例外**接受，不是全部原严格门槛通过。当前交接转为用户已确认范围的 M3 任务书；本文更新没有生成 HDL、运行 xsim/综合或启动本机 Codex。
+**当前更新：2026-10-25，PR53 R1—R4已完成，等待Review。** 用户已确认：先定位实际关键路径及寄存器边界，再做有限的局部快时钟流水线修订。正式入口改为 [PR53关键路径与流水线修订](tasks/pr53_critical_path_pipeline_revision.md)。在 `codex/m3-foc-systemverilog` 原分支继续，不另开纯计划PR；正常检查点连续执行，最终仍更新PR53等待Review，不自动合并或进入M4。
+
+**当前技术状态：M3核心门禁PASS，PR53开放等待Review。** p3完整17/1024/1536帧source→gm18039值及68下一态0位差；RTL2613有效帧/52289123检查，负例真拒绝；同manifest20ns核心OOC WNS+5.317ns/WHS+0.135ns、TNS/THS0，70983LUT/83278FF/439DSP/0BRAM；34原始文件独立重复相同。新输出314拍，PI/AW观察提交下一帧1、旧态消费pre5000不变。[本轮报告](reports/pr53_critical_path_pipeline_revision.md)、[操作指南](../docs/PMLSM_FOC_HDL_GUIDE_ZH.md)、[机器结论](../docs/reports/m3_foc_hdl/acceptance_result.json)。首轮−58.833ns/274拍及所有失败证据保留历史，不再冒充当前状态。外围capture/valid/输出提交、外部I/O及布线后时序未签核；不进入M4。
 
 ## 当前执行入口
 
-读取 [M3：FOC SystemVerilog生成、时序合同与RTL验证](tasks/m3_foc_systemverilog_rtl_verification.md)，再读 [M2设计](../docs/FOC_FIXED_POINT_DESIGN.md)、[整合验收](reports/m2_foc_fixed_point_implementation.md)和[当前操作指南](../docs/PMLSM_FOC_FIXED_POINT_GUIDE_ZH.md)。任务合并或用户明确指定后，在原checkout连续实施A—F，正常检查点不重复求许可，最终一个开放实现PR等待Review。
+优先读取 [PR53续办任务](tasks/pr53_critical_path_pipeline_revision.md)，再读 [M3原合同](tasks/m3_foc_systemverilog_rtl_verification.md)及 [PR53 Review](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53#pullrequestreview-5639187930)。原A—F已完成事项作为基线，不从头重复；本轮顺序是R1路径/寄存器映射→R2最多3个有依据的局部候选→R3最终候选严格复验→R4重复构建及交付。
 
-- **做：** 实际SV/普通自检TB/必要ROM、gm_/validation双层数值与状态验证、硬件时钟和有效相位合同、xsim、同份RTL的核心OOC综合预检、重复构建和中文指南。
-- **保持：** 当前FOC类型和数值语义、外部初始化、Host连续点位、原对齐、外环、plant、平均逆变器、默认PI/死区/时基和具名观测；不再长期复制一套完整电机模型。
-- **不做：** 重整定/死区补偿/运动中重规划/热切环/对齐改造/完整故障管理/采集滤波/JMAG/Maxwell；不展开普遍缩位优化。完整place/route、RTL电机闭环、bitstream、门极/板级接口和硬件留M4以后，不由Workflow自动执行。
+- **做：** 同构建DCP的关键路径和模型映射；参考旧手写SVPWM的分段经验及MathWorks FOC流水线示例；脚本化应用局部HDL属性，实际生成、比较、xsim及OOC。新输出相位按候选重测，不把274拍写成永久目标。
+- **保持：** 六扇区SVPWM、当前FOC类型和数值语义、50MHz/20ns、100us/5000拍、50us应用边界；外部初始化、Host连续点位、原对齐、外环、plant、平均逆变器、默认PI/死区和具名观测。
+- **不做：** 直接改Min/Max调制、全链标幺化、CORDIC替换、缩位、降频或换器件；这些仅作为失败后有证据的后续选项。重整定/死区补偿/运动中重规划/热切环/对齐改造/完整故障管理/采集滤波/JMAG/Maxwell不展开。完整place/route、RTL电机闭环、bitstream、门极/板级接口和硬件留M4以后，不由Workflow自动执行。
 
 ## M2接受与例外的准确含义
 
@@ -40,7 +42,9 @@
 
 ## 文件、操作与证据
 
-M3主入口计划为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；本交接不代表这些文件已经创建。
+M3主入口为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim和OOC脚本见任务书的文件表。最终交付实际生成SV/TB/ROM清单、时序合同、逐位结果、资源/预检报告、指南和 `coordination/reports/m3_foc_systemverilog_rtl_verification.md`；实际文件及逐项状态已交付，当前E核心OOC通过，外部I/O和布线后时序仍未验证。
+
+本轮新增精简证据放在 `docs/reports/m3_foc_hdl/pr53_pipeline_revision/`，续办报告为 `coordination/reports/pr53_critical_path_pipeline_revision.md`。最终p3已通过并更新当前发布包；首轮失败构建、原manifest和旧274拍记录原样保留为历史。新来源或配置变更必须重新验证，不能继承本次PASS。
 
 正常用户仍只手动执行 `init_PMLSM_PI_FOC_Float_Baseline.m`，必要类型自动派生；InitFcn仅检查，中文注释简短。生成/测试是独立开发入口，不要求正常Run先执行一串helper。
 
@@ -60,6 +64,8 @@ M3主入口计划为 `scripts/m3_foc_hdl.m`；集中生成配置、向量、xsim
 
 [M1A报告](reports/m1a_pure_simulink_float_baseline.md)、[PR47修订](reports/pr47_host_interface_revision.md)、[M1B报告](reports/m1b_repeat_moves_and_alignment.md)、[M0审计](reports/m0_simulink_model_asset_audit.md)和[M2任务](tasks/m2_foc_fixed_point_implementation.md)保留历史范围；不回写成已完成实机标定或所有性能优化。
 
-[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)以M3实施准备为当前阶段。M3结束后停在开放实现PR，M4完整布局布线和带真实时序的电机联合仿真另行任务。旧“先完成整套运行管理再定点化”范围不恢复，硬件接口先查已有资料，不要求用户重复说明。
+[路线图](../docs/SIMULINK_MAINLINE_ROADMAP.md)中的M3开放Review是首轮记录；当前续办优先级以本交接和PR53修订任务为准。M3结束后停在开放实现PR，M4完整布局布线和带真实时序的电机联合仿真另行任务。旧“先完成整套运行管理再定点化”范围不恢复，硬件接口先查已有资料，不要求用户重复说明。
 
 [旧交接](HANDOFF_LEGACY_20261021.md)、[M0任务](tasks/m0_simulink_model_asset_audit.md)、[M1A任务](tasks/m1a_pure_simulink_float_baseline.md)、[M1B任务](tasks/m1b_repeat_moves_and_alignment.md)原样作为历史保留。
+
+开放实现PR：[PR53](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/53)，未合并；用户已授权按新增R1—R4任务继续，完成后再次Review。本轮核心20ns预检阻塞已解除，Review尚未完成；不把技术门禁PASS等同于自动合并或硬件放行。

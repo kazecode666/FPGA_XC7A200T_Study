@@ -1,0 +1,12 @@
+{
+  "stage": "generate",
+  "status": "FAIL",
+  "run_dir": "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001",
+  "evidence": [],
+  "failures": [
+    {
+      "identifier": "hdlcoder:makehdl:badsetparam",
+      "message": "Unable to set HDL code generation parameter 'UseFiAccelForTestBench'. 名称 'UseFiAccelForTestBench' 不是类 'hdlcoderprops.CLI' 的实例可以访问的属性。"
+    }
+  ]
+}

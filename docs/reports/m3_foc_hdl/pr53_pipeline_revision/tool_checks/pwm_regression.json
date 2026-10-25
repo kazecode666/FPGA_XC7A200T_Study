@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "tests": 5,
+  "actual_zoh_pairs": 33,
+  "actual_applied_pairs": 30,
+  "negative_value_time_control_missing_rejected": true
+}

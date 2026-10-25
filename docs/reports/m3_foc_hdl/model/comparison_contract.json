@@ -1,0 +1,28 @@
+{
+  "build": {
+    "work_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate",
+    "model_folder": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\\model",
+    "rtl_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\\rtl"
+  },
+  "output_phase_cycles": 274,
+  "temporary_model_diagnostics": {
+    "PMLSM_FOC_FixedPoint": {
+      "IntegerOverflowMsg_before": "error",
+      "IntegerOverflowMsg_observer": "error"
+    },
+    "gm_PMLSM_FOC_FixedPoint": {
+      "IntegerOverflowMsg_before": "error",
+      "IntegerOverflowMsg_observer": "error"
+    },
+    "gm_PMLSM_FOC_FixedPoint_vnl": {
+      "IntegerOverflowMsg_before": "error",
+      "IntegerOverflowMsg_observer": "error"
+    }
+  },
+  "denominator_policy": "Every logged denominator must be nonzero, including startup and the held terminal frame. No startup or per-frame exception.",
+  "clock_period_s": 2E-8,
+  "frame_cycles": 5000,
+  "source_state_event": "n*100us, block output before update",
+  "gm_state_event": "n*100us, mapped Delay/RateTransition output",
+  "hardware_reset_and_ce": "NOT_TESTED_HERE: generated model has only the original nine ports; RTL protocol stage required"
+}

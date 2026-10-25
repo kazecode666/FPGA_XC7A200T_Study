@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "files": 31,
+  "source": "git index blob bytes, not working-tree files",
+  "all_declared_SHA256_match": true,
+  "normalization_exception": "M3-only -text preserves original LF/CRLF; vendor raw report whitespace retained"
+}

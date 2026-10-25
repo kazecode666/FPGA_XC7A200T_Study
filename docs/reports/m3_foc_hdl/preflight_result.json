@@ -1,0 +1,26 @@
+{
+  "stage": "preflight",
+  "status": "PASS",
+  "run_dir": "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001/phase_three",
+  "version": "26.2.0.3386108 (R2026b)",
+  "process": 10152,
+  "HDL_Coder_license": 1,
+  "bit_positive_words": 3,
+  "bit_flip_negative_rejected": true,
+  "wide_low_bit_negative_rejected": true,
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\phase_three\\tpfb39fb50_958c_47cf_bf5d_07baf57b6f89_preflight\\source_ports.csv",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\phase_three\\tpfb39fb50_958c_47cf_bf5d_07baf57b6f89_preflight\\source_states.csv"
+  ],
+  "failures": [],
+  "pwm": {
+    "status": "MEASURED",
+    "raw": "pwm_phase_raw.mat",
+    "csv": "pwm_phase_events.csv",
+    "phases": 3,
+    "control_period_s": 0.0001,
+    "ZOH_period_s": 0.0001,
+    "delay_period_s": 5E-5,
+    "control_generator_priority": "100"
+  }
+}

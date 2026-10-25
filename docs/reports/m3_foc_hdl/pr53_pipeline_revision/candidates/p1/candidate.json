@@ -1,0 +1,84 @@
+{
+  "candidate_id": "p1",
+  "hypothesis": "segment limiter inversePark XYZ sector and time numerator preserving numerical model",
+  "settings": [
+    {
+      "SID": 1,
+      "property": "DistributedPipelining",
+      "value": "on",
+      "reason": "Distribute local supplied pipeline budgets across combinational transform chain"
+    },
+    {
+      "SID": 23,
+      "property": "DistributedPipelining",
+      "value": "off",
+      "reason": "Protect PI state boundary in first candidate"
+    },
+    {
+      "SID": 52,
+      "property": "DistributedPipelining",
+      "value": "off",
+      "reason": "Protect symmetric PI state boundary"
+    },
+    {
+      "SID": 184,
+      "property": "DistributedPipelining",
+      "value": "on",
+      "reason": "R1 traced limiter to modulation chain"
+    },
+    {
+      "SID": 95,
+      "property": "DistributedPipelining",
+      "value": "on",
+      "reason": "R1 traced limiter to modulation chain"
+    },
+    {
+      "SID": 154,
+      "property": "DistributedPipelining",
+      "value": "on",
+      "reason": "R1 traced limiter to modulation chain"
+    },
+    {
+      "SID": 119,
+      "property": "DistributedPipelining",
+      "value": "on",
+      "reason": "R1 traced limiter to modulation chain"
+    },
+    {
+      "SID": 134,
+      "property": "DistributedPipelining",
+      "value": "on",
+      "reason": "R1 traced limiter to modulation chain"
+    },
+    {
+      "SID": 184,
+      "property": "OutputPipeline",
+      "value": 4,
+      "reason": "Supply fast-clock registers at identified arithmetic boundaries; HDL Coder balances bypass"
+    },
+    {
+      "SID": 51,
+      "property": "OutputPipeline",
+      "value": 6,
+      "reason": "Supply fast-clock registers at identified arithmetic boundaries; HDL Coder balances bypass"
+    },
+    {
+      "SID": 154,
+      "property": "OutputPipeline",
+      "value": 4,
+      "reason": "Supply fast-clock registers at identified arithmetic boundaries; HDL Coder balances bypass"
+    },
+    {
+      "SID": 119,
+      "property": "OutputPipeline",
+      "value": 1,
+      "reason": "Supply fast-clock registers at identified arithmetic boundaries; HDL Coder balances bypass"
+    },
+    {
+      "SID": 134,
+      "property": "OutputPipeline",
+      "value": 4,
+      "reason": "Supply fast-clock registers at identified arithmetic boundaries; HDL Coder balances bypass"
+    }
+  ]
+}

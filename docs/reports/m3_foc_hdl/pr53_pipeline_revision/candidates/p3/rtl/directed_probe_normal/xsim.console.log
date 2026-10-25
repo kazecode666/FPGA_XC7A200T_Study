@@ -1,0 +1,20 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 03:37:23 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/m3_snapshot/xsim_script.tcl
+# xsim {m3_snapshot} -testplusarg frames=17 -testplusarg case_name=directed_probe -testplusarg mode=normal -testplusarg negative_sample=0 -testplusarg output_phase=314 -testplusarg vectors=D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q/directed_probe_normal_864fe105a2_run/work/vectors/directed_probe.mem -testplusarg result=D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q/directed_probe_normal_864fe105a2_run/scoreboard.json -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+M3_RESULT case=directed_probe mode=normal status=PASS expected=17 observed=17 bit=0 state=0 xz=0 protocol=0 deadline=0
+M3_RTL_PASS frames=17 checks=340183 bit_mismatch=0 protocol_errors=0 deadline_errors=0
+$finish called at time : 1700051 ns : File "D:/Project/FPGA_XC7A200T/.runtime/pr53_20261025/p3q/directed_probe_normal_864fe105a2_run/work/testbench/m3_foc_scoreboard.sv" Line 340
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:09 . Memory (MB): peak = 246.645 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 03:37:34 2026...
+

@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "boundary_random",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_boundary_random_run_001",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_boundary_random_run_001\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_boundary_random_run_001\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_boundary_random_run_001\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_boundary_random_run_001\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": 1024,
+  "observed_checks": 20491260,
+  "counted_scoreboard": true,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\scoreboard_boundary_random_stage_001\\manifest.json",
+  "manifest_sha256": "1537eee3e8f689b14704194733e566d50ee4a9b7604c84aa0ec959d472c75e78",
+  "verification_kind": "independent_counted_scoreboard"
+}

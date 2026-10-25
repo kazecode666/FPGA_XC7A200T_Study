@@ -1,0 +1,650 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+PMLSM_FOC_FixedPoint 的延迟平衡报告
+</title>
+
+</head>
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666" onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdDelayBalancing'); else local_onload();}} catch(err) {};">
+<font SIZE="+2" COLOR="#000066">
+PMLSM_FOC_FixedPoint 的延迟平衡报告
+</font>
+<br /><br /><br /><a name="摘要">
+<font size="+1" color="#000066">
+<b class="midprod">
+摘要
+</b>
+
+</font>
+
+</a>
+<br /><br /><div>延迟平衡不成功。由于在模型级别或 Delay 模块上关闭了 'AllowDelayDistribution'，因此无法吸收反馈环中由优化引入的 10000 个额外延迟周期。请<sldiag objui="configset" objparam="AllowDelayDistribution" objname="PMLSM_FOC_FixedPoint/FOC_DUT">打开 'AllowDelayDistribution'</sldiag> 以允许设计延迟吸收此额外延迟。 有问题的模块: PMLSM_FOC_FixedPoint/FOC_DUT/Id/<!DOCTYPE HTML PUBLIC "-////W3C////DTD HTML 4.0////EN" "http:////www.w3.org//TR//REC-html40//strict.dtd"></div><div><html><head><meta name="qrichtext" content="1" //><style type="text//css"></div><div>p, li { white-space: pre-wrap; }</div><div><//style><//head><body align="left" style=" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;"></div><div><p align="left" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12px;">起到使能时初始化一下的作用<//span><//p><//body><//html></div><br /><br /><b>
+有问题的模块: PMLSM_FOC_FixedPoint/FOC_DUT/Id/<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body align="left" style=" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;">
+<p align="left" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12px;">起到使能时初始化一下的作用</span></p></body></html>
+</b>
+<br /><br /><br />设计延迟完全用于吸收由优化和模块实现引入的延迟。<br /><br /><a href="matlab:run('D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p2\tpf1913e5c_cde8_4792_a3bc_83d6e11e86ee_generate\rtl\PMLSM_FOC_FixedPoint\highlightDelayAbsorption.m')">
+突出显示延迟吸收阻碍模块和排除在吸收处的设计延迟
+</a>
+<br /><a href="matlab:run('D:\Project\FPGA_XC7A200T\.runtime\pr53_20261025\p2\tpf1913e5c_cde8_4792_a3bc_83d6e11e86ee_generate\rtl\PMLSM_FOC_FixedPoint\clearhighlighting.m')">
+清除突出显示
+</a>
+<br /><br /><a name="详细报告">
+<font size="+1" color="#000066">
+<b class="midprod">
+详细报告
+</b>
+
+</font>
+
+</a>
+<br /><br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:52')" name="code2model" class="code2model">
+Iq
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:52')" name="code2model" class="code2model">
+Iq
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+6
+</td>
+
+</tr>
+
+</table>
+<br />保留的延迟模块和延迟吸收阻碍模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:78')" name="code2model" class="code2model">
+x_q_z
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+设计延迟无法吸收额外的延迟，因为 'AllowDelayDistribution' 已关闭
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:23')" name="code2model" class="code2model">
+Id
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:23')" name="code2model" class="code2model">
+Id
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+6
+</td>
+
+</tr>
+
+</table>
+<br />保留的延迟模块和延迟吸收阻碍模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:47')" name="code2model" class="code2model">
+x_d_z
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+设计延迟无法吸收额外的延迟，因为 'AllowDelayDistribution' 已关闭
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:184')" name="code2model" class="code2model">
+dq_voltage_limiter
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:184')" name="code2model" class="code2model">
+dq_voltage_limiter
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:209')" name="code2model" class="code2model">
+Sqrt
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+56
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:192')" name="code2model" class="code2model">
+Divide
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+109
+</td>
+
+</tr>
+
+</table>
+<br />保留的延迟模块和延迟吸收阻碍模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:213')" name="code2model" class="code2model">
+Unit Delay
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+设计延迟无法吸收额外的延迟，因为 'AllowDelayDistribution' 已关闭
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:214')" name="code2model" class="code2model">
+Unit Delay1
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+设计延迟无法吸收额外的延迟，因为 'AllowDelayDistribution' 已关闭
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:154')" name="code2model" class="code2model">
+XYZ
+Calculate
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:154')" name="code2model" class="code2model">
+XYZ
+Calculate
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:164')" name="code2model" class="code2model">
+Math
+Function
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+71
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:250')" name="code2model" class="code2model">
+Fcn2
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:258')" name="code2model" class="code2model">
+Defined_Quotient
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+109
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:240')" name="code2model" class="code2model">
+Fcn1
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:248')" name="code2model" class="code2model">
+Defined_Quotient
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+109
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:134')" name="code2model" class="code2model">
+T1T2
+Calculate
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:134')" name="code2model" class="code2model">
+T1T2
+Calculate
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:119')" name="code2model" class="code2model">
+Sector
+Caculate
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:119')" name="code2model" class="code2model">
+Sector
+Caculate
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:83')" name="code2model" class="code2model">
+Park
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:83')" name="code2model" class="code2model">
+Park
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+12
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:51')" name="code2model" class="code2model">
+InversePark
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:51')" name="code2model" class="code2model">
+InversePark
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+6
+</td>
+
+</tr>
+
+</table>
+<br /><h5>
+子系统的报告: <a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:10')" name="code2model" class="code2model">
+Clark
+</a>
+
+</h5>
+引入延迟的模块列表:<table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th align="left" valign="top" style="border-style: none">
+<b>
+模块
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+采样时间
+</b>
+
+</th>
+<th align="left" valign="top" style="border-style: none">
+<b>
+引入的延迟
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('PMLSM_FOC_FixedPoint:10')" name="code2model" class="code2model">
+Clark
+</a>
+
+</td>
+<td align="left" valign="top" style="border-style: none">
+2e-08
+</td>
+<td align="left" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+<br /><br /><br /><br />
+</body>
+
+</html>

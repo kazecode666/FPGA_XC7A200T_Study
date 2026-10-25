@@ -1,0 +1,28 @@
+{
+  "stage": "rtl",
+  "status": "FAIL",
+  "case": "directed_probe_bit_negative_16adbb38fe",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_run",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_run\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_run\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_run\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_run\\xsim.console.log"
+  ],
+  "failures": [
+    "xsim reported an error; see D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_run\\xsim.console.log"
+  ],
+  "observed_frames": null,
+  "observed_checks": null,
+  "counted_scoreboard": false,
+  "completed": false,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\directed_probe_bit_negative_16adbb38fe_stage\\manifest.json",
+  "manifest_sha256": "6b11da952a214911a783366178c0e244834d980456fa2febba352e9ba246f569"
+}

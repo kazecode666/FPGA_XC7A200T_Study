@@ -1,6 +1,6 @@
 # Simulink 主导的 FPGA 电机控制主线
 
-更新：2026-10-24。PR51 已合并至 `aead404`；M2以 [Review](https://github.com/kazecode666/FPGA_XC7A200T_Study/pull/51#pullrequestreview-5638508505)确认的受限例外接受。当前为 [M3任务](../coordination/tasks/m3_foc_systemverilog_rtl_verification.md)交接，尚无M3执行结果；不能把以前checkhdl当实际代码生成或时序通过。
+更新：2026-10-25。M3已交付[实际SV、完整位/状态及xsim验证、重复构建](../coordination/reports/m3_foc_systemverilog_rtl_verification.md)。A/B/C/D/F通过；E核心综合完成、容量满足，20ns时序FAIL，WNS−58.833ns，**M3尚未接受，等待开放实现Review，不自动进入M4**。M2以PR51受限例外接受，原严格FAIL保留。
 
 ## 1. 目标与非目标
 
@@ -42,7 +42,7 @@ M3默认保留主模型与定点源数值，生成文件由manifest追踪；必�
 | M1A：已合并 | 浮点基线、外部init、面板、日志、限定回归 | PR47接受，基础控制参数固定 |
 | M1B：已合并 | 连续点位、原可选对齐、操作及准备 | PR49接受，未知非零偏置未冒称已验证 |
 | **M2：已合并，带受限例外接受** | 独立定点FOC、状态/范围/共享闭环和兼容性 | PR51及M2-E-REPEAT-001；原严格FAIL保留，不等于所有原门槛通过 |
-| **M3：当前任务交接** | 实际SV、gm/validation、xsim、时序合同、核心OOC综合预检 | 可再生成；原定点→gm→RTL位/状态正确、deadline满足；资源及20ns综合估算无阻塞；开放实现PR待Review |
+| **M3：实现待Review，20ns时序阻塞** | 实际SV、gm/validation、xsim、时序合同、核心OOC综合预检 | 可再生成；原定点→gm→RTL位/状态正确、deadline满足；资源及20ns综合估算无阻塞；开放实现PR待Review |
 | M4：实现与闭环验证 | 布局布线时序、实际RTL接入共享电机环境 | 布线后时限/资源及真实采样—计算—应用时序下闭环通过 |
 | M5：完整控制器与板级集成 | 运行保护、驱动恢复、在线参数、测量链和外设 | 完整顶层与异常场景验证，不沿用单算法结论替代 |
 | M6：另行批准上板 | 先I/O和安全关断，后受控功率级和电机 | 独立方案、授权和真实结果 |

@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "source_sha256": "ec14e246b00b28b47df6b5250fa72e10819a97a826966d6872fc0cf77f8bba19",
+  "owned_generation_copy_sha256": "4d1029c00a399918a52583df0811f6e27496d4be9345cdee8784b54606efcd2e",
+  "systems_checked": 21,
+  "layout_and_connection_differences": [],
+  "no_source_save_or_auto_layout": true,
+  "register_process_signals_exported": 162
+}

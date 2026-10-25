@@ -1,0 +1,124 @@
+{
+  "scope": "tool plumbing fixtures only; not real FOC functional acceptance",
+  "status": "PASS",
+  "runner": {
+    "script": "verification/m3_foc/tool_tests/test_m3_tools.ps1",
+    "script_sha256": "f10f6bb2e59f8ef46699da919faa75fdb4cde158df801d72ce60b9f56c2b33ca",
+    "fixture_area": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2",
+    "cases_run": 6,
+    "positive_cases": 1,
+    "expected_rejected_cases": 5,
+    "all_case_exit_assertions_passed": true,
+    "input_output_file_plusarg_roundtrip": "PASS",
+    "roundtrip_proof": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/valid_fixture/fixture_result.txt",
+    "cases": [
+      {
+        "case": "missing_manifest",
+        "result": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/missing_manifest/result.json",
+        "result_sha256": "231385c5eb055e974918ec5941fee5fd34cfc107324a21d8e89fff2ce1855da6",
+        "status": "FAIL",
+        "wrapper_exit_code_asserted_by_completed_harness": 2,
+        "observed_frames": null,
+        "observed_checks": null,
+        "failures": [
+          "Manifest missing: D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2\\does_not_exist.json"
+        ],
+        "tool_exit_codes": {}
+      },
+      {
+        "case": "missing_artifact",
+        "result": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/missing_artifact/result.json",
+        "result_sha256": "b5813b5d04df25794a23091209f08584ab16a74ea7e8131a6a93404d48b70bc3",
+        "status": "FAIL",
+        "wrapper_exit_code_asserted_by_completed_harness": 2,
+        "observed_frames": null,
+        "observed_checks": null,
+        "failures": [
+          "Artifact missing: does_not_exist.sv"
+        ],
+        "tool_exit_codes": {}
+      },
+      {
+        "case": "tampered_artifact",
+        "result": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/tampered_artifact/result.json",
+        "result_sha256": "b33285c4eb4e324c8351bc1cf11ee6594d95a1225950abe7907a591869d7c64d",
+        "status": "FAIL",
+        "wrapper_exit_code_asserted_by_completed_harness": 2,
+        "observed_frames": null,
+        "observed_checks": null,
+        "failures": [
+          "Artifact hash mismatch: tampered_fixture.sv"
+        ],
+        "tool_exit_codes": {}
+      },
+      {
+        "case": "valid_fixture",
+        "result": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/valid_fixture/result.json",
+        "result_sha256": "dc2184512a5eab8155718e8f08de017c9d2d575a4ec1d28f668b9a8f61b949cf",
+        "status": "PASS",
+        "wrapper_exit_code_asserted_by_completed_harness": 0,
+        "observed_frames": 4,
+        "observed_checks": 12,
+        "failures": [],
+        "tool_exit_codes": {
+          "xvlog": 0,
+          "xelab": 0,
+          "xsim": 0
+        }
+      },
+      {
+        "case": "zero_fixture",
+        "result": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/zero_fixture/result.json",
+        "result_sha256": "298e687d0e5b67ce8a36bbbca7ea786323b0a68c6d20aad885d7e11738d4b1d5",
+        "status": "FAIL",
+        "wrapper_exit_code_asserted_by_completed_harness": 2,
+        "observed_frames": 0,
+        "observed_checks": 0,
+        "failures": [
+          "Zero frames/checks cannot PASS"
+        ],
+        "tool_exit_codes": {
+          "xvlog": 0,
+          "xelab": 0,
+          "xsim": 0
+        }
+      },
+      {
+        "case": "fatal_fixture",
+        "result": ".runtime/m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2/fatal_fixture/result.json",
+        "result_sha256": "5d46a69f4a33d30cf0e80c9a6d6522a7990aa8d69adc45a907563562d2693755",
+        "status": "FAIL",
+        "wrapper_exit_code_asserted_by_completed_harness": 2,
+        "observed_frames": null,
+        "observed_checks": null,
+        "failures": [
+          "xsim reported an error; see D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_tool_tests_47cb74f217544d5cb88b2949fa8c06a2\\fatal_fixture\\xsim.console.log"
+        ],
+        "tool_exit_codes": {
+          "xvlog": 0,
+          "xelab": 0,
+          "xsim": 0
+        }
+      }
+    ]
+  },
+  "manifest_locker": {
+    "status": "PASS",
+    "tests_run": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "script": "verification/m3_foc/tool_tests/test_m3_manifest.py",
+    "script_sha256": "f465a5481c8a45722ec07c150e9c203073a9d696acf3973f57b0a7e2cf910ca2",
+    "evidence_log": ".runtime/m3_manifest_tests_7a47ea87aa3e40fab7c8bbf9fa4489f5/unittest.log",
+    "evidence_log_sha256": "7ee0c1b2a494558a0f7920b65d134397447fff899020da6b562aab457019aa2a",
+    "fixture_area": ".runtime/m3_manifest_tests_7a47ea87aa3e40fab7c8bbf9fa4489f5",
+    "proof": [
+      "makehdltb partial build rejected",
+      "missing frozen eight-file snapshot rejected",
+      "package/dependency compile order and data hashes exact",
+      "missing runtime data rejected",
+      "existing manifest preserved without overwrite"
+    ]
+  }
+}

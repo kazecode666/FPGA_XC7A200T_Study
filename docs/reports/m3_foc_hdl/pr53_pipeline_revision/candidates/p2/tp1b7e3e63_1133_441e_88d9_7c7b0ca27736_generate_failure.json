@@ -1,0 +1,12 @@
+{
+  "stage": "generate",
+  "status": "FAIL",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p2",
+  "evidence": [],
+  "failures": [
+    {
+      "identifier": "hdlcoder:engine:pathbalancing",
+      "message": "\n对于模块 'PMLSM_FOC_FixedPoint/FOC_DUT/Id/<!DOCTYPE HTML PUBLIC \"-////W3C////DTD HTML 4.0////EN\" \"http:////www.w3.org//TR//REC-html40//strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" //><style type=\"text//css\"> p, li { white-space: pre-wrap; } <//style><//head><body align=\"left\" style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p align=\"left\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12px;\">起到使能时初始化一下的作用<//span><//p><//body><//html>'\n   延迟平衡不成功。由于在模型级别或 Delay 模块上关闭了 'AllowDelayDistribution'，因此无法吸收反馈环中由优化引入的 10000 个额外延迟周期。请<sldiag objui=\"configset\" objparam=\"AllowDelayDistribution\" objname=\"PMLSM_FOC_FixedPoint/FOC_DUT\">打开 'AllowDelayDistribution'</sldiag> 以允许设计延迟吸收此额外延迟。 有问题的模块: PMLSM_FOC_FixedPoint/FOC_DUT/Id/<!DOCTYPE HTML PUBLIC \"-////W3C////DTD HTML 4.0////EN\" \"http:////www.w3.org//TR//REC-html40//strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" //><style type=\"text//css\">\np, li { white-space: pre-wrap; }\n<//style><//head><body align=\"left\" style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p align=\"left\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12px;\">起到使能时初始化一下的作用<//span><//p><//body><//html>"
+    }
+  ]
+}

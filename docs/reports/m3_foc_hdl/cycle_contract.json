@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "status": "CORE_BEHAVIORAL_AND_20NS_OOC_PASS_PENDING_REVIEW",
+  "candidate_id": "p3",
+  "source_model": "simulink模型/PMLSM_FOC_FixedPoint.slx/FOC_DUT",
+  "source_manifest_sha256": "6078480099e3eee765e4e84c2cb27b943018393e7401c9986f1c58e8cff84953",
+  "published_manifest": "generated/m3_foc/manifest.json",
+  "target": {
+    "part": "xc7a200tfbg484-2",
+    "clock_period_ns": 20,
+    "frequency_MHz": 50,
+    "ooc_wns_ns": 5.317,
+    "ooc_whs_ns": 0.135,
+    "routed_timing_signed_off": false
+  },
+  "time_coordinates": {
+    "source_and_gm_frame0_time_s": 0,
+    "gm_output_time_after_frame0_s": 6.28e-06,
+    "rtl_accepted_edges_per_frame": "1..5000",
+    "initial_reset_physical_cycles_normal": 2,
+    "absolute_first_output_physical_cycle_normal": 316,
+    "accepted_output_phase": 314,
+    "edge_observation": "old state pre-posedge; output/committed registers post-NBA; new input at preceding negedge",
+    "physical_reset_edges_excluded_from_accepted_phase": true,
+    "do_not_subtract_one_from_phase": true
+  },
+  "input_protocol": {
+    "frame_period_s": 0.0001,
+    "frame_clocks": 5000,
+    "logical_capture_cycle": 0,
+    "hold_rule": "All nine values stable before edge1 through edge5000; change at next negedge",
+    "common_capture_register_implemented": false,
+    "input_adapter_overhead_clocks": 0
+  },
+  "output_protocol": {
+    "duty_phase_cycles": [
+      314,
+      314,
+      314
+    ],
+    "core_latency_clocks": 314,
+    "core_latency_us": 6.28,
+    "native_ce_out": "clk_enable; fast CE, not frame-valid",
+    "native_output_valid_port": false,
+    "external_valid_rule": "Fixed post-edge314 in an active reset-free accepted-clock epoch; reset cancels predeclared in-flight frame",
+    "output_commit_register_budget_clocks": 1,
+    "output_commit_register_implemented": false
+  },
+  "state_protocol": {
+    "pi_old_consume_pre_edge": 5000,
+    "pi_commit_next_frame_post_edge": 1,
+    "aw_commit_next_frame_post_edge": 1,
+    "pi_commit_kind": "One fast register after original bypass; D input checked every active edge; row n old state checked at next-frame phase1",
+    "state_mapping": "docs/reports/m3_foc_hdl/state_mapping.csv",
+    "gm_native_old_state_rate_s": 0.0001,
+    "source_next_to_gm_next_frame_old_probe_values": 68,
+    "source_and_gm_state_type": "sfix64_En40",
+    "tc_reset_state": {
+      "count5000": 1,
+      "phase_0": 0,
+      "phase_1": 1
+    }
+  },
+  "reset_protocol": {
+    "global_reset": "Synchronous active-high; priority over CE",
+    "extra_reset_port": "reset_FOC_DUT_tc",
+    "tc_reset_equation": "reset | reset_FOC_DUT_tc",
+    "extra_reset_normal_drive": 0,
+    "independent_extra_reset_only_pulse": "NOT_VERIFIED_NOT_PART_OF_NORMAL_PROTOCOL",
+    "PI_Reset_EN": "One of nine data inputs; does not reset scheduler or unconditionally clear AW",
+    "gm_hardware_reset_ce_ports": false,
+    "gm_scope": "Normal initialized numeric oracle",
+    "rtl_reset_scope": "Cold replay and predeclared in-flight cancellation before output; restart zero-state prefix"
+  },
+  "deadline": {
+    "apply_boundary_clocks": 2500,
+    "apply_boundary_us": 50,
+    "core_output_phase_clocks": 314,
+    "input_overhead_clocks": 0,
+    "output_commit_budget_clocks": 1,
+    "computed_submit_cycle": 315,
+    "minimum_required_margin_clocks": 1,
+    "remaining_after_commit_clocks": 2185,
+    "remaining_after_commit_us": 43.7,
+    "max_core_output_phase_under_reserved_budgets": 2498,
+    "status": "IDEAL_EVENT_BUDGET_AND_CORE_OOC_PASS_EXTERNAL_ADAPTER_AND_ROUTE_NOT_PROVEN",
+    "scope": "Core OOC is pre-route estimate; no implemented output adapter, board IO or complete physical deadline signoff"
+  },
+  "ce_diagnostic": {
+    "physical_pause_edges": 21,
+    "maximum_wall_output_cycle": 325,
+    "normal_deadline_redefined": false
+  },
+  "verification": {
+    "model_words": 18039,
+    "next_words": 68,
+    "positive_rtl_frames": 2613,
+    "positive_rtl_checks": 52289123,
+    "one_bit_negative_rejected": true,
+    "actual_phase313_negative_rejected": true,
+    "first_frames_discarded": 0,
+    "denominator_zero_exceptions": 0,
+    "evidence": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/candidates/p3/"
+  },
+  "baseline_history": "docs/reports/m3_foc_hdl/pr53_pipeline_revision/baseline_B3_current_documents/docs/reports/m3_foc_hdl/cycle_contract.json"
+}

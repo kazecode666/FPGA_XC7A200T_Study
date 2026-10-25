@@ -1,0 +1,15 @@
+{
+  "mode": "normal",
+  "status": "PASS",
+  "negative_rejected": false,
+  "tool_status": "PASS",
+  "evidence": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run\\result.json",
+  "scoreboard": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run\\scoreboard.json",
+  "consumed_existing_hash_matched_evidence": false,
+  "observed_frames": 17,
+  "checks": 340183,
+  "output_commit_register_clocks": 1,
+  "minimum_submission_margin_clocks": 1,
+  "submission_margin_clocks": 2185,
+  "ce_pause_scope": null
+}

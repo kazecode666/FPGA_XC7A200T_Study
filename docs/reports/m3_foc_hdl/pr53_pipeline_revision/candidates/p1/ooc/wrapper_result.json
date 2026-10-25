@@ -1,0 +1,25 @@
+{
+  "stage": "synth",
+  "status": "FAIL",
+  "case": "p1_diagnostic",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\ooc_001",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\ooc_001\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\ooc_001\\vivado.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\ooc_001\\synth\\ooc_result.json"
+  ],
+  "failures": [
+    "OOC completed/resource/timing checks not all satisfied"
+  ],
+  "observed_frames": null,
+  "observed_checks": null,
+  "counted_scoreboard": false,
+  "completed": true,
+  "resources_ok": true,
+  "timing_ok": false,
+  "tool_exit_codes": {
+    "vivado": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\manifest.json",
+  "manifest_sha256": "48e3cb55b5602ad0a053870d9780595da252844252d654b6c137ca124c80c022"
+}

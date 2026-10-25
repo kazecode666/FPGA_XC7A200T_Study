@@ -1,0 +1,169 @@
+{
+  "name": "directed_probe",
+  "status": "PASS",
+  "samples": 17,
+  "folder": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p1\\tp3daf5b61_0b47_4c85_b74e_e510987c7c4a_model\\directed_probe",
+  "source_gm": {
+    "status": "PASS",
+    "bit_mismatch_count": 0,
+    "value_mismatch_count": 0,
+    "first_mismatch": [],
+    "signals": [
+      "duty_u_cmd",
+      "duty_v_cmd",
+      "duty_w_cmd",
+      "x_d_old",
+      "x_q_old",
+      "aw_d_old",
+      "aw_q_old"
+    ],
+    "values_compared": 119,
+    "output_phase_cycles": 293,
+    "state_event_cycles": [
+      0,
+      5000,
+      10000,
+      15000,
+      20000,
+      25000,
+      30000,
+      35000,
+      40000,
+      45000,
+      50000,
+      55000,
+      60000,
+      65000,
+      70000,
+      75000,
+      80000
+    ]
+  },
+  "validation": {
+    "status": "PASS",
+    "finite_stop_s": 0.0017000000000000001,
+    "denominators": {
+      "status": "PASS",
+      "first_disallowed_zero_cycle": 0,
+      "signals": [
+        {
+          "name": "den_limiter",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        },
+        {
+          "name": "den_bus_reciprocal",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        },
+        {
+          "name": "den_t1",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        },
+        {
+          "name": "den_t2",
+          "observed_points": 85001,
+          "last_cycle": 85000,
+          "zero_count": 0,
+          "first_zero_cycle": [],
+          "last_zero_cycle": [],
+          "first_zero_phase": [],
+          "last_zero_phase": [],
+          "invalid_zero_count": 0
+        }
+      ],
+      "output_valid_phase_cycles": 293,
+      "first_invalid_zero": [],
+      "scope": "All logged cycles, including startup and held terminal frame; every denominator must be nonzero."
+    },
+    "scope": "unmodified generated validation assertions and error diagnostics; independent bit oracle reported separately"
+  },
+  "failures": [],
+  "denominators": {
+    "status": "PASS",
+    "first_disallowed_zero_cycle": 0,
+    "signals": [
+      {
+        "name": "den_limiter",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      },
+      {
+        "name": "den_bus_reciprocal",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      },
+      {
+        "name": "den_t1",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      },
+      {
+        "name": "den_t2",
+        "observed_points": 85001,
+        "last_cycle": 85000,
+        "zero_count": 0,
+        "first_zero_cycle": [],
+        "last_zero_cycle": [],
+        "first_zero_phase": [],
+        "last_zero_phase": [],
+        "invalid_zero_count": 0
+      }
+    ],
+    "output_valid_phase_cycles": 293,
+    "first_invalid_zero": [],
+    "scope": "All logged cycles, including startup and held terminal frame; every denominator must be nonzero."
+  },
+  "next_state_mapping": {
+    "status": "PASS",
+    "bit_mismatch_count": 0,
+    "value_mismatch_count": 0,
+    "first_mismatch": [],
+    "signals": [
+      "x_d_next",
+      "x_q_next",
+      "aw_d_next",
+      "aw_q_next"
+    ],
+    "values_compared": 68,
+    "commits_compared": 17,
+    "mapping": "source next(n) at n*100us equals gm mapped old(n+1) at (n+1)*100us, including final commit"
+  }
+}

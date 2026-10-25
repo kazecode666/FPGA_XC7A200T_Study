@@ -1,0 +1,14 @@
+{
+  "stage": "repro",
+  "status": "PASS",
+  "run_dir": "D:/Project/FPGA_XC7A200T/.runtime/m3_20261024_001",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp262a8c04_a123_428a_8b4e_912337f06886_repeat\\repeat_identity.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tpf1805c57_4f1a_43a5_8ac2_c39348a14851_repeat_smoke\\result.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tpddb40035_cf16_4623_9ffe_b4f1d5e3a369_relocated_smoke\\result.json"
+  ],
+  "failures": [],
+  "repeat_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp262a8c04_a123_428a_8b4e_912337f06886_repeat",
+  "release_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m3_20261024_001\\tp6f955dde_d119_4941_80d8_7e762d6c9c32_release",
+  "raw_file_comparison": "exact SHA256 including ordinary TB and data; no exclusions"
+}

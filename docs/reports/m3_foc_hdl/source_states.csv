@@ -1,0 +1,6 @@
+SID,block,compiled_type,initial_condition,sample_time
+47,PMLSM_FOC_FixedPoint/FOC_DUT/Id/x_d_z,sfix64_En40,0,[0.0001 0]
+78,PMLSM_FOC_FixedPoint/FOC_DUT/Iq/x_q_z,sfix64_En40,0,[0.0001 0]
+213,PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Unit Delay,sfix64_En40,0,[0.0001 0]
+214,PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Unit Delay1,sfix64_En40,0,[0.0001 0]
+215,PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Unit Delay2,boolean,0,[0.0001 0]

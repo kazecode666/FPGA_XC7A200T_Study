@@ -1,0 +1,28 @@
+{
+  "stage": "rtl",
+  "status": "FAIL",
+  "case": "directed_probe_normal_5578d7f781",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_run",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_run\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_run\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_run\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_run\\xsim.console.log"
+  ],
+  "failures": [
+    "xsim reported an error; see D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_run\\xsim.console.log"
+  ],
+  "observed_frames": null,
+  "observed_checks": null,
+  "counted_scoreboard": false,
+  "completed": false,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3\\directed_probe_normal_5578d7f781_stage\\manifest.json",
+  "manifest_sha256": "01a4c5244bfd3d9f90f28af3d0e3cecab6b288d547018be2e475829c0ecf7956"
+}

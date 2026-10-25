@@ -1,0 +1,27 @@
+{
+  "stage": "rtl",
+  "status": "PASS",
+  "case": "portable_state_smoke_normal_9f230a0976",
+  "run_dir": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run",
+  "evidence": [
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run\\staged_files.json",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run\\xvlog.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run\\xelab.console.log",
+    "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_run\\xsim.console.log"
+  ],
+  "failures": [],
+  "observed_frames": 17,
+  "observed_checks": 340183,
+  "counted_scoreboard": true,
+  "completed": true,
+  "resources_ok": null,
+  "timing_ok": null,
+  "tool_exit_codes": {
+    "xvlog": 0,
+    "xelab": 0,
+    "xsim": 0
+  },
+  "manifest": "D:\\Project\\FPGA_XC7A200T\\.runtime\\pr53_20261025\\p3q\\portable_state_smoke_normal_9f230a0976_stage\\manifest.json",
+  "manifest_sha256": "e8fe2485ab223e104ce72407573e21e32a8d0edf7c784fad3772621ef6b35a1d",
+  "verification_kind": "independent_counted_scoreboard"
+}

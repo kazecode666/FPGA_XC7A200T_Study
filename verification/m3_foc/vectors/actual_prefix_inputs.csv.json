@@ -1,0 +1,25 @@
+{
+  "source_recording": "D:/Project/FPGA_XC7A200T/.runtime/pr51_review_20261024/discovery_fixed.mat",
+  "destination": "D:/Project/FPGA_XC7A200T/verification/m3_foc/vectors/actual_prefix_inputs.csv",
+  "frames": 1536,
+  "first_time_s": 0,
+  "last_time_s": 0.1535,
+  "prefix_preserved": true,
+  "initial_state": "original recording starts at zero; source/gm rerun also zero",
+  "input_encoding": "hex(fi) at accepted <=40bit input types; no output/state conversion",
+  "metadata": {
+    "scene": "repeat",
+    "implementation": 1,
+    "stop_s": 4,
+    "version": "26.2.0.3386108 (R2026b)",
+    "process": 29096,
+    "sample_s": 0.0001,
+    "Udc": 48,
+    "source_saved": false,
+    "test_model_folder": "D:\\Project\\FPGA_XC7A200T\\.runtime\\m2_20261024\\tp3d39fc4a_7604_4048_b32c_08954ae4505d",
+    "trial_config_applied": false
+  },
+  "source_recording_sha256": "d2a572f7c82f1159db24fcc7a2251c3d2d297af7c1d88cabd31322251b4e153a",
+  "fixture_sha256": "ce3829b782c0a3e25450aff567474a5d9553534159c96a0de8e72cc4aebe054b",
+  "first_nonzero_reference_sample_id": 1199
+}

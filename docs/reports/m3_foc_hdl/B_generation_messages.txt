@@ -1,0 +1,79 @@
+FOC_DUT_report.html
+'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 检查报告
+'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 代码生成检查报告
+打开模型 'PMLSM_FOC_FixedPoint/FOC_DUT'
+生成时间: 2026-10-24 23:09:59
+'PMLSM_FOC_FixedPoint' 的 HDL 检查已完成，出现 0 个错误、4 个警告和 8 条消息。
+下表描述报告了错误、警告或消息的模块。
+Simulink 模块和资源
+级别
+描述
+PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用
+Warning
+模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Id/起到使能时初始化一下的作用' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。
+PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和
+Warning
+模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/积分抗饱和' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。
+PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项
+Warning
+模型 'PMLSM_FOC_FixedPoint' 中的注解 'PMLSM_FOC_FixedPoint/FOC_DUT/Iq/解耦项' 包含一个或多个非 ASCII 字符。生成的 HDL 代码中的非 ASCII 字符可能会干扰下游的综合和 lint 等工具。要消除此警告，请将注解更新为完全 ASCII 文本。
+PMLSM_FOC_FixedPoint
+Warning
+多速率模型应将 "多任务数据传输" 和 "单任务数据传输" 选项设置为 "错误"。您可以在 "建模 -> 模型设置 -> 诊断 -> 采样时间" 中设置这些选项。如果不使用这些设置，生成的模型和验证可能无法更新(Ctrl+D)，您可能无法生成 HDL 测试平台，并且在确认和验证期间您的预期结果可能会有差异。
+PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2
+Calculate/Fcn1/Defined_Quotient
+Message
+为 Defined_Quotient 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。
+PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/T1T2
+Calculate/Fcn2/Defined_Quotient
+Message
+为 Defined_Quotient 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。
+PMLSM_FOC_FixedPoint/FOC_DUT/SVPWMG/XYZ
+Calculate/Math
+Function
+Message
+为 Math
+Function 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。
+PMLSM_FOC_FixedPoint/FOC_DUT/dq_voltage_limiter/Divide
+Message
+为 Divide 模块生成的 HDL 代码有额外的延迟，因为该模块正在使用 'ShiftAdd' 架构。
+PMLSM_FOC_FixedPoint/FOC_DUT
+Message
+时钟频率流水线识别出至少一个未利用全部延迟预算的反馈环。过采样因子设置为 '5000'，但设计所需的最小过采样因子为 '165'。为了减少不必要的时钟周期，请
+降低过采样因子
+以减少延迟预算，或在设计中添加流水线和序列化等增大延迟的优化措施以使用全部延迟预算。
+PMLSM_FOC_FixedPoint
+Message
+'GeneratedModel' 参数设置为 'on'。要缩短代码生成时间，请禁用模型生成。禁用此选项时，代码生成将生成抽象模型，而不是详细的生成模型。
+D:\Project\FPGA_XC7A200T\.runtime\m3_20261024_001\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining.m
+Message
+通过运行以下脚本可以诊断时钟频率流水线障碍:
+D:\Project\FPGA_XC7A200T\.runtime\m3_20261024_001\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\rtl\PMLSM_FOC_FixedPoint\highlightClockRatePipelining.m
+PMLSM_FOC_FixedPoint
+Message
+HDL 代码生成期间删除了未使用的逻辑。要突出显示删除的逻辑，请点击以下 MATLAB 脚本: D:\Project\FPGA_XC7A200T\.runtime\m3_20261024_001\tp450e181c_3ee1_420b_ac2e_9af8577c939f_generate\rtl\PMLSM_FOC_FixedPoint\highlightRemovedDeadBlocks.m
+PMLSM_FOC_FixedPoint
+Message
+消息: 该设计需要比基本速率(0.0001)快 5000 倍的时钟。
+Acknowledgments
+Trademarks
+Patents
+Terms of Use
+© 1994-2026 The MathWorks, Inc.
+FOC_DUT_tb_report.html
+'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 测试平台报告
+'PMLSM_FOC_FixedPoint/FOC_DUT' 的 HDL 测试平台生成报告
+生成时间: 2026-10-24 23:10:34
+'PMLSM_FOC_FixedPoint' 的 HDL 检查已完成，出现 0 个错误、1 个警告和 0 条消息。
+下表描述报告了错误、警告或消息的模块。
+Simulink 模块和资源
+级别
+描述
+PMLSM_FOC_FixedPoint
+warning
+HDL Coder 参数 'SimulationTool' 在从代码生成到测试平台生成之间已从 'Mentor Graphics ModelSim' 更改为 'Xilinx Vivado Simulator'。将重新生成 HDL 代码。
+Acknowledgments
+Trademarks
+Patents
+Terms of Use
+© 1994-2026 The MathWorks, Inc.
